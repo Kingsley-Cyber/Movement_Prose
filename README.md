@@ -15,8 +15,12 @@ Movement_Prose/
 ├── examples/
 │   ├── gold_master_1_blade_exchange.json       # Verified Gold-Master #1 (Reverse-Grip Kunai vs. Forearm Blade Exchange)
 │   └── gold_master_2_disarm_dual_blade.json    # Verified Gold-Master #2 (Wakizashi vs. Katana Disarm, Aerial Catch & Twin-Blade X-Lock)
-└── references/
-    └── sakuga_prompt_schema_sop.md             # Master SOP, 17 Empirical Decisions & 5-Axis R&D Diversification Queue
+├── references/
+│   └── sakuga_prompt_schema_sop.md             # Master SOP, 17 Empirical Decisions & 5-Axis R&D Diversification Queue
+└── experiments/
+    ├── RD_EXPERIMENT_PROGRESSION_LOG.md        # Complete chronological log of all 13 A/B experiments & empirical render findings
+    ├── exp01..exp13_*.txt                      # All 13 prompt iterations tested across the R&D progression (v2.1 -> v3.1-CAUSAL)
+    └── baselines/                              # All 5 raw input baselines (v2.0, LBN-2.3-ADV Euler, LBN-2.4-ADV Style Tags, Causal Notes)
 ```
 
 ---

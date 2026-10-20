@@ -1,0 +1,72 @@
+10s anime fight clip, 24fps. STYLE: 2D hand-drawn anime, cel-shaded flat colors, heavy ink outlines, sakuga fight animation on twos with smear frames and held impact frames, painted moonlit background. Not 3D, not CGI, not live action, not photoreal. Two ninja fighters in a moonlit bamboo courtyard with a stone wall at the back. Fighter A (lean, dark coat, red scarf) vs Fighter B (broad, grey armor). Animate the fight exactly as scripted below. Camera and stylization are mandatory.
+
+{
+"name":"courtyard_10s_sky_cartwheel","fps":24,"duration":10.0,
+"axes":"Y_up, metres, floor y=0, A starts facing +Z toward B, solid stone wall at z=6 (nothing passes z>6)",
+"laban":{
+"A":{"summary":"sprint → sky cartwheel deflect → rising uppercut → aerial leg-cartwheel kick → wall-run → diving kunai punch → crouch","effort":{"weight":"strong","time":"sudden","space":"direct","flow":"free→bound at impacts"}},
+"B":{"summary":"throw kunai, brace, take uppercut, launched by spin kick, slam into wall base","effort":{"weight":"heavy","time":"sustained","space":"direct","flow":"bound"}}},
+"beats":["sprint","sky_cartwheel","close","uppercut","aerial_cartwheel","wallrun","dive_punch","landing"],
+"B_track":[
+{"t":0.0,"pos":[0,1.0,4.5],"facing":"-Z","action":"throw_kunai_windup"},
+{"t":1.1,"pos":[0,1.0,4.5],"action":"release_kunai","right_arm":"extended_toward_A"},
+{"t":2.6,"pos":[0,1.0,4.4],"action":"brace_guard_high"},
+{"t":3.05,"pos":[0,1.0,4.41],"action":"hit_chin","head":"snaps_back","feet":"leave_ground"},
+{"t":4.3,"pos":[0.0,1.401,5.468],"action":"hit_jaw","launch_vel":[0,1.5,3.5]},
+{"t":5.0,"pos":[0,0.5,5.7],"action":"slams_wall_base","state":"stunned_slumped"},
+{"t":7.5,"pos":[-0.082,0.3,4.632],"action":"on_ground","reaction":"flinch_at_shockwave"},
+{"t":10.0,"pos":[-0.082,0.3,4.632],"action":"down"}
+],
+"kunai":[
+{"t":1.1,"state":"in_hand_B→airborne","pos":[0.164,1.435,3.844],"vel":[-1.64,-3.35,-1.35],"spin":"none","flight":{"model":"straight","g":0,"to_t":1.2,"note":"anime throw: straight line at constant speed, gravity ignored"}},
+{"t":1.2,"state":"deflected_up","pos":[0.0,1.1,3.709],"vel_post":[0.037,3.68,0.282],"spin":"end_over_end","event":"struck_by_A_right_foot","flight":{"model":"parabola","g":1.2539,"to_t":6.6,"note":"anime hang: one slow parabola, apex 6.5 m, so it is still in the air when A comes off the wall"}},
+{"t":4.135,"state":"apex","pos":[0.109,6.5,4.537]},
+{"t":6.6,"state":"falling→in_hand_A","pos":[0.2,2.69,5.233],"event":"caught_by_A_right_hand"},
+{"t":7.5,"state":"in_hand_A","event":"pommel_strike_ground","effect":"shockwave_ring"},
+{"t":10.0,"state":"in_hand_A","grip":"reverse"}
+],
+"camera":[
+{"t":0.0,"shot":"low_tracking_side","fov":40,"pos":[2.5,0.6,0.5],"look":"A","move":"track_with_A"},
+{"t":0.9,"shot":"low_angle_arc","move":"orbit_90deg_around_A_during_cartwheel","fov":32},
+{"t":1.2,"hold_frames":3,"shot":"impact_frame_kunai_foot"},
+{"t":2.6,"shot":"over_B_shoulder","fov":45,"move":"slow_push"},
+{"t":3.05,"hold_frames":4,"time_remap":0.25,"shot":"low_angle_uppercut_impact"},
+{"t":3.6,"shot":"wide_crane_up","move":"rise_with_A","fov":50},
+{"t":4.3,"hold_frames":3,"shot":"profile_spin_kick_impact"},
+{"t":4.8,"shot":"rear_tracking","move":"follow_A_up_wall","tilt_up":true},
+{"t":5.9,"shot":"top_down_from_above_wall","time_remap":0.5,"move":"tilt_down_with_dive"},
+{"t":7.5,"hold_frames":5,"shot":"ground_level_wide","effect":"shockwave_dust_ring"},
+{"t":8.4,"shot":"slow_push_in_crouch","fov":35,"move":"dolly_in","duration":1.6}
+],
+"anime":{
+"style":"2D cel-shaded hand-drawn anime, flat color, ink outlines, painted background, limited animation on twos",
+"impact_frames":[1.2,3.05,4.3,7.5],
+"smear_frames":["1.0-1.4 legs","3.7-4.3 legs","6.8-7.4 whole_body"],
+"speed_lines":["0.0-0.9","4.8-5.9","6.0-7.4"],
+"time_remap":{"3.0-3.1":0.25,"5.9-6.2":0.5},
+"anticipation_holds":[2.75,5.85],
+"fx":{"1.2":"spark_ring_at_foot","3.05":"chin_shock_arc","4.3":"heel_flash","7.5":"stone_crack_radial_dust_ring","8.4-10":"drifting_embers_moonlight_rim"},
+"line_rule":"heavy outlines on A, broken/sketchy outlines during smears, clean lines on holds"},
+"rules":"A moves continuously through A_beats in order; A's position follows the pos values; a contact holds until a later beat changes it; a planted hand or foot does not slide; exactly ONE kunai, follows kunai states in order, never duplicated, never lost, never in two hands; B never stands after t=5.0; wall is solid, only A's feet touch it during the wallrun; every impact_frame holds its pose; both cartwheels are side-on; the kunai follows its flight notes; the whole clip is 2D anime, never 3D, never live action",
+"A_beats":[
+{"t":0.0,"beat":"sprint","pos":[0,0.83,0],"pose":"A sprints flat-out toward B, torso pitched hard forward, right knee driving up, left leg kicked back high, arms pumping.","contacts":"feet alternating"},
+{"t":0.9,"beat":"sky_cartwheel","pos":[0,0.85,1.6],"pose":"A turns side-on to B and throws a cartwheel to the left: the left hand plants on the ground, the body is a quarter turn into the wheel, legs split wide in a star.","contacts":"left hand on the ground, feet off"},
+{"t":1.2,"beat":"sky_cartwheel","pos":[0,1.1,2.65],"pose":"Upside down on both hands at the top of the wheel, both arms straight. The right leg whips forward horizontal toward B and the right foot strikes the kunai out of the air. IMPACT FRAME.","contacts":"both hands on the ground, right foot strikes kunai"},
+{"t":1.6,"beat":"sky_cartwheel","pos":[0,0.94,3.37],"pose":"Coming off the right hand, three quarters through the wheel, left leg reaching for the ground ahead, right leg trailing.","contacts":"right hand on the ground, feet off"},
+{"t":2.2,"beat":"close","pos":[0,0.95,3.45],"pose":"A lands running and closes on B, upright and facing B, torso leaning in, arms pumping.","contacts":"feet alternating"},
+{"t":2.8,"beat":"uppercut","pos":[0,0.8,3.9],"pose":"A sinks into a low forward crouch, weight loaded on a deeply bent right leg, left fist chambered with the elbow bent at a right angle, right arm up. ANTICIPATION HOLD.","contacts":"both feet planted"},
+{"t":3.05,"beat":"uppercut","pos":[0,0.95,3.96],"pose":"A explodes upward, back arched, left fist driving up and across into B's chin with the elbow still half bent; up on the toes of the right foot, right arm raised as a guard. IMPACT FRAME, slow motion.","contacts":"right toes only, left fist on B's chin"},
+{"t":3.6,"beat":"aerial_cartwheel","pos":[0,2.0,4.07],"pose":"A launches off the ground into a no-hands aerial cartwheel to the right, side-on to B, legs split wide, arms out to the sides, two metres up.","contacts":"airborne"},
+{"t":4.0,"beat":"aerial_cartwheel","pos":[0,2.4,4.2],"pose":"Upside down at the top of the arc, legs split wide, knees locked straight.","contacts":"airborne"},
+{"t":4.3,"beat":"aerial_cartwheel","pos":[0,2.0,4.4],"pose":"The right leg whips down through the wheel and the right heel cracks into B's jaw, the left leg still split wide. IMPACT FRAME.","contacts":"airborne, right heel on B's jaw"},
+{"t":4.8,"beat":"wallrun","pos":[0.3,0.83,4.8],"pose":"A lands and sprints straight at the stone wall, torso pitched forward, full sprint pose.","contacts":"feet alternating on the ground"},
+{"t":5.5,"beat":"wallrun","pos":[0.6,2.3,5.04],"pose":"A runs up the wall, feet alternating on the stone, body leaning out from the wall at sixty degrees, left leg driven back, right knee forward, arms pumping.","contacts":"feet alternating on the wall"},
+{"t":5.9,"beat":"wallrun","pos":[0.6,3.4,5.52],"pose":"At the top of the wall-run A is horizontal, 3.4 metres up; the right foot plants on the wall and pushes off, the left leg driving upward. ANTICIPATION HOLD.","contacts":"right foot on the wall, push off"},
+{"t":6.6,"beat":"dive_punch","pos":[0.4,3.6,4.8],"pose":"A dives head-first off the wall, body straight, legs trailing; the right arm reaches out and the right hand snatches the falling kunai out of the air.","contacts":"airborne, right hand catches kunai"},
+{"t":7.5,"beat":"dive_punch","pos":[0.2,0.89,3.6],"pose":"A drives down head-first and slams the kunai pommel into the ground beside B, right arm fully extended, left arm swept back. Stone cracks, shockwave dust ring. IMPACT FRAME.","contacts":"right fist and kunai pommel on the ground beside B"},
+{"t":8.4,"beat":"landing","pos":[0.2,0.55,3.5],"pose":"A lands in a deep crouch, knees folded tight, thighs up, torso leaning forward, right hand holding the kunai in a reverse grip.","contacts":"both feet planted"},
+{"t":10.0,"beat":"landing","pos":[0.2,0.55,3.5],"pose":"A holds the crouch, torso easing upright, embers drifting in the moonlight.","contacts":"both feet planted"}
+]
+}
+
+this is my current prompt format and schema i have built as cutome video prompt. its output is very good and intents is strong
