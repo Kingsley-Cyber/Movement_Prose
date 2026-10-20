@@ -93,18 +93,54 @@ If `sakuga_compiler.py` reports any `[ERROR]` or `[WARN]` (such as negation leak
 
 ---
 
-## 4. TwelveLabs Video-to-Sakuga Bridge (`twelvelabs_bridge.py`)
+## 4. Conversational TwelveLabs Video Intelligence & 3-Tier Extraction (`twelvelabs_bridge.py`)
 
-When the user has a reference fight video (Mode A) or wants to audit a rendered clip / extract its true `t=10.0s` final frame for the next clip (Mode B), use [twelvelabs_bridge.py](./scripts/twelvelabs_bridge.py):
+This skill gives you **full conversational control** over the user's TwelveLabs API account via [twelvelabs_bridge.py](./scripts/twelvelabs_bridge.py). Whenever the user asks about their TwelveLabs account, indexes, uploaded videos, or asks to extract/analyze/search a fight video, run the appropriate command automatically and converse naturally with the results.
+
+### A. Account, Library, Upload & Conversational Q&A Commands
+```bash
+# 1. Save API key once (persists to ~/.config/sakuga/twelvelabs.json) or check auth status:
+python3 scripts/twelvelabs_bridge.py auth --set-key "tlk_..."
+python3 scripts/twelvelabs_bridge.py auth --status
+
+# 2. Inspect TwelveLabs account indexes & enabled engines (pegasus1.2, marengo2.7):
+python3 scripts/twelvelabs_bridge.py account
+
+# 3. List all videos in the user's TwelveLabs library (supports partial name or video_id matching):
+python3 scripts/twelvelabs_bridge.py videos
+
+# 4. Upload & index a new local video (auto-creates a dual Pegasus 1.2 + Marengo 2.7 index if needed):
+python3 scripts/twelvelabs_bridge.py upload path/to/video.mp4
+
+# 5. Ask ANY conversational follow-up question to Pegasus 1.2 about an indexed/local video:
+python3 scripts/twelvelabs_bridge.py ask <video_id_or_name_or_path> "At what exact timestamp does the blade disarm happen, and which foot is planted?"
+
+# 6. Search across the entire TwelveLabs index for specific visual/audio combat moments (Marengo 2.7):
+python3 scripts/twelvelabs_bridge.py search "mid-air blade catch" "high-velocity shoulder vault"
+```
+
+### B. 3-Tier Extraction Engine (`extract --tier fast | medium | full`)
+Choose the extraction depth based on what the user needs (accepts a local `.mp4`, an existing TwelveLabs `video_id`, or a partial filename already in their TwelveLabs account):
+
+| Tier | Command | API Calls | What It Extracts & When to Use |
+| :--- | :--- | :--- | :--- |
+| **`fast`** | `extract <target> --tier fast` | **1 call** (`/analyze`) | **Rapid Storyboard Pass (~10s):** High-level premise, fighter silhouettes, midpoint screen-cross timestamp, and macro `C01->C10` beat list. Best for quick brainstorming. |
+| **`medium`** | `extract <target> --tier medium` | **2 calls** (`/gist` + `/analyze`) | **Standard Choreographer Pass (~25s):** Video Gist + single-pass `SAKUGA-MLLM-3.1-CAUSAL` JSON draft (`A_beats`, `B_track`, props, camera, anime). Best for standard Mode A prompt creation. |
+| **`full`** | `extract <target> --tier full` | **6 passes** (All TwelveLabs endpoints) | **100% Complete Video Intelligence Dossier (~60s):** Extracts **everything TwelveLabs supports** about the video and merges it into a unified dossier + compiled `SAKUGA-MLLM-3.1-CAUSAL` JSON:<br>1. **System Metadata (`/videos/{id}`):** Exact FPS, resolution, duration, audio tracks (+ optional `--embed` Marengo 2.7 vector embeddings)<br>2. **Gist (`/gist`):** Auto-generated Title, Topics & Hashtags<br>3. **Summaries (`/summarize` x3):** Full Summary, Timestamped Chapters & Key Highlights<br>4. **Pegasus Deep Pass A (`/analyze`):** Full Biomechanics, `C01->C12` Causal Graph, 8-Effort Laban Table, 6D `axis`, `support`, and 3-phase `pre->hit->post` contacts<br>5. **Pegasus Deep Pass B (`/analyze`):** Cinematography/FOV/cuts, Sakuga Smear Exposure Sheet (`on_1s`/`on_2s`), Parabolic Prop State Machines, Destructible Environment & Cross-Modal Audio Impulse Track<br>6. **Marengo 2.7 Temporal Grounding (`/search`):** Sub-second visual + audio confidence timestamps for impacts/clashes, evasions/vaults, spins/sweeps, and finishers |
 
 ```bash
-# MODE A (Primary): Extract timestamped C01->C10 choreography & kinematics from a reference fight video:
-export TWELVELABS_API_KEY="tlk_..."
-python3 scripts/twelvelabs_bridge.py extract-ref reference_fight.mp4 --out extracted_ref.json
+# Run a Full Pass (100% TwelveLabs extraction) on an indexed video or local file:
+python3 scripts/twelvelabs_bridge.py extract reference_fight.mp4 --tier full --out full_dossier.json
 
-# Or print the Mode A extraction prompt to paste directly into the TwelveLabs Web Playground (no API key needed):
-python3 scripts/twelvelabs_bridge.py extract-ref --print-prompt
+# Include raw Marengo 2.7 1024-D visual/audio vector embeddings in the Full Pass:
+python3 scripts/twelvelabs_bridge.py extract reference_fight.mp4 --tier full --embed --out full_dossier_with_vectors.json
 
-# MODE B: Audit a rendered Seedance video against a spec & extract the true t=10.0s state for Clip N+1:
+# Print the raw prompts for any tier (fast, medium, full) to use in the TwelveLabs Web Playground without an API key:
+python3 scripts/twelvelabs_bridge.py extract --tier full --print-prompt
+```
+
+### C. Mode B Render QA & `t=10.0s` Handoff State Extractor (`audit-render`)
+```bash
+# Audit a rendered Seedance clip against your JSON spec & extract the true t=10.0s state for Clip N+1:
 python3 scripts/twelvelabs_bridge.py audit-render clip1.json rendered_clip1.mp4 --out audit_report.json
 ```

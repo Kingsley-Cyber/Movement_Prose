@@ -49,14 +49,26 @@ python3 scripts/sakuga_compiler.py compile examples/gold_master_1_blade_exchange
 python3 scripts/sakuga_compiler.py stitch examples/gold_master_1_blade_exchange.json examples/gold_master_2_disarm_dual_blade.json --out episode_pack.md
 ```
 
-### 4. TwelveLabs Video-to-Sakuga Bridge (Mode A & Mode B)
+### 4. TwelveLabs Video Intelligence Bridge (3-Tier Extraction + Full Account CLI)
 ```bash
-# Mode A (Web Playground Prompt — zero API key needed):
-python3 scripts/twelvelabs_bridge.py extract-ref --print-prompt
+# Authenticate once (saves key to ~/.config/sakuga/twelvelabs.json) & inspect your TwelveLabs account/videos:
+python3 scripts/twelvelabs_bridge.py auth --set-key "tlk_your_key_here"
+python3 scripts/twelvelabs_bridge.py account
+python3 scripts/twelvelabs_bridge.py videos
 
-# Mode A (Direct API extraction from a reference fight video):
-export TWELVELABS_API_KEY="tlk_your_key_here"
-python3 scripts/twelvelabs_bridge.py extract-ref reference_fight.mp4 --out extracted_ref.json
+# 3-Tier Mode A Extraction (accepts local .mp4 OR an existing TwelveLabs video_id / partial name):
+#   --tier fast   : 1 API call  (Rapid Storyboard + macro C01->C10 beats)
+#   --tier medium : 2 API calls (Gist + single-pass SAKUGA-MLLM-3.1-CAUSAL JSON)
+#   --tier full   : 6 passes    (100% TwelveLabs extraction: System Metadata, Gist, Summary/Chapters/Highlights,
+#                                Deep Pegasus Pass A Biomechanics/Causal/Laban, Deep Pegasus Pass B Camera/Sakuga/Props/Audio,
+#                                and Marengo 2.7 Temporal Action Search + optional --embed vector embeddings)
+python3 scripts/twelvelabs_bridge.py extract reference_fight.mp4 --tier fast   --out fast_storyboard.json
+python3 scripts/twelvelabs_bridge.py extract reference_fight.mp4 --tier medium --out medium_spec.json
+python3 scripts/twelvelabs_bridge.py extract reference_fight.mp4 --tier full   --out full_dossier.json
+
+# Conversational Q&A with Pegasus 1.2 & Marengo 2.7 Moment Search on any indexed video:
+python3 scripts/twelvelabs_bridge.py ask reference_fight.mp4 "What happens to the katana after the disarm at t=2.0s?"
+python3 scripts/twelvelabs_bridge.py search "metallic blade clash" "shoulder vault"
 
 # Mode B (Audit a Seedance render against your spec & extract true t=10.0s state for Clip N+1):
 python3 scripts/twelvelabs_bridge.py audit-render examples/gold_master_2_disarm_dual_blade.json rendered_clip.mp4 --out audit_report.json
