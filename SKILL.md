@@ -11,12 +11,14 @@ description: >-
 
 This skill turns creative fight ideas or multi-clip YouTube episode concepts into empirically verified, non-regressing **`SAKUGA-MLLM-3.1-CAUSAL`** video prompts and validates/compiles them using [sakuga_compiler.py](./scripts/sakuga_compiler.py).
 
-## Directory Contents
+## Directory Contents (STRICT TEMPLATE RULE)
+* **CANONICAL TEMPLATES (USE ONLY THESE):**
+  * **Verified Gold-Master #1 (Single-Prop Kunai vs. Blade Exchange):** [gold_master_1_blade_exchange.json](./examples/gold_master_1_blade_exchange.json)
+  * **Verified Gold-Master #2 (Multi-Prop Disarm, Mid-Air Catch & Dual-Blade X-Lock):** [gold_master_2_disarm_dual_blade.json](./examples/gold_master_2_disarm_dual_blade.json)
 * **Compiler & Linter CLI:** [sakuga_compiler.py](./scripts/sakuga_compiler.py)
 * **TwelveLabs Video-to-Sakuga Bridge (Mode A & Mode B):** [twelvelabs_bridge.py](./scripts/twelvelabs_bridge.py)
 * **Full 17-Decision Master SOP:** [sakuga_prompt_schema_sop.md](./references/sakuga_prompt_schema_sop.md)
-* **Verified Gold-Master #1 (Single-Prop Kunai vs. Blade Exchange):** [gold_master_1_blade_exchange.json](./examples/gold_master_1_blade_exchange.json)
-* **Verified Gold-Master #2 (Multi-Prop Disarm, Mid-Air Catch & Dual-Blade X-Lock):** [gold_master_2_disarm_dual_blade.json](./examples/gold_master_2_disarm_dual_blade.json)
+* ⚠️ **CRITICAL RULE FOR AGENTS:** NEVER copy schemas or prompt structures from `_archive_rd_history_do_not_copy/`. Those files contain deprecated early baselines (`LBN-2.3-ADV` Euler dicts, Quaternion A/B tests, `v3.2` metadata bloat tests) kept strictly for historical benchmarking. Always use `examples/gold_master_1_blade_exchange.json` or `examples/gold_master_2_disarm_dual_blade.json` (`SAKUGA-MLLM-3.1-CAUSAL`).
 
 ---
 

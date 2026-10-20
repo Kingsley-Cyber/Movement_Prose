@@ -12,12 +12,12 @@ Movement_Prose/
 ├── scripts/
 │   ├── sakuga_compiler.py                      # Deterministic CLI Compiler, 17-Rule Physics Linter, Style/Taste Injector & Multi-Clip Stitcher
 │   └── twelvelabs_bridge.py                    # TwelveLabs Pegasus 1.2 Bridge (Mode A: Reference Extractor, Mode B: Render QA & Handoff)
-├── examples/
+├── examples/                                   # ✅ CANONICAL TEMPLATES (Use ONLY these for new prompts)
 │   ├── gold_master_1_blade_exchange.json       # Verified Gold-Master #1 (Reverse-Grip Kunai vs. Forearm Blade Exchange)
 │   └── gold_master_2_disarm_dual_blade.json    # Verified Gold-Master #2 (Wakizashi vs. Katana Disarm, Aerial Catch & Twin-Blade X-Lock)
 ├── references/
 │   └── sakuga_prompt_schema_sop.md             # Master SOP, 17 Empirical Decisions & 5-Axis R&D Diversification Queue
-└── experiments/
+└── _archive_rd_history_do_not_copy/            # ⚠️ HISTORICAL R&D LOGS ONLY (Contains deprecated Euler/Quaternion/Bloat tests — do not copy)
     ├── RD_EXPERIMENT_PROGRESSION_LOG.md        # Complete chronological log of all 13 A/B experiments & empirical render findings
     ├── exp01..exp13_*.txt                      # All 13 prompt iterations tested across the R&D progression (v2.1 -> v3.1-CAUSAL)
     └── baselines/                              # All 5 raw input baselines (v2.0, LBN-2.3-ADV Euler, LBN-2.4-ADV Style Tags, Causal Notes)
