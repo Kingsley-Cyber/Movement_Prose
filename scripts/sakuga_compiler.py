@@ -374,7 +374,15 @@ def lint_clip(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
                         "'pre:... -> hit:... -> post:...' (or 'evasion_corridor:...')."
                     )
 
-        # Check Close-Quarters distance against B_track (Decision 10)
+        # Check Franchise Attack Name Pollution (Decision 22C)
+        for bad_name in ("triceratops fist", "cockroach dash", "mach straight", "mach punch"):
+            if bad_name in beat_text.lower():
+                warnings.append(
+                    f"[Decision 22C] A_beats t={t} uses franchise attack name '{bad_name}'. "
+                    "Describe the physical pose directly (e.g. 'deep lunge, rear knee low, right arm straight at chin height') instead of named moves."
+                )
+
+        # Check Close-Quarters distance against B_track (Decision 10 & Decision 22A)
         t_key = round(t, 2)
         if t_key in b_by_t and "pos" in beat and "pos" in b_by_t[t_key]:
             apos = beat["pos"]
@@ -384,12 +392,11 @@ def lint_clip(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
                 warnings.append(
                     f"[Decision 10] A_beats t={t} z-separation is {dz:.2f}m (> 1.65m close-quarters pocket)."
                 )
-
-    if len(seen_screen_sides) < 2:
-        warnings.append(
-            "[Decision 16] Fighter A stays on a single screen_side for the entire clip. "
-            "Include a physical midpoint cross (screen_left -> screen_right around t=4.8s-5.4s) to prevent a static standoff."
-        )
+            elif dz < 0.35 and "wall" not in curr_support and "pillar" not in curr_support:
+                warnings.append(
+                    f"[Decision 22A] A_beats t={t} z-separation is only {dz:.2f}m (< 0.35m chest-to-chest merging risk). "
+                    "Stage punches at ~0.75-0.90m (arm's length), kicks at ~1.00-1.20m (leg's length), and clinches at ~0.55-0.65m."
+                )
 
     # 5. Validate B_track (Decision 03 & Decision 11)
     for idx, bbeat in enumerate(b_track):

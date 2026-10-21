@@ -101,6 +101,17 @@ Empirical render testing on `gold_master_5_baki_underground_arena.json` (`4.30s�
 3. **Failure Mode 3 (`worm_eye` Close-Up Triggering the Uppercut Fist-Leg Hybrid Prior)**: Framing a rising knee impact in a tight `worm_eye` close-up (`fov: 32` looking up at `B`'s chin against the ceiling lights) crops `A`'s pelvis and standing leg out of the frame. Because "tight worm's-eye vertical chin strike + radial star flash" is strongly associated with an **uppercut fist** in anime training data, the model morphs the tip of the rising thigh/knee into a giant clenched fist!
    - **Fix (`Decision 21C`)**: Always frame clinch knee impacts in a **medium-wide side profile (`fov: 38`, `medium_wide_side_profile_grounded_pillar_rising_right_knee_impact`)** that keeps `A`'s entire body from planted standing foot through pelvis, torso, both neck-clinching arms, and the rising knee **100% visible head-to-toe in profile**.
 
+#### Rule F: Realistic Strike-Reach Spacing, 10s Screen-Side Lock & Biomechanical Pose over Franchise Names (`Decision 22`)
+1. **Realistic Strike-Reach Spacing (`Decision 22A` — Why `0.20m` Spacing Merges Bodies)**:
+   - Staging strikes at `0.15m–0.25m` between `A` and `B` places two adult fighter torsos physically inside each other, forcing the video model to merge chests and limbs.
+   - **Rule**: Stage all **punches at one full arm's length (`0.75m – 0.85m` between torso centers)**, all **kicks at one full leg's length (`1.05m – 1.15m` between torso centers)**, and **clinches/elbows at `0.60m – 0.65m`**. State both the metric gap and the natural-language phrase (`"one full arm's length"`, `"one full leg's length"`).
+2. **Strict 10-Second Screen-Side Lock (`Decision 22B` — Drop Mid-Clip Side Swaps)**:
+   - Swapping `screen_left` and `screen_right` mid-clip while claiming to preserve the 180-degree camera line is a geometric contradiction and is the #1 point where video models swap fighter identities or transfer accessories (such as wrist tape) between fighters.
+   - **Rule**: Keep `A` strictly on `screen_left` facing right (`+Z`) and `B` strictly on `screen_right` facing left (`-Z`) for all 10.0 seconds. Spinning techniques (`spinning back kick`) execute cleanly with `A` spinning 360° in place on `screen_left`.
+3. **Describe Biomechanical Poses, Never Franchise Attack Names (`Decision 22C`)**:
+   - Using franchise move names (`"Triceratops Fist"`, `"Cockroach Dash"`, `"Mach Straight"`) pulls in static anime poster/cutaway poses from training data instead of the intended strike.
+   - **Rule**: Keep `"Baki and Kengan Ashura"` strictly in the visual `STYLE` header, and write every technique as direct biomechanical geometry (e.g., `"deep wide lunge, rear left knee low near the sand, right arm locked dead-straight horizontally at chin height, left fist pulled back to the left hip"`).
+
 ---
 
 ## 4. Verification & Compilation Workflow
