@@ -1,0 +1,472 @@
+{
+  "header": "10s anime fight clip, 24fps, underground octagonal concrete-and-sand martial arts tournament arena, harsh overhead stadium floodlights, dark tiered crowd in deep shadow, solid concrete perimeter wall at the back. STYLE: Pure 2D hand-drawn anime, Baki and Kengan Ashura style hyper-detailed anatomical muscle striations, cel-shaded flat colors with hard high-contrast shadows, heavy ink outlines on A, broken sketchy ink in smears, clean sharp ink on impact holds, intense bare-knuckle close-quarters sakuga martial arts animation on twos. Not 3D, not CGI, not live action, not photoreal. ENTITY COUNT: Exactly TWO shirtless bare-knuckle underground fighters (ZERO weapons). Fighter A: lean, hyper-striated underground martial artist, shirtless bare muscular torso and bare arms, white cloth wrist/knuckle tape on both hands, red Vale Tudo fight trunks, bare feet, BOTH left and right bare arms and hands 100% visible in silhouette at all times. Fighter B: massive, broad-shouldered pit-brawler, shirtless scarred muscular torso, black fight trunks, white ankle wraps, bare fists. Execute choreography as one physically continuous combat event where every movement emerges visibly from the force, recoil, and momentum of the previous state; no on-screen text, no numbers, no HUD, and no coordinate labels.",
+  "layer_1_timeline": [
+    "MOVEMENT LANGUAGE: Each line states <seconds> <performer>: SUPPORT (what bears weight; NO SUPPORT = airborne) | bilateral limb gestures & orientation (both L_arm and R_arm explicitly placed) | 5-phase force events (windup -> drive -> CONTACT -> reaction -> follow-through) | path (continuous translation in metres). Every key action is unrolled into separate timestamps for windup/entry, drive/apex, contact, and landing/recovery so nothing is left to inference.",
+    "WEAPON COUNT: ZERO weapons (pure bare-knuckle hand-to-hand strikes, wrist parries, liver hooks, corkscrew uppercuts, and whipping kicks).",
+    "0.00 A: SUPPORT both bare feet alternating explosive Baki 'Cockroach Dash' sprint on sand-and-concrete arena floor | torso pitched 35 deg forward, bilateral bare arms locked: L_arm extended forward-mid with open taped left hand, R_arm chambered back at right ribs with clenched taped right fist | path: straight forward from z=2.7 to z=3.55 toward B (Effort: Strong, Sudden, Direct, Free).",
+    "0.00 B: SUPPORT both bare feet planted wide at z=4.2 facing A | FE1 windup: R_arm cocked far back-high loading a crushing bare-knuckle right overhand haymaker, L_arm braced forward-mid (Effort: Heavy, Sustained, Bound).",
+    "0.50 B: SUPPORT both bare feet stepping heavily to z=4.05 | FE1 drive: B swings a massive right overhand punch horizontally toward A's head at [0,1.38,3.95].",
+    "0.75 A: SUPPORT both bare feet planted in a low outside-slip stance at z=3.75 (y=0.76m) | FE1 entry/parry (slip_and_wrist_slap_into_liver_hook): slipping head outside-left before B's overhand intersects, A's R_arm whips across to slap B's incoming right wrist inward at [0,1.38,3.95] zero gap while A's L_arm drops low to the left hip coiling a shovel hook (both bare arms 100% visible).",
+    "1.15 A: SUPPORT both bare feet planted wide and flat on arena floor at z=3.95 (y=0.72m) | FE1 drive & CONTACT (hold 3f, Bound): stepping lead left foot deep inside B's open stance and torquing hips hard right, A drives a 45-deg rising LEFT SHOVEL HOOK deep into B's bare right floating ribs/liver at [0,1.05,4.15] zero gap while R_arm stays raised high at the right cheek in a tight guard (both bare arms clearly separated) -> deep flesh indentation and sweat spray erupt.",
+    "1.15 B: SUPPORT both bare feet planted on floor | FE1 reaction: B's right ribs cave inward from the liver hook, torso folding forward with a sharp gasp.",
+    "1.85 B: SUPPORT both bare feet planted at z=4.15 | FE2 threat: recoiling from the liver shot, B whips a savage retaliatory horizontal left hook at head height (y=1.22m).",
+    "1.85 A: SUPPORT both bare feet planted wide on floor at z=3.95 (razor-sharp U-weave duck at y=0.60m) | Evasion weave: reading B's left shoulder torque, A ducks head and shoulders to y=0.96m (18cm below B's horizontal left hook at y=1.22m) with BOTH bare arms clearly visible—L_arm extended forward-left checking B's waist while R_arm draws the taped right fist back toward the right hip.",
+    "2.55 A: SUPPORT both bare feet planted wide and flat in a deep hydraulic squat at z=3.98 (ANTICIPATION HOLD, y=0.62m) | bilateral bare arms locked in clear silhouette: L_arm extended clearly forward toward B's sternum with an open taped LEFT palm as a range-finding lead guard while R_arm is cocked low behind the right hip with a clenched taped RIGHT fist twisting in a corkscrew windup (both left and right bare arms 100% visible outside torso silhouette) | FE2 windup (baki_corkscrew_right_uppercut): sinks deep into hips, quads, and calves.",
+    "3.05 A: SUPPORT both bare feet grounded, rising onto LEFT ball-of-foot at peak extension (y=1.18m, z=4.05) | bilateral bare arms locked: R_arm drives a vertical rising CORKSCREW RIGHT FIST UPPERCUT straight under B's jaw while L_arm pulls wide back-left to the left hip with a clenched left fist for counter-torque (both bare arms clearly visible in silhouette) | FE2 drive & CONTACT (hold 4f, slomo 0.25x, Bound): legs uncoil violently upward from y=0.62m through a hyper-arched back into the rising R_fist (6-to-12 o'clock) -> A's taped RIGHT fist slams under B's chin at [0,1.50,4.18] zero gap -> white shockwave ring and sweat/saliva spray erupt.",
+    "3.05 B: NO SUPPORT (both bare feet lifted completely off the arena floor) | FE2 reaction: B's head snaps vertically backward, spine arches, and BOTH of B's feet leave the ground from the uppercut force.",
+    "3.55 A: SUPPORT LEFT bare foot planted flat on arena floor at z=4.05 (y=0.92m) | FE3 windup (whipping_question_mark_high_kick): as B touches down staggered at z=4.38, A pivots on the planted left foot and chambers the right knee high (y=1.15m) while spreading L_arm forward-left and R_arm back-right in wide Muay Thai counter-balance.",
+    "3.95 A: SUPPORT LEFT bare foot pivoting 180 deg inward on arena floor at z=4.15 (y=0.98m) | FE3 drive: snapping the standing left heel inward, A whips the right leg diagonally upward and turns the hip over horizontally at head height (y=1.52m) like a Baki whip strike with both bare arms spread wide for counter-torque.",
+    "4.30 A: SUPPORT LEFT bare foot planted on floor at z=4.22 (y=0.98m, right leg extended horizontally at head height y=1.52m) | FE3 CONTACT (hold 3f, Bound): whipping the right leg across from 9-to-3 o'clock with L_arm extended wide back-left and R_arm swung forward-right in clear silhouette, A slams the RIGHT SHINBONE squarely across B's right temple and jaw at [0,1.52,4.42] zero gap -> blinding white bone-shock flash erupts.",
+    "4.30 B: NO SUPPORT (airborne, launched backward and up) | FE3 reaction: B's head snaps sideways and B's massive body is launched backward from z=4.42 to z=5.10 into the base of the concrete arena wall.",
+    "4.75 A: SUPPORT both bare feet land cleanly on arena floor and step across screen center from screen-left to screen-right at z=4.70 (y=0.80m) | FE3 follow-through & midpoint cross: setting the kicking right foot down ahead of the left, A physically crosses from screen-left to screen-right past falling B with both bare arms pumping in sprint drive toward the concrete arena wall at z=5.20.",
+    "5.00 B: SUPPORT pelvis and back against concrete arena wall base at z=5.10 | B crashes heavily into the base of the solid concrete wall, collapsing stunned onto pelvis and back in a cloud of arena sand, and stays down for the rest of the clip (never stands after 5.00s).",
+    "5.45 A: SUPPORT alternating bare feet ON THE VERTICAL CONCRETE ARENA WALL at z=5.20 (fast 0.35s two-step burst) | WALL-RUN drive: left bare foot plants flat on the vertical concrete face at 5.45s (y=1.75m), right bare foot drives up flat on the concrete face at 5.65s (y=2.55m), both bare arms pumping hard, torso angled 60 deg back, climbing to y=3.1m in 0.35s.",
+    "5.90 A: SUPPORT RIGHT bare foot planted high on vertical concrete wall at y=3.10m (5.85s ANTICIPATION HOLD -> 5.90s PUSH-OFF, slomo 0.5x) | FE4 windup: A coils on the high right foot at 5.85s and at 5.90s kicks powerfully off the concrete wall at [0.15,3.1,5.20], launching outward above B with both bare arms spread wide.",
+    "6.65 A: NO SUPPORT (airborne, accelerating steeply downward at vy=-3.6m/s through y=1.80m, z=4.80) | FE4 drive (diving_ground_crater_punch): dropping fast from y=3.1m through y=1.80m toward the arena floor beside B, A cocks his taped RIGHT fist high above his right shoulder while extending his LEFT arm forward-left as a targeting guide (both bare arms clearly visible) and drawing both knees underneath to land on both feet.",
+    "7.50 A: SUPPORT both bare feet planted wide in a low three-point crouch + taped RIGHT fist driven into concrete floor at z=4.75 (y=0.60m) | FE4 CONTACT (hold 5f, Bound): completing the 2.50m vertical drop onto both planted feet beside downed B, A drives the taped RIGHT FIST straight down into the concrete-and-sand floor 15cm beside B's head at [0.15,0.0,4.75] zero gap while L_arm braces wide back-left in clear silhouette -> radial concrete spiderweb crater and expanding sand-and-dust shockwave ring.",
+    "7.50 B: SUPPORT pelvis and back prone at concrete wall base | FE4 reaction: B flinches violently on the ground from the shockwave crater beside his head.",
+    "8.40 A: SUPPORT both bare feet planted flat in a wide low Baki Triceratops/Mantis combat crouch at z=4.75 (y=0.62m) | FE4 follow-through & bilateral guard hold: A lifts his right fist from the cracked crater and holds BOTH bare taped hands raised in a signature open-clawed Baki fighting guard (L_arm high forward-left, R_arm mid forward-right, both bare arms 100% visible in silhouette); white steam rises from A's striated shoulders under the stadium floodlights; holds completely still to 10.00s."
+  ],
+  "name": "baki_underground_arena_trilogy_combo_10s",
+  "schema": "SAKUGA-MLLM-3.1-CAUSAL",
+  "fps": 24,
+  "duration": 10.0,
+  "axes": "Y_up, metres, concrete-and-sand arena floor y=0, solid concrete arena wall at z=5.20 (0 to 5.5m high), A starts at z=2.7 facing +Z (screen_left), B starts at z=4.2 facing -Z (screen_right)",
+  "screen_geometry": "180_degree_camera_rule_locked: A_on_screen_left_facing_right (+Z) and B_on_screen_right_facing_left (-Z) from 0.0s to 4.30s; at 4.75s A physically steps across screen center from screen_left to screen_right past falling B as B slams into the concrete wall base at 5.0s; from 4.75s to 10.0s A runs vertically up the concrete wall at z=5.20, pushes off at 5.9s, dives steeply down beside B at z=4.75, and holds a low Baki combat guard beside prone B.",
+  "negative": "no 3D CGI, no mocap stiffness, no floaty physics, no weapons, no swords, no knives, no kunai, no on-screen text or numbers, no HUD, no coordinate labels, no extra fighters, no cloned A or B, no missing limbs, no missing arms, no one-armed fighter, both left and right bare arms and hands always visible, no full-body blur during smears, no reaction before contact, no standing B after 5.0s",
+  "conservation_laws": [
+    "CONSERVE_SEMANTICALLY: every key action has explicit sequential beats for entry/windup -> drive/apex -> zero-gap contact -> landing/follow-through",
+    "bilateral_two_arm_silhouette_lock: both left and right bare arms and taped hands of A and B remain anatomically present and separated from the torso silhouette on every single beat, especially during the 2.55s deep squat uppercut coil and 3.05s rising corkscrew uppercut",
+    "zero_weapons_pure_bare_knuckle: neither A nor B holds any weapon at any point; all parries and strikes are bare hands, wrists, fists, shins, and feet",
+    "airborne_kicks_and_wall_runs_require_explicit_ground_landing_and_foot_plant_before_next_launch",
+    "knockback_and_hit_reaction_require_prior_physical_contact_zero_early_flinch"
+  ],
+  "laban": {
+    "A": {
+      "chain": "C01_explosive_cockroach_dash_in > C02_outside_slip_and_right_palm_wrist_slap_parry > C03_step_in_hip_torque_left_liver_shovel_hook > C04_razor_U_weave_under_B_left_hook > C05_deep_hydraulic_squat_bilateral_coil > C06_rising_corkscrew_right_uppercut_lifting_B_off_feet > C07_left_foot_pivot_high_knee_chamber > C08_inward_heel_pivot_horizontal_hip_turnover > C09_whipping_right_shin_question_mark_kick_to_B_temple > C10_step_down_midpoint_screen_cross_to_wall_base > C11_fast_two_step_vertical_wall_run_left_5.45s_right_5.65s > C12_high_wall_right_foot_pushoff_5.9s > C13_steep_downward_dive_right_fist_chamber_6.65s > C14_three_point_landing_right_fist_concrete_crater_smash_7.5s > C15_baki_triceratops_claw_guard_hold_8.4s_to_10s",
+      "effort": {
+        "weight": "strong_explosive_whip_torque_to_light_stillness_at_end",
+        "time": "sudden_ballistic_sustained_on_final_hold",
+        "space": "direct_close_range_and_vertical_planes",
+        "flow": "free_fluid_momentum_snapping_to_bound_at_impacts_1.15_3.05_4.3_7.5"
+      }
+    },
+    "B": {
+      "chain": "C01_heavy_overhand_right_windup > C02_right_wrist_slapped_inward_exposing_liver > C03_right_ribs_caved_by_A_left_shovel_hook > C04_retaliatory_left_hook_whiff_over_ducking_A > C05_jaw_shattered_by_corkscrew_uppercut_lifted_off_both_feet > C06_temple_struck_by_whipping_right_shin_launched_into_wall_base > C07_slammed_against_concrete_wall_base_stunned_prone > C08_grounded_flinch_from_crater_shockwave > C09_stays_down_stunned_to_10s",
+      "effort": {
+        "weight": "heavy_crushing_brawler",
+        "time": "sustained_winding_to_sudden_swings",
+        "space": "direct",
+        "flow": "bound"
+      }
+    }
+  },
+  "beats": [
+    "cockroach_dash_and_overhand_charge",
+    "wrist_slap_parry_and_left_liver_hook",
+    "u_weave_and_corkscrew_right_uppercut",
+    "unrolled_whipping_high_kick_and_cross",
+    "fast_wall_run_and_diving_crater_punch",
+    "baki_triceratops_guard_hold"
+  ],
+  "A_beats": [
+    {
+      "t": 0.0,
+      "beat": "cockroach_dash_and_overhand_charge",
+      "causal": "C01: init_low_cockroach_dash_sprint -> causes: C02_rapid_gap_close_into_wrist_parry",
+      "pos": [0, 0.78, 2.7],
+      "vel": [0, 0, 3.2],
+      "axis": "head:+Y_up, torso:35deg_forward_lean, facing:+Z, screen_side:left",
+      "arc": "linear_sagittal_burst_z=2.7_to_3.75_kicking_up_arena_sand",
+      "support": "both_bare_feet_driving_hard_against_concrete_and_sand_floor",
+      "limbs": "L_arm:extended forward-mid with open taped left hand; R_arm:chambered tight at right ribs with clenched taped right fist (both bare arms clearly visible); legs:explosive alternating sprint strides",
+      "pose": "A explodes forward from z=2.7 in a ultra-low 35-degree Baki 'Cockroach Dash' across the sand-and-concrete floor toward B, left taped hand extended forward as a lead probe and right fist chambered at the ribs as B winds up a massive right overhand."
+    },
+    {
+      "t": 0.75,
+      "beat": "wrist_slap_parry_and_left_liver_hook",
+      "causal": "C02: requires: C01_dash_momentum + B_right_overhand_committed_at_0.5s -> timing: BEFORE_OVERHAND_HEAD_INTERSECTION -> preserves: inward_parry_deflection -> causes: C03_B_right_ribs_and_liver_wide_open",
+      "pos": [-0.12, 0.76, 3.75],
+      "vel": [0, 0, 0.8],
+      "axis": "head:+Y_up_slipped_left, torso:angled_inward_coiling_left_hip, facing:+Z, screen_side:left",
+      "arc": "outside_head_slip_with_inward_right_palm_wrist_slap_2_to_8_clock",
+      "support": "both_bare_feet_planted_in_outside_slip_stance_on_arena_floor",
+      "contact": "pre:A_slips_head_outside_B_right_overhand_line -> hit:A_open_right_palm_slaps_outside_of_B_right_wrist_at_[0,1.38,3.95]_zero_gap -> post:redirects_B_heavy_right_fist_harmlessly_across_chest_exposing_B_right_ribs",
+      "limbs": "L_arm:dropping low to left hip with clenched taped left fist coiling a shovel hook; R_arm:extended forward-high slapping B's right wrist inward with open right palm (both bare arms 100% visible); feet:both bare feet planted wide",
+      "pose": "Slipping his head cleanly outside B's roaring right overhand at 0.75s, A slaps B's incoming right wrist inward with an open RIGHT palm while dropping his clenched LEFT fist low to the left hip to load a liver shot."
+    },
+    {
+      "t": 1.15,
+      "beat": "wrist_slap_parry_and_left_liver_hook",
+      "causal": "C03: requires: C02_B_ribs_exposed + A_grounded_hip_rotation -> preserves: rotational_hip_to_shoulder_whip -> causes: C04_B_torso_folds_and_triggers_desperation_left_hook",
+      "pos": [-0.1, 0.72, 3.95],
+      "vel": [0, 0.3, 0.3],
+      "axis": "head:+Y_up, hips:torquing_violently_right, facing:+Z, screen_side:left",
+      "arc": "45deg_upward_digging_left_shovel_hook_7_to_1_clock",
+      "support": "both_bare_feet_planted_flat_deep_inside_B_stance",
+      "contact": "pre:A_steps_lead_left_foot_deep_inside_and_rotates_hips -> hit:A_taped_left_fist_knuckles_dig_deep_into_B_right_floating_ribs_at_[0,1.05,4.15]_zero_gap -> post:deep_flesh_shock_ripples_across_B_torso_folding_B_forward_in_a_burst_of_sweat",
+      "limbs": "feet:both bare feet planted flat; L_arm:driving a 45-degree upward LEFT SHOVEL HOOK deep into B's bare right ribs/liver; R_arm:held high at right cheekbone in a crisp boxing guard so both bare arms are clearly visible",
+      "pose": "IMPACT FRAME (hold 3f). Stepping inside B's open stance on flat-planted bare feet with the right hand held high in guard, A torques his hips and buries a ferocious LEFT LIVER SHOVEL HOOK deep into B's bare right ribs, rippling the muscle and folding B's massive torso inward."
+    },
+    {
+      "t": 1.85,
+      "beat": "u_weave_and_corkscrew_right_uppercut",
+      "causal": "C04: requires: C03_inside_pocket + B_retaliatory_left_hook_committed -> timing: BEFORE_LEFT_HOOK_INTERSECTION -> preserves: compressed_quad_and_glute_spring -> causes: C05_deep_hydraulic_squat_coil_at_2.55s",
+      "pos": [0.12, 0.6, 3.95],
+      "vel": [0.3, -0.4, 0],
+      "axis": "head:+Y_up, spine:deep_U_weave_crouch, facing:+Z, screen_side:left",
+      "arc": "razor_sharp_U_weave_under_hook_6_to_3_clock",
+      "support": "both_bare_feet_planted_wide_deep_knee_bend",
+      "contact": "evasion_corridor: A_head_ducks_to_y=0.96m_18cm_below_B_horizontal_left_hook_sweep_at_y=1.22m",
+      "limbs": "feet:both bare feet grounded wide; knees:deeply bent; L_arm:extended forward-left with open left hand checking B's waist; R_arm:drawing taped right fist low toward right hip so both bare arms remain 100% visible",
+      "pose": "As B swings a savage retaliatory left hook at head height, A drops into a razor-sharp U-weave duck on wide-planted bare feet with his left hand extended forward checking B's hip and his right arm drawing back."
+    },
+    {
+      "t": 2.55,
+      "beat": "u_weave_and_corkscrew_right_uppercut",
+      "causal": "C05: requires: C04_low_weave_compression -> preserves: maximum_leg_and_lat_spring_tension -> causes: C06_explosive_corkscrew_right_uppercut_at_3.05s",
+      "pos": [0, 0.62, 3.98],
+      "vel": [0, -0.3, 0.1],
+      "axis": "head:+Y_up, spine:compressed_low_squat_coiled_right, facing:+Z, screen_side:left",
+      "arc": "vertical_hydraulic_sink_coiling_right_fist_low",
+      "support": "both_bare_feet_planted_wide_flat_gripping_arena_floor_deep_squat",
+      "limbs": "feet:both bare feet planted wide and flat; knees_and_hips:sunk deep to y=0.62m with striated quads flaring; L_arm:extended clearly forward toward B's sternum with open taped left palm as a range-finding lead guard; R_arm:cocked low behind the right hip with clenched taped right fist twisting in a corkscrew windup, keeping both left and right bare arms and hands 100% visible outside the torso silhouette",
+      "pose": "ANTICIPATION HOLD. Planting both bare feet wide at z=3.98 directly in front of B, A sinks into a deep hydraulic squat (y=0.62m) with BOTH BARE ARMS CLEARLY VISIBLE IN SILHOUETTE—the LEFT arm extended forward toward B's chest in an open-palm lead guard while the clenched RIGHT fist coils low behind the right hip."
+    },
+    {
+      "t": 3.05,
+      "beat": "u_weave_and_corkscrew_right_uppercut",
+      "causal": "C06: requires: C05_deep_hydraulic_squat_coil -> preserves: vertical_ground_reaction_whip -> causes: C07_B_head_snaps_back_both_feet_leave_ground_and_A_pivots_into_high_kick",
+      "pos": [0, 1.18, 4.05],
+      "vel": [0, 2.3, 0.2],
+      "axis": "head:+Y_up_tilted_back, torso:hyper_arched_back_as_right_fist_rises_vertical, facing:+Z, screen_side:left",
+      "arc": "vertical_rising_corkscrew_right_uppercut_6_to_12_clock_y=0.62_to_1.50",
+      "support": "both_bare_feet_grounded_rising_onto_left_ball_of_foot_at_peak_extension",
+      "contact": "pre:A_legs_and_back_uncoil_violently_upward -> hit:A_taped_right_fist_knuckles_slam_under_B_jaw_at_[0,1.50,4.18]_zero_gap -> post:white_shock_arc_and_sweat_spray_erupt_whipping_B_head_back_and_lifting_both_of_B_feet_off_the_floor",
+      "limbs": "feet:grounded on arena floor rising onto left toes at full upward extension; torso:hyper-arched back; R_arm:driving a vertical rising CORKSCREW RIGHT FIST UPPERCUT straight through B's chin; L_arm:pulled wide back to the left hip with clenched left fist for counter-torque so both left and right bare arms remain clearly visible",
+      "pose": "IMPACT FRAME (hold 4f, slomo 0.25x). Uncoiling explosively upward from the deep squat through a hyper-arched back with BOTH BARE ARMS VISIBLE, A drives a vertical RISING CORKSCREW RIGHT FIST UPPERCUT squarely under B's jaw while pulling the LEFT arm wide to the left hip for counter-torque; a shockwave ring erupts as B's head snaps back and BOTH of B's bare feet lift off the arena floor."
+    },
+    {
+      "t": 3.55,
+      "beat": "unrolled_whipping_high_kick_and_cross",
+      "causal": "C07: requires: C06_upward_uppercut_follow_through -> preserves: left_foot_pivot_and_right_knee_lift -> causes: C08_horizontal_hip_turnover_at_3.95s",
+      "pos": [0, 0.92, 4.05],
+      "vel": [0, 0.4, 0.2],
+      "axis": "head:+Y_up, torso:upright_torquing_left_hip_open, facing:+Z, screen_side:left",
+      "arc": "high_right_knee_chamber_rising_to_y=1.15m",
+      "support": "left_bare_foot_planted_flat_on_arena_floor_at_z=4.05",
+      "limbs": "L_leg:left bare foot planted flat as pivot; R_leg:right knee chambered high at chest level (y=1.15m); L_arm:extended forward-left in high guard; R_arm:extended back-right for Muay Thai counter-balance (both bare arms visible)",
+      "pose": "As B's feet touch back down staggered at z=4.38, A plants the left bare foot flat at z=4.05 and chambers the right knee high to chest level with both bare arms spread in counter-balance."
+    },
+    {
+      "t": 3.95,
+      "beat": "unrolled_whipping_high_kick_and_cross",
+      "causal": "C08: requires: C07_high_right_knee_chamber -> preserves: 180deg_inward_standing_heel_pivot_whip -> causes: C09_right_shin_temple_smash_at_4.3s",
+      "pos": [0, 0.98, 4.15],
+      "vel": [0, 0.2, 0.3],
+      "axis": "head:+Y_up, hips:turned_over_horizontally_at_head_height, facing:+Z, screen_side:left",
+      "arc": "question_mark_kick_hip_turnover_8_to_11_clock_at_y=1.52m",
+      "support": "left_bare_foot_pivoting_180deg_inward_on_ball_of_foot",
+      "limbs": "L_leg:standing left leg pivoting 180 degrees inward; R_leg:unfolding horizontally at head height (y=1.52m) like a multi-jointed whip; L_arm:sweeping wide back-left; R_arm:counter-swinging forward-right (both bare arms visible)",
+      "pose": "At 3.95s A snaps the standing left heel 180 degrees inward and turns the right hip completely over at head height (y=1.52m), whipping the right shin horizontally toward B's temple with both bare arms counter-torqued."
+    },
+    {
+      "t": 4.3,
+      "beat": "unrolled_whipping_high_kick_and_cross",
+      "causal": "C09: requires: C08_horizontal_whip_turnover -> preserves: high_velocity_shin_impulse -> causes: C10_B_launched_into_concrete_wall_base_and_A_steps_across_at_4.75s",
+      "pos": [0, 0.98, 4.22],
+      "vel": [0, 0, 0.4],
+      "axis": "head:+Y_up, torso:side_angled_high_kick_extension, facing:+Z, screen_side:left",
+      "arc": "horizontal_high_kick_whip_9_to_3_clock_at_y=1.52m_through_B_temple",
+      "support": "left_bare_foot_planted_firmly_on_arena_floor",
+      "contact": "pre:A_whips_dead_straight_right_leg_horizontally_at_head_height -> hit:A_right_shinbone_slams_across_B_right_temple_and_jaw_at_[0,1.52,4.42]_zero_gap -> post:white_bone_shock_flash_erupts_launching_B_backward_into_concrete_wall_base_at_5.0s",
+      "limbs": "L_leg:planted firmly on floor; R_leg:extended dead-straight horizontally at y=1.52m driving right shin across B's temple; L_arm:extended wide back-left; R_arm:extended forward-right in counter-torque so both bare arms are 100% visible",
+      "pose": "IMPACT FRAME (hold 3f). With the left foot anchored and both bare arms counter-torqued wide, A whips a razor-sharp RIGHT SHIN HIGH KICK squarely across B's temple and jaw in a blinding white impact flash, launching B's massive body backward into the base of the concrete arena wall."
+    },
+    {
+      "t": 4.75,
+      "beat": "unrolled_whipping_high_kick_and_cross",
+      "causal": "C10: requires: C09_high_kick_follow_through -> preserves: forward_step_down_across_screen_center -> causes: C11_fast_two_step_vertical_wall_run_at_5.45s",
+      "pos": [0.15, 0.8, 4.7],
+      "vel": [0, 0, 1.3],
+      "axis": "head:+Y_up, torso:low_forward_sprint_toward_concrete_wall, facing:+Z, screen_side:crossing_left_to_right_past_B",
+      "arc": "clean_two_foot_touchdown_stepping_past_falling_B_to_z=4.70",
+      "support": "both_bare_feet_planted_on_arena_floor_sprinting_toward_wall",
+      "limbs": "feet:setting right foot down out of the kick at z=4.70 and sprinting two steps past falling B from screen-left to screen-right toward the concrete wall at z=5.20; both_arms:L_arm and R_arm pumping in sprint drive",
+      "pose": "Setting the kicking right foot down cleanly on the floor at 4.75s, A physically steps across screen center from screen-left to screen-right past falling B toward the vertical concrete wall as B slams into the wall base at 5.0s."
+    },
+    {
+      "t": 5.45,
+      "beat": "fast_wall_run_and_diving_crater_punch",
+      "causal": "C11: requires: C10_floor_approach_to_wall_at_z=5.20 -> preserves: fast_0.35s_vertical_wall_climb -> causes: C12_high_right_foot_wall_pushoff_at_5.9s",
+      "pos": [0.2, 1.95, 5.15],
+      "vel": [0, 3.3, 0.1],
+      "axis": "head:+Y_up, torso:pitched_60deg_back_from_vertical_concrete_wall, facing:+Z_into_wall, screen_side:right_on_wall",
+      "arc": "fast_0.35s_vertical_wall_run_y=1.1m_to_y=3.1m_two_alternating_steps",
+      "support": "left_bare_foot_at_5.45s_then_right_bare_foot_at_5.65s_planting_flat_against_vertical_concrete_wall_at_z=5.20",
+      "contact": "pre:A_reaches_concrete_wall_face_at_z=5.20 -> hit:A_left_foot_plants_on_concrete_wall_at_5.45s_(y=1.75m)_and_right_foot_plants_at_5.65s_(y=2.55m)_zero_gap -> post:two_rapid_0.35s_wall_steps_drive_A_up_to_y=3.1m_at_5.85s",
+      "limbs": "feet:two fast alternating bare-foot steps directly ON the vertical concrete wall over 0.35s (left foot at 5.45s, right foot at 5.65s, no jump); both_arms:L_arm and R_arm pumping hard for upward drive; torso:angled 60 degrees back",
+      "pose": "In a fast 0.35-second vertical burst (5.45s to 5.80s), A runs straight up the solid vertical concrete arena wall with two rapid alternating foot contacts—left foot planting at 5.45s (y=1.75m) and right foot driving up at 5.65s (y=2.55m)—both bare arms pumping and torso pitched 60 degrees back."
+    },
+    {
+      "t": 5.9,
+      "beat": "fast_wall_run_and_diving_crater_punch",
+      "causal": "C12: requires: C11_two_wall_steps_reaching_y=3.1m_at_5.85s -> preserves: high_wall_pushoff_impulse -> causes: C13_steep_downward_dive_fist_chamber_at_6.65s",
+      "pos": [0.15, 3.1, 5.1],
+      "vel": [0, -0.8, -0.6],
+      "axis": "head:pitching_downward_from_wall_top, spine:angling_steeply_downward_toward_floor, facing:-Z_downward, screen_side:right_high_on_wall",
+      "arc": "high_wall_pushoff_at_y=3.1m_pitching_into_steep_downward_dive",
+      "support": "right_bare_foot_planted_high_on_vertical_concrete_wall_at_y=3.1m_pushing_off",
+      "contact": "pre:A_holds_coiled_anticipation_at_5.85s_on_high_wall -> hit:A_right_foot_pushes_hard_off_concrete_wall_at_[0.15,3.1,5.20]_zero_gap -> post:A_launches_out_spreading_both_arms_into_steep_dive_toward_z=4.75",
+      "limbs": "R_leg:right bare foot planted high on concrete wall at y=3.1m extending fully to push off; L_leg:tucked; both_arms:L_arm and R_arm spread wide like a hawk in clear silhouette",
+      "pose": "ANTICIPATION HOLD at 5.85s into 5.9s PUSH-OFF (slomo 0.5x). At y=3.1m high on the concrete arena wall, A plants the RIGHT bare foot firmly against the wall face and kicks off powerfully with both bare arms spread wide, pitching into a steep dive toward the arena floor."
+    },
+    {
+      "t": 6.65,
+      "beat": "fast_wall_run_and_diving_crater_punch",
+      "causal": "C13: requires: C12_wall_pushoff_from_y=3.1m -> preserves: high_speed_vertical_drop_vy=-3.6 -> causes: C14_zero_gap_concrete_crater_smash_at_7.5s",
+      "pos": [0.15, 1.8, 4.8],
+      "vel": [0, -3.6, -0.2],
+      "axis": "head:angled_steeply_downward, torso:accelerating_downward_chambering_right_fist, facing:-Z, screen_side:right_above_B",
+      "arc": "vertical_12_to_6_clock_dive_acceleration_y=3.1m_through_y=1.80m",
+      "support": "none_airborne_steep_vertical_dive",
+      "limbs": "R_arm:cocked high above right shoulder with clenched taped right fist loaded for a meteor ground punch; L_arm:extended forward-downward toward floor as a targeting guide (both bare arms clearly visible); legs:drawing both knees underneath torso to prepare two-foot three-point landing",
+      "pose": "Accelerating steeply downward at vy=-3.6m/s through y=1.80m directly toward the floor beside prone B, A cocks his taped RIGHT fist high behind his shoulder while extending his LEFT arm forward in clear silhouette and drawing both feet underneath to land."
+    },
+    {
+      "t": 7.5,
+      "beat": "fast_wall_run_and_diving_crater_punch",
+      "causal": "C14: requires: C13_vertical_dive_drive_vy=-3.6 -> preserves: downward_kinetic_shockwave_into_concrete_floor -> causes: C15_concrete_crater_sand_wave_B_flinch_and_A_baki_guard_settle",
+      "pos": [0.15, 0.6, 4.75],
+      "vel": [0, 0, 0],
+      "axis": "head:tucked_low_forward, torso:compressed_low_over_right_fist_ground_impact, facing:-Z, screen_side:right_beside_B",
+      "arc": "vertical_12_to_6_clock_right_fist_ground_crater_smash",
+      "support": "both_bare_feet_planted_wide_in_low_crouch_with_taped_right_fist_buried_in_cracked_concrete_floor",
+      "contact": "pre:A_completes_2.50m_vertical_drop_planting_both_feet_wide -> hit:A_taped_right_fist_slams_concrete_arena_floor_beside_B_head_at_[0.15,0.0,4.75]_zero_gap -> post:concrete_floor_shatters_in_a_radial_spiderweb_crater_blasting_an_expanding_sand_and_dust_ring_making_prone_B_flinch",
+      "limbs": "feet:both bare feet planted wide in low three-point crouch; R_arm:locked straight vertically driving taped RIGHT FIST into the shattered concrete crater beside B's head; L_arm:angled wide back-left for balance so both bare arms are clearly visible",
+      "pose": "IMPACT FRAME (hold 5f). Completing the 2.50m drop from the concrete wall onto both wide-planted bare feet at y=0.60m, A drives his taped RIGHT FIST straight into the concrete floor beside B's head while bracing his LEFT arm wide back-left; a radial concrete crater and sand shockwave ring erupt as B flinches on the ground."
+    },
+    {
+      "t": 8.4,
+      "beat": "baki_triceratops_guard_hold",
+      "causal": "C15: requires: C14_three_point_crater_smash -> causes: C15_still_baki_claw_guard_to_10s",
+      "pos": [0.15, 0.62, 4.75],
+      "vel": [0, 0, 0],
+      "axis": "head:+Y_up_level, torso:wide_low_baki_combat_crouch, facing:-Z, screen_side:right_beside_B",
+      "arc": "settle_into_bilateral_baki_claw_guard_y=0.60_to_y=0.62",
+      "support": "both_bare_feet_planted_flat_in_wide_low_crouch_on_cracked_concrete_floor",
+      "limbs": "feet:both bare feet flat on cracked floor; knees:wide and deeply bent; L_arm:raised forward-high with open taped left hand in Baki claw guard; R_arm:raised forward-mid with open taped right hand so both bare arms and hands are 100% visible in silhouette",
+      "pose": "As the sand shockwave and concrete dust drift upward under the stadium floodlights, A settles into a wide, low Baki combat crouch (y=0.62m) with BOTH BARE ARMS CLEARLY VISIBLE—both taped hands raised forward in an open-clawed Baki guard as white steam rises from his striated shoulders."
+    },
+    {
+      "t": 10.0,
+      "beat": "baki_triceratops_guard_hold",
+      "causal": "C15_hold: maintains C15_baki_claw_guard_state",
+      "pos": [0.15, 0.62, 4.75],
+      "vel": [0, 0, 0],
+      "axis": "head:+Y_up_level, torso:still_wide_low_baki_crouch, facing:-Z, screen_side:right_beside_B",
+      "arc": "static_hold",
+      "support": "both_bare_feet_planted_flat_in_wide_low_crouch_on_cracked_concrete_floor",
+      "limbs": "feet:both bare feet planted wide; L_arm:held steady forward-high in taped open-claw guard; R_arm:held steady forward-mid in taped open-claw guard; white aura steam drifting off striated back and shoulders",
+      "pose": "A holds the low Baki combat guard completely still until 10.0s with both taped hands raised in clear silhouette and white heat-steam rising off his muscles under the harsh arena spotlights while B remains motionless at the base of the concrete wall."
+    }
+  ],
+  "B_track": [
+    {
+      "t": 0.0,
+      "pos": [0, 1.02, 4.2],
+      "axis": "head:+Y_up, torso:massive_brawler_windup, facing:-Z, screen_side:right",
+      "support": "both_bare_feet_planted_wide_on_arena_floor",
+      "action": "windup_right_overhand_haymaker",
+      "pose": "stands grounded at z=4.2 with massive scarred chest facing A, cocking his right fist far back high while bracing his left arm forward"
+    },
+    {
+      "t": 0.5,
+      "pos": [0, 1.0, 4.05],
+      "axis": "head:+Y_up, torso:stepping_in_swinging_right_overhand, facing:-Z, screen_side:right",
+      "support": "both_bare_feet_planted_on_arena_floor",
+      "action": "commit_right_overhand_haymaker",
+      "pose": "steps heavily to z=4.05 and swings a crushing bare-knuckle right overhand punch toward A's head"
+    },
+    {
+      "t": 0.75,
+      "pos": [0, 0.98, 4.08],
+      "axis": "head:+Y_up, torso:pulled_open_right_wrist_slapped_inward, facing:-Z, screen_side:right",
+      "support": "both_bare_feet_planted_on_arena_floor",
+      "contact": "B_right_wrist -> slapped_inward_by_A_open_right_palm_at_[0,1.38,3.95]_exposing_B_right_ribs",
+      "action": "right_overhand_parried_inward_ribs_exposed",
+      "pose": "A's outside slip and open right-palm wrist slap redirect B's heavy right arm across his body, pulling B's right floating ribs wide open"
+    },
+    {
+      "t": 1.15,
+      "pos": [0, 0.94, 4.15],
+      "axis": "head:+Y_up, torso:folding_inward_from_liver_hook, facing:-Z, screen_side:right",
+      "support": "both_bare_feet_planted_on_arena_floor",
+      "contact": "B_right_floating_ribs -> caved_inward_by_A_left_shovel_hook_at_[0,1.05,4.15]",
+      "action": "hit_in_liver_after_contact",
+      "pose": "only after A's taped left fist digs deep into B's right ribs at [0,1.05,4.15], B's ribcage caves inward and B's massive torso folds forward gasping in a spray of sweat"
+    },
+    {
+      "t": 1.85,
+      "pos": [0, 0.96, 4.15],
+      "axis": "head:+Y_up, torso:torquing_horizontal_left_hook, facing:-Z, screen_side:right",
+      "support": "both_bare_feet_planted_on_arena_floor",
+      "action": "swing_left_hook_whiff_over_ducking_A",
+      "pose": "whips a savage retaliatory left hook horizontally at y=1.22m that sweeps through empty air 18cm above A's razor-sharp U-weave"
+    },
+    {
+      "t": 3.05,
+      "pos": [0, 1.28, 4.22],
+      "axis": "head:whipped_vertically_back, torso:arched_back_lifted_off_floor, facing:-Z, screen_side:right",
+      "support": "none_airborne_both_feet_lifted_off_arena_floor",
+      "contact": "B_jaw -> struck_upward_by_A_corkscrew_right_uppercut_at_[0,1.50,4.18]_lifting_both_feet_off_floor",
+      "action": "hit_in_jaw_by_corkscrew_uppercut_both_feet_leave_ground",
+      "pose": "only after A's corkscrew right uppercut slams under B's jaw at 3.05s, B's head whips violently backward in a spray of sweat and BOTH of B's feet lift completely off the arena floor"
+    },
+    {
+      "t": 4.3,
+      "pos": [0, 1.35, 4.42],
+      "axis": "head:snapped_hard_sideways, torso:launched_airborne_backward, facing:-Z, screen_side:right",
+      "support": "none_airborne_launched_toward_concrete_wall",
+      "contact": "B_right_temple_and_jaw -> struck_by_A_whipping_right_shin_at_[0,1.52,4.42]_launching_B_into_wall_base",
+      "launch_vel": [0, 0.8, 2.2],
+      "action": "temple_struck_by_high_kick_launched_back_and_up",
+      "pose": "struck squarely across the temple and jaw by A's whipping right shin high kick at 4.3s and launched backward through the air toward the back concrete wall"
+    },
+    {
+      "t": 5.0,
+      "pos": [0, 0.25, 5.1],
+      "axis": "head:slumped_forward, spine:collapsed_against_concrete_wall_base, facing:-Z, screen_side:left",
+      "support": "pelvis_and_back_on_arena_floor_against_concrete_wall_base",
+      "contact": "B_back_and_pelvis -> slam_into_concrete_arena_wall_base_at_[0,0.25,5.1]_stunned",
+      "action": "slam_into_wall_base_stunned_stays_down",
+      "pose": "lands and slams heavily into the base of the solid concrete arena wall at z=5.1, collapsing onto pelvis and back in a cloud of sand, stunned; B never stands again after 5.0s"
+    },
+    {
+      "t": 7.5,
+      "pos": [0, 0.2, 5.1],
+      "axis": "head:on_ground, spine:prone_at_wall_base, facing:-Z, screen_side:left",
+      "support": "pelvis_and_back_prone_on_arena_floor",
+      "contact": "B_prone_body -> flinches_from_A_right_fist_concrete_crater_shockwave_beside_B_at_[0.15,0.0,4.75]",
+      "action": "grounded_flinch_beside_crater_shockwave",
+      "pose": "lying downed at the base of the concrete wall, B flinches with a sharp body contraction as A's diving right fist shatters the concrete floor right beside his head"
+    },
+    {
+      "t": 10.0,
+      "pos": [0, 0.2, 5.1],
+      "axis": "head:on_ground, spine:prone_at_wall_base, facing:-Z, screen_side:left",
+      "support": "pelvis_and_back_prone_on_arena_floor",
+      "action": "down_motionless_to_end",
+      "pose": "remains down and motionless at the base of the concrete arena wall through 10.0s"
+    }
+  ],
+  "camera": [
+    {
+      "t": 0.0,
+      "shot": "low_side_tracking_cockroach_dash",
+      "fov": 38,
+      "pos": [2.0, 0.65, 2.9],
+      "look": "A_exploding_forward_in_low_dash_at_z=2.7_toward_B_at_z=4.2",
+      "move": "fast_low_side_track_with_A"
+    },
+    {
+      "t": 0.75,
+      "shot": "tight_close_up_wrist_slap_into_liver_hook",
+      "fov": 34,
+      "look": "A_right_palm_slapping_B_wrist_at_[0,1.38,3.95]_and_left_fist_coiling_at_hip",
+      "move": "quick_push_in_on_inside_pocket"
+    },
+    {
+      "t": 1.15,
+      "hold_frames": 3,
+      "shot": "low_profile_left_liver_shovel_hook_impact",
+      "fov": 32,
+      "look": "A_taped_left_fist_digging_into_B_right_ribs_at_[0,1.05,4.15]_with_right_hand_high_guard",
+      "effect": "camera_shake_rib_ripple_sweat_burst"
+    },
+    {
+      "t": 1.85,
+      "shot": "over_B_shoulder_push_in_on_weave_and_hydraulic_squat_coil",
+      "fov": 35,
+      "look": "A_ducking_B_left_hook_and_sinking_at_2.55s_with_both_left_and_right_bare_arms_visible_at_[0,0.62,3.98]",
+      "move": "slow_push_in_over_B_shoulder"
+    },
+    {
+      "t": 3.05,
+      "hold_frames": 4,
+      "time_remap": 0.25,
+      "shot": "worm_eye_low_angle_corkscrew_right_uppercut_jaw_impact",
+      "fov": 34,
+      "look": "A_taped_right_fist_slamming_B_jaw_at_[0,1.50,4.18]_with_left_arm_counter_torqued_and_B_feet_lifting_off_floor",
+      "effect": "heavy_camera_shake_jaw_shockwave_ring"
+    },
+    {
+      "t": 3.55,
+      "shot": "medium_side_profile_whipping_high_kick_turnover",
+      "fov": 36,
+      "look": "A_pivoting_on_left_foot_and_turning_right_hip_over_at_y=1.52m",
+      "move": "slight_crane_rise_with_high_kick_chamber"
+    },
+    {
+      "t": 4.3,
+      "hold_frames": 3,
+      "shot": "profile_right_shin_temple_high_kick_impact",
+      "fov": 34,
+      "look": "A_right_shin_slamming_B_temple_at_[0,1.52,4.42]",
+      "effect": "camera_shake_white_bone_shock_flash"
+    },
+    {
+      "t": 4.75,
+      "shot": "rear_tracking_midpoint_cross_and_wall_run_tilt_up",
+      "fov": 38,
+      "look": "A_stepping_across_at_4.75s_and_running_two_steps_up_concrete_wall_at_[0.2,1.95,5.20]",
+      "move": "rear_track_toward_wall_and_tilt_up_with_A_fast_0.35s_wall_run"
+    },
+    {
+      "t": 5.9,
+      "time_remap": 0.5,
+      "shot": "top_down_over_arena_wall_slow_mo_tilt_with_dive",
+      "fov": 36,
+      "look": "A_pushing_off_concrete_wall_at_y=3.1m_cocking_right_fist_and_diving_to_floor",
+      "move": "top_down_tilt_following_A_steep_2.50m_dive"
+    },
+    {
+      "t": 7.5,
+      "hold_frames": 5,
+      "shot": "ground_level_wide_concrete_crater_shockwave_beside_B",
+      "fov": 38,
+      "look": "A_taped_right_fist_shattering_concrete_floor_beside_prone_B_at_[0.15,0.0,4.75]",
+      "effect": "heavy_ground_shake_spiderweb_crater_sand_ring"
+    },
+    {
+      "t": 8.4,
+      "shot": "dolly_in_on_baki_triceratops_claw_guard_steam",
+      "fov": 34,
+      "look": "A_wide_low_crouch_with_both_taped_hands_raised_in_open_claw_guard_and_shoulder_steam_at_[0.15,0.62,4.75]",
+      "move": "smooth_dolly_in_over_1.6s_to_10.0s",
+      "duration": 1.6
+    }
+  ],
+  "anime": {
+    "style": "2D cel-shaded hand-drawn anime, Baki and Kengan Ashura style hyper-detailed anatomical muscle striations, hard high-contrast shadows, heavy ink outlines on A, broken sketchy ink in smears, clean sharp ink on impact holds, underground concrete-and-sand tournament arena",
+    "impact_frames": [1.15, 3.05, 4.3, 7.5],
+    "smear_frames": [
+      "1.0-1.15: A left arm upward 45-degree shovel-hook arc (7-to-1 o'clock) smear only; head, torso, and high right guard stay solid",
+      "2.85-3.05: A right arm vertical corkscrew uppercut streak (6-to-12 o'clock) smear only; arched torso and left counter-arm stay solid",
+      "3.95-4.3: A right leg horizontal whipping high-kick crescent arc (9-to-3 o'clock) smear only; standing left pivot leg and torso stay solid",
+      "6.8-7.4: A downward right-fist meteor dive streak (12-to-6 o'clock) only; head and torso stay solid"
+    ],
+    "speed_lines": ["0.0-0.75", "4.75-5.9", "6.2-7.4"],
+    "time_remap": {"3.0-3.2": 0.25, "5.9-6.5": 0.5},
+    "anticipation_holds": [2.55, 5.85],
+    "fx": {
+      "1.15": "deep_rib_flesh_ripple_shock_ring_and_sweat_spray",
+      "3.05": "explosive_white_jaw_shock_arc_and_upward_saliva_sweat_burst",
+      "4.3": "sharp_white_temple_bone_shock_flash",
+      "7.5": "radial_concrete_spiderweb_crater_and_expanding_sand_dust_ring_shockwave",
+      "8.4-10.0": "rising_white_muscle_heat_steam_and_harsh_stadium_spotlight_rim_glow_on_A"
+    },
+    "line_rule": "heavy anatomical ink outlines on A and B, broken/sketchy outlines ONLY on active smear limbs (left arm 1.0-1.15, right arm 2.85-3.05, right leg 3.95-4.3, dive 6.8-7.4), ultra-thick clean ink on held impact frames (1.15, 3.05, 4.3, 7.5)"
+  },
+  "rules": "Render as one physically continuous 10-second 2D hand-drawn Baki-style bare-knuckle sakuga combat event where every movement emerges visibly from the force, recoil, and momentum of the previous state. ZERO weapons exist in the scene—pure bare hands, taped fists, wrists, shins, and feet. Both left and right bare muscular arms and white-taped hands of Fighter A must remain anatomically present and clearly visible in silhouette on every single beat—especially at 2.55s (where A extends his open taped left palm forward toward B's sternum as a range-finding guard while coiling his taped right fist low behind his right hip) and at 3.05s (where A drives a rising corkscrew right fist uppercut under B's jaw while pulling his left fist wide to his left hip). At 0.0-0.75s A explodes in a low Baki Cockroach Dash and slips outside B's right overhand while slapping B's right wrist inward with his open right palm. At 1.15s A steps inside and drives a left shovel hook deep into B's bare right ribs/liver (hold 3f). At 1.85s A U-weaves under B's retaliatory left hook, sinks into a deep hydraulic squat at 2.55s, and at 3.05s drives a rising corkscrew right uppercut under B's jaw, lifting both of B's bare feet off the floor (hold 4f, slomo 0.25x). At 3.55-4.3s A chambers his right knee, turns his hip over horizontally at 3.95s, and whips his right shin across B's temple at 4.3s (hold 3f), launching B into the concrete wall base at 5.0s; B stays down stunned from 5.0s to 10.0s. At 4.75s A steps down and crosses from screen-left to screen-right, runs two fast alternating bare-foot steps up the vertical concrete wall at 5.45-5.65s, pushes off at 5.9s, and lands on both feet in a low three-point crouch at 7.5s while driving his taped right fist into the concrete floor beside B's head, shattering a radial crater (hold 5f). At 8.4-10.0s A holds a wide low Baki combat crouch with both taped hands raised in an open-clawed guard as white heat-steam rises from his shoulders. Pure 2D cel-shaded anime, no 3D CGI, no on-screen text or numbers."
+}
