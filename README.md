@@ -11,6 +11,7 @@ Movement_Prose/
 ├── AGENTS.md                                                   # 👈 Deterministic Agent Onboarding, Directory Map & 25-Decision Index
 ├── SKILL.md                                                   # Antigravity Skill instructions & YouTube Episode workflow
 ├── docs/
+│   ├── FIGHT_MOVE_SYSTEM_PLAN.md                              # 🚀 v2 Master Architecture & Execution Plan (Move Lexicon, State Machine, Dyad Coupling, Wording Compiler)
 │   ├── TWO_LAYER_FLUID_STACK_ARCHITECTURE.md                  # Deep-dive guide: Mode 1 vs Mode 2 (--stack) & Choreography Separation
 │   └── VARIATIONS_AND_FIGHTING_STYLES.md                      # Deep-dive: Decisions 21-25, Entity Fighting Styles & Variations vs Golden Baseline
 ├── scripts/

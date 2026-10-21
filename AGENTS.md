@@ -13,6 +13,7 @@ Movement_Prose/
 ├── README.md                                                  # Project overview & CLI quick-start
 ├── SKILL.md                                                   # Antigravity / Claude Skill instructions (mirrored to ~/.gemini/config/skills/sakuga-fight-director)
 ├── docs/
+│   ├── FIGHT_MOVE_SYSTEM_PLAN.md                              # 🚀 v2 Master Architecture & Execution Plan (Move Lexicon, State Machine, Dyad Coupling, Wording Compiler)
 │   ├── TWO_LAYER_FLUID_STACK_ARCHITECTURE.md                  # Deep-dive: Mode 1 (Single-Layer JSON) vs Mode 2 (--stack 2-Layer Fluid Stack)
 │   └── VARIATIONS_AND_FIGHTING_STYLES.md                      # Deep-dive: Decisions 21-25, Entity Fighting Styles & Variations vs Golden Baseline
 ├── scripts/
@@ -47,6 +48,7 @@ Movement_Prose/
 
 | If the User Wants To... | Read This File First | Template / Tool to Use |
 | :--- | :--- | :--- |
+| Implement or extend the **v2 Fight Move System** (closed Move Card lexicon, Fighter/Dyad state machines, `V01–V17` validator, no-numbers/no-forbidden-names Wording Compiler, `H1–H7` render packets) | [`docs/FIGHT_MOVE_SYSTEM_PLAN.md`](docs/FIGHT_MOVE_SYSTEM_PLAN.md) | Follow Milestones `M1` $\to$ `M6` in [`docs/FIGHT_MOVE_SYSTEM_PLAN.md`](docs/FIGHT_MOVE_SYSTEM_PLAN.md) |
 | Generate a **grounded bare-knuckle / Baki / Kengan / UFC / boxing / kickboxing** fight (ZERO wall-runs, ZERO ground punches, ZERO aerial flip bleed) | [`docs/VARIATIONS_AND_FIGHTING_STYLES.md`](docs/VARIATIONS_AND_FIGHTING_STYLES.md) | [`examples/variations/variation_1_baki_grounded_standup_war.json`](examples/variations/variation_1_baki_grounded_standup_war.json) (`fighting_style: "grounded_striker_boxer_baki"` or `"ufc_mma_octagon"`) |
 | Generate an **acrobatic multi-domain martial arts showcase** (floor sweeps, ground up-kicks, kip-ups, jumping knees, aerial axe kicks) | [`docs/VARIATIONS_AND_FIGHTING_STYLES.md`](docs/VARIATIONS_AND_FIGHTING_STYLES.md) | [`examples/variations/variation_2_multidomain_combative_showcase.json`](examples/variations/variation_2_multidomain_combative_showcase.json) (`fighting_style: "acrobatic_multidomain_freestyle"`) |
 | Generate a **weapon / ninja / blade / bo-staff / acrobatic wall-dive** fight | [`docs/TWO_LAYER_FLUID_STACK_ARCHITECTURE.md`](docs/TWO_LAYER_FLUID_STACK_ARCHITECTURE.md) | [`examples/gold_master_2_disarm_dual_blade.json`](examples/gold_master_2_disarm_dual_blade.json), [`examples/gold_master_3_courtyard_sky_cartwheel.json`](examples/gold_master_3_courtyard_sky_cartwheel.json), or [`examples/gold_master_4_shrine_bo_staff_determinism_test.json`](examples/gold_master_4_shrine_bo_staff_determinism_test.json) |
