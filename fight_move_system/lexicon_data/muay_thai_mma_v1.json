@@ -18,12 +18,11 @@
       "path": "arc_horizontal",
       "level": "low",
       "contact": "strike",
-      "chain": "{lead_leg} foot pivots outward > hips whip through the arc > torso turns low > {rear_leg} shin swings flat > {rear_leg} shin digs into the calf",
+      "chain": "hips snap through the arc > torso whips low > {rear_leg} shin swings flat > {rear_leg} shin digs into the calf",
       "chain_frames": [
         0,
         2,
         3,
-        4,
         5
       ],
       "pre": {
@@ -84,14 +83,14 @@
         15
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "coil_whip_hold_settle",
+      "easing_curve": "snap_hold_snap_settle",
       "spacing_phases": {
         "slow_in": [
           0,
-          2
+          1
         ],
         "snap": [
-          2,
+          1,
           4
         ],
         "hold": [
@@ -103,7 +102,7 @@
           8
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     },
     {
       "id": "lead_leg_buckle",
@@ -112,18 +111,17 @@
         "calf buckled",
         "leg chopped"
       ],
-      "caption_words": "has his {lead_leg} calf chopped sideways out from under him, his knee buckling inward as he catches his balance, STAGGER: B stumbles half a step to the left, arms flailing for balance",
+      "caption_words": "has his {lead_leg} calf chopped sideways out from under him, his knee buckling inward as he catches his balance, STAGGER: half-step stumble",
       "limb": "lead_leg",
       "hinge": "knee_drive",
       "path": "arc_horizontal",
       "level": "low",
       "contact": "none",
-      "chain": "both feet plant wide > {lead_leg} knee dips inward > hips jolt sideways > torso drops over the stunned leg",
+      "chain": "{lead_leg} knee buckles inward > hips jolt sideways > torso drops over the stunned leg",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -201,7 +199,7 @@
           8
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     },
     {
       "id": "shin_check_block",
@@ -216,7 +214,7 @@
       "path": "arc_vertical",
       "level": "low",
       "contact": "block",
-      "chain": "both feet plant wide > {lead_leg} knee lifts high > torso squares behind the raised shin > {lead_leg} shin locks across the line",
+      "chain": "{lead_leg} knee snaps high > hips brace > torso squares behind the shin > {lead_leg} shin locks across the line",
       "chain_frames": [
         0,
         2,
@@ -277,7 +275,7 @@
         85
       ],
       "com_position": "over_rear_foot",
-      "easing_curve": "slow_in_snap_hold_ease_out",
+      "easing_curve": "snap_hold_snap_settle",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -296,7 +294,7 @@
           7
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     },
     {
       "id": "slashing_rear_elbow",
@@ -312,12 +310,11 @@
       "path": "arc_horizontal",
       "level": "high",
       "contact": "strike",
-      "chain": "{lead_leg} foot plants deep > hips whip square > torso turns through the cut > {rear_side} shoulder drives forward > {rear_hand} elbow lands on the cheekbone",
+      "chain": "hips whip square > torso snaps through the cut > {rear_side} shoulder drives forward > {rear_hand} elbow lands on the cheekbone",
       "chain_frames": [
         0,
         2,
         3,
-        4,
         5
       ],
       "pre": {
@@ -376,18 +373,18 @@
       },
       "probe": {},
       "weight_split": [
-        70,
-        30
+        30,
+        70
       ],
-      "com_position": "over_lead_foot",
+      "com_position": "over_rear_foot",
       "easing_curve": "explosive_snap_hold_recoil",
       "spacing_phases": {
         "slow_in": [
           0,
-          2
+          1
         ],
         "snap": [
-          2,
+          1,
           4
         ],
         "hold": [
@@ -399,7 +396,7 @@
           8
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     },
     {
       "id": "clinch_rising_knee",
@@ -415,12 +412,11 @@
       "path": "arc_vertical",
       "level": "mid",
       "contact": "strike",
-      "chain": "both feet plant under the clinch > {rear_leg} knee rises > hips drive upward > both hands pull the posture down > {rear_leg} knee lands in the solar plexus",
+      "chain": "{rear_leg} knee surges up > hips drive upward > both hands pull the posture down > {rear_leg} knee lands in the solar plexus",
       "chain_frames": [
         0,
         2,
         3,
-        4,
         5
       ],
       "pre": {
@@ -483,10 +479,10 @@
       "spacing_phases": {
         "slow_in": [
           0,
-          2
+          1
         ],
         "snap": [
-          2,
+          1,
           5
         ],
         "hold": [
@@ -498,7 +494,7 @@
           9
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     },
     {
       "id": "clinch_rib_fold",
@@ -507,18 +503,17 @@
         "clinch knee reaction",
         "clinch body fold"
       ],
-      "caption_words": "jackknifes forward at the waist inside the clinch as the knee buries deep into his solar plexus, STAGGER: B rises onto his toes, gasping in agony as his ribs cave inward",
+      "caption_words": "jackknifes forward at the waist inside the clinch as the knee buries deep into his solar plexus, STAGGER: sharp toe-lift jolt",
       "limb": "hips",
       "hinge": "spine_arch",
       "path": "straight",
       "level": "mid",
       "contact": "none",
-      "chain": "both feet plant flat > knees buckle inward > hips fold forward > torso drops onto the guarding elbows",
+      "chain": "knees buckle inward > hips fold forward > torso drops onto the guarding elbows",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -572,8 +567,8 @@
       },
       "probe": {},
       "weight_split": [
-        60,
-        40
+        70,
+        30
       ],
       "com_position": "staggering_off_balance",
       "easing_curve": "sudden_jolt_settle",
@@ -595,7 +590,7 @@
           9
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     },
     {
       "id": "two_hand_clinch_shove",
@@ -610,7 +605,7 @@
       "path": "push",
       "level": "mid",
       "contact": "grapple",
-      "chain": "both feet plant wide > hips drive forward > torso leans through the push > both palms slam into the chest",
+      "chain": "hips drive forward > torso surges through the push > shoulders snap out > both palms slam into the chest",
       "chain_frames": [
         0,
         2,
@@ -670,10 +665,10 @@
       },
       "probe": {},
       "weight_split": [
-        70,
-        30
+        30,
+        70
       ],
-      "com_position": "over_lead_foot",
+      "com_position": "over_rear_foot",
       "easing_curve": "explosive_snap_hold_recoil",
       "spacing_phases": {
         "slow_in": [
@@ -702,18 +697,17 @@
         "shoved back",
         "pushed out of clinch"
       ],
-      "caption_words": "is shoved backward out of the clinch to full arm's length, his heels skidding across the floor as he catches his balance, STAGGER: B stumbles backward on his heels, arms spreading wide for balance",
+      "caption_words": "is shoved backward out of the clinch to full arm's length, his heels skidding across the floor as he catches his balance, STAGGER: sharp heel-skid check",
       "limb": "hips",
       "hinge": "ankle_pivot",
       "path": "straight",
       "level": "mid",
       "contact": "none",
-      "chain": "both heels slide back > knees dip to catch > hips rock backward > torso settles over the rear foot",
+      "chain": "both heels skid back > hips rock backward > torso snaps upright over the rear foot",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -768,8 +762,8 @@
       },
       "probe": {},
       "weight_split": [
-        25,
-        75
+        20,
+        80
       ],
       "com_position": "staggering_off_balance",
       "easing_curve": "sudden_jolt_settle",
@@ -807,12 +801,11 @@
       "path": "straight",
       "level": "mid",
       "contact": "strike",
-      "chain": "{rear_leg} foot plants flat > {lead_leg} knee chambers high > hips drive forward > {lead_leg} shin snaps straight > ball of the foot lands on the sternum",
+      "chain": "{lead_leg} knee snaps high > hips drive forward > {lead_leg} shin extends straight > ball of the foot slams into the sternum",
       "chain_frames": [
         0,
         2,
         3,
-        4,
         5
       ],
       "pre": {
@@ -877,10 +870,10 @@
       "spacing_phases": {
         "slow_in": [
           0,
-          2
+          1
         ],
         "snap": [
-          2,
+          1,
           4
         ],
         "hold": [
@@ -892,7 +885,7 @@
           8
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     }
   ]
 }

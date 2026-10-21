@@ -161,11 +161,13 @@ IMPULSE_TIERS: Set[int] = {0, 1, 2, 3}
 
 # Spacing / Easing Curve Profiles (V21)
 EASING_CURVES: Set[str] = {
-    "slow_in_snap_hold_ease_out",
+    "snap_hold_snap_settle",
+    "burst_launch_snap_lock",
     "explosive_snap_hold_recoil",
+    "sudden_jolt_settle",
+    "slow_in_snap_hold_ease_out",
     "coil_whip_hold_settle",
     "smooth_ease_in_out",
-    "sudden_jolt_settle",
 }
 
 # Center-of-mass positions relative to support base (V19)

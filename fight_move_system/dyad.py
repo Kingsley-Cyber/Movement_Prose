@@ -169,11 +169,18 @@ class DyadState:
                                 f"Attack '{aid}' (impulse_tier={effective_att}) under-sold by weaker reaction '{reaction_card['id']}' (impulse_tier={effective_def})",
                             )
                         )
-                    elif effective_def > effective_att + 1 or (def_tier == 3 and not is_hero and att_tier < 3):
+                    elif effective_def > effective_att + 1 or (def_tier == 3 and not is_hero and att_tier < 2):
                         errors.append(
                             (
                                 "V22",
                                 f"Attack '{aid}' (impulse_tier={att_tier}) over-sold by excessive reaction '{reaction_card['id']}' (impulse_tier={def_tier})",
+                            )
+                        )
+                    elif reaction_card["id"] == "knockout_canvas_collapse" and not is_hero and att_tier < 3:
+                        errors.append(
+                            (
+                                "V22",
+                                f"Attack '{aid}' (impulse_tier={att_tier}) over-sold by knockout reaction '{reaction_card['id']}' (impulse_tier={def_tier})",
                             )
                         )
                 else:

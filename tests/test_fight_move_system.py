@@ -373,6 +373,7 @@ class TestFightMoveSystem(unittest.TestCase):
         clip["moments"][1]["A"]["chain"] = "left toe pivots out > hips snap square > left shoulder drives forward > left fist lands on the jaw"
         clip["moments"][1]["A"]["chain_frames"] = [0, 2, 3, 5]
         clip["moments"][1]["B"]["chain"] = "both heels plant > knees dip > hips rock back > head snaps clear of the line"
+        clip["moments"][1]["B"]["chain_frames"] = [0, 2, 3, 5]
         res_ok = validate_clip(clip, lexicon=self.lexicon)
         self.assertEqual(res_ok.error_codes(), set())
 
@@ -440,7 +441,7 @@ class TestFightMoveSystem(unittest.TestCase):
         self.assertIsNone(self.valid_10_beat["moments"][1]["A"].get("chain"))  # fixture inherits
 
         jab_chain = (
-            "left heel pivots out > hips snap square > left shoulder drives forward > "
+            "hips snap square > left shoulder drives forward > "
             "left arm extends > left fist lands on the chin"
         )
         self.assertIn(
@@ -465,7 +466,7 @@ class TestFightMoveSystem(unittest.TestCase):
         self.assertTrue(res.ok)
         self.assertIn(f"chain: {override} -> causes C02_jab", prompt)
         default_jab_chain = (
-            "left heel pivots out > hips snap square > left shoulder drives forward > "
+            "hips snap square > left shoulder drives forward > "
             "left arm extends > left fist lands on the chin"
         )
         self.assertNotIn(default_jab_chain, prompt)
@@ -541,18 +542,18 @@ class TestFightMoveSystem(unittest.TestCase):
         res_over = validate_clip(clip_over, lexicon=self.lexicon)
         self.assertIn("V22", res_over.error_codes())
 
-        # Fail: heavy rear_overhand (impulse_tier=3) under-sold by tier-2 head_snap_back on a non-hero beat
+        # Fail: heavy rear_overhand (impulse_tier=3) under-sold by tier-2 reaction on a non-hero beat
         clip_under = self._base_clip()
         clip_under["fighters"]["A"]["coil"] = "loaded_rear"
         clip_under["moments"][0]["frames"] = 9
         clip_under["moments"][0]["A"]["move"] = "rear_overhand"
-        clip_under["moments"][0]["B"]["move"] = "head_snap_back"
+        clip_under["moments"][0]["B"] = {"move": "head_snap_back", "impulse_tier": 2}
         res_under = validate_clip(clip_under, lexicon=self.lexicon)
         self.assertIn("V22", res_under.error_codes())
 
         # Pass: heavy rear_overhand paired with tier-3 knockout_canvas_collapse
         clip_pass = copy.deepcopy(clip_under)
-        clip_pass["moments"][0]["B"]["move"] = "knockout_canvas_collapse"
+        clip_pass["moments"][0]["B"] = {"move": "knockout_canvas_collapse"}
         res_pass = validate_clip(clip_pass, lexicon=self.lexicon)
         self.assertNotIn("V22", res_pass.error_codes())
 

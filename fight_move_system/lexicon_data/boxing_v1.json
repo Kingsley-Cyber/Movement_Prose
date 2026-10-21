@@ -18,12 +18,11 @@
       "path": "straight",
       "level": "high",
       "contact": "strike",
-      "chain": "{lead_leg} heel pivots out > hips snap square > {lead_side} shoulder drives forward > {lead_hand} arm extends > {lead_hand} fist lands on the chin",
+      "chain": "hips snap square > {lead_side} shoulder drives forward > {lead_hand} arm extends > {lead_hand} fist lands on the chin",
       "chain_frames": [
         0,
         2,
         3,
-        4,
         5
       ],
       "pre": {
@@ -86,14 +85,14 @@
         35
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "slow_in_snap_hold_ease_out",
+      "easing_curve": "snap_hold_snap_settle",
       "spacing_phases": {
         "slow_in": [
           0,
-          2
+          1
         ],
         "snap": [
-          2,
+          1,
           4
         ],
         "hold": [
@@ -120,12 +119,11 @@
       "path": "straight",
       "level": "mid",
       "contact": "strike",
-      "chain": "{lead_leg} heel pivots out > hips drop low > {lead_side} shoulder drives forward > {lead_hand} arm extends > {lead_hand} fist sinks into the solar plexus",
+      "chain": "hips drop low > {lead_side} shoulder drives forward > {lead_hand} arm extends > {lead_hand} fist sinks into the solar plexus",
       "chain_frames": [
         0,
         2,
         3,
-        4,
         5
       ],
       "pre": {
@@ -188,14 +186,14 @@
         30
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "slow_in_snap_hold_ease_out",
+      "easing_curve": "snap_hold_snap_settle",
       "spacing_phases": {
         "slow_in": [
           0,
-          2
+          1
         ],
         "snap": [
-          2,
+          1,
           4
         ],
         "hold": [
@@ -223,12 +221,11 @@
       "path": "straight",
       "level": "high",
       "contact": "strike",
-      "chain": "{rear_leg} heel pivots out > hips snap square > {rear_side} shoulder drives forward > {rear_hand} arm extends > {rear_hand} fist lands on the jaw",
+      "chain": "hips snap square > {rear_side} shoulder drives forward > {rear_hand} arm extends > {rear_hand} fist lands on the jaw",
       "chain_frames": [
         0,
         2,
         3,
-        4,
         5
       ],
       "pre": {
@@ -287,8 +284,8 @@
       },
       "probe": {},
       "weight_split": [
-        75,
-        25
+        80,
+        20
       ],
       "com_position": "over_lead_foot",
       "easing_curve": "explosive_snap_hold_recoil",
@@ -310,7 +307,7 @@
           8
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     },
     {
       "id": "rear_body_straight",
@@ -325,12 +322,11 @@
       "path": "straight",
       "level": "mid",
       "contact": "strike",
-      "chain": "{rear_leg} heel pivots out > hips sink low > {rear_side} shoulder drives forward > {rear_hand} arm extends > {rear_hand} fist digs into the ribs",
+      "chain": "hips sink low > {rear_side} shoulder drives forward > {rear_hand} arm extends > {rear_hand} fist digs into the ribs",
       "chain_frames": [
         0,
         2,
         3,
-        4,
         5
       ],
       "pre": {
@@ -390,8 +386,8 @@
       },
       "probe": {},
       "weight_split": [
-        75,
-        25
+        80,
+        20
       ],
       "com_position": "over_lead_foot",
       "easing_curve": "explosive_snap_hold_recoil",
@@ -413,7 +409,7 @@
           8
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     },
     {
       "id": "lead_hook",
@@ -429,7 +425,7 @@
       "path": "arc_horizontal",
       "level": "high",
       "contact": "strike",
-      "chain": "{lead_leg} heel pivots out > hips whip square > {lead_side} shoulder drives forward > {lead_hand} fist lands on the jaw",
+      "chain": "hips whip square > torso turns > {lead_side} shoulder drives forward > {lead_hand} fist lands on the jaw",
       "chain_frames": [
         0,
         2,
@@ -494,18 +490,18 @@
       },
       "probe": {},
       "weight_split": [
-        45,
-        55
+        30,
+        70
       ],
       "com_position": "over_rear_foot",
-      "easing_curve": "coil_whip_hold_settle",
+      "easing_curve": "snap_hold_snap_settle",
       "spacing_phases": {
         "slow_in": [
           0,
-          2
+          1
         ],
         "snap": [
-          2,
+          1,
           4
         ],
         "hold": [
@@ -517,7 +513,7 @@
           8
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     },
     {
       "id": "lead_liver_hook",
@@ -533,7 +529,7 @@
       "path": "arc_horizontal",
       "level": "mid",
       "contact": "strike",
-      "chain": "{lead_leg} heel pivots out > hips dip low > {lead_side} shoulder drives forward > {lead_hand} fist digs into the ribs",
+      "chain": "hips dip low > torso whips upward > {lead_side} shoulder drives forward > {lead_hand} fist digs into the ribs",
       "chain_frames": [
         0,
         2,
@@ -595,18 +591,18 @@
       },
       "probe": {},
       "weight_split": [
-        65,
-        35
+        75,
+        25
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "coil_whip_hold_settle",
+      "easing_curve": "snap_hold_snap_settle",
       "spacing_phases": {
         "slow_in": [
           0,
-          2
+          1
         ],
         "snap": [
-          2,
+          1,
           4
         ],
         "hold": [
@@ -618,7 +614,7 @@
           8
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     },
     {
       "id": "rear_hook",
@@ -633,7 +629,7 @@
       "path": "arc_horizontal",
       "level": "high",
       "contact": "strike",
-      "chain": "{rear_leg} heel pivots out > hips whip square > {rear_side} shoulder drives forward > {rear_hand} fist lands on the temple",
+      "chain": "hips whip square > torso turns > {rear_side} shoulder drives forward > {rear_hand} fist lands on the temple",
       "chain_frames": [
         0,
         2,
@@ -702,14 +698,14 @@
         30
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "coil_whip_hold_settle",
+      "easing_curve": "snap_hold_snap_settle",
       "spacing_phases": {
         "slow_in": [
           0,
-          2
+          1
         ],
         "snap": [
-          2,
+          1,
           4
         ],
         "hold": [
@@ -721,7 +717,7 @@
           8
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     },
     {
       "id": "lead_uppercut",
@@ -736,12 +732,11 @@
       "path": "arc_vertical",
       "level": "high",
       "contact": "strike",
-      "chain": "{lead_leg} heel plants > hips drive upward > {lead_side} shoulder rises > {lead_hand} arm extends > {lead_hand} fist lands under the chin",
+      "chain": "hips drive upward > {lead_side} shoulder rises > {lead_hand} arm extends > {lead_hand} fist lands under the chin",
       "chain_frames": [
         0,
         2,
         3,
-        4,
         5
       ],
       "pre": {
@@ -800,18 +795,18 @@
       },
       "probe": {},
       "weight_split": [
-        60,
-        40
+        65,
+        35
       ],
       "com_position": "over_lead_foot",
       "easing_curve": "explosive_snap_hold_recoil",
       "spacing_phases": {
         "slow_in": [
           0,
-          2
+          1
         ],
         "snap": [
-          2,
+          1,
           4
         ],
         "hold": [
@@ -823,7 +818,7 @@
           8
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     },
     {
       "id": "rear_uppercut",
@@ -838,7 +833,7 @@
       "path": "arc_vertical",
       "level": "high",
       "contact": "strike",
-      "chain": "{rear_leg} heel plants > hips surge upward > {rear_side} shoulder rises > {rear_hand} fist lands under the chin",
+      "chain": "hips surge upward > torso rises > {rear_side} shoulder drives up > {rear_hand} fist lands under the chin",
       "chain_frames": [
         0,
         2,
@@ -910,10 +905,10 @@
       "spacing_phases": {
         "slow_in": [
           0,
-          2
+          1
         ],
         "snap": [
-          2,
+          1,
           4
         ],
         "hold": [
@@ -925,7 +920,7 @@
           8
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     },
     {
       "id": "rear_overhand",
@@ -941,12 +936,11 @@
       "path": "downward",
       "level": "high",
       "contact": "strike",
-      "chain": "{rear_leg} heel pivots out > hips pitch forward > {rear_side} shoulder turns over > {rear_hand} arm arcs down > {rear_hand} fist lands on the temple",
+      "chain": "hips pitch forward > {rear_side} shoulder turns over > {rear_hand} arm arcs down > {rear_hand} fist lands on the temple",
       "chain_frames": [
         0,
         2,
         3,
-        4,
         5
       ],
       "pre": {
@@ -1006,18 +1000,18 @@
       },
       "probe": {},
       "weight_split": [
-        80,
-        20
+        85,
+        15
       ],
       "com_position": "over_lead_foot",
       "easing_curve": "explosive_snap_hold_recoil",
       "spacing_phases": {
         "slow_in": [
           0,
-          2
+          1
         ],
         "snap": [
-          2,
+          1,
           5
         ],
         "hold": [
@@ -1045,12 +1039,11 @@
       "path": "none",
       "level": "high",
       "contact": "evade",
-      "chain": "{lead_leg} heel pivots out > hips turn square > torso leans outside > head slips off the centerline",
+      "chain": "hips snap square > torso dips outside > head slips off the centerline",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -1103,11 +1096,11 @@
       },
       "probe": {},
       "weight_split": [
-        60,
-        40
+        65,
+        35
       ],
       "com_position": "shifted_outside",
-      "easing_curve": "smooth_ease_in_out",
+      "easing_curve": "burst_launch_snap_lock",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -1141,12 +1134,11 @@
       "path": "none",
       "level": "high",
       "contact": "evade",
-      "chain": "{lead_leg} heel pivots in > hips turn square > {rear_side} shoulder coils in > head slips inside the line",
+      "chain": "hips snap square > {rear_side} shoulder coils in > head slips inside the line",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -1199,11 +1191,11 @@
       },
       "probe": {},
       "weight_split": [
-        35,
-        65
+        30,
+        70
       ],
       "com_position": "shifted_inside",
-      "easing_curve": "smooth_ease_in_out",
+      "easing_curve": "burst_launch_snap_lock",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -1238,12 +1230,11 @@
       "path": "arc_horizontal",
       "level": "high",
       "contact": "evade",
-      "chain": "both feet pivot > knees dip low > hips roll under the swing > torso rises clear of the arc",
+      "chain": "knees dip low > hips roll under the swing > torso rises clear of the arc",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -1297,18 +1288,18 @@
       },
       "probe": {},
       "weight_split": [
-        55,
-        45
+        65,
+        35
       ],
-      "com_position": "centered",
-      "easing_curve": "smooth_ease_in_out",
+      "com_position": "over_lead_foot",
+      "easing_curve": "burst_launch_snap_lock",
       "spacing_phases": {
         "slow_in": [
           0,
-          2
+          1
         ],
         "snap": [
-          2,
+          1,
           5
         ],
         "hold": [
@@ -1335,12 +1326,11 @@
       "path": "downward",
       "level": "high",
       "contact": "evade",
-      "chain": "both feet plant wide > knees bend deep > hips drop below the swing > head clears the swinging arc",
+      "chain": "knees bend deep > hips drop below the swing > head clears the swinging arc",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -1396,7 +1386,7 @@
         50
       ],
       "com_position": "centered",
-      "easing_curve": "smooth_ease_in_out",
+      "easing_curve": "burst_launch_snap_lock",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -1431,12 +1421,11 @@
       "path": "arc_horizontal",
       "level": "low",
       "contact": "evade",
-      "chain": "{lead_leg} foot pivots out > {lead_leg} ball of the foot glides round > hips turn square > hips settle on the fresh angle",
+      "chain": "{lead_leg} ball of the foot glides round > hips snap square > hips settle on the fresh angle",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -1490,11 +1479,11 @@
       },
       "probe": {},
       "weight_split": [
-        65,
-        35
+        30,
+        70
       ],
-      "com_position": "over_lead_foot",
-      "easing_curve": "smooth_ease_in_out",
+      "com_position": "over_rear_foot",
+      "easing_curve": "burst_launch_snap_lock",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -1529,12 +1518,11 @@
       "path": "none",
       "level": "high",
       "contact": "block",
-      "chain": "both feet plant wide > hips sink low > torso rolls forward > both forearms lock across the face",
+      "chain": "hips sink low > torso braces forward > both forearms lock across the face",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -1590,8 +1578,8 @@
       },
       "probe": {},
       "weight_split": [
-        40,
-        60
+        30,
+        70
       ],
       "com_position": "over_rear_foot",
       "easing_curve": "sudden_jolt_settle",
@@ -1628,12 +1616,11 @@
       "path": "none",
       "level": "mid",
       "contact": "block",
-      "chain": "both feet plant wide > hips dip square > torso curls over > {lead_side} elbow drops to the ribs",
+      "chain": "hips dip square > torso curls over > {lead_side} elbow drops to the ribs",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -1727,12 +1714,11 @@
       "path": "arc_horizontal",
       "level": "high",
       "contact": "block",
-      "chain": "{lead_leg} foot plants forward > hips turn square > torso opens slightly > {lead_hand} palm meets the incoming wrist",
+      "chain": "hips snap square > torso opens slightly > {lead_hand} palm meets the incoming wrist",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -1786,11 +1772,11 @@
       },
       "probe": {},
       "weight_split": [
-        45,
-        55
+        40,
+        60
       ],
       "com_position": "over_rear_foot",
-      "easing_curve": "slow_in_snap_hold_ease_out",
+      "easing_curve": "snap_hold_snap_settle",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -1825,12 +1811,11 @@
       "path": "straight",
       "level": "low",
       "contact": "none",
-      "chain": "{lead_leg} foot lifts > {lead_leg} foot plants inside range > hips slide forward > torso settles over the lead knee",
+      "chain": "{lead_leg} foot plants inside range > hips surge forward > torso locks over the lead knee",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -1885,11 +1870,11 @@
       },
       "probe": {},
       "weight_split": [
-        65,
-        35
+        35,
+        65
       ],
-      "com_position": "over_lead_foot",
-      "easing_curve": "smooth_ease_in_out",
+      "com_position": "over_rear_foot",
+      "easing_curve": "burst_launch_snap_lock",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -1924,12 +1909,11 @@
       "path": "straight",
       "level": "low",
       "contact": "none",
-      "chain": "{lead_leg} foot pushes off the canvas > {rear_leg} foot plants behind > hips rock back > torso settles over the rear foot",
+      "chain": "{rear_leg} foot plants behind > hips rock back > torso settles over the rear foot",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -1985,11 +1969,11 @@
       },
       "probe": {},
       "weight_split": [
-        30,
-        70
+        25,
+        75
       ],
       "com_position": "over_rear_foot",
-      "easing_curve": "smooth_ease_in_out",
+      "easing_curve": "burst_launch_snap_lock",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -2023,12 +2007,11 @@
       "path": "none",
       "level": "high",
       "contact": "none",
-      "chain": "both feet settle flat > knees flex loose > hips square over the feet > both fists settle at the cheekbones",
+      "chain": "knees flex loose > hips square over the feet > both fists settle at the cheekbones",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -2091,14 +2074,14 @@
         50
       ],
       "com_position": "centered",
-      "easing_curve": "smooth_ease_in_out",
+      "easing_curve": "burst_launch_snap_lock",
       "spacing_phases": {
         "slow_in": [
           0,
-          2
+          1
         ],
         "snap": [
-          2,
+          1,
           3
         ],
         "hold": [
@@ -2119,18 +2102,17 @@
         "head snaps back",
         "chin rocked back"
       ],
-      "caption_words": "has his head snapped sharply backward by the impact while his heels dig in to stay upright, STAGGER: B jolts half a step backward on his heels, fighting to stay upright",
+      "caption_words": "has his head snapped sharply backward by the impact while his heels dig in to stay upright, STAGGER: half-step heel jolt",
       "limb": "head",
       "hinge": "spine_arch",
       "path": "straight",
       "level": "high",
       "contact": "none",
-      "chain": "heels dig into the canvas > hips jolt backward > spine arches back > head snaps clear over the shoulders",
+      "chain": "hips jolt backward > spine arches back > head snaps clear over the shoulders",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -2189,8 +2171,8 @@
       },
       "probe": {},
       "weight_split": [
-        30,
-        70
+        25,
+        75
       ],
       "com_position": "staggering_off_balance",
       "easing_curve": "sudden_jolt_settle",
@@ -2212,7 +2194,7 @@
           7
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     },
     {
       "id": "head_whip_side",
@@ -2221,18 +2203,17 @@
         "head whips sideways",
         "jaw spun"
       ],
-      "caption_words": "has his jaw whipped violently sideways in the direction of the hook as sweat sprays from his brow, STAGGER: B's lead foot twists under the torque as he stumbles sideways to catch his balance",
+      "caption_words": "has his jaw whipped violently sideways in the direction of the hook as sweat sprays from his brow, STAGGER: sharp lead-foot twist",
       "limb": "head",
       "hinge": "spine_arch",
       "path": "arc_horizontal",
       "level": "high",
       "contact": "none",
-      "chain": "{lead_leg} heel twists outward > hips turn with the swing > torso follows the arc > head whips sideways off the line",
+      "chain": "hips twist with the swing > torso follows the arc > head whips sideways off the line",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -2291,8 +2272,8 @@
       },
       "probe": {},
       "weight_split": [
-        35,
-        65
+        30,
+        70
       ],
       "com_position": "staggering_off_balance",
       "easing_curve": "sudden_jolt_settle",
@@ -2314,7 +2295,7 @@
           8
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     },
     {
       "id": "head_snap_up",
@@ -2323,18 +2304,17 @@
         "chin lifted",
         "head jolted upward"
       ],
-      "caption_words": "has his chin jolted sharply upward by the rising blow, lifting him onto his toes, STAGGER: B's heels lift off the floor as his head snaps back",
+      "caption_words": "has his chin jolted sharply upward by the rising blow, lifting him onto his toes, STAGGER: sharp toe-lift jolt",
       "limb": "head",
       "hinge": "spine_arch",
       "path": "arc_vertical",
       "level": "high",
       "contact": "none",
-      "chain": "heels lift under the jolt > hips rise onto the balls of the feet > spine arches back > head snaps up off the chin line",
+      "chain": "hips rise onto the balls of the feet > spine arches back > head snaps up off the chin line",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -2395,8 +2375,8 @@
       },
       "probe": {},
       "weight_split": [
-        35,
-        65
+        30,
+        70
       ],
       "com_position": "staggering_off_balance",
       "easing_curve": "sudden_jolt_settle",
@@ -2418,7 +2398,7 @@
           8
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     },
     {
       "id": "torso_fold_rib_hit",
@@ -2427,18 +2407,17 @@
         "body fold",
         "ribs buckled"
       ],
-      "caption_words": "folds forward at the waist with a sharp exhale as the blow sinks into his ribs, STAGGER: B's knees buckle inward as he stumbles back a step clutching his ribs",
+      "caption_words": "folds forward at the waist with a sharp exhale as the blow sinks into his ribs, STAGGER: half-step rib buckle",
       "limb": "hips",
       "hinge": "spine_arch",
       "path": "straight",
       "level": "mid",
       "contact": "none",
-      "chain": "both feet plant flat > knees buckle inward > hips fold forward > torso drops over the guarding elbows",
+      "chain": "knees buckle inward > hips fold forward > torso drops over the guarding elbows",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -2500,8 +2479,8 @@
       },
       "probe": {},
       "weight_split": [
-        60,
-        40
+        65,
+        35
       ],
       "com_position": "staggering_off_balance",
       "easing_curve": "sudden_jolt_settle",
@@ -2523,7 +2502,7 @@
           8
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     },
     {
       "id": "knockout_canvas_collapse",
@@ -2640,12 +2619,11 @@
       "path": "ground_arc",
       "level": "low",
       "contact": "strike",
-      "chain": "{lead_leg} foot pivots in place > hips turn through the low arc > torso leans low over the sweep > {rear_leg} heel cuts the ankle",
+      "chain": "hips whip through the low arc > torso leans over the sweep > {rear_leg} heel cuts the ankle",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -2702,14 +2680,14 @@
         15
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "coil_whip_hold_settle",
+      "easing_curve": "snap_hold_snap_settle",
       "spacing_phases": {
         "slow_in": [
           0,
-          2
+          1
         ],
         "snap": [
-          2,
+          1,
           5
         ],
         "hold": [
@@ -2721,7 +2699,7 @@
           10
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     },
     {
       "id": "spinning_back_kick",
@@ -2736,12 +2714,11 @@
       "path": "full_rotation",
       "level": "mid",
       "contact": "strike",
-      "chain": "{lead_leg} foot pivots on the spot > hips spin the body around > torso turns level through the arc > {rear_leg} heel drives straight back > {rear_leg} heel lands on the ribs",
+      "chain": "hips spin the body around > torso whips level through the arc > {rear_leg} heel drives straight back > {rear_leg} heel lands on the ribs",
       "chain_frames": [
         0,
         2,
         3,
-        4,
         5
       ],
       "pre": {
@@ -2801,14 +2778,14 @@
         10
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "coil_whip_hold_settle",
+      "easing_curve": "snap_hold_snap_settle",
       "spacing_phases": {
         "slow_in": [
           0,
-          3
+          1
         ],
         "snap": [
-          3,
+          1,
           6
         ],
         "hold": [
@@ -2835,12 +2812,11 @@
       "path": "straight",
       "level": "high",
       "contact": "grapple",
-      "chain": "{lead_leg} foot plants inside the stance > hips square forward > torso leans in > {lead_hand} palm locks behind the neck",
+      "chain": "hips snap forward > torso lunges in > {lead_hand} palm locks behind the neck",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -2899,18 +2875,18 @@
       },
       "probe": {},
       "weight_split": [
-        65,
-        35
+        35,
+        65
       ],
-      "com_position": "over_lead_foot",
-      "easing_curve": "slow_in_snap_hold_ease_out",
+      "com_position": "over_rear_foot",
+      "easing_curve": "snap_hold_snap_settle",
       "spacing_phases": {
         "slow_in": [
           0,
-          2
+          1
         ],
         "snap": [
-          2,
+          1,
           4
         ],
         "hold": [
@@ -2922,7 +2898,7 @@
           7
         ]
       },
-      "impulse_tier": 1
+      "impulse_tier": 2
     },
     {
       "id": "clinch_captured_react",
@@ -2937,12 +2913,11 @@
       "path": "none",
       "level": "high",
       "contact": "none",
-      "chain": "both feet plant wide > hips brace low > torso pulls forward > both hands lock on the biceps",
+      "chain": "hips brace low > torso pulls forward > both hands lock on the biceps",
       "chain_frames": [
         0,
         2,
-        3,
-        5
+        4
       ],
       "pre": {
         "support": [
@@ -3002,8 +2977,8 @@
       },
       "probe": {},
       "weight_split": [
-        60,
-        40
+        70,
+        30
       ],
       "com_position": "over_lead_foot",
       "easing_curve": "sudden_jolt_settle",
@@ -3025,7 +3000,7 @@
           7
         ]
       },
-      "impulse_tier": 1
+      "impulse_tier": 2
     }
   ]
 }

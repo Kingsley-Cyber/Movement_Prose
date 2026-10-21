@@ -45,8 +45,9 @@ CHAIN_FRAME_KEY = "chain_frames"
 CHAIN_KEY = "chain"
 MAX_BODY_PARTS_PER_LINK = 2
 
-# A ground-up chain starts on the floor. Rank 1 = ground contact, rank 2 = knee.
-GROUND_CONTACT_MAX_RANK = 2
+# A ground-up chain starts on the floor or explosive hip hinge.
+# Rank 1 = ground contact, rank 2 = knee, rank 3 = hips (for fast-start strike chains).
+GROUND_CONTACT_MAX_RANK = 3
 STRIKING_LIMB_RANK = 7
 
 # Ground-up ranks. Foot/knee/arm tokens are rank 1-6 when they bear or carry the
@@ -137,7 +138,8 @@ VISIBLE_VERBS: Set[str] = {
     "wrap", "clamp", "press", "cover", "slip", "meet", "cut", "swing", "load",
     "clear", "shoot", "trap", "pin", "rack", "gather", "crash", "bury", "flare",
     "splay", "surge", "pitch", "rock", "bend", "curl", "arch", "follow", "duck",
-    "lift", "shelve", "kick", "switch", "hop", "stomp", "tip", "topple",
+    "lift", "shelve", "kick", "switch", "hop", "stomp", "tip", "topple", "lunge",
+    "skid",
 }
 
 # The final link is drawn strongest: it must land the impact, not wind it up.

@@ -18,12 +18,11 @@
       "path": "arc_horizontal",
       "level": "mid",
       "contact": "strike",
-      "chain": "{lead_leg} foot pivots inward > hips whip around the axis > torso turns through the arc > {rear_leg} shin swings level > {rear_leg} shin lands on the ribs",
+      "chain": "hips whip around the axis > torso snaps through the arc > {rear_leg} shin swings level > {rear_leg} shin lands on the ribs",
       "chain_frames": [
         0,
         2,
         3,
-        4,
         5
       ],
       "pre": {
@@ -85,14 +84,14 @@
         15
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "coil_whip_hold_settle",
+      "easing_curve": "snap_hold_snap_settle",
       "spacing_phases": {
         "slow_in": [
           0,
-          2
+          1
         ],
         "snap": [
-          2,
+          1,
           5
         ],
         "hold": [
@@ -104,7 +103,7 @@
           9
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     },
     {
       "id": "knee_strike",
@@ -120,12 +119,11 @@
       "path": "arc_vertical",
       "level": "mid",
       "contact": "strike",
-      "chain": "{lead_leg} foot plants forward > hips drive upward > {lead_side} shoulder pulls down > {rear_leg} knee rises > knee lands on the ribs",
+      "chain": "hips drive upward > {lead_side} shoulder pulls down > {rear_leg} knee surges up > knee lands on the ribs",
       "chain_frames": [
         0,
         2,
         3,
-        4,
         5
       ],
       "pre": {
@@ -194,10 +192,10 @@
       "spacing_phases": {
         "slow_in": [
           0,
-          2
+          1
         ],
         "snap": [
-          2,
+          1,
           4
         ],
         "hold": [
@@ -209,7 +207,7 @@
           8
         ]
       },
-      "impulse_tier": 2
+      "impulse_tier": 3
     }
   ]
 }

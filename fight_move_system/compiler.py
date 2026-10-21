@@ -387,15 +387,48 @@ def compile_to_sakuga_Fluid_stack(
     b_chain_parts: List[str] = []
     rules_sentences: List[str] = []
 
-    # Time distribution across 0.00s -> 10.00s
+    # Asymmetric human rhythm across 0.00s -> 10.00s (Fix 6: vary gaps by beat type & frame weight;
+    # non-contact steps/slips snap in tight ~0.40s gaps, pocket combinations fire in ~0.55-0.75s,
+    # heavy resets/clinch transitions open ~1.0-1.4s breathing windows)
+    raw_weights: List[float] = []
+    for i in range(total_moments - 1):
+        m = moments[i]
+        f_cnt = float(m.get("frames", 8))
+        ma_act = m.get("A")
+        mb_act = m.get("B")
+        ma = lex.get(ma_act["move"]) if ma_act else None
+        mb = lex.get(mb_act["move"]) if mb_act else None
+        has_contact = any(c and c["contact"] in {"strike", "grapple"} for c in (ma, mb))
+        has_release = any(c and c["class"] == "GRAPPLE.RELEASE" for c in (ma, mb))
+        if not has_contact:
+            # Fast feint / footwork / slip entry: tight gap before the strike lands
+            w = f_cnt * 0.52
+        elif has_release:
+            # Shove-break or reset: slightly wider gap as distance opens
+            w = f_cnt * 1.15
+        elif i % 2 == 0:
+            # First hit of a pair: quick follow-up
+            w = f_cnt * 0.85
+        else:
+            # End of exchange pair: natural recovery pause
+            w = f_cnt * 1.25
+        raw_weights.append(w)
+
+    total_w = sum(raw_weights) if raw_weights else 1.0
+    beat_timestamps: List[float] = [0.0]
+    acc_w = 0.0
+    for i, w in enumerate(raw_weights):
+        acc_w += w
+        if i == len(raw_weights) - 1:
+            beat_timestamps.append(8.85)
+        else:
+            beat_timestamps.append(round((acc_w / total_w) * 8.85, 2))
+
+    prev_a_lead: Optional[int] = None
+    prev_b_lead: Optional[int] = None
     z_a = 3.20
     for idx, moment in enumerate(moments):
-        if idx == 0:
-            t_val = 0.0
-        elif idx == total_moments - 1:
-            t_val = 8.85
-        else:
-            t_val = round((idx / total_moments) * 8.8, 2)
+        t_val = moment["t"] if "t" in moment else beat_timestamps[idx]
 
         frames = moment.get("frames", 8)
         is_hero = bool(moment.get("is_hero", idx == total_moments - 1))
@@ -440,8 +473,22 @@ def compile_to_sakuga_Fluid_stack(
             a_move_words = a_ov_prefix + _format_card_text(a_card["caption_words"], fighter_a)
             a_limbs_str = _format_structured_limbs(a_card, fighter_a)
             a_y = SUPPORT_Y_HEIGHT.get(a_card["post"]["support"], 0.84)
-            a_ws = a_act.get("weight_split", a_card.get("weight_split", [50, 50])) if a_act else a_card.get("weight_split", [50, 50])
+            a_ws = list(
+                a_act.get("weight_split", a_card.get("weight_split", [50, 50]))
+                if a_act
+                else a_card.get("weight_split", [50, 50])
+            )
             a_com = a_act.get("com_position", a_card.get("com_position", "centered")) if a_act else a_card.get("com_position", "centered")
+            if prev_a_lead is not None and (not a_act or "weight_split" not in a_act):
+                same_dominant_foot = (a_ws[0] > 55 and prev_a_lead > 55) or (a_ws[0] < 45 and prev_a_lead < 45)
+                if a_ws[0] == prev_a_lead or same_dominant_foot:
+                    # Enforce beat-to-beat weight transfer so the base shifts every beat
+                    a_ws = [a_ws[1], a_ws[0]]
+                    if a_com == "over_lead_foot":
+                        a_com = "over_rear_foot"
+                    elif a_com == "over_rear_foot":
+                        a_com = "over_lead_foot"
+            prev_a_lead = a_ws[0]
             a_easing = a_act.get("easing_curve", a_card.get("easing_curve", "explosive_snap_hold_recoil")) if a_act else a_card.get("easing_curve", "explosive_snap_hold_recoil")
             a_impulse = int(a_act.get("impulse_tier", a_card.get("impulse_tier", 1))) if a_act else int(a_card.get("impulse_tier", 1))
             if is_hero and a_impulse >= 2:
@@ -548,8 +595,21 @@ def compile_to_sakuga_Fluid_stack(
             b_move_words = b_ov_prefix + _format_card_text(b_card["caption_words"], fighter_b)
             b_limbs_str = _format_structured_limbs(b_card, fighter_b)
             b_y = SUPPORT_Y_HEIGHT.get(b_card["post"]["support"], 0.96)
-            b_ws = b_act.get("weight_split", b_card.get("weight_split", [50, 50])) if b_act else b_card.get("weight_split", [50, 50])
+            b_ws = list(
+                b_act.get("weight_split", b_card.get("weight_split", [50, 50]))
+                if b_act
+                else b_card.get("weight_split", [50, 50])
+            )
             b_com = b_act.get("com_position", b_card.get("com_position", "centered")) if b_act else b_card.get("com_position", "centered")
+            if prev_b_lead is not None and (not b_act or "weight_split" not in b_act):
+                same_dominant_b = (b_ws[0] > 55 and prev_b_lead > 55) or (b_ws[0] < 45 and prev_b_lead < 45)
+                if b_ws[0] == prev_b_lead or same_dominant_b:
+                    b_ws = [b_ws[1], b_ws[0]]
+                    if b_com == "over_lead_foot":
+                        b_com = "over_rear_foot"
+                    elif b_com == "over_rear_foot":
+                        b_com = "over_lead_foot"
+            prev_b_lead = b_ws[0]
             b_easing = b_act.get("easing_curve", b_card.get("easing_curve", "sudden_jolt_settle")) if b_act else b_card.get("easing_curve", "sudden_jolt_settle")
             b_impulse = int(b_act.get("impulse_tier", b_card.get("impulse_tier", 1))) if b_act else int(b_card.get("impulse_tier", 1))
             if is_hero and b_impulse >= 2:
