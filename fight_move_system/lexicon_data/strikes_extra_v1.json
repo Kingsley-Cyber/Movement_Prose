@@ -1,0 +1,165 @@
+{
+  "meta": {
+    "pack": "strikes_extra_v1",
+    "description": "Kick/knee strike cards (roundhouse, knee) carrying kinetic chains, kept out of the boxing pack so pure-boxing clips can never pull them in."
+  },
+  "cards": [
+    {
+      "id": "roundhouse_kick",
+      "class": "STRIKE.ARC_HORIZ",
+      "aliases": [
+        "roundhouse kick",
+        "turning roundhouse kick",
+        "high roundhouse"
+      ],
+      "caption_words": "whips his rear shin in a flat horizontal arc across the opponent's ribs",
+      "limb": "rear_leg",
+      "hinge": "hip_whip",
+      "path": "arc_horizontal",
+      "level": "mid",
+      "contact": "strike",
+      "chain": "{lead_leg} foot pivots inward > hips whip around the axis > torso turns through the arc > {rear_leg} shin swings level > {rear_leg} shin lands on the ribs",
+      "chain_frames": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pre": {
+        "support": [
+          "standing"
+        ],
+        "coil": [
+          "neutral",
+          "loaded_rear",
+          "loaded_lead"
+        ]
+      },
+      "post": {
+        "support": "standing",
+        "coil": "loaded_lead",
+        "range_delta": "open_one"
+      },
+      "partner_pre": {
+        "support": [
+          "standing",
+          "crouched"
+        ],
+        "range": [
+          "kick",
+          "punch"
+        ]
+      },
+      "partner_reaction_classes": [
+        "IMPACT.REACTION",
+        "BLOCK.PASSIVE",
+        "BLOCK.ACTIVE",
+        "EVADE.LEVEL"
+      ],
+      "force_local": "arc_rear_to_lead",
+      "off_limbs": {
+        "other_arm": "{lead_hand} fist tucked high beside the jaw as a counterweight, both arms clearly separate from the torso",
+        "lead_leg": "{lead_leg} foot pivoting inward as the standing post",
+        "rear_leg": "{rear_leg} shin whipping level across the ribs with the knee slightly bent"
+      },
+      "regimes": [
+        "standup_striking"
+      ],
+      "styles": [
+        "muay_thai",
+        "mma",
+        "baki",
+        "freestyle_sakuga"
+      ],
+      "bleed_tier": 2,
+      "effort": {
+        "weight": "strong",
+        "time": "sudden",
+        "space": "direct",
+        "flow": "bound"
+      },
+      "probe": {}
+    },
+    {
+      "id": "knee_strike",
+      "class": "STRIKE.ARC_VERT",
+      "aliases": [
+        "knee strike",
+        "knee to the ribs",
+        "knee smash"
+      ],
+      "caption_words": "drives his rear knee upward into the opponent's ribs while pulling the neck down",
+      "limb": "rear_knee",
+      "hinge": "knee_drive",
+      "path": "arc_vertical",
+      "level": "mid",
+      "contact": "strike",
+      "chain": "{lead_leg} foot plants forward > hips drive upward > {lead_side} shoulder pulls down > {rear_leg} knee rises > knee lands on the ribs",
+      "chain_frames": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "pre": {
+        "support": [
+          "standing",
+          "clinched"
+        ],
+        "coil": [
+          "neutral",
+          "loaded_rear",
+          "loaded_lead"
+        ]
+      },
+      "post": {
+        "support": "standing",
+        "coil": "loaded_rear",
+        "range_delta": "same"
+      },
+      "partner_pre": {
+        "support": [
+          "standing",
+          "crouched",
+          "clinched"
+        ],
+        "range": [
+          "pocket",
+          "clinch",
+          "punch"
+        ]
+      },
+      "partner_reaction_classes": [
+        "IMPACT.REACTION",
+        "BLOCK.PASSIVE",
+        "GRAPPLE.MAINTAIN"
+      ],
+      "force_local": "upward",
+      "off_limbs": {
+        "other_arm": "{lead_hand} forearm framing down on the opponent's collarbone to pull him into the knee, both arms clearly separate from the torso",
+        "lead_leg": "{lead_leg} foot planted forward as the base",
+        "rear_leg": "{rear_leg} knee driving upward with the heel tucked under the thigh"
+      },
+      "regimes": [
+        "standup_striking",
+        "clinch"
+      ],
+      "styles": [
+        "muay_thai",
+        "mma",
+        "baki",
+        "freestyle_sakuga"
+      ],
+      "bleed_tier": 1,
+      "effort": {
+        "weight": "strong",
+        "time": "sudden",
+        "space": "direct",
+        "flow": "bound"
+      },
+      "probe": {}
+    }
+  ]
+}

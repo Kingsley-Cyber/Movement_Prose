@@ -28,7 +28,9 @@ Movement_Prose/
 │       ├── variation_1_baki_grounded_standup_war.json         # Variation #1 (style: grounded_striker_boxer_baki): 100% Grounded Baki Stand-Up War
 │       ├── variation_1_baki_grounded_standup_war_fluid_stack.txt
 │       ├── variation_2_multidomain_combative_showcase.json    # Variation #2 (style: acrobatic_multidomain_freestyle): 4-Domain Acrobatic Showcase
-│       └── variation_2_multidomain_combative_showcase_fluid_stack.txt
+│       ├── variation_2_multidomain_combative_showcase_fluid_stack.txt
+│       ├── variation_3_eight_limbs_muay_thai_mma_war.json     # Variation #3 (style: ufc_mma_octagon): Compiled via Fight Move System v2 (6 Weapons, Rooftop Helipad Cage War)
+│       └── variation_3_eight_limbs_muay_thai_mma_war_fluid_stack.txt
 ├── references/
 │   └── sakuga_prompt_schema_sop.md                            # Master SOP, Empirical Decisions & 2-Layer Fluid Stack Breakdown
 └── _archive_rd_history_do_not_copy/                           # ⚠️ HISTORICAL R&D LOGS ONLY (Contains deprecated Euler/Quaternion/Bloat tests — do not copy)

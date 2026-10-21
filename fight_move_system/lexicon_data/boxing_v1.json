@@ -14,6 +14,8 @@
       "path": "straight",
       "level": "high",
       "contact": "strike",
+      "chain": "{lead_leg} heel pivots out > hips snap square > {lead_side} shoulder drives forward > {lead_hand} arm extends > {lead_hand} fist lands on the chin",
+      "chain_frames": [0, 2, 3, 4, 5],
       "pre": {
         "support": ["standing"],
         "coil": ["neutral", "loaded_rear", "recoiling_back"]
@@ -50,6 +52,8 @@
       "path": "straight",
       "level": "mid",
       "contact": "strike",
+      "chain": "{lead_leg} heel pivots out > hips drop low > {lead_side} shoulder drives forward > {lead_hand} arm extends > {lead_hand} fist sinks into the solar plexus",
+      "chain_frames": [0, 2, 3, 4, 5],
       "pre": {
         "support": ["standing", "crouched"],
         "coil": ["neutral", "loaded_rear", "level_low"]
@@ -86,6 +90,8 @@
       "path": "straight",
       "level": "high",
       "contact": "strike",
+      "chain": "{rear_leg} heel pivots out > hips snap square > {rear_side} shoulder drives forward > {rear_hand} arm extends > {rear_hand} fist lands on the jaw",
+      "chain_frames": [0, 2, 3, 4, 5],
       "pre": {
         "support": ["standing"],
         "coil": ["neutral", "loaded_lead", "loaded_rear"]
@@ -122,9 +128,11 @@
       "path": "straight",
       "level": "mid",
       "contact": "strike",
+      "chain": "{rear_leg} heel pivots out > hips sink low > {rear_side} shoulder drives forward > {rear_hand} arm extends > {rear_hand} fist digs into the ribs",
+      "chain_frames": [0, 2, 3, 4, 5],
       "pre": {
         "support": ["standing", "crouched"],
-        "coil": ["neutral", "loaded_lead", "level_low"]
+        "coil": ["neutral", "loaded_lead", "loaded_rear", "level_low"]
       },
       "post": {
         "support": "standing",
@@ -158,6 +166,8 @@
       "path": "arc_horizontal",
       "level": "high",
       "contact": "strike",
+      "chain": "{lead_leg} heel pivots out > hips whip square > {lead_side} shoulder drives forward > {lead_hand} fist lands on the jaw",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing"],
         "coil": ["loaded_lead", "loaded_rear", "neutral"]
@@ -194,6 +204,8 @@
       "path": "arc_horizontal",
       "level": "mid",
       "contact": "strike",
+      "chain": "{lead_leg} heel pivots out > hips dip low > {lead_side} shoulder drives forward > {lead_hand} fist digs into the ribs",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing", "crouched"],
         "coil": ["loaded_lead", "loaded_rear", "level_low"]
@@ -230,6 +242,8 @@
       "path": "arc_horizontal",
       "level": "high",
       "contact": "strike",
+      "chain": "{rear_leg} heel pivots out > hips whip square > {rear_side} shoulder drives forward > {rear_hand} fist lands on the temple",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing"],
         "coil": ["loaded_rear", "loaded_lead", "neutral"]
@@ -266,6 +280,8 @@
       "path": "arc_vertical",
       "level": "high",
       "contact": "strike",
+      "chain": "{lead_leg} heel plants > hips drive upward > {lead_side} shoulder rises > {lead_hand} arm extends > {lead_hand} fist lands under the chin",
+      "chain_frames": [0, 2, 3, 4, 5],
       "pre": {
         "support": ["standing", "crouched"],
         "coil": ["loaded_lead", "level_low"]
@@ -302,6 +318,8 @@
       "path": "arc_vertical",
       "level": "high",
       "contact": "strike",
+      "chain": "{rear_leg} heel plants > hips surge upward > {rear_side} shoulder rises > {rear_hand} fist lands under the chin",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing", "crouched"],
         "coil": ["loaded_rear", "loaded_lead", "level_low"]
@@ -338,6 +356,8 @@
       "path": "downward",
       "level": "high",
       "contact": "strike",
+      "chain": "{rear_leg} heel pivots out > hips pitch forward > {rear_side} shoulder turns over > {rear_hand} arm arcs down > {rear_hand} fist lands on the temple",
+      "chain_frames": [0, 2, 3, 4, 5],
       "pre": {
         "support": ["standing"],
         "coil": ["neutral", "loaded_rear", "loaded_lead"]
@@ -374,6 +394,8 @@
       "path": "none",
       "level": "high",
       "contact": "evade",
+      "chain": "{lead_leg} heel pivots out > hips turn square > torso leans outside > head slips off the centerline",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back"]
@@ -410,6 +432,8 @@
       "path": "none",
       "level": "high",
       "contact": "evade",
+      "chain": "{lead_leg} heel pivots in > hips turn square > {rear_side} shoulder coils in > head slips inside the line",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back"]
@@ -446,6 +470,8 @@
       "path": "arc_horizontal",
       "level": "high",
       "contact": "evade",
+      "chain": "both feet pivot > knees dip low > hips roll under the swing > torso rises clear of the arc",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing", "crouched"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "level_low", "recoiling_back"]
@@ -482,6 +508,8 @@
       "path": "downward",
       "level": "high",
       "contact": "evade",
+      "chain": "both feet plant wide > knees bend deep > hips drop below the swing > head clears the swinging arc",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing"],
         "coil": ["neutral", "loaded_lead", "loaded_rear"]
@@ -518,6 +546,8 @@
       "path": "arc_horizontal",
       "level": "low",
       "contact": "evade",
+      "chain": "{lead_leg} foot pivots out > {lead_leg} ball of the foot glides round > hips turn square > hips settle on the fresh angle",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back"]
@@ -554,6 +584,8 @@
       "path": "none",
       "level": "high",
       "contact": "block",
+      "chain": "both feet plant wide > hips sink low > torso rolls forward > both forearms lock across the face",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing", "crouched"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back", "level_low"]
@@ -590,6 +622,8 @@
       "path": "none",
       "level": "mid",
       "contact": "block",
+      "chain": "both feet plant wide > hips dip square > torso curls over > {lead_elbow} elbow drops to the ribs",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing", "crouched"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back"]
@@ -626,6 +660,8 @@
       "path": "arc_horizontal",
       "level": "high",
       "contact": "block",
+      "chain": "{lead_leg} foot plants forward > hips turn square > torso opens slightly > {lead_hand} palm meets the incoming wrist",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back"]
@@ -662,6 +698,8 @@
       "path": "straight",
       "level": "low",
       "contact": "none",
+      "chain": "{lead_leg} foot lifts > {lead_leg} foot plants inside range > hips slide forward > torso settles over the lead knee",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back"]
@@ -698,6 +736,8 @@
       "path": "straight",
       "level": "low",
       "contact": "none",
+      "chain": "{lead_leg} foot pushes off the canvas > {rear_leg} foot plants behind > hips rock back > torso settles over the rear foot",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back", "overcommitted_forward"]
@@ -734,6 +774,8 @@
       "path": "none",
       "level": "high",
       "contact": "none",
+      "chain": "both feet settle flat > knees flex loose > hips square over the feet > both fists settle at the cheekbones",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing", "crouched"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back", "overcommitted_forward", "level_low"]
@@ -770,6 +812,8 @@
       "path": "straight",
       "level": "high",
       "contact": "none",
+      "chain": "heels dig into the canvas > hips jolt backward > spine arches back > head snaps clear over the shoulders",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing", "crouched"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back", "overcommitted_forward", "level_low"]
@@ -806,6 +850,8 @@
       "path": "arc_horizontal",
       "level": "high",
       "contact": "none",
+      "chain": "{lead_leg} heel twists outward > hips turn with the swing > torso follows the arc > head whips sideways off the line",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing", "crouched"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back", "overcommitted_forward", "level_low"]
@@ -842,6 +888,8 @@
       "path": "arc_vertical",
       "level": "high",
       "contact": "none",
+      "chain": "heels lift under the jolt > hips rise onto the balls of the feet > spine arches back > head snaps up off the chin line",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing", "crouched", "clinched"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back", "overcommitted_forward", "level_low"]
@@ -878,6 +926,8 @@
       "path": "straight",
       "level": "mid",
       "contact": "none",
+      "chain": "both feet plant flat > knees buckle inward > hips fold forward > torso drops over the guarding elbows",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing", "crouched", "clinched"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back", "overcommitted_forward", "level_low"]
@@ -914,6 +964,8 @@
       "path": "downward",
       "level": "high",
       "contact": "none",
+      "chain": "knees buckle inward > hips drop backward > torso tips over the heels > back slams flat on the canvas",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing", "crouched"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back", "overcommitted_forward", "level_low"]
@@ -950,6 +1002,8 @@
       "path": "ground_arc",
       "level": "low",
       "contact": "strike",
+      "chain": "{lead_leg} foot pivots in place > hips turn through the low arc > torso leans low over the sweep > {rear_leg} heel cuts the ankle",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["crouched", "standing"],
         "coil": ["level_low", "loaded_rear"]
@@ -986,6 +1040,8 @@
       "path": "full_rotation",
       "level": "mid",
       "contact": "strike",
+      "chain": "{lead_leg} foot pivots on the spot > hips spin the body around > torso turns level through the arc > {rear_leg} heel drives straight back > {rear_leg} heel lands on the ribs",
+      "chain_frames": [0, 2, 3, 4, 5],
       "pre": {
         "support": ["standing"],
         "coil": ["spinning_cw", "spinning_ccw", "loaded_rear"]
@@ -1022,6 +1078,8 @@
       "path": "straight",
       "level": "high",
       "contact": "grapple",
+      "chain": "{lead_leg} foot plants inside the stance > hips square forward > torso leans in > {lead_hand} palm locks behind the neck",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing"],
         "coil": ["neutral", "loaded_lead", "loaded_rear"]
@@ -1042,7 +1100,7 @@
         "lead_leg": "{lead_leg} foot stepped deep inside the stance",
         "rear_leg": "{rear_leg} leg braced wide for clinch leverage"
       },
-      "regimes": ["transition", "clinch"],
+      "regimes": ["standup_striking", "transition", "clinch"],
       "styles": ["muay_thai", "mma", "baki", "freestyle_sakuga"],
       "bleed_tier": 1,
       "effort": {"weight": "strong", "time": "sudden", "space": "direct", "flow": "bound"},
@@ -1058,6 +1116,8 @@
       "path": "none",
       "level": "high",
       "contact": "none",
+      "chain": "both feet plant wide > hips brace low > torso pulls forward > both hands lock on the biceps",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing", "crouched", "clinched"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back", "level_low"]
@@ -1078,7 +1138,7 @@
         "lead_leg": "{lead_leg} foot widened for base",
         "rear_leg": "{rear_leg} leg bracing against the pull"
       },
-      "regimes": ["transition", "clinch"],
+      "regimes": ["standup_striking", "transition", "clinch"],
       "styles": ["boxing", "muay_thai", "mma", "baki", "freestyle_sakuga"],
       "bleed_tier": 1,
       "effort": {"weight": "strong", "time": "sustained", "space": "direct", "flow": "bound"},

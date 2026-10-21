@@ -27,6 +27,16 @@ class TestFightMoveSystem(unittest.TestCase):
         with open(fixture_path, "r", encoding="utf-8") as f:
             cls.valid_10_beat = json.load(f)
 
+        var3_path = (
+            Path(__file__).parent.parent
+            / "fight_move_system"
+            / "fixtures"
+            / "pass"
+            / "variation_3_eight_limbs_muay_thai_mma_war_sheet.json"
+        )
+        with open(var3_path, "r", encoding="utf-8") as f:
+            cls.valid_var3 = json.load(f)
+
     def _base_clip(self) -> dict:
         return {
             "regime": "standup_striking",
@@ -280,6 +290,16 @@ class TestFightMoveSystem(unittest.TestCase):
         layer2_json = json.loads(layer2_str)
         self.assertEqual(layer2_json["schema"], "SAKUGA-MLLM-3.1-CAUSAL")
         self.assertEqual(layer2_json["duration"], 10.0)
+
+    def test_variation_3_eight_limbs_muay_thai_mma_determinism(self) -> None:
+        res = validate_clip(self.valid_var3, lexicon=self.lexicon)
+        self.assertEqual(res.errors, [])
+        self.assertEqual(res.warnings, [])
+        p1, r1 = compile_clip_prompt(self.valid_var3, lexicon=self.lexicon)
+        p2, r2 = compile_clip_prompt(self.valid_var3, lexicon=self.lexicon)
+        self.assertTrue(r1.ok)
+        self.assertTrue(r2.ok)
+        self.assertEqual(p1, p2)
 
     def test_composer_chains_fighter_and_dyad_states_across_clips(self) -> None:
         sheet = {

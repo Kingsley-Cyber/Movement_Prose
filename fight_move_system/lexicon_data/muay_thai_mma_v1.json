@@ -1,0 +1,332 @@
+{
+  "meta": {
+    "pack": "muay_thai_mma_v1",
+    "description": "Eight-limbs Muay Thai & MMA move cards (calf kicks, teeps, slashing/rising elbows, clinch knees, clinch shove-breaks) for high-intensity multi-weapon standup wars."
+  },
+  "cards": [
+    {
+      "id": "low_calf_kick",
+      "class": "STRIKE.ARC_HORIZ",
+      "aliases": ["calf kick", "low leg kick", "outside low kick"],
+      "caption_words": "steps off-line on his {lead_leg} foot and whips a baseball-bat {rear_leg} shin horizontally into the outside of the lead calf",
+      "limb": "rear_leg",
+      "hinge": "hip_whip",
+      "path": "arc_horizontal",
+      "level": "low",
+      "contact": "strike",
+      "pre": {
+        "support": ["standing"],
+        "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back"]
+      },
+      "post": {
+        "support": "standing",
+        "coil": "loaded_rear",
+        "range_delta": "same"
+      },
+      "partner_pre": {
+        "support": ["standing", "crouched"],
+        "range": ["kick", "punch"]
+      },
+      "partner_reaction_classes": ["IMPACT.REACTION", "BLOCK.ACTIVE"],
+      "force_local": "arc_rear_to_lead",
+      "off_limbs": {
+        "other_arm": "{lead_hand} hand held high at the brow while the {rear_hand} arm swings down-back as a counterbalance, both arms separate from the torso",
+        "lead_leg": "{lead_leg} foot pivoted outward as the standing post",
+        "rear_leg": "{rear_leg} shin turning over horizontally into the calf"
+      },
+      "regimes": ["standup_striking"],
+      "styles": ["muay_thai", "mma", "baki", "freestyle_sakuga"],
+      "bleed_tier": 2,
+      "effort": {"weight": "strong", "time": "sudden", "space": "direct", "flow": "bound"},
+      "probe": {}
+    },
+    {
+      "id": "lead_leg_buckle",
+      "class": "IMPACT.REACTION",
+      "aliases": ["calf buckled", "leg chopped"],
+      "caption_words": "has his {lead_leg} calf chopped sideways out from under him, his knee buckling inward as he catches his balance",
+      "limb": "lead_leg",
+      "hinge": "knee_drive",
+      "path": "arc_horizontal",
+      "level": "low",
+      "contact": "none",
+      "pre": {
+        "support": ["standing", "crouched"],
+        "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back", "level_low"]
+      },
+      "post": {
+        "support": "standing",
+        "coil": "loaded_lead",
+        "range_delta": "same"
+      },
+      "partner_pre": {
+        "support": ["standing"],
+        "range": ["kick", "punch"]
+      },
+      "partner_reaction_classes": [],
+      "force_local": "arc_rear_to_lead",
+      "off_limbs": {
+        "other_arm": "both arms flaring slightly wide to keep balance while protecting the jaw, clearly separate from the torso",
+        "lead_leg": "{lead_leg} knee dipping sharply inward from the calf shock",
+        "rear_leg": "{rear_leg} foot planted wide to stop the stumble"
+      },
+      "regimes": ["standup_striking"],
+      "styles": ["boxing", "muay_thai", "mma", "baki", "freestyle_sakuga"],
+      "bleed_tier": 1,
+      "effort": {"weight": "strong", "time": "sudden", "space": "direct", "flow": "bound"},
+      "probe": {}
+    },
+    {
+      "id": "shin_check_block",
+      "class": "BLOCK.ACTIVE",
+      "aliases": ["shin check", "leg check"],
+      "caption_words": "lifts his {lead_leg} knee high with the shin angled outward to check the incoming low kick bone-on-bone",
+      "limb": "lead_leg",
+      "hinge": "knee_drive",
+      "path": "arc_vertical",
+      "level": "low",
+      "contact": "block",
+      "pre": {
+        "support": ["standing"],
+        "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back"]
+      },
+      "post": {
+        "support": "standing",
+        "coil": "loaded_lead",
+        "range_delta": "same"
+      },
+      "partner_pre": {
+        "support": ["standing"],
+        "range": ["kick", "punch"]
+      },
+      "partner_reaction_classes": [],
+      "force_local": "none",
+      "off_limbs": {
+        "other_arm": "both forearms held high in a tight Thai guard with the lead elbow touching the raised knee, both arms distinct",
+        "lead_leg": "{lead_leg} shin raised vertically as a solid shield",
+        "rear_leg": "{rear_leg} pillar leg locked firm on the canvas"
+      },
+      "regimes": ["standup_striking"],
+      "styles": ["muay_thai", "mma", "baki", "freestyle_sakuga"],
+      "bleed_tier": 1,
+      "effort": {"weight": "strong", "time": "sudden", "space": "direct", "flow": "bound"},
+      "probe": {}
+    },
+    {
+      "id": "slashing_rear_elbow",
+      "class": "STRIKE.ARC_HORIZ",
+      "aliases": ["slashing elbow", "horizontal elbow", "muay thai elbow"],
+      "caption_words": "steps deep into the pocket and whips a razor-sharp horizontal {rear_hand} elbow point across the brow and cheekbone",
+      "limb": "rear_elbow",
+      "hinge": "elbow_flex",
+      "path": "arc_horizontal",
+      "level": "high",
+      "contact": "strike",
+      "pre": {
+        "support": ["standing"],
+        "coil": ["loaded_rear", "loaded_lead", "neutral"]
+      },
+      "post": {
+        "support": "standing",
+        "coil": "loaded_lead",
+        "range_delta": "same"
+      },
+      "partner_pre": {
+        "support": ["standing", "crouched"],
+        "range": ["pocket", "punch"]
+      },
+      "partner_reaction_classes": ["IMPACT.REACTION", "BLOCK.PASSIVE", "EVADE.SLIP", "EVADE.LEVEL"],
+      "force_local": "arc_rear_to_lead",
+      "off_limbs": {
+        "other_arm": "{lead_hand} palm checking the opponent's lead shoulder, both arms clearly separate from the torso",
+        "lead_leg": "{lead_leg} foot planted deep inside the pocket",
+        "rear_leg": "{rear_leg} heel pivoting hard to drive the elbow point through"
+      },
+      "regimes": ["standup_striking", "clinch"],
+      "styles": ["muay_thai", "mma", "baki", "freestyle_sakuga"],
+      "bleed_tier": 2,
+      "effort": {"weight": "strong", "time": "sudden", "space": "direct", "flow": "bound"},
+      "probe": {}
+    },
+    {
+      "id": "clinch_rising_knee",
+      "class": "STRIKE.ARC_VERT",
+      "aliases": ["clinch knee", "standing knee", "plum knee"],
+      "caption_words": "pulls down hard on the collar tie and spears his bent {rear_leg} kneecap vertically upward into the solar plexus while standing on his {lead_leg} pillar leg",
+      "limb": "rear_knee",
+      "hinge": "knee_drive",
+      "path": "arc_vertical",
+      "level": "mid",
+      "contact": "strike",
+      "pre": {
+        "support": ["clinched"],
+        "coil": ["loaded_rear", "loaded_lead", "neutral"]
+      },
+      "post": {
+        "support": "clinched",
+        "coil": "loaded_rear",
+        "range_delta": "same"
+      },
+      "partner_pre": {
+        "support": ["clinched"],
+        "range": ["clinch"]
+      },
+      "partner_reaction_classes": ["IMPACT.REACTION", "BLOCK.PASSIVE"],
+      "force_local": "forward_straight",
+      "off_limbs": {
+        "other_arm": "both hands locked behind the neck pulling the posture down, both arms clearly separate from the torso",
+        "lead_leg": "{lead_leg} pillar leg planted vertical on the canvas",
+        "rear_leg": "{rear_leg} knee folded tightly driving upward into the ribs"
+      },
+      "regimes": ["clinch", "standup_striking"],
+      "styles": ["muay_thai", "mma", "baki", "freestyle_sakuga"],
+      "bleed_tier": 2,
+      "effort": {"weight": "strong", "time": "sudden", "space": "direct", "flow": "bound"},
+      "probe": {}
+    },
+    {
+      "id": "clinch_rib_fold",
+      "class": "IMPACT.REACTION",
+      "aliases": ["clinch knee reaction", "clinch body fold"],
+      "caption_words": "jackknifes forward at the waist inside the clinch as the knee buries deep into his solar plexus",
+      "limb": "hips",
+      "hinge": "spine_arch",
+      "path": "straight",
+      "level": "mid",
+      "contact": "none",
+      "pre": {
+        "support": ["clinched"],
+        "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back", "level_low"]
+      },
+      "post": {
+        "support": "clinched",
+        "coil": "level_low",
+        "range_delta": "same"
+      },
+      "partner_pre": {
+        "support": ["clinched"],
+        "range": ["clinch"]
+      },
+      "partner_reaction_classes": [],
+      "force_local": "forward_straight",
+      "off_limbs": {
+        "other_arm": "both arms gripping outside the opponent's shoulders as his midsection folds, clearly separate from the torso",
+        "lead_leg": "{lead_leg} foot rising onto the toes from the upward knee impact",
+        "rear_leg": "{rear_leg} leg bracing back to stay standing"
+      },
+      "regimes": ["clinch", "standup_striking"],
+      "styles": ["boxing", "muay_thai", "mma", "baki", "freestyle_sakuga"],
+      "bleed_tier": 1,
+      "effort": {"weight": "strong", "time": "sudden", "space": "direct", "flow": "bound"},
+      "probe": {}
+    },
+    {
+      "id": "two_hand_clinch_shove",
+      "class": "GRAPPLE.RELEASE",
+      "aliases": ["clinch shove", "shove off clinch"],
+      "caption_words": "plants both open palms flat against the chest and shoves violently forward to break the clinch and create striking space",
+      "limb": "both_hands",
+      "hinge": "shoulder_extension",
+      "path": "push",
+      "level": "mid",
+      "contact": "grapple",
+      "pre": {
+        "support": ["clinched"],
+        "coil": ["loaded_lead", "loaded_rear", "neutral", "level_low"]
+      },
+      "post": {
+        "support": "standing",
+        "coil": "loaded_rear",
+        "range_delta": "to_punch"
+      },
+      "partner_pre": {
+        "support": ["clinched"],
+        "range": ["clinch"]
+      },
+      "partner_reaction_classes": ["IMPACT.REACTION"],
+      "force_local": "forward_straight",
+      "off_limbs": {
+        "other_arm": "both arms fully extended forward pushing off the sternum, clearly separate from the torso",
+        "lead_leg": "{lead_leg} foot bracing firm against the floor",
+        "rear_leg": "{rear_leg} leg driving forward through the push"
+      },
+      "regimes": ["clinch", "transition", "standup_striking"],
+      "styles": ["muay_thai", "mma", "baki", "freestyle_sakuga"],
+      "bleed_tier": 1,
+      "effort": {"weight": "strong", "time": "sudden", "space": "direct", "flow": "bound"},
+      "probe": {}
+    },
+    {
+      "id": "shoved_back_react",
+      "class": "IMPACT.REACTION",
+      "aliases": ["shoved back", "pushed out of clinch"],
+      "caption_words": "is shoved backward out of the clinch to full arm's length, his heels skidding across the floor as he catches his balance",
+      "limb": "hips",
+      "hinge": "ankle_pivot",
+      "path": "straight",
+      "level": "mid",
+      "contact": "none",
+      "pre": {
+        "support": ["clinched"],
+        "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back", "level_low"]
+      },
+      "post": {
+        "support": "standing",
+        "coil": "recoiling_back",
+        "range_delta": "to_punch"
+      },
+      "partner_pre": {
+        "support": ["clinched"],
+        "range": ["clinch"]
+      },
+      "partner_reaction_classes": [],
+      "force_local": "forward_straight",
+      "off_limbs": {
+        "other_arm": "both arms spreading wide to recover balance before snapping back into guard, separate from the torso",
+        "lead_leg": "{lead_leg} heel skidding back across the floor",
+        "rear_leg": "{rear_leg} foot planting behind to stop the slide"
+      },
+      "regimes": ["clinch", "transition", "standup_striking"],
+      "styles": ["boxing", "muay_thai", "mma", "baki", "freestyle_sakuga"],
+      "bleed_tier": 1,
+      "effort": {"weight": "strong", "time": "sudden", "space": "direct", "flow": "bound"},
+      "probe": {}
+    },
+    {
+      "id": "teep_push_kick",
+      "class": "STRIKE.LINEAR",
+      "aliases": ["teep", "front push kick", "foot thrust"],
+      "caption_words": "chambers his {lead_leg} knee high and pistons the ball of his foot straight forward into the sternum",
+      "limb": "lead_leg",
+      "hinge": "knee_drive",
+      "path": "straight",
+      "level": "mid",
+      "contact": "strike",
+      "pre": {
+        "support": ["standing"],
+        "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back"]
+      },
+      "post": {
+        "support": "standing",
+        "coil": "loaded_rear",
+        "range_delta": "open_one"
+      },
+      "partner_pre": {
+        "support": ["standing", "crouched"],
+        "range": ["punch", "kick"]
+      },
+      "partner_reaction_classes": ["IMPACT.REACTION", "BLOCK.PASSIVE"],
+      "force_local": "forward_straight",
+      "off_limbs": {
+        "other_arm": "{lead_hand} hand swung down by the hip for leverage while {rear_hand} fist guards the cheek, both arms separate from the torso",
+        "lead_leg": "{lead_leg} leg extended straight forward into the chest",
+        "rear_leg": "{rear_leg} standing leg locked upright on the canvas"
+      },
+      "regimes": ["standup_striking"],
+      "styles": ["muay_thai", "mma", "baki", "freestyle_sakuga"],
+      "bleed_tier": 2,
+      "effort": {"weight": "strong", "time": "sudden", "space": "direct", "flow": "bound"},
+      "probe": {}
+    }
+  ]
+}
