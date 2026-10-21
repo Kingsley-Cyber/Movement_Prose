@@ -275,21 +275,19 @@ Every validator code `V01–V17` ships with at least one failing unit-test fixtu
 
 ---
 
-## 8. Wording Compiler (`compiler.py`)
+## 8. Wording Compiler (`compiler.py` — 2-Layer Unrolled Fluid Stack / `gold_master_6` Format)
 
-1. **Opening Identity, Style & Screen-Side Lock Sentence:**
-   - Emits a deterministic opening sentence locking visual style (`2D hand-drawn Sakuga anime` or `live-action`), camera 180-degree line, Fighter A on the left (physique + wardrobe + stance), and Fighter B on the right (physique + wardrobe + stance).
-2. **Stance-Resolved Concrete Limbs:**
-   - Replaces `{lead_hand}`, `{rear_hand}`, `{lead_leg}`, `{rear_leg}` with concrete `"left"` / `"right"` words based on each fighter's `stance` (`orthodox` vs. `southpaw`).
-3. **4-Limb Occupancy on Key Beats; Lean Text on Connective Beats:**
-   - **Key beats** (every landed/blocked strike, grapple attach/release, and clip finisher): prints the acting limb (`caption_words`), all remaining limbs (`off_limbs` — off-hand guard separate from torso + both legs), the natural range phrase (`dyad.range_band`), and the partner's coupled reaction in one cohesive sentence.
-   - **Connective beats** (footwork approach, circle, simple slip without strike): prints only the acting move and footwork support to keep prompt length tight and high-signal.
-4. **Sakuga Impact & Motion-Clarity Phrasing (No Digits):**
-   - On heavy contact beats, appends natural visual-clarity phrasing without numbers: e.g., *"briefly freezing on the moment of contact, a sharp motion smear trailing only the striking limb while both fighters' outlines stay crisp"*.
-5. **Time & Flow Connectors:**
-   - Uses natural causal/temporal transitions (*"In the opening exchange,"*, *"Riding that momentum,"*, *"At the exact same instant,"*, *"Without resetting his stance,"*, *"Uncoiling from the hip,"*).
-6. **Zero Forbidden Words (`V15` Gate):**
-   - Before returning the compiled prompt, runs the `V15` scanner over the final string to verify zero digits, zero metric abbreviations, zero unapproved aliases, and zero mentions of out-of-regime moves.
+1. **Canonical Output Format (`gold_master_6` 2-Layer Unrolled Fluid Stack):**
+   - Compiles validated beat sheets directly into the proven 3-section `gold_master_6` structure:
+     1. **Top Style, Entity & Spacing Header** (`10s anime fight clip, 24fps... STYLE: Pure 2D hand-drawn anime... ENTITY COUNT & OUTFIT LOCK...`)
+     2. **`=== LAYER 1: CONTINUOUS SUPPORT, FORCE-EVENT & PROP TIMELINE (Labanotation-as-Words) ===`** (`<seconds> <performer> (<frames>f): SUPPORT ... | L_arm:...; R_arm:... (both arms separate from the torso in silhouette); L_leg:...; R_leg:... | FE<N> <MOVE>: ...`)
+     3. **`=== LAYER 2: SAKUGA-MLLM-3.1-CAUSAL KINEMATIC & CAMERA SCENE GRAPH ===`** (Complete `SAKUGA-MLLM-3.1-CAUSAL` JSON scene graph with `A_beats`, `B_track`, `camera`, `anime`, and `rules` that passes `scripts/sakuga_compiler.py lint` with `0 errors, 0 warnings`).
+2. **Automatic Range-Band to 3D Coordinate Separation (Zero `0.2m` Body Merging):**
+   - Automatically maps `dyad.range_band` to exact z-separation (`punch = 0.80m`, `pocket = 0.65m`, `kick = 1.10m`, `clinch = 0.58m`) alongside natural reach words (`"one full arm's length (0.80m)"`, `"half an arm's length (0.65m)"`, `"one full leg's length (1.10m)"`).
+3. **Stance-Resolved Concrete Limbs & 4-Limb Occupancy:**
+   - Replaces `{lead_hand}`, `{rear_hand}`, `{lead_leg}`, `{rear_leg}` with concrete `"left"` / `"right"` words based on each fighter's `stance` (`orthodox` vs. `southpaw`), and formats every beat's `limbs` field as `L_arm:...; R_arm:... (both arms separate from the torso in silhouette); L_leg:...; R_leg:...`.
+4. **Zero Forbidden Words (`V15` Gate):**
+   - Scans the compiled output to verify zero franchise attack names, zero positive-prompt `"no <move>"` lists in Layer 1/Header, and zero mentions of out-of-regime/out-of-style move aliases.
 
 ---
 

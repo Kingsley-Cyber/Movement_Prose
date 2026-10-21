@@ -273,12 +273,13 @@ class TestFightMoveSystem(unittest.TestCase):
         self.assertTrue(res1.ok)
         self.assertTrue(res2.ok)
         self.assertEqual(prompt1, prompt2)
-        self.assertGreater(len(prompt1), 500)
-        # Verify zero digits in compiled prompt
-        self.assertIsNone(
-            __import__("re").search(r"\d", prompt1),
-            f"Compiled prompt unexpectedly contained a digit: {prompt1}",
-        )
+        self.assertIn("=== LAYER 1: CONTINUOUS SUPPORT, FORCE-EVENT & PROP TIMELINE (Labanotation-as-Words) ===", prompt1)
+        self.assertIn("=== LAYER 2: SAKUGA-MLLM-3.1-CAUSAL KINEMATIC & CAMERA SCENE GRAPH ===", prompt1)
+        # Verify Layer 2 JSON parses cleanly and has schema SAKUGA-MLLM-3.1-CAUSAL
+        layer2_str = prompt1.split("=== LAYER 2: SAKUGA-MLLM-3.1-CAUSAL KINEMATIC & CAMERA SCENE GRAPH ===")[1].strip()
+        layer2_json = json.loads(layer2_str)
+        self.assertEqual(layer2_json["schema"], "SAKUGA-MLLM-3.1-CAUSAL")
+        self.assertEqual(layer2_json["duration"], 10.0)
 
     def test_composer_chains_fighter_and_dyad_states_across_clips(self) -> None:
         sheet = {
