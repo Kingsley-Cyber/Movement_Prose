@@ -2119,7 +2119,7 @@
         "head snaps back",
         "chin rocked back"
       ],
-      "caption_words": "has his head snapped sharply backward by the impact while his heels dig in to stay upright",
+      "caption_words": "has his head snapped sharply backward by the impact while his heels dig in to stay upright, STAGGER: B jolts half a step backward on his heels, fighting to stay upright",
       "limb": "head",
       "hinge": "spine_arch",
       "path": "straight",
@@ -2192,7 +2192,7 @@
         30,
         70
       ],
-      "com_position": "over_rear_foot",
+      "com_position": "staggering_off_balance",
       "easing_curve": "sudden_jolt_settle",
       "spacing_phases": {
         "slow_in": [
@@ -2221,7 +2221,7 @@
         "head whips sideways",
         "jaw spun"
       ],
-      "caption_words": "has his jaw whipped violently sideways in the direction of the hook as sweat sprays from his brow",
+      "caption_words": "has his jaw whipped violently sideways in the direction of the hook as sweat sprays from his brow, STAGGER: B's lead foot twists under the torque as he stumbles sideways to catch his balance",
       "limb": "head",
       "hinge": "spine_arch",
       "path": "arc_horizontal",
@@ -2294,7 +2294,7 @@
         35,
         65
       ],
-      "com_position": "over_rear_foot",
+      "com_position": "staggering_off_balance",
       "easing_curve": "sudden_jolt_settle",
       "spacing_phases": {
         "slow_in": [
@@ -2323,7 +2323,7 @@
         "chin lifted",
         "head jolted upward"
       ],
-      "caption_words": "has his chin jolted sharply upward by the rising blow, lifting him onto his toes",
+      "caption_words": "has his chin jolted sharply upward by the rising blow, lifting him onto his toes, STAGGER: B's heels lift off the floor as his head snaps back",
       "limb": "head",
       "hinge": "spine_arch",
       "path": "arc_vertical",
@@ -2398,7 +2398,7 @@
         35,
         65
       ],
-      "com_position": "over_rear_foot",
+      "com_position": "staggering_off_balance",
       "easing_curve": "sudden_jolt_settle",
       "spacing_phases": {
         "slow_in": [
@@ -2427,7 +2427,7 @@
         "body fold",
         "ribs buckled"
       ],
-      "caption_words": "folds forward at the waist with a sharp exhale as the blow sinks into his ribs",
+      "caption_words": "folds forward at the waist with a sharp exhale as the blow sinks into his ribs, STAGGER: B's knees buckle inward as he stumbles back a step clutching his ribs",
       "limb": "hips",
       "hinge": "spine_arch",
       "path": "straight",
@@ -2503,7 +2503,7 @@
         60,
         40
       ],
-      "com_position": "over_lead_foot",
+      "com_position": "staggering_off_balance",
       "easing_curve": "sudden_jolt_settle",
       "spacing_phases": {
         "slow_in": [

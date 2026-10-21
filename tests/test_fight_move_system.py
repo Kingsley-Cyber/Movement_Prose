@@ -443,9 +443,8 @@ class TestFightMoveSystem(unittest.TestCase):
             "left heel pivots out > hips snap square > left shoulder drives forward > "
             "left arm extends > left fist lands on the chin"
         )
-        self.assertIn(f"CHAIN: {jab_chain}", prompt)
         self.assertIn(
-            f'"causal":"C02: requires C01_prev_state (weight loaded on rear foot, hips coiled back) -> preserves loaded_lead_momentum (lead foot planted, screen-left, 65/35 weight split, CoG over_lead_foot) -> chain: {jab_chain} -> causes C02_jab (B lead palm parry, A center of mass stacked over lead foot)"',
+            f'"causal":"C02: requires C01_prev_state -> preserves loaded_lead_momentum -> chain: {jab_chain} -> causes C02_jab"',
             prompt,
         )
 

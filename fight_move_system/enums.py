@@ -175,6 +175,7 @@ COM_POSITIONS: Set[str] = {
     "over_rear_foot",
     "shifted_inside",
     "shifted_outside",
+    "staggering_off_balance",
     "outside_support_falling",
     "airborne_trajectory",
 }

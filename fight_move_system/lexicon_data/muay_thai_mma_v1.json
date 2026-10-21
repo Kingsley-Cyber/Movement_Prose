@@ -112,7 +112,7 @@
         "calf buckled",
         "leg chopped"
       ],
-      "caption_words": "has his {lead_leg} calf chopped sideways out from under him, his knee buckling inward as he catches his balance",
+      "caption_words": "has his {lead_leg} calf chopped sideways out from under him, his knee buckling inward as he catches his balance, STAGGER: B stumbles half a step to the left, arms flailing for balance",
       "limb": "lead_leg",
       "hinge": "knee_drive",
       "path": "arc_horizontal",
@@ -181,7 +181,7 @@
         25,
         75
       ],
-      "com_position": "over_rear_foot",
+      "com_position": "staggering_off_balance",
       "easing_curve": "sudden_jolt_settle",
       "spacing_phases": {
         "slow_in": [
@@ -507,7 +507,7 @@
         "clinch knee reaction",
         "clinch body fold"
       ],
-      "caption_words": "jackknifes forward at the waist inside the clinch as the knee buries deep into his solar plexus",
+      "caption_words": "jackknifes forward at the waist inside the clinch as the knee buries deep into his solar plexus, STAGGER: B rises onto his toes, gasping in agony as his ribs cave inward",
       "limb": "hips",
       "hinge": "spine_arch",
       "path": "straight",
@@ -575,7 +575,7 @@
         60,
         40
       ],
-      "com_position": "over_lead_foot",
+      "com_position": "staggering_off_balance",
       "easing_curve": "sudden_jolt_settle",
       "spacing_phases": {
         "slow_in": [
@@ -702,7 +702,7 @@
         "shoved back",
         "pushed out of clinch"
       ],
-      "caption_words": "is shoved backward out of the clinch to full arm's length, his heels skidding across the floor as he catches his balance",
+      "caption_words": "is shoved backward out of the clinch to full arm's length, his heels skidding across the floor as he catches his balance, STAGGER: B stumbles backward on his heels, arms spreading wide for balance",
       "limb": "hips",
       "hinge": "ankle_pivot",
       "path": "straight",
@@ -771,7 +771,7 @@
         25,
         75
       ],
-      "com_position": "over_rear_foot",
+      "com_position": "staggering_off_balance",
       "easing_curve": "sudden_jolt_settle",
       "spacing_phases": {
         "slow_in": [
