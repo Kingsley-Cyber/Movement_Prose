@@ -443,8 +443,9 @@ class TestFightMoveSystem(unittest.TestCase):
             "left heel pivots out > hips snap square > left shoulder drives forward > "
             "left arm extends > left fist lands on the chin"
         )
+        self.assertIn(f"CHAIN: {jab_chain}", prompt)
         self.assertIn(
-            f'"causal":"C02: requires C01_prev_state -> preserves loaded_lead_momentum -> chain: {jab_chain} -> causes C02_jab"',
+            f'"causal":"C02: requires C01_prev_state (weight loaded on rear foot, hips coiled back) -> preserves loaded_lead_momentum (lead foot planted, screen-left, 65/35 weight split, CoG over_lead_foot) -> chain: {jab_chain} -> causes C02_jab (B lead palm parry, A center of mass stacked over lead foot)"',
             prompt,
         )
 
@@ -479,6 +480,82 @@ class TestFightMoveSystem(unittest.TestCase):
         self.assertTrue(any("has 3 offsets for 4 links" in msg for _, msg in errs_count))
         errs_missing = validate_chain_frames(None, owner="t", link_count=4, required=True)
         self.assertTrue(any("missing 'chain_frames' frame offsets" in msg for _, msg in errs_missing))
+
+    # --- M6: Weight Split & CoG (V19), Camera Occlusion (V20), Spacing Curves (V21), Impulse Tier (V22) ---
+    def test_v19_weight_split_and_com_outside_support_check(self) -> None:
+        # Standing fighter with CoG outside_support_falling without knockdown/catch_step -> V19 error
+        clip = self._base_clip()
+        clip["moments"][0]["A"]["com_position"] = "outside_support_falling"
+        res = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V19", res.error_codes())
+
+        # With explicit catch_step=True recovery -> passes V19
+        clip["moments"][0]["A"]["catch_step"] = True
+        res_ok = validate_clip(clip, lexicon=self.lexicon)
+        self.assertNotIn("V19", res_ok.error_codes())
+
+        # Invalid weight_split not summing to 100 -> V19 error
+        clip_bad_ws = self._base_clip()
+        clip_bad_ws["moments"][0]["A"]["weight_split"] = [80, 40]
+        res_ws = validate_clip(clip_bad_ws, lexicon=self.lexicon)
+        self.assertIn("V19", res_ws.error_codes())
+
+    def test_v20_camera_angle_limb_occlusion_warning(self) -> None:
+        # worm_eye camera hides lead_leg/rear_leg/hips -> warns V20 on a low_calf_kick (rear_leg)
+        clip = self._base_clip()
+        clip["initial_range"] = "kick"
+        clip["fighters"]["A"]["style"] = "mma"
+        clip["fighters"]["B"]["style"] = "mma"
+        clip["moments"][0]["camera"] = "worm_eye_low_angle"
+        clip["moments"][0]["A"]["move"] = "low_calf_kick"
+        clip["moments"][0]["B"]["move"] = "lead_leg_buckle"
+        res = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V20", res.warning_codes())
+
+        # over_B_right_shoulder hides lead_hand -> warns V20 on a jab (lead_hand)
+        clip2 = self._base_clip()
+        clip2["moments"][0]["camera"] = "over_B_right_shoulder_tight"
+        res2 = validate_clip(clip2, lexicon=self.lexicon)
+        self.assertIn("V20", res2.warning_codes())
+
+    def test_v21_spacing_curves_and_phases_validation(self) -> None:
+        clip = self._base_clip()
+        clip["moments"][0]["A"]["easing_curve"] = "linear_robot_constant_speed"
+        res = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V21", res.error_codes())
+
+        clip2 = self._base_clip()
+        clip2["moments"][0]["A"]["spacing_phases"] = {
+            "slow_in": [0, 2],
+            "snap": [3, 5],  # non-contiguous gap between 2 and 3
+            "hold": [5, 7],
+            "ease_out": [7, 8],
+        }
+        res2 = validate_clip(clip2, lexicon=self.lexicon)
+        self.assertIn("V21", res2.error_codes())
+
+    def test_v22_impulse_tier_and_reaction_matching(self) -> None:
+        # Fail: light jab (impulse_tier=1) triggering tier-3 knockout_canvas_collapse on a non-hero beat
+        clip_over = self._base_clip()
+        clip_over["moments"][0]["A"]["move"] = "jab"
+        clip_over["moments"][0]["B"]["move"] = "knockout_canvas_collapse"
+        res_over = validate_clip(clip_over, lexicon=self.lexicon)
+        self.assertIn("V22", res_over.error_codes())
+
+        # Fail: heavy rear_overhand (impulse_tier=3) under-sold by tier-2 head_snap_back on a non-hero beat
+        clip_under = self._base_clip()
+        clip_under["fighters"]["A"]["coil"] = "loaded_rear"
+        clip_under["moments"][0]["frames"] = 9
+        clip_under["moments"][0]["A"]["move"] = "rear_overhand"
+        clip_under["moments"][0]["B"]["move"] = "head_snap_back"
+        res_under = validate_clip(clip_under, lexicon=self.lexicon)
+        self.assertIn("V22", res_under.error_codes())
+
+        # Pass: heavy rear_overhand paired with tier-3 knockout_canvas_collapse
+        clip_pass = copy.deepcopy(clip_under)
+        clip_pass["moments"][0]["B"]["move"] = "knockout_canvas_collapse"
+        res_pass = validate_clip(clip_pass, lexicon=self.lexicon)
+        self.assertNotIn("V22", res_pass.error_codes())
 
     # --- M4: Render Packet Generation ---
     def test_m4_render_packet_generation(self) -> None:

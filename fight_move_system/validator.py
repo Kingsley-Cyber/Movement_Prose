@@ -7,8 +7,8 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 
 from .chain import CHAIN_FRAME_KEY, CHAIN_KEY, validate_kinetic_chain
 from .dyad import DyadState
-from .enums import REGIMES
-from .lexicon import Lexicon
+from .enums import CAMERA_OCCLUSION_TABLE, COM_POSITIONS, EASING_CURVES, REGIMES
+from .lexicon import Lexicon, validate_spacing_phases
 from .state import FighterState
 
 
@@ -147,6 +147,9 @@ def validate_clip(
         # V18: kinetic chain for each beat — the per-beat override wins over the
         # card default; chain_frames offsets are validated here as internal timing
         # metadata and are never emitted into prompt text.
+        is_hero = bool(moment.get("is_hero", False))
+        cam_shot = str(moment.get("camera", "")).lower()
+
         for side_label, side_act, side_card in (("A", a_action, a_card), ("B", b_action, b_card)):
             if not side_act or not side_card:
                 continue
@@ -161,6 +164,58 @@ def validate_clip(
                     chain_frames=effective_frames,
                     require_frames=True,
                 )
+            )
+
+            # V19: Weight Split & Center of Mass (CoG) vs Support Base
+            ws = side_act.get("weight_split", side_card.get("weight_split"))
+            if (
+                not isinstance(ws, list)
+                or len(ws) != 2
+                or not all(isinstance(v, int) and not isinstance(v, bool) and 0 <= v <= 100 for v in ws)
+                or sum(ws) not in {0, 100}
+            ):
+                res.errors.append(
+                    (
+                        "V19",
+                        f"Moment {idx} Fighter {side_label} move '{side_card['id']}' invalid weight_split {ws} (must sum to 100 or 0 if airborne)",
+                    )
+                )
+            com = side_act.get("com_position", side_card.get("com_position"))
+            if com not in COM_POSITIONS:
+                res.errors.append(
+                    ("V19", f"Moment {idx} Fighter {side_label} move '{side_card['id']}' unknown com_position '{com}'")
+                )
+            elif com == "outside_support_falling":
+                post_sup = side_card["post"]["support"]
+                has_catch_step = bool(side_act.get("catch_step", False))
+                if post_sup not in {"supine", "prone", "kneeling", "airborne"} and not has_catch_step:
+                    res.errors.append(
+                        (
+                            "V19",
+                            f"Moment {idx} Fighter {side_label} move '{side_card['id']}' places CoG at 'outside_support_falling' while post.support='{post_sup}' without knockdown/fall or catch_step",
+                        )
+                    )
+
+            # V20: Camera Angle Visibility / Occlusion Check
+            if cam_shot:
+                for shot_key, occluded_limbs in CAMERA_OCCLUSION_TABLE.items():
+                    if shot_key.lower() in cam_shot and side_card["limb"] in occluded_limbs:
+                        res.warnings.append(
+                            (
+                                "V20",
+                                f"Moment {idx} camera '{moment.get('camera')}' risks occluding Fighter {side_label} active limb '{side_card['limb']}' on move '{side_card['id']}'",
+                            )
+                        )
+
+            # V21: Spacing Curves & Phase Windows
+            ec = side_act.get("easing_curve", side_card.get("easing_curve"))
+            if ec not in EASING_CURVES:
+                res.errors.append(
+                    ("V21", f"Moment {idx} Fighter {side_label} move '{side_card['id']}' unknown easing_curve '{ec}'")
+                )
+            sp = side_act.get("spacing_phases", side_card.get("spacing_phases"))
+            res.errors.extend(
+                validate_spacing_phases(sp, owner=f"Moment {idx} Fighter {side_label} move '{side_card['id']}'")
             )
 
         # Snapshot pre-supports before applying state changes
@@ -199,6 +254,7 @@ def validate_clip(
                 attack_card=a_card,
                 reaction_card=b_card,
                 reaction_beat=b_action,
+                is_hero=is_hero,
             )
             res.errors.extend(c_errs)
 
@@ -213,6 +269,7 @@ def validate_clip(
                 attack_card=b_card,
                 reaction_card=a_card,
                 reaction_beat=a_action,
+                is_hero=is_hero,
             )
             res.errors.extend(c_errs)
 

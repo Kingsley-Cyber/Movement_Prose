@@ -79,7 +79,32 @@
         "space": "direct",
         "flow": "bound"
       },
-      "probe": {}
+      "probe": {},
+      "weight_split": [
+        85,
+        15
+      ],
+      "com_position": "over_lead_foot",
+      "easing_curve": "coil_whip_hold_settle",
+      "spacing_phases": {
+        "slow_in": [
+          0,
+          2
+        ],
+        "snap": [
+          2,
+          5
+        ],
+        "hold": [
+          5,
+          7
+        ],
+        "ease_out": [
+          7,
+          9
+        ]
+      },
+      "impulse_tier": 2
     },
     {
       "id": "knee_strike",
@@ -159,7 +184,32 @@
         "space": "direct",
         "flow": "bound"
       },
-      "probe": {}
+      "probe": {},
+      "weight_split": [
+        85,
+        15
+      ],
+      "com_position": "over_lead_foot",
+      "easing_curve": "explosive_snap_hold_recoil",
+      "spacing_phases": {
+        "slow_in": [
+          0,
+          2
+        ],
+        "snap": [
+          2,
+          4
+        ],
+        "hold": [
+          4,
+          6
+        ],
+        "ease_out": [
+          6,
+          8
+        ]
+      },
+      "impulse_tier": 2
     }
   ]
 }

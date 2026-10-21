@@ -79,8 +79,9 @@ class DyadState:
         attack_card: Dict[str, Any],
         reaction_card: Optional[Dict[str, Any]],
         reaction_beat: Optional[Dict[str, Any]] = None,
+        is_hero: bool = False,
     ) -> List[Tuple[str, str]]:
-        """Validate V05, V06, V07, V08, V09 on a contact beat."""
+        """Validate V05, V06, V07, V08, V09, V22 on a contact beat."""
         errors: List[Tuple[str, str]] = []
         aid = attack_card["id"]
 
@@ -143,6 +144,47 @@ class DyadState:
                             f"Attack '{aid}' camera force '{att_force}' conflicts with partner recoil direction '{def_recoil}'",
                         )
                     )
+
+            # V22: Impulse Tier & Reaction Strength Matching
+            if reaction_card["class"] in {"IMPACT.REACTION", "BLOCK.PASSIVE", "BLOCK.ACTIVE"}:
+                att_tier = int(attack_card.get("impulse_tier", 1))
+                def_tier = int(
+                    reaction_beat.get("impulse_tier", reaction_card.get("impulse_tier", 1))
+                    if isinstance(reaction_beat, dict)
+                    else reaction_card.get("impulse_tier", 1)
+                )
+                if is_hero:
+                    # Hero finisher beat upgrades a medium (tier 2) strike or reaction to heavy (tier 3)
+                    effective_att = max(att_tier, 3) if att_tier >= 2 else att_tier
+                    effective_def = max(def_tier, 3) if def_tier >= 2 else def_tier
+                else:
+                    effective_att = att_tier
+                    effective_def = def_tier
+
+                if reaction_card["class"] == "IMPACT.REACTION":
+                    if effective_def < effective_att:
+                        errors.append(
+                            (
+                                "V22",
+                                f"Attack '{aid}' (impulse_tier={effective_att}) under-sold by weaker reaction '{reaction_card['id']}' (impulse_tier={effective_def})",
+                            )
+                        )
+                    elif effective_def > effective_att + 1 or (def_tier == 3 and not is_hero and att_tier < 3):
+                        errors.append(
+                            (
+                                "V22",
+                                f"Attack '{aid}' (impulse_tier={att_tier}) over-sold by excessive reaction '{reaction_card['id']}' (impulse_tier={def_tier})",
+                            )
+                        )
+                else:
+                    # BLOCK.ACTIVE / BLOCK.PASSIVE
+                    if abs(effective_att - effective_def) > 1:
+                        errors.append(
+                            (
+                                "V22",
+                                f"Attack '{aid}' (impulse_tier={effective_att}) mismatched with block '{reaction_card['id']}' (impulse_tier={effective_def})",
+                            )
+                        )
 
         return errors
 

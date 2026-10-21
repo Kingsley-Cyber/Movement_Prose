@@ -156,6 +156,39 @@ FORCE_CAMERA: Set[str] = {
 
 BLEED_TIERS: Set[int] = {1, 2, 3}
 
+# Impulse / Reaction strength tiers (V22): 0=none, 1=light/jab, 2=medium/committed, 3=heavy/knockout
+IMPULSE_TIERS: Set[int] = {0, 1, 2, 3}
+
+# Spacing / Easing Curve Profiles (V21)
+EASING_CURVES: Set[str] = {
+    "slow_in_snap_hold_ease_out",
+    "explosive_snap_hold_recoil",
+    "coil_whip_hold_settle",
+    "smooth_ease_in_out",
+    "sudden_jolt_settle",
+}
+
+# Center-of-mass positions relative to support base (V19)
+COM_POSITIONS: Set[str] = {
+    "centered",
+    "over_lead_foot",
+    "over_rear_foot",
+    "shifted_inside",
+    "shifted_outside",
+    "outside_support_falling",
+    "airborne_trajectory",
+}
+
+# Camera Angle Visibility / Occlusion Table (V20)
+# Maps camera shot archetype substrings to fighter-local limbs that risk occlusion
+CAMERA_OCCLUSION_TABLE: Dict[str, Set[str]] = {
+    "worm_eye": {"hips", "lead_leg", "rear_leg"},
+    "extreme_close_up_head": {"lead_leg", "rear_leg", "lead_knee", "rear_knee", "hips"},
+    "over_B_right_shoulder": {"lead_hand", "lead_elbow"},
+    "over_A_left_shoulder": {"rear_hand", "rear_elbow"},
+    "flat_90deg_profile": {"rear_hand", "rear_elbow"},
+}
+
 MOVE_CLASSES: Set[str] = {
     "STRIKE.LINEAR",
     "STRIKE.ARC_HORIZ",

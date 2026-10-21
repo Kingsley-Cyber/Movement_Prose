@@ -8,13 +8,16 @@ from .chain import validate_kinetic_chain
 from .enums import (
     BLEED_TIERS,
     COILS,
+    COM_POSITIONS,
     CONTACTS,
+    EASING_CURVES,
     EFFORT_FLOW,
     EFFORT_SPACE,
     EFFORT_TIME,
     EFFORT_WEIGHT,
     FORCE_LOCAL,
     HINGES,
+    IMPULSE_TIERS,
     LEVELS,
     LIMBS,
     MOVE_CLASSES,
@@ -47,7 +50,48 @@ REQUIRED_CARD_FIELDS = {
     "bleed_tier",
     "effort",
     "probe",
+    "chain",
+    "chain_frames",
+    "weight_split",
+    "com_position",
+    "easing_curve",
+    "spacing_phases",
+    "impulse_tier",
 }
+
+
+def validate_spacing_phases(phases: Any, owner: str) -> List[Tuple[str, str]]:
+    """V21: Validate spacing_phases dict {slow_in, snap, hold, ease_out}."""
+    errors: List[Tuple[str, str]] = []
+    if not isinstance(phases, dict):
+        return [("V21", f"{owner}: 'spacing_phases' must be a dict")]
+    required_keys = ["slow_in", "snap", "hold", "ease_out"]
+    missing = [k for k in required_keys if k not in phases]
+    if missing:
+        return [("V21", f"{owner}: 'spacing_phases' missing keys {missing}")]
+    prev_end: Optional[int] = None
+    for k in required_keys:
+        window = phases[k]
+        if (
+            not isinstance(window, list)
+            or len(window) != 2
+            or not all(isinstance(v, int) and not isinstance(v, bool) and v >= 0 for v in window)
+        ):
+            errors.append(("V21", f"{owner}: spacing_phases['{k}'] must be a 2-int list [start, end], got {window}"))
+            continue
+        if window[1] < window[0]:
+            errors.append(("V21", f"{owner}: spacing_phases['{k}'] end ({window[1]}) < start ({window[0]})"))
+        if prev_end is None and window[0] != 0:
+            errors.append(("V21", f"{owner}: spacing_phases['slow_in'] must start at frame 0, got {window[0]}"))
+        elif prev_end is not None and window[0] != prev_end:
+            errors.append(
+                ("V21", f"{owner}: spacing_phases['{k}'] start ({window[0]}) must equal previous phase end ({prev_end})")
+            )
+        prev_end = window[1]
+    if isinstance(phases.get("snap"), list) and len(phases["snap"]) == 2:
+        if phases["snap"][1] <= phases["snap"][0]:
+            errors.append(("V21", f"{owner}: spacing_phases['snap'] must span at least 1 frame"))
+    return errors
 
 
 def validate_card(card: Dict[str, Any]) -> List[Tuple[str, str]]:
@@ -163,15 +207,47 @@ def validate_card(card: Dict[str, Any]) -> List[Tuple[str, str]]:
 
     # V18: the card's default kinetic chain (spliced into every beat's causal
     # string as segment four) and its internal chain_frames timing offsets.
-    if "chain" in card or "chain_frames" in card:
-        errors.extend(
-            validate_kinetic_chain(
-                card.get("chain"),
-                owner=f"Card '{cid}'",
-                chain_frames=card.get("chain_frames"),
-                require_frames=True,
-            )
+    errors.extend(
+        validate_kinetic_chain(
+            card.get("chain"),
+            owner=f"Card '{cid}'",
+            chain_frames=card.get("chain_frames"),
+            require_frames=True,
         )
+    )
+
+    # V19: weight_split and com_position vs support base
+    ws = card.get("weight_split")
+    if (
+        not isinstance(ws, list)
+        or len(ws) != 2
+        or not all(isinstance(v, int) and not isinstance(v, bool) and 0 <= v <= 100 for v in ws)
+        or sum(ws) not in {0, 100}
+    ):
+        errors.append(("V19", f"Card '{cid}' weight_split must be a 2-int list [lead_pct, rear_pct] summing to 100 (or 0 for airborne)"))
+    com = card.get("com_position")
+    if com not in COM_POSITIONS:
+        errors.append(("V19", f"Card '{cid}' has unknown com_position '{com}'"))
+    elif com == "outside_support_falling":
+        post_sup = card.get("post", {}).get("support")
+        if post_sup not in {"supine", "prone", "kneeling", "airborne"}:
+            errors.append(
+                (
+                    "V19",
+                    f"Card '{cid}' has com_position='outside_support_falling' while post.support='{post_sup}' (CoG outside support base requires knockdown/fall or step recovery)",
+                )
+            )
+
+    # V21: easing_curve and spacing_phases
+    ec = card.get("easing_curve")
+    if ec not in EASING_CURVES:
+        errors.append(("V21", f"Card '{cid}' has unknown easing_curve '{ec}'"))
+    errors.extend(validate_spacing_phases(card.get("spacing_phases"), owner=f"Card '{cid}'"))
+
+    # V22: impulse_tier
+    it = card.get("impulse_tier")
+    if isinstance(it, bool) or it not in IMPULSE_TIERS:
+        errors.append(("V22", f"Card '{cid}' has invalid impulse_tier '{it}' (must be in {IMPULSE_TIERS})"))
 
     return errors
 

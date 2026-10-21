@@ -421,6 +421,9 @@ def scan_prompt_v18(prompt: str) -> List[Tuple[str, str]]:
     # lists beat codes, not body parts), so it is exempt from the separator rule
     # — and from the link rules, which apply to 'chain:' segments only.
     spans.extend((m.start(1), m.end(1)) for m in MOVEMENT_CHAIN_VALUE_RE.finditer(prompt))
+    # Layer 1 'CHAIN:' segments also carry ground-up '>' links.
+    for m in re.finditer(r"CHAIN:\s*([^|\n]+)", prompt):
+        spans.append((m.start(1), m.end(1)))
     # Layer 1 legend tokens like '<seconds>' close with a '>'; that is notation,
     # not a separator.
     spans.extend((m.start(0), m.end(0)) for m in PLACEHOLDER_TOKEN_RE.finditer(prompt))
