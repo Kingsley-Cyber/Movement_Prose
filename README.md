@@ -9,6 +9,8 @@
 ```text
 Movement_Prose/
 ├── SKILL.md                                                   # Antigravity Skill instructions & YouTube Episode workflow
+├── docs/
+│   └── TWO_LAYER_FLUID_STACK_ARCHITECTURE.md                  # Deep-dive guide: Mode 1 vs Mode 2 (--stack) & Choreography Separation
 ├── scripts/
 │   ├── sakuga_compiler.py                                     # Deterministic CLI Compiler, 20-Rule Physics Linter, --stack Generator & Multi-Clip Stitcher
 │   └── twelvelabs_bridge.py                                   # TwelveLabs Pegasus 1.2 Bridge (Mode A: Reference Extractor, Mode B: Render QA & Handoff)
@@ -18,7 +20,9 @@ Movement_Prose/
 │   ├── gold_master_3_courtyard_sky_cartwheel.json             # Gold-Master #3: 2-Layer Fluid Stack Source (Sky-Cartwheel, Uppercut, Wall-Run & Dive)
 │   ├── gold_master_3_courtyard_fluid_stack.txt                # Gold-Master #3: Compiled 2-Layer Unrolled Fluid Stack Prompt (--stack)
 │   ├── gold_master_4_shrine_bo_staff_determinism_test.json    # Gold-Master #4: 2-Layer Fluid Stack Source (Rain Shrine Bo-Staff vs. Iron Gauntlets)
-│   └── gold_master_4_shrine_bo_staff_fluid_stack.txt          # Gold-Master #4: Compiled 2-Layer Unrolled Fluid Stack Prompt (--stack)
+│   ├── gold_master_4_shrine_bo_staff_fluid_stack.txt          # Gold-Master #4: Compiled 2-Layer Unrolled Fluid Stack Prompt (--stack)
+│   ├── gold_master_5_baki_underground_arena.json              # Gold-Master #5: 2-Layer Fluid Stack Source (Baki 6-Impact Center-Ring Stand-Up War — Zero Wall-Runs, Zero Ground Punches)
+│   └── gold_master_5_baki_underground_arena_fluid_stack.txt   # Gold-Master #5: Compiled 2-Layer Unrolled Fluid Stack Prompt (--stack)
 ├── references/
 │   └── sakuga_prompt_schema_sop.md                            # Master SOP, 20 Empirical Decisions & 2-Layer Fluid Stack Breakdown
 └── _archive_rd_history_do_not_copy/                           # ⚠️ HISTORICAL R&D LOGS ONLY (Contains deprecated Euler/Quaternion/Bloat tests — do not copy)
@@ -31,14 +35,16 @@ Movement_Prose/
 
 ## Architectural Breakdown: Single-Layer JSON vs. 2-Layer Unrolled Fluid Stack (`--stack`)
 
+> **Full Deep-Dive Documentation:** See [`docs/TWO_LAYER_FLUID_STACK_ARCHITECTURE.md`](docs/TWO_LAYER_FLUID_STACK_ARCHITECTURE.md) for the complete architectural specification and a side-by-side comparison showing how **Prompt Architecture (`--stack`)** is completely separable from **Choreography Archetype** (e.g., Acrobatic Wall-Dive in `gold_master_3` vs. Relentless 6-Impact Center-Ring Baki Stand-Up War in `gold_master_5`).
+
 To eliminate any confusion, **both modes use the exact same `SAKUGA-MLLM-3.1-CAUSAL` JSON source file and compiler (`scripts/sakuga_compiler.py`)**. The difference is whether you compile into a **Single-Layer JSON prompt** (default) or a **2-Layer Unrolled Fluid Stack prompt** (`--stack`):
 
 | Feature | Mode 1: Single-Layer Causal JSON (`compile`) | Mode 2: 2-Layer Unrolled Fluid Stack (`compile --stack`) |
 | :--- | :--- | :--- |
-| **Canonical Examples** | `gold_master_1_blade_exchange.json`<br>`gold_master_2_disarm_dual_blade.json` | `gold_master_3_courtyard_sky_cartwheel.json`<br>`gold_master_4_shrine_bo_staff_determinism_test.json` |
+| **Canonical Examples** | `gold_master_1_blade_exchange.json`<br>`gold_master_2_disarm_dual_blade.json` | `gold_master_3_courtyard_sky_cartwheel.json` (4-Impact Acrobatic)<br>`gold_master_4_shrine_bo_staff_determinism_test.json` (Weapon Staff)<br>`gold_master_5_baki_underground_arena.json` (**6-Impact Center-Ring Baki Stand-Up War**) |
 | **Prompt Structure** | `Header` + `SAKUGA-MLLM-3.1-CAUSAL JSON` | `Header` + **`LAYER 1 (Labanotation-as-Words Timeline)`** + **`LAYER 2 (SAKUGA-MLLM-3.1-CAUSAL JSON)`** |
-| **Sub-Beat Density** | **11–14 beats** (`~0.7s–0.9s` spacing) | **16–17 unrolled beats** (`~0.4s–0.6s` spacing; every move unrolled into 3–4 phases: `Entry/Windup -> Drive/Apex -> Contact -> Landing`) |
-| **Best Used For** | Grounded close-quarters blade/fist exchanges where fighters stay mostly on the floor within a 1.5m pocket. | **Complex acrobatic + vertical + multi-axis martial arts** (traveling cartwheels, pole-vaults, aerial wheel kicks, vertical wall/pillar runs, mid-air catches, and 2.5m dives). |
+| **Sub-Beat Density** | **11–14 beats** (`~0.7s–0.9s` spacing) | **16–18 unrolled beats** (`~0.4s–0.6s` spacing; every move unrolled into 3–4 phases: `Entry/Windup -> Drive/Apex -> Contact -> Landing/Recovery`) |
+| **Best Used For** | Grounded close-quarters blade/fist exchanges with simple support transitions. | **High-intensity multi-hit hand-to-hand wars, clinches, kick turnovers, OR complex acrobatic/vertical choreography.** |
 | **Why It Works on Seedance 2.0 Mini** | Compact causal KV-cache (`A_beats -> B_track -> props -> camera -> anime -> rules`) locks hit timing without token bloat. | **Layer 1** feeds narrative/sequence attention heads an unbroken chronological chain (`SUPPORT | bilateral limbs | 5-phase force event | path`), while **Layer 2** locks exact 3D kinematics, camera cuts, and limb-isolated smears. |
 
 ### The 3 Laws of the 2-Layer Unrolled Fluid Stack (Decisions 18, 19, 20)

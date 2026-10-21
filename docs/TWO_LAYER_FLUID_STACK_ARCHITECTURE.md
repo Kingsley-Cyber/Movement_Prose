@@ -1,0 +1,109 @@
+# 2-Layer Unrolled Fluid Stack Architecture (`SAKUGA-MLLM-3.1-CAUSAL` + `--stack`)
+
+This document provides an in-depth, separable specification of the **2-Layer Unrolled Fluid Stack** prompt variation (`--stack`), explaining:
+1. How it differs from the **Single-Layer Compact Causal JSON** mode.
+2. Why **Prompt Architecture** is completely distinct and separable from **Choreography Archetype** (e.g., Acrobatic Weapon/Wall-Dive vs. High-Intensity Center-Ring Baki Stand-Up War).
+3. The 6 mathematical and latent-space engineering rules that make the 2-Layer Unrolled Fluid Stack deterministic on Seedance 2.0 Mini, Seedance 2.5, and Kling.
+
+---
+
+## 1. Architectural Separation: Mode 1 vs. Mode 2
+
+`scripts/sakuga_compiler.py` supports two distinct, separable output modes from the same `SAKUGA-MLLM-3.1-CAUSAL` JSON source:
+
+| Feature | Mode 1: Single-Layer Compact Causal JSON (Default) | Mode 2: 2-Layer Unrolled Fluid Stack (`--stack`) |
+| :--- | :--- | :--- |
+| **CLI Flag** | `python3 scripts/sakuga_compiler.py compile <spec.json>` | `python3 scripts/sakuga_compiler.py compile --stack <spec.json>` |
+| **Structure** | `Natural-Language Header` + `SAKUGA-MLLM-3.1-CAUSAL JSON` | `Header` + `=== LAYER 1: Labanotation-as-Words Timeline ===` + `=== LAYER 2: SAKUGA-MLLM-3.1-CAUSAL JSON ===` |
+| **Sub-Beat Density** | 8–10 keyframes in `A_beats` | **14–18 unrolled sub-beats** in `A_beats` (every strike/kick unrolled into Entry/Windup $\rightarrow$ Drive/Turnover $\rightarrow$ Zero-Gap Contact $\rightarrow$ Recovery/Landing) |
+| **Bilateral Arm Lock** | Standard limb descriptions | **Mandatory `L_arm` + `R_arm` bilateral silhouette separation** on every beat (`Decision 20`) to eliminate one-arm occlusion |
+| **Best Use Case** | Fast grounded weapon duels with simple support transitions (`Gold-Masters #1 & #2`) | High-intensity multi-hit hand-to-hand exchanges, complex kick turnovers, clinches, and multi-axis camera cuts (`Gold-Masters #3, #4, #5`) |
+
+---
+
+## 2. Separating Prompt Architecture from Choreography Archetype
+
+A critical principle of `Movement_Prose` is that **the 2-Layer Unrolled Fluid Stack is a movement-encoding architecture, NOT a fixed choreography template.**
+
+Never reuse a static timestamp skeleton (`1.2s -> 3.05s -> 4.30s -> 5.5s wall-run -> 7.5s ground punch`) when designing a new fight. Every fight archetype has its own rhythm, impact frequency, spatial pocket, and combat logic:
+
+| Dimension | Archetype A: Acrobatic Projectile & Vertical Environment (`Gold-Master #3`) | Archetype B: Relentless Center-Ring Stand-Up War (`Gold-Master #5 — Baki Style`) |
+| :--- | :--- | :--- |
+| **File** | `examples/gold_master_3_courtyard_sky_cartwheel.json` | `examples/gold_master_5_baki_underground_arena.json` |
+| **Combat Style** | Ninja acrobatics + projectile deflection + wall dive | **Baki / Kengan Ashura** bare-knuckle Vale Tudo, Muay Thai clinch, and supersonic karate/boxing |
+| **Spatial Pocket** | Full depth + vertical stone wall (`y=0m` to `3.1m`) | **Pure center-ring sand pit (`z=2.3m` to `4.8m`) — ZERO wall-runs, ZERO ground punches** |
+| **Opponent (`B`) Activity** | Knocked down against wall at `5.0s`, flinches at `7.5s` | **Stands and fights back fiercely for 8.85 seconds** (throws right straight at `0.0s`, double-axe smash at `1.1s`, clinch lunge at `3.75s`, spinning backfist at `5.7s`) until the `8.85s` KO |
+| **Impact Count & Timestamps** | **4 impacts:** `1.20s`, `3.05s`, `4.30s`, `7.50s` | **6 impacts:** `0.65s` (calf kick), `1.75s` (slicing elbow), `3.20s` (3-punch combo hook), `4.85s` (plum-clinch flying knee), `6.40s` (spinning back kick), `8.85s` (Supersonic Mach Straight KO) |
+| **Midpoint Screen Cross** | `4.80s` sprint past falling `B` toward wall | `5.25s` **lateral ring-circle pivot** out of the Muay Thai clinch (`screen_left -> screen_right`) |
+| **Ending (`8.85s – 10.00s`)** | Deep crouch with reverse-grip kunai | `8.85s` **double sonic-boom Mach Straight knockout** blasting `B` flat onto his back at `z=2.35` (`9.45s`) while `A` holds his extended steaming Mach-Punch follow-through stance |
+
+---
+
+## 3. Deep-Dive Breakdown of the 2-Layer Unrolled Fluid Stack
+
+### Layer 0: The Natural-Language Style & Entity Lock Header
+The opening paragraph primes the MLLM's global visual prior before any timestamps appear:
+1. **Duration, Frame Rate & Arena Geometry**: e.g., `10s anime fight clip, 24fps, underground circular sand-and-concrete martial arts tournament pit...`
+2. **2D Sakuga Style Lock**: `Pure 2D hand-drawn anime, Baki Hanma and Kengan Ashura style hyper-detailed anatomical muscle striations, bulging veins, cel-shaded flat colors with razor-sharp 2-tone high-contrast shadows, heavy ink outlines on A, broken sketchy ink in smears, ultra-thick clean ink on impact holds... Not 3D, not CGI, not live action, not photoreal.`
+3. **Entity & Bilateral Limb Lock**: Explicitly states `ZERO weapons` (or exact weapon count) and locks `BOTH left and right bare arms and hands 100% visible in silhouette at all times`.
+4. **Anti-HUD & Continuity Rule**: `Execute choreography as one relentless, physically continuous 10-second center-ring stand-up war... no on-screen text, no numbers, no HUD, and no coordinate labels.`
+
+---
+
+### Layer 1: Continuous Support, 5-Phase Force-Event & Prop Timeline (`Labanotation-as-Words`)
+Video diffusion transformers lose physical grounding when forced to infer *what bears weight* between sparse timestamps. Layer 1 provides a chronological, human-readable **Labanotation-as-Words** stream where every line obeys the strict grammar:
+
+```text
+<seconds> <performer>: SUPPORT (<what bears weight; NO SUPPORT = airborne>) | <bilateral limb placement: both L_arm and R_arm> | <5-phase force event: windup -> drive -> CONTACT -> reaction -> follow-through> | <path in metres>
+```
+
+#### Why Layer 1 Works Together with Layer 2:
+- **Layer 1** gives the MLLM's natural-language attention heads an unbroken chronological chain of **weight support** (`SUPPORT left bare foot anchored` vs. `NO SUPPORT airborne at knee apex`) and **5-phase force transfer**.
+- **Layer 2** gives the MLLM's structured-data attention heads exact **metric coordinates (`pos`, `vel`)**, **causal graph edges (`C01 -> C02`)**, **3-phase contact contracts (`pre -> hit -> post`)**, and **camera/FX bindings** at matching timestamps.
+
+---
+
+### Layer 2: `SAKUGA-MLLM-3.1-CAUSAL` Kinematic & Camera Scene Graph
+
+Layer 2 is governed by **Four Core Engineering Rules** (Decisions 14, 18, 19, 20):
+
+#### Rule A: 4-Phase Sub-Beat Unrolling (`Decision 18`)
+Whenever a prompt compresses a multi-stage martial arts technique into a single timestamp (e.g., jumping straight from `3.05s uppercut` to `4.30s kick impact`), the video model has an **800ms–1200ms kinematic void** and hallucinates floaty or morphed anatomy.
+In the 2-Layer Fluid Stack, every technique is **unrolled into explicit sequential sub-beats**:
+- **Example 1 — 3-Punch Pocket Combination (`2.20s -> 2.65s -> 3.20s` in Gold-Master #5)**:
+  - `2.20s` (*Beat 1 — High Probe*): `A` snaps a straight `L_arm` left jab into `B`'s nose (`y=1.48m`) while `R_arm` chambers tight at the right ribs.
+  - `2.65s` (*Beat 2 — Level-Change Body Shot*): `A` drops hips to `y=0.70m` and drives a straight `R_arm` right body punch into `B`'s solar plexus (`y=1.12m`) while `L_arm` coils low at the left hip.
+  - `3.20s` (*Beat 3 — Rising Jaw Hook Impact*): `A` rises to `y=0.86m` with `R_arm` held high at the right cheekbone in guard and whips a wide `L_arm` left hook across `B`'s jaw (`y=1.46m`, `hold 3f`).
+- **Example 2 — Muay Thai Plum Clinch into Flying Knee & Ring-Circle Cross (`3.75s -> 4.30s -> 4.85s -> 5.25s` in Gold-Master #5)**:
+  - `3.75s` (*Clinch Entry*): `A` shoots both hands inside `B`'s reach, interlocking `L_arm` and `R_arm` behind `B`'s neck (`zero_gap`).
+  - `4.30s` (*Anticipation Hold / Neck Yank*): `A` hangs his weight on both hands, yanking `B`'s head down to `y=1.18m` while coiling his right leg back.
+  - `4.85s` (*Airborne Knee Impact*): `A` leaps off his left foot (`none_airborne`), pulling `B`'s head down with both hands while driving his right kneecap upward into `B`'s nose/forehead (`hold 4f, slomo 0.25x`).
+  - `5.25s` (*Two-Foot Landing & Lateral Ring-Circle Cross*): `A` lands cleanly on both bare feet, shoves `B` past his left shoulder, and pivots across screen center (`screen_left -> screen_right`).
+
+#### Rule B: Bilateral Two-Arm Silhouette Locking (`Decision 20`)
+When a beat describes only the striking arm (e.g., `"drives a right uppercut"` or `"whips a left hook"`), 2D anime diffusion models frequently merge the non-striking arm into the torso silhouette, making the fighter appear one-armed for `0.5s–1.0s`.
+- **The Fix**: Every single beat in `A_beats` must explicitly specify both `L_arm:` and `R_arm:` with **clear spatial separation outside the torso silhouette**:
+  - During a **deep crouch coil (`2.55s` or `7.35s`)**: One arm extends clearly forward toward `B` with an open taped hand as a range-finding lead guard while the rear striking fist coils low behind the hip.
+  - During a **single-arm punch or elbow (`1.75s`, `3.05s`, `3.20s`, `8.85s`)**: The non-striking arm is explicitly placed either in a high cheekbone guard, pinning `B`'s arm forward, or pulled wide back to the opposite hip for counter-torque.
+
+#### Rule C: Zero `<>` Markup Tag Pollution (`Decision 19A`)
+Never wrap verbs, strikes, or events in XML/HTML angle brackets (such as `<punch>`, `<impact>`, `<kick>`). In transformer vector space, `<...>` activates the **HTML/XML tag prior**, weakening the physical motion prior. Keep all motion descriptions in direct, active kinematic prose.
+
+#### Rule D: Zero Meta-Negations Inside Beats (`Decision 19B`)
+Never write `"A should not float"` or `"NOT a flip"` inside `A_beats` or Layer 1. Attention mechanisms attend to the negated verb (`float`, `flip`). Always state the positive physical law (`vel:[0,-3.6,-0.2]`, `support:"left_bare_foot_anchored_firmly_on_arena_sand"`), and isolate all `"no ..."` tokens strictly inside the top-level `"negative"` field.
+
+---
+
+## 4. Verification & Compilation Workflow
+
+To lint and compile any spec into the 2-Layer Unrolled Fluid Stack:
+
+```bash
+# 1. Run the 20-rule physics, causal, and bilateral-arm linter
+python3 scripts/sakuga_compiler.py lint examples/gold_master_5_baki_underground_arena.json
+
+# 2. Compile to the 2-Layer Unrolled Fluid Stack (--stack)
+python3 scripts/sakuga_compiler.py compile --stack \
+  examples/gold_master_5_baki_underground_arena.json \
+  --out examples/gold_master_5_baki_underground_arena_fluid_stack.txt
+```
