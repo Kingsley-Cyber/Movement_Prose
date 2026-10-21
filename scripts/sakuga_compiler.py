@@ -321,9 +321,12 @@ def lint_clip(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
 
         # Decision 18: Check airborne-to-wall jump without intermediate ground landing
         curr_support = beat.get("support", "").lower()
+        is_arch_wall_or_pillar = "wall" in curr_support or (
+            "pillar" in curr_support and "floor" not in curr_support and "sand" not in curr_support
+        )
         if (
             "none_airborne" in prev_support
-            and ("wall" in curr_support or "pillar" in curr_support)
+            and is_arch_wall_or_pillar
             and (t - prev_t) > 0.65
         ):
             warnings.append(
@@ -468,7 +471,121 @@ def lint_clip(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
                 "Keep bent knee strikes in 100% solid sharp ink."
             )
 
+    # 9. Validate Choreographic Diversity, Elevation Cycling & Multi-Domain Fluidity (Decision 24)
+    div_report = analyze_choreographic_diversity(spec)
+    if len(div_report["weapons_used"]) < 3 and len(a_beats) >= 6:
+        warnings.append(
+            f"[Decision 24A] Low anatomical weapon diversity ({sorted(div_report['weapons_used'])}). "
+            "Mix at least 3-5 distinct body weapons (fists/backfists, elbows/forearms, knees, shins/calves, ankles/heels, palms/throws) "
+            "so combos do not feel repetitive."
+        )
+    if div_report["max_consecutive_same_weapon"] >= 4:
+        warnings.append(
+            f"[Decision 24A] Weapon '{div_report['repeated_weapon']}' is used {div_report['max_consecutive_same_weapon']} times in a row. "
+            "Alternate striking surfaces (e.g. punch -> elbow -> knee -> heel/shin) so combos flow without redundancy."
+        )
+    if len(div_report["elevations_used"]) < 2 and len(a_beats) >= 6:
+        warnings.append(
+            f"[Decision 24B] Low vertical target/stance elevation diversity ({sorted(div_report['elevations_used'])}). "
+            "Cycle across low-line (ankles/calves/ground y<0.68m), mid-line (solar plexus/ribs), high-line (jaw/temple), and aerial/jumping."
+        )
+
     return errors, warnings
+
+
+def analyze_choreographic_diversity(spec: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Analyze anatomical weapon diversity, target/stance elevation cycling, and spatial domains
+    (standup, clinch, ground_scramble, jump_aerial) across A_beats and B_track (Decision 24).
+    """
+    weapons_used = set()
+    elevations_used = set()
+    domains_used = set()
+    weapon_sequence: List[str] = []
+
+    weapon_patterns = [
+        ("shin_calf_kick", r"\b(shin|calf|low kick|roundhouse|whip kick)\b"),
+        ("ankle_heel_foot", r"\b(heel|ankle|instep|sole|foot|stomp|axe kick|back kick|up kick)\b"),
+        ("knee", r"\b(knee|kneecap)\b"),
+        ("elbow_forearm", r"\b(elbow|forearm|x block)\b"),
+        ("fist_punch_backfist", r"\b(fist|jab|cross|hook|uppercut|backfist|straight right|body straight)\b"),
+        ("palm_clinch_grapple", r"\b(palm|hands|yanks|collar tie|clinch|neck pull|ankle pick|sweep|throw)\b"),
+        ("weapon_prop", r"\b(blade|sword|katana|kunai|staff|spear|dagger)\b"),
+    ]
+
+    for beat in spec.get("A_beats", []):
+        text = (
+            f"{beat.get('beat', '')} {beat.get('arc', '')} "
+            f"{beat.get('contact', '')} {beat.get('pose', '')}"
+        ).lower()
+        sup = str(beat.get("support", "")).lower()
+        pos = beat.get("pos", [0, 0.85, 0])
+        y_val = float(pos[1]) if isinstance(pos, list) and len(pos) >= 2 else 0.85
+
+        # Domains
+        if "none_airborne" in sup or y_val >= 1.10:
+            domains_used.add("jump_aerial")
+            elevations_used.add("aerial")
+        elif any(k in sup for k in ("back", "palm", "hand", "knee_on_sand", "crouch", "kip_up", "three_point")) or y_val <= 0.68:
+            domains_used.add("ground_or_low_crouch")
+            elevations_used.add("low_line")
+        elif "clinch" in text or "collar_tie" in text or "neck" in text:
+            domains_used.add("clinch_pocket")
+            elevations_used.add("mid_or_high")
+        else:
+            domains_used.add("standup_exchange")
+
+        # Target elevation in contact
+        contact_lower = str(beat.get("contact", "")).lower()
+        if any(k in contact_lower for k in ("calf", "ankle", "shin", "thigh", "knee_buckl")):
+            elevations_used.add("low_line")
+        if any(k in contact_lower for k in ("solar_plexus", "sternum", "ribs", "abdomen", "midsection", "chest")):
+            elevations_used.add("mid_line")
+        if any(k in contact_lower for k in ("chin", "jaw", "cheek", "nose", "temple", "head", "neck")):
+            elevations_used.add("high_line")
+
+        # Weapons on active contact beats
+        if "hit:" in contact_lower:
+            hit_part = contact_lower.split("hit:")[1].split("->")[0].replace("_", " ")
+            # Extract the striking limb clause before target preposition ('into', 'across', 'onto', 'outside')
+            striker_clause = re.split(r"\b(?:into|across|onto|outside|behind|against|catch|slaps)\b", hit_part)[0]
+            matched_w = None
+            for w_name, pat in weapon_patterns:
+                if re.search(pat, striker_clause):
+                    weapons_used.add(w_name)
+                    if matched_w is None:
+                        matched_w = w_name
+            if not matched_w:
+                for w_name, pat in weapon_patterns:
+                    if re.search(pat, hit_part):
+                        weapons_used.add(w_name)
+                        if matched_w is None:
+                            matched_w = w_name
+            if matched_w:
+                weapon_sequence.append(matched_w)
+
+    max_consec = 0
+    curr_consec = 0
+    prev_w = None
+    rep_w = None
+    for w in weapon_sequence:
+        if w == prev_w:
+            curr_consec += 1
+        else:
+            curr_consec = 1
+            prev_w = w
+        if curr_consec > max_consec:
+            max_consec = curr_consec
+            rep_w = w
+
+    return {
+        "weapons_used": weapons_used,
+        "elevations_used": elevations_used,
+        "domains_used": domains_used,
+        "weapon_sequence": weapon_sequence,
+        "max_consecutive_same_weapon": max_consec,
+        "repeated_weapon": rep_w,
+    }
 
 
 STYLE_PRESETS: Dict[str, Dict[str, str]] = {
@@ -795,7 +912,14 @@ def main() -> int:
         for f in args.files:
             spec, _ = load_clip_file(f)
             errs, warns = lint_clip(spec)
+            div = analyze_choreographic_diversity(spec)
             print(f"=== Linting {f.name} ({spec.get('name', 'unnamed')}) ===")
+            print(
+                f"  [DIVERSITY] Weapons ({len(div['weapons_used'])}): {sorted(div['weapons_used'])} | "
+                f"Elevations ({len(div['elevations_used'])}): {sorted(div['elevations_used'])} | "
+                f"Domains ({len(div['domains_used'])}): {sorted(div['domains_used'])}"
+            )
+            print(f"  [CHAIN]     {' -> '.join(div['weapon_sequence'])}")
             for w in warns:
                 print(f"  [WARN]  {w}")
             for e in errs:

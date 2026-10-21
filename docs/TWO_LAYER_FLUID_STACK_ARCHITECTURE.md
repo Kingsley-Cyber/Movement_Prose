@@ -122,6 +122,15 @@ Keeping `A` on `screen_left` and `B` on `screen_right` (preserving the 180-degre
 3. **Anatomically Opposite Head-Snap Vectors (`Decision 23C`)**:
    - Strikes swinging from opposite sides of the target's face must snap the target's head in opposite 3D directions (`1.75s` horizontal right elbow across `B`'s left cheek snaps `B`'s head into the background `-X`; `3.20s` rising left hook across `B`'s right jaw snaps `B`'s head toward the foreground camera `+X`).
 
+#### Rule H: Choreographic Diversity, Multi-Domain Cycling & "Recoil-is-Windup" Kinetic Chaining (`Decision 24`)
+To prevent combat sequences from feeling repetitive over 10s clips or extended 20s–60s episodes, `sakuga_compiler.py` (`analyze_choreographic_diversity`) enforces three structural diversity laws:
+1. **6-Weapon Anatomical Surface Diversity (`Decision 24A`)**:
+   - Every bare-knuckle or martial arts clip must cycle across at least **4–6 distinct anatomical weapon categories**: `shin_calf_kick` (instep/shin sweeps & calf chops), `ankle_heel_foot` (spinning heel kicks, bicycle ground up-kicks, 12-to-6 axe-heel drops, teeps), `knee` (standing pillar knees, jumping scissor switch-knees), `elbow_forearm` (slap-parries, X-blocks, rising/horizontal slicing elbows), `fist_punch_backfist` (jabs, body straights, shovel-hooks, spinning backfists), and `palm_clinch_grapple` (collar-tie snap-downs, wrist pins).
+2. **4-Domain Spatial & Elevation Cycling (`Decision 24B`)**:
+   - Extended combos must cycle across all 4 vertical and gravitational domains: **Low-Line / Floor Sweep (`y < 0.65m`)** $\to$ **Ground Scramble / Bicycle Up-Kick & Kip-Up (`y = 0.28m -> 0.78m`)** $\to$ **Inside Pocket / Clinch & Dirty Boxing (`y = 0.78m -> 1.15m`)** $\to$ **Jumping / Aerial Launch (`y = 1.18m -> 1.88m`)**.
+3. **"Recoil-is-Windup" Kinetic Chaining (`Decision 24C`)**:
+   - Never reset to neutral between moves: the downward recoil of a ground up-kick (`1.50s`) drives the arched-spine kip-up (`1.95s`); the $90^\circ$ clockwise rotation of a rising right elbow (`2.75s`) continues directly into a $270^\circ$ clockwise spinning left backfist (`3.25s`); and a collar-tie snap-down (`4.85s`) loads the two-foot springboard jumping switch-knee (`5.45s–6.00s`).
+
 ---
 
 ## 4. Verification & Compilation Workflow

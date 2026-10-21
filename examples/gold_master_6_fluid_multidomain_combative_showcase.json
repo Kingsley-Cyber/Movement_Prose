@@ -1,0 +1,566 @@
+{
+  "header": "10s anime fight clip, 24fps, floodlit underground concrete-and-resin martial arts tournament platform, harsh cyan-and-golden overhead stadium floodlights, dark tiered arena crowd in deep shadow, no ring ropes. STYLE: Pure 2D hand-drawn anime, Baki, Kengan Ashura, and God of High School style detailed anatomical muscle striations, flat cel shading with hard 2-tone high-contrast shadows, heavy ink outlines on A, broken sketchy ink on active smear limbs only, clean thick ink on impact holds, hyper-fluid multi-domain bare-knuckle sakuga animation on twos. Not 3D, not CGI, not live action, not photoreal. ENTITY COUNT & OUTFIT LOCK: Exactly TWO shirtless bare-knuckle fighters (ZERO weapons). Fighter A (always on screen-left facing right): lean, striated martial artist, shirtless bare torso, white cloth tape on both wrists/knuckles and both ankles, crimson fight shorts, bare feet. Fighter B (always on screen-right facing left): towering, massive scarred pit-fighter, shirtless broad muscular torso, charcoal-black fight pants, bare wrists and bare ankles with NO tape, bare feet. Maintain realistic strike spacing at all times: one full arm's length (0.75-0.85m) for punches/backfists, half an arm's length (0.60-0.65m) for elbows/clinch, and one full leg's length (1.05-1.15m) for kicks/sweeps so the bodies never merge, with both arms separate from the torso in silhouette on every hit. Execute with dynamic 180-degree-hemisphere Sakuga camera work across all 4 combat domains (low ankle sweep -> ground up-kick & kip-up -> inside elbow/backfist flurry -> jumping switch-knee & aerial axe-heel drop); no on-screen text, no numbers, no HUD, and no coordinate labels.",
+  "name": "baki_multidomain_fluid_combative_war_10s",
+  "schema": "SAKUGA-MLLM-3.1-CAUSAL",
+  "fps": 24,
+  "duration": 10.0,
+  "axes": "Y_up, metres, arena floor y=0, center-platform combat pocket z=2.8 to z=5.0, A stays on screen_left (z=2.85 to 3.45) facing +Z right for all 10s, B stays on screen_right (z=3.95 to 4.95) facing -Z left for all 10s",
+  "screen_geometry": "180_degree_camera_hemisphere_locked_for_all_10s: Fighter A remains strictly on screen_left facing right (+Z) and Fighter B remains strictly on screen_right facing left (-Z) for the entire 10.0s clip (zero side swaps). The camera tracks dynamically across the +X front hemisphere through floor-level sweeps, ground-scramble angles, tight 3/4 whip-pans, clean full-body side-profile knee framing, and low-to-high aerial crane tilts without ever crossing the axis line between the fighters.",
+  "negative": "no 3D CGI, no mocap stiffness, no floaty physics, no static flat side-scroller camera, no wall run, no ground punch, no weapons, no swords, no knives, no kunai, no side swap, no wrist or ankle tape on B, no outfit swap, no torso merging, no chest-to-chest clipping, no on-screen text or numbers, no HUD, no coordinate labels, no extra fighters, no cloned A or B, no missing limbs, no missing arms, no one-armed fighter, no extra legs, no deformed legs, no fist-leg hybrid, no full-body blur during smears, no reaction before contact",
+  "conservation_laws": [
+    "CONSERVE_SEMANTICALLY: every strike, sweep, ground scramble, jump, and landing is unrolled into sequential sub-beats where the recoil/follow-through of Beat N physically loads the windup of Beat N+1",
+    "anatomical_weapon_and_domain_diversity: never repeat the same striking limb or target elevation consecutively—cycle seamlessly from low ankle sweep (0.65s) -> ground bicycle heel up-kick (1.50s) -> kip-up -> forearm slap-parry (2.35s) -> rising right elbow to ribs (2.75s) -> spinning left backfist to cheek (3.25s) -> B's left body hook counter (4.20s) -> collar-tie snap-down (4.85s) -> jumping scissor switch-knee (6.00s) -> aerial 12-to-6 axe-heel drop KO (8.75s)",
+    "realistic_strike_reach_spacing: punches/backfists connect at one full arm's length (0.75-0.85m), elbows/clinches at half an arm's length (0.60-0.65m), and kicks/sweeps/axe-kicks at one full leg's length (1.05-1.15m) with both arms separate from the torso in silhouette",
+    "strict_screen_side_and_outfit_lock: A (lean, crimson shorts, white wrist and ankle tape) stays on screen_left facing right (+Z) and B (massive, black pants, bare wrists and ankles with NO tape) stays on screen_right facing left (-Z) for all 10.0 seconds",
+    "knockback_and_hit_reaction_require_prior_physical_contact_zero_early_flinch"
+  ],
+  "layer_1_timeline": [
+    "MOVEMENT LANGUAGE: <seconds> <performer>: SUPPORT (what bears weight; NO SUPPORT = airborne) | bilateral limb placement & torso rotation (both L_arm and R_arm separate from torso in silhouette) | 5-phase force event & reach distance | path in metres. A is always screen-left (crimson shorts, white wrist/ankle tape); B is always screen-right (black pants, bare wrists/ankles, no tape).",
+    "0.00 A (7f): SUPPORT both bare feet stepping to z=2.90 on screen-left | torso leaning 20 deg forward, L_arm extended high-forward, R_arm cocked at right cheek, both arms separate from the torso in silhouette | enters to one full leg's length (1.10m) from B.",
+    "0.00 B (15f): SUPPORT both bare feet stepping in to z=4.00 on screen-right | torso rotating 45 deg, bare L_arm at chest, bare R_arm swinging a high right hook toward A's head.",
+    "0.30 A (8f): SUPPORT left heel and left taped palm planted on floor at z=2.90 (low drop-sweep crouch, y=0.38m) | FE1 duck & sweep coil: A drops straight under B's high right hook so B's bare fist swings harmlessly over A's head, planting L_arm palm on the floor while extending R_arm high-back in counter-balance.",
+    "0.65 A (11f): SUPPORT left heel and left taped palm anchored on floor at z=2.90 (one full leg's length, 1.10m from B at z=4.00) | FE1 LOW ANKLE SWEEP CONTACT (hold 3f, Bound): pivoting 120 deg clockwise on his left heel and left palm with both arms separate from the torso in silhouette, A whips his extended right leg flat along the floor (8-to-2 o'clock), chopping his taped right instep/shin into B's lead left ankle at [0,0.18,3.88] -> white shock flash sweeps B's left foot sideways off the floor.",
+    "0.65 B (11f): SUPPORT right foot only, left ankle swept out at z=4.00 | FE1 reaction: B's left ankle is kicked out from under him, dropping B briefly to one knee before B surges up to counter.",
+    "1.10 B (10f): SUPPORT left foot planted at z=3.95 on screen-right | FE2 B push-kick counter: surging up from his knee, B drives a heavy bare right sole push-kick (teep) across the 1.05m gap into A's chest guard at [0,0.95,3.00], knocking A onto his back at z=2.85.",
+    "1.10 A (10f): SUPPORT upper back and both taped palms planted wide on the floor at z=2.85 on screen-left (y=0.28m) | FE2 ground roll: absorbing B's push-kick on his crossed forearms, A rolls onto his shoulder blades with both arms separate from his torso planted wide on the floor and chambers his left knee to his chest.",
+    "1.50 A (11f): SUPPORT upper back and both taped palms braced on floor at z=2.85 (one full leg's length, 1.10m from looming B at z=3.95) | FE2 GROUND UP-KICK CONTACT (hold 3f, Bound): as B leans in to stomp, A keeps his right leg angled low for scissor separation and pistons his taped left heel straight upward (7-to-1 o'clock) from the floor into B's sternum and chin at [0,1.18,3.85] with both arms braced wide in silhouette -> white shock ring jolts B backward.",
+    "1.50 B (20f): SUPPORT both bare feet staggering upright at z=4.05 | FE2 reaction: B's chest and chin are jolted upward and back by A's bicycle ground up-kick.",
+    "1.95 A (10f): SUPPORT both taped palms pushing off floor -> landing on both bare feet at z=3.15 on screen-left (y=0.78m) | FE3 kip-up transition: using the downward recoil of his up-kick, A whips both legs down, arches his spine off both planted palms in an explosive kip-up, and lands cleanly on both bare feet at z=3.15 with both arms raised in a wide open guard.",
+    "2.35 B (10f): SUPPORT both bare feet at z=4.05 on screen-right | FE3 threat: B fires a straight bare left punch across the 0.75m gap toward A's face.",
+    "2.35 A (10f): SUPPORT balls of both bare feet darting to z=3.30 (0.75m arm's length from B) | FE3 forearm parry: A slaps B's incoming bare left wrist outside-right with his taped left forearm while coiling his right elbow back at his ribs (both arms separate from the torso in silhouette).",
+    "2.75 A (12f): SUPPORT both bare feet planted at z=3.35 (half an arm's length, 0.65m elbow reach from B at z=4.00), pivoting 90 deg clockwise | FE3 FLURRY HIT 1 (Rising Right Elbow): rotating his hips 90 deg clockwise with L_arm pinning B's left arm down outside the torso silhouette, A drives a sharp upward-diagonal right elbow point (7-to-1 o'clock) into B's floating ribs and solar plexus at [0,1.10,3.90] -> rib-shock ripple folds B's torso slightly forward.",
+    "3.25 A (23f): SUPPORT right bare foot anchored at z=3.35 (one full arm's length, 0.80m from B at z=4.15), continuing 270 deg clockwise spin | FE3 FLURRY HIT 2 CONTACT (hold 3f, Bound): riding the 90 deg clockwise torque of his right elbow without resetting, A spins 270 deg clockwise in place on screen-left with both arms separate from the torso in silhouette (R_arm tucked wide at right chest) and whips a horizontal taped left backfist (9-to-3 o'clock) across B's right cheekbone at [0,1.46,4.05] -> shockwave ring snaps B's head to B's left (toward foreground camera +X).",
+    "3.25 B (23f): SUPPORT both bare feet staggering to z=4.15 | FE3 reaction: B's ribs cave from the 2.75s right elbow and his head whips toward the foreground camera (+X) from the 3.25s spinning left backfist.",
+    "4.20 B (16f): SUPPORT both bare feet planted wide at z=4.10 on screen-right (one full arm's length, 0.80m from A at z=3.30) | FE4 B BODY-HOOK COUNTER CONTACT (hold 3f, Bound): planting his feet and roaring, B rips a heavy bare-knuckle LEFT SHOVEL-HOOK upward-inward into A's right forearm and ribs at [0,1.08,3.40] with both bare arms separate from his torso in silhouette -> heavy impact flash skids A 0.25m backward to z=3.05.",
+    "4.20 A (16f): SUPPORT both bare feet skidding 0.25m backward from z=3.30 to z=3.05 on screen-left | FE4 reaction: absorbing B's left shovel-hook on his braced right forearm and ribs (both arms separate from torso in silhouette), A skids back to z=3.05.",
+    "4.85 A (14f): SUPPORT wide split stance at z=3.45 (half an arm's length, 0.65m from B at z=4.10) | FE5 collar-tie snap-down: stepping right back in, A clamps both taped hands behind B's neck and arches his lats backward to snap B's head downward (12-to-6 o'clock) to y=1.18m.",
+    "4.85 B (28f): SUPPORT both bare feet at z=4.10 | FE5 clinch reaction: B's head and upper torso are snapped forward-down to y=1.18m by A's collar tie.",
+    "5.45 A (13f): SUPPORT both bare feet coiled in a deep two-foot jump crouch at z=3.40 on screen-left (y=0.64m, 0.70m from B at z=4.10) | FE5 jump coil: releasing B's neck, A sinks his hips to y=0.64m and swings both taped arms wide back behind his hips in silhouette to load a vertical jump.",
+    "6.00 A (13f): NO SUPPORT (airborne at apex y=1.18m, z=3.42 on screen-left, 0.68m from B at z=4.10) | FE5 JUMPING SWITCH-KNEE CONTACT (hold 4f, slomo 0.25x, Bound, clean full-body side profile): exploding into the air in a wide scissor split—left leg extended straight downward-back (5 o'clock) for 90-degree leg separation and both arms swung wide back-down in silhouette—A spears his sharply bent right kneecap diagonally upward (8-to-1 o'clock) into B's chin at [0,1.38,3.98] -> radial white shock flash snaps B's head straight back and staggers B to z=4.40.",
+    "6.00 B (48f): SUPPORT both bare feet stumbling backward from z=4.10 to z=4.40 on screen-right | FE5 reaction: B's head whips backward in a halo of sweat as B stumbles dazed to z=4.40.",
+    "6.55 A (17f): SUPPORT both bare feet landing cleanly on arena floor at z=3.35 on screen-left (y=0.72m) | FE5 landing: A touches down cleanly on both bare feet at z=3.35 with knees bent and both arms spread wide in guard.",
+    "7.25 A (18f): SUPPORT both bare feet coiled in a low launch stance at z=3.35 on screen-left (ANTICIPATION HOLD, y=0.64m, one full leg's length 1.05m from dazed B at z=4.40) | FE6 finisher windup: A sinks low with L_arm extended forward-low and R_arm coiled back (both arms separate from the torso in silhouette) as white heat-steam rises off his striated shoulders.",
+    "8.00 A (18f): NO SUPPORT (airborne in high leap at y=1.32m, z=3.35 on screen-left, 1.05m leg's length from B at z=4.40) | FE6 guillotine axe-kick apex: leaping off his left foot, A raises his dead-straight right leg vertically overhead (12 o'clock, taped right heel reaching y=1.88m) while his left leg angles down-back (7 o'clock) and both arms spread wide like wings in silhouette.",
+    "8.75 A (17f): SUPPORT left bare foot planted firmly on floor at z=3.35 on screen-left (one full leg's length, 1.05m from B at z=4.40) | FE6 AERIAL AXE-HEEL FINISHER CONTACT (hold 5f, slomo 0.25x, Bound): whipping his hips downward onto his planted left pillar leg with both arms swept wide back in silhouette, A chops his dead-straight right leg vertically downward (12-to-6 o'clock), slamming his taped right heel across the 1.05m gap onto B's collarbone and jaw at [0,1.34,4.28] -> vertical white shock pillar and double concentric shock rings blast B downward-back.",
+    "8.75 B (17f): NO SUPPORT (driven violently downward-back from z=4.40 to z=4.95 on screen-right) | FE6 KO reaction: crushed downward and backward by A's vertical axe-heel drop, B is blasted off his feet to z=4.95.",
+    "9.45 B (13f): SUPPORT back and shoulders flat on floor at z=4.95 (screen-right) | B crashes flat on his back in a radial dust ring, knocked out cold to 10.00s.",
+    "9.45 A (13f): SUPPORT wide low martial arts stance held still at z=3.35 on screen-left (right heel planted forward after the axe-kick drop, left foot anchored back, L_arm extended forward, R_arm chambered at hip, both arms separate from torso in silhouette) | FE6 follow-through hold to 10.00s: A holds his grounded post-axe-kick stance with white steam rising off his shoulders to 10.00s."
+  ],
+  "laban": {
+    "A": {
+      "chain": "C01_entry_step_to_leg_length > C02_low_one_palm_drop_under_hook > C03_120deg_floor_pivot_right_instep_ankle_sweep_0.65s > C04_absorbs_B_teep_rolls_onto_shoulders_1.10s > C05_ground_bicycle_left_heel_up_kick_to_sternum_1.50s > C06_explosive_arched_spine_kip_up_to_feet_1.95s > C07_left_forearm_slap_parry_2.35s > C08_90deg_rising_right_elbow_to_ribs_2.75s > C09_continuous_270deg_spin_left_backfist_to_cheek_3.25s > C10_absorbs_B_left_body_hook_skids_to_z=3.05_4.20s > C11_collar_tie_downward_neck_snap_4.85s > C12_two_foot_jump_coil_5.45s > C13_airborne_scissor_switch_right_knee_to_chin_6.00s > C14_clean_two_foot_landing_6.55s > C15_steaming_low_launch_coil_7.25s > C16_high_leap_12_clock_vertical_right_leg_chamber_8.00s > C17_12_to_6_vertical_right_axe_heel_drop_ko_8.75s > C18_steaming_wide_stance_hold_to_10s",
+      "effort": {
+        "weight": "whip_like_multi_limb_snap_and_vertical_guillotine_drop",
+        "time": "modulated_staccato_flurries_and_slow_motion_aerial_impacts",
+        "space": "full_4_domain_vertical_and_rotational_coverage_on_screen_left",
+        "flow": "recoil_feeds_windup_continuous_chaining_snapping_to_bound_at_0.65_1.50_3.25_4.20_6.00_8.75"
+      }
+    },
+    "B": {
+      "chain": "C01_high_right_hook_whiff_over_ducking_A > C02_left_ankle_swept_by_low_kick_0.65s > C03_surges_up_and_lands_right_teep_knockdown_1.10s > C04_jolted_upright_by_A_ground_up_kick_1.50s > C05_left_punch_parried_at_2.35s > C06_ribs_and_cheek_rocked_by_elbow_backfist_flurry_3.25s > C07_lands_heavy_left_shovel_hook_to_A_ribs_4.20s > C08_head_snapped_down_in_collar_tie_4.85s > C09_chin_lifted_by_jumping_switch_knee_6.00s > C10_collarbone_and_jaw_crushed_by_aerial_axe_heel_8.75s > C11_ko_flat_on_floor_at_z=4.95",
+      "effort": {
+        "weight": "heavy_brawler_power",
+        "time": "sudden_explosive_counters",
+        "space": "direct",
+        "flow": "bound"
+      }
+    }
+  },
+  "beats": [
+    "low_palm_drop_and_ankle_sweep",
+    "B_teep_knockdown_into_A_ground_up_kick_and_kip_up",
+    "forearm_parry_into_elbow_and_spinning_backfist_flurry",
+    "B_shovel_hook_counter_and_A_collar_tie_snap_down",
+    "jumping_scissor_switch_knee_launcher",
+    "high_leap_12_to_6_axe_heel_drop_ko"
+  ],
+  "A_beats": [
+    {
+      "t": 0.0,
+      "beat": "low_palm_drop_and_ankle_sweep",
+      "causal": "C01: init_step_in_to_leg_reach -> causes: C02_low_drop_under_B_right_hook",
+      "pos": [0, 0.84, 2.9],
+      "vel": [0, 0, 1.1],
+      "axis": "head:+Y_up, torso:20deg_forward_lean, facing:+Z, screen_side:left",
+      "arc": "entry_step_to_z=2.90_at_1.10m_leg_length",
+      "support": "both_bare_feet_stepping_on_arena_floor",
+      "limbs": "L_arm:extended high-forward with open taped hand; R_arm:cocked at right cheek (both arms separate from the torso in silhouette); L_leg:stepping to z=2.90; R_leg:pushing off",
+      "pose": "On screen-left (crimson shorts, white wrist and ankle tape), A steps to z=2.90 (one full leg's length, 1.10m from bare-limbed B at z=4.00) with both arms separate from the torso in silhouette as B swings a high right hook."
+    },
+    {
+      "t": 0.3,
+      "beat": "low_palm_drop_and_ankle_sweep",
+      "causal": "C02: requires: C01_entry + B_high_right_hook_committed -> timing: BEFORE_HOOK_INTERSECTION -> preserves: vertical_drop_into_one_palm_floor_pivot -> causes: C03_low_ankle_sweep_at_0.65s",
+      "pos": [0, 0.38, 2.9],
+      "vel": [0, -1.8, 0],
+      "axis": "head:+Y_up_low_at_y=0.58m, torso:dropped_flat_under_B_hook, facing:+Z, screen_side:left",
+      "arc": "vertical_level_drop_planting_left_palm_on_floor_at_y=0.38m",
+      "support": "left_bare_heel_and_left_taped_palm_planted_on_arena_floor_at_z=2.90",
+      "contact": "evasion_corridor: A_drops_hips_to_y=0.38m_so_B_high_right_hook_whistles_0.45m_above_A_head",
+      "limbs": "L_leg:bent deep on left heel at z=2.90; R_leg:coiled back-right near floor; L_arm:extended straight down with taped left palm planted flat on floor; R_arm:extended wide high-back in counter-balance (both arms separate from the torso in silhouette)",
+      "pose": "At 0.30s (8f), A drops straight underneath B's high right hook into a low crouch (y=0.38m), planting his taped left palm flat on the floor while extending his right arm high-back with both arms separate from the torso in silhouette."
+    },
+    {
+      "t": 0.65,
+      "beat": "low_palm_drop_and_ankle_sweep",
+      "causal": "C03: requires: C02_one_palm_floor_coil -> preserves: 120deg_clockwise_floor_pivot_whip -> causes: C04_B_left_ankle_swept_out",
+      "pos": [0, 0.4, 2.9],
+      "vel": [0, 0, 0],
+      "axis": "head:+Y_up, torso:inclined_back_on_left_palm_pivoting_hips_120deg_clockwise, facing:+Z, screen_side:left",
+      "arc": "floor_skimming_8_to_2_clock_right_instep_sweep_across_1.10m_leg_reach",
+      "support": "left_heel_and_left_taped_palm_anchored_on_floor_at_z=2.90",
+      "contact": "pre:A_pivots_120deg_on_left_heel_and_left_palm_whipping_right_leg_low -> hit:A_taped_right_instep_and_shin_sweep_outside_of_B_lead_left_ankle_at_[0,0.18,3.88]_at_full_leg_length -> post:white_shock_flash_sweeps_B_left_foot_off_floor_dropping_B_to_one_knee",
+      "limbs": "L_leg:anchored on left heel at z=2.90; R_leg:locked straight skimming the floor across the 1.10m gap sweeping B's left ankle; L_arm:planted vertically on floor supporting weight; R_arm:swept wide back-right (both arms separate from the torso in silhouette)",
+      "pose": "At 0.65s (hold 3f), pivoting on his planted left heel and left palm at one full leg's length (1.10m) with both arms separate from the torso in silhouette, A whips his taped right instep low along the floor into B's lead left ankle, sweeping B's foot out from under him."
+    },
+    {
+      "t": 1.1,
+      "beat": "B_teep_knockdown_into_A_ground_up_kick_and_kip_up",
+      "causal": "C04: requires: C03_sweep_recovery + B_surges_up_firing_right_teep_at_1.10s -> preserves: backward_ground_roll_momentum_onto_shoulders -> causes: C05_ground_bicycle_up_kick_at_1.50s",
+      "pos": [0, 0.28, 2.85],
+      "vel": [0, -0.5, -0.4],
+      "axis": "head:tucked_chin_to_chest, spine:rolling_onto_upper_back_on_floor, facing:+Z, screen_side:left",
+      "arc": "backward_ground_roll_absorption_at_z=2.85_loading_left_knee_to_chest",
+      "support": "upper_back_and_both_taped_palms_planted_wide_on_floor_at_z=2.85",
+      "contact": "pre:B_surges_up_at_z=3.95_driving_bare_right_sole_push_kick -> hit:B_bare_right_foot_strikes_A_crossed_forearm_chest_guard_at_[0,0.95,3.00] -> post:A_rolls_onto_upper_back_at_z=2.85_planting_both_palms_wide_by_ears_and_chambering_left_leg",
+      "limbs": "L_leg:chambered tight to chest with taped left heel aimed upward toward B; R_leg:extended low along floor for scissor separation; L_arm:planted wide-left on floor by ear; R_arm:planted wide-right on floor by ear (both arms separate from the torso in silhouette)",
+      "pose": "At 1.10s (10f), knocked onto his back at z=2.85 by B's counter push-kick, A rolls onto his shoulder blades with both taped palms planted wide on the floor (both arms separate from the torso in silhouette), extending his right leg low while chambering his left knee to his chest."
+    },
+    {
+      "t": 1.5,
+      "beat": "B_teep_knockdown_into_A_ground_up_kick_and_kip_up",
+      "causal": "C05: requires: C04_ground_roll_chamber -> preserves: upward_leg_press_piston_from_shoulders -> causes: C06_B_jolted_upright_and_A_kip_up_at_1.95s",
+      "pos": [0, 0.34, 2.85],
+      "vel": [0, 0.2, 0],
+      "axis": "head:+Y_up_off_floor, spine:bridged_on_upper_shoulders_and_palms, facing:+Z, screen_side:left",
+      "arc": "diagonal_7_to_1_clock_ground_bicycle_left_heel_up_kick_across_1.10m_reach",
+      "support": "upper_shoulders_and_both_taped_palms_braced_on_floor_at_z=2.85",
+      "contact": "pre:A_bridges_on_shoulders_and_pistons_left_leg_upward_from_floor -> hit:A_taped_left_heel_slams_upward_into_looming_B_sternum_and_chin_at_[0,1.18,3.85]_at_full_leg_length -> post:white_shock_ring_jolts_B_upright_to_z=4.05_and_loads_A_kip_up",
+      "limbs": "L_leg:locked straight diagonally upward (7-to-1 o'clock) driving taped left heel into B's sternum/chin; R_leg:held low near floor at 60-degree scissor separation; L_arm:braced wide-left on floor; R_arm:braced wide-right on floor (both arms separate from the torso in silhouette)",
+      "pose": "At 1.50s (hold 3f), braced on his upper shoulders and wide-planted palms on the floor at z=2.85 (one full leg's length, 1.10m from B) with both arms separate from the torso in silhouette, A pistons a straight left-heel ground up-kick into B's sternum and chin, jolting B backward."
+    },
+    {
+      "t": 1.95,
+      "beat": "B_teep_knockdown_into_A_ground_up_kick_and_kip_up",
+      "causal": "C06: requires: C05_up_kick_recoil -> preserves: downward_leg_whip_and_palm_push_kip_up -> causes: C07_standing_forearm_parry_at_2.35s",
+      "pos": [0, 0.78, 3.15],
+      "vel": [0, 1.4, 0.8],
+      "axis": "head:+Y_up, spine:arching_upward_in_kip_up_landing_on_both_feet, facing:+Z, screen_side:left",
+      "arc": "explosive_carp_kip_up_from_floor_z=2.85_to_standing_z=3.15",
+      "support": "both_bare_feet_landing_in_low_fighting_stance_at_z=3.15",
+      "limbs": "feet:both bare feet snapping under hips to land at z=3.15; L_arm:whipping forward-high into guard; R_arm:whipping wide-right into guard (both arms separate from the torso in silhouette)",
+      "pose": "At 1.95s (10f), using the downward recoil of his up-kick, A whips both legs down and pushes off both palms in an explosive kip-up, landing cleanly on both bare feet at z=3.15 on screen-left with both arms separate from the torso in silhouette."
+    },
+    {
+      "t": 2.35,
+      "beat": "forearm_parry_into_elbow_and_spinning_backfist_flurry",
+      "causal": "C07: requires: C06_kip_up_stance + B_left_straight_committed -> timing: BEFORE_PUNCH_HITS -> preserves: inward_left_forearm_deflection_and_right_hip_load -> causes: C08_rising_right_elbow_at_2.75s",
+      "pos": [0, 0.82, 3.3],
+      "vel": [0, 0, 0.4],
+      "axis": "head:+Y_up, torso:rotating_30deg_counterclockwise_parrying_with_left_forearm, facing:+Z, screen_side:left",
+      "arc": "inward_left_forearm_slap_parry_at_0.75m_arm_reach",
+      "support": "balls_of_both_bare_feet_darting_to_z=3.30",
+      "contact": "pre:A_steps_to_z=3.30_raising_taped_left_forearm -> hit:A_taped_left_forearm_slaps_B_incoming_bare_left_wrist_outside_at_[0,1.38,3.75] -> post:B_left_arm_is_deflected_wide_opening_B_ribs",
+      "limbs": "feet:planted at z=3.30; L_arm:sweeping across centerline slapping B's left wrist aside; R_arm:coiled back-right at ribs loading right elbow (both arms separate from the torso in silhouette)",
+      "pose": "At 2.35s (10f, 0.75m arm's length from B at z=4.05), A slaps B's incoming bare left punch aside with his taped left forearm while coiling his right arm back with both arms separate from the torso in silhouette."
+    },
+    {
+      "t": 2.75,
+      "beat": "forearm_parry_into_elbow_and_spinning_backfist_flurry",
+      "causal": "C08: requires: C07_left_forearm_parry -> preserves: 90deg_clockwise_torso_whip -> causes: C09_continuous_270deg_spin_left_backfist_at_3.25s",
+      "pos": [0, 0.78, 3.35],
+      "vel": [0, 0.1, 0.2],
+      "axis": "head:+Y_up, torso:rotated_90deg_clockwise_driving_right_elbow_upward, facing:+Z, screen_side:left",
+      "arc": "upward_diagonal_7_to_1_clock_right_elbow_spear_to_ribs_at_0.65m_reach",
+      "support": "both_bare_feet_planted_at_z=3.35_pivoting_90deg_clockwise",
+      "contact": "pre:A_pins_B_left_wrist_with_left_hand_and_rotates_90deg_clockwise -> hit:A_bare_right_elbow_point_slices_upward_into_B_floating_ribs_and_solar_plexus_at_[0,1.10,3.90] -> post:rib_shock_ripple_folds_B_forward_and_carries_A_into_270deg_clockwise_spin",
+      "limbs": "feet:pivoting 90 deg clockwise at z=3.35; L_arm:extended low-left pinning B's left wrist; R_arm:folded sharply driving right elbow point into B's ribs (both arms separate from the torso in silhouette)",
+      "pose": "At 2.75s (12f, 0.65m half-arm reach), pinning B's left wrist with his left hand so both arms are separate from the torso in silhouette, A rotates 90 degrees clockwise to drive a rising right elbow point into B's floating ribs."
+    },
+    {
+      "t": 3.25,
+      "beat": "forearm_parry_into_elbow_and_spinning_backfist_flurry",
+      "causal": "C09: requires: C08_90deg_clockwise_elbow_momentum -> preserves: continuous_270deg_clockwise_spin_whip -> causes: C10_B_head_snaps_toward_camera_and_staggers_to_z=4.15",
+      "pos": [0, 0.84, 3.35],
+      "vel": [0, 0, 0],
+      "axis": "head:+Y_up_looking_over_left_shoulder, torso:completing_360deg_clockwise_spin_whipping_left_backfist, facing:+Z, screen_side:left",
+      "arc": "horizontal_9_to_3_clock_spinning_left_backfist_across_0.80m_arm_reach",
+      "support": "right_bare_foot_anchored_at_z=3.35_completing_clockwise_spin",
+      "contact": "pre:A_continues_clockwise_rotation_270deg_whipping_left_arm_wide -> hit:A_taped_left_backfist_knuckles_slam_across_B_right_cheekbone_at_[0,1.46,4.05]_at_full_arm_length -> post:white_shock_ring_snaps_B_head_to_B_left_(toward_foreground_camera_+X)_staggering_B_to_z=4.15",
+      "limbs": "feet:pivoting at z=3.35; L_arm:fully extended horizontally whipping taped left backfist across B's right cheek; R_arm:held wide-right at chest height in counter-balance (both arms separate from the torso in silhouette)",
+      "pose": "At 3.25s (hold 3f), continuing his clockwise rotation 270 degrees without resetting at one full arm's length (0.80m) with both arms separate from the torso in silhouette, A whips a spinning left backfist across B's right cheek, snapping B's head toward the foreground camera (+X)."
+    },
+    {
+      "t": 4.2,
+      "beat": "B_shovel_hook_counter_and_A_collar_tie_snap_down",
+      "causal": "C10: requires: C09_spin_recovery + B_heavy_left_shovel_hook_lands_at_4.20s -> preserves: 0.25m_backward_skid_absorption -> causes: C11_collar_tie_snap_down_at_4.85s",
+      "pos": [0, 0.76, 3.05],
+      "vel": [0, 0, -0.8],
+      "axis": "head:+Y_up_gritting_teeth, torso:crunched_absorbing_body_hook_skidding_to_z=3.05, facing:+Z, screen_side:left",
+      "arc": "backward_heel_skid_from_z=3.30_to_z=3.05_on_screen_left",
+      "support": "both_bare_feet_skidding_0.25m_backward_to_z=3.05",
+      "contact": "pre:B_plants_wide_at_z=4.10_and_rips_left_shovel_hook -> hit:B_bare_left_fist_slams_upward_into_A_right_forearm_and_ribs_at_[0,1.08,3.40]_at_0.80m_arm_length -> post:heavy_body_shock_flash_skids_A_back_to_z=3.05",
+      "limbs": "L_leg:skidding to z=3.05; R_leg:braced back; R_arm:angled low-right absorbing B's shovel-hook; L_arm:held high-left in guard (both arms separate from the torso in silhouette)",
+      "pose": "At 4.20s (hold 3f), B plants wide on screen-right and lands a crushing bare-knuckle left shovel-hook across the 0.80m gap into A's right forearm and ribs (both arms separate from the torso in silhouette), skidding A 0.25m backward to z=3.05."
+    },
+    {
+      "t": 4.85,
+      "beat": "B_shovel_hook_counter_and_A_collar_tie_snap_down",
+      "causal": "C11: requires: C10_skid_stop -> preserves: downward_collar_tie_snap_and_jump_setup -> causes: C12_two_foot_jump_coil_at_5.45s",
+      "pos": [0, 0.8, 3.45],
+      "vel": [0, -0.2, 0.3],
+      "axis": "head:+Y_up, spine:arching_back_snapping_B_head_downward, facing:+Z, screen_side:left",
+      "arc": "12_to_6_clock_two_hand_collar_tie_snap_down_at_0.65m_reach",
+      "support": "both_bare_feet_in_wide_split_stance_at_z=3.45",
+      "contact": "pre:A_steps_to_z=3.45_clamping_both_taped_hands_behind_B_neck -> hit:A_yanks_B_head_downward_to_y=1.18m_at_[0,1.18,3.95] -> post:B_posture_is_broken_forward_down_for_jumping_knee",
+      "limbs": "L_leg:planted forward at z=3.45; R_leg:planted back at z=3.15; L_arm:pulling left side of B's neck down; R_arm:pulling right side of B's neck down (both arms separate from the torso in silhouette)",
+      "pose": "At 4.85s (14f), stepping back in to 0.65m half-arm reach with both arms separate from the torso in silhouette, A clamps a two-handed collar tie behind B's neck and snaps B's head forward-down to y=1.18m."
+    },
+    {
+      "t": 5.45,
+      "beat": "jumping_scissor_switch_knee_launcher",
+      "causal": "C12: requires: C11_neck_snap_down -> preserves: deep_two_foot_vertical_spring_compression -> causes: C13_airborne_scissor_switch_knee_at_6.00s",
+      "pos": [0, 0.64, 3.4],
+      "vel": [0, -0.3, 0],
+      "axis": "head:+Y_up, spine:coiled_in_deep_two_foot_jump_crouch, facing:+Z, screen_side:left",
+      "arc": "deep_two_foot_jump_compression_crouch_at_y=0.64m",
+      "support": "both_bare_feet_planted_wide_on_floor_at_z=3.40_coiling_to_jump",
+      "limbs": "L_leg:bent deep at z=3.40; R_leg:bent deep at z=3.35; L_arm:swung wide back-left behind hip; R_arm:swung wide back-right behind hip (both arms separate from the torso in silhouette)",
+      "pose": "At 5.45s (13f), releasing the collar tie at 0.70m separation from B, A sinks into a deep two-foot jump crouch (y=0.64m) with both taped arms swung wide back behind his hips in silhouette."
+    },
+    {
+      "t": 6.0,
+      "beat": "jumping_scissor_switch_knee_launcher",
+      "causal": "C13: requires: C12_two_foot_jump_coil -> preserves: 90deg_airborne_scissor_leg_separation_and_upward_knee_spear -> causes: C14_B_chin_lifted_and_A_two_foot_landing_at_6.55s",
+      "pos": [0, 1.18, 3.42],
+      "vel": [0, 1.8, 0.1],
+      "axis": "head:+Y_up, torso:leaned_back_15deg_in_mid_air_scissor_switch, facing:+Z, screen_side:left",
+      "arc": "airborne_8_to_1_clock_jumping_right_knee_spear_with_left_leg_extended_down_back",
+      "support": "none_airborne_jumping_scissor_switch_knee_apex_at_y=1.18m",
+      "contact": "pre:A_leaps_off_both_feet_extending_left_leg_straight_down_back_at_5_clock -> hit:A_sharply_bent_right_kneecap_spears_diagonally_upward_into_B_chin_at_[0,1.38,3.98] -> post:radial_white_shock_flash_lifts_B_head_upright_and_staggers_B_to_z=4.40",
+      "limbs": "L_leg:extended straight downward-back toward 5 o'clock so legs form a 90-degree scissor in silhouette; R_leg:driven high diagonally upward with right calf folded tight against right hamstring and right kneecap spearing B's chin; L_arm:swung wide low-left; R_arm:swung wide low-right (both arms separate from the torso in silhouette)",
+      "pose": "At 6.00s (hold 4f, slomo 0.25x), in clean full-body side profile with 0.68m hip separation and both arms separate from the torso in silhouette, A leaps into a mid-air scissor switch—extending his left leg straight downward-back while spearing his bent right knee diagonally upward into B's chin, staggering B to z=4.40."
+    },
+    {
+      "t": 6.55,
+      "beat": "jumping_scissor_switch_knee_launcher",
+      "causal": "C14: requires: C13_airborne_knee_apex -> preserves: downward_gravity_landing_absorption -> causes: C15_low_launch_coil_at_7.25s",
+      "pos": [0, 0.72, 3.35],
+      "vel": [0, -2.4, -0.1],
+      "axis": "head:+Y_up, torso:upright_absorbing_landing_in_knees, facing:+Z, screen_side:left",
+      "arc": "vertical_descent_onto_both_bare_feet_at_z=3.35",
+      "support": "both_bare_feet_landing_firmly_on_arena_floor_at_z=3.35",
+      "limbs": "feet:both bare feet planted on floor at z=3.35 with knees bent; L_arm:extended forward-left in guard; R_arm:extended wide-right in counter-balance (both arms separate from the torso in silhouette)",
+      "pose": "At 6.55s (17f), A lands cleanly on both bare feet at z=3.35 on screen-left (1.05m full leg's length from staggered B at z=4.40), absorbing the impact in his knees with both arms separate from the torso in silhouette."
+    },
+    {
+      "t": 7.25,
+      "beat": "high_leap_12_to_6_axe_heel_drop_ko",
+      "causal": "C15: requires: C14_two_foot_landing -> preserves: deep_leg_coil_and_shoulder_torsion -> causes: C16_high_leap_12_clock_axe_chamber_at_8.00s",
+      "pos": [0, 0.64, 3.35],
+      "vel": [0, -0.2, 0],
+      "axis": "head:+Y_up_locked_on_B, spine:deep_crouch_coiling_for_high_leap, facing:+Z, screen_side:left",
+      "arc": "deep_crouch_coil_at_z=3.35_with_heat_steam",
+      "support": "both_bare_feet_planted_wide_in_deep_crouch_at_z=3.35",
+      "limbs": "L_leg:bent deep at z=3.35; R_leg:loaded back ready to swing overhead; L_arm:extended low-forward with open taped hand; R_arm:coiled wide back behind right hip (both arms separate from the torso in silhouette)",
+      "pose": "ANTICIPATION HOLD at 7.25s (18f). At one full leg's length (1.05m between A at z=3.35 and dazed B at z=4.40), A coils in a deep crouch on screen-left with both arms separate from the torso in silhouette as white heat-steam rises off his shoulders."
+    },
+    {
+      "t": 8.0,
+      "beat": "high_leap_12_to_6_axe_heel_drop_ko",
+      "causal": "C16: requires: C15_deep_crouch_coil -> preserves: explosive_upward_leap_and_12_clock_vertical_right_leg_raise -> causes: C17_12_to_6_vertical_axe_heel_drop_ko_at_8.75s",
+      "pos": [0, 1.32, 3.35],
+      "vel": [0, 2.2, 0],
+      "axis": "head:+Y_up, torso:hinged_in_air_with_right_leg_raised_to_12_clock_vertical, facing:+Z, screen_side:left",
+      "arc": "upward_leap_raising_straight_right_leg_to_12_clock_y=1.88m",
+      "support": "none_airborne_at_high_leap_apex_y=1.32m_at_z=3.35",
+      "limbs": "R_leg:locked dead-straight pointing vertically upward to 12 o'clock (taped right heel at y=1.88m); L_leg:extended downward-back toward 7 o'clock in wide split separation; L_arm:spread wide forward-left; R_arm:spread wide back-right like wings (both arms separate from the torso in silhouette)",
+      "pose": "At 8.00s (18f), A leaps high at z=3.35 on screen-left (1.05m leg's length from B), raising his dead-straight right leg vertically overhead to 12 o'clock (taped heel at y=1.88m) while his left leg angles down-back and both arms spread wide in silhouette."
+    },
+    {
+      "t": 8.75,
+      "beat": "high_leap_12_to_6_axe_heel_drop_ko",
+      "causal": "C17: requires: C16_12_clock_vertical_leg_chamber -> preserves: 12_to_6_guillotine_heel_chop_onto_planted_left_foot -> causes: C18_vertical_shock_pillar_blasting_B_to_z=4.95",
+      "pos": [0, 0.88, 3.35],
+      "vel": [0, -2.8, 0],
+      "axis": "head:+Y_up, torso:whipping_downward_chopping_straight_right_leg_12_to_6, facing:+Z, screen_side:left",
+      "arc": "vertical_12_to_6_clock_guillotine_right_axe_heel_drop_across_1.05m_leg_reach",
+      "support": "left_bare_foot_planted_firmly_on_floor_at_z=3.35_as_landing_pillar",
+      "contact": "pre:A_lands_on_left_pillar_foot_whipping_straight_right_leg_downward_12_to_6 -> hit:A_taped_right_heel_slams_vertically_onto_B_collarbone_and_jaw_at_[0,1.34,4.28]_at_full_leg_length -> post:vertical_white_shock_pillar_and_double_shockwave_ring_crush_B_downward_and_blast_B_to_z=4.95",
+      "limbs": "L_leg:planted straight down on floor at z=3.35 as landing pillar; R_leg:locked dead-straight extended across the 1.05m gap chopping taped right heel onto B's collarbone/jaw; L_arm:swept wide low-left; R_arm:swept wide back-right (both arms separate from the torso in silhouette)",
+      "pose": "At 8.75s (hold 5f, slomo 0.25x), at one full leg's length (1.05m between A at z=3.35 and B at z=4.40) with both arms separate from the torso in silhouette, A anchors his landing left foot and chops his dead-straight right leg vertically downward (12-to-6 o'clock), slamming his taped right heel onto B's collarbone and jaw in a vertical white shockwave pillar."
+    },
+    {
+      "t": 10.0,
+      "beat": "high_leap_12_to_6_axe_heel_drop_ko",
+      "causal": "C18_hold: maintains C18_post_axe_kick_wide_martial_stance",
+      "pos": [0, 0.76, 3.35],
+      "vel": [0, 0, 0],
+      "axis": "head:+Y_up_level, torso:still_wide_low_martial_stance, facing:+Z, screen_side:left",
+      "arc": "static_follow_through_hold",
+      "support": "both_bare_feet_planted_wide_on_floor_at_z=3.35",
+      "limbs": "R_leg:planted forward on floor after axe-kick follow-through; L_leg:anchored back; L_arm:extended forward in open-hand guard; R_arm:chambered at right hip (both arms separate from the torso in silhouette); white heat-steam rising off shoulders",
+      "pose": "As B crashes flat on his back at z=4.95 on screen-right, A holds his wide low martial arts stance at z=3.35 on screen-left with both arms separate from the torso in silhouette and white heat-steam rising from his shoulders to 10.0s."
+    }
+  ],
+  "B_track": [
+    {
+      "t": 0.0,
+      "pos": [0, 1.02, 4.0],
+      "axis": "head:+Y_up, torso:swinging_high_right_hook, facing:-Z, screen_side:right",
+      "support": "both_bare_feet_on_floor_at_z=4.00",
+      "action": "swing_high_right_hook_over_ducking_A",
+      "pose": "on screen-right at z=4.00 (bare wrists and ankles, black pants, 1.10m from A), steps in swinging a high bare-knuckle right hook that misses over A's head as A drops to one palm at 0.30s"
+    },
+    {
+      "t": 0.65,
+      "pos": [0, 0.68, 4.0],
+      "axis": "head:+Y_up, torso:dropping_to_right_knee_as_left_ankle_is_swept, facing:-Z, screen_side:right",
+      "support": "right_foot_and_right_knee_touching_floor_as_left_foot_is_swept_at_z=4.00",
+      "contact": "B_lead_left_ankle -> swept_sideways_by_A_low_right_instep_at_[0,0.18,3.88]",
+      "action": "left_ankle_swept_drops_to_one_knee",
+      "pose": "only after A's low right instep sweeps B's lead left ankle at 0.65s (11f), B's left foot kicks out sideways and B drops briefly to his right knee with both bare arms separate from his torso in silhouette"
+    },
+    {
+      "t": 1.1,
+      "pos": [0, 0.96, 3.95],
+      "axis": "head:+Y_up, torso:surging_up_driving_right_teep_push_kick, facing:-Z, screen_side:right",
+      "support": "left_bare_foot_planted_at_z=3.95_driving_right_push_kick",
+      "contact": "B_bare_right_sole -> drives_push_kick_into_A_chest_guard_at_[0,0.95,3.00]_knocking_A_onto_back",
+      "action": "surges_up_and_lands_right_push_kick_knocking_A_down",
+      "pose": "at 1.10s (10f), surging up from his knee at z=3.95 on screen-right, B drives a heavy bare right sole push-kick across the 1.05m gap into A's chest guard, knocking A onto his back at z=2.85"
+    },
+    {
+      "t": 1.5,
+      "pos": [0, 1.04, 3.95],
+      "axis": "head:snapped_up_and_back, torso:jolted_upright_to_z=4.05, facing:-Z, screen_side:right",
+      "support": "both_bare_feet_staggering_back_to_z=4.05",
+      "contact": "B_sternum_and_chin -> struck_upward_by_A_ground_left_heel_up_kick_at_[0,1.18,3.85]",
+      "action": "jolted_upright_by_A_ground_up_kick",
+      "pose": "only after A's bicycle left heel up-kick slams upward from the floor into B's sternum and chin at 1.50s (20f), B's head snaps backward and B staggers upright to z=4.05"
+    },
+    {
+      "t": 2.35,
+      "pos": [0, 0.98, 4.05],
+      "axis": "head:+Y_up, torso:left_straight_deflected_wide_ribs_open, facing:-Z, screen_side:right",
+      "support": "both_bare_feet_planted_at_z=4.05",
+      "contact": "B_bare_left_wrist -> slapped_outside_by_A_left_forearm_parry_at_[0,1.38,3.75]",
+      "action": "left_punch_parried_wide_exposing_ribs",
+      "pose": "at 2.35s (10f), B fires a straight left punch that A slaps wide with his left forearm, leaving B's floating ribs open"
+    },
+    {
+      "t": 2.75,
+      "pos": [0, 0.92, 4.0],
+      "axis": "head:+Y_up, torso:folded_forward_from_rising_right_elbow_to_ribs, facing:-Z, screen_side:right",
+      "support": "both_bare_feet_planted_at_z=4.00",
+      "contact": "B_floating_ribs -> struck_by_A_rising_right_elbow_at_[0,1.10,3.90]",
+      "action": "ribs_caved_by_rising_right_elbow",
+      "pose": "at 2.75s (12f), B's midsection caves inward from A's rising right elbow at 0.65m reach"
+    },
+    {
+      "t": 3.25,
+      "pos": [0, 0.96, 4.15],
+      "axis": "head:whipped_hard_to_B_left_(toward_foreground_camera_+X), torso:staggered_to_z=4.15, facing:-Z, screen_side:right",
+      "support": "both_bare_feet_sliding_to_z=4.15",
+      "contact": "B_right_cheekbone -> struck_at_0.80m_arm_length_by_A_spinning_left_backfist_at_[0,1.46,4.05]",
+      "action": "head_whips_toward_camera_from_spinning_left_backfist",
+      "pose": "only after A's 270-degree spinning left backfist slams B's right cheek at 3.25s (23f), B's head whips hard to B's left (toward the foreground camera +X) in a white shockwave ring as B staggers to z=4.15"
+    },
+    {
+      "t": 4.2,
+      "pos": [0, 0.9, 4.1],
+      "axis": "head:+Y_up, torso:driving_forward_in_left_shovel_hook_counter, facing:-Z, screen_side:right",
+      "support": "both_bare_feet_planted_wide_at_z=4.10_on_screen_right",
+      "contact": "B_bare_left_fist -> slams_shovel_hook_into_A_right_forearm_and_ribs_at_[0,1.08,3.40]_skidding_A_to_z=3.05",
+      "action": "lands_heavy_left_shovel_hook_counter_skidding_A_back",
+      "pose": "at 4.20s (16f), planting wide at z=4.10 on screen-right (0.80m full arm's length) with both bare arms separate from his torso in silhouette, B rips a heavy bare-knuckle left shovel-hook into A's right forearm and ribs, skidding A 0.25m backward to z=3.05"
+    },
+    {
+      "t": 4.85,
+      "pos": [0, 0.84, 4.1],
+      "axis": "head:snapped_forward_down_to_y=1.18m, spine:bent_forward_at_z=4.10, facing:-Z, screen_side:right",
+      "support": "both_bare_feet_planted_at_z=4.10",
+      "contact": "B_neck -> snapped_forward_down_by_A_two_hand_collar_tie_at_[0,1.18,3.95]",
+      "action": "head_snapped_down_by_collar_tie",
+      "pose": "at 4.85s (28f), B's head and upper spine are snapped forward and downward to y=1.18m by A's two-handed collar tie while B's bare arms hang wide outside"
+    },
+    {
+      "t": 6.0,
+      "pos": [0, 1.06, 4.1],
+      "axis": "head:snapped_straight_up_and_back, torso:jolted_upright_stumbling_to_z=4.40, facing:-Z, screen_side:right",
+      "support": "both_bare_feet_stumbling_backward_from_z=4.10_to_z=4.40",
+      "contact": "B_chin -> speared_upward_by_A_jumping_scissor_switch_right_knee_at_[0,1.38,3.98]",
+      "action": "chin_lifted_by_jumping_switch_knee_stumbles_to_z=4.40",
+      "pose": "only after A's jumping switch right knee spears upward into B's chin at 6.00s (48f), B's head snaps straight back in a radial shock flash and B stumbles dazed backward to z=4.40 on screen-right"
+    },
+    {
+      "t": 8.75,
+      "pos": [0, 0.82, 4.4],
+      "axis": "head:crushed_downward, torso:blasted_downward_and_backward_toward_z=4.95, facing:-Z, screen_side:right",
+      "support": "none_airborne_driven_downward_back_off_both_feet_on_screen_right",
+      "contact": "B_collarbone_and_jaw -> crushed_vertically_at_1.05m_leg_length_by_A_12_to_6_right_axe_heel_at_[0,1.34,4.28]",
+      "launch_vel": [0, -1.4, 2.0],
+      "action": "crushed_downward_and_back_by_aerial_axe_heel_to_z=4.95_ko",
+      "pose": "only after A's dead-straight 12-to-6 right axe-kick heel slams vertically onto B's collarbone and jaw across the 1.05m gap at 8.75s (17f), B is crushed downward and blasted off his feet to z=4.95 on screen-right"
+    },
+    {
+      "t": 9.45,
+      "pos": [0, 0.22, 4.95],
+      "axis": "head:on_floor, spine:flat_on_back_ko, facing:+Y_up, screen_side:right",
+      "support": "back_and_pelvis_flat_on_floor_at_z=4.95",
+      "contact": "B_back -> crashes_flat_into_floor_at_[0,0.22,4.95]_ko",
+      "action": "crashes_flat_on_floor_knocked_out_cold",
+      "pose": "at 9.45s (13f), crashes flat onto his back at z=4.95 on screen-right in a radial dust ring, knocked out cold"
+    },
+    {
+      "t": 10.0,
+      "pos": [0, 0.22, 4.95],
+      "axis": "head:on_floor, spine:flat_on_back_ko, facing:+Y_up, screen_side:right",
+      "support": "back_and_pelvis_flat_on_floor_at_z=4.95",
+      "action": "ko_motionless_on_floor",
+      "pose": "lies flat and motionless on the arena floor at z=4.95 on screen-right"
+    }
+  ],
+  "camera": [
+    {
+      "t": 0.0,
+      "shot": "low_3_4_front_left_drop_track_under_hook",
+      "fov": 38,
+      "pos": [1.45, 0.65, 2.55],
+      "dutch_roll_deg": -8,
+      "look": "A_on_screen_left_z=2.90_dropping_straight_under_B_high_right_hook_onto_left_palm_at_0.30s",
+      "move": "fast_vertical_pedestal_drop_from_y=0.65m_to_floor_level_y=0.25m_with_A_duck"
+    },
+    {
+      "t": 0.65,
+      "hold_frames": 3,
+      "shot": "floor_level_telephoto_3_4_ankle_sweep_impact",
+      "fov": 28,
+      "pos": [1.5, 0.24, 3.55],
+      "look": "A_taped_right_instep_sweeping_B_lead_left_ankle_at_[0,0.18,3.88]_across_1.10m_leg_length",
+      "effect": "snap_zoom_compression_camera_shake_ankle_shock_flash"
+    },
+    {
+      "t": 1.1,
+      "shot": "dynamic_3_4_ground_roll_and_bicycle_up_kick_chamber",
+      "fov": 38,
+      "pos": [1.55, 0.45, 2.75],
+      "look": "A_rolling_onto_upper_back_and_wide_planted_palms_at_z=2.85_as_B_looms_forward_at_z=3.95",
+      "move": "low_angle_backward_dolly_framing_A_on_floor_and_looming_B_head_to_toe"
+    },
+    {
+      "t": 1.5,
+      "hold_frames": 3,
+      "shot": "low_3_4_ground_bicycle_heel_up_kick_impact_and_kip_up",
+      "fov": 32,
+      "pos": [1.45, 0.42, 3.25],
+      "dutch_roll_deg": 8,
+      "look": "A_pistoning_taped_left_heel_upward_from_floor_into_B_sternum_at_[0,1.18,3.85]_then_exploding_into_arched_kip_up_at_1.95s",
+      "move": "rising_crane_track_following_A_1.95s_kip_up_back_to_standing",
+      "effect": "camera_shake_sternum_shock_ring"
+    },
+    {
+      "t": 2.35,
+      "shot": "tight_3_4_over_B_left_shoulder_parry_and_rising_elbow_flurry",
+      "fov": 34,
+      "pos": [1.35, 1.25, 3.95],
+      "look": "A_slapping_B_left_wrist_aside_at_2.35s_and_rotating_90deg_into_rising_right_elbow_to_B_ribs_at_2.75s",
+      "move": "fast_push_in_tracking_inside_pocket_parry_and_elbow"
+    },
+    {
+      "t": 3.25,
+      "hold_frames": 3,
+      "shot": "rotational_whip_pan_3_4_spinning_left_backfist_impact",
+      "fov": 28,
+      "pos": [1.3, 1.38, 3.65],
+      "dutch_roll_deg": -12,
+      "look": "A_completing_270deg_clockwise_spin_at_z=3.35_whipping_left_backfist_across_B_right_cheek_at_[0,1.46,4.05]_snapping_B_head_toward_camera",
+      "effect": "whip_pan_stop_camera_shake_cheek_shockwave_ring"
+    },
+    {
+      "t": 4.2,
+      "hold_frames": 3,
+      "shot": "low_3_4_front_right_on_B_heavy_left_shovel_hook_counter",
+      "fov": 34,
+      "pos": [1.5, 0.85, 3.75],
+      "dutch_roll_deg": 10,
+      "look": "B_on_screen_right_z=4.10_ripping_bare_left_shovel_hook_into_A_right_forearm_and_ribs_at_[0,1.08,3.40]_skidding_A_to_z=3.05",
+      "effect": "heavy_camera_shake_rib_impact_flash"
+    },
+    {
+      "t": 4.85,
+      "shot": "front_hemisphere_arc_into_clean_full_body_side_profile_for_jump_knee",
+      "fov": 38,
+      "pos": [1.95, 0.88, 3.75],
+      "look": "full_body_framing_of_A_snapping_B_neck_down_at_4.85s_and_coiling_in_two_foot_jump_crouch_at_5.45s",
+      "move": "smooth_orbital_arc_to_clean_90deg_full_body_side_profile_by_5.45s"
+    },
+    {
+      "t": 6.0,
+      "hold_frames": 4,
+      "time_remap": 0.25,
+      "shot": "medium_wide_side_profile_jumping_scissor_switch_right_knee_impact",
+      "fov": 38,
+      "pos": [2.2, 1.05, 3.75],
+      "look": "clean_full_body_side_profile_showing_A_left_leg_extended_down_back_at_5_clock_and_bent_right_knee_spearing_B_chin_at_[0,1.38,3.98]",
+      "effect": "heavy_camera_shake_radial_chin_shock_flash"
+    },
+    {
+      "t": 7.25,
+      "shot": "extreme_low_wide_3_4_coil_and_vertical_crane_tilt_on_12_clock_axe_chamber",
+      "fov": 40,
+      "pos": [1.55, 0.35, 3.15],
+      "look": "A_coiling_in_steaming_crouch_at_7.25s_then_leaping_at_8.00s_with_straight_right_leg_raised_vertically_to_12_clock_y=1.88m",
+      "move": "dramatic_low_to_high_crane_elevation_tracking_A_vertical_12_clock_axe_kick_apex"
+    },
+    {
+      "t": 8.75,
+      "hold_frames": 5,
+      "time_remap": 0.25,
+      "shot": "telephoto_snap_zoom_3_4_vertical_guillotine_axe_heel_ko",
+      "fov": 28,
+      "pos": [1.45, 0.92, 4.05],
+      "dutch_roll_deg": -10,
+      "look": "A_on_screen_left_z=3.35_chopping_dead_straight_right_leg_12_to_6_slamming_taped_right_heel_onto_B_collarbone_and_jaw_at_[0,1.34,4.28]",
+      "effect": "fov_40_to_28_snap_zoom_vertical_white_shock_pillar_double_shockwave_ring"
+    },
+    {
+      "t": 9.45,
+      "shot": "low_angle_3_4_hero_dolly_in_on_post_axe_kick_stance",
+      "fov": 32,
+      "pos": [1.35, 0.55, 3.2],
+      "look": "A_on_screen_left_z=3.35_holding_wide_low_martial_stance_with_steam_as_B_lies_ko_at_z=4.95_on_screen_right",
+      "move": "slow_low_angle_3_4_hero_dolly_in_over_0.55s_to_10.0s",
+      "duration": 0.55
+    }
+  ],
+  "anime": {
+    "style": "2D cel-shaded hand-drawn anime, Baki, Kengan Ashura, and God of High School style detailed anatomical muscle striations, hard 2-tone high-contrast shadows, heavy ink outlines on A, broken sketchy ink on active smear limbs only, clean thick ink on impact holds, underground tournament platform",
+    "impact_frames": [0.65, 1.5, 3.25, 4.2, 6.0, 8.75],
+    "smear_frames": [
+      "0.4-0.65: A right instep/shin low horizontal floor-sweep arc (8-to-2 o'clock) smear only; planted left palm, torso, and right counter-arm stay solid",
+      "1.25-1.5: A left leg upward bicycle up-kick streak (7-to-1 o'clock) smear only; bridged shoulders, wide-planted palms, and low right leg stay solid",
+      "2.55-2.75: A right forearm/elbow rising diagonal arc (7-to-1 o'clock) smear only; head, torso, and left wrist-pinning arm stay solid",
+      "2.95-3.25: A left arm horizontal spinning backfist arc (9-to-3 o'clock) smear only; spinning torso, head, and right counter-arm stay solid",
+      "3.95-4.2: B left arm upward shovel-hook streak (7-to-2 o'clock) smear only; B head, torso, and right arm stay solid",
+      "8.2-8.75: A straight right leg vertical 12-to-6 guillotine axe-kick chop streak only; planted left pillar leg, torso, and both wide arms stay solid"
+    ],
+    "speed_lines": ["0.3-0.65", "1.25-1.95", "2.55-3.25", "5.6-6.0", "8.0-8.75"],
+    "time_remap": {
+      "5.95-6.15": 0.25,
+      "8.7-9.0": 0.25
+    },
+    "anticipation_holds": [5.45, 7.25],
+    "fx": {
+      "0.65": "floor_level_white_ankle_shock_flash_and_resin_dust_spray",
+      "1.5": "upward_concentric_sternum_shock_ring_and_sweat_burst",
+      "2.75-3.25": "rib_shock_ripple_into_horizontal_cheek_shockwave_ring_toward_camera",
+      "4.2": "heavy_body_hook_shock_flash_and_heel_skid_streaks",
+      "6.0": "radial_white_chin_impact_flash_and_sweat_halo",
+      "7.25-8.75": "white_muscle_heat_steam_and_vertical_air_wake",
+      "8.75": "vertical_white_shock_pillar_and_double_concentric_shockwave_ring_crushing_floor_dust"
+    },
+    "line_rule": "heavy anatomical ink outlines on A and B, broken/sketchy outlines ONLY on active smear limbs (A right leg 0.4-0.65, A left leg 1.25-1.5, A right elbow 2.55-2.75, A left arm 2.95-3.25, B left arm 3.95-4.2, A straight right axe-kick leg 8.2-8.75; keep both legs 100% solid sharp ink during the 5.45-6.00s jumping scissor switch-knee), ultra-thick clean ink on all 6 held impact frames (0.65, 1.50, 3.25, 4.20, 6.00, 8.75)"
+  },
+  "rules": "Render as one continuous 10-second 2D hand-drawn multi-domain bare-knuckle fight on the tournament platform cycling through all 4 combat domains (low sweep -> ground up-kick & kip-up -> inside elbow/backfist flurry -> jumping switch-knee & aerial axe-heel drop) with zero repeated consecutive body weapons. OUTFIT & SIDE LOCK: Fighter A (lean, crimson shorts, white wrist/knuckle and ankle tape) stays on screen-left facing right (+Z) and Fighter B (massive, black pants, bare wrists and bare ankles with NO tape) stays on screen-right facing left (-Z) for all 10.0 seconds (zero side swaps, zero weapons, zero wall-runs, zero ground punches). Maintain realistic strike reach at all times with both arms separate from the torso in silhouette on every hit: punches/backfists at one full arm's length (0.75-0.85m), elbows/clinch at half an arm's length (0.65m), and kicks/sweeps/axe-kicks at one full leg's length (1.05-1.15m). At 0.0-0.65s (low 3/4 drop-track -> fov 28 floor-level telephoto), A drops straight under B's high right hook onto his left palm at 0.30s and pivots 120 degrees clockwise to sweep his taped right instep into B's lead left ankle at 0.65s (hold 3f), dropping B to one knee. At 1.10-1.95s (low 3/4 ground-scramble dolly -> rising kip-up crane track), B surges up and lands a right sole push-kick at 1.10s that knocks A onto his upper back at z=2.85; A braces both taped palms wide on the floor, pistons a bicycle left-heel ground up-kick into looming B's sternum/chin at 1.50s (hold 3f), and uses the recoil to arch off both palms in an explosive kip-up back to his feet at z=3.15 (1.95s). At 2.35-3.25s (tight 3/4 over-shoulder push-in -> rotational whip-pan with -12deg Dutch roll at fov 28), A slaps B's straight left punch aside with his left forearm at 2.35s, rotates 90 degrees clockwise to slice a rising right elbow into B's floating ribs at 2.75s, and rides that clockwise rotation 270 degrees into a full-arm's-length (0.80m) spinning left backfist across B's right cheek at 3.25s (hold 3f), snapping B's head toward the foreground camera (+X). At 4.20-4.85s, B plants wide and lands a heavy bare-knuckle left shovel-hook into A's right forearm and ribs at 4.20s (hold 3f), skidding A back to z=3.05; A steps back in at 4.85s to clamp a two-handed collar tie and snap B's head downward. At 5.45-6.55s (clean full-body side profile at fov 38), A coils in a two-foot jump crouch at 5.45s, leaps into a mid-air scissor switch at 6.00s—left leg extended straight downward-back toward 5 o'clock while his bent right knee spears diagonally upward into B's chin (hold 4f, slomo 0.25x)—and lands cleanly on both bare feet at z=3.35 at 6.55s. At 7.25-10.00s (fov 40 low wide crouch -> high crane tilt -> fov 28 telephoto snap-zoom KO with -10deg Dutch roll), A coils in a steaming crouch at 7.25s, leaps high at 8.00s raising his straight right leg vertically to 12 o'clock (taped heel at y=1.88m), and at 8.75s anchors his landing left foot at 1.05m leg's length while chopping his dead-straight right leg vertically downward (12-to-6 o'clock), slamming his taped right heel onto B's collarbone and jaw (hold 5f, slomo 0.25x) in a vertical white shockwave pillar that blasts B flat onto his back at z=4.95 (9.45s) while A holds his wide martial stance to 10.0s. Pure 2D cel-shaded anime, no 3D CGI, no on-screen text or numbers."
+}
