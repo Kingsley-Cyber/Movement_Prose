@@ -1,7 +1,6 @@
 {
-  "header": "10s anime fight clip, 24fps, rain-slicked neon-lit rooftop helipad cage arena overlooking a dark cyberpunk skyline, harsh magenta-and-cyan floodlights reflecting off wet concrete, octagonal chain-link perimeter fence in deep background shadow. STYLE: Pure 2D hand-drawn anime, Baki, Kengan Ashura, and God of High School style detailed anatomical muscle striations, flat cel shading with hard 2-tone high-contrast shadows, heavy ink outlines on A, broken sketchy ink on active smear limbs only, clean thick ink on impact holds, hyper-fluid bare-knuckle sakuga animation on twos. Not 3D, not CGI, not live action, not photoreal. ENTITY COUNT & OUTFIT LOCK: Exactly TWO shirtless bare-knuckle fighters (ZERO weapons). Fighter A (always on screen-left facing right): lean, razor-cut Muay Thai and MMA striker, shirtless bare torso, white cloth tape on both wrists/knuckles and gold ankle wraps, midnight-blue Vale Tudo fight shorts, bare feet. Fighter B (always on screen-right facing left): heavyweight muscular Dutch kickboxer, shirtless broad scarred torso, urban-camo fight shorts, bare wrists and bare ankles with NO tape, bare feet. Maintain realistic strike spacing at all times: one full arm's length (0.75-0.85m) for punches, half an arm's length (0.60-0.65m) for pocket hooks/uppercuts/clinch, and one full leg's length (1.05-1.15m) for long range so the bodies never merge, with both arms separate from the torso in silhouette on every hit. Execute with dynamic 180-degree-hemisphere Sakuga camera work; no on-screen text, no numbers, no HUD, and no coordinate labels.",
   "name": "variation_3_eight_limbs_muay_thai_mma_war_10s",
-  "schema": "SAKUGA-MLLM-3.1-CAUSAL",
+  "schema": "sakuga_Xperiment",
   "fps": 24,
   "duration": 10.0,
   "axes": "Y_up, metres, arena floor y=0, combat pocket z=2.8 to z=5.0, A stays on screen_left facing +Z right for all 10s, B stays on screen_right facing -Z left for all 10s",
@@ -51,7 +50,7 @@
     {
       "t": 0.0,
       "beat": "exchange_1_low_calf_kick_vs_lead_leg_buckle",
-      "causal": "C01: requires: init_stance -> preserves: loaded_rear_momentum -> causes: C01_low_calf_kick",
+      "causal": "C01: requires init_stance -> preserves loaded_rear_momentum -> chain: left foot pivots outward > hips whip through the arc > torso turns low > right shin swings flat > right shin digs into the calf -> causes C01_low_calf_kick",
       "pos": [
         0,
         0.84,
@@ -72,7 +71,7 @@
     {
       "t": 0.88,
       "beat": "exchange_2_burst_step_in_vs_slip_inside",
-      "causal": "C02: requires: C01_prev_state -> preserves: loaded_rear_momentum -> causes: C02_burst_step_in",
+      "causal": "C02: requires C01_prev_state -> preserves loaded_rear_momentum -> chain: left foot lifts > left foot plants inside range > hips slide forward > torso settles over the lead knee -> causes C02_burst_step_in",
       "pos": [
         0,
         0.84,
@@ -92,7 +91,7 @@
     {
       "t": 1.76,
       "beat": "exchange_3_slashing_rear_elbow_vs_head_whip_side",
-      "causal": "C03: requires: C02_prev_state -> preserves: loaded_lead_momentum -> causes: C03_slashing_rear_elbow",
+      "causal": "C03: requires C02_prev_state -> preserves loaded_lead_momentum -> chain: left foot plants deep > hips whip square > torso turns through the cut > right shoulder drives forward > right elbow lands on the cheekbone -> causes C03_slashing_rear_elbow",
       "pos": [
         0,
         0.84,
@@ -113,7 +112,7 @@
     {
       "t": 2.64,
       "beat": "exchange_4_high_shell_guard_vs_cross",
-      "causal": "C04: requires: C03_prev_state -> preserves: recoiling_back_momentum -> causes: C04_high_shell_guard",
+      "causal": "C04: requires C03_prev_state -> preserves recoiling_back_momentum -> chain: both feet plant wide > hips sink low > torso rolls forward > both forearms lock across the face -> causes C04_high_shell_guard",
       "pos": [
         0,
         0.84,
@@ -134,7 +133,7 @@
     {
       "t": 3.52,
       "beat": "exchange_5_lead_liver_hook_vs_torso_fold_rib_hit",
-      "causal": "C05: requires: C04_prev_state -> preserves: loaded_rear_momentum -> causes: C05_lead_liver_hook",
+      "causal": "C05: requires C04_prev_state -> preserves loaded_rear_momentum -> chain: left heel pivots out > hips dip low > left shoulder drives forward > left fist digs into the ribs -> causes C05_lead_liver_hook",
       "pos": [
         0,
         0.84,
@@ -155,7 +154,7 @@
     {
       "t": 4.4,
       "beat": "exchange_6_single_collar_tie_vs_clinch_captured_react",
-      "causal": "C06: requires: C05_prev_state -> preserves: loaded_rear_momentum -> causes: C06_single_collar_tie",
+      "causal": "C06: requires C05_prev_state -> preserves loaded_rear_momentum -> chain: left foot plants inside the stance > hips square forward > torso leans in > left palm locks behind the neck -> causes C06_single_collar_tie",
       "pos": [
         0,
         0.8,
@@ -176,7 +175,7 @@
     {
       "t": 5.28,
       "beat": "exchange_7_clinch_rising_knee_vs_clinch_rib_fold",
-      "causal": "C07: requires: C06_prev_state -> preserves: loaded_rear_momentum -> causes: C07_clinch_rising_knee",
+      "causal": "C07: requires C06_prev_state -> preserves loaded_rear_momentum -> chain: both feet plant under the clinch > right knee rises > hips drive upward > both hands pull the posture down > right knee lands in the solar plexus -> causes C07_clinch_rising_knee",
       "pos": [
         0,
         0.8,
@@ -197,7 +196,7 @@
     {
       "t": 6.16,
       "beat": "exchange_8_two_hand_clinch_shove_vs_shoved_back_react",
-      "causal": "C08: requires: C07_prev_state -> preserves: loaded_rear_momentum -> causes: C08_two_hand_clinch_shove",
+      "causal": "C08: requires C07_prev_state -> preserves loaded_rear_momentum -> chain: both feet plant wide > hips drive forward > torso leans through the push > both palms slam into the chest -> causes C08_two_hand_clinch_shove",
       "pos": [
         0,
         0.84,
@@ -218,7 +217,7 @@
     {
       "t": 7.04,
       "beat": "exchange_9_body_elbow_tuck_vs_rear_body_straight",
-      "causal": "C09: requires: C08_prev_state -> preserves: loaded_lead_momentum -> causes: C09_body_elbow_tuck",
+      "causal": "C09: requires C08_prev_state -> preserves loaded_lead_momentum -> chain: both feet plant wide > hips dip square > torso curls over > left elbow drops to the ribs -> causes C09_body_elbow_tuck",
       "pos": [
         0,
         0.84,
@@ -239,7 +238,7 @@
     {
       "t": 8.85,
       "beat": "exchange_10_spinning_back_kick_vs_torso_fold_rib_hit",
-      "causal": "C10: requires: C09_prev_state -> preserves: loaded_lead_momentum -> causes: C10_spinning_back_kick",
+      "causal": "C10: requires C09_prev_state -> preserves loaded_lead_momentum -> chain: left foot pivots on the spot > hips spin the body around > torso turns level through the arc > right heel drives straight back > right heel lands on the ribs -> causes C10_spinning_back_kick",
       "pos": [
         0,
         0.84,

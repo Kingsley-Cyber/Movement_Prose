@@ -622,7 +622,7 @@
       "path": "none",
       "level": "mid",
       "contact": "block",
-      "chain": "both feet plant wide > hips dip square > torso curls over > {lead_elbow} elbow drops to the ribs",
+      "chain": "both feet plant wide > hips dip square > torso curls over > {lead_side} elbow drops to the ribs",
       "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing", "crouched"],

@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
+from .chain import validate_kinetic_chain
 from .enums import (
     BLEED_TIERS,
     COILS,
@@ -159,6 +160,18 @@ def validate_card(card: Dict[str, Any]) -> List[Tuple[str, str]]:
             errors.append(("V01", f"Card '{cid}' effort.space invalid"))
         if eff.get("flow") not in EFFORT_FLOW:
             errors.append(("V01", f"Card '{cid}' effort.flow invalid"))
+
+    # V18: the card's default kinetic chain (spliced into every beat's causal
+    # string as segment four) and its internal chain_frames timing offsets.
+    if "chain" in card or "chain_frames" in card:
+        errors.extend(
+            validate_kinetic_chain(
+                card.get("chain"),
+                owner=f"Card '{cid}'",
+                chain_frames=card.get("chain_frames"),
+                require_frames=True,
+            )
+        )
 
     return errors
 

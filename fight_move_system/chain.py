@@ -12,7 +12,9 @@ the last link is the one the model draws strongest.
 
 Two separators, two meanings — never mixed:
 
-    ' > '   kinetic chain links, ONLY inside the 'chain:' segment
+    ' > '   kinetic chain links, ONLY inside the 'chain:' segment. Layer 2 also
+            keeps the pre-existing laban movement chain ("chain":"C01 > C02 > ...")
+            whose ' > ' separators are grandfathered in by scan_prompt_v18.
     ' -> '  causal arrows between the four causal-string segments
 
 `chain_frames` (frame offsets such as [0, 2, 3, 4, 5]) is internal metadata the
@@ -179,6 +181,10 @@ CHAIN_SEGMENT_RE = re.compile(r"chain:")
 CHAIN_SEGMENT_END_RE = re.compile(r"->\s*causes")
 # Emitted causal strings: "causal":"C01: requires ... -> causes ..."
 CAUSAL_FIELD_RE = re.compile(r'"causal":"(?P<body>[^"]*)"')
+# Pre-existing laban movement-chain value in Layer 2 ("chain":"C01_beat > C02_beat").
+MOVEMENT_CHAIN_VALUE_RE = re.compile(r'"chain":"([^"]*)"')
+# Layer 1 legend placeholders ("MOVEMENT LANGUAGE: <seconds> <performer>").
+PLACEHOLDER_TOKEN_RE = re.compile(r"<[^<>]*>")
 
 
 def split_chain(chain: str) -> List[str]:
@@ -399,14 +405,25 @@ def chain_segments(prompt: str) -> List[Tuple[int, int, str]]:
 def scan_prompt_v18(prompt: str) -> List[Tuple[str, str]]:
     """V18 text-level gates on compiled prompt text.
 
-    1. '>' may only appear inside a 'chain:' segment (never next to '->' arrows).
+    1. A bare '>' (never the '>' of a '->' causal arrow) may only appear: inside a
+       'chain:' segment (kinetic chain links), inside the pre-existing laban
+       movement-chain values ("chain":"C01... > C02...") that Layer 2 has carried
+       since Decision 19, or inside a '<placeholder>' legend token. Anywhere else
+       it is an error.
     2. Every chain segment passes the link rules and carries no digit.
     3. chain_frames offsets never leak into prompt text.
-    4. Every causal string keeps its four segments: requires -> preserves -> chain -> causes.
+    4. Every move causal string keeps its four segments: requires -> preserves -> chain -> causes.
     """
     errors: List[Tuple[str, str]] = []
     segments = chain_segments(prompt)
     spans = [(start, end) for start, end, _ in segments]
+    # The laban entity chain is a pre-existing canonical '>' site in Layer 2 (it
+    # lists beat codes, not body parts), so it is exempt from the separator rule
+    # — and from the link rules, which apply to 'chain:' segments only.
+    spans.extend((m.start(1), m.end(1)) for m in MOVEMENT_CHAIN_VALUE_RE.finditer(prompt))
+    # Layer 1 legend tokens like '<seconds>' close with a '>'; that is notation,
+    # not a separator.
+    spans.extend((m.start(0), m.end(0)) for m in PLACEHOLDER_TOKEN_RE.finditer(prompt))
 
     for start, end, text in segments:
         if text == "":
@@ -422,6 +439,9 @@ def scan_prompt_v18(prompt: str) -> List[Tuple[str, str]]:
 
     for i, ch in enumerate(prompt):
         if ch != CHAIN_SEPARATOR:
+            continue
+        if i > 0 and prompt[i - 1] == "-":
+            # The '>' of a '->' causal arrow is not a chain separator.
             continue
         if not any(start <= i < end for start, end in spans):
             errors.append(
@@ -442,16 +462,25 @@ def scan_prompt_v18(prompt: str) -> List[Tuple[str, str]]:
 
     for m in CAUSAL_FIELD_RE.finditer(prompt):
         body = m.group("body")
+        if not body.startswith("C"):
+            errors.append(
+                (CHAIN_RULE_CODE, f"causal string is missing its C-code prefix: '{body[:80]}'")
+            )
+            continue
+        if "requires" not in body:
+            # Terminal hold beats ("C11_hold: maintains ...") are not four-segment
+            # move causals; only their C-code prefix is required.
+            continue
         missing = [
             marker
             for marker in (" -> preserves ", " -> chain: ", " -> causes ")
             if marker not in body
         ]
-        if missing or not body.startswith("C"):
+        if missing:
             errors.append(
                 (
                     CHAIN_RULE_CODE,
-                    f"causal string is missing segments {missing or ['C-code prefix']}: '{body[:80]}'",
+                    f"causal string is missing segments {missing}: '{body[:80]}'",
                 )
             )
 

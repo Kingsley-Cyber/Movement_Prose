@@ -1,10 +1,11 @@
-"""§6. Deterministic Beat-Sheet & Clip Validator (V01–V17)."""
+"""§6. Deterministic Beat-Sheet & Clip Validator (V01–V18)."""
 
 import json
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 
+from .chain import CHAIN_FRAME_KEY, CHAIN_KEY, validate_kinetic_chain
 from .dyad import DyadState
 from .enums import REGIMES
 from .lexicon import Lexicon
@@ -48,7 +49,7 @@ def validate_clip(
     thresholds: Optional[Dict[str, Any]] = None,
     quarantine_ledger: Optional[Dict[str, Any]] = None,
 ) -> ValidationResult:
-    """Validate a single clip beat-sheet dictionary against V01–V14, V16–V17."""
+    """Validate a single clip beat-sheet dictionary against V01–V18."""
     res = ValidationResult()
     lex = lexicon or Lexicon.load_default()
     thresh = thresholds or load_thresholds()
@@ -142,6 +143,25 @@ def validate_clip(
 
         if unknown_move_in_moment:
             continue
+
+        # V18: kinetic chain for each beat — the per-beat override wins over the
+        # card default; chain_frames offsets are validated here as internal timing
+        # metadata and are never emitted into prompt text.
+        for side_label, side_act, side_card in (("A", a_action, a_card), ("B", b_action, b_card)):
+            if not side_act or not side_card:
+                continue
+            override_chain = side_act.get(CHAIN_KEY)
+            override_frames = side_act.get(CHAIN_FRAME_KEY)
+            effective_chain = override_chain if override_chain is not None else side_card.get(CHAIN_KEY)
+            effective_frames = override_frames if override_frames is not None else side_card.get(CHAIN_FRAME_KEY)
+            res.errors.extend(
+                validate_kinetic_chain(
+                    effective_chain,
+                    owner=f"Moment {idx} Fighter {side_label} move '{side_card['id']}'",
+                    chain_frames=effective_frames,
+                    require_frames=True,
+                )
+            )
 
         # Snapshot pre-supports before applying state changes
         a_pre_support = fighter_a.support

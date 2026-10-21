@@ -1,11 +1,13 @@
-"""Automated test suite for Fight Move System v2 (Milestones M1, M2, M3, M4)."""
+"""Automated test suite for Fight Move System v2 (Milestones M1, M2, M3, M4, M5)."""
 
 import copy
 import json
+import re
 import tempfile
 import unittest
 from pathlib import Path
 
+from fight_move_system.chain import scan_prompt_v18, validate_chain_frames, validate_kinetic_chain
 from fight_move_system.cli import generate_m4_packets
 from fight_move_system.compiler import compile_clip_prompt, scan_prompt_v15
 from fight_move_system.composer import compose_clips
@@ -284,11 +286,11 @@ class TestFightMoveSystem(unittest.TestCase):
         self.assertTrue(res2.ok)
         self.assertEqual(prompt1, prompt2)
         self.assertIn("=== LAYER 1: CONTINUOUS SUPPORT, FORCE-EVENT & PROP TIMELINE (Labanotation-as-Words) ===", prompt1)
-        self.assertIn("=== LAYER 2: SAKUGA-MLLM-3.1-CAUSAL KINEMATIC & CAMERA SCENE GRAPH ===", prompt1)
-        # Verify Layer 2 JSON parses cleanly and has schema SAKUGA-MLLM-3.1-CAUSAL
-        layer2_str = prompt1.split("=== LAYER 2: SAKUGA-MLLM-3.1-CAUSAL KINEMATIC & CAMERA SCENE GRAPH ===")[1].strip()
+        self.assertIn("=== LAYER 2: sakuga_Xperiment KINEMATIC & CAMERA SCENE GRAPH ===", prompt1)
+        # Verify Layer 2 JSON parses cleanly and has schema sakuga_Xperiment
+        layer2_str = prompt1.split("=== LAYER 2: sakuga_Xperiment KINEMATIC & CAMERA SCENE GRAPH ===")[1].strip()
         layer2_json = json.loads(layer2_str)
-        self.assertEqual(layer2_json["schema"], "SAKUGA-MLLM-3.1-CAUSAL")
+        self.assertEqual(layer2_json["schema"], "sakuga_Xperiment")
         self.assertEqual(layer2_json["duration"], 10.0)
 
     def test_variation_3_eight_limbs_muay_thai_mma_determinism(self) -> None:
@@ -327,6 +329,156 @@ class TestFightMoveSystem(unittest.TestCase):
         self.assertEqual(clips[1]["initial_range"], "punch")
         self.assertEqual(clips[1]["fighters"]["A"]["coil"], "loaded_rear")
         self.assertTrue(any("Chained Clip 1" in n for n in notes))
+
+    # --- M5: Kinetic Chain (V18) — chain as the fourth causal segment ---
+    def test_v18_all_card_chains_and_frames_are_valid(self) -> None:
+        self.assertEqual(self.lexicon.validation_errors, [])
+        for cid, card in self.lexicon.cards_by_id.items():
+            self.assertIn("chain", card, f"card '{cid}' has no default chain")
+            self.assertIn("chain_frames", card, f"card '{cid}' has no chain_frames")
+            self.assertEqual(
+                validate_kinetic_chain(
+                    card["chain"],
+                    owner=cid,
+                    chain_frames=card["chain_frames"],
+                    require_frames=True,
+                ),
+                [],
+            )
+
+    def test_v18_bad_chain_shoulder_before_hips_rejected(self) -> None:
+        # Deliberately out of order: shoulder (rank 5) listed before hips (rank 3).
+        bad_chain = "right shoulder drives forward > hips snap square > right heel pivots out > right fist lands on the jaw"
+        errs = validate_kinetic_chain(bad_chain, owner="test", chain_frames=[0, 2, 3, 5], require_frames=True)
+        self.assertEqual({code for code, _ in errs}, {"V18"})
+        messages = " | ".join(msg for _, msg in errs)
+        self.assertIn(
+            "ground-up order broken at link 2 'hips snap square' (rank 3) after link 1 'right shoulder drives forward' (rank 5)",
+            messages,
+        )
+        self.assertIn("chain must start at the ground", messages)
+
+        # The same bad chain is rejected through the card schema validator.
+        bad_card = copy.deepcopy(self.lexicon.cards_by_id["cross"])
+        bad_card["chain"] = bad_chain
+        card_errs = validate_card(bad_card)
+        self.assertTrue(any(code == "V18" for code, _ in card_errs))
+
+    def test_v18_clip_beat_inherits_card_chain_and_accepts_override(self) -> None:
+        # Inherit: fixture beats carry no per-beat chain, so the card defaults apply.
+        res = validate_clip(self.valid_10_beat, lexicon=self.lexicon)
+        self.assertEqual(res.error_codes(), set())
+
+        clip = copy.deepcopy(self.valid_10_beat)
+        clip["moments"][1]["A"]["chain"] = "left toe pivots out > hips snap square > left shoulder drives forward > left fist lands on the jaw"
+        clip["moments"][1]["A"]["chain_frames"] = [0, 2, 3, 5]
+        clip["moments"][1]["B"]["chain"] = "both heels plant > knees dip > hips rock back > head snaps clear of the line"
+        res_ok = validate_clip(clip, lexicon=self.lexicon)
+        self.assertEqual(res_ok.error_codes(), set())
+
+        # A bad override (shoulder before hips) is caught at clip level.
+        clip["moments"][1]["A"]["chain"] = "left shoulder drives forward > hips snap square > left toe pivots out > left fist lands on the jaw"
+        res_bad = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V18", res_bad.error_codes())
+
+    def test_v18_prompt_scanner_rules(self) -> None:
+        good = (
+            '{"causal":"C02: requires C01_prev_state -> preserves loaded_momentum -> chain: '
+            "left heel pivots out > hips snap square > left arm extends > left fist lands on the chin"
+            ' -> causes C02_jab"}'
+        )
+        self.assertEqual(scan_prompt_v18(good), [])
+
+        # shoulder before hips inside an emitted chain
+        bad_order = (
+            '{"causal":"C02: requires C01_prev_state -> preserves loaded_momentum -> chain: '
+            "right shoulder drives forward > hips snap square > right heel pivots out > right fist lands on the jaw"
+            ' -> causes C02_cross"}'
+        )
+        errs_order = scan_prompt_v18(bad_order)
+        self.assertTrue(any("ground-up order broken at link 2" in msg for _, msg in errs_order), errs_order)
+
+        # a '>' separator used in the requires segment, i.e. outside the chain segment
+        bad_sep = (
+            '{"causal":"C02: requires init_stance > C01_prev_state -> preserves loaded_momentum -> chain: '
+            "left heel pivots out > hips snap square > left fist lands on the chin"
+            ' -> causes C02_jab"}'
+        )
+        errs_sep = scan_prompt_v18(bad_sep)
+        self.assertTrue(any("used outside a 'chain:' segment" in msg for _, msg in errs_sep), errs_sep)
+
+        # a digit inside the chain segment (frame offsets stay internal)
+        bad_digits = (
+            '{"causal":"C02: requires C01_prev_state -> preserves loaded_momentum -> chain: '
+            "left heel pivots out > hips snap square at frame 2 > left fist lands on the chin"
+            ' -> causes C02_jab"}'
+        )
+        errs_digits = scan_prompt_v18(bad_digits)
+        self.assertTrue(any("contains digit '2'" in msg for _, msg in errs_digits), errs_digits)
+
+        # chain_frames leaks into prompt text
+        errs_leak = scan_prompt_v18('{"chain_frames":[0,2,3,5]}')
+        self.assertTrue(any("leaked into emitted prompt text" in msg for _, msg in errs_leak), errs_leak)
+
+        # a move causal missing the chain segment
+        missing = '{"causal":"C02: requires C01_prev_state -> preserves loaded_momentum -> causes C02_jab"}'
+        errs_missing = scan_prompt_v18(missing)
+        self.assertTrue(any("missing segments [' -> chain: ']" in msg for _, msg in errs_missing), errs_missing)
+
+        # pre-existing canonical '>' sites stay legal: laban movement chain and '<placeholder>' legend
+        canonical = (
+            '{"laban":{"A":{"chain":"C01_jab_0.00s > C02_cross_0.88s"}}} '
+            "MOVEMENT LANGUAGE: <seconds> <performer>: SUPPORT | path in metres."
+        )
+        self.assertEqual(scan_prompt_v18(canonical), [])
+
+    def test_v18_compiler_splices_chain_as_fourth_segment(self) -> None:
+        prompt, res = compile_clip_prompt(self.valid_10_beat, lexicon=self.lexicon)
+        self.assertTrue(res.ok)
+        self.assertEqual(scan_prompt_v18(prompt), [])
+        self.assertNotIn("chain_frames", prompt)
+        self.assertIsNone(self.valid_10_beat["moments"][1]["A"].get("chain"))  # fixture inherits
+
+        jab_chain = (
+            "left heel pivots out > hips snap square > left shoulder drives forward > "
+            "left arm extends > left fist lands on the chin"
+        )
+        self.assertIn(
+            f'"causal":"C02: requires C01_prev_state -> preserves loaded_lead_momentum -> chain: {jab_chain} -> causes C02_jab"',
+            prompt,
+        )
+
+        causals = re.findall(r'"causal":"([^"]*)"', prompt)
+        self.assertEqual(len(causals), 11)  # 10 move beats + the 10.0s terminal hold
+        move_causals = [causal for causal in causals if "requires" in causal]
+        self.assertEqual(len(move_causals), 10)
+        for causal in move_causals:
+            for marker in (" -> preserves ", " -> chain: ", " -> causes "):
+                self.assertIn(marker, causal)
+
+    def test_v18_compiler_beat_override_wins_over_card_chain(self) -> None:
+        clip = copy.deepcopy(self.valid_10_beat)
+        override = "left toe pivots out > hips snap square > left shoulder drives forward > left fist lands on the jaw"
+        clip["moments"][1]["A"]["chain"] = override
+        clip["moments"][1]["A"]["chain_frames"] = [0, 2, 3, 5]
+        prompt, res = compile_clip_prompt(clip, lexicon=self.lexicon)
+        self.assertTrue(res.ok)
+        self.assertIn(f"chain: {override} -> causes C02_jab", prompt)
+        default_jab_chain = (
+            "left heel pivots out > hips snap square > left shoulder drives forward > "
+            "left arm extends > left fist lands on the chin"
+        )
+        self.assertNotIn(default_jab_chain, prompt)
+        self.assertNotIn("chain_frames", prompt)
+
+    def test_v18_frame_offsets_stay_internal(self) -> None:
+        self.assertEqual(validate_chain_frames([0, 2, 3, 5], owner="t", link_count=4, required=True), [])
+        errs_zero = validate_chain_frames([1, 2, 3], owner="t", link_count=3, required=True)
+        self.assertTrue(any("must start at frame offset 0" in msg for _, msg in errs_zero))
+        errs_count = validate_chain_frames([0, 2, 3], owner="t", link_count=4, required=True)
+        self.assertTrue(any("has 3 offsets for 4 links" in msg for _, msg in errs_count))
+        errs_missing = validate_chain_frames(None, owner="t", link_count=4, required=True)
+        self.assertTrue(any("missing 'chain_frames' frame offsets" in msg for _, msg in errs_missing))
 
     # --- M4: Render Packet Generation ---
     def test_m4_render_packet_generation(self) -> None:

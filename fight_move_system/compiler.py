@@ -1,9 +1,10 @@
-"""§8. 2-Layer Unrolled Fluid Stack Wording Compiler (gold_master_6 / SAKUGA-MLLM-3.1-CAUSAL format) & V15 Scanner."""
+"""§8. 2-Layer Unrolled Fluid Stack Wording Compiler (gold_master_6 / SAKUGA-MLLM-3.1-CAUSAL format) & V15/V18 Scanners."""
 
 import json
 import re
 from typing import Any, Dict, List, Optional, Set, Tuple
 
+from .chain import CHAIN_FRAME_KEY, CHAIN_KEY, build_causal_string, scan_prompt_v18
 from .dyad import DyadState
 from .enums import RANGE_CAPTION_WORDS
 from .lexicon import Lexicon
@@ -82,6 +83,25 @@ LIMB_SURFACE_TAG: Dict[str, str] = {
 def _format_card_text(template: str, fighter: FighterState) -> str:
     lw = fighter.limb_words()
     return template.format(**lw)
+
+
+def _resolve_beat_chain(
+    beat_action: Optional[Dict[str, Any]],
+    card: Dict[str, Any],
+    fighter: FighterState,
+) -> Tuple[Optional[str], Any]:
+    """Kinetic chain for one beat: the per-beat override wins over the card default.
+
+    Returns (formatted_chain_text, chain_frames). chain_frames is internal timing
+    metadata — callers read it here, and it is never emitted into prompt text.
+    """
+    override_chain = beat_action.get(CHAIN_KEY) if isinstance(beat_action, dict) else None
+    override_frames = beat_action.get(CHAIN_FRAME_KEY) if isinstance(beat_action, dict) else None
+    chain = override_chain if override_chain is not None else card.get(CHAIN_KEY)
+    frames = override_frames if override_frames is not None else card.get(CHAIN_FRAME_KEY)
+    if not isinstance(chain, str) or not chain.strip():
+        return None, frames
+    return _format_card_text(chain, fighter), frames
 
 
 def _format_structured_limbs(card: Dict[str, Any], fighter: FighterState) -> str:
@@ -325,10 +345,20 @@ def compile_to_sakuga_Fluid_stack(
             next_c = f"C{idx+1:02d}_{a_card['id']}"
             a_chain_parts.append(f"C{idx+1:02d}_{a_card['id']}_{t_val:.2f}s")
 
+            # V18: kinetic chain (card default, per-beat override wins) spliced in as
+            # the fourth causal segment; chain_frames stays internal timing metadata.
+            beat_chain, _beat_chain_frames = _resolve_beat_chain(a_act, a_card, fighter_a)
+
             a_beat_obj: Dict[str, Any] = {
                 "t": t_val,
                 "beat": beat_label,
-                "causal": f"C{idx+1:02d}: requires: {prev_c} -> preserves: {a_card['post']['coil']}_momentum -> causes: {next_c}",
+                "causal": build_causal_string(
+                    f"C{idx+1:02d}",
+                    requires=prev_c,
+                    preserves=f"{a_card['post']['coil']}_momentum",
+                    chain=beat_chain or "",
+                    causes=next_c,
+                ),
                 "pos": [0, a_y, z_a],
                 "vel": [0, 0, 0.3 if a_card["contact"] == "strike" else 0.0],
                 "axis": f"head:+Y_up, torso:{a_card['hinge']}_{a_card['path']}, facing:+Z, screen_side:left",
@@ -527,7 +557,7 @@ def compile_to_sakuga_Fluid_stack(
 
     spec: Dict[str, Any] = {
         "name": clip.get("clip_id", "fight_move_system_compiled_10s"),
-        "schema": "SAKUGA-MLLM-3.1-CAUSAL",
+        "schema": "sakuga_Xperiment",
         "fps": 24,
         "duration": 10.0,
         "axes": f"Y_up, metres, arena floor y=0, combat pocket z=2.8 to z=5.0, A stays on screen_{fighter_a.screen_side} facing +Z right for all 10s, B stays on screen_{fighter_b.screen_side} facing -Z left for all 10s",
@@ -583,10 +613,10 @@ def compile_to_sakuga_Fluid_stack(
         ),
     }
 
-    # Format Layer 2 JSON identically to gold_master_6
+    # Format Layer 2 JSON for sakuga_Xperiment
     lines: List[str] = ["{"]
     lines.append(
-        f'"name":{json.dumps(spec["name"])},"schema":"SAKUGA-MLLM-3.1-CAUSAL","fps":24,"duration":10.0,'
+        f'"name":{json.dumps(spec["name"])},"schema":"sakuga_Xperiment","fps":24,"duration":10.0,'
     )
     for k in ["axes", "screen_geometry", "negative"]:
         lines.append(f"{json.dumps(k)}:{json.dumps(spec[k])},")
@@ -628,7 +658,7 @@ def compile_to_sakuga_Fluid_stack(
         f"{header}\n\n"
         f"=== LAYER 1: CONTINUOUS SUPPORT, FORCE-EVENT & PROP TIMELINE (Labanotation-as-Words) ===\n"
         f"{layer1_block}\n\n"
-        f"=== LAYER 2: SAKUGA-MLLM-3.1-CAUSAL KINEMATIC & CAMERA SCENE GRAPH ===\n"
+        f"=== LAYER 2: sakuga_Xperiment KINEMATIC & CAMERA SCENE GRAPH ===\n"
         f"{layer2_block}"
     )
 
@@ -643,6 +673,13 @@ def compile_to_sakuga_Fluid_stack(
     )
     if v15_errs:
         val_res.errors.extend(v15_errs)
+        return "", {}, val_res
+
+    # V18: chain segments stay link-valid, '>' never escapes a chain, and the
+    # internal chain_frames offsets never leak into the emitted prompt.
+    v18_errs = scan_prompt_v18(fluid_stack_prompt)
+    if v18_errs:
+        val_res.errors.extend(v18_errs)
         return "", {}, val_res
 
     return fluid_stack_prompt, spec, val_res

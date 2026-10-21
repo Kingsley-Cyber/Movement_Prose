@@ -14,6 +14,8 @@
       "path": "arc_horizontal",
       "level": "low",
       "contact": "strike",
+      "chain": "{lead_leg} foot pivots outward > hips whip through the arc > torso turns low > {rear_leg} shin swings flat > {rear_leg} shin digs into the calf",
+      "chain_frames": [0, 2, 3, 4, 5],
       "pre": {
         "support": ["standing"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back"]
@@ -50,6 +52,8 @@
       "path": "arc_horizontal",
       "level": "low",
       "contact": "none",
+      "chain": "both feet plant wide > {lead_leg} knee dips inward > hips jolt sideways > torso drops over the stunned leg",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing", "crouched"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back", "level_low"]
@@ -86,6 +90,8 @@
       "path": "arc_vertical",
       "level": "low",
       "contact": "block",
+      "chain": "both feet plant wide > {lead_leg} knee lifts high > torso squares behind the raised shin > {lead_leg} shin locks across the line",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["standing"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back"]
@@ -122,6 +128,8 @@
       "path": "arc_horizontal",
       "level": "high",
       "contact": "strike",
+      "chain": "{lead_leg} foot plants deep > hips whip square > torso turns through the cut > {rear_side} shoulder drives forward > {rear_hand} elbow lands on the cheekbone",
+      "chain_frames": [0, 2, 3, 4, 5],
       "pre": {
         "support": ["standing"],
         "coil": ["loaded_rear", "loaded_lead", "neutral"]
@@ -158,6 +166,8 @@
       "path": "arc_vertical",
       "level": "mid",
       "contact": "strike",
+      "chain": "both feet plant under the clinch > {rear_leg} knee rises > hips drive upward > both hands pull the posture down > {rear_leg} knee lands in the solar plexus",
+      "chain_frames": [0, 2, 3, 4, 5],
       "pre": {
         "support": ["clinched"],
         "coil": ["loaded_rear", "loaded_lead", "neutral"]
@@ -194,6 +204,8 @@
       "path": "straight",
       "level": "mid",
       "contact": "none",
+      "chain": "both feet plant flat > knees buckle inward > hips fold forward > torso drops onto the guarding elbows",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["clinched"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back", "level_low"]
@@ -230,6 +242,8 @@
       "path": "push",
       "level": "mid",
       "contact": "grapple",
+      "chain": "both feet plant wide > hips drive forward > torso leans through the push > both palms slam into the chest",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["clinched"],
         "coil": ["loaded_lead", "loaded_rear", "neutral", "level_low"]
@@ -266,6 +280,8 @@
       "path": "straight",
       "level": "mid",
       "contact": "none",
+      "chain": "both heels slide back > knees dip to catch > hips rock backward > torso settles over the rear foot",
+      "chain_frames": [0, 2, 3, 5],
       "pre": {
         "support": ["clinched"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back", "level_low"]
@@ -302,6 +318,8 @@
       "path": "straight",
       "level": "mid",
       "contact": "strike",
+      "chain": "{rear_leg} foot plants flat > {lead_leg} knee chambers high > hips drive forward > {lead_leg} shin snaps straight > ball of the foot lands on the sternum",
+      "chain_frames": [0, 2, 3, 4, 5],
       "pre": {
         "support": ["standing"],
         "coil": ["neutral", "loaded_lead", "loaded_rear", "recoiling_back"]
