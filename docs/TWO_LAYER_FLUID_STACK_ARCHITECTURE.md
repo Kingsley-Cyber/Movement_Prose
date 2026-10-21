@@ -92,6 +92,15 @@ Never wrap verbs, strikes, or events in XML/HTML angle brackets (such as `<punch
 #### Rule D: Zero Meta-Negations Inside Beats (`Decision 19B`)
 Never write `"A should not float"` or `"NOT a flip"` inside `A_beats` or Layer 1. Attention mechanisms attend to the negated verb (`float`, `flip`). Always state the positive physical law (`vel:[0,-3.6,-0.2]`, `support:"left_bare_foot_anchored_firmly_on_arena_sand"`), and isolate all `"no ..."` tokens strictly inside the top-level `"negative"` field.
 
+#### Rule E: Bilateral Two-Leg Pillar Separation, Bent-Knee Smear Ban & Full-Body Profile Framing (`Decision 21` — The `:04–:05` Clinch Knee Fix)
+Empirical render testing on `gold_master_5_baki_underground_arena.json` (`4.30s–4.85s` Muay Thai Plum Clinch Knee) revealed three distinct latent-space failure modes when rendering close-quarters knee strikes:
+1. **Failure Mode 1 (Double-Folded Airborne Legs Overlapping in Clinch)**: When `A` is in a point-blank neck clinch (`dz < 0.15m`) and both legs are described as airborne/tucked (`support: "none_airborne"`, `R_leg: folded`, `L_leg: tucked beneath`), both bare legs occupy the exact same `[x,y]` region between `A`'s trunks and `B`'s abdomen, causing the model to fuse `L_leg` and `R_leg` into a deformed 3-legged tangle.
+   - **Fix (`Decision 21A`)**: Keep the **standing leg (`L_leg`) anchored straight vertically downward onto the floor as a solid support pillar (`6 o'clock` vector)** while only the **striking knee (`R_leg`) drives high diagonally upward (`8-to-1 o'clock` vector)** with the heel folded tight against the hamstring (`90°+` scissor separation in silhouette).
+2. **Failure Mode 2 (Smearing a Bent Knee Joint)**: Applying `smear_frames` to a bent knee joint (`"4.55-4.85: A right knee vertical upward streak"`) blurs the thigh-calf junction into an amorphous flesh blob.
+   - **Fix (`Decision 21B`)**: Never apply motion-smear streaks to bent knee strikes; keep both legs in **100% solid, sharp-inked anatomy**.
+3. **Failure Mode 3 (`worm_eye` Close-Up Triggering the Uppercut Fist-Leg Hybrid Prior)**: Framing a rising knee impact in a tight `worm_eye` close-up (`fov: 32` looking up at `B`'s chin against the ceiling lights) crops `A`'s pelvis and standing leg out of the frame. Because "tight worm's-eye vertical chin strike + radial star flash" is strongly associated with an **uppercut fist** in anime training data, the model morphs the tip of the rising thigh/knee into a giant clenched fist!
+   - **Fix (`Decision 21C`)**: Always frame clinch knee impacts in a **medium-wide side profile (`fov: 38`, `medium_wide_side_profile_grounded_pillar_rising_right_knee_impact`)** that keeps `A`'s entire body from planted standing foot through pelvis, torso, both neck-clinching arms, and the rising knee **100% visible head-to-toe in profile**.
+
 ---
 
 ## 4. Verification & Compilation Workflow

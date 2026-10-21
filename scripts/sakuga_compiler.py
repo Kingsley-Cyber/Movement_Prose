@@ -411,7 +411,7 @@ def lint_clip(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
                     "Use a true parabolic upward launch apex (y=2.0m-2.2m) and falling catch."
                 )
 
-    # 7. Validate Camera (Decision 10 & Decision 12)
+    # 7. Validate Camera (Decision 10, Decision 12 & Decision 21C)
     for cbeat in spec.get("camera", []):
         t = cbeat.get("t", "?")
         fov = cbeat.get("fov", 35)
@@ -421,13 +421,26 @@ def lint_clip(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
             )
         if "look" not in cbeat:
             errors.append(f"[Decision 12] Camera t={t} is missing mandatory 'look' target anchor.")
+        shot_lower = str(cbeat.get("shot", "")).lower()
+        look_lower = str(cbeat.get("look", "")).lower()
+        if "worm_eye" in shot_lower and ("knee" in shot_lower or "knee" in look_lower):
+            warnings.append(
+                f"[Decision 21C] Camera t={t} uses 'worm_eye' on a knee strike. "
+                "Worm's-eye close-ups crop out the striker's pelvis and trigger the 'uppercut fist-leg hybrid' prior. "
+                "Use 'medium_wide_side_profile' (fov 38) showing the standing pillar leg and pelvis head-to-toe."
+            )
 
-    # 8. Validate Smear Isolation (Decision 04/07)
+    # 8. Validate Smear Isolation & Bent-Knee Smear Ban (Decision 04/07 & Decision 21B)
     anime = spec.get("anime", {})
     for sm in anime.get("smear_frames", []):
         if "solid" not in sm.lower():
             warnings.append(
                 f"[Decision 04] Smear frame '{sm}' should explicitly state that head/torso 'stay solid'."
+            )
+        if re.search(r"\b(right|left)\s+knee\b", sm.lower()):
+            warnings.append(
+                f"[Decision 21B] Smear frame '{sm}' smears a bent knee joint, which melts thigh-calf separation. "
+                "Keep bent knee strikes in 100% solid sharp ink."
             )
 
     return errors, warnings
