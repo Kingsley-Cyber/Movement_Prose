@@ -164,9 +164,45 @@ We evaluated all eight spatial/rotation representations used in 3D graphics and 
      - Localized lens effects (`chromatic_aberration: impact_frames_only`, `impact_inversion`).
      - Camera `OVERSHOOT` / `SNAP_ZOOM` verbs and hard 2-tone cel shadow rules.
 
+### Decision 18: 4-Phase Sub-Beat Unrolling (`Entry/Windup -> Drive/Apex -> Contact -> Landing/Recovery`)
+* **Context:** When testing the first 2-layer Courtyard Sky-Cartwheel prompt (`exp14_courtyard_sky_cartwheel_v1_collapsed_subbeats.txt`) on Seedance 2.0 Mini, the **rising left uppercut at `3.05s` rendered unambiguously**, whereas the other 4 moves (sky-cartwheel, aerial leg-cartwheel kick, wall-run, and dive) had "weird moments."
+* **Root Cause:**
+  1. The `3.05s` uppercut worked because it had **3 sequential keyframes** in `A_beats` (`2.20s` approach steps $\rightarrow$ `2.75s` deep hip sink $\rightarrow$ `3.05s` upward drive & contact).
+  2. The other 4 moves had collapsed/missing intermediate keyframes in `A_beats`:
+     - The sky-cartwheel froze its `z` coordinate at `3.15` from `0.9s` to `1.2s` instead of translating forward (`3.15 -> 3.35 -> 3.55`).
+     - The aerial leg-cartwheel skipped its `4.0s` $180^\circ$ inverted apex (`3.6s -> 4.3s`).
+     - After the `4.3s` aerial kick (`y=1.55m`), `A_beats` had **no ground landing keyframe** before `5.5s` (`y=2.1m` on the stone wall)—forcing the model to float/morph A in mid-air for `1.2s` straight onto the wall!
+     - The `5.5s–6.6s` wall-run and dive omitted the `5.9s` high wall push-off and the `7.1s` steep downward acceleration beat.
+* **Decision (Verified in `exp15` / `gold_master_3`):**
+  - Unroll every complex acrobatic or martial-arts move into **3–4 explicit sequential sub-beats** (`Entry/Windup -> Drive/Apex -> Zero-Gap Contact -> Landing/Recovery`, spaced `0.3s–0.6s` apart).
+  - Never transition from an airborne beat (`support: none_airborne`) to a vertical wall/pillar run without an explicit intermediate **floor-landing beat** (`4.8s`).
+
+### Decision 19: The 2-Layer Single-Source Fluid Stack (`--stack`) & Zero `<verb>` Markup Pollution
+* **Context:** We evaluated multi-layer prompt stacking (Labanotation-as-Words + Causal JSON) and XML/HTML angle-bracket markup (`<punch>`, `<impact>`).
+* **Empirical Findings:**
+  1. **Why `<verb>` Markup Hurts Motion:** Wrapping motions or events in angle brackets (`<punch>`, `<impact>`) activates the LLM's HTML/XML **markup tag prior**—causing the model to treat the word inside `<>` as a static structural label rather than an active physical verb.
+  2. **Why the 2-Layer Unrolled Fluid Stack (`--stack`) Excels on Complex Acrobatics:** Pairing **Layer 1 (`Labanotation-as-Words`: continuous `<seconds> <performer>: SUPPORT | bilateral limb gestures | 5-phase force events | path`)** directly above **Layer 2 (`SAKUGA-MLLM-3.1-CAUSAL` JSON)**—compiled deterministically from the **same JSON source**—gives narrative/sequence attention heads an unbroken linear timeline while giving spatial-temporal heads the exact causal KV-cache (`pos`, `vel`, `axis`, `arc`, `support`, `pre -> hit -> post` contact).
+* **Decision:** Expose `--stack` in `scripts/sakuga_compiler.py` (`compile --stack` and `stitch --stack`) and forbid `<...>` markup tags or meta-negations (`"should not float"`) inside beats.
+
+### Decision 20: Bilateral Two-Arm Silhouette Locking (The `:03` One-Arm Fix)
+* **Context:** In the Seedance 2.0 Mini render of Courtyard V2 (`exp15`), every move flowed cleanly, except at `:03` (`2.75s–3.05s` during the `over_B_shoulder_slow_push_in` shot) where Fighter A appeared to have **only 1 arm** as he coiled and threw the left uppercut.
+* **Root Cause:** At `2.75s`, A's torso coiled forward-left with his left fist cocked low at his left hip. Because Layer 1 (`2.75 A`) omitted the right arm entirely and Layer 2 (`limbs`) only gave a 2-word tag (`"R_arm:high guard"`) with zero mention in `"pose"`, the model tucked/occluded the unmentioned right arm behind A's dark coat torso in the over-the-shoulder camera angle.
+* **Decision:**
+  1. On **every single beat** in `A_beats` (and Layer 1), **both `L_arm` and `R_arm` (or `both_arms`) must be explicitly placed in clear, non-occluded spatial positions outside the torso silhouette** in `"limbs"` AND `"pose"`.
+  2. Specifically on single-handed punch/strike windups (`2.75s`) and impacts (`3.05s`), position the non-striking arm in a distinct, high-visibility counterbalance or range-finding guard (e.g., `"R_arm extended clearly forward toward B's chest with open right palm as a range-finding lead guard while L_arm is cocked low at left hip with clenched left fist, keeping both left and right arms 100% visible outside the torso silhouette"`).
+  3. Include `"no missing arms, no one-armed fighter, both left and right arms and hands always visible"` in `"negative"`.
+
 ---
 
-## 3. Formal `SAKUGA-MLLM-3.1-CAUSAL` Schema Specification & Anti-Regression Checklist
+## 3. Formal `SAKUGA-MLLM-3.1-CAUSAL` Schema Specification, 2-Layer Fluid Stack Breakdown & Anti-Regression Checklist
+
+### 3.0 Single-Layer Causal JSON (`compile`) vs. 2-Layer Unrolled Fluid Stack (`compile --stack`)
+Both variations are compiled from the **same `SAKUGA-MLLM-3.1-CAUSAL` JSON file** using `scripts/sakuga_compiler.py`:
+* **Mode 1 — Single-Layer Causal JSON (`compile`, Gold-Masters #1 & #2):** Outputs `Header` + `SAKUGA-MLLM-3.1-CAUSAL JSON` (`11–14 beats`). Ideal for grounded close-quarters exchanges.
+* **Mode 2 — 2-Layer Unrolled Fluid Stack (`compile --stack`, Gold-Masters #3 & #4):** Outputs:
+  1. **`Header`** (2D Sakuga style lock + entity count + bilateral arm visibility lock + anti-HUD directive).
+  2. **`=== LAYER 1: CONTINUOUS SUPPORT, FORCE-EVENT & PROP TIMELINE (Labanotation-as-Words) ===`** (1-line-per-timestamp chronological stream stating `SUPPORT | bilateral limb gestures | 5-phase force event (windup -> drive -> CONTACT -> reaction -> follow-through) | path`).
+  3. **`=== LAYER 2: SAKUGA-MLLM-3.1-CAUSAL KINEMATIC & CAMERA SCENE GRAPH ===`** (16–17 unrolled beats with 4-phase sub-beat decomposition and bilateral arm locks).
 
 Use this exact blueprint for all future fight prompts. **Never remove any of the locked fields below.**
 

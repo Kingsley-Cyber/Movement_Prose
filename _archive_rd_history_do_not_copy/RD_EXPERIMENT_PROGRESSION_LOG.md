@@ -132,3 +132,27 @@ This document records the complete chronological progression of every baseline, 
 * **What Changed:** Added per-beat Laban Effort prefixes (`LABAN_SLASH`, `LABAN_PUNCH`, `LABAN_DAB`, `LABAN_PRESS`) inside `"arc"`, camera `"preserve_axis": true` + `"OVERSHOOT"`, and `"chromatic_aberration": "impact_frames_only"` inside `"anime"`.
 * **Empirical Render Result:** Good render, with a slight/marginal aesthetic difference ("at this point its gotten to a point of slight or bare increase and its now like a taste modifications layer").
 * **Result:** Established **Decision 17 (Tier-1 Structural Backbone vs. Tier-2 Optional Taste/Seasoning Layer)** and exposed `--taste nakamura` as an optional compiler flag in [sakuga_compiler.py](../scripts/sakuga_compiler.py).
+
+---
+
+### Experiment 14: 2-Layer Fluid Stack V1 on Courtyard Sky-Cartwheel (`Collapsed Sub-Beats` Diagnosis)
+* **File:** [exp14_courtyard_sky_cartwheel_v1_collapsed_subbeats.txt](./exp14_courtyard_sky_cartwheel_v1_collapsed_subbeats.txt)
+* **What Changed:** Combined **Layer 1 (`Labanotation-as-Words` Support + Force-Event Timeline)** above **Layer 2 (`SAKUGA-MLLM-3.1-CAUSAL` JSON)** for the 10s Courtyard Sky-Cartwheel & Kunai Dive choreography (`14 beats`).
+* **Empirical Render Result (Seedance 2.0 Mini):**
+  * **Good overall, and the `3.05s` rising left uppercut punch rendered unambiguously.**
+  * **However, the other 4 complex moves (sky-cartwheel, aerial leg-cartwheel kick, wall-run, and dive) had weird moments.**
+* **Root-Cause Discovery:**
+  * The `3.05s` uppercut succeeded because it had **3 sequential keyframes** (`2.20s` approach steps $\rightarrow$ `2.75s` deep hip sink $\rightarrow$ `3.05s` upward drive & chin impact).
+  * The other 4 moves skipped intermediate keyframes in `A_beats` (e.g., jumping from a `4.3s` mid-air kick directly to a `5.5s` wall-run without a `4.8s` floor landing; skipping the `4.0s` $180^\circ$ inverted aerial apex; skipping the `5.9s` wall push-off; and writing `"the model should not float or drift"` inside the `6.6s` dive beat).
+* **Result:** Established **Decision 18 (4-Phase Sub-Beat Unrolling)** and **Decision 19 (Single-Source 2-Layer Fluid Stack & Zero Meta-Negation / `<verb>` Markup Pollution)**.
+
+---
+
+### Experiment 15: 2-Layer Unrolled Fluid Stack V2 (`17 Unrolled Beats` + Bilateral Arm Silhouette Lock — `Gold-Master #3`)
+* **File:** [exp15_courtyard_sky_cartwheel_v2_unrolled_2layer_winner.txt](./exp15_courtyard_sky_cartwheel_v2_unrolled_2layer_winner.txt)
+* **What Changed:**
+  1. Unrolled all 5 moves into **17 sequential keyframes** across both Layer 1 and Layer 2 (`0.9s -> 1.2s -> 1.6s -> 2.2s` traveling cartwheel; `2.2s -> 2.75s -> 3.05s` uppercut; `3.6s -> 4.0s -> 4.3s -> 4.8s` aerial wheel apex + floor landing; `5.5s -> 5.7s -> 5.9s` fast `0.35s` wall-run + high push-off; `6.6s -> 7.1s -> 7.5s` mid-air catch + steep `vy=-3.6` dive drive + three-point landing).
+  2. Removed the meta-negation `"should not float or drift"`.
+* **Empirical Render Result (Seedance 2.0 Mini):**
+  * **Confirmed Winner ("this prompt is good").** All 5 moves rendered fluidly.
+  * **Single Remaining Visual Quirk & Fix (`:03` One-Arm Occlusion -> Decision 20):** At `:03` (`2.75s–3.05s` uppercut windup viewed over B's shoulder), Fighter A appeared to have only 1 arm (left fist cocked at left hip) because the non-striking right arm was only tagged `"R_arm:high guard"` and got occluded behind A's forward-leaning dark coat torso. Fixed in [gold_master_3_courtyard_sky_cartwheel.json](../examples/gold_master_3_courtyard_sky_cartwheel.json) by locking **Bilateral Two-Arm Silhouette Placement** on every beat (`R_arm extended clearly forward toward B's chest with open right palm as a range-finding lead guard while L_arm coils low at left hip`).

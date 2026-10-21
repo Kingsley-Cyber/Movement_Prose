@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-SAKUGA-MLLM-3.1-CAUSAL Deterministic Compiler, Physics Linter & Multi-Clip Stitcher
+SAKUGA-MLLM-3.1-CAUSAL Deterministic Compiler, 20-Rule Physics Linter,
+2-Layer Unrolled Fluid Stack Generator & Multi-Clip Stitcher
 For Seedance 2.0 Mini, Seedance 2.5, and Kling AI Video YouTube Workflows.
 """
 
@@ -91,8 +92,8 @@ DEFAULT_HEADER_TEMPLATE = (
 
 
 def extract_prop_tracks(spec: Dict[str, Any]) -> List[str]:
-    """Identify prop state-machine tracks (e.g., kunai, wakizashi, katana)."""
-    reserved = set(CANONICAL_TOP_KEY_ORDER) | {"header", "meta"}
+    """Identify prop state-machine tracks (e.g., kunai, wakizashi, katana, bo_staff)."""
+    reserved = set(CANONICAL_TOP_KEY_ORDER) | {"header", "meta", "layer_1_timeline"}
     prop_keys = []
     for k, v in spec.items():
         if k not in reserved and isinstance(v, list):
@@ -155,9 +156,79 @@ def order_spec_causally(spec: Dict[str, Any]) -> Dict[str, Any]:
     return ordered
 
 
+def build_layer1_timeline(spec: Dict[str, Any]) -> List[str]:
+    """
+    Generate Layer 1 (Continuous Support, 5-Phase Force-Event & Prop Timeline in
+    Labanotation-as-Words) from a SAKUGA-MLLM-3.1-CAUSAL spec (Decision 18, 19, 20).
+    If the spec defines an explicit 'layer_1_timeline' list of strings, use that directly.
+    Otherwise, synthesize it deterministically from prop tracks, A_beats, and B_track.
+    """
+    if "layer_1_timeline" in spec and isinstance(spec["layer_1_timeline"], list):
+        return [str(line) for line in spec["layer_1_timeline"]]
+
+    lines: List[str] = [
+        "MOVEMENT LANGUAGE: Each line states <seconds> <performer>: SUPPORT (what bears weight; NO SUPPORT = airborne) | bilateral limb gestures & orientation (both L_arm and R_arm explicitly placed) | 5-phase force events (windup -> drive -> CONTACT -> reaction -> follow-through) | path (continuous translation in metres). Every key action is unrolled into separate timestamps for windup/entry, drive/apex, contact, and landing/recovery so nothing is left to inference."
+    ]
+
+    # Summarize prop tracks first
+    for pk in extract_prop_tracks(spec):
+        p_items = spec.get(pk, [])
+        if p_items:
+            chain_parts = []
+            for p in p_items:
+                t_val = float(p.get("t", 0.0))
+                owner = p.get("owner", "")
+                state = p.get("state", "")
+                event = p.get("event", p.get("grip", ""))
+                detail = f"{state} ({owner}" + (f", {event})" if event else ")")
+                chain_parts.append(f"{t_val:.2f}s {detail}")
+            lines.append(f"{pk.upper()} CONTINUITY: " + " -> ".join(chain_parts) + ".")
+
+    # Merge A_beats and B_track chronologically
+    events: List[Tuple[float, int, str]] = []
+    for ab in spec.get("A_beats", []):
+        t_val = float(ab.get("t", 0.0))
+        sup = ab.get("support", "")
+        sup_label = (
+            f"NO SUPPORT ({sup})"
+            if "none_airborne" in sup
+            else f"SUPPORT {sup.replace('_', ' ')}"
+        )
+        limbs = ab.get("limbs", "")
+        contact = ab.get("contact", "")
+        pose = ab.get("pose", "")
+        parts = [f"{t_val:0.2f} A: {sup_label}", limbs]
+        if contact:
+            parts.append(f"FE ({contact})")
+        parts.append(pose)
+        events.append((t_val, 0, " | ".join(parts)))
+
+    for bb in spec.get("B_track", []):
+        t_val = float(bb.get("t", 0.0))
+        sup = bb.get("support", "")
+        sup_label = (
+            f"NO SUPPORT ({sup})"
+            if "none_airborne" in sup
+            else f"SUPPORT {sup.replace('_', ' ')}"
+        )
+        contact = bb.get("contact", "")
+        pose = bb.get("pose", "")
+        parts = [f"{t_val:0.2f} B: {sup_label}"]
+        if contact:
+            parts.append(f"FE reaction ({contact})")
+        parts.append(pose)
+        events.append((t_val, 1, " | ".join(parts)))
+
+    events.sort(key=lambda x: (x[0], x[1]))
+    for _, _, line_text in events:
+        lines.append(line_text)
+
+    return lines
+
+
 def lint_clip(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
     """
-    Validate a clip specification against all 17 Empirical Decisions in the SOP.
+    Validate a clip specification against all 20 Empirical Decisions in the SOP.
     Returns (errors, warnings).
     """
     errors: List[str] = []
@@ -188,26 +259,30 @@ def lint_clip(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
         if req_key not in spec:
             errors.append(f"[Decision 09] Missing mandatory top-level track: '{req_key}'.")
 
-    # 3. Anti-HUD negative check (Decision 02)
+    # 3. Anti-HUD & Bilateral Arm negative check (Decision 02 & Decision 20)
     neg = spec.get("negative", "").lower()
     if "no on-screen text" not in neg or "no hud" not in neg:
         warnings.append(
             "[Decision 02] 'negative' should explicitly include 'no on-screen text or numbers, no HUD'."
         )
+    if "no missing arms" not in neg and "no one-armed" not in neg:
+        warnings.append(
+            "[Decision 20] 'negative' should explicitly include 'no missing arms, no one-armed fighter, both left and right arms and hands always visible'."
+        )
 
-    # 4. Validate A_beats (Decisions 01, 03, 04, 13, 14, 16)
+    # 4. Validate A_beats (Decisions 01, 03, 04, 13, 14, 16, 18, 19, 20)
     a_beats = spec.get("A_beats", [])
     b_track = spec.get("B_track", [])
     b_by_t = {round(float(b.get("t", -1)), 2): b for b in b_track}
 
     seen_screen_sides = set()
     prev_t = -1.0
+    prev_support = ""
 
     for idx, beat in enumerate(a_beats):
         t = float(beat.get("t", -1))
         if t <= prev_t:
             errors.append(f"[A_beats[{idx}]] Non-monotonic timestamp t={t} after t={prev_t}.")
-        prev_t = t
 
         # Check forbidden bloat keys (Decisions 01, 04, 13)
         bad_keys = set(beat.keys()) & FORBIDDEN_BEAT_KEYS
@@ -222,14 +297,55 @@ def lint_clip(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
             if rk not in beat:
                 errors.append(f"[Decision 14] A_beats t={t} is missing required key '{rk}'.")
 
-        # Check negation leakage inside beat (Decision 03)
+        # Check negation leakage & meta-negation inside beat (Decision 03 & Decision 19)
         beat_text = json.dumps(beat)
         if re.search(r"\bNOT\b", beat_text) or re.search(
-            r"\bnot a (kick|punch|throw|slash)\b", beat_text, re.IGNORECASE
+            r"\bnot a (kick|punch|throw|slash|flip)\b", beat_text, re.IGNORECASE
         ):
             errors.append(
                 f"[Decision 03] Negation leakage detected in A_beats t={t}. "
                 "Never write 'NOT' inside beats; use positive-only support locks."
+            )
+        if re.search(r"should not (float|drift|hover)", beat_text, re.IGNORECASE):
+            errors.append(
+                f"[Decision 19] Meta-negation leakage ('should not float/drift') in A_beats t={t}. "
+                "State positive downward velocity/gravity instead."
+            )
+
+        # Check XML/HTML markup tag pollution inside beat (Decision 19)
+        if re.search(r"<[a-zA-Z_][a-zA-Z0-9_-]*>", beat_text):
+            errors.append(
+                f"[Decision 19] Markup tag '<...>' detected inside A_beats t={t}. "
+                "Never wrap motions or events in '<>' tags; they activate the HTML/XML label prior."
+            )
+
+        # Decision 18: Check airborne-to-wall jump without intermediate ground landing
+        curr_support = beat.get("support", "").lower()
+        if (
+            "none_airborne" in prev_support
+            and ("wall" in curr_support or "pillar" in curr_support)
+            and (t - prev_t) > 0.65
+        ):
+            warnings.append(
+                f"[Decision 18] A_beats t={t} transitions directly from airborne (t={prev_t}) to wall/pillar support "
+                f"across {t - prev_t:.2f}s without an intermediate floor-landing keyframe. Unroll the floor landing!"
+            )
+        prev_support = curr_support
+        prev_t = t
+
+        # Decision 20: Bilateral Two-Arm Silhouette Check
+        limbs_str = beat.get("limbs", "")
+        has_both_arms = bool(
+            re.search(r"\b(both_arms|both_hands|arms)\s*:", limbs_str)
+            or (
+                re.search(r"\b(L_arm|L_hand|L)\s*:", limbs_str)
+                and re.search(r"\b(R_arm|R_hand|R)\s*:", limbs_str)
+            )
+        )
+        if not has_both_arms:
+            warnings.append(
+                f"[Decision 20] A_beats t={t} 'limbs' does not explicitly lock both left and right arms "
+                f"('L_arm'/'R_arm' or 'both_arms'). Explicit bilateral arm placement prevents one-arm silhouette occlusion."
             )
 
         # Check causal edge format (Decision 14)
@@ -306,12 +422,12 @@ def lint_clip(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
         if "look" not in cbeat:
             errors.append(f"[Decision 12] Camera t={t} is missing mandatory 'look' target anchor.")
 
-    # 8. Validate Smear Isolation (Decision 07)
+    # 8. Validate Smear Isolation (Decision 04/07)
     anime = spec.get("anime", {})
     for sm in anime.get("smear_frames", []):
         if "solid" not in sm.lower():
             warnings.append(
-                f"[Decision 07] Smear frame '{sm}' should explicitly state that head/torso 'stay solid'."
+                f"[Decision 04] Smear frame '{sm}' should explicitly state that head/torso 'stay solid'."
             )
 
     return errors, warnings
@@ -395,10 +511,14 @@ def apply_taste_layer(
     return spec, header_text
 
 
-def format_sakuga_prompt(spec: Dict[str, Any], header_text: str) -> str:
+def format_sakuga_prompt(
+    spec: Dict[str, Any], header_text: str, stack: bool = False
+) -> str:
     """
-    Format the causally ordered JSON spec into our exact compact multi-line Gold-Master layout
-    (1 line per beat/track entry so it stays readable and token-efficient).
+    Format the causally ordered JSON spec into either:
+      - Mode 1 (stack=False): Single-Layer Compact SAKUGA-MLLM-3.1-CAUSAL JSON (Gold-Masters #1 & #2)
+      - Mode 2 (stack=True):  2-Layer Unrolled Fluid Stack (Layer 1 Continuous Support/Force-Event/Prop
+                              Labanotation-as-Words Timeline + Layer 2 SAKUGA-MLLM-3.1-CAUSAL JSON, Gold-Master #3+)
     """
     ordered = order_spec_causally(spec)
     lines: List[str] = ["{"]
@@ -474,7 +594,20 @@ def format_sakuga_prompt(spec: Dict[str, Any], header_text: str) -> str:
         lines.append(f'"rules":{json.dumps(ordered["rules"])}')
 
     lines.append("}")
-    return f"{header_text.strip()}\n\n" + "\n".join(lines)
+    json_block = "\n".join(lines)
+
+    if not stack:
+        return f"{header_text.strip()}\n\n{json_block}"
+
+    layer1_lines = build_layer1_timeline(spec)
+    layer1_block = "\n".join(layer1_lines)
+    return (
+        f"{header_text.strip()}\n\n"
+        f"=== LAYER 1: CONTINUOUS SUPPORT, FORCE-EVENT & PROP TIMELINE (Labanotation-as-Words) ===\n"
+        f"{layer1_block}\n\n"
+        f"=== LAYER 2: SAKUGA-MLLM-3.1-CAUSAL KINEMATIC & CAMERA SCENE GRAPH ===\n"
+        f"{json_block}"
+    )
 
 
 def stitch_multi_clip_continuity(clips: List[Dict[str, Any]]) -> Tuple[List[Dict[str, Any]], List[str]]:
@@ -528,7 +661,7 @@ def stitch_multi_clip_continuity(clips: List[Dict[str, Any]]) -> Tuple[List[Dict
 
 
 def load_clip_file(path: Path) -> Tuple[Dict[str, Any], str]:
-    """Load either a pure JSON file (with optional 'header' field) or a hybrid text+JSON file."""
+    """Load a pure JSON file, a Single-Layer hybrid text+JSON file, or a 2-Layer Fluid Stack text+JSON file."""
     raw = path.read_text(encoding="utf-8").strip()
     if raw.startswith("{"):
         data = json.loads(raw)
@@ -542,28 +675,43 @@ def load_clip_file(path: Path) -> Tuple[Dict[str, Any], str]:
             )
         return data, header
     else:
-        # Split plain-text header from the first '{'
-        brace_idx = raw.find("{")
+        # Check if it's a 2-Layer Fluid Stack file with === LAYER 1 ... === and === LAYER 2 ... ===
+        layer2_marker = "=== LAYER 2:"
+        if layer2_marker in raw:
+            l2_idx = raw.find(layer2_marker)
+            brace_idx = raw.find("{", l2_idx)
+        else:
+            brace_idx = raw.find("{")
         if brace_idx == -1:
             raise ValueError(f"No JSON object found in {path}")
-        header = raw[:brace_idx].strip()
+        preamble = raw[:brace_idx].strip()
+        if "=== LAYER 1:" in preamble:
+            l1_idx = preamble.find("=== LAYER 1:")
+            header = preamble[:l1_idx].strip()
+        else:
+            header = preamble
         data = json.loads(raw[brace_idx:])
         return data, header
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="SAKUGA-MLLM-3.1-CAUSAL Compiler, Linter & Multi-Clip YouTube Stitcher"
+        description="SAKUGA-MLLM-3.1-CAUSAL Compiler, 20-Rule Linter, 2-Layer Fluid Stack & Multi-Clip Stitcher"
     )
     sub = parser.add_subparsers(dest="cmd", required=True)
 
     # lint command
-    p_lint = sub.add_parser("lint", help="Validate one or more clip JSON files against the 17 SOP Decisions")
-    p_lint.add_argument("files", nargs="+", type=Path, help="Clip JSON file(s) to validate")
+    p_lint = sub.add_parser("lint", help="Validate one or more clip JSON/Stack files against the 20 SOP Decisions")
+    p_lint.add_argument("files", nargs="+", type=Path, help="Clip JSON or text file(s) to validate")
 
     # compile command
     p_compile = sub.add_parser("compile", help="Lint, causally order, apply taste/style layer, and output prompt")
     p_compile.add_argument("file", type=Path, help="Clip JSON file to compile")
+    p_compile.add_argument(
+        "--stack",
+        action="store_true",
+        help="Emit the 2-Layer Unrolled Fluid Stack (Layer 1 Labanotation-as-Words Timeline + Layer 2 Causal JSON)",
+    )
     p_compile.add_argument(
         "--taste",
         choices=["clean", "nakamura"],
@@ -583,6 +731,11 @@ def main() -> int:
         "stitch", help="Validate and stitch multiple 10s clips into a continuous YouTube episode pack"
     )
     p_stitch.add_argument("files", nargs="+", type=Path, help="Ordered clip JSON files (Clip 1, Clip 2, ...)")
+    p_stitch.add_argument(
+        "--stack",
+        action="store_true",
+        help="Emit each clip in the 2-Layer Unrolled Fluid Stack format",
+    )
     p_stitch.add_argument(
         "--taste",
         choices=["clean", "nakamura"],
@@ -629,11 +782,12 @@ def main() -> int:
             print(f"[WARN] {w}", file=sys.stderr)
 
         spec, header = apply_taste_layer(spec, header, args.taste, args.style)
-        prompt_text = format_sakuga_prompt(spec, header)
+        prompt_text = format_sakuga_prompt(spec, header, stack=args.stack)
 
         if args.out:
             args.out.write_text(prompt_text + "\n", encoding="utf-8")
-            print(f"[COMPILED] Wrote verified prompt to {args.out}")
+            mode_str = "2-Layer Fluid Stack" if args.stack else "Single-Layer Causal JSON"
+            print(f"[COMPILED: {mode_str}] Wrote verified prompt to {args.out}")
         else:
             print(prompt_text)
         return 0
@@ -656,7 +810,7 @@ def main() -> int:
         md_sections = [
             "# YouTube Episode Sakuga Prompt Pack (`SAKUGA-MLLM-3.1-CAUSAL`)",
             f"- **Total Clips:** {len(stitched_specs)} ({len(stitched_specs) * 10}s total duration @ 24fps)",
-            f"- **Taste Preset:** `{args.taste}` | **Style Preset:** `{args.style}`",
+            f"- **Mode:** `{'2-Layer Unrolled Fluid Stack (--stack)' if args.stack else 'Single-Layer Causal JSON'}` | **Taste Preset:** `{args.taste}` | **Style Preset:** `{args.style}`",
             "",
             "## Cross-Clip Continuity Handoff Sheet",
             "\n\n".join(handoff_notes) if handoff_notes else "*Single clip — no cross-clip handoffs.*",
@@ -666,7 +820,7 @@ def main() -> int:
 
         for idx, (s, h) in enumerate(zip(stitched_specs, headers)):
             s_tasted, h_tasted = apply_taste_layer(s, h, args.taste, args.style)
-            compiled_prompt = format_sakuga_prompt(s_tasted, h_tasted)
+            compiled_prompt = format_sakuga_prompt(s_tasted, h_tasted, stack=args.stack)
             md_sections.append(f"## Clip {idx+1}: `{s.get('name')}` (`{idx*10}s - {(idx+1)*10}s`)")
             md_sections.append("```text\n" + compiled_prompt + "\n```\n")
 
