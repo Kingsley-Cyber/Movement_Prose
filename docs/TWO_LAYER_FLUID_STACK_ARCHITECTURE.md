@@ -112,6 +112,16 @@ Empirical render testing on `gold_master_5_baki_underground_arena.json` (`4.30s�
    - Using franchise move names (`"Triceratops Fist"`, `"Cockroach Dash"`, `"Mach Straight"`) pulls in static anime poster/cutaway poses from training data instead of the intended strike.
    - **Rule**: Keep `"Baki and Kengan Ashura"` strictly in the visual `STYLE` header, and write every technique as direct biomechanical geometry (e.g., `"deep wide lunge, rear left knee low near the sand, right arm locked dead-straight horizontally at chin height, left fist pulled back to the left hip"`).
 
+#### Rule G: Elite 180-Degree Hemisphere Sakuga Cinematography & Multi-Axis Rotational Coverage (`Decision 23`)
+Keeping `A` on `screen_left` and `B` on `screen_right` (preserving the 180-degree camera line) must **never** degenerate into locking the camera at a flat $90^\circ$ side-scroller angle (`medium_side_profile`, `fov: 35`) with linear back-and-forth stepping:
+1. **Use the Full $+X$ 180-Degree Camera Hemisphere (`Decision 23A`)**:
+   - Within the valid front hemisphere (`x > 0`, never crossing the axis line between `A` and `B`), vary camera azimuth, elevation (`y = 0.32m` sand-skimming low angles to `y = 1.82m` over-the-deltoid crane plunges), focal length (`fov: 40` low wide entries to `fov: 28` telephoto impact compressions), and Dutch roll (`-12deg` to `+12deg`) across every beat.
+   - Reserve the clean $90^\circ$ full-body `medium_wide_side_profile` (`fov: 38`) specifically for the standing-pillar clinch knee (`4.20s–4.65s`) where head-to-toe pelvis and leg separation is required by `Decision 21C`.
+2. **Multi-Axis Torso Torsion, Level Changes & Rotational Momentum Transfer (`Decision 23B`)**:
+   - Replace linear rail-stepping with figure-eight head-bob weaves, $45^\circ$ outside slips (specifying the exact shoulder the opponent's punch passes), $90^\circ–110^\circ$ hip/shoulder whip rotations, vertical level-change drop-steps (`y=0.84m -> 0.66m`), and **rotational momentum transfer** (e.g., `B`'s $360^\circ$ spinning right backfist into `A`'s guard at `5.45s` imparting clockwise torque that directly feeds `A`'s $360^\circ$ in-place spinning left back kick at `5.95s–6.50s`).
+3. **Anatomically Opposite Head-Snap Vectors (`Decision 23C`)**:
+   - Strikes swinging from opposite sides of the target's face must snap the target's head in opposite 3D directions (`1.75s` horizontal right elbow across `B`'s left cheek snaps `B`'s head into the background `-X`; `3.20s` rising left hook across `B`'s right jaw snaps `B`'s head toward the foreground camera `+X`).
+
 ---
 
 ## 4. Verification & Compilation Workflow

@@ -418,24 +418,42 @@ def lint_clip(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
                     "Use a true parabolic upward launch apex (y=2.0m-2.2m) and falling catch."
                 )
 
-    # 7. Validate Camera (Decision 10, Decision 12 & Decision 21C)
-    for cbeat in spec.get("camera", []):
+    # 7. Validate Camera (Decision 10, Decision 12, Decision 21C & Decision 23)
+    cam_list = spec.get("camera", [])
+    side_profile_count = 0
+    fov_values = []
+    for cbeat in cam_list:
         t = cbeat.get("t", "?")
         fov = cbeat.get("fov", 35)
+        fov_values.append(float(fov))
         if fov > 40 or fov < 24:
             warnings.append(
-                f"[Decision 10] Camera t={t} has fov={fov} (recommended close-quarters range: 28-38)."
+                f"[Decision 10] Camera t={t} has fov={fov} (recommended close-quarters range: 28-40)."
             )
         if "look" not in cbeat:
             errors.append(f"[Decision 12] Camera t={t} is missing mandatory 'look' target anchor.")
         shot_lower = str(cbeat.get("shot", "")).lower()
         look_lower = str(cbeat.get("look", "")).lower()
+        if "side_profile" in shot_lower and "3_4" not in shot_lower and "arc" not in shot_lower:
+            side_profile_count += 1
         if "worm_eye" in shot_lower and ("knee" in shot_lower or "knee" in look_lower):
             warnings.append(
                 f"[Decision 21C] Camera t={t} uses 'worm_eye' on a knee strike. "
                 "Worm's-eye close-ups crop out the striker's pelvis and trigger the 'uppercut fist-leg hybrid' prior. "
                 "Use 'medium_wide_side_profile' (fov 38) showing the standing pillar leg and pelvis head-to-toe."
             )
+
+    if len(cam_list) >= 6 and (side_profile_count / len(cam_list)) > 0.50:
+        warnings.append(
+            f"[Decision 23] {side_profile_count}/{len(cam_list)} camera shots are flat 'side_profile' (>50%). "
+            "Preserving the 180-degree line does NOT mean locking a flat 2D side-scroller camera: use 3/4 depth angles, "
+            "over-the-shoulder whip-pans, crane plunges, vertical pedestal drops, Dutch rolls, and telephoto snap-zooms within the front hemisphere."
+        )
+    if len(fov_values) >= 6 and (max(fov_values) - min(fov_values)) < 6.0:
+        warnings.append(
+            f"[Decision 23] Camera FOV range is only {min(fov_values):.0f}-{max(fov_values):.0f} (<6 deg dynamic range). "
+            "Vary focal length between wide entry/coil shots (fov 38-40) and telephoto impact compressions (fov 28-30)."
+        )
 
     # 8. Validate Smear Isolation & Bent-Knee Smear Ban (Decision 04/07 & Decision 21B)
     anime = spec.get("anime", {})

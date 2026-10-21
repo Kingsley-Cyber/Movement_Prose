@@ -1,315 +1,319 @@
 {
-  "header": "10s anime fight clip, 24fps, underground circular sand-and-concrete martial arts tournament pit, harsh golden-white overhead ring floodlights, dark tiered crowd in deep shadow, no ring ropes. STYLE: Pure 2D hand-drawn anime, Baki and Kengan Ashura style detailed anatomical muscle striations, cel-shaded flat colors with hard 2-tone high-contrast shadows, heavy ink outlines on A, broken sketchy ink on active smear limbs only, clean thick ink on impact holds, intense bare-knuckle stand-up sakuga animation on twos. Not 3D, not CGI, not live action, not photoreal. ENTITY COUNT: Exactly TWO shirtless bare-knuckle fighters (ZERO weapons). Fighter A (always on screen-left facing right): lean, striated martial artist, shirtless bare torso and arms, white cloth wrist/knuckle tape on both hands, red fight trunks, bare feet. Fighter B (always on screen-right facing left): towering, massive scarred pit-brawler, shirtless thick muscular torso, black fight pants, bare fists, bare feet. Maintain realistic strike spacing at all times: one full arm's length (0.75-0.85m) for punches and one full leg's length (1.05-1.15m) for kicks so the bodies never merge. Execute as one continuous two-way center-ring war; no on-screen text, no numbers, no HUD, and no coordinate labels.",
+  "header": "10s anime fight clip, 24fps, underground circular sand-and-concrete martial arts tournament pit, harsh golden-white overhead ring floodlights, dark tiered crowd in deep shadow, no ring ropes. STYLE: Pure 2D hand-drawn anime, Baki and Kengan Ashura style detailed anatomical muscle striations, cel-shaded flat colors with hard 2-tone high-contrast shadows, heavy ink outlines on A, broken sketchy ink on active smear limbs only, clean thick ink on impact holds, intense bare-knuckle stand-up sakuga animation on twos. Not 3D, not CGI, not live action, not photoreal. ENTITY COUNT & OUTFIT LOCK: Exactly TWO shirtless bare-knuckle fighters (ZERO weapons). Fighter A (always on screen-left facing right): lean, striated martial artist, shirtless bare torso and arms, white cloth wrist/knuckle tape on both hands, red fight trunks, bare feet. Fighter B (always on screen-right facing left): towering, massive scarred pit-brawler, shirtless thick muscular torso, black fight pants, bare wrists and bare hands with NO wrist tape, bare feet. Maintain realistic strike spacing at all times: one full arm's length (0.75-0.85m) for punches, half an arm's length (0.60-0.65m) for elbows and clinch, and one full leg's length (1.05-1.15m) for kicks so the bodies never merge, with both arms separate from the torso in silhouette on every hit. Execute with dynamic 180-degree-hemisphere Sakuga camera work (3/4 depth angles, crane plunges, whip-pans, Dutch tilts, and telephoto impact snap-zooms without ever crossing the 180-degree line); no on-screen text, no numbers, no HUD, and no coordinate labels.",
   "name": "baki_underground_pit_two_way_standup_war_10s",
   "schema": "SAKUGA-MLLM-3.1-CAUSAL",
   "fps": 24,
   "duration": 10.0,
   "axes": "Y_up, metres, sand arena floor y=0, center-ring stand-up pocket z=2.8 to z=5.0, A stays on screen_left (z=2.85 to 3.55) facing +Z right for all 10s, B stays on screen_right (z=3.95 to 5.0) facing -Z left for all 10s",
-  "screen_geometry": "180_degree_camera_rule_locked_for_all_10s: Fighter A remains strictly on screen_left facing right (+Z) and Fighter B remains strictly on screen_right facing left (-Z) for the entire 10.0s clip (zero side swaps). Punches connect at one full arm's length (0.75-0.85m torso separation) and kicks connect at one full leg's length (1.05-1.15m torso separation).",
-  "negative": "no 3D CGI, no mocap stiffness, no floaty physics, no wall run, no ground punch, no weapons, no swords, no knives, no kunai, no side swap, no torso merging, no chest-to-chest clipping, no on-screen text or numbers, no HUD, no coordinate labels, no extra fighters, no cloned A or B, no missing limbs, no missing arms, no one-armed fighter, no extra legs, no deformed legs, no fist-leg hybrid, no full-body blur during smears, no reaction before contact",
+  "screen_geometry": "180_degree_camera_hemisphere_locked_for_all_10s: Fighter A remains strictly on screen_left facing right (+Z) and Fighter B remains strictly on screen_right facing left (-Z) for the entire 10.0s clip (zero side swaps). The camera moves dynamically across the +X front hemisphere (low 3/4 ankle tracking, ground-level telephoto, high over-the-shoulder crane plunge, 3/4 whip-pans with Dutch roll, vertical level-change drop-tracks, and fov 40-to-28 snap-zooms) without ever crossing the axis line between the fighters.",
+  "negative": "no 3D CGI, no mocap stiffness, no floaty physics, no static flat side-scroller camera, no wall run, no ground punch, no weapons, no swords, no knives, no kunai, no side swap, no wrist tape on B, no outfit swap, no torso merging, no chest-to-chest clipping, no on-screen text or numbers, no HUD, no coordinate labels, no extra fighters, no cloned A or B, no missing limbs, no missing arms, no one-armed fighter, no extra legs, no deformed legs, no fist-leg hybrid, no full-body blur during smears, no reaction before contact",
   "conservation_laws": [
-    "CONSERVE_SEMANTICALLY: every strike and counter is unrolled into sequential sub-beats for entry/windup -> drive/turnover -> full-reach contact -> recoil/follow-through",
-    "realistic_strike_reach_spacing: punches connect at one full arm's length (0.75-0.85m between torso centers), kicks connect at one full leg's length (1.05-1.15m between torso centers), and clinches hold 0.60-0.65m separation so bodies never merge",
-    "strict_screen_side_lock: A stays on screen_left facing right (+Z) and B stays on screen_right facing left (-Z) for all 10.0 seconds",
-    "two_way_exchange_war: B lands a heavy right cross counter at 5.45s that skids A backward before A counters with an in-place spinning back kick at 6.50s and a deep-lunge straight right knockout at 8.80s",
+    "CONSERVE_SEMANTICALLY: every strike and counter is unrolled into sequential sub-beats for entry/windup -> multi-axis torso/hip rotation -> full-reach contact -> recoil/follow-through",
+    "realistic_strike_reach_spacing: punches connect at one full arm's length (0.75-0.85m between torso centers), elbows and clinches hold 0.60-0.65m separation, and kicks connect at one full leg's length (1.05-1.15m between torso centers) with both arms separate from the torso in silhouette",
+    "strict_screen_side_and_outfit_lock: A (lean, red trunks, white wrist tape) stays on screen_left facing right (+Z) and B (massive, black pants, bare wrists with NO tape) stays on screen_right facing left (-Z) for all 10.0 seconds",
+    "rotational_momentum_transfer: B's 360-degree spinning right backfist into A's guard at 5.45s skids A backward to z=2.90 and imparts clockwise rotational torque that directly feeds A's in-place 360-degree spinning left back kick at 6.50s",
     "knockback_and_hit_reaction_require_prior_physical_contact_zero_early_flinch"
   ],
   "layer_1_timeline": [
-    "MOVEMENT LANGUAGE: <seconds> <performer>: SUPPORT (what bears weight) | bilateral limb placement (L_arm, R_arm, L_leg, R_leg) | 5-phase force event & reach distance (arm's length ~0.80m for punches, leg's length ~1.10m for kicks) | path in metres. A is always screen-left facing right (+Z); B is always screen-right facing left (-Z).",
-    "0.00 A: SUPPORT both bare feet stepping forward on sand from z=2.85 to z=2.95 (screen-left) | L_arm extended forward-high in open-palm guard, R_arm held at right cheek | approaches B to one leg's length (1.05m).",
-    "0.00 B: SUPPORT both bare feet stepping in to z=4.00 (screen-right) | FE1 threat: B throws a heavy high right straight punch toward A's head across a 1.05m gap.",
-    "0.35 A: SUPPORT left bare foot planted at z=2.95 pivoting 90 deg | FE1 slip & hip turnover: A slips his head outside-left of B's straight punch and turns his right hip over low while framing L_arm forward and swinging R_arm back-right.",
-    "0.65 A: SUPPORT left bare foot anchored at z=2.95 (1.05m leg's length from B at z=4.00) | FE1 CONTACT (hold 3f, Bound): A whips his extended right leg low (8-to-2 o'clock), chopping his bare right shin into the outside of B's lead left calf at [0,0.48,3.85] -> white bone-shock flash and sand spray buckle B's left knee inward.",
-    "0.65 B: SUPPORT right foot planted, left knee buckled inward at z=4.00 | FE1 reaction: B's left leg caves inward from the calf kick.",
-    "1.10 B: SUPPORT both bare feet planted wide at z=3.95 | FE2 threat: B raises both fists overhead and swings a two-handed downward smash toward A.",
-    "1.40 A: SUPPORT both bare feet braced wide at z=3.20 (0.75m arm's length from B) | FE2 parry: A raises both taped forearms crossed in a high X-block at [0,1.52,3.55], catching B's descending wrists and shoving them upward-left.",
-    "1.75 A: SUPPORT both bare feet planted at z=3.30 (0.65m elbow reach from B at z=3.95), pivoting on front left foot | FE2 CONTACT (hold 3f, Bound): trapping B's right wrist down with his left hand, A whips a horizontal right elbow (3-to-9 o'clock) across B's left cheekbone at [0,1.46,3.85] -> sweat spray snaps B's head right.",
-    "1.75 B: SUPPORT both bare feet staggered to z=4.10 | FE2 reaction: B's head whips sideways from the right elbow.",
-    "2.20 A: SUPPORT both bare feet grounded at z=3.30 (0.80m full arm's length from B at z=4.10) | FE3 combo beat 1: at full arm's extension, A snaps a straight left jab into B's nose at [0,1.48,4.00] while chambering R_arm at the right hip.",
-    "2.65 A: SUPPORT both bare feet in a low level-change crouch at z=3.32 (0.80m arm's length from B at z=4.12) | FE3 combo beat 2: dropping hips to y=0.70m, A drives a full-extension right straight punch into B's solar plexus at [0,1.12,4.02] while coiling L_arm at the left hip.",
-    "3.20 A: SUPPORT both bare feet planted at z=3.35 (0.80m arm's length from B at z=4.15) | FE3 combo beat 3 CONTACT (hold 3f, Bound): rising and rotating hips left-to-right with R_arm guarding the right cheek, A whips a long left hook across B's jaw at [0,1.46,4.05] -> shockwave ring staggers B half a step to z=4.20.",
-    "3.75 A: SUPPORT both bare feet in a wide split stance (L_leg at z=3.55, R_leg back at z=3.20; 0.65m clinch reach from B at z=4.20) | FE4 clinch entry: A reaches forward with both arms and clamps both taped hands behind B's neck at [0,1.45,4.05].",
-    "4.20 A: SUPPORT wide front-back split stance on sand (L_leg vertical at z=3.55, R_leg extended back at z=3.20, ANTICIPATION HOLD) | FE4 windup: keeping 0.65m torso separation, A pulls B's head forward-down to y=1.18m with both hands while loading his rear right leg.",
-    "4.65 A: SUPPORT left bare foot planted straight down on sand at z=3.55 as a vertical pillar (0.65m from B's hips at z=4.20) | FE4 CONTACT (hold 4f, slomo 0.25x, Bound, full-body side profile): with L_leg locked straight down to the floor and both hands pulling B's head down, A drives his sharply bent right knee diagonally upward (8-to-1 o'clock) into B's nose at [0,1.20,3.95] -> radial shock flash jolts B upright.",
-    "5.05 B: SUPPORT both bare feet planted wide at z=4.15 (screen-right) | FE5 counter windup: shaking off the knee with a roar, B plants his rear right foot and torques his massive shoulders to counter-punch.",
-    "5.45 B: SUPPORT both bare feet driving forward at z=4.10 (0.80m full arm's length from A at z=3.30) | FE5 B COUNTER CONTACT (hold 3f, Bound): B detonates a heavy bare-knuckle RIGHT CROSS straight across the 0.80m gap into A's left cheekbone and high guard at [0,1.42,3.40] -> heavy impact flash and sweat spray rock A's head back.",
-    "5.45 A: SUPPORT both bare feet skidding 0.40m backward through the sand from z=3.30 to z=2.90 (staying on screen-left) | FE5 reaction: rocked by B's right cross, A braces L_arm and R_arm in a high guard as his bare heels carve two trenches backward in the sand to z=2.90.",
-    "5.95 A: SUPPORT right bare foot planted at z=2.90 (screen-left, 1.10m full leg's length from advancing B at z=4.00) | FE6 spin chamber: absorbing his backward skid, A spins 360 deg in place on his planted right foot, chambering his left knee and heel tight while spreading L_arm and R_arm wide.",
-    "6.50 A: SUPPORT right bare foot anchored at z=2.90 (1.10m full leg's length from B at z=4.00) | FE6 CONTACT (hold 3f, Bound): completing the spin in place on screen-left, A thrusts his left leg dead-straight horizontally (+Z), driving his bare left heel across the 1.10m gap into B's solar plexus at [0,1.15,3.88] -> double shock ring folds B in half and slides B back to z=4.35.",
-    "6.50 B: SUPPORT both bare feet sliding backward in sand from z=4.00 to z=4.35 (screen-right) | FE6 reaction: B doubles over clutching his solar plexus.",
-    "7.35 A: SUPPORT both bare feet planted wide in a low crouch at z=2.95 on screen-left (ANTICIPATION HOLD, y=0.64m, 1.40m from B at z=4.35) | FE7 windup: A sinks low with rear left knee near the sand, L_arm extended forward at knee height with open taped hand, and R_arm cocked deep behind the right hip as white steam rises from his shoulders.",
-    "8.10 A: SUPPORT rear left bare foot driving off sand from z=2.95 to z=3.50 (screen-left) | FE7 drive: A lunges explosively across the sand kicking up a cone of sand behind his left heel while whipping his right shoulder forward.",
-    "8.80 A: SUPPORT deep wide lunge at z=3.50 on screen-left (rear left knee low near the sand, front right foot planted at z=3.75; 0.85m full arm's length from B at z=4.35) | FE7 FINISHER CONTACT (hold 5f, slomo 0.25x, Bound): with his right arm locked dead-straight horizontally at chin height and left fist pulled back to his left hip, A drives his taped right fist across the 0.85m gap squarely into B's chin at [0,1.38,4.25] -> double white shockwave ring erupts behind B's back, lifting B off his feet.",
-    "8.80 B: NO SUPPORT (airborne, blown backward from z=4.35 to z=5.00 on screen-right) | FE7 KO reaction: B is blasted horizontally backward off his feet across the sand pit.",
-    "9.45 B: SUPPORT back and shoulders flat on sand at z=5.00 (screen-right) | B crashes flat on his back in a plume of sand, knocked out cold.",
-    "9.45 A: SUPPORT deep lunge held still at z=3.50 (screen-left, rear knee low, right arm straight at chin height, left fist at hip) | FE7 follow-through hold to 10.00s: A holds the extended straight-right lunge completely still with white heat-steam rising from his shoulders to 10.00s."
+    "MOVEMENT LANGUAGE: <seconds> <performer>: SUPPORT (what bears weight) | bilateral limb placement & torso rotation (both L_arm and R_arm separate from torso in silhouette) | 5-phase force event & reach distance (arm's length ~0.80m for punches, half-arm ~0.65m for elbows/clinch, leg's length ~1.10m for kicks) | path in metres. A is always screen-left (red trunks, white wrist tape); B is always screen-right (black pants, bare wrists, no tape).",
+    "0.00 A (10f): SUPPORT both bare feet weaving forward on sand from z=2.85 to z=2.95 (screen-left) | torso bobbing in a figure-eight weave, L_arm extended forward-high with open taped hand, R_arm cocked at right cheek, both arms separate from the torso in silhouette | closes to one full leg's length (1.05m) from B.",
+    "0.00 B (16f): SUPPORT both bare feet stepping in to z=4.00 (screen-right) | torso rotating 45 deg counterclockwise, bare L_arm at chest, bare R_arm firing a heavy high right straight punch across the 1.05m gap toward A's head.",
+    "0.35 A (7f): SUPPORT left bare foot planted at z=2.95 pivoting 90 deg clockwise | FE1 slip & hip turnover: A slips his head and torso 45 deg outside B's right straight so B's bare right fist whistles past A's right shoulder, while A turns his right hip over horizontally and swings R_arm wide back-right with L_arm framed high-left.",
+    "0.65 A (18f): SUPPORT left bare foot anchored at z=2.95 (one full leg's length, 1.05m from B at z=4.00) | FE1 CONTACT (hold 3f, Bound): rotating his hips 90 deg clockwise with both arms separate from the torso in silhouette (L_arm high-left, R_arm counter-swept back-right), A whips his extended right shin horizontally (8-to-2 o'clock) into the outside of B's lead left calf at [0,0.48,3.85] -> white bone-shock flash and sand spray buckle B's left knee inward.",
+    "0.65 B (11f): SUPPORT right foot planted, left knee buckled inward at z=4.00 | FE1 reaction: B's left leg caves inward from the calf kick in a spray of sand.",
+    "1.10 B (7f): SUPPORT both bare feet planted wide at z=3.95 | FE2 threat: recovering balance, B rears his massive back up and swings both bare fists overhead in a two-handed downward smash toward A.",
+    "1.40 A (8f): SUPPORT both bare feet braced in a low coiled horse-stance at z=3.20 (0.75m arm's length from B) | FE2 spiral parry: A raises both taped forearms crossed in a high X-block at [0,1.52,3.55], catches B's descending bare wrists, and spirals both forearms upward-left to twist B's guard open.",
+    "1.75 A (11f): SUPPORT both bare feet planted at z=3.30 (half an arm's length, 0.65m elbow reach from B at z=3.95), pivoting 110 deg clockwise on lead left foot | FE2 CONTACT (hold 3f, Bound): pinning B's right wrist down with his taped left hand so both arms are separate from the torso in silhouette, A torques his shoulders 110 deg and slices a horizontal right elbow (3-to-9 o'clock) across B's left cheekbone at [0,1.46,3.85] -> sweat spray snaps B's head to B's right (into background -X).",
+    "1.75 B (22f): SUPPORT both bare feet staggering back to z=4.10 | FE2 reaction: B's head whips to B's right (into background -X) following the direction of A's right elbow swing as B staggers to one full arm's length (0.80m).",
+    "2.20 A (11f): SUPPORT balls of both bare feet darting to z=3.30 (one full arm's length, 0.80m from B at z=4.10) | FE3 combo beat 1: rotating his left shoulder 45 deg forward with both arms separate from the torso in silhouette, A snaps a full-extension straight left jab into B's nose at [0,1.48,4.00] while chambering R_arm back at his right hip.",
+    "2.65 A (13f): SUPPORT both bare feet in a deep drop-step crouch at z=3.32 (hips plunging to y=0.66m, 0.80m arm's length from B at z=4.12) | FE3 combo beat 2: rotating his right hip and shoulder 60 deg forward with both arms separate from the torso in silhouette, A pistons a full-extension right straight punch into B's solar plexus at [0,1.12,4.02] while coiling L_arm wide at his left hip.",
+    "2.65 B (13f): SUPPORT both bare feet braced at z=4.12 | FE3 reaction: B's head jolts back from the 2.20s jab and his abdomen caves inward from the 2.65s solar-plexus straight.",
+    "3.20 A (13f): SUPPORT both bare feet planted at z=3.35 (one full arm's length, 0.80m from B at z=4.15), corkscrewing upward on lead left foot | FE3 combo beat 3 CONTACT (hold 3f, Bound): uncoiling upward out of his crouch and rotating his torso 90 deg left-to-right with both arms separate from the torso in silhouette (R_arm held high at right temple), A whips a rising long left hook (8-to-2 o'clock) across B's right jaw at [0,1.46,4.05] -> white shockwave ring snaps B's head to B's left (toward foreground camera +X).",
+    "3.20 B (24f): SUPPORT both bare feet sliding half a step to z=4.20 | FE3 reaction: B's head whips to B's left (toward foreground camera +X) following the opposite swing direction of A's left hook.",
+    "3.75 A (11f): SUPPORT wide front-back split stance on sand (L_leg at z=3.55, R_leg back at z=3.20; 0.65m clinch reach from B at z=4.20) | FE4 clinch entry: A reaches forward with both taped hands separate from the torso in silhouette and clamps a two-handed collar tie behind B's neck at [0,1.45,4.05] while B's arms hang wide outside.",
+    "4.20 A (11f): SUPPORT wide split stance on sand (L_leg vertical at z=3.55, R_leg loaded back at z=3.20, ANTICIPATION HOLD) | FE4 windup: keeping 0.65m hip separation, A arches his lats backward and yanks B's head forward-down in a 12-to-6 o'clock arc to y=1.18m with both taped hands.",
+    "4.20 B (11f): SUPPORT both bare feet planted at z=4.20 (hips 0.65m from A) | FE4 clinch reaction: B's head and upper spine are pulled forward and downward to y=1.18m by A's collar tie.",
+    "4.65 A (19f): SUPPORT left bare foot planted straight down on sand at z=3.55 as a vertical standing pillar (0.65m from B's hips at z=4.20) | FE4 CONTACT (hold 4f, slomo 0.25x, Bound, full-body side-profile framing): keeping L_leg locked straight down on the floor, thrusting his right hip forward, and leaning his torso 20 deg back with both arms separate from the torso in silhouette pulling B's neck down, A spears his sharply bent right knee diagonally upward (8-to-1 o'clock) into B's nose at [0,1.20,3.95] -> radial white shock flash jolts B upright.",
+    "4.65 B (10f): SUPPORT both bare feet planted at z=4.20 | FE4 reaction: B's head snaps upright in a halo of sweat from the standing knee.",
+    "5.05 B (10f): SUPPORT left foot planted at z=4.15 (screen-right) pivoting 360 deg counterclockwise | FE5 spin windup: roaring through the pain, B spins 360 deg counterclockwise on his left foot to unleash a spinning backfist counter.",
+    "5.45 B (25f): SUPPORT both bare feet planted wide at z=4.10 (one full arm's length, 0.80m from A at z=3.30) | FE5 B COUNTER CONTACT (hold 3f, Bound): completing his 360 deg spin with both bare arms separate from his torso in silhouette, B slams a heavy bare-knuckle SPINNING RIGHT BACKFIST across the 0.80m gap into A's high two-arm guard and left temple at [0,1.42,3.40] -> heavy impact flash blasts A skidding backward and imparts clockwise rotational spin into A.",
+    "5.45 A (12f): SUPPORT both bare feet skidding 0.40m backward through the sand from z=3.30 to z=2.90 on screen-left | FE5 reaction: absorbing B's spinning backfist on his braced two-arm guard (both arms separate from torso in silhouette), A carves two 0.40m heel trenches backward to z=2.90 as the tangential impact torque twists A's torso clockwise.",
+    "5.95 A (13f): SUPPORT right bare foot planted at z=2.90 on screen-left (1.10m full leg's length from advancing B at z=4.00) | FE6 continuous spin chamber: riding the clockwise rotational momentum from B's backfist, A spins 360 deg in place on his planted right foot, showing his striated back muscles twisting in full torsion as he looks over his left shoulder with both arms spread wide in silhouette and chambers his left heel tight.",
+    "6.50 A (20f): SUPPORT right bare foot anchored at z=2.90 on screen-left (one full leg's length, 1.10m from B at z=4.00) | FE6 CONTACT (hold 3f, Bound): completing the 360 deg in-place spin and hinging his torso 45 deg sideways with both arms separate from the torso in silhouette (L_arm low-left, R_arm high-right), A pistons his left leg dead-straight horizontally (+Z), driving his bare left heel across the 1.10m gap into B's solar plexus at [0,1.15,3.88] -> double concentric shock rings fold B in half and slide B back to z=4.35.",
+    "6.50 B (55f): SUPPORT both bare feet carving trenches backward in sand from z=4.00 to z=4.35 (screen-right) | FE6 reaction: B doubles over clutching his caved sternum as he slides back to z=4.35.",
+    "7.35 A (18f): SUPPORT both bare feet planted wide in a deep crouch at z=2.95 on screen-left (ANTICIPATION HOLD, y=0.62m, 1.40m from B at z=4.35) | FE7 torso-torsion windup: A sinks his rear left knee low near the sand and twists his shoulders 50 deg clockwise, extending L_arm low-forward at knee height with open taped hand and coiling R_arm deep behind his right hip (both arms separate from the torso in silhouette) as white heat-steam rises off his shoulders.",
+    "8.10 A (17f): SUPPORT rear left bare foot exploding off sand from z=2.95 to z=3.50 on screen-left | FE7 horizontal launch drive: A rockets low across the sand kicking up a horizontal cone of sand behind his left heel while violently untwisting his hips and shoulders 95 deg counterclockwise.",
+    "8.80 A (16f): SUPPORT deep wide lunge at z=3.50 on screen-left (rear left knee low near sand, front right foot planted at z=3.75; one full arm's length, 0.85m from B at z=4.35) | FE7 FINISHER CONTACT (hold 5f, slomo 0.25x, Bound): with both arms separate from the torso in silhouette—right arm locked dead-straight horizontally at chin height and left fist snapped back to his left hip—A drives his taped right fist across the 0.85m gap squarely into B's chin at [0,1.38,4.25] -> double white shockwave ring erupts behind B's back, lifting B off his feet.",
+    "8.80 B (16f): NO SUPPORT (airborne, blown horizontally backward from z=4.35 to z=5.00 on screen-right) | FE7 KO reaction: B is blasted off both feet across the sand pit.",
+    "9.45 B (13f): SUPPORT back and shoulders flat on sand at z=5.00 (screen-right) | B crashes flat on his back in a plume of dust, knocked out cold to 10.00s.",
+    "9.45 A (13f): SUPPORT deep lunge held still at z=3.50 on screen-left (rear knee low, right arm straight at chin height, left fist at hip, both arms separate from torso in silhouette) | FE7 follow-through hold to 10.00s: A holds the extended straight-right lunge completely still with white heat-steam rising from his shoulders to 10.00s."
   ],
   "laban": {
     "A": {
-      "chain": "C01_step_in_to_leg_length > C02_outside_slip_and_low_hip_turnover > C03_leg_length_right_calf_kick > C04_arm_length_high_crossed_forearm_X_parry > C05_horizontal_right_elbow_to_cheek > C06_arm_length_left_jab > C07_level_change_right_body_straight > C08_rising_left_hook_to_jaw > C09_extended_reach_two_hand_neck_clinch > C10_split_stance_neck_pull_windup > C11_grounded_left_pillar_rising_right_knee > C12_rocked_by_B_right_cross_skids_back_to_z=2.90 > C13_in_place_spin_chamber_on_screen_left > C14_leg_length_spinning_left_back_kick_to_sternum > C15_low_wide_crouch_coil_7.35s > C16_explosive_forward_lunge_drive_8.10s > C17_deep_lunge_straight_right_at_chin_height_ko_8.80s > C18_extended_lunge_follow_through_hold_to_10s",
+      "chain": "C01_dempsey_weave_entry_to_leg_length > C02_45deg_outside_slip_past_right_shoulder_and_90deg_hip_turnover > C03_leg_length_right_calf_kick > C04_horse_stance_spiral_X_parry > C05_110deg_torso_whip_right_elbow_snapping_B_head_into_background > C06_45deg_shoulder_roll_left_jab > C07_deep_level_drop_60deg_right_body_straight > C08_corkscrew_rising_left_hook_snapping_B_head_toward_camera > C09_split_stance_collar_tie_clinch > C10_lat_arch_downward_neck_pull_windup > C11_grounded_left_pillar_hip_thrust_rising_right_knee > C12_absorbs_B_spinning_backfist_skids_back_to_z=2.90_with_clockwise_torque > C13_rides_torque_into_360deg_in_place_spin_chamber > C14_leg_length_45deg_side_hinge_spinning_left_back_kick_to_sternum > C15_deep_crouch_50deg_shoulder_coil_7.35s > C16_sand_cone_95deg_untwist_lunge_drive_8.10s > C17_deep_lunge_straight_right_at_chin_height_ko_8.80s > C18_steaming_lunge_follow_through_hold_to_10s",
       "effort": {
-        "weight": "strong_ballistic_whip_torque_and_grounded_recoil",
-        "time": "sudden_relentless_exchange_snapping_to_stillness_at_9.45s",
-        "space": "direct_full_arm_and_leg_reach_on_screen_left",
-        "flow": "free_chaining_snapping_to_bound_at_impacts_0.65_1.75_3.20_4.65_5.45_6.50_8.80"
+        "weight": "strong_rotational_whip_torque_and_grounded_recoil",
+        "time": "sudden_explosive_accelerations_with_held_impact_compressions",
+        "space": "multi_axis_3D_torso_torsion_and_level_changes_on_screen_left",
+        "flow": "free_fluid_rotational_chaining_snapping_to_bound_at_impacts_0.65_1.75_3.20_4.65_5.45_6.50_8.80"
       }
     },
     "B": {
-      "chain": "C01_high_right_straight_at_leg_length > C02_left_knee_buckled_by_calf_kick > C03_two_hand_overhead_smash > C04_wrists_parried_by_X_block > C05_cheek_struck_by_right_elbow > C06_rocked_by_arm_length_3_punch_combo > C07_pulled_into_rising_right_knee > C08_plants_feet_and_lands_heavy_right_cross_counter_at_5.45s > C09_sternum_caved_by_in_place_spinning_back_kick_at_6.50s > C10_blasted_backward_by_deep_lunge_right_straight_at_8.80s > C11_ko_flat_on_sand_at_z=5.00",
+      "chain": "C01_45deg_right_straight_past_A_right_shoulder > C02_left_knee_buckled_by_calf_kick > C03_two_hand_overhead_smash > C04_wrists_spiraled_open_by_X_parry > C05_head_snapped_into_background_by_right_elbow > C06_rocked_by_level_changing_jab_and_body_straight > C07_head_snapped_toward_camera_by_rising_left_hook > C08_pulled_down_into_standing_right_knee > C09_spins_360deg_counterclockwise_and_lands_spinning_right_backfist_at_5.45s > C10_sternum_caved_by_in_place_spinning_back_kick_at_6.50s > C11_blasted_backward_by_deep_lunge_right_straight_at_8.80s > C12_ko_flat_on_sand_at_z=5.00",
       "effort": {
         "weight": "heavy_crushing_power",
-        "time": "sudden_explosive_counters",
+        "time": "sudden_rotational_counters",
         "space": "direct",
         "flow": "bound"
       }
     }
   },
   "beats": [
-    "leg_length_slip_and_calf_kick",
-    "x_block_and_slicing_right_elbow",
-    "arm_length_3_punch_combo",
-    "split_stance_clinch_right_knee",
-    "B_right_cross_counter_and_A_in_place_spinning_back_kick",
-    "deep_lunge_straight_right_ko"
+    "dempsey_weave_slip_and_hip_turnover_calf_kick",
+    "spiral_x_parry_and_110deg_rotational_right_elbow",
+    "level_changing_corkscrew_3_punch_combo",
+    "collar_tie_pull_down_and_standing_pillar_knee",
+    "B_360_spinning_backfist_feeding_A_in_place_360_back_kick",
+    "torso_torsion_deep_lunge_straight_right_ko"
   ],
   "A_beats": [
     {
       "t": 0.0,
-      "beat": "leg_length_slip_and_calf_kick",
-      "causal": "C01: init_step_in_to_leg_reach -> causes: C02_outside_slip_and_calf_kick_turnover",
+      "beat": "dempsey_weave_slip_and_hip_turnover_calf_kick",
+      "causal": "C01: init_figure_eight_weave_entry_to_leg_reach -> causes: C02_outside_slip_past_right_shoulder",
       "pos": [0, 0.82, 2.85],
       "vel": [0, 0, 1.2],
-      "axis": "head:+Y_up, torso:20deg_forward_lean, facing:+Z, screen_side:left",
-      "arc": "linear_step_in_z=2.85_to_2.95_on_sand",
-      "support": "both_bare_feet_stepping_on_sand_floor",
-      "limbs": "L_arm:extended forward-high with open taped hand; R_arm:held tight at right cheek with clenched taped fist; L_leg:stepping to z=2.95; R_leg: pushing off",
-      "pose": "On screen-left, A steps to z=2.95 in a compact bare-knuckle stance (1.05m full leg's length from B at z=4.00) with his left taped hand extended forward and right fist at his cheek as B throws a high right straight."
+      "axis": "head:+Y_up_bobbing_in_weave, torso:25deg_forward_lean_rolling_shoulders, facing:+Z, screen_side:left",
+      "arc": "figure_eight_head_bob_weave_from_z=2.85_to_z=2.95_on_sand",
+      "support": "both_bare_feet_stepping_and_weaving_on_sand_floor",
+      "limbs": "L_arm:extended forward-high with open taped hand; R_arm:cocked tight at right cheek with clenched taped fist (both arms separate from the torso in silhouette); L_leg:stepping to z=2.95; R_leg:driving off sand",
+      "pose": "On screen-left (red trunks, white wrist tape), A weaves forward to z=2.95 in a figure-eight head-bob (one full leg's length, 1.05m from bare-wristed B at z=4.00) with both arms separate from the torso in silhouette as B steps in throwing a high right straight."
     },
     {
       "t": 0.35,
-      "beat": "leg_length_slip_and_calf_kick",
-      "causal": "C02: requires: C01_leg_reach_entry + B_right_straight_committed -> timing: BEFORE_PUNCH_INTERSECTION -> preserves: 90deg_left_foot_pivot_torque -> causes: C03_full_leg_length_calf_kick_at_0.65s",
-      "pos": [-0.14, 0.78, 2.95],
-      "vel": [0, 0, 0.2],
-      "axis": "head:+Y_up_slipped_left, hips:turning_over_low, facing:+Z, screen_side:left",
-      "arc": "outside_head_slip_and_low_right_hip_turnover_8_to_2_clock",
-      "support": "left_bare_foot_planted_at_z=2.95_pivoting_90deg",
-      "contact": "evasion_corridor: A_head_slips_outside_left_of_B_extended_right_fist_at_y=1.42m",
-      "limbs": "L_leg:planted at z=2.95 pivoting 90 deg; R_leg:turning hip over low across the 1.05m gap; L_arm:framed high-forward; R_arm:swinging back-right for counter-torque",
-      "pose": "Slipping his head outside B's straight punch at 0.35s while keeping one full leg's length (1.05m) between their torsos, A pivots on his planted left foot and turns his right hip over low."
+      "beat": "dempsey_weave_slip_and_hip_turnover_calf_kick",
+      "causal": "C02: requires: C01_weave_entry + B_right_straight_committed -> timing: BEFORE_PUNCH_INTERSECTION -> preserves: 90deg_clockwise_left_foot_pivot_and_hip_turnover -> causes: C03_full_leg_length_calf_kick_at_0.65s",
+      "pos": [0.16, 0.76, 2.95],
+      "vel": [0.3, -0.1, 0.1],
+      "axis": "head:+Y_up_slipped_outside, torso:rolled_45deg_outside_turning_right_hip_over, facing:+Z, screen_side:left",
+      "arc": "45deg_outside_torso_slip_and_90deg_clockwise_hip_turnover_8_to_2_clock",
+      "support": "left_bare_foot_planted_at_z=2.95_pivoting_90deg_clockwise",
+      "contact": "evasion_corridor: A_slips_outside_B_right_straight_so_B_bare_right_fist_whistles_past_A_right_shoulder_at_y=1.42m",
+      "limbs": "L_leg:planted at z=2.95 pivoting 90 deg clockwise; R_leg:lifting and turning right hip horizontally over; L_arm:framed high-left; R_arm:swinging wide back-right for counter-torque (both arms separate from the torso in silhouette)",
+      "pose": "At 0.35s (7f), A slips 45 degrees outside B's right straight so B's bare right fist whistles harmlessly past A's right shoulder, while A pivots 90 degrees on his planted left foot and turns his right hip over low with both arms separate from the torso in silhouette."
     },
     {
       "t": 0.65,
-      "beat": "leg_length_slip_and_calf_kick",
-      "causal": "C03: requires: C02_low_hip_turnover -> preserves: full_leg_extension_shin_whip -> causes: C04_B_left_knee_buckles_and_triggers_overhead_smash",
-      "pos": [-0.1, 0.8, 2.95],
+      "beat": "dempsey_weave_slip_and_hip_turnover_calf_kick",
+      "causal": "C03: requires: C02_90deg_hip_turnover -> preserves: full_leg_extension_horizontal_shin_whip -> causes: C04_B_left_knee_buckles_and_triggers_overhead_smash",
+      "pos": [0.1, 0.8, 2.95],
       "vel": [0, 0, 0],
-      "axis": "head:+Y_up, torso:angled_back_at_full_leg_reach, facing:+Z, screen_side:left",
+      "axis": "head:+Y_up, torso:counter_twisted_45deg_with_hips_turned_over, facing:+Z, screen_side:left",
       "arc": "horizontal_low_calf_kick_chop_8_to_2_clock_across_1.05m_leg_reach",
       "support": "left_bare_foot_anchored_on_sand_at_z=2.95",
-      "contact": "pre:A_whips_extended_right_leg_across_1.05m_gap -> hit:A_bare_right_shin_chops_outside_of_B_left_calf_at_[0,0.48,3.85]_at_full_leg_extension -> post:white_bone_shock_flash_and_sand_spray_buckle_B_left_knee_inward",
-      "limbs": "L_leg:anchored at z=2.95; R_leg:fully extended across the 1.05m gap chopping right shin into B's left calf; L_arm:held high forward-left; R_arm:swept wide back-right",
-      "pose": "IMPACT FRAME (hold 3f). At one full leg's length (1.05m torso separation), A's fully extended right shin chops into B's lead left calf, erupting a white bone-shock flash and buckling B's knee."
+      "contact": "pre:A_whips_extended_right_leg_horizontally_across_1.05m_gap -> hit:A_bare_right_shin_chops_outside_of_B_left_calf_at_[0,0.48,3.85]_at_full_leg_extension -> post:white_bone_shock_flash_and_sand_spray_buckle_B_left_knee_inward",
+      "limbs": "L_leg:anchored at z=2.95; R_leg:fully extended across the 1.05m gap chopping right shin into B's left calf; L_arm:held high forward-left; R_arm:swept wide back-right (both arms separate from the torso in silhouette)",
+      "pose": "At 0.65s (hold 3f), at one full leg's length (1.05m torso separation) with both arms separate from the torso in silhouette, A's fully extended right shin chops horizontally into B's lead left calf, erupting a white bone-shock flash and buckling B's knee inward."
     },
     {
       "t": 1.4,
-      "beat": "x_block_and_slicing_right_elbow",
-      "causal": "C04: requires: C03_kick_retraction + B_overhead_smash_committed_at_1.1s -> timing: BEFORE_OVERHEAD_SMASH_HITS -> preserves: upward_wrist_deflection_at_arm_reach -> causes: C05_B_cheek_exposed_for_elbow",
+      "beat": "spiral_x_parry_and_110deg_rotational_right_elbow",
+      "causal": "C04: requires: C03_kick_retraction + B_overhead_smash_committed_at_1.1s -> timing: BEFORE_OVERHEAD_SMASH_HITS -> preserves: upward_spiral_wrist_deflection_at_arm_reach -> causes: C05_B_left_cheek_exposed_for_110deg_rotational_elbow",
       "pos": [0, 0.74, 3.2],
       "vel": [0, -0.2, 0.3],
-      "axis": "head:+Y_up, torso:braced_low_stance, facing:+Z, screen_side:left",
-      "arc": "upward_crossed_forearm_X_block_catching_B_wrists_at_0.75m_reach",
-      "support": "both_bare_feet_planted_wide_on_sand_at_z=3.20",
-      "contact": "pre:A_steps_to_z=3.20_bracing_stance -> hit:A_crossed_taped_forearms_(X_block)_catch_B_descending_wrists_high_at_[0,1.52,3.55] -> post:A_shoves_B_arms_upward_left_opening_B_face",
-      "limbs": "feet:both bare feet planted wide at z=3.20; L_arm:raised high crossed over right forearm; R_arm:raised high crossed under left forearm catching B's wrists, then shoving upward",
-      "pose": "At 1.40s (0.75m arm's length from B at z=3.95), A braces both bare feet and raises both taped forearms in a high crossed X-block, catching B's descending overhead smash at the wrists and shoving B's arms upward."
+      "axis": "head:+Y_up, torso:coiled_low_horse_stance_spiraling_upward, facing:+Z, screen_side:left",
+      "arc": "upward_spiraling_crossed_forearm_X_parry_at_0.75m_arm_reach",
+      "support": "both_bare_feet_planted_wide_in_horse_stance_at_z=3.20",
+      "contact": "pre:A_sinks_into_horse_stance_at_z=3.20 -> hit:A_crossed_taped_forearms_(X_block)_catch_B_descending_bare_wrists_high_at_[0,1.52,3.55] -> post:A_spirals_forearms_upward_left_twisting_B_arms_open",
+      "limbs": "feet:both bare feet planted wide at z=3.20; L_arm:raised high crossed over right forearm; R_arm:raised high crossed under left forearm catching B's bare wrists and spiraling them upward-left (both arms separate from the torso in silhouette)",
+      "pose": "At 1.40s (8f, one full arm's length 0.75m from B at z=3.95), A sinks into a wide horse-stance and raises both taped forearms in a high crossed X-block, catching B's descending bare wrists and spiraling them upward-left to twist B's guard open."
     },
     {
       "t": 1.75,
-      "beat": "x_block_and_slicing_right_elbow",
-      "causal": "C05: requires: C04_upward_wrist_shove -> preserves: rotational_shoulder_whip -> causes: C06_B_staggers_to_0.80m_arm_length_for_3_punch_combo",
+      "beat": "spiral_x_parry_and_110deg_rotational_right_elbow",
+      "causal": "C05: requires: C04_spiral_wrist_deflection -> preserves: 110deg_clockwise_shoulder_whip -> causes: C06_B_head_snaps_into_background_and_staggers_to_0.80m_arm_length",
       "pos": [0, 0.84, 3.3],
       "vel": [0, 0.1, 0.2],
-      "axis": "head:+Y_up, torso:torquing_left, facing:+Z, screen_side:left",
-      "arc": "horizontal_slicing_right_elbow_3_to_9_clock_at_0.65m_reach",
-      "support": "both_bare_feet_planted_at_z=3.30_pivoting_on_left_foot",
-      "contact": "pre:A_traps_B_right_wrist_with_left_hand_and_rotates_shoulders -> hit:A_bare_right_elbow_point_slices_across_B_left_cheekbone_at_[0,1.46,3.85] -> post:sweat_spray_snaps_B_head_right_and_staggers_B_to_z=4.10",
-      "limbs": "feet:grounded at z=3.30; L_arm:extended trapping B's right wrist down; R_arm:folded whipping horizontal right elbow into B's cheek",
-      "pose": "IMPACT FRAME (hold 3f). At 0.65m elbow reach (z=3.30 vs B at z=3.95), A pins B's wrist with his left hand and slices a horizontal right elbow across B's cheekbone, staggering B back to z=4.10."
+      "axis": "head:+Y_up, torso:torquing_110deg_clockwise_from_right_to_left, facing:+Z, screen_side:left",
+      "arc": "horizontal_slicing_right_elbow_3_to_9_clock_at_0.65m_half_arm_reach",
+      "support": "both_bare_feet_planted_at_z=3.30_pivoting_110deg_on_lead_left_foot",
+      "contact": "pre:A_pins_B_bare_right_wrist_down_with_left_hand_and_rotates_shoulders_110deg -> hit:A_bare_right_elbow_point_slices_horizontally_across_B_left_cheekbone_at_[0,1.46,3.85] -> post:sweat_spray_snaps_B_head_to_B_right_(into_background_-X)_and_staggers_B_to_z=4.10",
+      "limbs": "feet:grounded at z=3.30 pivoting on left foot; L_arm:extended forward-low pinning B's bare right wrist down; R_arm:folded horizontally whipping right elbow point across B's left cheek (both arms separate from the torso in silhouette)",
+      "pose": "At 1.75s (hold 3f), at half an arm's length (0.65m elbow reach, z=3.30 vs B at z=3.95) with both arms separate from the torso in silhouette, A pins B's bare right wrist with his taped left hand and rotates his torso 110 degrees to slice a horizontal right elbow across B's left cheek, snapping B's head to B's right (into background -X)."
     },
     {
       "t": 2.2,
-      "beat": "arm_length_3_punch_combo",
-      "causal": "C06: requires: C05_elbow_stagger -> preserves: full_arm_length_jab_extension -> causes: C07_level_change_right_body_straight_at_2.65s",
-      "pos": [0, 0.82, 3.3],
+      "beat": "level_changing_corkscrew_3_punch_combo",
+      "causal": "C06: requires: C05_elbow_stagger -> preserves: 45deg_left_shoulder_roll_jab_extension -> causes: C07_deep_level_drop_right_body_straight_at_2.65s",
+      "pos": [0, 0.84, 3.3],
       "vel": [0, 0, 0.1],
-      "axis": "head:+Y_up, torso:upright_boxing_extension, facing:+Z, screen_side:left",
+      "axis": "head:+Y_up, torso:rotated_45deg_left_shoulder_forward_right_shoulder_back, facing:+Z, screen_side:left",
       "arc": "full_arm_length_left_jab_across_0.80m_gap_to_B_nose",
-      "support": "both_bare_feet_planted_at_z=3.30",
-      "contact": "pre:A_extends_lead_left_arm_straight_across_0.80m_gap -> hit:A_taped_left_fist_jabs_B_nose_at_[0,1.48,4.00] -> post:B_head_jolts_back_opening_midsection",
-      "limbs": "feet:planted at z=3.30; L_arm:fully extended straight across the 0.80m gap jabbing B's nose; R_arm:chambered at right hip",
-      "pose": "At one full arm's length (0.80m between A at z=3.30 and B at z=4.10), A snaps a fully extended straight left jab into B's nose while chambering his right fist at his hip."
+      "support": "balls_of_both_bare_feet_planted_at_z=3.30",
+      "contact": "pre:A_rotates_left_shoulder_45deg_forward_extending_left_arm_across_0.80m_gap -> hit:A_taped_left_fist_jabs_B_nose_at_[0,1.48,4.00] -> post:B_head_jolts_back_opening_solar_plexus",
+      "limbs": "feet:planted on balls of feet at z=3.30; L_arm:fully extended straight across the 0.80m gap jabbing B's nose; R_arm:pulled back at right hip (both arms separate from the torso in silhouette)",
+      "pose": "At 2.20s (11f), at one full arm's length (0.80m between A at z=3.30 and B at z=4.10) with both arms separate from the torso in silhouette, A rotates his left shoulder 45 degrees forward to snap a straight left jab into B's nose while coiling his right fist at his hip."
     },
     {
       "t": 2.65,
-      "beat": "arm_length_3_punch_combo",
-      "causal": "C07: requires: C06_high_jab -> preserves: level_drop_hip_drive_at_arm_length -> causes: C08_rising_left_hook_at_3.2s",
-      "pos": [0, 0.7, 3.32],
-      "vel": [0, -0.3, 0.1],
-      "axis": "head:+Y_up, torso:low_crouch_full_right_arm_extension, facing:+Z, screen_side:left",
+      "beat": "level_changing_corkscrew_3_punch_combo",
+      "causal": "C07: requires: C06_high_jab -> preserves: 0.22m_vertical_level_drop_and_60deg_right_hip_drive -> causes: C08_corkscrew_rising_left_hook_at_3.2s",
+      "pos": [0, 0.66, 3.32],
+      "vel": [0, -0.4, 0.1],
+      "axis": "head:+Y_up, torso:deep_level_change_crouch_rotated_60deg_right_shoulder_forward, facing:+Z, screen_side:left",
       "arc": "low_straight_right_body_punch_across_0.80m_gap_to_solar_plexus",
-      "support": "both_bare_feet_planted_wide_in_low_crouch_at_z=3.32",
-      "contact": "pre:A_drops_hips_to_y=0.70m_and_drives_right_arm_straight -> hit:A_taped_right_fist_strikes_B_solar_plexus_at_[0,1.12,4.02]_at_full_arm_length -> post:ab_shock_ripples_across_B_torso_and_loads_A_left_hook",
-      "limbs": "feet:wide crouch at z=3.32; R_arm:locked straight horizontally across the 0.80m gap into B's solar plexus; L_arm:coiled back at left hip",
-      "pose": "Dropping levels at 2.65s while maintaining 0.80m arm's-length separation (z=3.32 vs B at z=4.12), A drives a straight right punch into B's solar plexus with his left fist coiled at his hip."
+      "support": "both_bare_feet_planted_wide_in_deep_drop_step_crouch_at_z=3.32",
+      "contact": "pre:A_drops_hips_0.22m_to_y=0.66m_and_rotates_right_shoulder_60deg_forward -> hit:A_taped_right_fist_pistons_into_B_solar_plexus_at_[0,1.12,4.02]_at_full_arm_length -> post:ab_shock_ripples_across_B_torso_and_loads_A_left_hook",
+      "limbs": "feet:wide low crouch at z=3.32; R_arm:locked straight horizontally across the 0.80m gap into B's solar plexus; L_arm:coiled wide back at left hip (both arms separate from the torso in silhouette)",
+      "pose": "At 2.65s (13f), dropping his hips vertically to y=0.66m while maintaining one full arm's length (0.80m) and keeping both arms separate from the torso in silhouette, A rotates his right shoulder 60 degrees forward to piston a straight right punch into B's solar plexus."
     },
     {
       "t": 3.2,
-      "beat": "arm_length_3_punch_combo",
-      "causal": "C08: requires: C07_low_body_punch -> preserves: rising_left_shoulder_whip -> causes: C09_B_staggers_to_z=4.20_into_extended_clinch",
+      "beat": "level_changing_corkscrew_3_punch_combo",
+      "causal": "C08: requires: C07_low_body_punch -> preserves: upward_corkscrew_90deg_left_to_right_torso_whip -> causes: C09_B_head_snaps_toward_camera_and_staggers_to_z=4.20",
       "pos": [0, 0.86, 3.35],
-      "vel": [0, 0.3, 0.1],
-      "axis": "head:+Y_up, torso:torquing_left_to_right, facing:+Z, screen_side:left",
-      "arc": "long_rising_left_hook_8_to_2_clock_across_0.80m_gap_to_B_jaw",
-      "support": "both_bare_feet_planted_at_z=3.35",
-      "contact": "pre:A_rises_whipping_long_left_hook -> hit:A_taped_left_fist_slams_across_B_right_jaw_at_[0,1.46,4.05]_at_arm_length -> post:white_shock_ring_and_saliva_spray_stagger_B_to_z=4.20",
-      "limbs": "feet:grounded at z=3.35; L_arm:extended in a long left hook across B's jaw; R_arm:held high at right cheek in guard",
-      "pose": "IMPACT FRAME (hold 3f). Rising at 0.80m arm's length (z=3.35 vs B at z=4.15) with his right hand guarding his cheek, A lands a long left hook across B's jaw in a white shockwave ring."
+      "vel": [0, 0.35, 0.1],
+      "axis": "head:+Y_up, torso:corkscrewing_upward_90deg_left_to_right, facing:+Z, screen_side:left",
+      "arc": "rising_corkscrew_left_hook_8_to_2_clock_across_0.80m_gap_to_B_right_jaw",
+      "support": "both_bare_feet_planted_at_z=3.35_pivoting_90deg_on_lead_left_foot",
+      "contact": "pre:A_uncoils_upward_from_crouch_whipping_long_left_hook_8_to_2_clock -> hit:A_taped_left_fist_slams_across_B_right_jaw_at_[0,1.46,4.05]_at_arm_length -> post:white_shock_ring_and_saliva_spray_snap_B_head_to_B_left_(toward_foreground_camera_+X)_staggering_B_to_z=4.20",
+      "limbs": "feet:grounded at z=3.35 pivoting on left foot; L_arm:sweeping in a long rising left hook across B's right jaw; R_arm:held high at right temple in guard (both arms separate from the torso in silhouette)",
+      "pose": "At 3.20s (hold 3f), corkscrewing upward out of his crouch at one full arm's length (0.80m) with both arms separate from the torso in silhouette, A whips a rising left hook across B's right jaw, snapping B's head to B's left (toward the foreground camera +X) in a white shockwave ring."
     },
     {
       "t": 3.75,
-      "beat": "split_stance_clinch_right_knee",
-      "causal": "C09: requires: C08_hook_stagger -> preserves: extended_arm_neck_clamp_at_0.65m -> causes: C10_downward_neck_pull_at_4.20s",
+      "beat": "collar_tie_pull_down_and_standing_pillar_knee",
+      "causal": "C09: requires: C08_hook_stagger -> preserves: extended_arm_collar_tie_at_0.65m -> causes: C10_lat_arch_downward_neck_pull_at_4.20s",
       "pos": [0, 0.85, 3.55],
       "vel": [0, 0, 0.2],
       "axis": "head:+Y_up, torso:upright_extended_clinch, facing:+Z, screen_side:left",
       "arc": "both_arms_reaching_forward_to_clamp_B_neck_across_0.65m_gap",
       "support": "both_bare_feet_in_wide_split_stance_left_foot_z=3.55_right_foot_z=3.20",
-      "contact": "pre:A_steps_lead_left_foot_to_z=3.55_keeping_0.65m_torso_gap -> hit:A_both_taped_hands_clamp_behind_B_neck_at_[0,1.45,4.05] -> post:A_controls_B_head_at_extended_arm_reach",
-      "limbs": "L_leg:planted forward at z=3.55; R_leg:planted back at z=3.20; L_arm:reaching forward clamping left side of B's neck; R_arm:reaching forward clamping right side of B's neck",
-      "pose": "At 3.75s, keeping 0.65m separation between their torsos (A at z=3.55, B at z=4.20), A plants in a wide front-back split stance and reaches forward with both taped hands to clamp behind B's neck."
+      "contact": "pre:A_steps_lead_left_foot_to_z=3.55_keeping_0.65m_torso_gap -> hit:A_both_taped_hands_clamp_behind_B_neck_at_[0,1.45,4.05] -> post:A_controls_B_head_while_B_arms_hang_outside",
+      "limbs": "L_leg:planted forward at z=3.55; R_leg:planted back at z=3.20; L_arm:reaching forward clamping left side of B's neck; R_arm:reaching forward clamping right side of B's neck (both arms separate from the torso in silhouette)",
+      "pose": "At 3.75s (11f), keeping half an arm's length (0.65m separation between A at z=3.55 and B at z=4.20) with both arms separate from the torso in silhouette, A plants in a wide front-back split stance and clamps both taped hands behind B's neck."
     },
     {
       "t": 4.2,
-      "beat": "split_stance_clinch_right_knee",
-      "causal": "C10: requires: C09_extended_neck_clinch -> preserves: downward_neck_pull_and_rear_leg_load -> causes: C11_grounded_pillar_rising_right_knee_at_4.65s",
+      "beat": "collar_tie_pull_down_and_standing_pillar_knee",
+      "causal": "C10: requires: C09_extended_neck_clinch -> preserves: 12_to_6_downward_neck_pull_and_rear_leg_load -> causes: C11_grounded_pillar_rising_right_knee_at_4.65s",
       "pos": [0, 0.78, 3.55],
       "vel": [0, -0.2, 0],
-      "axis": "head:+Y_up, spine:braced_pulling_B_head_forward_down, facing:+Z, screen_side:left",
+      "axis": "head:+Y_up, spine:arching_lats_back_pulling_B_head_forward_down, facing:+Z, screen_side:left",
       "arc": "downward_two_hand_neck_pull_12_to_6_clock_loading_rear_right_leg",
       "support": "wide_front_back_split_stance_on_sand_left_foot_z=3.55_right_foot_z=3.20",
-      "limbs": "L_leg:planted vertically at z=3.55; R_leg:extended straight back at z=3.20 on ball of foot; L_arm:pulling left side of B's neck down; R_arm:pulling right side of B's neck down to y=1.18m",
-      "pose": "ANTICIPATION HOLD. Viewed in side profile with 0.65m space between their hips, A anchors his left leg forward at z=3.55 and right leg back at z=3.20 while pulling B's head forward and down with both hands."
+      "limbs": "L_leg:planted vertically at z=3.55; R_leg:extended straight back at z=3.20 on ball of foot; L_arm:pulling left side of B's neck down; R_arm:pulling right side of B's neck down to y=1.18m (both arms separate from the torso in silhouette)",
+      "pose": "ANTICIPATION HOLD at 4.20s (11f). Viewed in full-body side profile with 0.65m space between their hips, A anchors his left leg forward at z=3.55 and right leg back at z=3.20 while arching his back to yank B's head forward and down with both hands."
     },
     {
       "t": 4.65,
-      "beat": "split_stance_clinch_right_knee",
-      "causal": "C11: requires: C10_downward_neck_pull -> preserves: grounded_left_leg_pillar_and_diagonal_right_knee_spear -> causes: C12_B_absorbs_knee_and_counters_with_right_cross_at_5.45s",
+      "beat": "collar_tie_pull_down_and_standing_pillar_knee",
+      "causal": "C11: requires: C10_downward_neck_pull -> preserves: grounded_left_leg_pillar_and_diagonal_right_knee_spear -> causes: C12_B_spins_into_backfist_counter_at_5.45s",
       "pos": [0, 0.96, 3.55],
       "vel": [0, 1.2, 0],
       "axis": "head:+Y_up, torso:leaned_back_20deg_thrusting_right_hip_forward, facing:+Z, screen_side:left",
       "arc": "diagonal_8_to_1_clock_rising_right_knee_across_0.65m_gap_into_B_nose",
       "support": "left_bare_foot_planted_firmly_on_sand_at_z=3.55_as_vertical_pillar",
       "contact": "pre:A_anchors_straight_left_leg_on_sand_and_pulls_B_head_down -> hit:A_sharply_bent_bare_right_kneecap_spears_diagonally_upward_into_B_nose_at_[0,1.20,3.95] -> post:radial_white_shock_flash_and_sweat_halo_jolt_B_head_up",
-      "limbs": "L_leg:locked straight vertically down onto the sand at z=3.55 as a standing pillar; R_leg:driven high diagonally upward with right calf folded tight against right hamstring and right kneecap spearing B's face at [0,1.20,3.95]; L_arm:pulling left side of B's neck; R_arm:pulling right side of B's neck",
-      "pose": "IMPACT FRAME (hold 4f, slomo 0.25x). In medium-wide side profile with 0.65m hip separation, A's left leg stays planted straight down on the floor while his bent right knee spears diagonally upward into B's downward-pulled nose."
+      "limbs": "L_leg:locked straight vertically down onto the sand at z=3.55 as a standing pillar; R_leg:driven high diagonally upward with right calf folded tight against right hamstring and right kneecap spearing B's nose at [0,1.20,3.95]; L_arm:pulling left side of B's neck; R_arm:pulling right side of B's neck (both arms separate from the torso in silhouette)",
+      "pose": "At 4.65s (hold 4f, slomo 0.25x), in clean full-body side profile with 0.65m hip separation and both arms separate from the torso in silhouette, A's left leg stays planted straight down on the floor while his bent right knee spears diagonally upward into B's downward-pulled nose."
     },
     {
       "t": 5.45,
-      "beat": "B_right_cross_counter_and_A_in_place_spinning_back_kick",
-      "causal": "C12: requires: C11_knee_release + B_heavy_right_cross_counter_lands_at_5.45s -> preserves: backward_skid_kinetic_energy_to_z=2.90 -> causes: C13_in_place_spin_chamber_on_screen_left_at_5.95s",
+      "beat": "B_360_spinning_backfist_feeding_A_in_place_360_back_kick",
+      "causal": "C12: requires: C11_knee_release + B_360deg_spinning_right_backfist_lands_at_5.45s -> preserves: backward_skid_to_z=2.90_and_clockwise_rotational_torque -> causes: C13_in_place_360deg_spin_chamber_at_5.95s",
       "pos": [0, 0.78, 2.9],
       "vel": [0, 0, -1.1],
-      "axis": "head:snapped_back_left, torso:braced_skidding_backward_on_sand, facing:+Z, screen_side:left",
-      "arc": "linear_backward_heel_skid_from_z=3.30_to_z=2.90_on_screen_left",
+      "axis": "head:turned_right_with_torque, torso:skidding_backward_and_twisting_clockwise_from_backfist, facing:+Z, screen_side:left",
+      "arc": "backward_heel_skid_from_z=3.30_to_z=2.90_imparting_clockwise_spin_torque",
       "support": "both_bare_feet_skidding_backward_carving_two_sand_trenches_to_z=2.90",
-      "contact": "pre:B_steps_to_z=4.10_and_fires_full_arm_length_right_cross -> hit:B_bare_right_fist_slams_A_left_cheekbone_and_guard_at_[0,1.42,3.40] -> post:impact_shock_and_sweat_spray_skid_A_backward_to_z=2.90_on_screen_left",
-      "limbs": "L_leg:skidding back in sand to z=2.90; R_leg:braced back in sand; L_arm:raised tight at left temple absorbing the blow; R_arm:braced across jaw",
-      "pose": "IMPACT FRAME (hold 3f). At 5.45s B lands a crushing full-arm's-length right cross across the 0.80m gap into A's left cheek; sweat sprays off A's face as A's bare feet skid 0.40m backward through the sand to z=2.90 on screen-left."
+      "contact": "pre:B_spins_360deg_counterclockwise_at_z=4.10_whipping_right_backfist -> hit:B_bare_right_backfist_slams_A_high_guard_and_left_temple_at_[0,1.42,3.40]_at_0.80m_arm_length -> post:impact_shock_skids_A_backward_to_z=2.90_and_imparts_clockwise_spin_into_A_torso",
+      "limbs": "L_leg:skidding back in sand to z=2.90; R_leg:bracing at z=2.90; L_arm:raised in high guard absorbing B's backfist; R_arm:braced wide across jaw (both arms separate from the torso in silhouette)",
+      "pose": "At 5.45s (hold 3f), B completes a 360-degree spin on screen-right and lands a heavy bare-knuckle spinning right backfist across the 0.80m arm's-length gap into A's high guard (both arms separate from the torso in silhouette), skidding A 0.40m backward through the sand to z=2.90 and imparting clockwise spin into A's torso."
     },
     {
       "t": 5.95,
-      "beat": "B_right_cross_counter_and_A_in_place_spinning_back_kick",
-      "causal": "C13: requires: C12_backward_skid_stop_at_z=2.90 -> preserves: 360deg_in_place_spin_torque_on_screen_left -> causes: C14_full_leg_length_spinning_back_kick_at_6.50s",
+      "beat": "B_360_spinning_backfist_feeding_A_in_place_360_back_kick",
+      "causal": "C13: requires: C12_clockwise_backfist_torque_at_z=2.90 -> preserves: continuous_360deg_clockwise_in_place_spin_on_right_foot -> causes: C14_full_leg_length_spinning_back_kick_at_6.50s",
       "pos": [0, 0.86, 2.9],
       "vel": [0, 0, 0],
-      "axis": "head:+Y_up_looking_over_left_shoulder, torso:spinning_in_place_on_screen_left, facing:+Z, screen_side:left",
-      "arc": "in_place_clockwise_spin_at_z=2.90_chambering_left_heel",
-      "support": "right_bare_foot_planted_at_z=2.90_pivoting_in_place",
-      "limbs": "R_leg:planted at z=2.90 as spin pivot; L_leg:left knee and heel chambered tight to core (y=1.08m); L_arm:extended forward-left; R_arm:raised high-right in counter-balance",
-      "pose": "Stopping his backward skid at z=2.90 on screen-left (1.10m full leg's length from advancing B at z=4.00), A spins in place on his planted right foot, looking over his left shoulder and chambering his left heel."
+      "axis": "head:+Y_up_looking_over_left_shoulder, torso:spinning_360deg_clockwise_in_place_showing_striated_back, facing:+Z, screen_side:left",
+      "arc": "in_place_360deg_clockwise_spin_at_z=2.90_fed_by_B_backfist_chambering_left_heel",
+      "support": "right_bare_foot_planted_at_z=2.90_pivoting_360deg_in_place",
+      "limbs": "R_leg:planted at z=2.90 as spin pivot; L_leg:left knee and heel chambered tight to core (y=1.08m); L_arm:extended wide forward-left; R_arm:extended wide high-right in counter-balance (both arms separate from the torso in silhouette)",
+      "pose": "At 5.95s (13f), riding the clockwise rotational momentum from B's spinning backfist at z=2.90 on screen-left (1.10m full leg's length from advancing B at z=4.00), A spins 360 degrees in place on his planted right foot, showing his striated back muscles twisting as he looks over his left shoulder and chambers his left heel with both arms separate from the torso in silhouette."
     },
     {
       "t": 6.5,
-      "beat": "B_right_cross_counter_and_A_in_place_spinning_back_kick",
-      "causal": "C14: requires: C13_in_place_spin_chamber -> preserves: full_leg_length_horizontal_heel_thrust -> causes: C15_B_sternum_caved_and_pushed_back_to_z=4.35",
+      "beat": "B_360_spinning_backfist_feeding_A_in_place_360_back_kick",
+      "causal": "C14: requires: C13_in_place_360deg_spin_chamber -> preserves: 45deg_side_torso_hinge_and_full_leg_length_heel_thrust -> causes: C15_B_sternum_caved_and_pushed_back_to_z=4.35",
       "pos": [0, 0.92, 2.9],
       "vel": [0, 0, 0],
-      "axis": "head:+Y_up_looking_over_left_shoulder, torso:tilted_sideways_in_full_back_kick_extension, facing:+Z, screen_side:left",
+      "axis": "head:+Y_up_looking_over_left_shoulder, torso:hinged_45deg_sideways_in_full_back_kick_extension, facing:+Z, screen_side:left",
       "arc": "linear_horizontal_left_back_kick_thrust_9_to_3_clock_across_1.10m_leg_reach",
       "support": "right_bare_foot_planted_firmly_on_sand_at_z=2.90",
-      "contact": "pre:A_thrusts_left_heel_straight_across_1.10m_gap -> hit:A_bare_left_heel_slams_into_B_solar_plexus_at_[0,1.15,3.88]_at_full_leg_length -> post:double_white_shock_ring_folds_B_in_half_and_slides_B_back_to_z=4.35",
-      "limbs": "R_leg:anchored at z=2.90 on screen-left; L_leg:locked dead-straight horizontally across the 1.10m gap driving bare left heel into B's sternum; L_arm:swept low-left; R_arm:extended high-right",
-      "pose": "IMPACT FRAME (hold 3f). Spinning in place on screen-left at one full leg's length (1.10m between A at z=2.90 and B at z=4.00), A drives a straight spinning left back kick heel into B's solar plexus, sliding B back to z=4.35."
+      "contact": "pre:A_completes_360deg_spin_and_pistons_left_heel_across_1.10m_gap -> hit:A_bare_left_heel_slams_into_B_solar_plexus_at_[0,1.15,3.88]_at_full_leg_length -> post:double_white_shock_ring_folds_B_in_half_and_slides_B_back_to_z=4.35",
+      "limbs": "R_leg:anchored at z=2.90 on screen-left; L_leg:locked dead-straight horizontally across the 1.10m gap driving bare left heel into B's sternum; L_arm:swept wide low-left; R_arm:extended wide high-right (both arms separate from the torso in silhouette)",
+      "pose": "At 6.50s (hold 3f), completing his 360-degree spin in place on screen-left at one full leg's length (1.10m between A at z=2.90 and B at z=4.00) with both arms separate from the torso in silhouette, A hinges his torso 45 degrees and pistons his bare left heel straight into B's solar plexus, sliding B back to z=4.35."
     },
     {
       "t": 7.35,
-      "beat": "deep_lunge_straight_right_ko",
-      "causal": "C15: requires: C14_back_kick_foot_plant -> preserves: deep_four_point_leg_and_hip_coil -> causes: C16_explosive_forward_lunge_at_8.10s",
-      "pos": [0, 0.64, 2.95],
+      "beat": "torso_torsion_deep_lunge_straight_right_ko",
+      "causal": "C15: requires: C14_back_kick_foot_plant -> preserves: deep_crouch_and_50deg_clockwise_shoulder_coil -> causes: C16_explosive_forward_lunge_at_8.10s",
+      "pos": [0, 0.62, 2.95],
       "vel": [0, -0.2, 0],
-      "axis": "head:+Y_up_locked_on_B, spine:deep_wide_crouch_on_screen_left, facing:+Z, screen_side:left",
-      "arc": "deep_wide_crouch_compression_at_z=2.95",
+      "axis": "head:+Y_up_locked_on_B, spine:deep_wide_crouch_shoulders_twisted_50deg_clockwise, facing:+Z, screen_side:left",
+      "arc": "deep_wide_crouch_compression_and_50deg_shoulder_coil_at_z=2.95",
       "support": "both_bare_feet_planted_wide_on_sand_at_z=2.95_deep_crouch",
-      "limbs": "L_leg:bent deep with left knee low near the sand; R_leg:planted wide; L_arm:extended low-forward toward B with open taped hand at knee height; R_arm:cocked deep behind the right hip with clenched taped right fist",
-      "pose": "ANTICIPATION HOLD. Setting his left foot down at z=2.95 on screen-left (1.40m from staggered B at z=4.35), A sinks into a deep wide crouch with his left open hand extended low-forward, his right fist coiled behind his right hip, and white heat-steam rising from his shoulders."
+      "limbs": "L_leg:bent deep with left knee low near the sand; R_leg:planted wide; L_arm:extended low-forward toward B with open taped hand at knee height; R_arm:cocked deep behind the right hip with clenched taped right fist (both arms separate from the torso in silhouette)",
+      "pose": "ANTICIPATION HOLD at 7.35s (18f). Setting his left foot down at z=2.95 on screen-left (1.40m from staggered B at z=4.35), A sinks into a deep wide crouch, twisting his shoulders 50 degrees clockwise with his open left hand extended low-forward, his right fist coiled behind his right hip (both arms separate from the torso in silhouette), and white heat-steam rising from his shoulders."
     },
     {
       "t": 8.1,
-      "beat": "deep_lunge_straight_right_ko",
-      "causal": "C16: requires: C15_deep_crouch_coil -> preserves: horizontal_sand_launch_drive -> causes: C17_deep_lunge_straight_right_ko_at_8.80s",
+      "beat": "torso_torsion_deep_lunge_straight_right_ko",
+      "causal": "C16: requires: C15_deep_crouch_50deg_coil -> preserves: horizontal_sand_launch_and_95deg_shoulder_untwist -> causes: C17_deep_lunge_straight_right_ko_at_8.80s",
       "pos": [0, 0.72, 3.35],
       "vel": [0, 0.1, 3.2],
-      "axis": "head:+Y_up, torso:driving_low_forward_whipping_right_shoulder, facing:+Z, screen_side:left",
+      "axis": "head:+Y_up, torso:driving_low_forward_untwisting_shoulders_95deg_counterclockwise, facing:+Z, screen_side:left",
       "arc": "low_horizontal_lunge_drive_from_z=2.95_to_z=3.50_on_screen_left",
-      "support": "rear_left_bare_foot_driving_off_sand_into_deep_front_right_foot_lunge",
-      "limbs": "L_leg:pushing off hard kicking up a horizontal cone of sand; R_leg:stepping deep to z=3.75; L_arm:pulling wide back to left hip; R_arm:driving straight forward toward chin height",
-      "pose": "At 8.10s A drives explosively forward from z=2.95 toward z=3.50 on screen-left, kicking up a cone of sand behind his rear left foot as his left arm pulls back to the hip and his right fist shoots forward."
+      "support": "rear_left_bare_foot_exploding_off_sand_into_deep_front_right_foot_lunge",
+      "limbs": "L_leg:pushing off hard kicking up a horizontal cone of sand; R_leg:stepping deep to z=3.75; L_arm:pulling wide back to left hip; R_arm:driving straight forward toward chin height (both arms separate from the torso in silhouette)",
+      "pose": "At 8.10s (17f), A rockets low across the sand from z=2.95 toward z=3.50 on screen-left, kicking up a cone of sand behind his rear left foot as he violently untwists his shoulders 95 degrees with both arms separate from the torso in silhouette."
     },
     {
       "t": 8.8,
-      "beat": "deep_lunge_straight_right_ko",
+      "beat": "torso_torsion_deep_lunge_straight_right_ko",
       "causal": "C17: requires: C16_forward_lunge_drive -> preserves: full_arm_length_horizontal_punch_transfer -> causes: C18_double_shockwave_blasting_B_to_z=5.00_and_A_lunge_hold",
       "pos": [0, 0.72, 3.5],
       "vel": [0, 0, 0],
-      "axis": "head:+Y_up, torso:deep_lunge_full_right_shoulder_extension, facing:+Z, screen_side:left",
+      "axis": "head:+Y_up, torso:deep_lunge_full_45deg_right_shoulder_extension, facing:+Z, screen_side:left",
       "arc": "horizontal_9_to_3_clock_straight_right_punch_at_chin_height_across_0.85m_arm_reach",
       "support": "both_bare_feet_planted_in_deep_wide_lunge_on_sand_at_z=3.50",
       "contact": "pre:A_plants_in_deep_lunge_at_0.85m_arm_length -> hit:A_taped_right_fist_strikes_B_chin_at_[0,1.38,4.25]_with_right_arm_straight -> post:double_white_shockwave_ring_erupts_behind_B_back_lifting_B_off_his_feet_and_blasting_B_to_z=5.00",
-      "limbs": "L_leg:extended back with rear left knee low near the sand; R_leg:planted deep forward; R_arm:locked dead-straight horizontally at chin height across the 0.85m gap; L_arm:pulled wide back to the left hip with clenched fist",
-      "pose": "IMPACT FRAME (hold 5f, slomo 0.25x). At one full arm's length (0.85m between A at z=3.50 and B at z=4.35), A plants in a deep lunge with his rear left knee low, left fist at his hip, and right arm locked dead-straight at chin height into B's jaw, erupting a double shockwave ring behind B's back."
+      "limbs": "L_leg:extended back with rear left knee low near the sand; R_leg:planted deep forward; R_arm:locked dead-straight horizontally at chin height across the 0.85m gap; L_arm:pulled wide back to the left hip with clenched fist (both arms separate from the torso in silhouette)",
+      "pose": "At 8.80s (hold 5f, slomo 0.25x), at one full arm's length (0.85m between A at z=3.50 and B at z=4.35) with both arms separate from the torso in silhouette, A plants in a deep lunge—rear left knee low, left fist at his hip, right arm locked dead-straight at chin height—driving his taped right fist into B's chin and erupting a double shockwave ring behind B's back."
     },
     {
       "t": 10.0,
-      "beat": "deep_lunge_straight_right_ko",
+      "beat": "torso_torsion_deep_lunge_straight_right_ko",
       "causal": "C18_hold: maintains C18_deep_lunge_straight_right_finishing_posture",
       "pos": [0, 0.74, 3.5],
       "vel": [0, 0, 0],
       "axis": "head:+Y_up_level, torso:still_deep_lunge_right_arm_extended, facing:+Z, screen_side:left",
       "arc": "static_follow_through_hold",
       "support": "both_bare_feet_planted_in_deep_lunge_on_sand_at_z=3.50",
-      "limbs": "L_leg:rear left knee held low near sand; R_leg:front right foot planted deep; R_arm:held dead-straight horizontally at chin height; L_arm:held at left hip; white heat-steam rising off shoulders",
-      "pose": "As B crashes flat on his back at z=5.00 on screen-right, A holds his deep lunge on screen-left (rear knee low, right arm straight at chin height, left fist at hip) with white steam rising from his shoulders to 10.0s."
+      "limbs": "L_leg:rear left knee held low near sand; R_leg:front right foot planted deep; R_arm:held dead-straight horizontally at chin height; L_arm:held at left hip (both arms separate from the torso in silhouette); white heat-steam rising off shoulders",
+      "pose": "As B crashes flat on his back at z=5.00 on screen-right, A holds his deep lunge on screen-left (rear knee low, right arm straight at chin height, left fist at hip, both arms separate from the torso in silhouette) with white steam rising from his shoulders to 10.0s."
     }
   ],
   "B_track": [
     {
       "t": 0.0,
       "pos": [0, 1.02, 4.0],
-      "axis": "head:+Y_up, torso:stepping_in_right_straight, facing:-Z, screen_side:right",
+      "axis": "head:+Y_up, torso:rotating_45deg_right_straight, facing:-Z, screen_side:right",
       "support": "both_bare_feet_on_sand_at_z=4.00",
-      "action": "throw_right_straight_at_leg_reach",
-      "pose": "on screen-right at z=4.00 (1.05m from A), steps in firing a high bare-knuckle right straight punch toward A's head"
+      "action": "throw_right_straight_past_A_right_shoulder",
+      "pose": "on screen-right at z=4.00 (bare wrists, black pants, 1.05m from A), steps in firing a high bare-knuckle right straight punch that whistles past A's right shoulder as A slips outside at 0.35s"
     },
     {
       "t": 0.65,
@@ -318,7 +322,7 @@
       "support": "right_foot_planted_left_leg_buckled_inward_at_z=4.00",
       "contact": "B_left_calf -> chopped_inward_by_A_extended_right_shin_at_[0,0.48,3.85]",
       "action": "left_leg_buckles_after_calf_kick",
-      "pose": "only after A's extended right shin chops into B's left calf at 0.65s, B's left knee buckles inward in a spray of sand"
+      "pose": "only after A's extended right shin chops into B's left calf at 0.65s (11f), B's left knee buckles inward in a spray of sand with both of B's bare arms separate from his torso in silhouette"
     },
     {
       "t": 1.1,
@@ -326,25 +330,25 @@
       "axis": "head:+Y_up, torso:rearing_up_overhead_double_smash, facing:-Z, screen_side:right",
       "support": "both_bare_feet_planted_wide_at_z=3.95",
       "action": "swing_overhead_double_smash",
-      "pose": "re-plants both feet at z=3.95 on screen-right and swings both fists overhead in a downward smash"
+      "pose": "at 1.10s (7f), re-plants both feet at z=3.95 on screen-right and swings both bare fists overhead in a downward smash"
     },
     {
       "t": 1.4,
       "pos": [0, 0.98, 3.95],
-      "axis": "head:+Y_up, torso:arms_shoved_upward_chin_open, facing:-Z, screen_side:right",
+      "axis": "head:+Y_up, torso:arms_spiraled_upward_left_cheek_open, facing:-Z, screen_side:right",
       "support": "both_bare_feet_planted_at_z=3.95",
-      "contact": "B_both_wrists -> caught_and_shoved_upward_by_A_crossed_X_block_at_[0,1.52,3.55]",
-      "action": "overhead_smash_parried_upward",
-      "pose": "B's wrists are caught at 0.75m reach by A's crossed forearms and shoved upward, exposing B's cheekbone"
+      "contact": "B_both_bare_wrists -> caught_and_spiraled_upward_left_by_A_crossed_X_block_at_[0,1.52,3.55]",
+      "action": "overhead_smash_spiraled_open",
+      "pose": "B's bare wrists are caught at 0.75m reach by A's crossed taped forearms and spiraled upward-left, exposing B's left cheekbone"
     },
     {
       "t": 1.75,
       "pos": [0, 0.96, 3.95],
-      "axis": "head:snapped_hard_right, torso:staggering_to_z=4.10, facing:-Z, screen_side:right",
+      "axis": "head:snapped_hard_to_B_right_(into_background_-X), torso:staggering_to_z=4.10, facing:-Z, screen_side:right",
       "support": "both_bare_feet_staggering_back_to_z=4.10",
-      "contact": "B_left_cheekbone -> sliced_by_A_horizontal_right_elbow_at_[0,1.46,3.85]",
-      "action": "hit_by_right_elbow_staggers_to_arm_length",
-      "pose": "only after A's right elbow slices across B's cheek at 1.75s, B's head snaps sideways and B staggers back to z=4.10 (0.80m arm's length)"
+      "contact": "B_left_cheekbone -> sliced_horizontally_by_A_right_elbow_at_[0,1.46,3.85]",
+      "action": "head_snaps_into_background_from_right_elbow_staggers_to_arm_length",
+      "pose": "only after A's horizontal right elbow slices across B's left cheek at 1.75s (22f), B's head snaps hard to B's right (into background -X, following the elbow's 3-to-9 o'clock swing) and B staggers back to z=4.10 (0.80m arm's length)"
     },
     {
       "t": 2.65,
@@ -353,16 +357,16 @@
       "support": "both_bare_feet_planted_at_z=4.12",
       "contact": "B_nose_and_solar_plexus -> struck_at_0.80m_arm_length_by_A_2.20s_jab_and_2.65s_right_straight_at_[0,1.12,4.02]",
       "action": "rocked_by_jab_and_body_straight",
-      "pose": "at 0.80m arm's length, B's head jolts back from A's 2.20s left jab and his midsection caves inward from A's 2.65s right straight"
+      "pose": "at 0.80m arm's length (13f), B's head jolts back from A's 2.20s left jab and his midsection caves inward from A's 2.65s level-change right straight"
     },
     {
       "t": 3.2,
       "pos": [0, 0.96, 4.15],
-      "axis": "head:whipped_left, torso:staggered_half_step_to_z=4.20, facing:-Z, screen_side:right",
+      "axis": "head:whipped_hard_to_B_left_(toward_foreground_camera_+X), torso:staggered_half_step_to_z=4.20, facing:-Z, screen_side:right",
       "support": "both_bare_feet_sliding_to_z=4.20",
-      "contact": "B_right_jaw -> struck_at_0.80m_arm_length_by_A_left_hook_at_[0,1.46,4.05]",
-      "action": "staggered_by_left_hook_to_z=4.20",
-      "pose": "only after A's long left hook slams B's jaw at 3.20s, B's head whips sideways in a shockwave ring as B steps back to z=4.20"
+      "contact": "B_right_jaw -> struck_at_0.80m_arm_length_by_A_rising_left_hook_at_[0,1.46,4.05]",
+      "action": "head_whips_toward_camera_from_left_hook_staggers_to_z=4.20",
+      "pose": "only after A's rising left hook slams B's right jaw at 3.20s (24f), B's head whips hard to B's left (toward the foreground camera +X, opposite the earlier elbow) in a white shockwave ring as B steps back to z=4.20"
     },
     {
       "t": 4.2,
@@ -371,7 +375,7 @@
       "support": "both_bare_feet_planted_at_z=4.20",
       "contact": "B_neck -> pulled_forward_down_by_A_extended_two_hand_clinch",
       "action": "head_pulled_down_in_clinch",
-      "pose": "with his hips at z=4.20 (0.65m from A at z=3.55), B's head and upper torso are pulled forward and downward to y=1.18m by A's two-handed neck clinch"
+      "pose": "at 4.20s (11f), with his hips at z=4.20 (0.65m from A at z=3.55) and his bare arms hanging wide outside, B's head and upper torso are pulled forward and downward to y=1.18m by A's two-handed neck clinch"
     },
     {
       "t": 4.65,
@@ -379,17 +383,17 @@
       "axis": "head:snapped_up_and_back, torso:jolted_upright_at_z=4.20, facing:-Z, screen_side:right",
       "support": "both_bare_feet_planted_at_z=4.20",
       "contact": "B_nose -> struck_upward_by_A_rising_right_knee_at_[0,1.20,3.95]",
-      "action": "jolted_upright_by_knee_then_plants_to_counter",
-      "pose": "only after A's bent right knee spears upward into B's nose at 4.65s, B's head snaps backward in a halo of sweat before B grits his teeth and plants his feet at z=4.15 to counter"
+      "action": "jolted_upright_by_knee_then_spins_to_counter",
+      "pose": "only after A's bent right knee spears upward into B's nose at 4.65s (10f), B's head snaps upright in a halo of sweat before B plants his left foot at z=4.15 at 5.05s and spins 360 degrees counterclockwise"
     },
     {
       "t": 5.45,
       "pos": [0, 0.96, 4.1],
-      "axis": "head:+Y_up, torso:driving_forward_full_right_cross_extension, facing:-Z, screen_side:right",
+      "axis": "head:+Y_up, torso:completing_360deg_counterclockwise_spin_whipping_right_backfist, facing:-Z, screen_side:right",
       "support": "both_bare_feet_planted_wide_at_z=4.10_on_screen_right",
-      "contact": "B_bare_right_fist -> lands_heavy_right_cross_on_A_left_cheek_and_guard_at_[0,1.42,3.40]_rocking_A_back_to_z=2.90",
-      "action": "lands_heavy_right_cross_counter_rocking_A_backward",
-      "pose": "stepping to z=4.10 on screen-right (0.80m full arm's length from A), B unleashes a crushing bare-knuckle right cross that slams into A's left cheek and guard at 5.45s, blasting A skidding 0.40m backward through the sand to z=2.90"
+      "contact": "B_bare_right_backfist -> slams_into_A_high_guard_and_left_temple_at_[0,1.42,3.40]_skidding_A_back_to_z=2.90_and_feeding_A_clockwise_spin",
+      "action": "lands_heavy_spinning_right_backfist_rocking_and_spinning_A",
+      "pose": "at 5.45s (25f), completing his 360-degree spin at z=4.10 on screen-right (0.80m full arm's length from A) with both bare arms separate from his torso in silhouette, B slams a heavy bare-knuckle spinning right backfist into A's high guard, skidding A 0.40m backward to z=2.90 and imparting the rotational momentum that feeds A's spinning back kick"
     },
     {
       "t": 6.5,
@@ -398,7 +402,7 @@
       "support": "both_bare_feet_carving_trenches_backward_from_z=4.00_to_z=4.35_on_screen_right",
       "contact": "B_solar_plexus -> caved_inward_at_1.10m_leg_length_by_A_spinning_left_back_kick_heel_at_[0,1.15,3.88]",
       "action": "sternum_caved_by_spinning_back_kick_slides_to_z=4.35",
-      "pose": "advancing to z=4.00 to press his advantage, B is struck dead center in the solar plexus across the 1.10m gap by A's spinning left back kick heel at 6.50s, folding in half and sliding backward to z=4.35 on screen-right"
+      "pose": "at 6.50s (55f), advancing to z=4.00, B is struck dead center in the solar plexus across the 1.10m leg's-length gap by A's in-place spinning left back kick heel, folding in half and sliding backward to z=4.35 on screen-right"
     },
     {
       "t": 8.8,
@@ -408,7 +412,7 @@
       "contact": "B_chin -> struck_at_0.85m_arm_length_by_A_deep_lunge_straight_right_at_[0,1.38,4.25]",
       "launch_vel": [0, 0.8, 2.2],
       "action": "blasted_airborne_backward_to_z=5.00_ko",
-      "pose": "only after A's straight right punch lands at full arm's length on B's chin at 8.80s with a double shockwave ring behind B's back, B is lifted off his feet and blasted backward to z=5.00 on screen-right"
+      "pose": "at 8.80s (16f), only after A's straight right punch lands at full arm's length on B's chin with a double shockwave ring behind B's back, B is lifted off his feet and blasted backward to z=5.00 on screen-right"
     },
     {
       "t": 9.45,
@@ -417,7 +421,7 @@
       "support": "back_and_pelvis_flat_on_sand_at_z=5.00",
       "contact": "B_back -> crashes_flat_into_sand_at_[0,0.22,5.00]_ko",
       "action": "crashes_flat_on_sand_knocked_out_cold",
-      "pose": "crashes flat onto his back in the sand at z=5.00 on screen-right in a plume of dust, knocked out cold"
+      "pose": "at 9.45s (13f), crashes flat onto his back in the sand at z=5.00 on screen-right in a plume of dust, knocked out cold"
     },
     {
       "t": 10.0,
@@ -431,56 +435,65 @@
   "camera": [
     {
       "t": 0.0,
-      "shot": "medium_wide_side_profile_leg_length_entry",
-      "fov": 36,
-      "pos": [2.2, 0.8, 3.45],
-      "look": "A_on_screen_left_z=2.95_and_B_on_screen_right_z=4.00_at_1.05m_leg_length",
-      "move": "steady_side_track_preserving_180_degree_line"
+      "shot": "low_angle_3_4_front_left_ankle_skimming_tracking_rush",
+      "fov": 40,
+      "pos": [1.45, 0.32, 2.45],
+      "dutch_roll_deg": -8,
+      "look": "A_weaving_on_screen_left_z=2.95_slipping_B_right_straight_past_A_right_shoulder",
+      "move": "fast_low_3_4_push_in_tracking_A_figure_eight_weave_and_45deg_outside_slip"
     },
     {
       "t": 0.65,
       "hold_frames": 3,
-      "shot": "low_side_profile_full_leg_length_calf_kick_impact",
-      "fov": 36,
+      "shot": "ground_level_telephoto_3_4_calf_kick_impact",
+      "fov": 28,
+      "pos": [1.55, 0.35, 3.55],
       "look": "A_extended_right_shin_chopping_B_left_calf_across_1.05m_gap_at_[0,0.48,3.85]",
-      "effect": "camera_shake_bone_shock_sand_spray"
+      "effect": "snap_zoom_compression_camera_shake_bone_shock_sand_spray"
     },
     {
       "t": 1.1,
-      "shot": "medium_side_profile_x_block_parry_at_arm_length",
-      "fov": 35,
-      "look": "A_at_z=3.20_raising_crossed_forearms_to_catch_B_overhead_smash_at_[0,1.52,3.55]",
-      "move": "slight_tilt_up_with_X_block"
+      "shot": "high_over_B_right_deltoid_crane_plunge_into_low_angle_X_parry",
+      "fov": 38,
+      "pos": [1.35, 1.82, 4.35],
+      "look": "B_on_screen_right_raising_both_fists_overhead_and_A_on_screen_left_at_z=3.20_spiraling_crossed_forearms_upward_at_1.40s",
+      "move": "dramatic_crane_plunge_from_y=1.82m_down_to_y=0.72m_tilting_up_into_A_spiral_X_parry"
     },
     {
       "t": 1.75,
       "hold_frames": 3,
-      "shot": "medium_close_side_profile_slicing_right_elbow",
-      "fov": 34,
-      "look": "A_right_elbow_slicing_B_left_cheek_at_[0,1.46,3.85]_while_left_hand_traps_B_wrist",
-      "effect": "camera_shake_sweat_burst"
+      "shot": "tight_3_4_over_A_left_shoulder_rotational_whip_pan",
+      "fov": 30,
+      "pos": [1.25, 1.38, 2.95],
+      "dutch_roll_deg": 10,
+      "look": "A_110deg_torso_whip_slicing_right_elbow_across_B_left_cheek_at_[0,1.46,3.85]_snapping_B_head_into_background",
+      "effect": "rotational_whip_pan_with_elbow_camera_shake_sweat_burst"
     },
     {
       "t": 2.2,
-      "shot": "medium_side_profile_arm_length_3_punch_combo",
-      "fov": 35,
-      "look": "A_at_z=3.30_and_B_at_z=4.10_separated_by_0.80m_arm_length_during_jab_and_body_straight",
-      "move": "subtle_push_in_keeping_both_torsos_separated"
+      "shot": "dynamic_3_4_front_right_level_change_drop_track",
+      "fov": 34,
+      "pos": [1.6, 1.35, 3.85],
+      "look": "A_at_z=3.30_and_B_at_z=4.10_separated_by_0.80m_arm_length_during_2.20s_jab_and_2.65s_deep_drop_step_body_straight",
+      "move": "vertical_pedestal_drop_from_y=1.35m_down_to_y=0.65m_tracking_A_hip_drop_at_2.65s"
     },
     {
       "t": 3.2,
       "hold_frames": 3,
-      "shot": "side_profile_arm_length_left_hook_jaw_impact",
-      "fov": 34,
-      "look": "A_long_left_hook_slamming_B_jaw_across_0.80m_gap_at_[0,1.46,4.05]",
-      "effect": "camera_shake_jaw_shockwave_ring"
+      "shot": "low_to_high_crane_snap_3_4_corkscrew_left_hook_impact",
+      "fov": 28,
+      "pos": [1.4, 1.42, 3.75],
+      "dutch_roll_deg": -12,
+      "look": "A_corkscrewing_upward_whipping_left_hook_across_B_right_jaw_at_[0,1.46,4.05]_snapping_B_head_toward_foreground_camera",
+      "effect": "upward_crane_snap_dutch_tilt_jaw_shockwave_ring"
     },
     {
       "t": 3.75,
-      "shot": "medium_wide_side_profile_split_stance_neck_clinch",
+      "shot": "front_hemisphere_30deg_clinch_arc_into_full_body_side_profile",
       "fov": 38,
-      "look": "full_body_side_profile_of_A_at_z=3.55_and_B_at_z=4.20_showing_0.65m_hip_gap_and_A_split_legs",
-      "move": "steady_full_body_head_to_toe_framing"
+      "pos": [1.85, 0.9, 3.85],
+      "look": "head_to_toe_framing_of_A_at_z=3.55_and_B_at_z=4.20_showing_0.65m_hip_gap_and_A_split_stance_pulling_B_neck_down_at_4.20s",
+      "move": "smooth_30deg_orbital_arc_from_3_4_front_left_to_clean_90deg_full_body_side_profile"
     },
     {
       "t": 4.65,
@@ -488,47 +501,64 @@
       "time_remap": 0.25,
       "shot": "medium_wide_side_profile_grounded_pillar_rising_right_knee_impact",
       "fov": 38,
-      "look": "full_side_profile_showing_A_straight_left_leg_planted_on_sand_at_z=3.55_and_bent_right_knee_spearing_B_nose_at_[0,1.20,3.95]",
+      "pos": [2.2, 0.92, 3.85],
+      "look": "clean_full_body_side_profile_showing_A_straight_left_leg_planted_on_sand_at_z=3.55_and_bent_right_knee_spearing_B_nose_at_[0,1.20,3.95]",
       "effect": "heavy_camera_shake_radial_shock_flash"
     },
     {
       "t": 5.45,
       "hold_frames": 3,
-      "shot": "medium_side_profile_B_right_cross_counter_rocking_A_backward",
+      "shot": "high_speed_backward_tracking_3_4_on_B_spinning_backfist_impact",
       "fov": 36,
-      "look": "B_on_screen_right_z=4.10_landing_full_arm_length_right_cross_on_A_cheek_at_[0,1.42,3.40]_skidding_A_back_to_z=2.90",
+      "pos": [1.55, 1.15, 3.25],
+      "dutch_roll_deg": 12,
+      "look": "B_completing_360deg_spin_on_screen_right_z=4.10_slamming_bare_right_backfist_into_A_high_guard_at_[0,1.42,3.40]_skidding_A_to_z=2.90",
+      "move": "high_speed_backward_dolly_tracking_A_0.40m_sand_trench_skid_and_clockwise_torso_torque",
       "effect": "heavy_camera_shake_sweat_spray_heel_sand_trenches"
+    },
+    {
+      "t": 5.95,
+      "shot": "over_A_spinning_back_muscles_3_4_torsion_track",
+      "fov": 38,
+      "pos": [1.4, 1.05, 2.65],
+      "look": "A_at_z=2.90_on_screen_left_spinning_360deg_clockwise_in_place_on_right_foot_showing_striated_back_torsion_and_chambered_left_heel",
+      "move": "tight_arc_tracking_A_360deg_in_place_spin_transitioning_into_6.50s_snap_push"
     },
     {
       "t": 6.5,
       "hold_frames": 3,
-      "shot": "medium_wide_side_profile_in_place_spinning_left_back_kick_impact",
-      "fov": 36,
-      "look": "A_on_screen_left_z=2.90_driving_full_leg_length_spinning_left_back_kick_heel_into_B_solar_plexus_at_[0,1.15,3.88]",
-      "effect": "heavy_camera_shake_double_chest_shock_ring"
+      "shot": "telephoto_snap_push_3_4_spinning_left_back_kick_impact",
+      "fov": 30,
+      "pos": [1.5, 0.95, 3.45],
+      "look": "A_on_screen_left_z=2.90_hinged_45deg_driving_full_leg_length_spinning_left_back_kick_heel_into_B_solar_plexus_at_[0,1.15,3.88]",
+      "effect": "snap_push_compression_heavy_camera_shake_double_chest_shock_ring"
     },
     {
       "t": 7.35,
-      "shot": "low_side_profile_wide_crouch_coil_and_lunge_drive",
-      "fov": 36,
-      "look": "A_on_screen_left_z=2.95_sinking_into_wide_crouch_and_lunging_to_z=3.50_at_8.10s",
-      "move": "fast_side_track_with_A_forward_lunge"
+      "shot": "extreme_low_wide_sand_level_coil_and_velocity_lunge_track",
+      "fov": 40,
+      "pos": [1.5, 0.32, 2.75],
+      "look": "A_on_screen_left_z=2.95_coiled_in_deep_50deg_twisted_crouch_with_steam_then_rocketing_forward_at_8.10s_kicking_up_sand_cone",
+      "move": "explosive_low_horizontal_whip_track_alongside_A_sand_launch_from_z=2.95_to_z=3.50"
     },
     {
       "t": 8.8,
       "hold_frames": 5,
       "time_remap": 0.25,
-      "shot": "dramatic_side_profile_deep_lunge_straight_right_chin_ko",
-      "fov": 35,
-      "look": "A_on_screen_left_z=3.50_in_deep_lunge_rear_knee_low_right_arm_straight_at_chin_height_striking_B_jaw_across_0.85m_gap_at_[0,1.38,4.25]",
-      "effect": "extreme_camera_shake_double_shockwave_ring"
+      "shot": "telephoto_snap_zoom_3_4_front_right_deep_lunge_straight_right_ko",
+      "fov": 28,
+      "pos": [1.45, 0.88, 4.15],
+      "dutch_roll_deg": -10,
+      "look": "A_on_screen_left_z=3.50_in_deep_lunge_rear_knee_low_right_arm_straight_at_chin_height_striking_B_chin_across_0.85m_gap_at_[0,1.38,4.25]",
+      "effect": "fov_40_to_28_snap_zoom_extreme_camera_shake_double_shockwave_ring"
     },
     {
       "t": 9.45,
-      "shot": "slow_dolly_in_on_A_deep_lunge_follow_through",
-      "fov": 34,
-      "look": "A_on_screen_left_z=3.50_holding_deep_lunge_right_arm_straight_at_chin_height_as_B_lies_ko_at_z=5.00_on_screen_right",
-      "move": "slow_dolly_in_over_0.55s_to_10.0s",
+      "shot": "low_angle_3_4_hero_arc_dolly_in_on_steaming_lunge_hold",
+      "fov": 32,
+      "pos": [1.35, 0.55, 3.25],
+      "look": "A_on_screen_left_z=3.50_holding_deep_lunge_right_arm_straight_at_chin_height_with_steam_as_B_lies_ko_at_z=5.00_on_screen_right",
+      "move": "slow_15deg_low_angle_hero_arc_dolly_in_over_0.55s_to_10.0s",
       "duration": 0.55
     }
   ],
@@ -537,13 +567,13 @@
     "impact_frames": [0.65, 1.75, 3.2, 4.65, 5.45, 6.5, 8.8],
     "smear_frames": [
       "0.45-0.65: A right shin low horizontal calf-kick arc (8-to-2 o'clock) smear only; standing left leg, torso, and both arms stay solid",
-      "1.55-1.75: A right forearm/elbow horizontal arc (3-to-9 o'clock) smear only; head, torso, and left trapping arm stay solid",
-      "2.95-3.2: A left arm long rising hook arc (8-to-2 o'clock) smear only; head, torso, and right guard stay solid",
-      "5.2-5.45: B right arm horizontal cross streak (3-to-9 o'clock) smear only; B head and torso stay solid",
+      "1.55-1.75: A right forearm/elbow horizontal arc (3-to-9 o'clock) smear only; head, torso, and left wrist-pinning arm stay solid",
+      "2.95-3.2: A left arm rising corkscrew hook arc (8-to-2 o'clock) smear only; head, torso, and right guard stay solid",
+      "5.15-5.45: B right arm spinning backfist horizontal arc (9-to-3 o'clock) smear only; B head, torso, and left arm stay solid",
       "6.1-6.5: A left leg linear horizontal back-kick thrust streak (9-to-3 o'clock) smear only; standing right leg, torso, and both arms stay solid",
       "8.1-8.8: A right arm horizontal straight-punch streak at chin height (9-to-3 o'clock) smear only; lunging legs, torso, and left hip-fist stay solid"
     ],
-    "speed_lines": ["0.0-0.65", "2.2-3.2", "5.2-5.45", "8.1-8.8"],
+    "speed_lines": ["0.0-0.65", "1.4-1.75", "2.2-3.2", "5.15-5.45", "5.95-6.5", "8.1-8.8"],
     "time_remap": {
       "4.6-4.8": 0.25,
       "8.75-9.05": 0.25
@@ -551,15 +581,15 @@
     "anticipation_holds": [4.2, 7.35],
     "fx": {
       "0.65": "sharp_white_calf_bone_shock_flash_and_sand_spray",
-      "1.75": "sweat_spray_arc_and_cheek_shock_ripple",
-      "3.2": "white_jaw_shockwave_ring_and_saliva_burst",
+      "1.75": "sweat_spray_arc_toward_background_and_cheek_shock_ripple",
+      "3.2": "white_jaw_shockwave_ring_and_saliva_burst_toward_foreground",
       "4.65": "radial_white_impact_flash_and_sweat_halo",
-      "5.45": "heavy_cheek_impact_flash_and_0.40m_backward_heel_sand_trenches_under_A",
+      "5.45": "heavy_guard_impact_flash_and_0.40m_backward_heel_sand_trenches_under_A",
       "6.5": "double_concentric_sternum_shock_rings_and_heel_sand_trenches_under_B",
       "7.35-8.8": "white_muscle_heat_steam_and_horizontal_sand_launch_cone",
       "8.8": "double_white_shockwave_ring_exploding_behind_B_back"
     },
-    "line_rule": "heavy anatomical ink outlines on A and B, broken/sketchy outlines ONLY on active smear limbs (A right leg 0.45-0.65, A right elbow 1.55-1.75, A left arm 2.95-3.2, B right arm 5.2-5.45, A left leg 6.1-6.5, A right arm 8.1-8.8; keep both legs 100% solid sharp ink during the 4.20-4.65s clinch knee), ultra-thick clean ink on all 7 held impact frames (0.65, 1.75, 3.20, 4.65, 5.45, 6.50, 8.80)"
+    "line_rule": "heavy anatomical ink outlines on A and B, broken/sketchy outlines ONLY on active smear limbs (A right leg 0.45-0.65, A right elbow 1.55-1.75, A left arm 2.95-3.2, B right arm 5.15-5.45, A left leg 6.1-6.5, A right arm 8.1-8.8; keep both legs 100% solid sharp ink during the 4.20-4.65s clinch knee), ultra-thick clean ink on all 7 held impact frames (0.65, 1.75, 3.20, 4.65, 5.45, 6.50, 8.80)"
   },
-  "rules": "Render as one continuous 10-second 2D hand-drawn bare-knuckle stand-up war in the center of the sand pit. ZERO weapons, ZERO wall-runs, ZERO ground punches, and ZERO side swaps: Fighter A stays on screen-left facing right (+Z) and Fighter B stays on screen-right facing left (-Z) for all 10.0 seconds. Maintain realistic strike reach at all times so bodies never merge: punches connect at one full arm's length (0.75-0.85m between torso centers), kicks connect at one full leg's length (1.05-1.15m between torso centers), and the neck clinch maintains 0.65m separation. At 0.0-0.65s A slips outside B's high right straight at 0.35s and chops a full-leg's-length right shin kick into B's left calf at 0.65s (hold 3f), buckling B's knee. At 1.1-1.75s B swings a two-handed overhead smash; A catches B's wrists high on crossed forearms at 1.40s, traps B's wrist with his left hand, and slices a horizontal right elbow across B's left cheek at 1.75s (hold 3f). At 2.20-3.20s (at 0.80m full arm's length) A lands a 3-punch combination: straight left jab to nose (2.20s) -> low level-change right straight to solar plexus (2.65s) -> rising left hook to jaw at 3.20s (hold 3f). At 3.75-4.65s (framed head-to-toe in medium-wide side profile at 0.65m separation) A clamps both taped hands behind B's neck in a wide split stance, pulls B's head forward-down at 4.20s, and at 4.65s keeps his left leg planted straight down on the floor as a vertical pillar while driving his sharply bent right knee diagonally upward into B's nose (hold 4f, slomo 0.25x). At 5.05-5.45s B refuses to fold, plants his feet on screen-right, and lands a crushing full-arm's-length right cross onto A's left cheek at 5.45s (hold 3f), skidding A's bare feet 0.40m backward through the sand to z=2.90 on screen-left. At 5.95-6.50s A absorbs the backward skid by spinning in place on his planted right foot on screen-left and driving a full-leg's-length (1.10m) spinning left back kick heel into B's solar plexus at 6.50s (hold 3f), sliding B back to z=4.35. At 7.35s A sinks into a wide low crouch at z=2.95 (left open hand low-forward, right fist coiled behind right hip, white steam rising), lunges forward at 8.10s kicking up a sand cone, and at 8.80s plants in a deep lunge (rear left knee low near the sand, left fist at hip, right arm locked dead-straight horizontally at chin height across the 0.85m arm's-length gap) driving his taped right fist into B's chin (hold 5f, slomo 0.25x), erupting a double shockwave ring that blasts B flat onto his back at z=5.00 (9.45s) while A holds his extended lunge on screen-left to 10.0s. Pure 2D cel-shaded anime, no 3D CGI, no on-screen text or numbers."
+  "rules": "Render as one continuous 10-second 2D hand-drawn bare-knuckle stand-up war in the center of the sand pit with dynamic 180-degree-hemisphere Sakuga camera coverage and multi-axis body rotations. OUTFIT & SIDE LOCK: Fighter A (lean, red trunks, white wrist/knuckle tape on both hands) stays on screen-left facing right (+Z) and Fighter B (massive, black pants, bare wrists with NO tape) stays on screen-right facing left (-Z) for all 10.0 seconds (zero side swaps, zero weapons, zero wall-runs, zero ground punches). Maintain realistic strike reach at all times with both arms separate from the torso in silhouette on every hit: punches connect at one full arm's length (0.75-0.85m), elbows and clinches hold half an arm's length (0.65m), and kicks connect at one full leg's length (1.05-1.15m). At 0.0-0.65s (low 3/4 ankle-skimming tracking rush -> fov 28 telephoto shin impact), A enters in a figure-eight head-bob weave, slips 45 degrees outside B's right straight at 0.35s so B's bare right fist whistles past A's right shoulder, and pivots 90 degrees clockwise on his left foot to whip a full-leg's-length right shin kick into B's left calf at 0.65s (hold 3f). At 1.1-1.75s (high over-B-deltoid crane plunge -> tight 3/4 over-A-shoulder whip-pan with +10deg Dutch roll), B swings a two-handed overhead smash; A sinks into a horse-stance at 1.40s to spiral B's bare wrists upward-left on crossed forearms, pins B's right wrist with his left hand, and rotates his torso 110 degrees clockwise to slice a horizontal right elbow across B's left cheek at 1.75s (hold 3f), snapping B's head to B's right (into background -X). At 2.20-3.20s (vertical pedestal drop-track -> upward crane snap with -12deg Dutch roll at fov 28), at 0.80m full arm's length, A lands a 3-axis combination: 45-degree shoulder-roll left jab to nose (2.20s) -> deep 0.22m level-change drop-step right straight to solar plexus (2.65s) -> corkscrewing upward 90-degree left hook across B's right jaw at 3.20s (hold 3f), snapping B's head to B's left (toward foreground camera +X). At 3.75-4.65s (30-degree orbital arc into clean head-to-toe side profile at fov 38), A clamps a two-handed collar tie behind B's neck at 0.65m separation, yanks B's head forward-down at 4.20s, and at 4.65s keeps his left leg planted straight down on the floor as a vertical pillar while thrusting his right hip forward and spearing his sharply bent right knee diagonally upward into B's nose (hold 4f, slomo 0.25x). At 5.05-5.45s (high-speed backward tracking dolly with +12deg Dutch roll), B spins 360 degrees counterclockwise on screen-right and slams a heavy bare-knuckle spinning right backfist across the 0.80m arm's-length gap into A's high two-arm guard at 5.45s (hold 3f), skidding A 0.40m backward through the sand to z=2.90 and imparting clockwise rotational torque into A's torso. At 5.95-6.50s (3/4 rear-left torso-torsion spin track -> fov 30 telephoto impact push), A rides that clockwise torque into a 360-degree in-place spin on his planted right foot at z=2.90 and hinges 45 degrees sideways to piston a full-leg's-length (1.10m) spinning left back kick heel into B's solar plexus at 6.50s (hold 3f), sliding B back to z=4.35. At 7.35-8.80s (fov 40 low wide sand-level crouch -> high-speed horizontal sand-launch whip-track at 8.10s -> fov 28 snap-zoom telephoto with -10deg Dutch roll at 8.80s), A coils in a deep crouch twisting his shoulders 50 degrees clockwise with white steam rising, rockets forward at 8.10s untwisting 95 degrees and kicking up a sand cone, and plants in a deep lunge at 8.80s (rear left knee low, left fist at hip, right arm locked dead-straight horizontally at chin height across the 0.85m gap) driving his taped right fist into B's chin (hold 5f, slomo 0.25x), erupting a double shockwave ring that blasts B flat onto his back at z=5.00 (9.45s) while a low-angle 3/4 hero dolly-in frames A holding his steaming lunge to 10.0s. Pure 2D cel-shaded anime, no 3D CGI, no on-screen text or numbers."
 }
