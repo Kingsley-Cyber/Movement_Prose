@@ -8,23 +8,28 @@
 
 ```text
 Movement_Prose/
+├── AGENTS.md                                                   # 👈 Deterministic Agent Onboarding, Directory Map & 25-Decision Index
 ├── SKILL.md                                                   # Antigravity Skill instructions & YouTube Episode workflow
 ├── docs/
-│   └── TWO_LAYER_FLUID_STACK_ARCHITECTURE.md                  # Deep-dive guide: Mode 1 vs Mode 2 (--stack) & Choreography Separation
+│   ├── TWO_LAYER_FLUID_STACK_ARCHITECTURE.md                  # Deep-dive guide: Mode 1 vs Mode 2 (--stack) & Choreography Separation
+│   └── VARIATIONS_AND_FIGHTING_STYLES.md                      # Deep-dive: Decisions 21-25, Entity Fighting Styles & Variations vs Golden Baseline
 ├── scripts/
-│   ├── sakuga_compiler.py                                     # Deterministic CLI Compiler, 20-Rule Physics Linter, --stack Generator & Multi-Clip Stitcher
+│   ├── sakuga_compiler.py                                     # Deterministic CLI Compiler, 25-Rule Physics/Diversity/Style Linter, --stack Generator & Stitcher
 │   └── twelvelabs_bridge.py                                   # TwelveLabs Pegasus 1.2 Bridge (Mode A: Reference Extractor, Mode B: Render QA & Handoff)
-├── examples/                                                  # ✅ CANONICAL TEMPLATES (Use ONLY these for new prompts)
+├── examples/                                                  # ✅ ORIGINAL CANONICAL GOLDEN BASELINE PROMPTS (gold_master_1..4)
 │   ├── gold_master_1_blade_exchange.json                      # Gold-Master #1: Single-Layer JSON (Reverse-Grip Kunai vs. Forearm Blade Exchange)
 │   ├── gold_master_2_disarm_dual_blade.json                   # Gold-Master #2: Single-Layer JSON (Wakizashi vs. Katana Disarm, Aerial Catch & X-Lock)
 │   ├── gold_master_3_courtyard_sky_cartwheel.json             # Gold-Master #3: 2-Layer Fluid Stack Source (Sky-Cartwheel, Uppercut, Wall-Run & Dive)
 │   ├── gold_master_3_courtyard_fluid_stack.txt                # Gold-Master #3: Compiled 2-Layer Unrolled Fluid Stack Prompt (--stack)
 │   ├── gold_master_4_shrine_bo_staff_determinism_test.json    # Gold-Master #4: 2-Layer Fluid Stack Source (Rain Shrine Bo-Staff vs. Iron Gauntlets)
 │   ├── gold_master_4_shrine_bo_staff_fluid_stack.txt          # Gold-Master #4: Compiled 2-Layer Unrolled Fluid Stack Prompt (--stack)
-│   ├── gold_master_5_baki_underground_arena.json              # Gold-Master #5: 2-Layer Fluid Stack Source (Baki 6-Impact Center-Ring Stand-Up War — Zero Wall-Runs, Zero Ground Punches)
-│   └── gold_master_5_baki_underground_arena_fluid_stack.txt   # Gold-Master #5: Compiled 2-Layer Unrolled Fluid Stack Prompt (--stack)
+│   └── variations/                                            # 🔥 COMBAT-STYLE & BIOMECHANICAL VARIATIONS (Distinct from Golden #1-#4)
+│       ├── variation_1_baki_grounded_standup_war.json         # Variation #1 (style: grounded_striker_boxer_baki): 100% Grounded Baki Stand-Up War
+│       ├── variation_1_baki_grounded_standup_war_fluid_stack.txt
+│       ├── variation_2_multidomain_combative_showcase.json    # Variation #2 (style: acrobatic_multidomain_freestyle): 4-Domain Acrobatic Showcase
+│       └── variation_2_multidomain_combative_showcase_fluid_stack.txt
 ├── references/
-│   └── sakuga_prompt_schema_sop.md                            # Master SOP, 20 Empirical Decisions & 2-Layer Fluid Stack Breakdown
+│   └── sakuga_prompt_schema_sop.md                            # Master SOP, Empirical Decisions & 2-Layer Fluid Stack Breakdown
 └── _archive_rd_history_do_not_copy/                           # ⚠️ HISTORICAL R&D LOGS ONLY (Contains deprecated Euler/Quaternion/Bloat tests — do not copy)
     ├── RD_EXPERIMENT_PROGRESSION_LOG.md                       # Complete chronological log of all 15 A/B experiments & empirical render findings
     ├── exp01..exp15_*.txt                                     # All 15 prompt iterations tested across the R&D progression (v2.1 -> v3.1-CAUSAL + Fluid Stack)
@@ -35,13 +40,14 @@ Movement_Prose/
 
 ## Architectural Breakdown: Single-Layer JSON vs. 2-Layer Unrolled Fluid Stack (`--stack`)
 
-> **Full Deep-Dive Documentation:** See [`docs/TWO_LAYER_FLUID_STACK_ARCHITECTURE.md`](docs/TWO_LAYER_FLUID_STACK_ARCHITECTURE.md) for the complete architectural specification and a side-by-side comparison showing how **Prompt Architecture (`--stack`)** is completely separable from **Choreography Archetype** (e.g., Acrobatic Wall-Dive in `gold_master_3` vs. Relentless 6-Impact Center-Ring Baki Stand-Up War in `gold_master_5`).
+> **Full Deep-Dive Documentation:** See [`AGENTS.md`](AGENTS.md), [`docs/TWO_LAYER_FLUID_STACK_ARCHITECTURE.md`](docs/TWO_LAYER_FLUID_STACK_ARCHITECTURE.md), and [`docs/VARIATIONS_AND_FIGHTING_STYLES.md`](docs/VARIATIONS_AND_FIGHTING_STYLES.md) for the complete architectural specification, Entity Fighting Style profiles (`Decision 25`), and the strict separation between the **Original Canonical Golden Prompts (`examples/gold_master_1..4`)** and **Combat-Style Variations (`examples/variations/variation_1..2`)**.
 
 To eliminate any confusion, **both modes use the exact same `SAKUGA-MLLM-3.1-CAUSAL` JSON source file and compiler (`scripts/sakuga_compiler.py`)**. The difference is whether you compile into a **Single-Layer JSON prompt** (default) or a **2-Layer Unrolled Fluid Stack prompt** (`--stack`):
 
 | Feature | Mode 1: Single-Layer Causal JSON (`compile`) | Mode 2: 2-Layer Unrolled Fluid Stack (`compile --stack`) |
 | :--- | :--- | :--- |
-| **Canonical Examples** | `gold_master_1_blade_exchange.json`<br>`gold_master_2_disarm_dual_blade.json` | `gold_master_3_courtyard_sky_cartwheel.json` (4-Impact Acrobatic)<br>`gold_master_4_shrine_bo_staff_determinism_test.json` (Weapon Staff)<br>`gold_master_5_baki_underground_arena.json` (**6-Impact Center-Ring Baki Stand-Up War**) |
+| **Canonical Golden Examples (`examples/`)** | `gold_master_1_blade_exchange.json`<br>`gold_master_2_disarm_dual_blade.json` | `gold_master_3_courtyard_sky_cartwheel.json` (4-Impact Acrobatic)<br>`gold_master_4_shrine_bo_staff_determinism_test.json` (Weapon Staff) |
+| **Combat-Style Variations (`examples/variations/`)** | — | `variation_1_baki_grounded_standup_war.json` (`grounded_striker_boxer_baki`)<br>`variation_2_multidomain_combative_showcase.json` (`acrobatic_multidomain_freestyle`) |
 | **Prompt Structure** | `Header` + `SAKUGA-MLLM-3.1-CAUSAL JSON` | `Header` + **`LAYER 1 (Labanotation-as-Words Timeline)`** + **`LAYER 2 (SAKUGA-MLLM-3.1-CAUSAL JSON)`** |
 | **Sub-Beat Density** | **11–14 beats** (`~0.7s–0.9s` spacing) | **16–18 unrolled beats** (`~0.4s–0.6s` spacing; every move unrolled into 3–4 phases: `Entry/Windup -> Drive/Apex -> Contact -> Landing/Recovery`) |
 | **Best Used For** | Grounded close-quarters blade/fist exchanges with simple support transitions. | **High-intensity multi-hit hand-to-hand wars, clinches, kick turnovers, OR complex acrobatic/vertical choreography.** |

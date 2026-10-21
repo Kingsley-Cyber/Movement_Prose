@@ -27,15 +27,15 @@ A critical principle of `Movement_Prose` is that **the 2-Layer Unrolled Fluid St
 
 Never reuse a static timestamp skeleton (`1.2s -> 3.05s -> 4.30s -> 5.5s wall-run -> 7.5s ground punch`) when designing a new fight. Every fight archetype has its own rhythm, impact frequency, spatial pocket, and combat logic:
 
-| Dimension | Archetype A: Acrobatic Projectile & Vertical Environment (`Gold-Master #3`) | Archetype B: Relentless Center-Ring Stand-Up War (`Gold-Master #5 — Baki Style`) |
+| Dimension | Canonical Golden #3: Acrobatic Projectile & Vertical Environment | Variation #1: Grounded Center-Ring Stand-Up War (`grounded_striker_boxer_baki`) |
 | :--- | :--- | :--- |
-| **File** | `examples/gold_master_3_courtyard_sky_cartwheel.json` | `examples/gold_master_5_baki_underground_arena.json` |
-| **Combat Style** | Ninja acrobatics + projectile deflection + wall dive | **Baki / Kengan Ashura** bare-knuckle Vale Tudo, Muay Thai clinch, and supersonic karate/boxing |
-| **Spatial Pocket** | Full depth + vertical stone wall (`y=0m` to `3.1m`) | **Pure center-ring sand pit (`z=2.3m` to `4.8m`) — ZERO wall-runs, ZERO ground punches** |
-| **Opponent (`B`) Activity** | Knocked down against wall at `5.0s`, flinches at `7.5s` | **Stands and fights back fiercely for 8.85 seconds** (throws right straight at `0.0s`, double-axe smash at `1.1s`, clinch lunge at `3.75s`, spinning backfist at `5.7s`) until the `8.85s` KO |
-| **Impact Count & Timestamps** | **4 impacts:** `1.20s`, `3.05s`, `4.30s`, `7.50s` | **6 impacts:** `0.65s` (calf kick), `1.75s` (slicing elbow), `3.20s` (3-punch combo hook), `4.85s` (plum-clinch flying knee), `6.40s` (spinning back kick), `8.85s` (Supersonic Mach Straight KO) |
-| **Midpoint Screen Cross** | `4.80s` sprint past falling `B` toward wall | `5.25s` **lateral ring-circle pivot** out of the Muay Thai clinch (`screen_left -> screen_right`) |
-| **Ending (`8.85s – 10.00s`)** | Deep crouch with reverse-grip kunai | `8.85s` **double sonic-boom Mach Straight knockout** blasting `B` flat onto his back at `z=2.35` (`9.45s`) while `A` holds his extended steaming Mach-Punch follow-through stance |
+| **File** | [`examples/gold_master_3_courtyard_sky_cartwheel.json`](../examples/gold_master_3_courtyard_sky_cartwheel.json) | [`examples/variations/variation_1_baki_grounded_standup_war.json`](../examples/variations/variation_1_baki_grounded_standup_war.json) |
+| **Fighting Style (`Decision 25`)** | `shinobi_weapon_acrobat` (Ninja acrobatics + projectile deflection + wall dive) | `grounded_striker_boxer_baki` (**Baki / Kengan Ashura** 100% grounded stand-up war — zero aerial flips, zero floor sweeps, zero wall-runs) |
+| **Spatial Pocket** | Full depth + vertical stone wall (`y=0m` to `3.1m`) | **Pure center-ring sand pit (`z=2.85m` to `5.00m`) — full arm's length (`0.80m`) for punches, full leg's length (`1.10m`) for kicks** |
+| **Opponent (`B`) Activity** | Knocked down against wall at `5.0s`, flinches at `7.5s` | **Two-way war**: `B` throws high right straight (`0.0s`), overhead double smash (`1.1s`), and **lands a heavy 360° spinning right backfist (`5.45s`)** that skids `A` back and feeds `A`'s spinning back kick |
+| **Impact Count & Timestamps** | **4 impacts:** `1.20s`, `3.05s`, `4.30s`, `7.50s` | **7 impacts:** `0.65s` (calf kick), `1.75s` ($110^\circ$ right elbow), `3.20s` (3-punch combo corkscrew hook), `4.65s` (standing-pillar clinch knee), `5.45s` (`B` spinning backfist), `6.50s` (`A` in-place spinning back kick), `8.80s` (deep-lunge straight right KO) |
+| **Screen-Side Rule** | `4.80s` sprint past falling `B` toward wall | **Strict 10s Screen-Side Lock (`Decision 22B`)**: `A` stays `screen_left`, `B` stays `screen_right` for all 10s with dynamic $+X$ hemisphere 3/4 camera coverage (`Decision 23`) |
+| **Ending (`8.80s – 10.00s`)** | Deep crouch with reverse-grip kunai | `8.80s` **deep-lunge straight right at chin height (`fov 40 -> 28` snap-zoom)** blasting `B` flat onto his back at `z=5.00` (`9.45s`) while `A` holds his steaming lunge to `10.00s` |
 
 ---
 
@@ -70,15 +70,14 @@ Layer 2 is governed by **Four Core Engineering Rules** (Decisions 14, 18, 19, 20
 #### Rule A: 4-Phase Sub-Beat Unrolling (`Decision 18`)
 Whenever a prompt compresses a multi-stage martial arts technique into a single timestamp (e.g., jumping straight from `3.05s uppercut` to `4.30s kick impact`), the video model has an **800ms–1200ms kinematic void** and hallucinates floaty or morphed anatomy.
 In the 2-Layer Fluid Stack, every technique is **unrolled into explicit sequential sub-beats**:
-- **Example 1 — 3-Punch Pocket Combination (`2.20s -> 2.65s -> 3.20s` in Gold-Master #5)**:
-  - `2.20s` (*Beat 1 — High Probe*): `A` snaps a straight `L_arm` left jab into `B`'s nose (`y=1.48m`) while `R_arm` chambers tight at the right ribs.
-  - `2.65s` (*Beat 2 — Level-Change Body Shot*): `A` drops hips to `y=0.70m` and drives a straight `R_arm` right body punch into `B`'s solar plexus (`y=1.12m`) while `L_arm` coils low at the left hip.
-  - `3.20s` (*Beat 3 — Rising Jaw Hook Impact*): `A` rises to `y=0.86m` with `R_arm` held high at the right cheekbone in guard and whips a wide `L_arm` left hook across `B`'s jaw (`y=1.46m`, `hold 3f`).
-- **Example 2 — Muay Thai Plum Clinch into Flying Knee & Ring-Circle Cross (`3.75s -> 4.30s -> 4.85s -> 5.25s` in Gold-Master #5)**:
-  - `3.75s` (*Clinch Entry*): `A` shoots both hands inside `B`'s reach, interlocking `L_arm` and `R_arm` behind `B`'s neck (`zero_gap`).
-  - `4.30s` (*Anticipation Hold / Neck Yank*): `A` hangs his weight on both hands, yanking `B`'s head down to `y=1.18m` while coiling his right leg back.
-  - `4.85s` (*Airborne Knee Impact*): `A` leaps off his left foot (`none_airborne`), pulling `B`'s head down with both hands while driving his right kneecap upward into `B`'s nose/forehead (`hold 4f, slomo 0.25x`).
-  - `5.25s` (*Two-Foot Landing & Lateral Ring-Circle Cross*): `A` lands cleanly on both bare feet, shoves `B` past his left shoulder, and pivots across screen center (`screen_left -> screen_right`).
+- **Example 1 — 3-Punch Pocket Combination (`2.20s -> 2.65s -> 3.20s` in Variation #1)**:
+  - `2.20s` (*Beat 1 — High Probe*): `A` rotates his left shoulder $45^\circ$ forward and snaps a full-arm's-length (`0.80m`) left jab into `B`'s nose (`y=1.48m`) while `R_arm` coils at the right hip.
+  - `2.65s` (*Beat 2 — Level-Change Body Shot*): `A` drops hips `0.22m` to `y=0.66m`, rotates his right shoulder $60^\circ$ forward, and drives a straight `R_arm` right body punch into `B`'s solar plexus (`y=1.12m`) while `L_arm` coils wide at the left hip.
+  - `3.20s` (*Beat 3 — Rising Corkscrew Jaw Hook*): `A` uncoils upward out of his crouch (`90deg` left-to-right torso rotation) with `R_arm` held high at the right temple and whips a long `L_arm` left hook across `B`'s right jaw (`y=1.46m`, `hold 3f`), snapping `B`'s head toward the foreground camera (`+X`).
+- **Example 2 — Collar-Tie Clinch into Standing-Pillar Rising Right Knee (`3.75s -> 4.20s -> 4.65s` in Variation #1)**:
+  - `3.75s` (*Clinch Entry*): At `0.65m` separation in a wide front-back split stance, `A` clamps both taped hands behind `B`'s neck while `B`'s bare arms hang outside.
+  - `4.20s` (*Anticipation Hold / Neck Yank*): `A` arches his lats backward, yanking `B`'s head forward-down to `y=1.18m` while loading his rear right leg.
+  - `4.65s` (*Standing-Pillar Knee Impact*): Keeping his left leg locked straight down on the floor (`z=3.55`) as a vertical pillar (`6 o'clock`), `A` thrusts his right hip forward and spears his bent right knee diagonally upward (`8-to-1 o'clock`) into `B`'s nose (`hold 4f, slomo 0.25x`).
 
 #### Rule B: Bilateral Two-Arm Silhouette Locking (`Decision 20`)
 When a beat describes only the striking arm (e.g., `"drives a right uppercut"` or `"whips a left hook"`), 2D anime diffusion models frequently merge the non-striking arm into the torso silhouette, making the fighter appear one-armed for `0.5s–1.0s`.
@@ -131,6 +130,9 @@ To prevent combat sequences from feeling repetitive over 10s clips or extended 2
 3. **"Recoil-is-Windup" Kinetic Chaining (`Decision 24C`)**:
    - Never reset to neutral between moves: the downward recoil of a ground up-kick (`1.50s`) drives the arched-spine kip-up (`1.95s`); the $90^\circ$ clockwise rotation of a rising right elbow (`2.75s`) continues directly into a $270^\circ$ clockwise spinning left backfist (`3.25s`); and a collar-tie snap-down (`4.85s`) loads the two-foot springboard jumping switch-knee (`5.45s–6.00s`).
 
+#### Rule I: Entity Fighting Style Archetype Gating & Anti-Bleed Isolation (`Decision 25`)
+See [`docs/VARIATIONS_AND_FIGHTING_STYLES.md`](VARIATIONS_AND_FIGHTING_STYLES.md) for the complete specification of `laban.<entity>.fighting_style` (`grounded_striker_boxer_baki`, `ufc_mma_octagon`, `muay_thai_nak_muay`, `acrobatic_multidomain_freestyle`, `shinobi_weapon_acrobat`, `heavy_weapon_master`), which prevents aerial/floor-sweep moves from bleeding into grounded boxing punch combinations via temporal self-attention.
+
 ---
 
 ## 4. Verification & Compilation Workflow
@@ -138,11 +140,11 @@ To prevent combat sequences from feeling repetitive over 10s clips or extended 2
 To lint and compile any spec into the 2-Layer Unrolled Fluid Stack:
 
 ```bash
-# 1. Run the 20-rule physics, causal, and bilateral-arm linter
-python3 scripts/sakuga_compiler.py lint examples/gold_master_5_baki_underground_arena.json
+# 1. Run the 25-rule physics, diversity, and fighting-style linter
+python3 scripts/sakuga_compiler.py lint examples/*.json examples/variations/*.json
 
-# 2. Compile to the 2-Layer Unrolled Fluid Stack (--stack)
-python3 scripts/sakuga_compiler.py compile --stack \
-  examples/gold_master_5_baki_underground_arena.json \
-  --out examples/gold_master_5_baki_underground_arena_fluid_stack.txt
+# 2. Compile Variation #1 (Grounded Baki Stand-Up War) or Variation #2 (Multi-Domain Showcase)
+python3 scripts/sakuga_compiler.py compile --stack --taste nakamura \
+  examples/variations/variation_1_baki_grounded_standup_war.json \
+  --out examples/variations/variation_1_baki_grounded_standup_war_fluid_stack.txt
 ```

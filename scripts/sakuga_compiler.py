@@ -490,7 +490,123 @@ def lint_clip(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
             "Cycle across low-line (ankles/calves/ground y<0.68m), mid-line (solar plexus/ribs), high-line (jaw/temple), and aerial/jumping."
         )
 
+    # 10. Validate Entity Fighting Style Profiles & Cross-Move Attention Bleed (Decision 25)
+    style_errs, style_warns = validate_fighting_styles(spec)
+    errors.extend(style_errs)
+    warnings.extend(style_warns)
+
     return errors, warnings
+
+
+FIGHTING_STYLE_PROFILES: Dict[str, Dict[str, Any]] = {
+    "grounded_striker_boxer_baki": {
+        "description": "Grounded Baki/Kengan stand-up striker & kickboxer (head-bob weaves, calf kicks, X-block parries, slicing elbows, 3-punch boxing combos, standing pillar knees, in-place spinning back kicks, deep-lunge straight punches).",
+        "forbidden_patterns": [
+            r"\b(sky_cartwheel|cartwheel|wall_run|kip_up|kip-up|bicycle_up_kick|one_palm_floor_sweep|high_leap_12_to_6_axe|jumping_scissor_switch_knee)\b"
+        ],
+        "max_airborne_beats": 0,
+    },
+    "ufc_mma_octagon": {
+        "description": "Realistic UFC/MMA Octagon hybrid fighter (boxing/Muay Thai stand-up, calf kicks, level-change takedowns/ankle picks, collar-tie clinch knees, grounded guard up-kicks, technical stand-ups).",
+        "forbidden_patterns": [
+            r"\b(sky_cartwheel|cartwheel|wall_run|no_hands_kip_up|high_leap_12_to_6_axe)\b"
+        ],
+        "max_airborne_beats": 1,
+    },
+    "muay_thai_nak_muay": {
+        "description": "Traditional 8-limb Muay Thai striker (teep push-kicks, low shin calf/thigh chops, high X-guard blocks, horizontal/rising elbows, Thai plum collar-tie clinches, standing pillar knees).",
+        "forbidden_patterns": [
+            r"\b(sky_cartwheel|cartwheel|wall_run|kip_up|kip-up|bicycle_up_kick|one_palm_floor_sweep)\b"
+        ],
+        "max_airborne_beats": 1,
+    },
+    "acrobatic_multidomain_freestyle": {
+        "description": "Multi-domain acrobatic martial artist (God of High School / Taekwondo / Capoeira showcase: palm-planted floor sweeps, bicycle up-kicks, kip-ups, inside elbow/backfist flurries, jumping switch-knees, aerial 12-to-6 axe-heel drops).",
+        "forbidden_patterns": [r"\b(wall_run)\b"],
+        "max_airborne_beats": 3,
+        "anti_bleed_rule": "no_multi_hit_pure_boxing_combo_with_aerial_sweeps",
+    },
+    "shinobi_weapon_acrobat": {
+        "description": "Canonical Golden #1-#3 ninja/blade acrobat (kunai/wakizashi/katana exchanges, sky-cartwheels, wall-runs, aerial catches).",
+        "forbidden_patterns": [],
+        "max_airborne_beats": 5,
+    },
+    "heavy_weapon_master": {
+        "description": "Canonical Golden #4 polearm/bo-staff weapon master vs heavy gauntlets.",
+        "forbidden_patterns": [],
+        "max_airborne_beats": 4,
+    },
+}
+
+
+def validate_fighting_styles(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
+    """
+    Validate each entity's declared 'fighting_style' (in laban.<entity>.fighting_style)
+    against the moves in A_beats and B_track to prevent temporal attention bleed
+    (e.g., aerial leg sweeps bleeding into grounded boxing punch combinations — Decision 25).
+    """
+    errs: List[str] = []
+    warns: List[str] = []
+    laban = spec.get("laban", {})
+    a_style = laban.get("A", {}).get("fighting_style")
+    if not a_style:
+        return errs, warns
+
+    if a_style not in FIGHTING_STYLE_PROFILES:
+        warns.append(
+            f"[Decision 25] Unknown fighting_style '{a_style}' in laban.A. "
+            f"Valid profiles: {sorted(FIGHTING_STYLE_PROFILES.keys())}."
+        )
+        return errs, warns
+
+    profile = FIGHTING_STYLE_PROFILES[a_style]
+    a_beats = spec.get("A_beats", [])
+    airborne_count = 0
+    has_pure_3_punch_combo = False
+    has_acrobatic_sweep_or_aerial = False
+
+    consec_punches = 0
+    for beat in a_beats:
+        t = beat.get("t", "?")
+        b_text = json.dumps(beat).lower()
+        sup = str(beat.get("support", "")).lower()
+        if "none_airborne" in sup:
+            airborne_count += 1
+        for pat in profile.get("forbidden_patterns", []):
+            m = re.search(pat, b_text)
+            if m:
+                warns.append(
+                    f"[Decision 25A] A_beats t={t} uses '{m.group(0)}' which violates fighting_style "
+                    f"'{a_style}' ({profile['description']}). This risks temporal attention bleed!"
+                )
+        if re.search(r"\b(jab|body_straight|left_hook|right_cross|shovel_hook)\b", b_text):
+            consec_punches += 1
+            if consec_punches >= 2:
+                has_pure_3_punch_combo = True
+        else:
+            consec_punches = 0
+        if re.search(r"\b(ankle_sweep|kip_up|up_kick|axe_heel|jumping_scissor)\b", b_text):
+            has_acrobatic_sweep_or_aerial = True
+
+    max_air = profile.get("max_airborne_beats", 99)
+    if airborne_count > max_air:
+        warns.append(
+            f"[Decision 25A] fighting_style '{a_style}' allows at most {max_air} airborne beat(s), "
+            f"but A_beats has {airborne_count}. Excess airborne beats cause aerial leg-sweep bleed into grounded strikes."
+        )
+
+    if (
+        profile.get("anti_bleed_rule") == "no_multi_hit_pure_boxing_combo_with_aerial_sweeps"
+        and has_pure_3_punch_combo
+        and has_acrobatic_sweep_or_aerial
+    ):
+        warns.append(
+            "[Decision 25B] Clip mixes a multi-hit pure boxing punch combination with floor sweeps / aerial kicks in the same 10s window. "
+            "Temporal self-attention can bleed aerial leg-sweeps into the punch combo. Use elbow/backfist spin-chains in acrobatic clips, "
+            "or keep multi-punch boxing combos inside 'grounded_striker_boxer_baki' / 'ufc_mma_octagon' clips."
+        )
+
+    return errs, warns
 
 
 def analyze_choreographic_diversity(spec: Dict[str, Any]) -> Dict[str, Any]:
@@ -913,7 +1029,10 @@ def main() -> int:
             spec, _ = load_clip_file(f)
             errs, warns = lint_clip(spec)
             div = analyze_choreographic_diversity(spec)
+            a_st = spec.get("laban", {}).get("A", {}).get("fighting_style", "unspecified")
+            b_st = spec.get("laban", {}).get("B", {}).get("fighting_style", "unspecified")
             print(f"=== Linting {f.name} ({spec.get('name', 'unnamed')}) ===")
+            print(f"  [STYLE]     A: {a_st} | B: {b_st}")
             print(
                 f"  [DIVERSITY] Weapons ({len(div['weapons_used'])}): {sorted(div['weapons_used'])} | "
                 f"Elevations ({len(div['elevations_used'])}): {sorted(div['elevations_used'])} | "

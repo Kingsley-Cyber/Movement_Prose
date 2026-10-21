@@ -11,15 +11,22 @@ description: >-
 
 This skill turns creative fight ideas or multi-clip YouTube episode concepts into empirically verified, non-regressing **`SAKUGA-MLLM-3.1-CAUSAL`** video prompts (in either **Single-Layer JSON** or **2-Layer Unrolled Fluid Stack `--stack`** format) and validates/compiles them using [sakuga_compiler.py](./scripts/sakuga_compiler.py).
 
-## Directory Contents (STRICT TEMPLATE RULE)
-* **CANONICAL TEMPLATES (USE ONLY THESE):**
+## Directory Contents (STRICT TEMPLATE & VARIATION BOUNDARY RULE)
+* **AGENT ONBOARDING & 25-DECISION INDEX (READ FIRST):** [AGENTS.md](./AGENTS.md)
+* **ORIGINAL CANONICAL GOLDEN BASELINE TEMPLATES (`examples/`):**
   * **Verified Gold-Master #1 (Single-Layer JSON — Kunai vs. Blade Exchange):** [gold_master_1_blade_exchange.json](./examples/gold_master_1_blade_exchange.json)
   * **Verified Gold-Master #2 (Single-Layer JSON — Multi-Prop Disarm, Mid-Air Catch & Dual-Blade X-Lock):** [gold_master_2_disarm_dual_blade.json](./examples/gold_master_2_disarm_dual_blade.json)
   * **Verified Gold-Master #3 (2-Layer Fluid Stack — Courtyard Sky-Cartwheel, Rising Uppercut, Wall-Run & Kunai Dive):** [gold_master_3_courtyard_sky_cartwheel.json](./examples/gold_master_3_courtyard_sky_cartwheel.json) & [gold_master_3_courtyard_fluid_stack.txt](./examples/gold_master_3_courtyard_fluid_stack.txt)
   * **Verified Gold-Master #4 (2-Layer Fluid Stack Determinism Benchmark — Rain Shrine Bo-Staff vs. Iron Gauntlets):** [gold_master_4_shrine_bo_staff_determinism_test.json](./examples/gold_master_4_shrine_bo_staff_determinism_test.json) & [gold_master_4_shrine_bo_staff_fluid_stack.txt](./examples/gold_master_4_shrine_bo_staff_fluid_stack.txt)
-* **Compiler & 20-Rule Linter CLI:** [sakuga_compiler.py](./scripts/sakuga_compiler.py)
+* **COMBAT-STYLE & BIOMECHANICAL VARIATIONS (`examples/variations/` — Distinct from Golden #1–#4):**
+  * **Variation #1 (`grounded_striker_boxer_baki` — 100% Grounded Baki / Kengan Stand-Up War):** [variation_1_baki_grounded_standup_war.json](./examples/variations/variation_1_baki_grounded_standup_war.json) & [variation_1_baki_grounded_standup_war_fluid_stack.txt](./examples/variations/variation_1_baki_grounded_standup_war_fluid_stack.txt)
+  * **Variation #2 (`acrobatic_multidomain_freestyle` — 4-Domain Multi-Limb Martial Arts Showcase):** [variation_2_multidomain_combative_showcase.json](./examples/variations/variation_2_multidomain_combative_showcase.json) & [variation_2_multidomain_combative_showcase_fluid_stack.txt](./examples/variations/variation_2_multidomain_combative_showcase_fluid_stack.txt)
+* **Architecture & Fighting-Style Documentation:**
+  * [TWO_LAYER_FLUID_STACK_ARCHITECTURE.md](./docs/TWO_LAYER_FLUID_STACK_ARCHITECTURE.md)
+  * [VARIATIONS_AND_FIGHTING_STYLES.md](./docs/VARIATIONS_AND_FIGHTING_STYLES.md)
+* **Compiler & 25-Rule Physics/Diversity/Style Linter CLI:** [sakuga_compiler.py](./scripts/sakuga_compiler.py)
 * **TwelveLabs Video-to-Sakuga Bridge (Mode A & Mode B):** [twelvelabs_bridge.py](./scripts/twelvelabs_bridge.py)
-* **Full 20-Decision Master SOP:** [sakuga_prompt_schema_sop.md](./references/sakuga_prompt_schema_sop.md)
+* **Full Master SOP:** [sakuga_prompt_schema_sop.md](./references/sakuga_prompt_schema_sop.md)
 * ⚠️ **CRITICAL RULE FOR AGENTS:** NEVER copy schemas or prompt structures from `_archive_rd_history_do_not_copy/`. Those files contain deprecated early baselines (`LBN-2.3-ADV` Euler dicts, Quaternion A/B tests, `v3.2` metadata bloat tests) kept strictly for historical benchmarking. Always use `examples/gold_master_1..4*.json` (`SAKUGA-MLLM-3.1-CAUSAL`).
 
 ---

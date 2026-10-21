@@ -50,6 +50,7 @@
   ],
   "laban": {
     "A": {
+      "fighting_style": "grounded_striker_boxer_baki",
       "chain": "C01_dempsey_weave_entry_to_leg_length > C02_45deg_outside_slip_past_right_shoulder_and_90deg_hip_turnover > C03_leg_length_right_calf_kick > C04_horse_stance_spiral_X_parry > C05_110deg_torso_whip_right_elbow_snapping_B_head_into_background > C06_45deg_shoulder_roll_left_jab > C07_deep_level_drop_60deg_right_body_straight > C08_corkscrew_rising_left_hook_snapping_B_head_toward_camera > C09_split_stance_collar_tie_clinch > C10_lat_arch_downward_neck_pull_windup > C11_grounded_left_pillar_hip_thrust_rising_right_knee > C12_absorbs_B_spinning_backfist_skids_back_to_z=2.90_with_clockwise_torque > C13_rides_torque_into_360deg_in_place_spin_chamber > C14_leg_length_45deg_side_hinge_spinning_left_back_kick_to_sternum > C15_deep_crouch_50deg_shoulder_coil_7.35s > C16_sand_cone_95deg_untwist_lunge_drive_8.10s > C17_deep_lunge_straight_right_at_chin_height_ko_8.80s > C18_steaming_lunge_follow_through_hold_to_10s",
       "effort": {
         "weight": "strong_rotational_whip_torque_and_grounded_recoil",
@@ -59,6 +60,7 @@
       }
     },
     "B": {
+      "fighting_style": "grounded_striker_boxer_baki",
       "chain": "C01_45deg_right_straight_past_A_right_shoulder > C02_left_knee_buckled_by_calf_kick > C03_two_hand_overhead_smash > C04_wrists_spiraled_open_by_X_parry > C05_head_snapped_into_background_by_right_elbow > C06_rocked_by_level_changing_jab_and_body_straight > C07_head_snapped_toward_camera_by_rising_left_hook > C08_pulled_down_into_standing_right_knee > C09_spins_360deg_counterclockwise_and_lands_spinning_right_backfist_at_5.45s > C10_sternum_caved_by_in_place_spinning_back_kick_at_6.50s > C11_blasted_backward_by_deep_lunge_right_straight_at_8.80s > C12_ko_flat_on_sand_at_z=5.00",
       "effort": {
         "weight": "heavy_crushing_power",
