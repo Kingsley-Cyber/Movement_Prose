@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "description": "Word probe ledger (§10). Filled strictly from owner renders.",
+    "updated_at": "2026-10-21"
+  },
+  "models": {
+    "seedance_2_0": {}
+  }
+}

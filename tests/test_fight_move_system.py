@@ -1,0 +1,322 @@
+"""Automated test suite for Fight Move System v2 (Milestones M1, M2, M3, M4)."""
+
+import copy
+import json
+import tempfile
+import unittest
+from pathlib import Path
+
+from fight_move_system.cli import generate_m4_packets
+from fight_move_system.compiler import compile_clip_prompt, scan_prompt_v15
+from fight_move_system.composer import compose_clips
+from fight_move_system.lexicon import Lexicon, validate_card
+from fight_move_system.validator import validate_clip
+
+
+class TestFightMoveSystem(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.lexicon = Lexicon.load_default()
+        fixture_path = (
+            Path(__file__).parent.parent
+            / "fight_move_system"
+            / "fixtures"
+            / "pass"
+            / "10_beat_boxing_exchange.json"
+        )
+        with open(fixture_path, "r", encoding="utf-8") as f:
+            cls.valid_10_beat = json.load(f)
+
+    def _base_clip(self) -> dict:
+        return {
+            "regime": "standup_striking",
+            "initial_range": "punch",
+            "allow_one_sided_probe": True,
+            "fighters": {
+                "A": {
+                    "style": "boxing",
+                    "stance": "orthodox",
+                    "screen_side": "left",
+                    "facing": "right",
+                    "support": "standing",
+                    "coil": "neutral",
+                },
+                "B": {
+                    "style": "boxing",
+                    "stance": "orthodox",
+                    "screen_side": "right",
+                    "facing": "left",
+                    "support": "standing",
+                    "coil": "neutral",
+                },
+            },
+            "moments": [
+                {
+                    "frames": 7,
+                    "A": {"move": "jab"},
+                    "B": {"move": "head_snap_back"},
+                }
+            ],
+        }
+
+    # --- M1: Lexicon & Card Schema ---
+    def test_lexicon_loads_and_all_cards_valid(self) -> None:
+        self.assertEqual(self.lexicon.validation_errors, [])
+        self.assertGreaterEqual(len(self.lexicon.cards_by_id), 25)
+
+    def test_v01_unknown_move_and_enum(self) -> None:
+        # Fail fixture: unknown move
+        clip = self._base_clip()
+        clip["moments"][0]["A"]["move"] = "non_existent_dragon_punch"
+        res = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V01", res.error_codes())
+
+        # Fail fixture: invalid card enum
+        bad_card = copy.deepcopy(self.lexicon.get("jab"))
+        bad_card["limb"] = "third_tentacle"
+        errs = validate_card(bad_card)
+        self.assertTrue(any(code == "V01" for code, _ in errs))
+
+        # Pass fixture
+        res_pass = validate_clip(self._base_clip(), lexicon=self.lexicon)
+        self.assertNotIn("V01", res_pass.error_codes())
+
+    def test_v02_style_illegal_move(self) -> None:
+        # Fail: boxing fighter attempting spinning_back_kick (only muay_thai/mma/baki/freestyle_sakuga)
+        clip = self._base_clip()
+        clip["fighters"]["A"]["coil"] = "loaded_rear"
+        clip["moments"][0]["A"]["move"] = "spinning_back_kick"
+        clip["moments"][0]["B"]["move"] = "torso_fold_rib_hit"
+        res = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V02", res.error_codes())
+
+        # Pass: baki style fighter throwing spinning_back_kick
+        clip_pass = copy.deepcopy(clip)
+        clip_pass["fighters"]["A"]["style"] = "baki"
+        res_pass = validate_clip(clip_pass, lexicon=self.lexicon)
+        self.assertNotIn("V02", res_pass.error_codes())
+
+    def test_v03_regime_mismatch(self) -> None:
+        # Fail: ground move inside a standup_striking clip on a middle (non-boundary) beat
+        clip = self._base_clip()
+        clip["fighters"]["A"]["style"] = "freestyle_sakuga"
+        clip["moments"] = [
+            {"frames": 7, "A": {"move": "level_duck"}},
+            {"frames": 10, "A": {"move": "low_ankle_sweep"}, "B": {"move": "outside_angle_step"}},
+            {"frames": 7, "A": {"move": "body_jab"}, "B": {"move": "torso_fold_rib_hit"}},
+        ]
+        res = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V03", res.error_codes())
+
+    def test_v04_pre_support_and_coil_violation(self) -> None:
+        # Fail: throwing jab from supine support
+        clip = self._base_clip()
+        clip["fighters"]["A"]["support"] = "supine"
+        res = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V04", res.error_codes())
+
+    # --- M2: Dyad Coupling & Fluidity (V05–V12, V16–V17) ---
+    def test_v05_partner_range_and_posture_mismatch(self) -> None:
+        # Fail: throwing jab from 'outside' range
+        clip = self._base_clip()
+        clip["initial_range"] = "outside"
+        res = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V05", res.error_codes())
+
+    def test_v06_hit_level_mismatch(self) -> None:
+        # Fail: high jab paired with mid torso_fold_rib_hit reaction
+        clip = self._base_clip()
+        clip["moments"][0]["A"]["move"] = "jab"
+        clip["moments"][0]["B"]["move"] = "torso_fold_rib_hit"
+        res = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V06", res.error_codes())
+
+    def test_v07_force_direction_mismatch(self) -> None:
+        # Fail: upward uppercut paired with forward_straight head_snap_back
+        clip = self._base_clip()
+        clip["fighters"]["A"]["coil"] = "loaded_lead"
+        clip["moments"][0]["A"]["move"] = "lead_uppercut"
+        clip["moments"][0]["B"]["move"] = "head_snap_back"
+        res = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V07", res.error_codes())
+
+        # Pass: upward uppercut paired with upward head_snap_up
+        clip["moments"][0]["B"]["move"] = "head_snap_up"
+        res_pass = validate_clip(clip, lexicon=self.lexicon)
+        self.assertNotIn("V07", res_pass.error_codes())
+
+    def test_v08_clinch_asymmetry(self) -> None:
+        # Fail: A attaches collar tie (post.support = clinched), B does high_shell_guard (post.support = standing)
+        clip = self._base_clip()
+        clip["fighters"]["A"]["style"] = "muay_thai"
+        clip["moments"][0]["A"]["move"] = "single_collar_tie"
+        clip["moments"][0]["B"]["move"] = "high_shell_guard"
+        res = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V08", res.error_codes())
+
+        # Pass: B reacts with clinch_captured_react (both post.support = clinched)
+        clip["moments"][0]["B"]["move"] = "clinch_captured_react"
+        res_pass = validate_clip(clip, lexicon=self.lexicon)
+        self.assertNotIn("V08", res_pass.error_codes())
+
+    def test_v09_contact_without_reaction(self) -> None:
+        # Fail: A throws jab, B has no beat at all
+        clip = self._base_clip()
+        del clip["moments"][0]["B"]
+        res = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V09", res.error_codes())
+
+    def test_v10_mid_exchange_neutral_reset_stiffness(self) -> None:
+        # Warn: A throws jab in punch range, then immediately does guard_reset_breathe in punch range
+        clip = self._base_clip()
+        clip["moments"].append({"frames": 6, "A": {"move": "guard_reset_breathe"}})
+        res = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V10", res.warning_codes())
+
+    def test_v11_coil_chain_break(self) -> None:
+        # Warn: A starts in level_low coil (standing) and throws jab (pre.coil = neutral, loaded_rear, recoiling_back)
+        clip = self._base_clip()
+        clip["fighters"]["A"]["coil"] = "level_low"
+        res = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V11", res.warning_codes())
+
+    def test_v12_beat_shorter_than_minimum(self) -> None:
+        # Warn: jab given only 2 frames (< 6f hypothesis minimum)
+        clip = self._base_clip()
+        clip["moments"][0]["frames"] = 2
+        res = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V12", res.warning_codes())
+
+    def test_v13_bleed_budget_exceeded(self) -> None:
+        # Warn: two tier-3 spinning_back_kick moves in one clip (exceeds max_tier_3 = 1)
+        clip = self._base_clip()
+        clip["fighters"]["A"]["style"] = "muay_thai"
+        clip["fighters"]["A"]["coil"] = "loaded_rear"
+        clip["moments"] = [
+            {
+                "frames": 12,
+                "A": {"move": "spinning_back_kick"},
+                "B": {"move": "torso_fold_rib_hit"},
+            },
+            {
+                "frames": 12,
+                "A": {
+                    "overlaps_move": "burst_step_in",
+                    "move": "spinning_back_kick",
+                },
+                "B": {"move": "torso_fold_rib_hit"},
+            },
+        ]
+        res = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V13", res.warning_codes())
+
+    def test_v14_quarantined_pair_shares_clip(self) -> None:
+        # Fail: SWEEP.LOW_ROT + STRIKE.LINEAR in same clip
+        clip = self._base_clip()
+        clip["regime"] = "transition"
+        clip["fighters"]["A"]["style"] = "freestyle_sakuga"
+        clip["moments"] = [
+            {"frames": 7, "A": {"move": "jab"}, "B": {"move": "head_snap_back"}},
+            {
+                "frames": 10,
+                "A": {"overlaps_move": "level_duck", "move": "low_ankle_sweep"},
+                "B": {"move": "outside_angle_step"},
+            },
+        ]
+        res = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V14", res.error_codes())
+
+    def test_v15_prompt_scanner(self) -> None:
+        # Fail on digits
+        errs_digit = scan_prompt_v15("Fighter A steps to 0.8m and punches.", "standup_striking", {"boxing"}, self.lexicon)
+        self.assertTrue(any(c == "V15" for c, _ in errs_digit))
+
+        # Fail on negative move list
+        errs_neg = scan_prompt_v15("Clean boxing match, no ankle sweeps allowed.", "standup_striking", {"boxing"}, self.lexicon)
+        self.assertTrue(any(c == "V15" for c, _ in errs_neg))
+
+        # Fail on franchise move name
+        errs_fran = scan_prompt_v15("He unleashes a Triceratops Fist.", "standup_striking", {"boxing"}, self.lexicon)
+        self.assertTrue(any(c == "V15" for c, _ in errs_fran))
+
+        # Fail on out-of-style move alias ("spinning back kick" in pure boxing clip)
+        errs_style = scan_prompt_v15("He throws a spinning back kick.", "standup_striking", {"boxing"}, self.lexicon)
+        self.assertTrue(any(c == "V15" for c, _ in errs_style))
+
+    def test_v16_screen_side_swap(self) -> None:
+        clip = self._base_clip()
+        clip["moments"][0]["screen_side_override"] = {"A": "right", "B": "left"}
+        res = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V16", res.error_codes())
+
+    def test_v17_one_sided_exchange_warning(self) -> None:
+        clip = self._base_clip()
+        clip["allow_one_sided_probe"] = False
+        clip["moments"] = [
+            {"frames": 7, "A": {"move": "jab"}, "B": {"move": "head_snap_back"}},
+            {"frames": 7, "A": {"move": "cross"}, "B": {"move": "head_snap_back"}},
+            {"frames": 8, "A": {"move": "lead_hook"}, "B": {"move": "head_whip_side"}},
+            {"frames": 7, "A": {"move": "cross"}, "B": {"move": "head_snap_back"}},
+        ]
+        res = validate_clip(clip, lexicon=self.lexicon)
+        self.assertIn("V17", res.warning_codes())
+
+    # --- M2 & M3: 10-Beat Competitive Boxing Exchange & Deterministic Compilation ---
+    def test_10_beat_competitive_boxing_exchange_passes_cleanly(self) -> None:
+        res = validate_clip(self.valid_10_beat, lexicon=self.lexicon)
+        self.assertEqual(res.errors, [])
+        self.assertEqual(res.warnings, [])
+
+    def test_compiler_produces_clean_byte_identical_prompt(self) -> None:
+        prompt1, res1 = compile_clip_prompt(self.valid_10_beat, lexicon=self.lexicon)
+        prompt2, res2 = compile_clip_prompt(self.valid_10_beat, lexicon=self.lexicon)
+        self.assertTrue(res1.ok)
+        self.assertTrue(res2.ok)
+        self.assertEqual(prompt1, prompt2)
+        self.assertGreater(len(prompt1), 500)
+        # Verify zero digits in compiled prompt
+        self.assertIsNone(
+            __import__("re").search(r"\d", prompt1),
+            f"Compiled prompt unexpectedly contained a digit: {prompt1}",
+        )
+
+    def test_composer_chains_fighter_and_dyad_states_across_clips(self) -> None:
+        sheet = {
+            "regime": "standup_striking",
+            "initial_range": "kick",
+            "fighters": copy.deepcopy(self.valid_10_beat["fighters"]),
+            "moments": [
+                {
+                    "regime": "standup_striking",
+                    "frames": 6,
+                    "A": {"move": "burst_step_in"},
+                    "B": {"move": "slip_inside"},
+                },
+                {
+                    "regime": "clinch",
+                    "frames": 7,
+                    "A": {"move": "clinch_captured_react"},
+                    "B": {"move": "clinch_captured_react"},
+                },
+            ],
+        }
+        clips, notes = compose_clips(sheet, lexicon=self.lexicon)
+        self.assertEqual(len(clips), 2)
+        # Clip 1 burst_step_in closed range from 'kick' to 'punch' and set A.coil='loaded_rear'
+        self.assertEqual(clips[1]["initial_range"], "punch")
+        self.assertEqual(clips[1]["fighters"]["A"]["coil"], "loaded_rear")
+        self.assertTrue(any("Chained Clip 1" in n for n in notes))
+
+    # --- M4: Render Packet Generation ---
+    def test_m4_render_packet_generation(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            bundle = generate_m4_packets(Path(tmpdir))
+            self.assertEqual(bundle["meta"]["paid_calls_made_by_agent"], 0)
+            self.assertIn("H1_plain_caption_vs_expert_names", bundle["hypothesis_packets"])
+            self.assertIn("H5_four_limb_occupancy_vs_single_limb", bundle["hypothesis_packets"])
+            self.assertIn("H6_fluid_coil_chained_vs_neutral_reset", bundle["hypothesis_packets"])
+            self.assertGreaterEqual(len(bundle["boxing_word_probes"]), 25)
+
+
+if __name__ == "__main__":
+    unittest.main()

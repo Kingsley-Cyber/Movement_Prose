@@ -1,0 +1,221 @@
+{
+  "meta": {
+    "milestone": "M4",
+    "status": "ready_for_owner_render",
+    "paid_calls_made_by_agent": 0
+  },
+  "hypothesis_packets": {
+    "H1_plain_caption_vs_expert_names": {
+      "hypothesis_id": "H1",
+      "hypothesis": "Plain body-shape caption words beat martial-arts / franchise names.",
+      "arm_A_caption_words": "Hand-drawn anime martial arts animation. On the left, a lean fighter in crimson trunks steps in at arm's length and drops into a deep lunge with his rear knee low to the floor, driving his right fist straight forward at chin height while his left fist guards his left cheek, snapping the right-side fighter's head backward.",
+      "arm_B_expert_franchise_names": "Hand-drawn anime martial arts animation. On the left, a lean fighter in crimson trunks executes a Baki Triceratops Fist Cockroach Dash Mach Straight into the right-side fighter's chin.",
+      "owner_instruction": "Render Arm A and Arm B (three times each if budget allows). Pass if Arm A executes the low-lunge straight punch more often without freezing into a static raised-fist pose."
+    },
+    "H5_four_limb_occupancy_vs_single_limb": {
+      "hypothesis_id": "H5",
+      "hypothesis": "4-limb occupancy text on strike beats fixes the missing/merged off-arm bug.",
+      "arm_A_four_limb_text": "Hand-drawn anime martial arts animation. At arm's length in side profile, the crimson-trunks fighter on the left drives a heavy straight punch with the right fist down the centerline toward the jaw with his left fist retracted tight against the left cheekbone in a high guard, both arms clearly separate from the torso, left leg braced firm at the front of the stance, and right hip and heel pivoting hard.",
+      "arm_B_single_limb_only": "Hand-drawn anime martial arts animation. At arm's length in side profile, the crimson-trunks fighter on the left throws a heavy right straight punch to the jaw.",
+      "owner_instruction": "Compare off-hand visibility during the punch apex. Pass if Arm A shows fewer missing or torso-merged left arms than Arm B."
+    },
+    "H6_fluid_coil_chained_vs_neutral_reset": {
+      "hypothesis_id": "H6",
+      "hypothesis": "Coil-chained beats read more fluidly than reset-to-neutral beats.",
+      "arm_A_coil_chained_10_beat_exchange": "Hand-drawn anime martial arts animation with bold black ink linework, crisp anatomical proportions, and high-contrast cel shading. Staged inside a Floodlit Underground Sand Arena, a lean bare-knuckle boxer in crimson trunks with white wrist tape stands on the left side of the frame facing right, while a heavy muscular boxer in black pants with bare wrists stands on the right side of the frame facing left, both fighters keeping their left-right screen positions locked throughout the exchange. In the opening beat, at a full leg's length apart, the crimson-trunks boxer on the left drives off his right foot in a sharp forward step to close the gap into striking range with his left foot stepping briskly forward across the canvas while the black-pants boxer on the right slips his head briskly to the inside while loading weight onto the right hip with his left foot planted forward. The side-profile camera glides laterally with the footwork to keep both fighters framed head-to-toe. A heartbeat later, at a full arm's length apart, the crimson-trunks boxer on the left snaps a crisp straight punch with the left fist toward the chin with his right fist tucked tight at the right cheek in a high guard, both arms clearly separate from the torso, left foot planted forward on the canvas, and right heel raised, driving weight forward as the black-pants boxer on the right slaps the incoming wrist aside with an open left palm parry while coiling his right shoulder with right fist cocked tight by the right jaw ready to fire, both arms separate from the torso. The frame jolts sharply on impact as a crisp motion smear trails only the striking limb while both fighters' ink outlines stay razor-sharp. Riding that momentum without resetting his stance, at a full arm's length apart, the black-pants boxer on the right drives a heavy straight punch with the right fist down the centerline toward the jaw with his left fist retracted tight against the left cheekbone in a high guard, both arms clearly separate from the torso, left leg braced firm at the front of the stance, and right hip and heel pivoting hard to drive the shoulder through as the crimson-trunks boxer on the left locks both forearms tightly in front of his face in a rigid high shell guard to absorb the blow with both forearms pressed vertically from jawline to forehead, elbows tucked in. The frame jolts sharply on impact as a crisp motion smear trails only the striking limb while both fighters' ink outlines stay razor-sharp. In the next instant, at a full arm's length apart, the crimson-trunks boxer on the left slips his head sharply to the outside of the incoming punch while coiling his left shoulder and in the same continuous motion, the crimson-trunks boxer on the left digs a tight shovel hook with the left fist underneath the elbow into the floating ribs with his right fist guarding the right cheek, both arms clearly separate from the torso, left knee dipped low to load the upward rib angle, and right foot braced wide on the canvas as the black-pants boxer on the right folds forward at the waist with a sharp exhale as the blow sinks into his ribs with both elbows dropping instinctively toward the bruised ribs, clearly separate from the torso. The camera pushes in slightly to a tight medium-full framing as they trade in the pocket. Flowing directly out of the recoil, at a full arm's length apart, the crimson-trunks boxer on the left drives a heavy straight punch with the right fist down the centerline toward the jaw with his left fist retracted tight against the left cheekbone in a high guard, both arms clearly separate from the torso, left leg braced firm at the front of the stance, and right hip and heel pivoting hard to drive the shoulder through as the black-pants boxer on the right has his head snapped sharply backward by the impact while his heels dig in to stay upright with both arms jarring slightly wide from the force of the chin strike, both arms separate from the torso. The frame jolts sharply on impact as a crisp motion smear trails only the striking limb while both fighters' ink outlines stay razor-sharp. Without a pause, at a full arm's length apart, the crimson-trunks boxer on the left whips a tight horizontal hook with the left fist across the jaw with the elbow bent parallel to the floor with his right fist anchored high against the right jaw in a tight guard, both arms separate from the torso, left heel pivoting inward as the hip whips around, and right foot planted firmly to anchor the rotation as the black-pants boxer on the right dips his knees and rolls his head and shoulders in a tight U-shaped weave underneath the horizontal swing with both fists held tight against the temples as the torso rolls. The camera pushes in slightly to a tight medium-full framing as they trade in the pocket. Uncoiling immediately from the hip, at a full arm's length apart, the black-pants boxer on the right sinks his hips and drives a straight right fist deep into the midsection with his left fist held high at the temple, both arms separate from the torso, left knee flexed low in a wide base, and right heel turning outward as the hip drives as the crimson-trunks boxer on the left crunches his left elbow down tight against his hip and ribs to block the body shot with right fist protecting the chin, both arms clearly visible. The frame jolts sharply on impact as a crisp motion smear trails only the striking limb while both fighters' ink outlines stay razor-sharp. Pressing the exchange, at a full arm's length apart, the crimson-trunks boxer on the left drives a rising vertical uppercut with the left fist up through the guard into the underside of the chin with his right fist cocked tight by the right jaw, both arms clearly separate from the torso, left leg extending upward from a deep knee bend, and right foot anchored firmly under the hips as the black-pants boxer on the right has his chin jolted sharply upward by the rising blow, lifting him onto his toes with both arms parting slightly as the torso arches back, clearly separate from the torso. The frame jolts sharply on impact as a crisp motion smear trails only the striking limb while both fighters' ink outlines stay razor-sharp. Pivoting into the counter, at a full arm's length apart, the black-pants boxer on the right slips his head briskly to the inside while loading weight onto the right hip and in the same continuous motion, the black-pants boxer on the right swings a compact horizontal hook with the right fist toward the temple with his left fist held high at the left temple, both arms separate from the torso, left foot planted as the front post, and right hip whipping through the arc as the crimson-trunks boxer on the left pivots sharply on his left foot to cut an outside angle while keeping his hands cocked with both fists poised at chin height in a balanced guard. The camera pushes in slightly to a tight medium-full framing as they trade in the pocket. In the decisive moment, at a full arm's length apart, the crimson-trunks boxer on the left drives a heavy straight punch with the right fist down the centerline toward the jaw with his left fist retracted tight against the left cheekbone in a high guard, both arms clearly separate from the torso, left leg braced firm at the front of the stance, and right hip and heel pivoting hard to drive the shoulder through as the black-pants boxer on the right has his jaw spun violently by the finishing blow, his knees buckling as he collapses onto his back on the canvas with both arms falling limp beside his shoulders as he hits the mat. The camera locks firmly on the side-profile exchange, holding briefly on the moment of impact as a clean shockwave ring ripples outward and sweat sprays from the jaw.",
+      "arm_B_reset_between_hits": "Hand-drawn anime martial arts animation. The crimson-trunks boxer on the left throws a left jab, then returns to a neutral standing guard and pauses. Next he throws a right cross, then returns to a neutral standing guard and pauses. Next he throws a left hook, then returns to a neutral standing guard.",
+      "owner_instruction": "Compare motion continuity across the exchange. Pass if Arm A reads as a continuous fluid fight and Arm B reads stiffer/stop-and-go."
+    }
+  },
+  "boxing_word_probes": [
+    {
+      "probe_id": "probe_boxing_bob_and_weave",
+      "move_id": "bob_and_weave",
+      "class": "EVADE.SLIP",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left dips his knees and rolls his head and shoulders in a tight U-shaped weave underneath the horizontal swing with his both fists held tight against the temples as the torso rolls, left knee bending and rising smoothly, and right leg transferring weight across the stance.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'bob_and_weave' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_body_elbow_tuck",
+      "move_id": "body_elbow_tuck",
+      "class": "BLOCK.PASSIVE",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left crunches his left elbow down tight against his hip and ribs to block the body shot with his right fist protecting the chin, both arms clearly visible, left leg absorbing the weight, and right foot planted firmly behind.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'body_elbow_tuck' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_body_jab",
+      "move_id": "body_jab",
+      "class": "STRIKE.LINEAR",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left drops his level slightly and spears a straight left fist into the solar plexus with his right glove held high beside the jaw, both arms distinct in silhouette, left knee bent deeply in a forward lunge, and right foot braced back on the ball of the foot.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'body_jab' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_burst_step_in",
+      "move_id": "burst_step_in",
+      "class": "LOCOMOTION.APPROACH",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left drives off his right foot in a sharp forward step to close the gap into striking range with his both fists held high in a tight guard with elbows tucked, left foot stepping briskly forward across the canvas, and right leg pushing off and sliding up to maintain stance width.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'burst_step_in' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_clinch_captured_react",
+      "move_id": "clinch_captured_react",
+      "class": "GRAPPLE.MAINTAIN",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left has his neck pulled forward into the clinch while his hands brace against the shoulders for posture with his both hands gripping the opponent's biceps to fight for inside control, left foot widened for base, and right leg bracing against the pull.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'clinch_captured_react' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_cross",
+      "move_id": "cross",
+      "class": "STRIKE.LINEAR",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left drives a heavy straight punch with the right fist down the centerline toward the jaw with his left fist retracted tight against the left cheekbone in a high guard, both arms clearly separate from the torso, left leg braced firm at the front of the stance, and right hip and heel pivoting hard to drive the shoulder through.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'cross' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_guard_reset_breathe",
+      "move_id": "guard_reset_breathe",
+      "class": "RECOVERY.RESET",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left settles his weight evenly between both feet and resets his fists to a balanced high guard with his both fists raised symmetrically beside the cheekbones, left foot planted comfortably forward, and right foot balanced shoulder-width behind.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'guard_reset_breathe' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_head_snap_back",
+      "move_id": "head_snap_back",
+      "class": "IMPACT.REACTION",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left has his head snapped sharply backward by the impact while his heels dig in to stay upright with his both arms jarring slightly wide from the force of the chin strike, both arms separate from the torso, left foot skidding slightly across the canvas, and right knee bending to catch the backward momentum.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'head_snap_back' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_head_snap_up",
+      "move_id": "head_snap_up",
+      "class": "IMPACT.REACTION",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left has his chin jolted sharply upward by the rising blow, lifting him onto his toes with his both arms parting slightly as the torso arches back, clearly separate from the torso, left knee straightening from the upward jolt, and right heel sliding back to catch balance.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'head_snap_up' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_head_whip_side",
+      "move_id": "head_whip_side",
+      "class": "IMPACT.REACTION",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left has his jaw whipped violently sideways in the direction of the hook as sweat sprays from his brow with his both gloved hands fighting to stay up near the jaw, clearly separate from the torso, left foot twisting slightly under the torque, and right leg bracing wide to keep from falling.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'head_whip_side' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_high_shell_guard",
+      "move_id": "high_shell_guard",
+      "class": "BLOCK.PASSIVE",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left locks both forearms tightly in front of his face in a rigid high shell guard to absorb the blow with his both forearms pressed vertically from jawline to forehead, elbows tucked in, left foot braced forward against the impact, and right heel digging into the canvas to halt the pushback.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'high_shell_guard' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_jab",
+      "move_id": "jab",
+      "class": "STRIKE.LINEAR",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left snaps a crisp straight punch with the left fist toward the chin with his right fist tucked tight at the right cheek in a high guard, both arms clearly separate from the torso, left foot planted forward on the canvas, and right heel raised, driving weight forward.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'jab' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_knockout_canvas_collapse",
+      "move_id": "knockout_canvas_collapse",
+      "class": "IMPACT.REACTION",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left has his jaw spun violently by the finishing blow, his knees buckling as he collapses onto his back on the canvas with his both arms falling limp beside his shoulders as he hits the mat, left leg folding beneath his weight, and right leg stretching out flat on the canvas.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'knockout_canvas_collapse' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_lead_hook",
+      "move_id": "lead_hook",
+      "class": "STRIKE.ARC_HORIZ",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left whips a tight horizontal hook with the left fist across the jaw with the elbow bent parallel to the floor with his right fist anchored high against the right jaw in a tight guard, both arms separate from the torso, left heel pivoting inward as the hip whips around, and right foot planted firmly to anchor the rotation.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'lead_hook' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_lead_liver_hook",
+      "move_id": "lead_liver_hook",
+      "class": "STRIKE.ARC_HORIZ",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left digs a tight shovel hook with the left fist underneath the elbow into the floating ribs with his right fist guarding the right cheek, both arms clearly separate from the torso, left knee dipped low to load the upward rib angle, and right foot braced wide on the canvas.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'lead_liver_hook' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_lead_palm_parry",
+      "move_id": "lead_palm_parry",
+      "class": "BLOCK.ACTIVE",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left slaps the incoming wrist aside with an open left palm parry while coiling his right shoulder with his right fist cocked tight by the right jaw ready to fire, both arms separate from the torso, left foot anchored forward, and right foot loaded on the ball of the foot.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'lead_palm_parry' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_lead_uppercut",
+      "move_id": "lead_uppercut",
+      "class": "STRIKE.ARC_VERT",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left drives a rising vertical uppercut with the left fist up through the guard into the underside of the chin with his right fist cocked tight by the right jaw, both arms clearly separate from the torso, left leg extending upward from a deep knee bend, and right foot anchored firmly under the hips.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'lead_uppercut' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_level_duck",
+      "move_id": "level_duck",
+      "class": "EVADE.LEVEL",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left drops his hips straight down into a low crouch underneath the high swing with his both forearms raised compactly beside the head, left knee deeply flexed in a low crouch, and right knee lowered close to the canvas.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'level_duck' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_outside_angle_step",
+      "move_id": "outside_angle_step",
+      "class": "EVADE.ROOT",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left pivots sharply on his left foot to cut an outside angle while keeping his hands cocked with his both fists poised at chin height in a balanced guard, left ball of the foot acting as the pivot post, and right foot swinging around into a fresh firing line.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'outside_angle_step' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_push_off_backstep",
+      "move_id": "push_off_backstep",
+      "class": "LOCOMOTION.RETREAT",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left pushes off his left foot to step backward and open breathing room with his both hands raised in front of the chin, left foot pushing backward off the canvas, and right foot reaching back to catch the weight.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'push_off_backstep' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_rear_body_straight",
+      "move_id": "rear_body_straight",
+      "class": "STRIKE.LINEAR",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left sinks his hips and drives a straight right fist deep into the midsection with his left fist held high at the temple, both arms separate from the torso, left knee flexed low in a wide base, and right heel turning outward as the hip drives.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'rear_body_straight' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_rear_hook",
+      "move_id": "rear_hook",
+      "class": "STRIKE.ARC_HORIZ",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left swings a compact horizontal hook with the right fist toward the temple with his left fist held high at the left temple, both arms separate from the torso, left foot planted as the front post, and right hip whipping through the arc.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'rear_hook' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_rear_overhand",
+      "move_id": "rear_overhand",
+      "class": "STRIKE.DOWNWARD",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left arcs a heavy looping overhand punch with the right fist down over the guard toward the temple with his left arm pulled back beside the ribcage for counterbalance, both arms separate from the torso, left knee bending deep as the torso pitches forward, and right foot pushing off hard from the canvas.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'rear_overhand' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_rear_uppercut",
+      "move_id": "rear_uppercut",
+      "class": "STRIKE.ARC_VERT",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left launches a vicious rising uppercut with the right fist straight up under the jaw with his left fist tucked high at the left cheek, both arms clearly separate from the torso, left foot planted firm at close quarters, and right knee and hip surging upward through the punch.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'rear_uppercut' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_slip_inside",
+      "move_id": "slip_inside",
+      "class": "EVADE.SLIP",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left slips his head briskly to the inside while loading weight onto the right hip with his both fists tucked high by the jaw in a tight guard, left foot planted forward, and right knee bending to coil the rear hip.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'slip_inside' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_slip_outside",
+      "move_id": "slip_outside",
+      "class": "EVADE.SLIP",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left slips his head sharply to the outside of the incoming punch while coiling his left shoulder with his both fists held tight beside the cheekbones in a compact high guard, left knee flexing to absorb the lateral weight shift, and right foot grounded in a stable boxing stance.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'slip_outside' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    },
+    {
+      "probe_id": "probe_boxing_torso_fold_rib_hit",
+      "move_id": "torso_fold_rib_hit",
+      "class": "IMPACT.REACTION",
+      "caption_prompt": "Hand-drawn anime martial arts animation with bold black ink linework. In a side-profile medium-wide shot, a lean boxer in crimson trunks on the left faces a heavy boxer in black pants on the right at arm's length. The crimson-trunks boxer on the left folds forward at the waist with a sharp exhale as the blow sinks into his ribs with his both elbows dropping instinctively toward the bruised ribs, clearly separate from the torso, left knee buckling slightly under the body shot, and right foot stepping back to stay upright.",
+      "owner_instruction": "Render once on target model; mark 'works' if the fighter cleanly executes 'torso_fold_rib_hit' with both arms distinct, 'partial' if sluggish, or 'fails' if wrong limb/pose."
+    }
+  ]
+}

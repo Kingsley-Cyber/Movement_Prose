@@ -1,0 +1,158 @@
+{
+  "meta": {
+    "description": "Central threshold registry (§0.2). Every threshold starts as 'hypothesis' until owner render evidence calibrates it.",
+    "updated_at": "2026-10-21"
+  },
+  "max_tier_3_moves_per_clip": {
+    "value": 1,
+    "status": "hypothesis",
+    "hypothesis_id": "H2",
+    "evidence_render_ids": []
+  },
+  "camera_slow_lock_on_tier_3": {
+    "value": false,
+    "status": "hypothesis",
+    "hypothesis_id": "H4",
+    "evidence_render_ids": []
+  },
+  "time_representation": {
+    "value": "words",
+    "status": "hypothesis",
+    "hypothesis_id": "H7",
+    "evidence_render_ids": []
+  },
+  "class_min_frames": {
+    "STRIKE.LINEAR": {
+      "value": 6,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "STRIKE.ARC_HORIZ": {
+      "value": 7,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "STRIKE.ARC_VERT": {
+      "value": 7,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "STRIKE.FULL_ROT": {
+      "value": 10,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "STRIKE.DOWNWARD": {
+      "value": 8,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "EVADE.SLIP": {
+      "value": 5,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "EVADE.ROOT": {
+      "value": 6,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "EVADE.LEVEL": {
+      "value": 6,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "BLOCK.PASSIVE": {
+      "value": 4,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "BLOCK.ACTIVE": {
+      "value": 5,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "GRAPPLE.ATTACH": {
+      "value": 6,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "GRAPPLE.MAINTAIN": {
+      "value": 6,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "GRAPPLE.RELEASE": {
+      "value": 6,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "LOCOMOTION.APPROACH": {
+      "value": 6,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "LOCOMOTION.RETREAT": {
+      "value": 6,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "LOCOMOTION.CIRCLE": {
+      "value": 6,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "RECOVERY.STAND": {
+      "value": 10,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "RECOVERY.RESET": {
+      "value": 5,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "IMPACT.REACTION": {
+      "value": 4,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "SWEEP.LOW_ROT": {
+      "value": 9,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "THROW.PROJECT": {
+      "value": 12,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    },
+    "TAKEDOWN.LEG": {
+      "value": 10,
+      "status": "hypothesis",
+      "hypothesis_id": "H7",
+      "evidence_render_ids": []
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "description": "Quarantine ledger (§10, V14). Pairs of move classes or move IDs that may not share a single clip due to render-observed temporal attention bleed.",
+    "updated_at": "2026-10-21"
+  },
+  "quarantined_class_pairs": [
+    {
+      "pair": ["SWEEP.LOW_ROT", "STRIKE.LINEAR"],
+      "status": "calibrated",
+      "evidence_note": "Owner observation: aerial/floor leg sweeps bleed into punch combinations when sharing a 10s clip.",
+      "evidence_render_ids": ["owner_obs_2026_10_21_sweep_in_punch_combo"]
+    }
+  ],
+  "quarantined_move_pairs": []
+}

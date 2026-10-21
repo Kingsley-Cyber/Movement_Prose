@@ -1,0 +1,97 @@
+{
+  "clip_id": "boxing_10_beat_competitive_exchange",
+  "regime": "standup_striking",
+  "initial_range": "kick",
+  "arena": "inside a Floodlit Underground Sand Arena",
+  "fighters": {
+    "A": {
+      "style": "boxing",
+      "stance": "orthodox",
+      "screen_side": "left",
+      "facing": "right",
+      "support": "standing",
+      "coil": "neutral",
+      "label": "a lean bare-knuckle boxer in crimson trunks with white wrist tape",
+      "short_name": "the crimson-trunks boxer on the left"
+    },
+    "B": {
+      "style": "boxing",
+      "stance": "orthodox",
+      "screen_side": "right",
+      "facing": "left",
+      "support": "standing",
+      "coil": "neutral",
+      "label": "a heavy muscular boxer in black pants with bare wrists",
+      "short_name": "the black-pants boxer on the right"
+    }
+  },
+  "moments": [
+    {
+      "frames": 6,
+      "camera": "side_track",
+      "A": {"move": "burst_step_in"},
+      "B": {"move": "slip_inside"}
+    },
+    {
+      "frames": 7,
+      "camera": "impact_jolt",
+      "A": {"move": "jab"},
+      "B": {"move": "lead_palm_parry"}
+    },
+    {
+      "frames": 8,
+      "camera": "impact_jolt",
+      "A": {"move": "high_shell_guard"},
+      "B": {"move": "cross"}
+    },
+    {
+      "frames": 8,
+      "camera": "pocket_push",
+      "A": {
+        "overlaps_move": "slip_outside",
+        "move": "lead_liver_hook"
+      },
+      "B": {"move": "torso_fold_rib_hit"}
+    },
+    {
+      "frames": 7,
+      "camera": "impact_jolt",
+      "A": {"move": "cross"},
+      "B": {"move": "head_snap_back"}
+    },
+    {
+      "frames": 8,
+      "camera": "pocket_push",
+      "A": {"move": "lead_hook"},
+      "B": {"move": "bob_and_weave"}
+    },
+    {
+      "frames": 7,
+      "camera": "impact_jolt",
+      "A": {"move": "body_elbow_tuck"},
+      "B": {"move": "rear_body_straight"}
+    },
+    {
+      "frames": 8,
+      "camera": "impact_jolt",
+      "A": {"move": "lead_uppercut"},
+      "B": {"move": "head_snap_up"}
+    },
+    {
+      "frames": 8,
+      "camera": "pocket_push",
+      "A": {"move": "outside_angle_step"},
+      "B": {
+        "overlaps_move": "slip_inside",
+        "move": "rear_hook"
+      }
+    },
+    {
+      "frames": 10,
+      "is_hero": true,
+      "camera": "hero_finisher_hold",
+      "A": {"move": "cross"},
+      "B": {"move": "knockout_canvas_collapse"}
+    }
+  ]
+}
