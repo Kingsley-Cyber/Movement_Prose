@@ -434,7 +434,7 @@ class TestFightMoveSystem(unittest.TestCase):
         self.assertEqual(scan_prompt_v18(canonical), [])
 
     def test_v18_compiler_splices_chain_as_fourth_segment(self) -> None:
-        prompt, res = compile_clip_prompt(self.valid_10_beat, lexicon=self.lexicon)
+        prompt, res = compile_clip_prompt(self.valid_10_beat, lexicon=self.lexicon, emit_chain_in_causal=True)
         self.assertTrue(res.ok)
         self.assertEqual(scan_prompt_v18(prompt), [])
         self.assertNotIn("chain_frames", prompt)
@@ -462,7 +462,7 @@ class TestFightMoveSystem(unittest.TestCase):
         override = "left toe pivots out > hips snap square > left shoulder drives forward > left fist lands on the jaw"
         clip["moments"][1]["A"]["chain"] = override
         clip["moments"][1]["A"]["chain_frames"] = [0, 2, 3, 5]
-        prompt, res = compile_clip_prompt(clip, lexicon=self.lexicon)
+        prompt, res = compile_clip_prompt(clip, lexicon=self.lexicon, emit_chain_in_causal=True)
         self.assertTrue(res.ok)
         self.assertIn(f"chain: {override} -> causes C02_jab", prompt)
         default_jab_chain = (

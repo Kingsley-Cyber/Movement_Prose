@@ -2102,7 +2102,7 @@
         "head snaps back",
         "chin rocked back"
       ],
-      "caption_words": "has his head snapped sharply backward by the impact while his heels dig in to stay upright, STAGGER: half-step heel jolt",
+      "caption_words": "has his head snapped sharply backward by the impact while his heels dig in to stay upright",
       "limb": "head",
       "hinge": "spine_arch",
       "path": "straight",
@@ -2203,7 +2203,7 @@
         "head whips sideways",
         "jaw spun"
       ],
-      "caption_words": "has his jaw whipped violently sideways in the direction of the hook as sweat sprays from his brow, STAGGER: sharp lead-foot twist",
+      "caption_words": "has his jaw whipped violently sideways in the direction of the hook as sweat sprays from his brow",
       "limb": "head",
       "hinge": "spine_arch",
       "path": "arc_horizontal",
@@ -2304,7 +2304,7 @@
         "chin lifted",
         "head jolted upward"
       ],
-      "caption_words": "has his chin jolted sharply upward by the rising blow, lifting him onto his toes, STAGGER: sharp toe-lift jolt",
+      "caption_words": "has his chin jolted sharply upward by the rising blow, lifting him onto his toes",
       "limb": "head",
       "hinge": "spine_arch",
       "path": "arc_vertical",
@@ -2407,7 +2407,7 @@
         "body fold",
         "ribs buckled"
       ],
-      "caption_words": "folds forward at the waist with a sharp exhale as the blow sinks into his ribs, STAGGER: half-step rib buckle",
+      "caption_words": "folds forward at the waist with a sharp exhale as the blow sinks into his ribs",
       "limb": "hips",
       "hinge": "spine_arch",
       "path": "straight",

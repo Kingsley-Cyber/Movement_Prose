@@ -5,20 +5,14 @@
   "arena": "rain-slicked neon-lit rooftop helipad cage arena overlooking a dark cyberpunk skyline, harsh magenta-and-cyan floodlights reflecting off wet concrete, octagonal chain-link perimeter fence in deep background shadow",
   "fighters": {
     "A": {
-      "style": "muay_thai",
+      "style": "mma",
       "stance": "orthodox",
       "screen_side": "left",
       "facing": "right",
       "support": "standing",
       "coil": "neutral",
       "label": "lean, razor-cut Muay Thai and MMA striker, shirtless bare torso, white cloth tape on both wrists/knuckles and gold ankle wraps, midnight-blue Vale Tudo fight shorts, bare feet",
-      "short_name": "the midnight-blue-shorts striker on the left",
-      "effort": {
-        "weight": "strong_snappy",
-        "time": "sudden",
-        "space": "direct",
-        "flow": "bound"
-      }
+      "short_name": "the midnight-blue-shorts striker on the left"
     },
     "B": {
       "style": "mma",
@@ -28,13 +22,7 @@
       "support": "standing",
       "coil": "neutral",
       "label": "heavyweight muscular Dutch kickboxer, shirtless broad scarred torso, urban-camo fight shorts, bare wrists and bare ankles with NO tape, bare feet",
-      "short_name": "the camo-shorts kickboxer on the right",
-      "effort": {
-        "weight": "heavy_crushing",
-        "time": "sudden_explosive",
-        "space": "direct",
-        "flow": "bound"
-      }
+      "short_name": "the camo-shorts kickboxer on the right"
     }
   },
   "moments": [

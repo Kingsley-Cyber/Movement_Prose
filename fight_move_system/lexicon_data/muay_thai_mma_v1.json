@@ -111,7 +111,7 @@
         "calf buckled",
         "leg chopped"
       ],
-      "caption_words": "has his {lead_leg} calf chopped sideways out from under him, his knee buckling inward as he catches his balance, STAGGER: half-step stumble",
+      "caption_words": "has his {lead_leg} calf chopped sideways out from under him, his knee buckling inward as he catches his balance",
       "limb": "lead_leg",
       "hinge": "knee_drive",
       "path": "arc_horizontal",
@@ -503,7 +503,7 @@
         "clinch knee reaction",
         "clinch body fold"
       ],
-      "caption_words": "jackknifes forward at the waist inside the clinch as the knee buries deep into his solar plexus, STAGGER: sharp toe-lift jolt",
+      "caption_words": "jackknifes forward at the waist inside the clinch as the knee buries deep into his solar plexus",
       "limb": "hips",
       "hinge": "spine_arch",
       "path": "straight",
@@ -697,7 +697,7 @@
         "shoved back",
         "pushed out of clinch"
       ],
-      "caption_words": "is shoved backward out of the clinch to full arm's length, his heels skidding across the floor as he catches his balance, STAGGER: sharp heel-skid check",
+      "caption_words": "is shoved backward out of the clinch to full arm's length, his heels skidding across the floor as he catches his balance",
       "limb": "hips",
       "hinge": "ankle_pivot",
       "path": "straight",
