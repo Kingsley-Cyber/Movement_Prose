@@ -1,0 +1,511 @@
+{
+ "request": "One strike and one block: A prepares, drives one straight strike, B blocks with a forearm at a visible contact point, A finishes while B recoils into a support step, both recover their guard.",
+ "scene_context": "A and B are distinct adult anime fighters facing each other in a stone courtyard. A wears a red jacket and B a blue jacket.",
+ "entities": {
+  "A": "A, the fighter in the red jacket",
+  "B": "B, the fighter in the blue jacket"
+ },
+ "clip": {
+  "editorial_fps": 24,
+  "duration_seconds": 3,
+  "frame_count": 72
+ },
+ "events": [
+  {
+   "event_id": "a_prepare",
+   "actor_id": "A",
+   "moment_type": "anticipation",
+   "start_frame": 0,
+   "end_frame": 12,
+   "target_id": null,
+   "depends_on": null,
+   "inherit_from": null,
+   "declared_prerequisites": []
+  },
+  {
+   "event_id": "a_strike",
+   "actor_id": "A",
+   "moment_type": "execution",
+   "start_frame": 12,
+   "end_frame": 24,
+   "target_id": "B",
+   "depends_on": null,
+   "inherit_from": null,
+   "declared_prerequisites": []
+  },
+  {
+   "event_id": "block_contact",
+   "actor_id": "A",
+   "moment_type": "impact",
+   "start_frame": 24,
+   "end_frame": 26,
+   "target_id": "B",
+   "depends_on": null,
+   "inherit_from": null,
+   "declared_prerequisites": []
+  },
+  {
+   "event_id": "a_finish",
+   "actor_id": "A",
+   "moment_type": "follow_through",
+   "start_frame": 26,
+   "end_frame": 40,
+   "target_id": null,
+   "depends_on": "block_contact",
+   "inherit_from": "a_strike",
+   "declared_prerequisites": []
+  },
+  {
+   "event_id": "b_recoil",
+   "actor_id": "B",
+   "moment_type": "recoil",
+   "start_frame": 26,
+   "end_frame": 44,
+   "target_id": null,
+   "depends_on": "block_contact",
+   "inherit_from": null,
+   "declared_prerequisites": []
+  },
+  {
+   "event_id": "a_guard",
+   "actor_id": "A",
+   "moment_type": "recovery",
+   "start_frame": 40,
+   "end_frame": 72,
+   "target_id": null,
+   "depends_on": "a_finish",
+   "inherit_from": "a_finish",
+   "declared_prerequisites": []
+  },
+  {
+   "event_id": "b_guard",
+   "actor_id": "B",
+   "moment_type": "recovery",
+   "start_frame": 44,
+   "end_frame": 72,
+   "target_id": null,
+   "depends_on": "b_recoil",
+   "inherit_from": "b_recoil",
+   "declared_prerequisites": []
+  }
+ ],
+ "selections": [
+  {
+   "directive_id": "aa_subject_loaded_silhouette",
+   "event_id": "a_prepare",
+   "start_frame": 0,
+   "end_frame": 12,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_env_preimpact_quiet",
+   "event_id": "a_prepare",
+   "start_frame": 0,
+   "end_frame": 12,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_action_weight_load",
+   "event_id": "a_prepare",
+   "start_frame": 0,
+   "end_frame": 12,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_secondary_cloth_lag",
+   "event_id": "a_prepare",
+   "start_frame": 0,
+   "end_frame": 12,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_time_hold_then_burst",
+   "event_id": "a_prepare",
+   "start_frame": 0,
+   "end_frame": 12,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_camera_low_tilt",
+   "event_id": "a_prepare",
+   "start_frame": 0,
+   "end_frame": 12,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_light_hard_shadow",
+   "event_id": "a_prepare",
+   "start_frame": 0,
+   "end_frame": 12,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_material_two_tone_cel",
+   "event_id": "a_prepare",
+   "start_frame": 0,
+   "end_frame": 12,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_subject_angular_pose",
+   "event_id": "a_strike",
+   "start_frame": 12,
+   "end_frame": 24,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_env_layered_parallax",
+   "event_id": "a_strike",
+   "start_frame": 12,
+   "end_frame": 24,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_action_hip_led_punch",
+   "event_id": "a_strike",
+   "start_frame": 12,
+   "end_frame": 24,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_secondary_hair_snap",
+   "event_id": "a_strike",
+   "start_frame": 12,
+   "end_frame": 24,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_time_mixed_exposures",
+   "event_id": "a_strike",
+   "start_frame": 12,
+   "end_frame": 24,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_camera_lateral_track",
+   "event_id": "a_strike",
+   "start_frame": 12,
+   "end_frame": 24,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_light_thin_rim",
+   "event_id": "a_strike",
+   "start_frame": 12,
+   "end_frame": 24,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_material_controlled_line_boil",
+   "event_id": "a_strike",
+   "start_frame": 12,
+   "end_frame": 24,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_action_forearm_block",
+   "event_id": "block_contact",
+   "start_frame": 24,
+   "end_frame": 26,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_secondary_angular_impact_star",
+   "event_id": "block_contact",
+   "start_frame": 24,
+   "end_frame": 26,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_time_contact_hitstop",
+   "event_id": "block_contact",
+   "start_frame": 24,
+   "end_frame": 26,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_camera_contact_lock",
+   "event_id": "block_contact",
+   "start_frame": 24,
+   "end_frame": 26,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_material_monochrome_impact",
+   "event_id": "block_contact",
+   "start_frame": 24,
+   "end_frame": 26,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_subject_costume_attachment",
+   "event_id": "a_finish",
+   "start_frame": 26,
+   "end_frame": 40,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_action_followthrough_arc",
+   "event_id": "a_finish",
+   "start_frame": 26,
+   "end_frame": 40,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_time_overlap_offsets",
+   "event_id": "a_finish",
+   "start_frame": 26,
+   "end_frame": 40,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_subject_recoil_identity",
+   "event_id": "b_recoil",
+   "start_frame": 26,
+   "end_frame": 44,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_action_absorb_recoil",
+   "event_id": "b_recoil",
+   "start_frame": 26,
+   "end_frame": 44,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_time_recoil_spacing",
+   "event_id": "b_recoil",
+   "start_frame": 26,
+   "end_frame": 44,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_env_skid_gouge",
+   "event_id": "b_recoil",
+   "start_frame": 26,
+   "end_frame": 40,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_subject_recovery_model",
+   "event_id": "a_guard",
+   "start_frame": 40,
+   "end_frame": 72,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_env_debris_settle",
+   "event_id": "a_guard",
+   "start_frame": 40,
+   "end_frame": 72,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_action_guard_recovery",
+   "event_id": "a_guard",
+   "start_frame": 40,
+   "end_frame": 72,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_secondary_cloth_settle",
+   "event_id": "a_guard",
+   "start_frame": 40,
+   "end_frame": 72,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_time_moving_hold",
+   "event_id": "a_guard",
+   "start_frame": 40,
+   "end_frame": 72,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_camera_recovery_settle",
+   "event_id": "a_guard",
+   "start_frame": 40,
+   "end_frame": 72,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_light_restore_key",
+   "event_id": "a_guard",
+   "start_frame": 40,
+   "end_frame": 72,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_material_restore_palette",
+   "event_id": "a_guard",
+   "start_frame": 40,
+   "end_frame": 72,
+   "actor_id": "A",
+   "target_id": "B",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_subject_recovery_model",
+   "event_id": "b_guard",
+   "start_frame": 44,
+   "end_frame": 72,
+   "actor_id": "B",
+   "target_id": "A",
+   "priority": null,
+   "suppressed_reason": null
+  },
+  {
+   "directive_id": "aa_action_guard_recovery",
+   "event_id": "b_guard",
+   "start_frame": 44,
+   "end_frame": 72,
+   "actor_id": "B",
+   "target_id": "A",
+   "priority": null,
+   "suppressed_reason": null
+  }
+ ],
+ "authored": [],
+ "contact_origins": {
+  "block_contact": "the visible meeting point of A's striking forearm and B's blocking forearm"
+ },
+ "editorial_operations": [
+  {
+   "operation": "hold_contact_drawing",
+   "frames": [
+    24,
+    25
+   ]
+  },
+  {
+   "operation": "monochrome_impact_accent",
+   "frames": [
+    24
+   ]
+  },
+  {
+   "operation": "angular_star_overlay",
+   "frames": [
+    24
+   ]
+  },
+  {
+   "operation": "restore_baseline_palette",
+   "frame": 25
+  }
+ ],
+ "taste_profile_id": "raw_street_brawl",
+ "matched_tags": [
+  "raw",
+  "street",
+  "brawl"
+ ],
+ "engine_profile_id": "generic_web_ui",
+ "schema_version": 1
+}

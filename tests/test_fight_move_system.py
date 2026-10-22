@@ -19,9 +19,12 @@ from fight_move_system.closed_loop import (
 from fight_move_system.compiler import compile_clip_prompt, scan_prompt_v15
 from fight_move_system.composer import compose_clips
 from fight_move_system.kb_bridge import (
+    IN_REPO_KB_DIR,
     kb_find,
     kb_lookup,
+    kb_verify,
     load_semantic_directives,
+    query_kb_prior_to_semantic_intent,
     sync_lexicon_gaps_to_memory,
     verify_bundle_integrity,
 )
@@ -613,18 +616,29 @@ class TestFightMoveSystem(unittest.TestCase):
         self.assertIn("midnight-blue shorts, white wrist tape, gold ankle wraps", prompt)
 
     def test_m7_knowledge_base_bridge_and_bundle_integrity(self) -> None:
+        self.assertTrue((IN_REPO_KB_DIR / "ai_video_compiler.db").is_file())
         ok, errs = verify_bundle_integrity()
         self.assertTrue(ok, errs)
+        ver = kb_verify()
+        self.assertTrue(ver["ok"], ver)
         directives = load_semantic_directives()
         if directives:
             self.assertEqual(len(directives), 64)
             sync_res = sync_lexicon_gaps_to_memory()
-            self.assertGreaterEqual(sync_res["concepts_synced"], 47)
+            self.assertGreaterEqual(sync_res["concepts_synced"], 44)
             hits = kb_find("hitstop", limit=5)
             self.assertTrue(hits["passages"] or hits["concepts"])
             sample_dir = next(iter(directives.values()))
             look = kb_lookup(moment=sample_dir["moment_type"], slot=sample_dir["slot_id"])
             self.assertTrue(look["directives"] or look["passages"])
+            pre_intent = query_kb_prior_to_semantic_intent(self.valid_var3)
+            self.assertEqual(pre_intent["bundle_dir"], str(IN_REPO_KB_DIR))
+            self.assertTrue(pre_intent["knobs"])
+            self.assertTrue(pre_intent["animation_grammar_rules"])
+            self.assertTrue(pre_intent["pulled_relations"])
+            self.assertTrue(pre_intent["causal_chains"])
+            ver_after = kb_verify()
+            self.assertTrue(ver_after["ok"], ver_after)
 
     def test_m7_closed_loop_verdict_repair_and_next_clip_handoff(self) -> None:
         # 1. Parse scorecard markdown

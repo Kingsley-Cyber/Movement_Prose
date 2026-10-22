@@ -1,0 +1,5 @@
+# derived, rebuilt from handbook.html in ~13 s; 75 MB
+handbook_index.db
+__pycache__/
+*.pyc
+.DS_Store

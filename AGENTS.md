@@ -17,8 +17,10 @@ Movement_Prose/
 │   ├── TWO_LAYER_FLUID_STACK_ARCHITECTURE.md                  # Deep-dive: Mode 1 (Single-Layer JSON) vs Mode 2 (--stack 2-Layer Fluid Stack)
 │   └── VARIATIONS_AND_FIGHTING_STYLES.md                      # Deep-dive: Decisions 21-25, Entity Fighting Styles & Variations vs Golden Baseline
 ├── scripts/
-│   ├── sakuga_compiler.py                                     # Deterministic CLI Compiler, 25-Rule Physics/Diversity/Style Linter & Stitcher
+│   ├── sakuga_compiler.py                                     # Original 05:34 (e91c686) Deterministic CLI Compiler & 17-Rule Physics Linter
 │   └── twelvelabs_bridge.py                                   # TwelveLabs Pegasus 1.2 Bridge (Mode A: Reference Extractor, Mode B: Render QA)
+├── knowledge_base/                                            # 📚 IN-REPO KNOWLEDGE BASE (`anime_action_research_bundle` + `agent/` + `runs/002_rooftop_cage_fight`)
+├── fight_move_system/                                         # 🚀 v2 Fight Move System + Pre-Intent KB Query Engine (`kb_bridge.py`) + Closed-Loop Repair (`closed_loop.py`)
 ├── examples/                                                  # ✅ ORIGINAL CANONICAL GOLDEN BASELINE PROMPTS (DO NOT OVERWRITE)
 │   ├── gold_master_1_blade_exchange.json                      # Golden #1 (Mode 1 Single-Layer JSON): Kunai vs. Blade Exchange
 │   ├── gold_master_2_disarm_dual_blade.json                   # Golden #2 (Mode 1 Single-Layer JSON): Wakizashi Disarm, Aerial Catch & X-Lock
@@ -106,8 +108,9 @@ python3 scripts/sakuga_compiler.py lint examples/gold_master_1_blade_exchange.js
 # 2. Lint 25-Decision Scene Graphs (Golden #3, #4 & Variations) with the Fluid Stack Scene Graph Linter:
 python3 -m fight_move_system.scene_graph_linter lint examples/*.json examples/variations/*.json
 
-# 3. Validate, Compile, Query KB, and Run Closed-Loop Repair via Fight Move System v2 CLI:
-python3 -m fight_move_system.cli kb-sync
+# 3. Query the in-repo Knowledge Base PRIOR to semantic intent, verify KB invariants, and compile:
+python3 -m fight_move_system.cli kb-verify
+python3 -m fight_move_system.cli kb-ask fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json --taste "heavy, brutal, old school" --follow 2 --discover 2
 python3 -m fight_move_system.cli compile fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json \
   --mode xperiment --schema sakuga_Xperiment \
   -o examples/variations/variation_3_eight_limbs_muay_thai_mma_war_sakuga_Xperiment.txt

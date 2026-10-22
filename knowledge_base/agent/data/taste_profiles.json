@@ -1,0 +1,307 @@
+{
+ "schema_version": 1,
+ "profiles": [
+  {
+   "taste_id": "gritty_90s_ova",
+   "human_vibe_tags": [
+    "heavy",
+    "brutal",
+    "old school",
+    "90s",
+    "ova",
+    "sharp shadows",
+    "grounded",
+    "hard key",
+    "held drawings",
+    "dark",
+    "cel",
+    "limited",
+    "gritty"
+   ],
+   "effort_quality": {
+    "weight": "strong",
+    "time": "sudden",
+    "space": "direct",
+    "flow": "bound"
+   },
+   "sub_genre_hint": "grounded_martial_arts",
+   "preferred_directives": {
+    "subject_anchor": [
+     "aa_subject_loaded_silhouette",
+     "aa_subject_costume_attachment",
+     "aa_subject_recoil_identity",
+     "aa_subject_recovery_model"
+    ],
+    "environment": [
+     "aa_env_preimpact_quiet",
+     "aa_env_skid_gouge",
+     "aa_env_debris_settle"
+    ],
+    "primary_action": [
+     "aa_action_weight_load",
+     "aa_action_hip_led_punch",
+     "aa_action_forearm_block",
+     "aa_action_absorb_recoil",
+     "aa_action_followthrough_arc",
+     "aa_action_guard_recovery"
+    ],
+    "secondary_motion": [
+     "aa_secondary_cloth_lag",
+     "aa_secondary_cape_overshoot",
+     "aa_secondary_cloth_settle"
+    ],
+    "temporal_cadence": [
+     "aa_time_hold_then_burst",
+     "aa_time_mixed_exposures",
+     "aa_time_contact_hitstop",
+     "aa_time_recoil_spacing",
+     "aa_time_moving_hold"
+    ],
+    "camera_optics": [
+     "aa_camera_low_tilt",
+     "aa_camera_contact_lock",
+     "aa_camera_recovery_settle"
+    ],
+    "lighting": [
+     "aa_light_hard_shadow",
+     "aa_light_restore_key"
+    ],
+    "material_shading": [
+     "aa_material_two_tone_cel",
+     "aa_material_expressive_rough",
+     "aa_material_monochrome_impact",
+     "aa_material_restore_palette"
+    ]
+   },
+   "avoid_directives": [
+    "aa_action_flash_step",
+    "aa_action_itano_evasion",
+    "aa_env_speed_void",
+    "aa_env_yutapon_cubes",
+    "aa_secondary_kanada_flame_dragon",
+    "aa_secondary_contact_ring",
+    "aa_secondary_angular_impact_star",
+    "aa_camera_crash_zoom",
+    "aa_camera_whip_reacquire",
+    "aa_camera_incoming_wide",
+    "aa_light_kagenashi",
+    "aa_light_thin_rim",
+    "aa_material_inverted_impact",
+    "aa_material_controlled_line_boil",
+    "aa_subject_multiple_limb_smear"
+   ],
+   "gaps": [
+    "film grain / cel dust",
+    "heavy ink line weight",
+    "dark saturated palette",
+    "blood / sweat",
+    "clinch / grab"
+   ],
+   "notes": "Effort quality is informational: no catalog row joins to Laban terms.",
+   "evidence_status": "untested_prompt_candidate"
+  },
+  {
+   "taste_id": "modern_ufotable_sakuga",
+   "human_vibe_tags": [
+    "fluid",
+    "sakuga",
+    "modern",
+    "dynamic camera",
+    "rim light",
+    "effects",
+    "cinematic",
+    "digital",
+    "smooth",
+    "particles",
+    "flashy",
+    "clean"
+   ],
+   "effort_quality": {
+    "weight": "strong",
+    "time": "sudden",
+    "space": "indirect",
+    "flow": "free"
+   },
+   "sub_genre_hint": "shonen_impact",
+   "preferred_directives": {
+    "subject_anchor": [
+     "aa_subject_foreshortened_fist",
+     "aa_subject_elastic_contact",
+     "aa_subject_recovery_model"
+    ],
+    "environment": [
+     "aa_env_layered_parallax",
+     "aa_env_speed_void",
+     "aa_env_radial_fracture",
+     "aa_env_yutapon_cubes",
+     "aa_env_layered_dust"
+    ],
+    "primary_action": [
+     "aa_action_hip_led_punch",
+     "aa_action_flash_step",
+     "aa_action_followthrough_arc"
+    ],
+    "secondary_motion": [
+     "aa_secondary_hair_snap",
+     "aa_secondary_kanada_flame_dragon",
+     "aa_secondary_contact_ring",
+     "aa_secondary_weapon_contrail"
+    ],
+    "temporal_cadence": [
+     "aa_time_mixed_exposures",
+     "aa_time_overlap_offsets",
+     "aa_time_contact_hitstop"
+    ],
+    "camera_optics": [
+     "aa_camera_lateral_track",
+     "aa_camera_crash_zoom",
+     "aa_camera_whip_reacquire",
+     "aa_camera_falling_track"
+    ],
+    "lighting": [
+     "aa_light_thin_rim",
+     "aa_light_silhouette_flash",
+     "aa_light_directional_lightning",
+     "aa_light_sparks_local"
+    ],
+    "material_shading": [
+     "aa_material_flat_debris_faces",
+     "aa_material_inverted_impact",
+     "aa_material_restore_palette"
+    ]
+   },
+   "avoid_directives": [
+    "aa_material_two_tone_cel",
+    "aa_material_controlled_line_boil",
+    "aa_material_expressive_rough",
+    "aa_material_charcoal_impact",
+    "aa_light_kagenashi",
+    "aa_time_pose_snapping"
+   ],
+   "gaps": [
+    "gradient / painterly shading",
+    "bloom / flare",
+    "3D orbit camera",
+    "particle systems",
+    "volumetric glow",
+    "the lightning and spark source events that aa_light_directional_lightning / aa_light_sparks_local presuppose"
+   ],
+   "notes": "Tension: aa_material_two_tone_cel's negatives forbid glossy rendering, which this taste wants; it is avoided rather than resolved.",
+   "evidence_status": "untested_prompt_candidate"
+  },
+  {
+   "taste_id": "raw_street_brawl",
+   "human_vibe_tags": [
+    "raw",
+    "scrappy",
+    "handheld",
+    "realistic",
+    "close",
+    "ugly",
+    "messy",
+    "grounded",
+    "no effects",
+    "sweaty",
+    "street",
+    "brawl"
+   ],
+   "effort_quality": {
+    "weight": "strong",
+    "time": "sudden",
+    "space": "direct",
+    "flow": "bound"
+   },
+   "sub_genre_hint": "grounded_martial_arts",
+   "preferred_directives": {
+    "subject_anchor": [
+     "aa_subject_loaded_silhouette",
+     "aa_subject_costume_attachment",
+     "aa_subject_recoil_identity",
+     "aa_subject_recovery_model"
+    ],
+    "environment": [
+     "aa_env_preimpact_quiet",
+     "aa_env_skid_gouge",
+     "aa_env_debris_settle"
+    ],
+    "primary_action": [
+     "aa_action_weight_load",
+     "aa_action_hip_led_punch",
+     "aa_action_forearm_block",
+     "aa_action_absorb_recoil",
+     "aa_action_followthrough_arc",
+     "aa_action_guard_recovery"
+    ],
+    "secondary_motion": [
+     "aa_secondary_cloth_lag",
+     "aa_secondary_hair_snap",
+     "aa_secondary_cloth_settle"
+    ],
+    "temporal_cadence": [
+     "aa_time_recoil_spacing",
+     "aa_time_contact_hitstop",
+     "aa_time_overlap_offsets",
+     "aa_time_moving_hold"
+    ],
+    "camera_optics": [
+     "aa_camera_contact_lock",
+     "aa_camera_lateral_track",
+     "aa_camera_recovery_settle"
+    ],
+    "lighting": [
+     "aa_light_hard_shadow",
+     "aa_light_restore_key"
+    ],
+    "material_shading": [
+     "aa_material_two_tone_cel",
+     "aa_material_expressive_rough",
+     "aa_material_restore_palette"
+    ]
+   },
+   "avoid_directives": [
+    "aa_subject_angular_pose",
+    "aa_subject_foreshortened_fist",
+    "aa_subject_multiple_limb_smear",
+    "aa_subject_elastic_contact",
+    "aa_action_flash_step",
+    "aa_action_itano_evasion",
+    "aa_env_speed_void",
+    "aa_env_layered_parallax",
+    "aa_env_radial_fracture",
+    "aa_env_yutapon_cubes",
+    "aa_env_layered_dust",
+    "aa_secondary_angular_impact_star",
+    "aa_secondary_contact_ring",
+    "aa_secondary_kanada_flame_dragon",
+    "aa_secondary_weapon_contrail",
+    "aa_secondary_cape_overshoot",
+    "aa_time_pose_snapping",
+    "aa_time_itano_depth",
+    "aa_camera_crash_zoom",
+    "aa_camera_whip_reacquire",
+    "aa_camera_incoming_wide",
+    "aa_camera_falling_track",
+    "aa_light_kagenashi",
+    "aa_light_thin_rim",
+    "aa_light_silhouette_flash",
+    "aa_light_directional_lightning",
+    "aa_light_sparks_local",
+    "aa_material_monochrome_impact",
+    "aa_material_inverted_impact",
+    "aa_material_charcoal_impact",
+    "aa_material_controlled_line_boil",
+    "aa_material_flat_debris_faces"
+   ],
+   "gaps": [
+    "handheld shake (aa_time_contact_hitstop calls shake a separate planned overlay)",
+    "close framing (aa_camera_contact_lock is medium-wide)",
+    "clinch / takedown",
+    "sweat / blood",
+    "fatigue breathing",
+    "slip / evasion"
+   ],
+   "notes": "",
+   "evidence_status": "untested_prompt_candidate"
+  }
+ ]
+}

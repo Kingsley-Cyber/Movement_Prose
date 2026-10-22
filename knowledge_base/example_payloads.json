@@ -1,0 +1,432 @@
+{
+  "schema_version": 1,
+  "slot_order": [
+    "subject_anchor",
+    "environment",
+    "primary_action",
+    "secondary_motion",
+    "temporal_cadence",
+    "camera_optics",
+    "lighting",
+    "material_shading"
+  ],
+  "examples": [
+    {
+      "example_id": "windup_eight_slots",
+      "require_all_slots": true,
+      "moment_type": "anticipation",
+      "editorial_fps": 24,
+      "interval_convention": "zero-based [start_frame,end_frame)",
+      "context": "A and B are distinct adult anime fighters facing each other in a stone courtyard. A wears a red jacket and B a blue jacket. This shot shows only A preparing one strike; the release belongs to the next beat.",
+      "bindings": {
+        "actor": "A, the fighter in the red jacket",
+        "target": "B, the fighter in the blue jacket",
+        "contact_origin": "the visible meeting point of A's striking forearm and B's blocking forearm"
+      },
+      "declared_prerequisites": [],
+      "inherited_state": {},
+      "selections": [
+        {
+          "directive_id": "aa_subject_loaded_silhouette",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 0,
+          "end_frame": 12
+        },
+        {
+          "directive_id": "aa_env_preimpact_quiet",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 0,
+          "end_frame": 12
+        },
+        {
+          "directive_id": "aa_action_weight_load",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 0,
+          "end_frame": 12
+        },
+        {
+          "directive_id": "aa_secondary_cloth_lag",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 0,
+          "end_frame": 12
+        },
+        {
+          "directive_id": "aa_time_hold_then_burst",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 0,
+          "end_frame": 12
+        },
+        {
+          "directive_id": "aa_camera_low_tilt",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 0,
+          "end_frame": 12
+        },
+        {
+          "directive_id": "aa_light_hard_shadow",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 0,
+          "end_frame": 12
+        },
+        {
+          "directive_id": "aa_material_two_tone_cel",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 0,
+          "end_frame": 12
+        }
+      ],
+      "compiled_positive_prompt": "A and B are distinct adult anime fighters facing each other in a stone courtyard. A wears a red jacket and B a blue jacket. This shot shows only A preparing one strike; the release belongs to the next beat. During the windup, keep A, the fighter in the red jacket recognizable by the same face, hair outline and costume panels. Separate both forearms from the torso in silhouette; draw taut diagonal folds across the loaded shoulder while the supporting foot remains visible. Before the release, preserve the courtyard floor in its established state, keeping pre-existing cracks, tile boundaries and loose stones fixed. Leave a clear patch of ground beneath A, the fighter in the red jacket's support foot so the upcoming displacement has a stable visual reference. Before striking, A, the fighter in the red jacket lowers the pelvis over the rear support leg, bends the rear knee and draws the striking elbow back. The chest turns slightly away from B, the fighter in the blue jacket; the rear foot keeps firm ground contact until the forward drive begins. As A, the fighter in the red jacket draws back into the windup, the loose jacket hem initially lags behind the torso, then catches up in a small fold. Keep the collar and cuffs attached; the fabric movement remains subordinate to the loaded body pose. Let the preparation pose register as a deliberate still hold, then release into a sudden short acceleration. The pause belongs before movement; preserve a clear contrast between restrained anticipation and fast execution. Frame the loaded fighter from slightly below waist height in a three-quarter full-body view, with a modest diagonal horizon. Keep the face, striking arm and both feet inside the frame; maintain this composition during the windup. During the preparation, illuminate A, the fighter in the red jacket from one fixed side and place a crisp, unsoftened shadow shape across the opposite cheek and torso. Keep the lit and shadow regions stable as the pose holds, preserving readable eyes and costume edges. Render the held preparation with solid local-color fills and one sharply bounded darker shade per material. Preserve consistent black contours, simple readable folds and distinct skin, fabric and metal color regions.",
+      "compiled_negative_candidate": "merged forearms, costume redesign, hair topology changes, detached sleeves, premature explosion, drifting floor texture, moving horizon, floating support stones, floating planted foot, sliding support heel, knee bending backward, strike before weight load, cloth moving before the body, detached jacket, endless flag flapping, fabric fused with hands, uniform motion speed, constant slow motion, interpolated drift during the hold, repeated micro-windups, uncontrolled rolling horizon, cropped support feet, extreme facial stretch, constant orbit, soft airbrushed face gradient, migrating light source, glossy plastic highlights, flickering shadow boundaries, airbrushed gradients, clay skin, photoreal pores, muddy textured fills, glossy plastic fabric",
+      "dispatch_status": "intermediate_compilation_example_not_an_API_request",
+      "notes": [
+        "Choose an exact engine profile before dispatch. Do not send JSON control metadata as if it were a supported API schema.",
+        "The positive text is a soft prompt candidate. Frame exact exposure and single-frame effects require an editorial/reference route.",
+        "Negative candidates are not proven effective and are emitted only through a supported active conditioning path."
+      ]
+    },
+    {
+      "example_id": "travel_eight_slots",
+      "require_all_slots": true,
+      "moment_type": "execution",
+      "editorial_fps": 24,
+      "interval_convention": "zero-based [start_frame,end_frame)",
+      "context": "A and B are distinct adult anime fighters on an industrial walkway. A wears a red jacket and B a blue jacket. A delivers one forward straight punch toward B. Nearby beams, distant buildings and a dark skyline establish depth; one backlight separates the fighters.",
+      "bindings": {
+        "actor": "A, the fighter in the red jacket",
+        "target": "B, the fighter in the blue jacket",
+        "contact_origin": "the visible meeting point of A's striking forearm and B's blocking forearm"
+      },
+      "declared_prerequisites": [],
+      "inherited_state": {},
+      "selections": [
+        {
+          "directive_id": "aa_subject_angular_pose",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 12,
+          "end_frame": 24
+        },
+        {
+          "directive_id": "aa_env_layered_parallax",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 12,
+          "end_frame": 24
+        },
+        {
+          "directive_id": "aa_action_hip_led_punch",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 12,
+          "end_frame": 24
+        },
+        {
+          "directive_id": "aa_secondary_hair_snap",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 12,
+          "end_frame": 24
+        },
+        {
+          "directive_id": "aa_time_mixed_exposures",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 12,
+          "end_frame": 24
+        },
+        {
+          "directive_id": "aa_camera_lateral_track",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 12,
+          "end_frame": 24
+        },
+        {
+          "directive_id": "aa_light_thin_rim",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 12,
+          "end_frame": 24
+        },
+        {
+          "directive_id": "aa_material_controlled_line_boil",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 12,
+          "end_frame": 24
+        }
+      ],
+      "compiled_positive_prompt": "A and B are distinct adult anime fighters on an industrial walkway. A wears a red jacket and B a blue jacket. A delivers one forward straight punch toward B. Nearby beams, distant buildings and a dark skyline establish depth; one backlight separates the fighters. On the decisive action drawing, construct A, the fighter in the red jacket from bold wedges: a triangular torso, a sharply bent leading elbow and a clean zigzag line of action. Keep the face and costume markings identifiable inside the angular silhouette. During the lateral pursuit, move nearby structural beams fastest across the frame, the middle-distance buildings more slowly and the distant skyline slowest. Preserve each layer's shape and the same horizon while A, the fighter in the red jacket remains clearly separated from the background. A, the fighter in the red jacket drives from the rear foot and rotates the pelvis toward B, the fighter in the blue jacket; the shoulder follows, then the fist extends along one clear path. Keep the opposite hand near the face and finish the strike without locking the elbow backward. As A, the fighter in the red jacket accelerates, the existing hair clumps trail opposite the head's motion, then snap toward their resting shape when the head changes speed. Keep the same clump count and scalp attachment throughout the action. Use clearly held drawings through the readable poses, then use a brief run of distinct fast-transition drawings during the strike. Return to held drawings once the action resolves; preserve the intentional difference in drawing cadence. Track sideways with A, the fighter in the red jacket at a steady relative distance, keeping the leading hand and intended contact area inside a medium-wide frame. Let the background move laterally while the action axis and the fighters' left-right order remain clear. Use a narrow bright rim along the side of A, the fighter in the red jacket facing the fixed backlight, separating the moving silhouette from the dark background. Keep the interior colors flat; the rim follows visible edges instead of filling the body with glow. Allow a slight hand-redrawn variation in the ink contour from drawing to drawing while preserving A, the fighter in the red jacket's pose structure, facial landmarks and costume boundaries. Keep the interior color fills stable so the contour feels alive without the body changing shape.",
+      "compiled_negative_candidate": "rounded clay anatomy, melted elbows, changing costume symbols, plush surface shading, all layers sliding at one speed, bending buildings, moving horizon independent of camera, liquid scenery, arm detached from torso, reversed elbow, fist teleporting between poses, support foot skating, new hair strands growing, detached wig, hair fused into speed lines, scalp sliding, uniform optical-flow smoothing, blended in-between frames, identical cadence across every phase, motionless strike, unmotivated orbit, axis crossing, subject slipping out of frame, camera pulling away from contact, full-body neon fill, blooming outline hiding limbs, rim on every unrelated edge, glossy bevels, silhouette crawling, face deformation, flickering fill colors, excessive scratch noise, rigid vector perfection",
+      "dispatch_status": "intermediate_compilation_example_not_an_API_request",
+      "notes": [
+        "Choose an exact engine profile before dispatch. Do not send JSON control metadata as if it were a supported API schema.",
+        "The positive text is a soft prompt candidate. Frame exact exposure and single-frame effects require an editorial/reference route.",
+        "Negative candidates are not proven effective and are emitted only through a supported active conditioning path."
+      ]
+    },
+    {
+      "example_id": "recovery_eight_slots",
+      "require_all_slots": true,
+      "moment_type": "recovery",
+      "editorial_fps": 24,
+      "interval_convention": "zero-based [start_frame,end_frame)",
+      "context": "After a completed exchange in a damaged stone courtyard, A and B remain distinct adult anime fighters. A wears a red jacket and B a blue jacket. The crater and fallen blocks already exist; this shot shows A recovering without another attack.",
+      "bindings": {
+        "actor": "A, the fighter in the red jacket",
+        "target": "B, the fighter in the blue jacket",
+        "contact_origin": "the visible meeting point of A's striking forearm and B's blocking forearm"
+      },
+      "declared_prerequisites": [
+        "established_damage_state"
+      ],
+      "inherited_state": {},
+      "selections": [
+        {
+          "directive_id": "aa_subject_recovery_model",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 44,
+          "end_frame": 72
+        },
+        {
+          "directive_id": "aa_env_debris_settle",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 44,
+          "end_frame": 72
+        },
+        {
+          "directive_id": "aa_action_guard_recovery",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 44,
+          "end_frame": 72
+        },
+        {
+          "directive_id": "aa_secondary_cloth_settle",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 44,
+          "end_frame": 72
+        },
+        {
+          "directive_id": "aa_time_moving_hold",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 44,
+          "end_frame": 72
+        },
+        {
+          "directive_id": "aa_camera_recovery_settle",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 44,
+          "end_frame": 72
+        },
+        {
+          "directive_id": "aa_light_restore_key",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 44,
+          "end_frame": 72
+        },
+        {
+          "directive_id": "aa_material_restore_palette",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 44,
+          "end_frame": 72
+        }
+      ],
+      "compiled_positive_prompt": "After a completed exchange in a damaged stone courtyard, A and B remain distinct adult anime fighters. A wears a red jacket and B a blue jacket. The crater and fallen blocks already exist; this shot shows A recovering without another attack. In the recovery pose, return A, the fighter in the red jacket to the established face proportions, hand size and full body silhouette. Keep the same hairstyle, costume damage and left-right markings; the final readable pose matches the character established before the exchange. As the exchange settles, keep the new crater, cracks and fallen blocks in their established positions. Let only the last few small chips bounce to rest; the thinning dust reveals the same damaged ground beneath the recovering fighters. After the motion has finished, A, the fighter in the red jacket brings the striking hand back toward the face, squares the stance toward B, the fighter in the blue jacket and settles the pelvis between the supporting feet. Finish in a stable guard with a small visible breath. As A, the fighter in the red jacket reaches the recovered stance, let the jacket hem make one small overshoot and a smaller return before resting. Keep the shoulders and cuffs fixed; the cloth settles while the body maintains a quiet breathing pose. Finish with a readable recovered pose held long enough to register, while a small chest breath and a final cloth settle preserve life. Keep the gesture and center of balance stable during these subtle changes. Ease the camera to a complete stop as A, the fighter in the red jacket completes recovery, ending in a medium-wide composition that shows the guard and supporting feet. Keep the final horizon and subject size stable during the closing hold. During recovery, restore the same key-light direction and shadow policy established before the clash, with shadow placement following the new pose. Keep any new physical damage visible, but let the temporary attack illumination finish so the final guard reads under stable scene lighting. In the recovered pose, restore the exact established costume colors, skin colors and contour weight after any impact treatment. Preserve new dirt, tears and damage as localized changes while the rest of the character returns to the baseline cel rendering.",
+      "compiled_negative_candidate": "residual stretched limbs, reset costume damage, swapped left-right markings, new hairstyle, restored pristine ground, disappearing blocks, new unexplained crater, perpetual dust eruption, instant teleport to idle, endlessly repeated punch, floating feet, frozen distorted hand, endless cloth flutter, floating sleeve anchors, garment snapping to a new design, repeated large cape waves, total mannequin freeze, large idle sway, looping attack restart, drifting feet, endless drift, unwanted zoom, horizon wobble, cropped final stance, lingering attack glow, random light-source change, reset surface damage, alternating bright and dark frames, lingering inverted colors, entire outfit recolored, erased battle damage, changing outline thickness",
+      "dispatch_status": "intermediate_compilation_example_not_an_API_request",
+      "notes": [
+        "Choose an exact engine profile before dispatch. Do not send JSON control metadata as if it were a supported API schema.",
+        "The positive text is a soft prompt candidate. Frame exact exposure and single-frame effects require an editorial/reference route.",
+        "Negative candidates are not proven effective and are emitted only through a supported active conditioning path."
+      ]
+    },
+    {
+      "example_id": "block_contact_overrides",
+      "require_all_slots": false,
+      "moment_type": "impact",
+      "editorial_fps": 24,
+      "interval_convention": "zero-based [start_frame,end_frame)",
+      "context": "A in the red jacket throws one straight strike; B in the blue jacket blocks it with the outside of a raised forearm. Their feet remain grounded and their torsos distinct. Keep the courtyard geometry intact throughout this contact.",
+      "bindings": {
+        "actor": "A, the fighter in the red jacket",
+        "target": "B, the fighter in the blue jacket",
+        "contact_origin": "the visible meeting point of A's striking forearm and B's blocking forearm"
+      },
+      "declared_prerequisites": [
+        "actor_target_contact"
+      ],
+      "inherited_state": {
+        "subject_anchor": "Existing character sheets and readable connected anatomy.",
+        "environment": "Courtyard remains intact; no surface-destruction event is authorized.",
+        "lighting": "The established key persists beneath the bounded monochrome image treatment."
+      },
+      "selections": [
+        {
+          "directive_id": "aa_action_forearm_block",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 24,
+          "end_frame": 26
+        },
+        {
+          "directive_id": "aa_secondary_angular_impact_star",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 24,
+          "end_frame": 26
+        },
+        {
+          "directive_id": "aa_time_contact_hitstop",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 24,
+          "end_frame": 26
+        },
+        {
+          "directive_id": "aa_camera_contact_lock",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 24,
+          "end_frame": 26
+        },
+        {
+          "directive_id": "aa_material_monochrome_impact",
+          "actor_id": "A",
+          "target_id": "B",
+          "start_frame": 24,
+          "end_frame": 26
+        }
+      ],
+      "compiled_positive_prompt": "A in the red jacket throws one straight strike; B in the blue jacket blocks it with the outside of a raised forearm. Their feet remain grounded and their torsos distinct. Keep the courtyard geometry intact throughout this contact. At the contact beat, B, the fighter in the blue jacket meets A, the fighter in the red jacket's incoming forearm with the outside of one raised forearm. Show the two distinct limbs touching at one visible point; the defender's elbow remains bent and both torsos stay separated. On contact, place a sharp asymmetrical starburst exactly at the visible meeting point of A's striking forearm and B's blocking forearm. Use a few long tapered spikes aligned with the force direction and shorter cross-spikes; the graphic burst clears immediately so both contacting limbs remain readable afterward. Pause the contacting fighters on the clearest contact drawing for a brief beat, then release into recoil and follow-through. Keep their relative contact position fixed during the pause; secondary effects may continue only if separately authored. Hold a stable side or three-quarter medium-wide camera at the contact beat. Keep both contacting limbs, the defender's torso and enough ground for balance in view; give the exact touch point a clear silhouette against the background. On the single designated contact drawing, replace the normal palette with stark black and white shapes and a few directional ink cuts around the collision. Keep the contacting limbs recognizable, then restore the established colors on the next clean drawing.",
+      "compiled_negative_candidate": "merged fighters, fused forearms, contact across empty space, palm passing through wrist, persistent star object, burst before contact, full-screen opaque explosion, rounded jelly splat, recoil before touch, prolonged frozen clip, blended contact frames, continued fist penetration during pause, whip pan across impact, hidden contact point, cropped hands, sudden lens change, permanent grayscale sequence, muddy gray gradients, unreadable merged bodies, crossfaded palette transition",
+      "dispatch_status": "intermediate_compilation_example_not_an_API_request",
+      "notes": [
+        "Choose an exact engine profile before dispatch. Do not send JSON control metadata as if it were a supported API schema.",
+        "The positive text is a soft prompt candidate. Frame exact exposure and single-frame effects require an editorial/reference route.",
+        "Negative candidates are not proven effective and are emitted only through a supported active conditioning path."
+      ]
+    }
+  ],
+  "sequence_plan": {
+    "description": "Illustrative single block exchange; separate from the three independent coverage fixtures.",
+    "editorial_fps": 24,
+    "frame_count": 72,
+    "duration_seconds": 3,
+    "contact_frame": 24,
+    "is_model_request": false,
+    "events": [
+      {
+        "event_id": "a_prepare",
+        "actor_id": "A",
+        "moment_type": "anticipation",
+        "start_frame": 0,
+        "end_frame": 12
+      },
+      {
+        "event_id": "a_strike",
+        "actor_id": "A",
+        "target_id": "B",
+        "moment_type": "execution",
+        "start_frame": 12,
+        "end_frame": 24
+      },
+      {
+        "event_id": "block_contact",
+        "actor_id": "A",
+        "target_id": "B",
+        "moment_type": "impact",
+        "start_frame": 24,
+        "end_frame": 26
+      },
+      {
+        "event_id": "a_finish",
+        "actor_id": "A",
+        "moment_type": "follow_through",
+        "start_frame": 26,
+        "end_frame": 40,
+        "depends_on": "block_contact"
+      },
+      {
+        "event_id": "b_recoil",
+        "actor_id": "B",
+        "moment_type": "recoil",
+        "start_frame": 26,
+        "end_frame": 44,
+        "depends_on": "block_contact"
+      },
+      {
+        "event_id": "a_guard",
+        "actor_id": "A",
+        "moment_type": "recovery",
+        "start_frame": 40,
+        "end_frame": 72,
+        "depends_on": "a_finish"
+      },
+      {
+        "event_id": "b_guard",
+        "actor_id": "B",
+        "moment_type": "recovery",
+        "start_frame": 44,
+        "end_frame": 72,
+        "depends_on": "b_recoil"
+      }
+    ],
+    "editorial_operations": [
+      {
+        "operation": "hold_contact_drawing",
+        "frames": [
+          24,
+          25
+        ]
+      },
+      {
+        "operation": "monochrome_impact_accent",
+        "frames": [
+          24
+        ]
+      },
+      {
+        "operation": "angular_star_overlay",
+        "frames": [
+          24
+        ]
+      },
+      {
+        "operation": "restore_baseline_palette",
+        "frame": 25
+      }
+    ],
+    "camera": "Stable three-quarter medium-wide shot; both feet and contact visible.",
+    "text_candidate": "In a stone courtyard, A in a red jacket faces B in a blue jacket. Draw both as crisp 2D anime characters with flat colors and clear connected limbs. A lowers into a loaded stance, briefly holds, then drives one straight strike from the rear foot through the hips and shoulder. B intercepts A's forearm with one raised forearm at a clearly visible touch point. Hold that contact briefly, then let A finish the movement as B recoils into a support step. Both recover their guards. Keep the camera in a stable three-quarter medium-wide view and preserve the intact ground. Use strong readable poses with brief fast transitions.",
+    "negative_candidate": "merged fighters, disconnected elbows, sliding support feet, repeated attack loop, costume swaps, clay skin, soft blended contours",
+    "intent_not_in_text": [
+      "Exact24fps exposure schedule",
+      "Single-frame monochrome and star overlay",
+      "Numerical actor trajectories and collision constraints"
+    ],
+    "acceptance": [
+      "Visible forearm contact at frame24 in the authored editorial plan.",
+      "A follow-through and B recoil overlap after contact.",
+      "Exactly two persistent fighters throughout.",
+      "No damage added to the intact courtyard.",
+      "Both fighters reach balanced guards by the closing interval."
+    ],
+    "limitation": "This is a reviewable plan. It does not claim a model will obey the exact frames or that a 3-second request is supported by every endpoint."
+  }
+}

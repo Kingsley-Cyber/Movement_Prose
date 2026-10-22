@@ -1,0 +1,303 @@
+{
+  "checked_on": "2026-10-20",
+  "source_policy": "Primary documentation, direct testimony and explicitly marked access-limited leads. Original authored prompts are not empirical findings.",
+  "sources": [
+    {
+      "source_id": "P_TIMING",
+      "title": "Toon Boom: set drawing exposure",
+      "url": "https://helpcentre.toonboom.com/hc/en-ca/articles/41575716406547-How-do-I-change-my-drawings-to-all-have-the-same-exposure",
+      "source_kind": "official_documentation",
+      "supported_scope": "Drawing exposure can be set to one, two, three or a custom number of frames.",
+      "limits": "This is an animation-authoring control, not a video-model prompt guarantee.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "P_LAYER_TIMING",
+      "title": "Toon Boom: drawing timing and transformation timing",
+      "url": "https://helpcentre.toonboom.com/hc/en-ca/articles/44801397155347-How-do-I-change-my-animation-timing-without-permanently-changing-my-keyframes-or-drawings",
+      "source_kind": "official_documentation",
+      "supported_scope": "Drawing-layer and transformation-layer timing are independently controllable.",
+      "limits": "Tool capabilities do not prove the named generative engines implement equivalent controls.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "P_PRINCIPLES",
+      "title": "Adobe: principles of animation",
+      "url": "https://www.adobe.com/creativecloud/animation/discover/principles-of-animation.html",
+      "source_kind": "official_instructional_documentation",
+      "supported_scope": "General principles of anticipation, staging, overlap, follow-through, exaggeration and arcs.",
+      "limits": "The catalog's exact combat poses, timings and risk hypotheses are original design proposals, not summaries or empirical findings from this source.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "P_RETIME",
+      "title": "Adobe: time effects",
+      "url": "https://helpx.adobe.com/after-effects/desktop/apply-effects-and-animation-presets/list-of-effects/time-effects.html",
+      "source_kind": "official_documentation",
+      "supported_scope": "Distinguishes duplicate whole frames, frame blending and pixel-motion synthesis; documents Posterize Time.",
+      "limits": "A post effect cannot repair an incorrect source pose or recover ungenerated action.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "P_SPEED_LINES",
+      "title": "Clip Studio Paint: speed and focus lines",
+      "url": "https://help.clip-studio.com/en-us/manual_en/540_comic/Speed_lines_and_Focus_lines.htm",
+      "source_kind": "official_documentation",
+      "supported_scope": "Directional speed lines and convergent focus lines have distinct controllable geometry.",
+      "limits": "Compiler restoration and actor-protection rules are authored choices.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "P_LINE_BOIL",
+      "title": "WildBrain artists on line boil, via Toon Boom",
+      "url": "https://www.toonboom.com/wilbrain-studios-snoopy-presents-special",
+      "source_kind": "first_person_production_interview",
+      "supported_scope": "Small contour variation can recreate a hand-redrawn look; line, texture and deformation boil are separable.",
+      "limits": "Not evidence that line boil is a universal Sushio or Imaishi characteristic.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "P_CAMERA",
+      "title": "Adobe: cameras, lights and points of interest",
+      "url": "https://helpx.adobe.com/after-effects/desktop/work-with-layers/camera-layer/cameras-lights-points-interest.html",
+      "source_kind": "official_documentation",
+      "supported_scope": "Camera position, orientation and field of view are separate properties.",
+      "limits": "Catalog camera staging and contact windows are original editorial prescriptions.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "P_LIGHTING",
+      "title": "Adobe: camera and light properties",
+      "url": "https://helpx.adobe.com/after-effects/desktop/work-with-layers/camera-layer/cameras-lights-points-interest.html",
+      "source_kind": "official_documentation",
+      "supported_scope": "Light direction, shadow softness, intensity and distance falloff are distinct controls.",
+      "limits": "No numeric anime-generation lighting preset is established.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "P_LENS",
+      "title": "Nikon: fisheye viewpoint examples",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/something-different-a-new-lens-for-new-views",
+      "source_kind": "manufacturer_first_person_photography_feature",
+      "supported_scope": "Fisheye projection and viewpoint produce characteristic curved wide views.",
+      "limits": "No specific AI lens millimeter setting or guaranteed anatomical preservation is claimed.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "P_TOON",
+      "title": "Adobe: Cartoon and stylize effects",
+      "url": "https://helpx.adobe.com/after-effects/desktop/apply-effects-and-animation-presets/list-of-effects/stylize-effects.html",
+      "source_kind": "official_documentation",
+      "supported_scope": "Edge rendering, color quantization and shading smoothness are separable image operations.",
+      "limits": "A cartoon filter is not a substitute for authored anime drawings; exact two-tone designs here are original recipes.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "I_NAKAMURA",
+      "title": "Anime Style: Nakamura original cube-fragment illustration",
+      "url": "https://animestyle.jp/shop/archives/1557",
+      "source_kind": "artist_work_published_by_commissioning_publisher",
+      "supported_scope": "Publisher identifies cubic fragments as a motif familiar from Nakamura's work.",
+      "limits": "Does not establish invention or the origin of the fan nickname Yutapon cubes.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "I_NAKAMURA_TIMING",
+      "title": "Nakamura interview, WEB Anime Style 2003, translated 2016",
+      "url": "https://wavemotioncannon.com/2016/10/05/interview-yutaka-nakamura-web-anime-style-7192003-part-1/",
+      "source_kind": "translated_primary_interview",
+      "supported_scope": "Nakamura discusses quick/slow contrasts before a sword lands and animation on ones.",
+      "limits": "The translation was readable; the original style.fm page could not be retrieved. No universal bounce formula is supported.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "I_KANADA",
+      "title": "Makiko Kanada and Masatsune Noguchi interview",
+      "url": "https://animetudes.com/2023/07/21/remembering-yoshinori-kanada/",
+      "source_kind": "firsthand_witness_interview",
+      "supported_scope": "Witnesses describe scale, perspective/layout decisions and timing experiments.",
+      "limits": "Specific fist and pose-snapping recipes are authored interpretations; not every perspective error is intentional.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "I_TRIGGER",
+      "title": "TRIGGER interview on Promare",
+      "url": "https://otakuusamagazine.com/power-promare-interview-studio-trigger/",
+      "source_kind": "direct_studio_interview",
+      "supported_scope": "Studio confirms Imaishi's Kanada influence and discusses fire dragons and hand-drawn/3DCG integration.",
+      "limits": "The interviewer uses Kanada dragon; the source does not define a universal geometric or line-boil preset.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "I_OHIRA",
+      "title": "Shinya Ohira interview",
+      "url": "https://fullfrontal.moe/%E5%A4%A7%E5%B9%B3%E6%99%8B%E4%B9%9F/",
+      "source_kind": "direct_animator_interview",
+      "supported_scope": "Ohira discusses vivid expression and animation-specific deformation.",
+      "limits": "Does not endorse accidental anatomy failures or make all his work rough ink.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "I_HASHIMOTO",
+      "title": "Shinji Hashimoto official Matrix interview, preserved transcript",
+      "url": "https://www.matrixfans.net/interview-with-shinji-hashimoto-key-animator-a-detective-story-character-design-animation-director-kids-story-from-the-animatrix-2003/",
+      "source_kind": "archived_primary_interview",
+      "supported_scope": "Hashimoto discusses atmospheric sketch-like rendering and action reference.",
+      "limits": "Third-party archive of a 2002 official interview; charcoal impact frames are an authored extension.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "I_MATSUMOTO",
+      "title": "Satoshi Nakano interview on Inu-Oh",
+      "url": "https://fullfrontal.moe/nakano/",
+      "source_kind": "direct_production_colleague_interview",
+      "supported_scope": "Nakano praises the realism and clothing movement in Matsumoto's drawings for that production.",
+      "limits": "Does not establish universal naturalistic physics or a prescribed punching technique.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "I_ITANO",
+      "title": "Ichiro Itano interview, 2014",
+      "url": "https://enhanced-endorphin.jp/interview/019.html",
+      "source_kind": "direct_animator_interview",
+      "supported_scope": "Itano describes near/middle/far missiles on ones/twos/threes, changing cadence with depth, camera following and spatial direction.",
+      "limits": "Exact trajectories in this catalog remain authored and require explicit path bindings.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "I_IMAISHI",
+      "title": "Shueisha interview with Hiroyuki Imaishi",
+      "url": "https://tonarinoyj.jp/article/entry/2026/07/23/000000",
+      "source_kind": "direct_publisher_interview",
+      "supported_scope": "Imaishi distinguishes physical movement speed from speed conveyed through information density.",
+      "limits": "Does not supply a universal fps or motion-scale setting.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "I_SUSHIO_LIMITED",
+      "title": "Sushio interview on Kill la Kill",
+      "url": "https://www.excite.co.jp/news/article/E1383160071316/",
+      "source_kind": "primary_interview_index_excerpt_only",
+      "supported_scope": "Indexed interview passage describes a priority of understandable, enjoyable action.",
+      "limits": "Full page returned an access error. This is a limited-access lead, not a basis for an exact geometric signature or historical line-boil claim.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "I_KAGENASHI",
+      "title": "Spencer Wan and Jerry Nguyen practitioner discussion",
+      "url": "https://blog.cara.app/blog/weilin-zine-issue-1-spencer-wan-animator",
+      "source_kind": "primary_practitioner_discussion",
+      "supported_scope": "Wan comments on selective shadow omission in Matsumoto's animation.",
+      "limits": "Aesthetic observation, not Matsumoto's own formal rule. The standardized history of kagenashi was not verified with 100% certainty.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "I_FAURE",
+      "title": "Benjamin Faure production interview",
+      "url": "https://fullfrontal.moe/mappa-benjamin-faure/",
+      "source_kind": "direct_animator_interview",
+      "supported_scope": "Discusses purposeful impact-frame use and 3D layout preparation for 2D work.",
+      "limits": "No universal accent length or specific charcoal/starburst recipe is established.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "E_WAN_CODE",
+      "title": "Wan2.1 original T2V implementation",
+      "url": "https://github.com/Wan-Video/Wan2.1/blob/main/wan/text2video.py",
+      "source_kind": "official_source_code",
+      "supported_scope": "n_prompt, CFG guide_scale, scheduler shift and 4n+1 frame count.",
+      "limits": "Main branch observed on research date; pin a revision before implementing a production adapter.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "E_WAN_CARD",
+      "title": "Wan2.1 14B Diffusers official model card",
+      "url": "https://huggingface.co/Wan-AI/Wan2.1-T2V-14B-Diffusers",
+      "source_kind": "official_model_card",
+      "supported_scope": "Demonstrates negative_prompt and an 81-frame export at 15fps.",
+      "limits": "Example export rate is not universal native cadence. Audit stock negatives for conflicts.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "E_LTX_INFER",
+      "title": "LTX-Video inference implementation",
+      "url": "https://github.com/Lightricks/LTX-Video/blob/main/ltx_video/inference.py",
+      "source_kind": "official_source_code",
+      "supported_scope": "Exposes negative_prompt, frame_rate and media conditioning arguments.",
+      "limits": "Actual negative effect depends on inference configuration; not an LTX-2 profile.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "E_LTX_PIPE",
+      "title": "LTX-Video pipeline",
+      "url": "https://github.com/Lightricks/LTX-Video/blob/main/ltx_video/pipelines/pipeline_ltx_video.py",
+      "source_kind": "official_source_code",
+      "supported_scope": "Guidance scale one corresponds to no classifier-free guidance.",
+      "limits": "Configuration-dependent finding, not a benchmark of prompt phrases.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "E_LTX_DISTILLED",
+      "title": "LTXV 13B 0.9.8 distilled preset",
+      "url": "https://github.com/Lightricks/LTX-Video/blob/main/configs/ltxv-13b-0.9.8-distilled.yaml",
+      "source_kind": "official_configuration",
+      "supported_scope": "Both passes use guidance_scale one and stg_scale zero.",
+      "limits": "Do not change a distilled preset solely to activate negative conditioning.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "E_RUNWAY_GEN3",
+      "title": "Runway Gen-3 retirement notice",
+      "url": "https://help.runwayml.com/hc/en-us/articles/30586818553107-Gen-3-Alpha-Prompting-Guide",
+      "source_kind": "official_product_documentation",
+      "supported_scope": "Gen-3 Alpha retired July8,2026; Turbo July30,2026.",
+      "limits": "The old prompting guide has been replaced; historical negative-prompt support was not reverified.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "E_KLING3",
+      "title": "Kling VIDEO 3.0 Omni guide",
+      "url": "https://kling.ai/quickstart/klingai-video-3-omni-model-user-guide",
+      "source_kind": "official_product_documentation",
+      "supported_scope": "Documents start/end frames, multiple image references, elements and shot-level instructions.",
+      "limits": "Vendor capability descriptions do not prove exact contact fidelity; generic Kling API negatives/fps remain unverified.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "E_SEEDANCE_LIMITED",
+      "title": "BytePlus video-generation API",
+      "url": "https://docs.byteplus.com/en/docs/modelark/create-video-generation-task-api",
+      "source_kind": "official_api_page_incomplete_retrieval",
+      "supported_scope": "Official entry point for checking the selected Seedance endpoint.",
+      "limits": "Page retrieval did not expose the complete schema; no generic negative_prompt, motion_scale or fps contract was verified.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "D_UPSERT",
+      "title": "SQLite UPSERT",
+      "url": "https://www.sqlite.org/lang_upsert.html",
+      "source_kind": "official_documentation",
+      "supported_scope": "ON CONFLICT allows targeted update on uniqueness conflict; introduced in3.24.0.",
+      "limits": "Does not bypass NOT NULL or CHECK failures.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "D_ORDER",
+      "title": "SQLite aggregate ordering",
+      "url": "https://www.sqlite.org/lang_aggfunc.html",
+      "source_kind": "official_documentation",
+      "supported_scope": "Concatenation order is arbitrary unless explicitly controlled.",
+      "limits": "The supplied examples retrieve ordered rows and join in application code.",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "source_id": "D_TYPES",
+      "title": "SQLite datatype affinity",
+      "url": "https://www.sqlite.org/datatype3.html",
+      "source_kind": "official_documentation",
+      "supported_scope": "VARCHAR length annotations are not enforced in ordinary SQLite.",
+      "limits": "Validation here checks lengths without changing the requested schema.",
+      "checked_on": "2026-10-20"
+    }
+  ]
+}

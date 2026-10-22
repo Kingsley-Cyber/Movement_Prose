@@ -1,0 +1,358 @@
+{
+ "schema_version": 1,
+ "evidence_status": "authored_classification_untested",
+ "note": "Budget classes and subjects are an authored reading of each row's snippet and mechanical_guidance for the motion complexity budget (handbook heuristic: 1 dominant subject action, 1 major camera move, 1-2 secondary body actions, 1-3 passive material responses). Subject = whose body the row moves: actor (the striker binding), target (the struck fighter binding), both, or scene.",
+ "limits": {
+  "dominant_action": {
+   "max": 1,
+   "scope": "subject_per_window"
+  },
+  "secondary_body": {
+   "max": 2,
+   "scope": "subject_per_window"
+  },
+  "material_response": {
+   "max": 3,
+   "scope": "window"
+  },
+  "camera_move": {
+   "max": 1,
+   "scope": "clip"
+  }
+ },
+ "propose_hints": {
+  "secondary_body": {
+   "min": 1,
+   "max": 2
+  },
+  "material_response": {
+   "min": 1,
+   "max": 3
+  }
+ },
+ "camera_count_exempt": [
+  "aa_camera_recovery_settle"
+ ],
+ "classes": {
+  "aa_action_absorb_recoil": {
+   "class": "dominant_action",
+   "subject": "target",
+   "reason": "the struck fighter's catch step"
+  },
+  "aa_action_flash_step": {
+   "class": "dominant_action",
+   "subject": "actor",
+   "reason": "beat-defining body motion"
+  },
+  "aa_action_followthrough_arc": {
+   "class": "dominant_action",
+   "subject": "actor",
+   "reason": "beat-defining body motion"
+  },
+  "aa_action_forearm_block": {
+   "class": "dominant_action",
+   "subject": "both",
+   "reason": "contact: the target blocks, the actor arrives"
+  },
+  "aa_action_guard_recovery": {
+   "class": "dominant_action",
+   "subject": "actor",
+   "reason": "beat-defining body motion"
+  },
+  "aa_action_hip_led_punch": {
+   "class": "dominant_action",
+   "subject": "actor",
+   "reason": "beat-defining body motion"
+  },
+  "aa_action_itano_evasion": {
+   "class": "dominant_action",
+   "subject": "actor",
+   "reason": "beat-defining body motion"
+  },
+  "aa_action_weight_load": {
+   "class": "dominant_action",
+   "subject": "actor",
+   "reason": "beat-defining body motion"
+  },
+  "aa_camera_contact_lock": {
+   "class": "camera_static",
+   "subject": "scene",
+   "reason": "held composition"
+  },
+  "aa_camera_crash_zoom": {
+   "class": "camera_move",
+   "subject": "scene",
+   "reason": "camera translation, pan or zoom"
+  },
+  "aa_camera_falling_track": {
+   "class": "camera_move",
+   "subject": "scene",
+   "reason": "camera translation, pan or zoom"
+  },
+  "aa_camera_incoming_wide": {
+   "class": "camera_static",
+   "subject": "scene",
+   "reason": "fixed near view; distortion is lens, not travel"
+  },
+  "aa_camera_lateral_track": {
+   "class": "camera_move",
+   "subject": "scene",
+   "reason": "camera translation, pan or zoom"
+  },
+  "aa_camera_low_tilt": {
+   "class": "camera_static",
+   "subject": "scene",
+   "reason": "held composition"
+  },
+  "aa_camera_recovery_settle": {
+   "class": "camera_static",
+   "subject": "scene",
+   "reason": "terminal deceleration; warn if no prior move"
+  },
+  "aa_camera_whip_reacquire": {
+   "class": "camera_move",
+   "subject": "scene",
+   "reason": "camera translation, pan or zoom"
+  },
+  "aa_env_debris_settle": {
+   "class": "none",
+   "subject": "scene",
+   "reason": "persistence of damage, residual chips trivial"
+  },
+  "aa_env_layered_dust": {
+   "class": "material_response",
+   "subject": "scene",
+   "reason": "dust responds to the fracture"
+  },
+  "aa_env_layered_parallax": {
+   "class": "material_response",
+   "subject": "scene",
+   "reason": "background answers the camera track"
+  },
+  "aa_env_preimpact_quiet": {
+   "class": "none",
+   "subject": "scene",
+   "reason": "static ground constraint"
+  },
+  "aa_env_radial_fracture": {
+   "class": "material_response",
+   "subject": "scene",
+   "reason": "surface responds to contact"
+  },
+  "aa_env_skid_gouge": {
+   "class": "material_response",
+   "subject": "target",
+   "reason": "ground responds to the heel slide"
+  },
+  "aa_env_speed_void": {
+   "class": "material_response",
+   "subject": "scene",
+   "reason": "bounded background effect"
+  },
+  "aa_env_yutapon_cubes": {
+   "class": "material_response",
+   "subject": "scene",
+   "reason": "debris ejected from the fracture"
+  },
+  "aa_light_directional_lightning": {
+   "class": "material_response",
+   "subject": "scene",
+   "reason": "one transient light event"
+  },
+  "aa_light_hard_shadow": {
+   "class": "none",
+   "subject": "actor",
+   "reason": "shading policy"
+  },
+  "aa_light_kagenashi": {
+   "class": "none",
+   "subject": "actor",
+   "reason": "shading policy"
+  },
+  "aa_light_recoil_falloff": {
+   "class": "none",
+   "subject": "target",
+   "reason": "decay of a prior light event, no new source"
+  },
+  "aa_light_restore_key": {
+   "class": "none",
+   "subject": "actor",
+   "reason": "shading policy"
+  },
+  "aa_light_silhouette_flash": {
+   "class": "material_response",
+   "subject": "scene",
+   "reason": "one transient light event"
+  },
+  "aa_light_sparks_local": {
+   "class": "material_response",
+   "subject": "scene",
+   "reason": "light pulses ride existing sparks"
+  },
+  "aa_light_thin_rim": {
+   "class": "none",
+   "subject": "actor",
+   "reason": "shading policy"
+  },
+  "aa_material_charcoal_impact": {
+   "class": "material_response",
+   "subject": "scene",
+   "reason": "single-frame image event, post-routed"
+  },
+  "aa_material_controlled_line_boil": {
+   "class": "none",
+   "subject": "actor",
+   "reason": "rendering treatment, not motion"
+  },
+  "aa_material_expressive_rough": {
+   "class": "none",
+   "subject": "target",
+   "reason": "rendering treatment on the struck fighter"
+  },
+  "aa_material_flat_debris_faces": {
+   "class": "none",
+   "subject": "scene",
+   "reason": "rendering treatment of debris"
+  },
+  "aa_material_inverted_impact": {
+   "class": "material_response",
+   "subject": "scene",
+   "reason": "single-frame image event, post-routed"
+  },
+  "aa_material_monochrome_impact": {
+   "class": "material_response",
+   "subject": "scene",
+   "reason": "single-frame image event, post-routed"
+  },
+  "aa_material_restore_palette": {
+   "class": "none",
+   "subject": "actor",
+   "reason": "rendering treatment, not motion"
+  },
+  "aa_material_two_tone_cel": {
+   "class": "none",
+   "subject": "actor",
+   "reason": "rendering treatment, not motion"
+  },
+  "aa_secondary_angular_impact_star": {
+   "class": "material_response",
+   "subject": "scene",
+   "reason": "contact effect lasting a few frames"
+  },
+  "aa_secondary_cape_overshoot": {
+   "class": "secondary_body",
+   "subject": "target",
+   "reason": "body-attached overshoot on the struck fighter"
+  },
+  "aa_secondary_cloth_lag": {
+   "class": "secondary_body",
+   "subject": "actor",
+   "reason": "body-attached lag"
+  },
+  "aa_secondary_cloth_settle": {
+   "class": "secondary_body",
+   "subject": "actor",
+   "reason": "body-attached lag"
+  },
+  "aa_secondary_contact_ring": {
+   "class": "material_response",
+   "subject": "scene",
+   "reason": "contact effect lasting a few frames"
+  },
+  "aa_secondary_hair_snap": {
+   "class": "secondary_body",
+   "subject": "actor",
+   "reason": "body-attached lag"
+  },
+  "aa_secondary_kanada_flame_dragon": {
+   "class": "material_response",
+   "subject": "scene",
+   "reason": "off-body drawn effect"
+  },
+  "aa_secondary_weapon_contrail": {
+   "class": "material_response",
+   "subject": "actor",
+   "reason": "weapon-tip trail effect"
+  },
+  "aa_subject_angular_pose": {
+   "class": "none",
+   "subject": "actor",
+   "reason": "drawing construction of the action"
+  },
+  "aa_subject_costume_attachment": {
+   "class": "none",
+   "subject": "actor",
+   "reason": "identity hold, no motion source"
+  },
+  "aa_subject_elastic_contact": {
+   "class": "secondary_body",
+   "subject": "target",
+   "reason": "brief torso deformation on the struck body"
+  },
+  "aa_subject_foreshortened_fist": {
+   "class": "none",
+   "subject": "actor",
+   "reason": "drawing construction of the action"
+  },
+  "aa_subject_loaded_silhouette": {
+   "class": "none",
+   "subject": "actor",
+   "reason": "identity hold, no motion source"
+  },
+  "aa_subject_multiple_limb_smear": {
+   "class": "secondary_body",
+   "subject": "actor",
+   "reason": "one-drawing contour echoes of the moving limb"
+  },
+  "aa_subject_recoil_identity": {
+   "class": "none",
+   "subject": "target",
+   "reason": "identity constraint on the struck fighter"
+  },
+  "aa_subject_recovery_model": {
+   "class": "none",
+   "subject": "actor",
+   "reason": "identity hold, no motion source"
+  },
+  "aa_time_contact_hitstop": {
+   "class": "none",
+   "subject": "both",
+   "reason": "cadence policy on both contacting fighters"
+  },
+  "aa_time_hold_then_burst": {
+   "class": "none",
+   "subject": "actor",
+   "reason": "cadence policy, no motion source"
+  },
+  "aa_time_itano_depth": {
+   "class": "none",
+   "subject": "actor",
+   "reason": "cadence policy, no motion source"
+  },
+  "aa_time_mixed_exposures": {
+   "class": "none",
+   "subject": "actor",
+   "reason": "cadence policy, no motion source"
+  },
+  "aa_time_moving_hold": {
+   "class": "none",
+   "subject": "actor",
+   "reason": "cadence policy, no motion source"
+  },
+  "aa_time_overlap_offsets": {
+   "class": "none",
+   "subject": "actor",
+   "reason": "cadence policy, no motion source"
+  },
+  "aa_time_pose_snapping": {
+   "class": "none",
+   "subject": "actor",
+   "reason": "cadence policy, no motion source"
+  },
+  "aa_time_recoil_spacing": {
+   "class": "none",
+   "subject": "target",
+   "reason": "cadence policy on the struck fighter"
+  }
+ }
+}

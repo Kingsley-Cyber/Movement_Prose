@@ -1,0 +1,26 @@
+{
+ "schema_version": "1.0",
+ "artifact_type": "agent_local_engine_profiles",
+ "note": "Agent-local additions merged over the bundle's engine_profiles.json. generic_web_ui is an authored, unverified target: any web UI with one prompt box and no documented negative field.",
+ "profiles": [
+  {
+   "profile_id": "generic_web_ui",
+   "model_scope": "Any web UI with a single positive prompt box (Artlist, Runway, Kling, Seedance, Fal), exact model unknown",
+   "status": "authored_untested",
+   "positive_field": "prompt",
+   "negative_field": null,
+   "negative_active": {
+    "status": "none",
+    "condition": "No negative field is assumed. Negatives are suppressed unless --avoid-sentence folds them into the positive prose (route inline_positive_unverified, lexicon section 6 caution)."
+   },
+   "frame_rate": {
+    "native_model_rate_verified": null,
+    "output_rate_verified": null
+   },
+   "motion_scale": null,
+   "api_request_template": null,
+   "source_urls": [],
+   "evidence_limits": "Authored for pasting into unknown UIs; nothing verified."
+  }
+ ]
+}

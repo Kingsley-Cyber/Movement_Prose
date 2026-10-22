@@ -1,0 +1,1404 @@
+{
+ "reviewed_by": "agent (owner delegated 2026-10-22)",
+ "new_concepts": {
+  "contact_physics": {
+   "label": "Contact physics",
+   "kind": "mechanism",
+   "aliases": [
+    "relative velocity",
+    "surface contact",
+    "hand contact",
+    "sticking contact",
+    "tangential velocity"
+   ]
+  },
+  "contact_timing": {
+   "label": "Contact timing",
+   "kind": "mechanism",
+   "aliases": [
+    "before contact",
+    "after contact",
+    "during contact",
+    "contact onset",
+    "contact frame",
+    "initial contact",
+    "contact transfer",
+    "staged contact",
+    "without contact",
+    "near-contact",
+    "near contact"
+   ]
+  },
+  "near_miss": {
+   "label": "Near-miss",
+   "kind": "mechanism",
+   "aliases": [
+    "near-miss",
+    "near miss",
+    "whiff",
+    "miss point",
+    "apex without contact"
+   ]
+  },
+  "push_in": {
+   "label": "Push-in / dolly-in",
+   "kind": "technique",
+   "aliases": [
+    "push-in",
+    "push in",
+    "dolly-in",
+    "dolly in",
+    "pull-out",
+    "push-in/pull-out"
+   ]
+  },
+  "close_up": {
+   "label": "Close-up framing",
+   "kind": "technique",
+   "aliases": [
+    "close-up",
+    "close up",
+    "medium close-up",
+    "tight framing"
+   ]
+  },
+  "low_angle": {
+   "label": "Low-angle view",
+   "kind": "technique",
+   "aliases": [
+    "low-angle",
+    "low angle",
+    "worm's-eye"
+   ]
+  },
+  "wide_angle": {
+   "label": "Wide-angle lens",
+   "kind": "technique",
+   "aliases": [
+    "wide-angle",
+    "wide angle",
+    "close-wide lens",
+    "close_wide_lens"
+   ]
+  },
+  "focal_length": {
+   "label": "Focal length",
+   "kind": "technique",
+   "aliases": [
+    "focal-length",
+    "focal length",
+    "lens choice",
+    "telephoto compression"
+   ]
+  },
+  "motion_blur": {
+   "label": "Motion blur",
+   "kind": "technique",
+   "aliases": [
+    "motion blur",
+    "motion-blur",
+    "blur streak"
+   ]
+  },
+  "key_pose": {
+   "label": "Key pose",
+   "kind": "technique",
+   "aliases": [
+    "key-pose",
+    "key pose",
+    "key drawing",
+    "held key"
+   ]
+  },
+  "inbetween": {
+   "label": "In-betweens",
+   "kind": "technique",
+   "aliases": [
+    "in-between",
+    "in-betweens",
+    "inbetween",
+    "inbetweens",
+    "tween"
+   ]
+  },
+  "micro_pause": {
+   "label": "Micro-pause",
+   "kind": "technique",
+   "aliases": [
+    "micro-pause",
+    "micro-pauses",
+    "micro pause",
+    "pre-emphasis pause"
+   ]
+  },
+  "reaction_timing": {
+   "label": "Reaction timing",
+   "kind": "mechanism",
+   "aliases": [
+    "reaction onset",
+    "perception delay",
+    "reaction delay",
+    "reaction time"
+   ]
+  },
+  "support_contact": {
+   "label": "Support contact",
+   "kind": "mechanism",
+   "aliases": [
+    "load-bearing",
+    "support contact",
+    "foot-contact",
+    "foot contact",
+    "heel strike",
+    "foot plant"
+   ]
+  },
+  "push_off": {
+   "label": "Push-off",
+   "kind": "mechanism",
+   "aliases": [
+    "push-off",
+    "push off",
+    "drive off the rear foot",
+    "compression/push-off"
+   ]
+  },
+  "soft_tissue": {
+   "label": "Soft-tissue response",
+   "kind": "mechanism",
+   "aliases": [
+    "soft-tissue",
+    "soft tissue",
+    "jiggle",
+    "tissue response"
+   ]
+  },
+  "rigid_body": {
+   "label": "Rigid-body physics",
+   "kind": "mechanism",
+   "aliases": [
+    "rigid-body",
+    "rigid body"
+   ]
+  },
+  "kinematics": {
+   "label": "Kinematic quantities",
+   "kind": "mechanism",
+   "aliases": [
+    "angular velocity",
+    "velocity profile",
+    "acceleration profile",
+    "time-to-peak",
+    "jerk",
+    "deceleration ramp"
+   ]
+  },
+  "screen_space": {
+   "label": "Screen space",
+   "kind": "concept",
+   "aliases": [
+    "screen-space",
+    "screen space",
+    "image-space",
+    "image-plane",
+    "image plane"
+   ]
+  },
+  "reference_frame": {
+   "label": "Reference frame",
+   "kind": "concept",
+   "aliases": [
+    "coordinate frame",
+    "reference frame",
+    "world-space",
+    "world space",
+    "actor-relative",
+    "camera-relative",
+    "root-relative"
+   ]
+  },
+  "screen_direction": {
+   "label": "Screen direction",
+   "kind": "concept",
+   "aliases": [
+    "left-to-right",
+    "screen direction",
+    "screen-direction",
+    "180-degree line"
+   ]
+  },
+  "multi_actor": {
+   "label": "Multi-actor scene",
+   "kind": "concept",
+   "aliases": [
+    "multi-actor",
+    "two-actor",
+    "two actors",
+    "two fighters"
+   ]
+  },
+  "hand_object": {
+   "label": "Hand-object interaction",
+   "kind": "concept",
+   "aliases": [
+    "hand-object",
+    "human-object",
+    "hand-object contact",
+    "hand object interaction"
+   ]
+  },
+  "tempo_grid": {
+   "label": "Tempo grid",
+   "kind": "technique",
+   "aliases": [
+    "tempo curve",
+    "phase lock",
+    "musical grid",
+    "beat grid"
+   ]
+  },
+  "t2v": {
+   "label": "Text-to-video",
+   "kind": "workflow",
+   "aliases": [
+    "text-to-video",
+    "text to video",
+    "t2v"
+   ]
+  },
+  "v2v": {
+   "label": "Video-to-video",
+   "kind": "workflow",
+   "aliases": [
+    "video-to-video",
+    "video to video",
+    "v2v",
+    "reference-video driving"
+   ]
+  }
+ },
+ "alias_additions": {
+  "kinetic_chain": [
+   "proximal-to-distal",
+   "proximal to distal"
+  ],
+  "weight_transfer": [
+   "center-of-mass"
+  ],
+  "camera_shake": [
+   "camera impulse",
+   "impact impulse"
+  ],
+  "impact_flash": [
+   "one-frame flash",
+   "impact-frame"
+  ],
+  "i2v": [
+   "first-frame"
+  ],
+  "first_last_frame": [
+   "last-frame",
+   "first-and-last"
+  ],
+  "slow_motion": [
+   "time-warp"
+  ]
+ },
+ "marks": {
+  "relative velocity": {
+   "decision": "accept",
+   "target": "contact_physics",
+   "reason": "mechanism: Contact physics"
+  },
+  "surface contact": {
+   "decision": "accept",
+   "target": "contact_physics",
+   "reason": "mechanism: Contact physics"
+  },
+  "hand contact": {
+   "decision": "accept",
+   "target": "contact_physics",
+   "reason": "mechanism: Contact physics"
+  },
+  "sticking contact": {
+   "decision": "accept",
+   "target": "contact_physics",
+   "reason": "mechanism: Contact physics"
+  },
+  "tangential velocity": {
+   "decision": "accept",
+   "target": "contact_physics",
+   "reason": "mechanism: Contact physics"
+  },
+  "before contact": {
+   "decision": "accept",
+   "target": "contact_timing",
+   "reason": "mechanism: Contact timing"
+  },
+  "after contact": {
+   "decision": "accept",
+   "target": "contact_timing",
+   "reason": "mechanism: Contact timing"
+  },
+  "during contact": {
+   "decision": "accept",
+   "target": "contact_timing",
+   "reason": "mechanism: Contact timing"
+  },
+  "contact onset": {
+   "decision": "accept",
+   "target": "contact_timing",
+   "reason": "mechanism: Contact timing"
+  },
+  "contact frame": {
+   "decision": "accept",
+   "target": "contact_timing",
+   "reason": "mechanism: Contact timing"
+  },
+  "initial contact": {
+   "decision": "accept",
+   "target": "contact_timing",
+   "reason": "mechanism: Contact timing"
+  },
+  "contact transfer": {
+   "decision": "accept",
+   "target": "contact_timing",
+   "reason": "mechanism: Contact timing"
+  },
+  "staged contact": {
+   "decision": "accept",
+   "target": "contact_timing",
+   "reason": "mechanism: Contact timing"
+  },
+  "without contact": {
+   "decision": "accept",
+   "target": "contact_timing",
+   "reason": "mechanism: Contact timing"
+  },
+  "near-contact": {
+   "decision": "accept",
+   "target": "contact_timing",
+   "reason": "mechanism: Contact timing"
+  },
+  "near contact": {
+   "decision": "accept",
+   "target": "contact_timing",
+   "reason": "mechanism: Contact timing"
+  },
+  "near-miss": {
+   "decision": "accept",
+   "target": "near_miss",
+   "reason": "mechanism: Near-miss"
+  },
+  "near miss": {
+   "decision": "accept",
+   "target": "near_miss",
+   "reason": "mechanism: Near-miss"
+  },
+  "whiff": {
+   "decision": "accept",
+   "target": "near_miss",
+   "reason": "mechanism: Near-miss"
+  },
+  "miss point": {
+   "decision": "accept",
+   "target": "near_miss",
+   "reason": "mechanism: Near-miss"
+  },
+  "apex without contact": {
+   "decision": "accept",
+   "target": "near_miss",
+   "reason": "mechanism: Near-miss"
+  },
+  "push-in": {
+   "decision": "accept",
+   "target": "push_in",
+   "reason": "technique: Push-in / dolly-in"
+  },
+  "push in": {
+   "decision": "accept",
+   "target": "push_in",
+   "reason": "technique: Push-in / dolly-in"
+  },
+  "dolly-in": {
+   "decision": "accept",
+   "target": "push_in",
+   "reason": "technique: Push-in / dolly-in"
+  },
+  "dolly in": {
+   "decision": "accept",
+   "target": "push_in",
+   "reason": "technique: Push-in / dolly-in"
+  },
+  "pull-out": {
+   "decision": "accept",
+   "target": "push_in",
+   "reason": "technique: Push-in / dolly-in"
+  },
+  "push-in/pull-out": {
+   "decision": "accept",
+   "target": "push_in",
+   "reason": "technique: Push-in / dolly-in"
+  },
+  "close-up": {
+   "decision": "accept",
+   "target": "close_up",
+   "reason": "technique: Close-up framing"
+  },
+  "close up": {
+   "decision": "accept",
+   "target": "close_up",
+   "reason": "technique: Close-up framing"
+  },
+  "medium close-up": {
+   "decision": "accept",
+   "target": "close_up",
+   "reason": "technique: Close-up framing"
+  },
+  "tight framing": {
+   "decision": "accept",
+   "target": "close_up",
+   "reason": "technique: Close-up framing"
+  },
+  "low-angle": {
+   "decision": "accept",
+   "target": "low_angle",
+   "reason": "technique: Low-angle view"
+  },
+  "low angle": {
+   "decision": "accept",
+   "target": "low_angle",
+   "reason": "technique: Low-angle view"
+  },
+  "worm's-eye": {
+   "decision": "accept",
+   "target": "low_angle",
+   "reason": "technique: Low-angle view"
+  },
+  "wide-angle": {
+   "decision": "accept",
+   "target": "wide_angle",
+   "reason": "technique: Wide-angle lens"
+  },
+  "wide angle": {
+   "decision": "accept",
+   "target": "wide_angle",
+   "reason": "technique: Wide-angle lens"
+  },
+  "close-wide lens": {
+   "decision": "accept",
+   "target": "wide_angle",
+   "reason": "technique: Wide-angle lens"
+  },
+  "close_wide_lens": {
+   "decision": "accept",
+   "target": "wide_angle",
+   "reason": "technique: Wide-angle lens"
+  },
+  "focal-length": {
+   "decision": "accept",
+   "target": "focal_length",
+   "reason": "technique: Focal length"
+  },
+  "focal length": {
+   "decision": "accept",
+   "target": "focal_length",
+   "reason": "technique: Focal length"
+  },
+  "lens choice": {
+   "decision": "accept",
+   "target": "focal_length",
+   "reason": "technique: Focal length"
+  },
+  "telephoto compression": {
+   "decision": "accept",
+   "target": "focal_length",
+   "reason": "technique: Focal length"
+  },
+  "motion blur": {
+   "decision": "accept",
+   "target": "motion_blur",
+   "reason": "technique: Motion blur"
+  },
+  "motion-blur": {
+   "decision": "accept",
+   "target": "motion_blur",
+   "reason": "technique: Motion blur"
+  },
+  "blur streak": {
+   "decision": "accept",
+   "target": "motion_blur",
+   "reason": "technique: Motion blur"
+  },
+  "key-pose": {
+   "decision": "accept",
+   "target": "key_pose",
+   "reason": "technique: Key pose"
+  },
+  "key pose": {
+   "decision": "accept",
+   "target": "key_pose",
+   "reason": "technique: Key pose"
+  },
+  "key drawing": {
+   "decision": "accept",
+   "target": "key_pose",
+   "reason": "technique: Key pose"
+  },
+  "held key": {
+   "decision": "accept",
+   "target": "key_pose",
+   "reason": "technique: Key pose"
+  },
+  "in-between": {
+   "decision": "accept",
+   "target": "inbetween",
+   "reason": "technique: In-betweens"
+  },
+  "in-betweens": {
+   "decision": "accept",
+   "target": "inbetween",
+   "reason": "technique: In-betweens"
+  },
+  "inbetween": {
+   "decision": "accept",
+   "target": "inbetween",
+   "reason": "technique: In-betweens"
+  },
+  "inbetweens": {
+   "decision": "accept",
+   "target": "inbetween",
+   "reason": "technique: In-betweens"
+  },
+  "tween": {
+   "decision": "accept",
+   "target": "inbetween",
+   "reason": "technique: In-betweens"
+  },
+  "micro-pause": {
+   "decision": "accept",
+   "target": "micro_pause",
+   "reason": "technique: Micro-pause"
+  },
+  "micro-pauses": {
+   "decision": "accept",
+   "target": "micro_pause",
+   "reason": "technique: Micro-pause"
+  },
+  "micro pause": {
+   "decision": "accept",
+   "target": "micro_pause",
+   "reason": "technique: Micro-pause"
+  },
+  "pre-emphasis pause": {
+   "decision": "accept",
+   "target": "micro_pause",
+   "reason": "technique: Micro-pause"
+  },
+  "reaction onset": {
+   "decision": "accept",
+   "target": "reaction_timing",
+   "reason": "mechanism: Reaction timing"
+  },
+  "perception delay": {
+   "decision": "accept",
+   "target": "reaction_timing",
+   "reason": "mechanism: Reaction timing"
+  },
+  "reaction delay": {
+   "decision": "accept",
+   "target": "reaction_timing",
+   "reason": "mechanism: Reaction timing"
+  },
+  "reaction time": {
+   "decision": "accept",
+   "target": "reaction_timing",
+   "reason": "mechanism: Reaction timing"
+  },
+  "load-bearing": {
+   "decision": "accept",
+   "target": "support_contact",
+   "reason": "mechanism: Support contact"
+  },
+  "support contact": {
+   "decision": "accept",
+   "target": "support_contact",
+   "reason": "mechanism: Support contact"
+  },
+  "foot-contact": {
+   "decision": "accept",
+   "target": "support_contact",
+   "reason": "mechanism: Support contact"
+  },
+  "foot contact": {
+   "decision": "accept",
+   "target": "support_contact",
+   "reason": "mechanism: Support contact"
+  },
+  "heel strike": {
+   "decision": "accept",
+   "target": "support_contact",
+   "reason": "mechanism: Support contact"
+  },
+  "foot plant": {
+   "decision": "accept",
+   "target": "support_contact",
+   "reason": "mechanism: Support contact"
+  },
+  "push-off": {
+   "decision": "accept",
+   "target": "push_off",
+   "reason": "mechanism: Push-off"
+  },
+  "push off": {
+   "decision": "accept",
+   "target": "push_off",
+   "reason": "mechanism: Push-off"
+  },
+  "drive off the rear foot": {
+   "decision": "accept",
+   "target": "push_off",
+   "reason": "mechanism: Push-off"
+  },
+  "compression/push-off": {
+   "decision": "accept",
+   "target": "push_off",
+   "reason": "mechanism: Push-off"
+  },
+  "soft-tissue": {
+   "decision": "accept",
+   "target": "soft_tissue",
+   "reason": "mechanism: Soft-tissue response"
+  },
+  "soft tissue": {
+   "decision": "accept",
+   "target": "soft_tissue",
+   "reason": "mechanism: Soft-tissue response"
+  },
+  "jiggle": {
+   "decision": "accept",
+   "target": "soft_tissue",
+   "reason": "mechanism: Soft-tissue response"
+  },
+  "tissue response": {
+   "decision": "accept",
+   "target": "soft_tissue",
+   "reason": "mechanism: Soft-tissue response"
+  },
+  "rigid-body": {
+   "decision": "accept",
+   "target": "rigid_body",
+   "reason": "mechanism: Rigid-body physics"
+  },
+  "rigid body": {
+   "decision": "accept",
+   "target": "rigid_body",
+   "reason": "mechanism: Rigid-body physics"
+  },
+  "angular velocity": {
+   "decision": "accept",
+   "target": "kinematics",
+   "reason": "mechanism: Kinematic quantities"
+  },
+  "velocity profile": {
+   "decision": "accept",
+   "target": "kinematics",
+   "reason": "mechanism: Kinematic quantities"
+  },
+  "acceleration profile": {
+   "decision": "accept",
+   "target": "kinematics",
+   "reason": "mechanism: Kinematic quantities"
+  },
+  "time-to-peak": {
+   "decision": "accept",
+   "target": "kinematics",
+   "reason": "mechanism: Kinematic quantities"
+  },
+  "jerk": {
+   "decision": "accept",
+   "target": "kinematics",
+   "reason": "mechanism: Kinematic quantities"
+  },
+  "deceleration ramp": {
+   "decision": "accept",
+   "target": "kinematics",
+   "reason": "mechanism: Kinematic quantities"
+  },
+  "screen-space": {
+   "decision": "accept",
+   "target": "screen_space",
+   "reason": "concept: Screen space"
+  },
+  "screen space": {
+   "decision": "accept",
+   "target": "screen_space",
+   "reason": "concept: Screen space"
+  },
+  "image-space": {
+   "decision": "accept",
+   "target": "screen_space",
+   "reason": "concept: Screen space"
+  },
+  "image-plane": {
+   "decision": "accept",
+   "target": "screen_space",
+   "reason": "concept: Screen space"
+  },
+  "image plane": {
+   "decision": "accept",
+   "target": "screen_space",
+   "reason": "concept: Screen space"
+  },
+  "coordinate frame": {
+   "decision": "accept",
+   "target": "reference_frame",
+   "reason": "concept: Reference frame"
+  },
+  "reference frame": {
+   "decision": "accept",
+   "target": "reference_frame",
+   "reason": "concept: Reference frame"
+  },
+  "world-space": {
+   "decision": "accept",
+   "target": "reference_frame",
+   "reason": "concept: Reference frame"
+  },
+  "world space": {
+   "decision": "accept",
+   "target": "reference_frame",
+   "reason": "concept: Reference frame"
+  },
+  "actor-relative": {
+   "decision": "accept",
+   "target": "reference_frame",
+   "reason": "concept: Reference frame"
+  },
+  "camera-relative": {
+   "decision": "accept",
+   "target": "reference_frame",
+   "reason": "concept: Reference frame"
+  },
+  "root-relative": {
+   "decision": "accept",
+   "target": "reference_frame",
+   "reason": "concept: Reference frame"
+  },
+  "left-to-right": {
+   "decision": "accept",
+   "target": "screen_direction",
+   "reason": "concept: Screen direction"
+  },
+  "screen direction": {
+   "decision": "accept",
+   "target": "screen_direction",
+   "reason": "concept: Screen direction"
+  },
+  "screen-direction": {
+   "decision": "accept",
+   "target": "screen_direction",
+   "reason": "concept: Screen direction"
+  },
+  "180-degree line": {
+   "decision": "accept",
+   "target": "screen_direction",
+   "reason": "concept: Screen direction"
+  },
+  "multi-actor": {
+   "decision": "accept",
+   "target": "multi_actor",
+   "reason": "concept: Multi-actor scene"
+  },
+  "two-actor": {
+   "decision": "accept",
+   "target": "multi_actor",
+   "reason": "concept: Multi-actor scene"
+  },
+  "two actors": {
+   "decision": "accept",
+   "target": "multi_actor",
+   "reason": "concept: Multi-actor scene"
+  },
+  "two fighters": {
+   "decision": "accept",
+   "target": "multi_actor",
+   "reason": "concept: Multi-actor scene"
+  },
+  "hand-object": {
+   "decision": "accept",
+   "target": "hand_object",
+   "reason": "concept: Hand-object interaction"
+  },
+  "human-object": {
+   "decision": "accept",
+   "target": "hand_object",
+   "reason": "concept: Hand-object interaction"
+  },
+  "hand-object contact": {
+   "decision": "accept",
+   "target": "hand_object",
+   "reason": "concept: Hand-object interaction"
+  },
+  "hand object interaction": {
+   "decision": "accept",
+   "target": "hand_object",
+   "reason": "concept: Hand-object interaction"
+  },
+  "tempo curve": {
+   "decision": "accept",
+   "target": "tempo_grid",
+   "reason": "technique: Tempo grid"
+  },
+  "phase lock": {
+   "decision": "accept",
+   "target": "tempo_grid",
+   "reason": "technique: Tempo grid"
+  },
+  "musical grid": {
+   "decision": "accept",
+   "target": "tempo_grid",
+   "reason": "technique: Tempo grid"
+  },
+  "beat grid": {
+   "decision": "accept",
+   "target": "tempo_grid",
+   "reason": "technique: Tempo grid"
+  },
+  "text-to-video": {
+   "decision": "accept",
+   "target": "t2v",
+   "reason": "workflow: Text-to-video"
+  },
+  "text to video": {
+   "decision": "accept",
+   "target": "t2v",
+   "reason": "workflow: Text-to-video"
+  },
+  "t2v": {
+   "decision": "accept",
+   "target": "t2v",
+   "reason": "workflow: Text-to-video"
+  },
+  "video-to-video": {
+   "decision": "accept",
+   "target": "v2v",
+   "reason": "workflow: Video-to-video"
+  },
+  "video to video": {
+   "decision": "accept",
+   "target": "v2v",
+   "reason": "workflow: Video-to-video"
+  },
+  "v2v": {
+   "decision": "accept",
+   "target": "v2v",
+   "reason": "workflow: Video-to-video"
+  },
+  "reference-video driving": {
+   "decision": "accept",
+   "target": "v2v",
+   "reason": "workflow: Video-to-video"
+  },
+  "proximal-to-distal": {
+   "decision": "accept",
+   "target": "kinetic_chain",
+   "reason": "alias of seed concept kinetic_chain"
+  },
+  "proximal to distal": {
+   "decision": "accept",
+   "target": "kinetic_chain",
+   "reason": "alias of seed concept kinetic_chain"
+  },
+  "center-of-mass": {
+   "decision": "accept",
+   "target": "weight_transfer",
+   "reason": "alias of seed concept weight_transfer"
+  },
+  "camera impulse": {
+   "decision": "accept",
+   "target": "camera_shake",
+   "reason": "alias of seed concept camera_shake"
+  },
+  "impact impulse": {
+   "decision": "accept",
+   "target": "camera_shake",
+   "reason": "alias of seed concept camera_shake"
+  },
+  "one-frame flash": {
+   "decision": "accept",
+   "target": "impact_flash",
+   "reason": "alias of seed concept impact_flash"
+  },
+  "impact-frame": {
+   "decision": "accept",
+   "target": "impact_flash",
+   "reason": "alias of seed concept impact_flash"
+  },
+  "first-frame": {
+   "decision": "accept",
+   "target": "i2v",
+   "reason": "alias of seed concept i2v"
+  },
+  "last-frame": {
+   "decision": "accept",
+   "target": "first_last_frame",
+   "reason": "alias of seed concept first_last_frame"
+  },
+  "first-and-last": {
+   "decision": "accept",
+   "target": "first_last_frame",
+   "reason": "alias of seed concept first_last_frame"
+  },
+  "time-warp": {
+   "decision": "accept",
+   "target": "slow_motion",
+   "reason": "alias of seed concept slow_motion"
+  },
+  "cpcs-mx": {
+   "decision": "reject",
+   "target": "",
+   "reason": "project name"
+  },
+  "research-to-representation": {
+   "decision": "reject",
+   "target": "",
+   "reason": "process term"
+  },
+  "panel contact": {
+   "decision": "reject",
+   "target": "",
+   "reason": "bag-spec specific"
+  },
+  "application-level": {
+   "decision": "reject",
+   "target": "",
+   "reason": "software architecture"
+  },
+  "four-second": {
+   "decision": "reject",
+   "target": "",
+   "reason": "duration literal"
+  },
+  "multi-shot": {
+   "decision": "reject",
+   "target": "",
+   "reason": "workflow structure, not a mechanism"
+  },
+  "post-generation": {
+   "decision": "reject",
+   "target": "",
+   "reason": "pipeline stage"
+  },
+  "motion-capture": {
+   "decision": "reject",
+   "target": "",
+   "reason": "data source"
+  },
+  "two-frame": {
+   "decision": "reject",
+   "target": "",
+   "reason": "duration fragment; the hold itself is hit_stop"
+  },
+  "video-understanding": {
+   "decision": "reject",
+   "target": "",
+   "reason": "API product"
+  },
+  "provider-facing": {
+   "decision": "reject",
+   "target": "",
+   "reason": "provenance/role"
+  },
+  "high-confidence": {
+   "decision": "reject",
+   "target": "",
+   "reason": "epistemic grading"
+  },
+  "real-time": {
+   "decision": "reject",
+   "target": "",
+   "reason": "systems term"
+  },
+  "one-frame": {
+   "decision": "reject",
+   "target": "",
+   "reason": "bare duration; 'one-frame flash' added to impact_flash"
+  },
+  "video-generation": {
+   "decision": "reject",
+   "target": "",
+   "reason": "product category"
+  },
+  "every frame": {
+   "decision": "reject",
+   "target": "",
+   "reason": "generic"
+  },
+  "shot-level": {
+   "decision": "reject",
+   "target": "",
+   "reason": "architecture level"
+  },
+  "state-transition": {
+   "decision": "reject",
+   "target": "",
+   "reason": "software model"
+  },
+  "physics-based": {
+   "decision": "reject",
+   "target": "",
+   "reason": "adjective"
+  },
+  "camera-motion": {
+   "decision": "reject",
+   "target": "",
+   "reason": "generic"
+  },
+  "project-specific": {
+   "decision": "reject",
+   "target": "",
+   "reason": "provenance"
+  },
+  "machine-readable": {
+   "decision": "reject",
+   "target": "",
+   "reason": "format"
+  },
+  "single-pass": {
+   "decision": "reject",
+   "target": "",
+   "reason": "pipeline"
+  },
+  "implementation-ready": {
+   "decision": "reject",
+   "target": "",
+   "reason": "process"
+  },
+  "evidence-backed": {
+   "decision": "reject",
+   "target": "",
+   "reason": "epistemic"
+  },
+  "execution-carrier": {
+   "decision": "reject",
+   "target": "",
+   "reason": "architecture"
+  },
+  "time-indexed": {
+   "decision": "reject",
+   "target": "",
+   "reason": "data shape"
+  },
+  "aspect-ratio": {
+   "decision": "reject",
+   "target": "",
+   "reason": "delivery format"
+  },
+  "pose-conditioned": {
+   "decision": "reject",
+   "target": "",
+   "reason": "workflow; too thin to carry"
+  },
+  "round-trip": {
+   "decision": "reject",
+   "target": "",
+   "reason": "testing"
+  },
+  "full-body": {
+   "decision": "reject",
+   "target": "",
+   "reason": "generic"
+  },
+  "high-frequency": {
+   "decision": "reject",
+   "target": "",
+   "reason": "generic"
+  },
+  "sling-bag": {
+   "decision": "reject",
+   "target": "",
+   "reason": "spec-specific prop"
+  },
+  "optical-flow": {
+   "decision": "reject",
+   "target": "",
+   "reason": "analysis method"
+  },
+  "per-frame": {
+   "decision": "reject",
+   "target": "",
+   "reason": "data shape"
+  },
+  "contact-aware": {
+   "decision": "reject",
+   "target": "",
+   "reason": "adjective"
+  },
+  "body-part": {
+   "decision": "reject",
+   "target": "",
+   "reason": "generic"
+  },
+  "multi-view": {
+   "decision": "reject",
+   "target": "",
+   "reason": "capture setup"
+  },
+  "end-to-end": {
+   "decision": "reject",
+   "target": "",
+   "reason": "ML term"
+  },
+  "ground-truth": {
+   "decision": "reject",
+   "target": "",
+   "reason": "evaluation"
+  },
+  "structured-output": {
+   "decision": "reject",
+   "target": "",
+   "reason": "API feature"
+  },
+  "high-value": {
+   "decision": "reject",
+   "target": "",
+   "reason": "generic"
+  },
+  "time-based": {
+   "decision": "reject",
+   "target": "",
+   "reason": "generic"
+  },
+  "variable frame": {
+   "decision": "reject",
+   "target": "",
+   "reason": "fragment"
+  },
+  "left-foot": {
+   "decision": "reject",
+   "target": "",
+   "reason": "instance"
+  },
+  "persuasive arc": {
+   "decision": "reject",
+   "target": "",
+   "reason": "narrative, not motion"
+  },
+  "provider-control": {
+   "decision": "reject",
+   "target": "",
+   "reason": "provenance"
+  },
+  "world-state": {
+   "decision": "reject",
+   "target": "",
+   "reason": "architecture"
+  },
+  "high-acceleration": {
+   "decision": "reject",
+   "target": "",
+   "reason": "adjective"
+  },
+  "focus-related": {
+   "decision": "reject",
+   "target": "",
+   "reason": "fragment"
+  },
+  "off-center": {
+   "decision": "reject",
+   "target": "",
+   "reason": "fragment"
+  },
+  "phone-like": {
+   "decision": "reject",
+   "target": "",
+   "reason": "format"
+  },
+  "micro-event": {
+   "decision": "reject",
+   "target": "",
+   "reason": "editorial grammar"
+  },
+  "re-establish": {
+   "decision": "reject",
+   "target": "",
+   "reason": "fragment"
+  },
+  "text-only": {
+   "decision": "reject",
+   "target": "",
+   "reason": "input mode"
+  },
+  "whole-body": {
+   "decision": "reject",
+   "target": "",
+   "reason": "generic"
+  },
+  "frame-exact": {
+   "decision": "reject",
+   "target": "",
+   "reason": "adjective"
+  },
+  "act-two": {
+   "decision": "reject",
+   "target": "",
+   "reason": "product"
+  },
+  "high-fidelity": {
+   "decision": "reject",
+   "target": "",
+   "reason": "adjective"
+  },
+  "free-form": {
+   "decision": "reject",
+   "target": "",
+   "reason": "prompt style"
+  },
+  "human-readable": {
+   "decision": "reject",
+   "target": "",
+   "reason": "format"
+  },
+  "under-specified": {
+   "decision": "reject",
+   "target": "",
+   "reason": "adjective"
+  },
+  "shot-duration": {
+   "decision": "reject",
+   "target": "",
+   "reason": "statistic"
+  },
+  "frame-accurate": {
+   "decision": "reject",
+   "target": "",
+   "reason": "adjective"
+  },
+  "re-entry": {
+   "decision": "reject",
+   "target": "",
+   "reason": "fragment"
+  },
+  "high-speed": {
+   "decision": "reject",
+   "target": "",
+   "reason": "adjective"
+  },
+  "cross-attention": {
+   "decision": "reject",
+   "target": "",
+   "reason": "ML internals"
+  },
+  "turn-taking": {
+   "decision": "reject",
+   "target": "",
+   "reason": "dialogue, not motion"
+  },
+  "time-varying": {
+   "decision": "reject",
+   "target": "",
+   "reason": "math"
+  },
+  "append-only": {
+   "decision": "reject",
+   "target": "",
+   "reason": "data policy"
+  },
+  "inverse-dynamics": {
+   "decision": "reject",
+   "target": "",
+   "reason": "analysis method"
+  },
+  "side-specific": {
+   "decision": "reject",
+   "target": "",
+   "reason": "schema term"
+  },
+  "mixed-content": {
+   "decision": "reject",
+   "target": "",
+   "reason": "generic"
+  },
+  "contact-guided": {
+   "decision": "reject",
+   "target": "",
+   "reason": "paper name"
+  },
+  "long-duration": {
+   "decision": "reject",
+   "target": "",
+   "reason": "adjective"
+  },
+  "long-horizon": {
+   "decision": "reject",
+   "target": "",
+   "reason": "adjective"
+  },
+  "research-backed": {
+   "decision": "reject",
+   "target": "",
+   "reason": "epistemic"
+  },
+  "cg-hoi": {
+   "decision": "reject",
+   "target": "",
+   "reason": "paper name"
+  },
+  "fail-closed": {
+   "decision": "reject",
+   "target": "",
+   "reason": "policy"
+  },
+  "model-agnostic": {
+   "decision": "reject",
+   "target": "",
+   "reason": "adjective"
+  },
+  "cross-shot": {
+   "decision": "reject",
+   "target": "",
+   "reason": "adjective"
+  },
+  "camera-control": {
+   "decision": "reject",
+   "target": "",
+   "reason": "API feature"
+  },
+  "provider-neutral": {
+   "decision": "reject",
+   "target": "",
+   "reason": "adjective"
+  },
+  "model-dependent": {
+   "decision": "reject",
+   "target": "",
+   "reason": "adjective"
+  },
+  "strike-like": {
+   "decision": "reject",
+   "target": "",
+   "reason": "adjective"
+  },
+  "event-time": {
+   "decision": "reject",
+   "target": "",
+   "reason": "schema"
+  },
+  "partial-order": {
+   "decision": "reject",
+   "target": "",
+   "reason": "data structure"
+  },
+  "causes drift": {
+   "decision": "reject",
+   "target": "",
+   "reason": "verb phrase"
+  },
+  "martial-arts": {
+   "decision": "reject",
+   "target": "",
+   "reason": "domain label"
+  }
+ }
+}

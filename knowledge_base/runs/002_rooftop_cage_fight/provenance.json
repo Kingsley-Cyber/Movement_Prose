@@ -1,0 +1,169 @@
+{
+ "provenance": {
+  "note": "Authored 2026-10-22 from a knowledge-base search over the owner's rooftop prompt. Every rule in animation_grammar names the handbook passages (short ids, handbook_index.db) and catalog directives that shaped it; each beat's influences list says which rules it applies. Untested: no render exists.",
+  "what_changed_from_the_owner_prompt": [
+   "the 1.40 s whip pan over the elbow contact was removed: the handbook lists whip-pan-on-contact as a teleport failure; the clip's one whip pan now sits on the clinch break, across no contact",
+   "'on twos' became a per-layer rule (characters on twos, camera and effects on ones) instead of a global setting",
+   "every reaction is written to begin on the frame after contact, and every effect emits from the contact point, never from the attacker",
+   "the 0.25x slow motion is confined to the finisher's contact drawing and hold",
+   "hit-stop holds are explicit on every landed strike, with effects continuing during the hold",
+   "frame numbers, metres and coordinates were taken out of the prose and kept as reach words; the exposure sheet carries the frame schedule"
+  ],
+  "handbook_passages": [
+   "a036#0335",
+   "a036#0332",
+   "a043#0026",
+   "a079#0150",
+   "a035#0027",
+   "a036#0315",
+   "a035#0009",
+   "a035#0070",
+   "a018#0050",
+   "a031#0487",
+   "a031#0383",
+   "a035#0028",
+   "a076#0090",
+   "a071#0090",
+   "a079#0100",
+   "a079#0050",
+   "a031#2184",
+   "a079#0017",
+   "a031#1899",
+   "a054#1416",
+   "a053#0151",
+   "a003#0010",
+   "a031#1470"
+  ],
+  "catalog_directives": [
+   "aa_time_mixed_exposures",
+   "aa_subject_multiple_limb_smear",
+   "aa_time_contact_hitstop",
+   "aa_action_absorb_recoil",
+   "aa_action_weight_load",
+   "aa_action_hip_led_punch",
+   "aa_env_speed_void",
+   "aa_secondary_contact_ring",
+   "aa_camera_contact_lock",
+   "aa_camera_whip_reacquire"
+  ],
+  "uncovered_by_the_index": [
+   "calf kick, collar tie, liver/shovel hook, shell guard, clinch, spinning back kick (fight vocabulary: authored, not cited)",
+   "sweat spray, rain mist, breath vapor, dutch roll (not in the handbook)"
+  ]
+ },
+ "rule_sources": {
+  "exposure": [
+   "a036#0335",
+   "a036#0332",
+   "directive:aa_time_mixed_exposures"
+  ],
+  "smear": [
+   "a043#0026",
+   "a079#0150",
+   "directive:aa_subject_multiple_limb_smear"
+  ],
+  "hit_stop": [
+   "a035#0027",
+   "a036#0315",
+   "directive:aa_time_contact_hitstop"
+  ],
+  "cause_before_effect": [
+   "a035#0009",
+   "a035#0070",
+   "directive:aa_action_absorb_recoil"
+  ],
+  "kinetic_chain": [
+   "a018#0050",
+   "a031#0487",
+   "a031#0383",
+   "directive:aa_action_weight_load",
+   "directive:aa_action_hip_led_punch"
+  ],
+  "effects_after_contact": [
+   "a035#0028",
+   "a076#0090",
+   "directive:aa_env_speed_void",
+   "directive:aa_secondary_contact_ring"
+  ],
+  "camera_on_contact": [
+   "a071#0090",
+   "a079#0100",
+   "a079#0050",
+   "a031#2184",
+   "directive:aa_camera_contact_lock"
+  ],
+  "camera_between_contacts": [
+   "a079#0017",
+   "a031#1899",
+   "directive:aa_camera_whip_reacquire"
+  ],
+  "time_remap": [
+   "a054#1416",
+   "a053#0151"
+  ],
+  "effort_quality": [
+   "a003#0010",
+   "a031#1470"
+  ]
+ },
+ "beat_influences": {
+  "low calf kick vs lead leg buckle": [
+   "kinetic_chain",
+   "hit_stop",
+   "cause_before_effect",
+   "camera_on_contact"
+  ],
+  "burst step in vs slip inside": [
+   "camera_between_contacts",
+   "effects_after_contact",
+   "exposure"
+  ],
+  "slashing rear elbow vs head whip": [
+   "kinetic_chain",
+   "smear",
+   "hit_stop",
+   "cause_before_effect",
+   "camera_on_contact"
+  ],
+  "cross vs high shell guard": [
+   "kinetic_chain",
+   "hit_stop",
+   "camera_on_contact",
+   "effects_after_contact"
+  ],
+  "lead liver hook vs torso fold": [
+   "kinetic_chain",
+   "smear",
+   "hit_stop",
+   "cause_before_effect",
+   "effort_quality"
+  ],
+  "collar tie entry": [
+   "camera_on_contact",
+   "cause_before_effect"
+  ],
+  "clinch rising knee vs rib fold": [
+   "kinetic_chain",
+   "hit_stop",
+   "smear",
+   "cause_before_effect"
+  ],
+  "two-hand shove vs heel skid": [
+   "camera_between_contacts",
+   "effects_after_contact",
+   "cause_before_effect"
+  ],
+  "rear body straight vs elbow tuck": [
+   "kinetic_chain",
+   "hit_stop",
+   "camera_on_contact"
+  ],
+  "spinning back kick finisher vs torso fold": [
+   "kinetic_chain",
+   "hit_stop",
+   "time_remap",
+   "effects_after_contact",
+   "camera_on_contact"
+  ]
+ }
+}

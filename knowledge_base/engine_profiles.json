@@ -1,0 +1,240 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "descriptive_engine_profiles",
+  "observed_at": "2026-10-20",
+  "generation_tests_performed": false,
+  "scope_notes": [
+    "These profiles summarize inspected primary documentation and source code. They are not executable adapters or complete API request schemas.",
+    "An exposed negative-prompt field does not prove that negative conditioning affects every checkpoint or guidance configuration.",
+    "Output frame rate, model temporal representation, and drawing exposure cadence are separate. A request for animation on twos does not configure any of them automatically.",
+    "A 24 fps editorial timeline with each drawing held for two frames has 12 drawing changes per second; this is an editorial target, not a verified native generation mode.",
+    "No universal motion_scale parameter or anti-artifact phrase was verified. Null means unset or unverified, not zero. No API request is inferred for an unspecified target."
+  ],
+  "profiles": [
+    {
+      "profile_id": "wan21_original_t2v_python",
+      "model_scope": "Wan2.1 WanT2V.generate in the official original Python implementation",
+      "status": "source_code_inspected",
+      "positive_field": "input_prompt",
+      "negative_field": "n_prompt",
+      "negative_active": {
+        "status": "verified_negative_conditioning_path",
+        "condition": "The negative text is encoded as the unconditional branch used in classifier-free guidance; its contribution depends on the configured guidance weight.",
+        "empty_value_behavior": "An empty string is replaced by config.sample_neg_prompt; it does not request a blank negative branch."
+      },
+      "frame_rate": {
+        "native_model_rate_verified": null,
+        "output_rate_source": "The original generate.py exports using cfg.sample_fps; the numerical shared-config default was not independently retrieved.",
+        "frame_count_contract": "WanT2V.generate documents frame_num as 4n+1; its function default is 81."
+      },
+      "motion_scale": null,
+      "control_notes": [
+        "guide_scale is classifier-free guidance, not a direct motion-amplitude control.",
+        "shift is a noise-schedule shift parameter, not an authored trajectory or physical velocity.",
+        "This profile is limited to the T2V method; do not infer I2V, FLF2V, or VACE contracts from it."
+      ],
+      "api_request_template": null,
+      "source_urls": [
+        "https://github.com/Wan-Video/Wan2.1/blob/main/wan/text2video.py",
+        "https://github.com/Wan-Video/Wan2.1/blob/main/generate.py"
+      ],
+      "evidence_limits": "Documentation/source inspection only; repository main URLs are mutable and no commit was pinned. No generation or effect-size measurement was performed."
+    },
+    {
+      "profile_id": "wan21_t2v_diffusers",
+      "model_scope": "Wan-AI/Wan2.1-T2V-14B-Diffusers official model-card example using WanPipeline",
+      "status": "official_example_inspected",
+      "positive_field": "prompt",
+      "negative_field": "negative_prompt",
+      "negative_active": {
+        "status": "verified_in_official_cfg_example",
+        "condition": "The official example supplies negative_prompt and guidance_scale=5.0. This demonstrates a supported call, not an optimized anime setting.",
+        "empty_value_behavior": "Not independently established for every Diffusers version; inspect the installed pipeline."
+      },
+      "frame_rate": {
+        "native_model_rate_verified": null,
+        "documented_example_export_fps": 15,
+        "documented_example_num_frames": 81,
+        "note": "The model-card example passes fps=15 to export_to_video. This is an export configuration, not evidence of a universal native or on-twos cadence."
+      },
+      "motion_scale": null,
+      "control_notes": [
+        "guidance_scale controls classifier-free guidance; do not rename it motion strength.",
+        "Audit the stock example negative list before reuse: broad terms including static and paintings can conflict with desired held drawings or painted rendering. This conflict warning is an engineering inference, not a measured result."
+      ],
+      "api_request_template": null,
+      "source_urls": [
+        "https://huggingface.co/Wan-AI/Wan2.1-T2V-14B-Diffusers"
+      ],
+      "evidence_limits": "The exact installed Diffusers version is unknown. A published example does not establish prompt efficacy or success probabilities."
+    },
+    {
+      "profile_id": "ltx_video_cfg_python",
+      "model_scope": "LTX-Video official inference.py and LTXVideoPipeline; a compatible configuration with classifier-free guidance enabled",
+      "status": "source_code_inspected",
+      "positive_field": "prompt",
+      "negative_field": "negative_prompt",
+      "negative_active": {
+        "status": "conditional_on_cfg",
+        "condition": "Negative embeddings are used in the classifier-free guidance path. The pipeline documents guidance_scale=1 as no CFG; verify the actual selected checkpoint and preset.",
+        "default_effect_across_all_models": "Not established."
+      },
+      "frame_rate": {
+        "native_model_rate_verified": null,
+        "inspected_inference_default_output_fps": 30,
+        "field": "frame_rate",
+        "note": "The inspected inference configuration passes frame_rate to the pipeline and output writer. This does not guarantee held drawings or any exposure pattern."
+      },
+      "motion_scale": null,
+      "control_notes": [
+        "The implementation accepts conditioning media, strengths, and start-frame indices; choose a documented matching checkpoint and workflow.",
+        "The official repository lists separate 0.9.7 depth, pose, and Canny control models. These are not a universal control switch for every LTX checkpoint.",
+        "LTX-2 is a distinct generation; its capabilities are not inherited by this profile."
+      ],
+      "api_request_template": null,
+      "source_urls": [
+        "https://github.com/Lightricks/LTX-Video/blob/main/ltx_video/inference.py",
+        "https://github.com/Lightricks/LTX-Video/blob/main/ltx_video/pipelines/pipeline_ltx_video.py",
+        "https://github.com/Lightricks/LTX-Video"
+      ],
+      "evidence_limits": "Source inspection establishes interfaces, not rendering reliability. Repository main URLs are mutable and no commit was pinned."
+    },
+    {
+      "profile_id": "ltx_video_098_distilled_default",
+      "model_scope": "ltxv-13b-0.9.8-distilled.yaml official two-pass preset",
+      "status": "source_code_inspected",
+      "positive_field": "prompt",
+      "negative_field": "negative_prompt",
+      "negative_active": {
+        "status": "inactive_under_documented_default_cfg_configuration",
+        "condition": "Both passes set guidance_scale=1 and stg_scale=0. The pipeline documents scale 1 as no classifier-free guidance, so the presence of a negative_prompt field is not evidence of an active negative effect.",
+        "recommended_action": "Retain the documented checkpoint preset. Do not change guidance solely to activate negatives without separately validating the configuration."
+      },
+      "frame_rate": {
+        "native_model_rate_verified": null,
+        "inspected_shared_inference_default_output_fps": 30,
+        "note": "The distilled preset does not establish an on-twos exposure cadence."
+      },
+      "motion_scale": null,
+      "api_request_template": null,
+      "source_urls": [
+        "https://github.com/Lightricks/LTX-Video/blob/main/configs/ltxv-13b-0.9.8-distilled.yaml",
+        "https://github.com/Lightricks/LTX-Video/blob/main/ltx_video/pipelines/pipeline_ltx_video.py",
+        "https://github.com/Lightricks/LTX-Video/blob/main/ltx_video/inference.py"
+      ],
+      "evidence_limits": "The inactive-negative conclusion follows from the documented CFG configuration and pipeline semantics; no generated-output comparison was run."
+    },
+    {
+      "profile_id": "runway_gen3_historical",
+      "model_scope": "Runway Gen-3 Alpha and Gen-3 Alpha Turbo",
+      "status": "retired_historical_target",
+      "retirement_dates": {
+        "gen3_alpha": "2026-07-08",
+        "gen3_alpha_turbo": "2026-07-30"
+      },
+      "positive_field": null,
+      "negative_field": null,
+      "negative_active": {
+        "status": "historical_contract_unverified",
+        "condition": "The current official guide contains a retirement notice, not the historical prompt contract. No archived primary contract was retrieved."
+      },
+      "frame_rate": {
+        "native_model_rate_verified": null,
+        "output_rate_verified": null
+      },
+      "motion_scale": null,
+      "api_request_template": null,
+      "source_urls": [
+        "https://help.runwayml.com/hc/en-us/articles/30586818553107-Gen-3-Alpha-Prompting-Guide",
+        "https://help.runwayml.com/hc/en-us/articles/33350169138323-Creating-with-Video-to-Video-on-Gen-3-Alpha-and-Turbo"
+      ],
+      "evidence_limits": "Retirement is verified from current official notices. Do not borrow Gen-4 or Gen-4.5 behavior to fill historical Gen-3 fields."
+    },
+    {
+      "profile_id": "kling_unspecified",
+      "model_scope": "Kling without an exact version, endpoint, or execution surface",
+      "status": "exact_target_required",
+      "positive_field": null,
+      "negative_field": null,
+      "negative_active": {
+        "status": "unverified",
+        "condition": "Resolve the exact model and endpoint before mapping negative_snippet. No blanket Kling negative-field contract was established."
+      },
+      "frame_rate": {
+        "native_model_rate_verified": null,
+        "output_rate_verified": null
+      },
+      "motion_scale": null,
+      "camera_lock_api_field": null,
+      "api_request_template": null,
+      "source_urls": [
+        "https://app.klingai.com/global/quickstart/klingai-video-3-omni-model-user-guide",
+        "https://kling.ai/document-api/api/video/2-6/text-to-video/legacy",
+        "https://kling.ai/document-api/api/video/2-1/image-to-video"
+      ],
+      "evidence_limits": "The first URL exposes a version-specific user guide. Developer endpoint pages exposed JavaScript shells; search snippets were insufficient to verify complete schemas with 100% certainty."
+    },
+    {
+      "profile_id": "seedance_unspecified",
+      "model_scope": "Seedance without an exact model ID and endpoint",
+      "status": "exact_target_required",
+      "positive_field": null,
+      "negative_field": null,
+      "negative_active": {
+        "status": "unverified",
+        "condition": "Do not infer a dedicated negative_prompt field from the ability to express exclusions in natural language."
+      },
+      "frame_rate": {
+        "native_model_rate_verified": null,
+        "output_rate_verified": null,
+        "note": "Version-specific official search excerpts describe frame counts and output frame rates; they do not establish a generic Seedance contract."
+      },
+      "motion_scale": null,
+      "camera_lock_api_field": null,
+      "api_request_template": null,
+      "source_urls": [
+        "https://docs.byteplus.com/en/docs/modelark/video-generation-tutorial",
+        "https://docs.byteplus.com/en/docs/modelark/create-video-generation-task-api",
+        "https://docs.byteplus.com/en/docs/ModelArk/2168087"
+      ],
+      "evidence_limits": "Official search excerpts mention camera_fixed and version-dependent frame options, but full English pages exposed JavaScript shells. The complete current schema cannot be verified with 100% certainty from this retrieval."
+    },
+    {
+      "profile_id": "kling_video_30_omni_documented_references",
+      "model_scope": "Kling VIDEO 3.0 Omni official user guide",
+      "status": "documented_product_capabilities_only",
+      "positive_field": null,
+      "negative_field": null,
+      "negative_active": {
+        "status": "dedicated_field_unverified",
+        "condition": "The accessible user guide does not establish the complete negative-conditioning API contract."
+      },
+      "documented_input_modes": [
+        "text_to_video",
+        "image_to_video",
+        "start_and_end_frames",
+        "multi_image_reference",
+        "element_reference",
+        "video_character_elements"
+      ],
+      "documented_shot_controls": [
+        "duration",
+        "framing",
+        "angle",
+        "narrative_content",
+        "camera_movement"
+      ],
+      "documented_max_generation_seconds": 15,
+      "frame_rate": {
+        "native_model_rate_verified": null,
+        "output_rate_verified": null
+      },
+      "motion_scale": null,
+      "api_request_template": null,
+      "source_urls": [
+        "https://app.klingai.com/global/quickstart/klingai-video-3-omni-model-user-guide"
+      ],
+      "evidence_limits": "These are documented vendor capabilities, not measured contact, anatomy, timing, or trajectory accuracy. The guide does not supply a complete executable request schema."
+    }
+  ]
+}

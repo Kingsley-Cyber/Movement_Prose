@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "note": "requires[] tokens in mechanical_guidance are free strings; this maps each to the directive IDs that satisfy it when selected in an earlier or overlapping window. Tokens with no satisfier must be declared on the event (declared_prerequisites).",
+ "satisfiers": {
+  "surface_fracture_event": [
+   "aa_env_radial_fracture"
+  ],
+  "established_damage_state": [
+   "aa_env_radial_fracture",
+   "aa_env_skid_gouge",
+   "aa_env_yutapon_cubes"
+  ],
+  "existing_debris_objects": [
+   "aa_env_yutapon_cubes",
+   "aa_env_layered_dust"
+  ],
+  "heel_ground_contact_interval": [
+   "aa_action_absorb_recoil"
+  ],
+  "prior_contact_light_event": [
+   "aa_light_silhouette_flash",
+   "aa_light_directional_lightning"
+  ],
+  "contact_event_on_solid_surface": [],
+  "existing_spark_event": [],
+  "authored_actor_path": [],
+  "authored_attack_path": [],
+  "distinct_missile_paths": [],
+  "depth_layer_assignments": []
+ }
+}

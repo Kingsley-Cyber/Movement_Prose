@@ -1,0 +1,209 @@
+{
+ "editorial_fps": 24,
+ "frame_count": 72,
+ "interval_convention": "zero-based [start_frame,end_frame)",
+ "note": "Frame-level operations belong to an exposure sheet or postproduction, not to the prompt (lexicon section 4).",
+ "editorial_operations": [
+  {
+   "operation": "hold_contact_drawing",
+   "frames": [
+    24,
+    25
+   ]
+  },
+  {
+   "operation": "monochrome_impact_accent",
+   "frames": [
+    24
+   ]
+  },
+  {
+   "operation": "angular_star_overlay",
+   "frames": [
+    24
+   ]
+  },
+  {
+   "operation": "restore_baseline_palette",
+   "frame": 25
+  }
+ ],
+ "routed_directives": [
+  {
+   "directive_id": "aa_time_hold_then_burst",
+   "event_id": "a_prepare",
+   "preferred_route": "editorial_exposure_control",
+   "frames": [
+    0,
+    12
+   ],
+   "seconds": [
+    0.0,
+    0.5
+   ],
+   "editorial_recipe": "Trial recipe at 24 editorial fps: 4-frame anticipation hold, then 2-frame launch transition; adapt to readability.",
+   "camera_rule": "Keep the camera quiet during the tension hold.",
+   "validation": "Measure the held-pose duration and verify the launch follows it without crossfading."
+  },
+  {
+   "directive_id": "aa_time_mixed_exposures",
+   "event_id": "a_strike",
+   "preferred_route": "editorial_exposure_control",
+   "frames": [
+    12,
+    24
+   ],
+   "seconds": [
+    0.5,
+    1.0
+   ],
+   "editorial_recipe": "At 24 editorial fps, hold selected character drawings for 2 frames; use 1-frame drawings only at chosen fast transitions.",
+   "camera_rule": "Keep camera motion independent from character exposure changes.",
+   "validation": "Inspect character exposures frame by frame; do not infer twos from export fps alone."
+  },
+  {
+   "directive_id": "aa_material_controlled_line_boil",
+   "event_id": "a_strike",
+   "preferred_route": "drawn_reference_or_post",
+   "frames": [
+    12,
+    24
+   ],
+   "seconds": [
+    0.5,
+    1.0
+   ],
+   "editorial_recipe": "Vary ink only on new drawings; hold it unchanged during repeated exposure of the same drawing.",
+   "camera_rule": "Keep framing stable enough to distinguish contour variation from camera shake.",
+   "validation": "Verify small contour variation without systematic landmark drift or fill flicker."
+  },
+  {
+   "directive_id": "aa_action_forearm_block",
+   "event_id": "block_contact",
+   "preferred_route": "contact_reference_or_post",
+   "frames": [
+    24,
+    26
+   ],
+   "seconds": [
+    1.0,
+    1.083
+   ],
+   "editorial_recipe": "Align contact and any effect to the same editorial frame; hold 2 frames only if the shot uses hit-stop.",
+   "camera_rule": "Keep the contact point unobscured in a side or three-quarter medium-wide view.",
+   "validation": "Verify the same two named limbs meet at one contact and separate afterward."
+  },
+  {
+   "directive_id": "aa_secondary_angular_impact_star",
+   "event_id": "block_contact",
+   "preferred_route": "post_effect",
+   "frames": [
+    24,
+    26
+   ],
+   "seconds": [
+    1.0,
+    1.083
+   ],
+   "editorial_recipe": "Limit the star to 1 or 2 editorial frames, then clear it.",
+   "camera_rule": "Keep the burst centered on visible contact rather than the middle of the frame.",
+   "validation": "Check onset against contact and verify limbs are visible again on the next clean key."
+  },
+  {
+   "directive_id": "aa_time_contact_hitstop",
+   "event_id": "block_contact",
+   "preferred_route": "editorial_exposure_control",
+   "frames": [
+    24,
+    26
+   ],
+   "seconds": [
+    1.0,
+    1.083
+   ],
+   "editorial_recipe": "Trial recipe: hold the contact drawing for 2 frames on a 24fps editorial timeline; generation text alone is insufficient.",
+   "camera_rule": "Lock the camera through the contact hold unless camera shake is a separate planned overlay.",
+   "validation": "Confirm contact is established before the hold and motion resumes afterward."
+  },
+  {
+   "directive_id": "aa_material_monochrome_impact",
+   "event_id": "block_contact",
+   "preferred_route": "post_palette_effect",
+   "frames": [
+    24,
+    26
+   ],
+   "seconds": [
+    1.0,
+    1.083
+   ],
+   "editorial_recipe": "Use 1 editorial frame unless a deliberate 2-frame accent is authored; composite for exact placement.",
+   "camera_rule": "Keep the same camera and contact geometry through the palette change.",
+   "validation": "Confirm contact alignment, recognizable limbs and immediate palette restoration."
+  },
+  {
+   "directive_id": "aa_time_overlap_offsets",
+   "event_id": "a_finish",
+   "preferred_route": "reference_or_layered_post",
+   "frames": [
+    26,
+    40
+   ],
+   "seconds": [
+    1.083,
+    1.667
+   ],
+   "editorial_recipe": "Trial offsets at 24 editorial fps: torso finish at t, hair peak at t+1, fabric peak at t+2; adjust to material and shot.",
+   "camera_rule": "Keep the relevant torso and free fabric edges visible.",
+   "validation": "Compare peak times rather than assigning one global end time to every moving part."
+  },
+  {
+   "directive_id": "aa_time_recoil_spacing",
+   "event_id": "b_recoil",
+   "preferred_route": "pose_reference_or_retime",
+   "frames": [
+    26,
+    44
+   ],
+   "seconds": [
+    1.083,
+    1.833
+   ],
+   "editorial_recipe": "Author wide position spacing immediately after impact, tightening spacing toward the support catch.",
+   "camera_rule": "Keep a stable framing reference so changes in displacement remain visible.",
+   "validation": "Plot the struck shoulder's screen displacement and check it reduces during the catch."
+  },
+  {
+   "directive_id": "aa_env_skid_gouge",
+   "event_id": "b_recoil",
+   "preferred_route": "contact_reference_or_post",
+   "frames": [
+    26,
+    40
+   ],
+   "seconds": [
+    1.083,
+    1.667
+   ],
+   "editorial_recipe": "Extend the track only while the heel moves in contact with the ground.",
+   "camera_rule": "Use a low three-quarter view that shows the contacting heel and the track behind it.",
+   "validation": "Track heel contact and groove endpoint on each sampled frame."
+  },
+  {
+   "directive_id": "aa_time_moving_hold",
+   "event_id": "a_guard",
+   "preferred_route": "reference_or_editorial_hold",
+   "frames": [
+    40,
+    72
+   ],
+   "seconds": [
+    1.667,
+    3.0
+   ],
+   "editorial_recipe": "Trial recipe: 6-to-12-frame closing hold with separately authored subtle motion; do not repeatedly interpolate the whole body.",
+   "camera_rule": "Settle the camera before the final hold.",
+   "validation": "Check stable feet and gesture while only the planned breathing and cloth channels move."
+  }
+ ]
+}

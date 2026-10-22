@@ -1,0 +1,137 @@
+{
+  "validator": "validate_anime_seed.py",
+  "checked_at": "2026-10-20T13:49:54.431810+00:00",
+  "sqlite_runtime_version": "3.53.1",
+  "status": "pass",
+  "tests": [
+    {
+      "name": "catalog_contract",
+      "result": "pass",
+      "details": "64 unique rows; eight allowed slots with eight rows each; every slot covers all six moments; field types, lengths, enums, JSON, sources and declared conflict IDs checked"
+    },
+    {
+      "name": "sql_first_ingestion",
+      "result": "pass",
+      "details": "Exact eight-column schema, every field matches canonical JSON, and integrity_check=ok"
+    },
+    {
+      "name": "sql_repeat_ingestion",
+      "result": "pass",
+      "details": "All 64 rows and the complete content fingerprint remain identical"
+    },
+    {
+      "name": "unrelated_row_preserved",
+      "result": "pass",
+      "details": "A preexisting row from another archetype survives seed ingestion byte-for-byte"
+    },
+    {
+      "name": "compiled_examples",
+      "result": "pass",
+      "details": {
+        "examples": 4,
+        "selections": 29,
+        "checks": "IDs, moment binding, required actor/target bindings, half-open frame intervals, required slot coverage, same-actor/global duplicate slots, unresolved named placeholders, and declared overlapping conflicts"
+      }
+    },
+    {
+      "name": "readonly_database",
+      "result": "pass",
+      "details": "Eight-column schema, complete canonical content, and integrity_check=ok; no database writes"
+    }
+  ],
+  "generation_tests_performed": false,
+  "limits": [
+    "These checks validate data, SQL behavior, declared composition rules, and optional database integrity. They do not prove anatomy, motion, rendering quality, or source truth.",
+    "Conflict checks use authored conflict IDs, overlapping half-open frame intervals, and actor/target identities; camera and environment slots are treated as global within each example.",
+    "The checker does not infer undeclared semantic conflicts or prove that compiled prose perfectly preserves every selected directive."
+  ],
+  "coverage": {
+    "records": 64,
+    "slots": {
+      "camera_optics": 8,
+      "environment": 8,
+      "lighting": 8,
+      "material_shading": 8,
+      "primary_action": 8,
+      "secondary_motion": 8,
+      "subject_anchor": 8,
+      "temporal_cadence": 8
+    },
+    "moments": {
+      "anticipation": 8,
+      "execution": 18,
+      "follow_through": 8,
+      "impact": 13,
+      "recoil": 9,
+      "recovery": 8
+    },
+    "slot_moment_counts": {
+      "camera_optics": {
+        "anticipation": 1,
+        "execution": 2,
+        "follow_through": 1,
+        "impact": 2,
+        "recoil": 1,
+        "recovery": 1
+      },
+      "environment": {
+        "anticipation": 1,
+        "execution": 2,
+        "follow_through": 1,
+        "impact": 1,
+        "recoil": 2,
+        "recovery": 1
+      },
+      "lighting": {
+        "anticipation": 1,
+        "execution": 2,
+        "follow_through": 1,
+        "impact": 2,
+        "recoil": 1,
+        "recovery": 1
+      },
+      "material_shading": {
+        "anticipation": 1,
+        "execution": 1,
+        "follow_through": 1,
+        "impact": 3,
+        "recoil": 1,
+        "recovery": 1
+      },
+      "primary_action": {
+        "anticipation": 1,
+        "execution": 3,
+        "follow_through": 1,
+        "impact": 1,
+        "recoil": 1,
+        "recovery": 1
+      },
+      "secondary_motion": {
+        "anticipation": 1,
+        "execution": 2,
+        "follow_through": 1,
+        "impact": 2,
+        "recoil": 1,
+        "recovery": 1
+      },
+      "subject_anchor": {
+        "anticipation": 1,
+        "execution": 3,
+        "follow_through": 1,
+        "impact": 1,
+        "recoil": 1,
+        "recovery": 1
+      },
+      "temporal_cadence": {
+        "anticipation": 1,
+        "execution": 3,
+        "follow_through": 1,
+        "impact": 1,
+        "recoil": 1,
+        "recovery": 1
+      }
+    }
+  },
+  "canonical_content_sha256": "275537d8f7c8d4bcb5a82c0d28ccf7efb5e6f6c3b8153ae35fecd971f99df639",
+  "database_content_sha256": "275537d8f7c8d4bcb5a82c0d28ccf7efb5e6f6c3b8153ae35fecd971f99df639"
+}

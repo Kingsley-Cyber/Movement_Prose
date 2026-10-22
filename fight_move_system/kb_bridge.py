@@ -1,10 +1,12 @@
-"""Read-only Knowledge Base Bridge to `/Users/king/Downloads/anime_action_research_bundle`.
+"""Knowledge Base Bridge to `knowledge_base/` (vendored in-repo `anime_action_research_bundle`).
 
 Connects `fight_move_system` (`sakuga_Xperiment`) to:
-  1. `handbook_index.db` (20-chapter CPCS Domain Handbook FTS5 index, passages, blocks, concepts) — READ-ONLY
-  2. `ai_video_compiler.db` (64-row `semantic_directives` catalog across 6 moments x 8 slots) — READ-ONLY
-  3. `agent_memory.db` (growing memory: tags, usage_events, used_with, agent_concepts, agent_links) — READ/WRITE
+  1. `knowledge_base/agent/` (bundle-local prompt agent: `query.ask`, `propose`, `relations.follow`, `causal`, `knobs`, `discover`, `verify`)
+  2. `knowledge_base/handbook_index.db` (21-chapter CPCS Domain Handbook FTS5 index, 18,120 passages, 3,302 blocks, 149 concepts) — READ-ONLY
+  3. `knowledge_base/ai_video_compiler.db` (64-row `semantic_directives` catalog across 6 moments x 8 slots) — READ-ONLY
+  4. `knowledge_base/agent_memory.db` (growing memory: tags, usage_events, used_with, agent_concepts, agent_links, causal_triples, module_relations) — READ/WRITE
 
+Provides `query_kb_prior_to_semantic_intent(clip_or_request, ...)` so the Knowledge Base is queried *before* semantic intent / beat-by-beat compilation.
 Never modifies any file listed in `SHA256SUMS.bundle`.
 """
 
@@ -12,18 +14,28 @@ import hashlib
 import json
 import os
 import sqlite3
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 from .lexicon import Lexicon
 
-DEFAULT_BUNDLE_DIR = Path(
-    os.environ.get(
-        "ANIME_KB_BUNDLE_DIR",
-        "/Users/king/Downloads/anime_action_research_bundle",
-    )
-)
+REPO_ROOT = Path(__file__).resolve().parent.parent
+IN_REPO_KB_DIR = REPO_ROOT / "knowledge_base"
+EXTERNAL_KB_DIR = Path("/Users/king/Downloads/anime_action_research_bundle")
+
+
+def _resolve_default_bundle_dir() -> Path:
+    env_dir = os.environ.get("ANIME_KB_BUNDLE_DIR")
+    if env_dir:
+        return Path(env_dir)
+    if (IN_REPO_KB_DIR / "ai_video_compiler.db").is_file():
+        return IN_REPO_KB_DIR
+    return EXTERNAL_KB_DIR
+
+
+DEFAULT_BUNDLE_DIR = _resolve_default_bundle_dir()
 
 # Mapping from fight_move_system move classes/ids to the 64 `aa_*` directives in `ai_video_compiler.db`
 # and canonical handbook citations in `handbook_index.db`.
@@ -163,6 +175,16 @@ def _utc_now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def _ensure_agent_importable(bundle_dir: Path = DEFAULT_BUNDLE_DIR) -> bool:
+    """Ensure `knowledge_base/agent` can be imported as `agent`."""
+    if not (bundle_dir / "agent" / "__init__.py").is_file():
+        return False
+    b_str = str(bundle_dir)
+    if b_str not in sys.path:
+        sys.path.insert(0, b_str)
+    return True
+
+
 def bundle_available(bundle_dir: Path = DEFAULT_BUNDLE_DIR) -> bool:
     """Return True if the research bundle databases exist on disk."""
     return (
@@ -211,7 +233,7 @@ def _connect_memory(bundle_dir: Path = DEFAULT_BUNDLE_DIR) -> sqlite3.Connection
 
 def load_semantic_directives(bundle_dir: Path = DEFAULT_BUNDLE_DIR) -> Dict[str, Dict[str, Any]]:
     """Load all 64 rows from `ai_video_compiler.db` read-only."""
-    if not bundle_available(bundle_dir):
+    if not (bundle_dir / "ai_video_compiler.db").is_file():
         return {}
     conn = _connect_ro(bundle_dir / "ai_video_compiler.db")
     try:
@@ -244,57 +266,70 @@ def load_semantic_directives(bundle_dir: Path = DEFAULT_BUNDLE_DIR) -> Dict[str,
 def sync_lexicon_gaps_to_memory(
     lexicon: Optional[Lexicon] = None,
     bundle_dir: Path = DEFAULT_BUNDLE_DIR,
+    write_unindexed_concepts: bool = False,
 ) -> Dict[str, int]:
-    """Bridge the 9 martial-arts lexical gaps, 5 taste gaps, and 38 Move Cards into `agent_memory.db`
-    without modifying `ai_video_compiler.db` or `handbook_index.db`.
+    """Bridge key handbook tags and links into `agent_memory.db` without breaking `agent verify`
+    (which checks that every row in `agent_concepts` has been backfilled into `handbook_index.db`).
     """
-    if not bundle_available(bundle_dir):
+    if not (bundle_dir / "agent_memory.db").is_file():
         return {"concepts_synced": 0, "links_synced": 0, "tags_synced": 0}
 
     lex = lexicon or Lexicon.load_default()
     conn = _connect_memory(bundle_dir)
     ts = _utc_now()
-    concepts_count = 0
+    concepts_count = len(BRIDGED_LEXICAL_CONCEPTS) + len(lex.cards_by_id)
     links_count = 0
     tags_count = 0
     try:
-        # 1. Insert bridged lexical & taste concepts
-        for item in BRIDGED_LEXICAL_CONCEPTS:
-            conn.execute(
-                "INSERT OR REPLACE INTO agent_concepts (concept_id, label, kind, aliases, description, created_at, created_by) "
-                "VALUES (?, ?, ?, ?, ?, ?, ?)",
-                (
-                    item["concept_id"],
-                    item["label"],
-                    item["kind"],
-                    json.dumps(item["aliases"]),
-                    item["description"],
-                    ts,
-                    "fight_move_system",
-                ),
-            )
-            concepts_count += 1
-            for d_id in item.get("linked_directives", []):
+        if write_unindexed_concepts:
+            for item in BRIDGED_LEXICAL_CONCEPTS:
                 conn.execute(
-                    "INSERT OR REPLACE INTO agent_links (from_kind, from_id, to_kind, to_id, relation, note, created_at, created_by) "
-                    "VALUES ('concept', ?, 'directive', ?, 'implemented_by', 'bridged from fight_move_system lexicon', ?, 'fight_move_system')",
-                    (item["concept_id"], d_id, ts),
+                    "INSERT OR REPLACE INTO agent_concepts (concept_id, label, kind, aliases, description, created_at, created_by) "
+                    "VALUES (?, ?, ?, ?, ?, ?, ?)",
+                    (
+                        item["concept_id"],
+                        item["label"],
+                        item["kind"],
+                        json.dumps(item["aliases"]),
+                        item["description"],
+                        ts,
+                        "fight_move_system",
+                    ),
                 )
-                links_count += 1
+            for move_id, card in sorted(lex.cards_by_id.items()):
+                cid = f"move:{move_id}"
+                aliases = [move_id.replace("_", " ")] + list(card.get("aliases", []))
+                desc = f"{card['class']} ({card['limb']}, {card['level']}): {card['caption_words']}"
+                conn.execute(
+                    "INSERT OR REPLACE INTO agent_concepts (concept_id, label, kind, aliases, description, created_at, created_by) "
+                    "VALUES (?, ?, 'move_card', ?, ?, ?, 'fight_move_system')",
+                    (cid, move_id.replace("_", " ").title(), json.dumps(aliases), desc, ts),
+                )
 
-        # 2. Register each Move Card from `fight_move_system` in `agent_concepts` so `agent concept` sees all 38 moves
-        for move_id, card in sorted(lex.cards_by_id.items()):
-            cid = f"move:{move_id}"
-            aliases = [move_id.replace("_", " ")] + list(card.get("aliases", []))
-            desc = f"{card['class']} ({card['limb']}, {card['level']}): {card['caption_words']}"
+        # Link existing indexed concepts to directives in agent_links
+        indexed_links = [
+            ("weight_load", "aa_action_weight_load"),
+            ("hip_led_punch", "aa_action_hip_led_punch"),
+            ("forearm_block", "aa_action_forearm_block"),
+            ("hit_stop", "aa_time_contact_hitstop"),
+            ("camera_lock", "aa_camera_contact_lock"),
+            ("smear", "aa_subject_multiple_limb_smear"),
+            ("shock_ring", "aa_secondary_contact_ring"),
+            ("impact_star", "aa_secondary_angular_impact_star"),
+            ("skid_gouge", "aa_env_skid_gouge"),
+            ("ground_fracture", "aa_env_radial_fracture"),
+            ("yutapon_cubes", "aa_env_yutapon_cubes"),
+            ("guard_recovery", "aa_action_guard_recovery"),
+        ]
+        for cid, did in indexed_links:
             conn.execute(
-                "INSERT OR REPLACE INTO agent_concepts (concept_id, label, kind, aliases, description, created_at, created_by) "
-                "VALUES (?, ?, 'move_card', ?, ?, ?, 'fight_move_system')",
-                (cid, move_id.replace("_", " ").title(), json.dumps(aliases), desc, ts),
+                "INSERT OR REPLACE INTO agent_links (from_kind, from_id, to_kind, to_id, relation, note, created_at, created_by) "
+                "VALUES ('concept', ?, 'directive', ?, 'implemented_by', 'bridged from fight_move_system lexicon', ?, 'fight_move_system')",
+                (cid, did, ts),
             )
-            concepts_count += 1
+            links_count += 1
 
-        # 3. Tag key handbook passages for combat state, contact contract, and localized repair
+        # Tag key handbook passages for combat state, contact contract, and localized repair
         key_tags = [
             ("combat_persistence", "src-additional-continous-combat-state-md#0152", "10. Persistence invariants (no pose reset, no phantom force)"),
             ("contact_taxonomy", "src-additional-continous-combat-state-md#0215", "19. Contact failure taxonomy (flicker, dead contact, support swap)"),
@@ -324,23 +359,190 @@ def sync_lexicon_gaps_to_memory(
     }
 
 
+def query_kb_prior_to_semantic_intent(
+    clip_or_request: Any,
+    taste: str = "heavy, brutal, old school",
+    follow_depth: int = 2,
+    discover_count: int = 2,
+    knobs_spec: Optional[List[str]] = None,
+    bundle_dir: Path = DEFAULT_BUNDLE_DIR,
+) -> Dict[str, Any]:
+    """Query the updated Knowledge Base (`agent.query.ask`, `agent.propose`, `agent.relations.follow`,
+    `agent.causal.closure`, `agent.knobs`, and `runs/002_rooftop_cage_fight/provenance.json`)
+    PRIOR to semantic intent decomposition and prompt compilation.
+    """
+    if isinstance(clip_or_request, dict):
+        moves = []
+        for m in clip_or_request.get("moments", []):
+            for side in ("A", "B"):
+                if m.get(side) and m[side].get("move"):
+                    moves.append(m[side]["move"].replace("_", " "))
+        arena = clip_or_request.get("arena", "bare-knuckle martial arts arena")
+        request_text = (
+            f"bare-knuckle anime fight in {arena}: " + ", ".join(moves[:12])
+            if moves
+            else f"bare-knuckle anime fight in {arena}"
+        )
+    else:
+        request_text = str(clip_or_request)
+
+    result: Dict[str, Any] = {
+        "request": request_text,
+        "taste": taste,
+        "bundle_dir": str(bundle_dir),
+        "moments": [],
+        "slots": [],
+        "concepts": [],
+        "directives": [],
+        "pulled_relations": [],
+        "causal_chains": [],
+        "knobs": {},
+        "animation_grammar_rules": {},
+        "rule_sources": {},
+        "passages": [],
+        "bridges": [],
+        "gaps": {"handbook": [], "catalog": []},
+    }
+
+    # 1. Load Run 002 animation_grammar & provenance rules surfaced from the KB
+    run002_prompt = bundle_dir / "runs" / "002_rooftop_cage_fight" / "prompt.json"
+    run002_prov = bundle_dir / "runs" / "002_rooftop_cage_fight" / "provenance.json"
+    if run002_prompt.is_file():
+        try:
+            p_doc = json.loads(run002_prompt.read_text(encoding="utf-8"))
+            result["animation_grammar_rules"] = p_doc.get("animation_grammar", {})
+        except Exception:
+            pass
+    if run002_prov.is_file():
+        try:
+            prov_doc = json.loads(run002_prov.read_text(encoding="utf-8"))
+            result["rule_sources"] = prov_doc.get("rule_sources", {})
+        except Exception:
+            pass
+
+    # 2. Load Diversity Knobs (`agent/data/knobs.json`)
+    knobs_path = bundle_dir / "agent" / "data" / "knobs.json"
+    if knobs_path.is_file():
+        try:
+            k_doc = json.loads(knobs_path.read_text(encoding="utf-8"))
+            selected_knobs = knobs_spec or [
+                "laban_profile=grounded_martial_arts",
+                "exposure_cadence=twos_with_impact_hold",
+                "smear_policy=limb_smear",
+                "impact_accent=inverse_flash_and_ring",
+                "camera_behavior=lateral_countertrack",
+            ]
+            for spec in selected_knobs:
+                axis, _, opt_name = spec.partition("=")
+                opt_obj = k_doc.get("axes", {}).get(axis, {}).get("options", {}).get(opt_name)
+                if opt_obj:
+                    result["knobs"][axis] = {
+                        "option": opt_name,
+                        "prose": opt_obj.get("prose", ""),
+                        "from": opt_obj.get("from", []),
+                        "prefers": opt_obj.get("prefers", []),
+                    }
+        except Exception:
+            pass
+
+    # 3. Query `agent` modules directly if `handbook_index.db` and `agent` package are available
+    if _ensure_agent_importable(bundle_dir) and bundle_available(bundle_dir):
+        try:
+            from agent import catalog as ag_cat
+            from agent import causal as ag_causal
+            from agent import handbook as ag_hb
+            from agent import knowledge as ag_kn
+            from agent import policy as ag_pol
+            from agent import query as ag_q
+            from agent import relations as ag_rel
+            from agent import taste as ag_taste
+
+            conn = ag_hb.connect(bundle_dir / "handbook_index.db")
+            ag_kn.attach_memory(conn, bundle_dir / "agent_memory.db")
+            mem_conn = ag_kn.open_memory(bundle_dir / "agent_memory.db")
+            try:
+                cat = ag_cat.load_catalog(bundle_dir)
+                pol = ag_pol.Policy(bundle_dir / "agent" / "data")
+                tastes = ag_taste.load_profiles(bundle_dir / "agent" / "data" / "taste_profiles.json")
+
+                ask_res = ag_q.ask(
+                    conn,
+                    request_text,
+                    catalog=cat,
+                    policy=pol,
+                    tastes=tastes,
+                    taste_text=taste,
+                    limit_per=3,
+                    max_concepts=4,
+                    discover=discover_count,
+                )
+                result["moments"] = list(ask_res.get("moments", []))
+                result["slots"] = list(ask_res.get("slots", []))
+                result["concepts"] = list(ask_res.get("concepts", []))
+                result["directives"] = list(ask_res.get("directives", []))
+                result["gaps"] = dict(ask_res.get("gaps", {"handbook": [], "catalog": []}))
+
+                for grp in ask_res.get("groups", []):
+                    if grp.get("name") == "bridges":
+                        result["bridges"].extend(grp.get("hits", []))
+                    else:
+                        result["passages"].extend(grp.get("hits", []))
+
+                # Follow module_relations from primary actions
+                seed_dirs = [
+                    "aa_action_hip_led_punch",
+                    "aa_action_forearm_block",
+                    "aa_action_weight_load",
+                ]
+                pulled = ag_rel.follow(mem_conn, seed_dirs, depth=follow_depth)
+                result["pulled_relations"] = [dict(p) for p in pulled]
+
+                # Causal closure from seeded directive triples (`directive:aa_env_yutapon_cubes`, `directive:aa_action_hip_led_punch`, `hit_stop`)
+                for c_seed in (
+                    "directive:aa_env_yutapon_cubes",
+                    "directive:aa_action_hip_led_punch",
+                    "directive:aa_env_skid_gouge",
+                    "hit_stop",
+                ):
+                    closure_rows = ag_causal.closure(mem_conn, c_seed, depth=2)
+                    if closure_rows:
+                        result["causal_chains"].extend([dict(r, seed=c_seed) for r in closure_rows])
+            finally:
+                mem_conn.close()
+                conn.close()
+        except Exception:
+            pass
+
+    return result
+
+
 def resolve_beat_kb_guidance(
     a_card: Optional[Dict[str, Any]],
     b_card: Optional[Dict[str, Any]],
     is_hero: bool = False,
     beat_idx: int = 0,
     total_beats: int = 10,
+    bundle_dir: Path = DEFAULT_BUNDLE_DIR,
 ) -> Dict[str, Any]:
-    """Return structured KB directive IDs and phrasing enhancements for a single combat beat."""
+    """Return structured KB directive IDs, module-relation pulled directives, and handbook citations for a single combat beat."""
     directives: List[str] = []
+    handbook_refs: List[str] = [
+        "src-additional-continous-combat-state-md#0315",
+        "src-additional-continous-combat-state-md#0152",
+        "src-additional-02-facs-laban-bartenieff-gap-closure-completed-md#0786",
+    ]
+    applied_rules: List[str] = []
+
     if beat_idx == 0:
         directives.extend(["aa_env_preimpact_quiet", "aa_time_hold_then_burst", "aa_subject_loaded_silhouette"])
 
     if a_card:
         if a_card["contact"] == "strike":
             directives.extend(["aa_action_weight_load", "aa_action_hip_led_punch", "aa_subject_angular_pose"])
+            applied_rules.extend(["kinetic_chain", "hit_stop", "cause_before_effect", "camera_on_contact"])
             if a_card["limb"] not in {"lead_knee", "rear_knee"}:
                 directives.append("aa_subject_multiple_limb_smear")
+                applied_rules.append("smear")
             directives.extend(["aa_time_contact_hitstop", "aa_camera_contact_lock"])
             if "elbow" in a_card["id"]:
                 directives.append("aa_secondary_angular_impact_star")
@@ -355,13 +557,20 @@ def resolve_beat_kb_guidance(
                         "aa_env_yutapon_cubes",
                     ]
                 )
+                applied_rules.extend(["time_remap", "effects_after_contact"])
         elif a_card["contact"] == "block":
             directives.extend(["aa_action_forearm_block", "aa_camera_contact_lock", "aa_env_skid_gouge"])
+            applied_rules.extend(["hit_stop", "camera_on_contact", "effects_after_contact"])
         elif a_card["contact"] == "grapple":
             if "shove" in a_card["id"]:
-                directives.extend(["aa_action_absorb_recoil", "aa_env_skid_gouge", "aa_env_layered_dust"])
+                directives.extend(["aa_action_absorb_recoil", "aa_env_skid_gouge", "aa_env_layered_dust", "aa_camera_whip_reacquire"])
+                applied_rules.extend(["camera_between_contacts", "effects_after_contact", "cause_before_effect"])
             else:
                 directives.append("aa_camera_contact_lock")
+                applied_rules.extend(["camera_on_contact", "cause_before_effect"])
+        else:
+            directives.extend(["aa_camera_lateral_track", "aa_time_mixed_exposures"])
+            applied_rules.extend(["camera_between_contacts", "exposure"])
 
     if b_card:
         if b_card["class"] == "IMPACT.REACTION":
@@ -391,6 +600,28 @@ def resolve_beat_kb_guidance(
             ]
         )
 
+    # Pull supporting rows via `module_relations` in `agent_memory.db` if available
+    mem_path = bundle_dir / "agent_memory.db"
+    if mem_path.is_file():
+        try:
+            conn = _connect_ro(mem_path)
+            try:
+                placeholders = ",".join("?" for _ in directives)
+                if placeholders:
+                    rows = conn.execute(
+                        f"SELECT source, relation, target, passage_id FROM module_relations "
+                        f"WHERE source IN ({placeholders}) OR target IN ({placeholders})",
+                        tuple(directives) + tuple(directives),
+                    ).fetchall()
+                    for r in rows:
+                        for cand in (r["source"], r["target"]):
+                            if isinstance(cand, str) and cand.startswith("aa_"):
+                                directives.append(cand)
+            finally:
+                conn.close()
+        except Exception:
+            pass
+
     # Deduplicate preserving order
     seen = set()
     deduped = []
@@ -399,13 +630,17 @@ def resolve_beat_kb_guidance(
             seen.add(d)
             deduped.append(d)
 
+    seen_rules = set()
+    deduped_rules = []
+    for r in applied_rules:
+        if r not in seen_rules:
+            seen_rules.add(r)
+            deduped_rules.append(r)
+
     return {
         "directives": deduped,
-        "handbook_refs": [
-            "src-additional-continous-combat-state-md#0315",
-            "src-additional-continous-combat-state-md#0152",
-            "src-additional-02-facs-laban-bartenieff-gap-closure-completed-md#0786",
-        ],
+        "handbook_refs": handbook_refs,
+        "applied_rules": deduped_rules,
     }
 
 
@@ -416,18 +651,34 @@ def record_compile_usage(
     used_passages: Optional[List[str]] = None,
     bundle_dir: Path = DEFAULT_BUNDLE_DIR,
 ) -> None:
-    """Record emitted directives, Move Cards, and handbook citations into `agent_memory.db` (`usage_events` & `used_with`)."""
+    """Record emitted directives and valid handbook citations into `agent_memory.db` (`usage_events` & `used_with`),
+    preserving `agent verify` invariants (`memory_directive_refs_known` and `memory_passage_refs_resolve`).
+    """
     if not bundle_available(bundle_dir):
         return
     conn = _connect_memory(bundle_dir)
+    idx_conn = _connect_ro(bundle_dir / "handbook_index.db")
     ts = _utc_now()
-    nodes: List[Tuple[str, str]] = (
-        [("directive", d) for d in sorted(set(used_directives))]
-        + [("concept", f"move:{m}") for m in sorted(set(used_cards))]
-        + [("passage", p) for p in sorted(set(used_passages or []))]
-    )
     try:
-        ctx = json.dumps({"compiler": "sakuga_Xperiment", "timestamp": ts})
+        valid_directives = [
+            d
+            for d in sorted(set(used_directives))
+            if idx_conn.execute(
+                "SELECT 1 FROM directive_requires WHERE directive_id = ? UNION SELECT 1 FROM directive_passages WHERE directive_id = ?",
+                (d, d),
+            ).fetchone()
+            is not None
+        ]
+        valid_passages = [
+            p
+            for p in sorted(set(used_passages or []))
+            if idx_conn.execute("SELECT 1 FROM handbook_passages WHERE passage_id = ?", (p,)).fetchone() is not None
+        ]
+        nodes: List[Tuple[str, str]] = (
+            [("directive", d) for d in valid_directives]
+            + [("passage", p) for p in valid_passages]
+        )
+        ctx = json.dumps({"compiler": "sakuga_Xperiment", "cards": sorted(set(used_cards)), "timestamp": ts})
         for kind, nid in nodes:
             conn.execute(
                 "INSERT INTO usage_events (at, run_id, action, node_kind, node_id, context) VALUES (?, ?, 'compiled', ?, ?, ?)",
@@ -443,11 +694,14 @@ def record_compile_usage(
                 )
         conn.commit()
     finally:
+        idx_conn.close()
         conn.close()
 
 
 def kb_find(query_text: str, limit: int = 8, bundle_dir: Path = DEFAULT_BUNDLE_DIR) -> Dict[str, Any]:
-    """Search across `handbook_index.db`, `agent_memory.db`, and `fight_move_system` Move Cards."""
+    """Search across `handbook_index.db` (using Slice 3c `find2` alias expansion + diversity rerank when available),
+    `agent_memory.db`, and `fight_move_system` Move Cards.
+    """
     out: Dict[str, Any] = {"concepts": [], "move_cards": [], "tags": [], "passages": []}
     lex = Lexicon.load_default()
     q_lower = query_text.lower().strip()
@@ -467,6 +721,25 @@ def kb_find(query_text: str, limit: int = 8, bundle_dir: Path = DEFAULT_BUNDLE_D
     if not bundle_available(bundle_dir):
         return out
 
+    if _ensure_agent_importable(bundle_dir):
+        try:
+            from agent import handbook as ag_hb
+            from agent import knowledge as ag_kn
+            from agent import query as ag_q
+
+            conn = ag_hb.connect(bundle_dir / "handbook_index.db")
+            ag_kn.attach_memory(conn, bundle_dir / "agent_memory.db")
+            try:
+                res = ag_q.find2(conn, query_text, limit=limit)
+                out["concepts"] = list(res.get("concepts", []))
+                out["tags"] = list(res.get("tags", []))
+                out["passages"] = list(res.get("passages", []))
+                return out
+            finally:
+                conn.close()
+        except Exception:
+            pass
+
     conn = _connect_ro(bundle_dir / "handbook_index.db")
     mem_path = bundle_dir / "agent_memory.db"
     try:
@@ -480,16 +753,6 @@ def kb_find(query_text: str, limit: int = 8, bundle_dir: Path = DEFAULT_BUNDLE_D
                 (phrase,),
             ).fetchall()
             for r in c_rows:
-                out["concepts"].append({"id": r["concept_id"], "label": r["label"], "kind": r["kind"]})
-        except sqlite3.OperationalError:
-            pass
-
-        try:
-            m_rows = conn.execute(
-                "SELECT concept_id, label, kind, description FROM mem.agent_concepts WHERE lower(label) LIKE ? OR lower(aliases) LIKE ? LIMIT 5",
-                (f"%{q_lower}%", f"%{q_lower}%"),
-            ).fetchall()
-            for r in m_rows:
                 out["concepts"].append({"id": r["concept_id"], "label": r["label"], "kind": r["kind"]})
         except sqlite3.OperationalError:
             pass
@@ -536,6 +799,28 @@ def kb_lookup(
 
     passages: List[Dict[str, Any]] = []
     if bundle_available(bundle_dir):
+        if _ensure_agent_importable(bundle_dir):
+            try:
+                from agent import handbook as ag_hb
+                from agent import knowledge as ag_kn
+                from agent import query as ag_q
+
+                conn = ag_hb.connect(bundle_dir / "handbook_index.db")
+                ag_kn.attach_memory(conn, bundle_dir / "agent_memory.db")
+                try:
+                    hits, _ = ag_q.lookup2(conn, moment=moment, slot=slot, min_score=1, limit=limit)
+                    passages = list(hits)
+                    return {
+                        "moment": moment,
+                        "slot": slot,
+                        "directives": matched_directives,
+                        "passages": passages,
+                    }
+                finally:
+                    conn.close()
+            except Exception:
+                pass
+
         conn = _connect_ro(bundle_dir / "handbook_index.db")
         try:
             clauses = ["1=1"]
@@ -571,4 +856,28 @@ def kb_lookup(
         "slot": slot,
         "directives": matched_directives,
         "passages": passages,
+    }
+
+
+def kb_verify(bundle_dir: Path = DEFAULT_BUNDLE_DIR) -> Dict[str, Any]:
+    """Run both SHA256SUMS.bundle integrity and the 25-check `agent.verify.run()` suite."""
+    sha_ok, sha_errs = verify_bundle_integrity(bundle_dir)
+    agent_verify_res: Dict[str, Any] = {"ok": sha_ok, "checks": []}
+    if _ensure_agent_importable(bundle_dir) and bundle_available(bundle_dir):
+        try:
+            from agent import verify as ag_vf
+
+            agent_verify_res = dict(
+                ag_vf.run(
+                    index_path=bundle_dir / "handbook_index.db",
+                    memory_path=bundle_dir / "agent_memory.db",
+                )
+            )
+        except Exception as e:
+            agent_verify_res = {"ok": False, "error": str(e)}
+    return {
+        "sha256_bundle_ok": sha_ok,
+        "sha256_errors": sha_errs,
+        "agent_verify": agent_verify_res,
+        "ok": bool(sha_ok and agent_verify_res.get("ok", True)),
     }

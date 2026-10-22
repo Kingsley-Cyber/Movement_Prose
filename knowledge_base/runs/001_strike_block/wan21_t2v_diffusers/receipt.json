@@ -1,0 +1,832 @@
+{
+ "agent_version": "0.1.0",
+ "catalog_fingerprint": "275537d8f7c8d4bcb5a82c0d28ccf7efb5e6f6c3b8153ae35fecd971f99df639",
+ "engine_profile_id": "wan21_t2v_diffusers",
+ "engine_status": "official_example_inspected",
+ "taste_profile_id": "raw_street_brawl",
+ "request": "One strike and one block: A prepares, drives one straight strike, B blocks with a forearm at a visible contact point, A finishes while B recoils into a support step, both recover their guard.",
+ "chars_total": 10717,
+ "chars_by_event": {
+  "a_prepare": 1805,
+  "a_strike": 2124,
+  "block_contact": 1326,
+  "a_finish": 775,
+  "b_recoil": 978,
+  "a_guard": 2030,
+  "b_guard": 555
+ },
+ "prompt_sha256": "f5c016ea0b915fd00fe9c5f22700b64b3e194fbf33f9f8688f4afc241713f7f0",
+ "coverage": {
+  "covered": 38,
+  "total": 38
+ },
+ "negatives": {
+  "route": "negative_field",
+  "reason": null,
+  "status": "active",
+  "phrases": [
+   "merged forearms",
+   "costume redesign",
+   "hair topology changes",
+   "detached sleeves",
+   "premature explosion",
+   "drifting floor texture",
+   "moving horizon",
+   "floating support stones",
+   "floating planted foot",
+   "sliding support heel",
+   "knee bending backward",
+   "strike before weight load",
+   "cloth moving before the body",
+   "detached jacket",
+   "endless flag flapping",
+   "fabric fused with hands",
+   "uniform motion speed",
+   "constant slow motion",
+   "interpolated drift during the hold",
+   "repeated micro-windups",
+   "uncontrolled rolling horizon",
+   "cropped support feet",
+   "extreme facial stretch",
+   "constant orbit",
+   "soft airbrushed face gradient",
+   "migrating light source",
+   "glossy plastic highlights",
+   "flickering shadow boundaries",
+   "airbrushed gradients",
+   "clay skin",
+   "photoreal pores",
+   "muddy textured fills",
+   "glossy plastic fabric",
+   "rounded clay anatomy",
+   "melted elbows",
+   "changing costume symbols",
+   "plush surface shading",
+   "all layers sliding at one speed",
+   "bending buildings",
+   "moving horizon independent of camera",
+   "liquid scenery",
+   "arm detached from torso",
+   "reversed elbow",
+   "fist teleporting between poses",
+   "support foot skating",
+   "new hair strands growing",
+   "detached wig",
+   "hair fused into speed lines",
+   "scalp sliding",
+   "uniform optical-flow smoothing",
+   "blended in-between frames",
+   "identical cadence across every phase",
+   "motionless strike",
+   "unmotivated orbit",
+   "axis crossing",
+   "subject slipping out of frame",
+   "camera pulling away from contact",
+   "full-body neon fill",
+   "blooming outline hiding limbs",
+   "rim on every unrelated edge",
+   "glossy bevels",
+   "silhouette crawling",
+   "face deformation",
+   "flickering fill colors",
+   "excessive scratch noise",
+   "rigid vector perfection",
+   "merged fighters",
+   "fused forearms",
+   "contact across empty space",
+   "palm passing through wrist",
+   "persistent star object",
+   "burst before contact",
+   "full-screen opaque explosion",
+   "rounded jelly splat",
+   "recoil before touch",
+   "prolonged frozen clip",
+   "blended contact frames",
+   "continued fist penetration during pause",
+   "whip pan across impact",
+   "hidden contact point",
+   "cropped hands",
+   "sudden lens change",
+   "permanent grayscale sequence",
+   "muddy gray gradients",
+   "unreadable merged bodies",
+   "crossfaded palette transition",
+   "sliding belt",
+   "migrating cuffs",
+   "collar fused into skin",
+   "costume panel swaps",
+   "instant pose reset",
+   "reversed follow-through",
+   "elbow hyperextension",
+   "pivot foot sliding sideways",
+   "all parts freezing simultaneously",
+   "cloth leading the torso",
+   "unrelated repeated oscillation",
+   "face substitution",
+   "shoulder separation",
+   "fused glove and sleeve",
+   "mirrored costume panels",
+   "groove ahead of the foot",
+   "floating skid",
+   "disconnected track",
+   "shoe fused into stone",
+   "reaction before contact",
+   "sliding both feet",
+   "backward knee",
+   "torso moving without the struck shoulder",
+   "constant-speed sliding",
+   "reaction before impact",
+   "sudden end freeze",
+   "repeated backward bounces",
+   "residual stretched limbs",
+   "reset costume damage",
+   "swapped left-right markings",
+   "new hairstyle",
+   "restored pristine ground",
+   "disappearing blocks",
+   "new unexplained crater",
+   "perpetual dust eruption",
+   "instant teleport to idle",
+   "endlessly repeated punch",
+   "floating feet",
+   "frozen distorted hand",
+   "endless cloth flutter",
+   "floating sleeve anchors",
+   "garment snapping to a new design",
+   "repeated large cape waves",
+   "total mannequin freeze",
+   "large idle sway",
+   "looping attack restart",
+   "drifting feet",
+   "endless drift",
+   "unwanted zoom",
+   "horizon wobble",
+   "cropped final stance",
+   "lingering attack glow",
+   "random light-source change",
+   "reset surface damage",
+   "alternating bright and dark frames",
+   "lingering inverted colors",
+   "entire outfit recolored",
+   "erased battle damage",
+   "changing outline thickness"
+  ],
+  "chars": 3411
+ },
+ "suppressed": [],
+ "authored": [],
+ "manifest": [
+  {
+   "ordinal": 1,
+   "directive_id": "aa_subject_loaded_silhouette",
+   "event_id": "a_prepare",
+   "slot_id": "subject_anchor",
+   "moment_type": "anticipation",
+   "clause": "SUBJECT AND ACTION",
+   "priority": "locked",
+   "budget_class": "none",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    0,
+    12
+   ]
+  },
+  {
+   "ordinal": 2,
+   "directive_id": "aa_env_preimpact_quiet",
+   "event_id": "a_prepare",
+   "slot_id": "environment",
+   "moment_type": "anticipation",
+   "clause": "CAMERA AND PRESENTATION",
+   "priority": "required",
+   "budget_class": "none",
+   "subjects": [
+    "scene"
+   ],
+   "frames": [
+    0,
+    12
+   ]
+  },
+  {
+   "ordinal": 3,
+   "directive_id": "aa_action_weight_load",
+   "event_id": "a_prepare",
+   "slot_id": "primary_action",
+   "moment_type": "anticipation",
+   "clause": "SUBJECT AND ACTION",
+   "priority": "locked",
+   "budget_class": "dominant_action",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    0,
+    12
+   ]
+  },
+  {
+   "ordinal": 4,
+   "directive_id": "aa_secondary_cloth_lag",
+   "event_id": "a_prepare",
+   "slot_id": "secondary_motion",
+   "moment_type": "anticipation",
+   "clause": "PERFORMANCE",
+   "priority": "low",
+   "budget_class": "secondary_body",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    0,
+    12
+   ]
+  },
+  {
+   "ordinal": 5,
+   "directive_id": "aa_time_hold_then_burst",
+   "event_id": "a_prepare",
+   "slot_id": "temporal_cadence",
+   "moment_type": "anticipation",
+   "clause": "TIMING",
+   "priority": "required",
+   "budget_class": "none",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    0,
+    12
+   ]
+  },
+  {
+   "ordinal": 6,
+   "directive_id": "aa_camera_low_tilt",
+   "event_id": "a_prepare",
+   "slot_id": "camera_optics",
+   "moment_type": "anticipation",
+   "clause": "SHOT AND DURATION",
+   "priority": "medium",
+   "budget_class": "camera_static",
+   "subjects": [
+    "scene"
+   ],
+   "frames": [
+    0,
+    12
+   ]
+  },
+  {
+   "ordinal": 7,
+   "directive_id": "aa_light_hard_shadow",
+   "event_id": "a_prepare",
+   "slot_id": "lighting",
+   "moment_type": "anticipation",
+   "clause": "CAMERA AND PRESENTATION",
+   "priority": "medium",
+   "budget_class": "none",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    0,
+    12
+   ]
+  },
+  {
+   "ordinal": 8,
+   "directive_id": "aa_material_two_tone_cel",
+   "event_id": "a_prepare",
+   "slot_id": "material_shading",
+   "moment_type": "anticipation",
+   "clause": "CAMERA AND PRESENTATION",
+   "priority": "high",
+   "budget_class": "none",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    0,
+    12
+   ]
+  },
+  {
+   "ordinal": 9,
+   "directive_id": "aa_subject_angular_pose",
+   "event_id": "a_strike",
+   "slot_id": "subject_anchor",
+   "moment_type": "execution",
+   "clause": "SUBJECT AND ACTION",
+   "priority": "high",
+   "budget_class": "none",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    12,
+    24
+   ]
+  },
+  {
+   "ordinal": 10,
+   "directive_id": "aa_env_layered_parallax",
+   "event_id": "a_strike",
+   "slot_id": "environment",
+   "moment_type": "execution",
+   "clause": "CAMERA AND PRESENTATION",
+   "priority": "medium",
+   "budget_class": "material_response",
+   "subjects": [
+    "scene"
+   ],
+   "frames": [
+    12,
+    24
+   ]
+  },
+  {
+   "ordinal": 11,
+   "directive_id": "aa_action_hip_led_punch",
+   "event_id": "a_strike",
+   "slot_id": "primary_action",
+   "moment_type": "execution",
+   "clause": "SUBJECT AND ACTION",
+   "priority": "locked",
+   "budget_class": "dominant_action",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    12,
+    24
+   ]
+  },
+  {
+   "ordinal": 12,
+   "directive_id": "aa_secondary_hair_snap",
+   "event_id": "a_strike",
+   "slot_id": "secondary_motion",
+   "moment_type": "execution",
+   "clause": "PERFORMANCE",
+   "priority": "medium",
+   "budget_class": "secondary_body",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    12,
+    24
+   ]
+  },
+  {
+   "ordinal": 13,
+   "directive_id": "aa_time_mixed_exposures",
+   "event_id": "a_strike",
+   "slot_id": "temporal_cadence",
+   "moment_type": "execution",
+   "clause": "TIMING",
+   "priority": "high",
+   "budget_class": "none",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    12,
+    24
+   ]
+  },
+  {
+   "ordinal": 14,
+   "directive_id": "aa_camera_lateral_track",
+   "event_id": "a_strike",
+   "slot_id": "camera_optics",
+   "moment_type": "execution",
+   "clause": "CAMERA AND PRESENTATION",
+   "priority": "high",
+   "budget_class": "camera_move",
+   "subjects": [
+    "scene"
+   ],
+   "frames": [
+    12,
+    24
+   ]
+  },
+  {
+   "ordinal": 15,
+   "directive_id": "aa_light_thin_rim",
+   "event_id": "a_strike",
+   "slot_id": "lighting",
+   "moment_type": "execution",
+   "clause": "CAMERA AND PRESENTATION",
+   "priority": "medium",
+   "budget_class": "none",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    12,
+    24
+   ]
+  },
+  {
+   "ordinal": 16,
+   "directive_id": "aa_material_controlled_line_boil",
+   "event_id": "a_strike",
+   "slot_id": "material_shading",
+   "moment_type": "execution",
+   "clause": "CAMERA AND PRESENTATION",
+   "priority": "low",
+   "budget_class": "none",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    12,
+    24
+   ]
+  },
+  {
+   "ordinal": 17,
+   "directive_id": "aa_action_forearm_block",
+   "event_id": "block_contact",
+   "slot_id": "primary_action",
+   "moment_type": "impact",
+   "clause": "SUBJECT AND ACTION",
+   "priority": "locked",
+   "budget_class": "dominant_action",
+   "subjects": [
+    "A",
+    "B"
+   ],
+   "frames": [
+    24,
+    26
+   ]
+  },
+  {
+   "ordinal": 18,
+   "directive_id": "aa_secondary_angular_impact_star",
+   "event_id": "block_contact",
+   "slot_id": "secondary_motion",
+   "moment_type": "impact",
+   "clause": "CAMERA AND PRESENTATION",
+   "priority": "medium",
+   "budget_class": "material_response",
+   "subjects": [
+    "scene"
+   ],
+   "frames": [
+    24,
+    26
+   ]
+  },
+  {
+   "ordinal": 19,
+   "directive_id": "aa_time_contact_hitstop",
+   "event_id": "block_contact",
+   "slot_id": "temporal_cadence",
+   "moment_type": "impact",
+   "clause": "TIMING",
+   "priority": "required",
+   "budget_class": "none",
+   "subjects": [
+    "A",
+    "B"
+   ],
+   "frames": [
+    24,
+    26
+   ]
+  },
+  {
+   "ordinal": 20,
+   "directive_id": "aa_camera_contact_lock",
+   "event_id": "block_contact",
+   "slot_id": "camera_optics",
+   "moment_type": "impact",
+   "clause": "CAMERA AND PRESENTATION",
+   "priority": "required",
+   "budget_class": "camera_static",
+   "subjects": [
+    "scene"
+   ],
+   "frames": [
+    24,
+    26
+   ]
+  },
+  {
+   "ordinal": 21,
+   "directive_id": "aa_material_monochrome_impact",
+   "event_id": "block_contact",
+   "slot_id": "material_shading",
+   "moment_type": "impact",
+   "clause": "CAMERA AND PRESENTATION",
+   "priority": "low",
+   "budget_class": "material_response",
+   "subjects": [
+    "scene"
+   ],
+   "frames": [
+    24,
+    26
+   ]
+  },
+  {
+   "ordinal": 22,
+   "directive_id": "aa_subject_costume_attachment",
+   "event_id": "a_finish",
+   "slot_id": "subject_anchor",
+   "moment_type": "follow_through",
+   "clause": "SUBJECT AND ACTION",
+   "priority": "locked",
+   "budget_class": "none",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    26,
+    40
+   ]
+  },
+  {
+   "ordinal": 23,
+   "directive_id": "aa_action_followthrough_arc",
+   "event_id": "a_finish",
+   "slot_id": "primary_action",
+   "moment_type": "follow_through",
+   "clause": "SUBJECT AND ACTION",
+   "priority": "locked",
+   "budget_class": "dominant_action",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    26,
+    40
+   ]
+  },
+  {
+   "ordinal": 24,
+   "directive_id": "aa_time_overlap_offsets",
+   "event_id": "a_finish",
+   "slot_id": "temporal_cadence",
+   "moment_type": "follow_through",
+   "clause": "TIMING",
+   "priority": "medium",
+   "budget_class": "none",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    26,
+    40
+   ]
+  },
+  {
+   "ordinal": 25,
+   "directive_id": "aa_subject_recoil_identity",
+   "event_id": "b_recoil",
+   "slot_id": "subject_anchor",
+   "moment_type": "recoil",
+   "clause": "SUBJECT AND ACTION",
+   "priority": "locked",
+   "budget_class": "none",
+   "subjects": [
+    "B"
+   ],
+   "frames": [
+    26,
+    44
+   ]
+  },
+  {
+   "ordinal": 26,
+   "directive_id": "aa_env_skid_gouge",
+   "event_id": "b_recoil",
+   "slot_id": "environment",
+   "moment_type": "recoil",
+   "clause": "CAMERA AND PRESENTATION",
+   "priority": "medium",
+   "budget_class": "material_response",
+   "subjects": [
+    "B"
+   ],
+   "frames": [
+    26,
+    40
+   ]
+  },
+  {
+   "ordinal": 27,
+   "directive_id": "aa_action_absorb_recoil",
+   "event_id": "b_recoil",
+   "slot_id": "primary_action",
+   "moment_type": "recoil",
+   "clause": "SUBJECT AND ACTION",
+   "priority": "locked",
+   "budget_class": "dominant_action",
+   "subjects": [
+    "B"
+   ],
+   "frames": [
+    26,
+    44
+   ]
+  },
+  {
+   "ordinal": 28,
+   "directive_id": "aa_time_recoil_spacing",
+   "event_id": "b_recoil",
+   "slot_id": "temporal_cadence",
+   "moment_type": "recoil",
+   "clause": "TIMING",
+   "priority": "required",
+   "budget_class": "none",
+   "subjects": [
+    "B"
+   ],
+   "frames": [
+    26,
+    44
+   ]
+  },
+  {
+   "ordinal": 29,
+   "directive_id": "aa_subject_recovery_model",
+   "event_id": "a_guard",
+   "slot_id": "subject_anchor",
+   "moment_type": "recovery",
+   "clause": "SUBJECT AND ACTION",
+   "priority": "locked",
+   "budget_class": "none",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    40,
+    72
+   ]
+  },
+  {
+   "ordinal": 30,
+   "directive_id": "aa_env_debris_settle",
+   "event_id": "a_guard",
+   "slot_id": "environment",
+   "moment_type": "recovery",
+   "clause": "CAMERA AND PRESENTATION",
+   "priority": "required",
+   "budget_class": "none",
+   "subjects": [
+    "scene"
+   ],
+   "frames": [
+    40,
+    72
+   ]
+  },
+  {
+   "ordinal": 31,
+   "directive_id": "aa_action_guard_recovery",
+   "event_id": "a_guard",
+   "slot_id": "primary_action",
+   "moment_type": "recovery",
+   "clause": "SUBJECT AND ACTION",
+   "priority": "locked",
+   "budget_class": "dominant_action",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    40,
+    72
+   ]
+  },
+  {
+   "ordinal": 32,
+   "directive_id": "aa_secondary_cloth_settle",
+   "event_id": "a_guard",
+   "slot_id": "secondary_motion",
+   "moment_type": "recovery",
+   "clause": "PERFORMANCE",
+   "priority": "low",
+   "budget_class": "secondary_body",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    40,
+    72
+   ]
+  },
+  {
+   "ordinal": 33,
+   "directive_id": "aa_time_moving_hold",
+   "event_id": "a_guard",
+   "slot_id": "temporal_cadence",
+   "moment_type": "recovery",
+   "clause": "TIMING",
+   "priority": "high",
+   "budget_class": "none",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    40,
+    72
+   ]
+  },
+  {
+   "ordinal": 34,
+   "directive_id": "aa_camera_recovery_settle",
+   "event_id": "a_guard",
+   "slot_id": "camera_optics",
+   "moment_type": "recovery",
+   "clause": "CAMERA AND PRESENTATION",
+   "priority": "high",
+   "budget_class": "camera_static",
+   "subjects": [
+    "scene"
+   ],
+   "frames": [
+    40,
+    72
+   ]
+  },
+  {
+   "ordinal": 35,
+   "directive_id": "aa_light_restore_key",
+   "event_id": "a_guard",
+   "slot_id": "lighting",
+   "moment_type": "recovery",
+   "clause": "CAMERA AND PRESENTATION",
+   "priority": "high",
+   "budget_class": "none",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    40,
+    72
+   ]
+  },
+  {
+   "ordinal": 36,
+   "directive_id": "aa_material_restore_palette",
+   "event_id": "a_guard",
+   "slot_id": "material_shading",
+   "moment_type": "recovery",
+   "clause": "CAMERA AND PRESENTATION",
+   "priority": "high",
+   "budget_class": "none",
+   "subjects": [
+    "A"
+   ],
+   "frames": [
+    40,
+    72
+   ]
+  },
+  {
+   "ordinal": 37,
+   "directive_id": "aa_subject_recovery_model",
+   "event_id": "b_guard",
+   "slot_id": "subject_anchor",
+   "moment_type": "recovery",
+   "clause": "SUBJECT AND ACTION",
+   "priority": "locked",
+   "budget_class": "none",
+   "subjects": [
+    "B"
+   ],
+   "frames": [
+    44,
+    72
+   ]
+  },
+  {
+   "ordinal": 38,
+   "directive_id": "aa_action_guard_recovery",
+   "event_id": "b_guard",
+   "slot_id": "primary_action",
+   "moment_type": "recovery",
+   "clause": "SUBJECT AND ACTION",
+   "priority": "locked",
+   "budget_class": "dominant_action",
+   "subjects": [
+    "B"
+   ],
+   "frames": [
+    44,
+    72
+   ]
+  }
+ ],
+ "limits": [
+  "No render was run; every row is an untested prompt candidate.",
+  "Coverage counts the first 40 characters of each selected snippet found in the prompt; it does not prove the model obeys them."
+ ]
+}

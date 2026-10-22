@@ -1,0 +1,1281 @@
+{
+ "request": "hero slips a wide swing and lands a rising left hook to the solar plexus",
+ "taste_profile_id": "gritty_90s_ova",
+ "sub_genre_hint": "grounded_martial_arts",
+ "budget_limits": {
+  "dominant_action": {
+   "max": 1,
+   "scope": "subject_per_window"
+  },
+  "secondary_body": {
+   "max": 2,
+   "scope": "subject_per_window"
+  },
+  "material_response": {
+   "max": 3,
+   "scope": "window"
+  },
+  "camera_move": {
+   "max": 1,
+   "scope": "clip"
+  }
+ },
+ "propose_hints": {
+  "secondary_body": {
+   "min": 1,
+   "max": 2
+  },
+  "material_response": {
+   "min": 1,
+   "max": 3
+  }
+ },
+ "events": [
+  {
+   "event_id": "a_prepare",
+   "actor_id": "A",
+   "target_id": null,
+   "moment_type": "anticipation",
+   "frames": [
+    0,
+    20
+   ],
+   "empty_slots": [],
+   "slots": {
+    "subject_anchor": [
+     {
+      "directive_id": "aa_subject_loaded_silhouette",
+      "title": "Readable loaded silhouette",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "locked",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "environment": [
+     {
+      "directive_id": "aa_env_preimpact_quiet",
+      "title": "Quiet ground before release",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "required",
+      "budget_class": "none",
+      "subject": "scene",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "primary_action": [
+     {
+      "directive_id": "aa_action_weight_load",
+      "title": "Load the support before striking",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "locked",
+      "budget_class": "dominant_action",
+      "subject": "actor",
+      "placeholders": [
+       "actor",
+       "target"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "secondary_motion": [
+     {
+      "directive_id": "aa_secondary_cloth_lag",
+      "title": "Cloth lags the loading motion",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "low",
+      "budget_class": "secondary_body",
+      "subject": "actor",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "temporal_cadence": [
+     {
+      "directive_id": "aa_time_hold_then_burst",
+      "title": "Tension hold then burst",
+      "mark": "preferred",
+      "sub_genre": "shonen_impact",
+      "default_priority": "required",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "camera_optics": [
+     {
+      "directive_id": "aa_camera_low_tilt",
+      "title": "Low-angle restrained Dutch view",
+      "mark": "preferred",
+      "sub_genre": "shonen_impact",
+      "default_priority": "medium",
+      "budget_class": "camera_static",
+      "subject": "scene",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "lighting": [
+     {
+      "directive_id": "aa_light_hard_shadow",
+      "title": "Hard graphic key shadow",
+      "mark": "preferred",
+      "sub_genre": "cyberpunk_cqc",
+      "default_priority": "medium",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [
+       "aa_light_kagenashi"
+      ],
+      "requires": []
+     }
+    ],
+    "material_shading": [
+     {
+      "directive_id": "aa_material_two_tone_cel",
+      "title": "Two-tone cel construction",
+      "mark": "preferred",
+      "sub_genre": "shonen_impact",
+      "default_priority": "high",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [],
+      "conflicts": [
+       "aa_light_kagenashi"
+      ],
+      "requires": []
+     }
+    ]
+   }
+  },
+  {
+   "event_id": "a_strike",
+   "actor_id": "A",
+   "target_id": "B",
+   "moment_type": "execution",
+   "frames": [
+    20,
+    40
+   ],
+   "empty_slots": [],
+   "slots": {
+    "subject_anchor": [
+     {
+      "directive_id": "aa_subject_angular_pose",
+      "title": "Angular graphic pose",
+      "mark": "neutral",
+      "sub_genre": "shonen_impact",
+      "default_priority": "high",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": []
+     },
+     {
+      "directive_id": "aa_subject_foreshortened_fist",
+      "title": "Extreme foreshortened fist",
+      "mark": "neutral",
+      "sub_genre": "shonen_impact",
+      "default_priority": "high",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": []
+     },
+     {
+      "directive_id": "aa_subject_multiple_limb_smear",
+      "title": "Transient multiple-contour smear",
+      "mark": "avoid",
+      "sub_genre": "supernatural_speed",
+      "default_priority": "high",
+      "budget_class": "secondary_body",
+      "subject": "actor",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "environment": [
+     {
+      "directive_id": "aa_env_layered_parallax",
+      "title": "Depth-separated background parallax",
+      "mark": "neutral",
+      "sub_genre": "mecha_aerobatics",
+      "default_priority": "medium",
+      "budget_class": "material_response",
+      "subject": "scene",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [
+       "aa_env_speed_void"
+      ],
+      "requires": []
+     },
+     {
+      "directive_id": "aa_env_speed_void",
+      "title": "Directional speed background",
+      "mark": "avoid",
+      "sub_genre": "supernatural_speed",
+      "default_priority": "medium",
+      "budget_class": "material_response",
+      "subject": "scene",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [
+       "aa_env_layered_parallax"
+      ],
+      "requires": []
+     }
+    ],
+    "primary_action": [
+     {
+      "directive_id": "aa_action_hip_led_punch",
+      "title": "Hip-led straight punch",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "locked",
+      "budget_class": "dominant_action",
+      "subject": "actor",
+      "placeholders": [
+       "actor",
+       "target"
+      ],
+      "conflicts": [],
+      "requires": []
+     },
+     {
+      "directive_id": "aa_action_flash_step",
+      "title": "Discrete vanish and arrival",
+      "mark": "avoid",
+      "sub_genre": "supernatural_speed",
+      "default_priority": "locked",
+      "budget_class": "dominant_action",
+      "subject": "actor",
+      "placeholders": [
+       "actor",
+       "target"
+      ],
+      "conflicts": [
+       "aa_camera_crash_zoom",
+       "aa_camera_falling_track",
+       "aa_camera_lateral_track",
+       "aa_camera_whip_reacquire"
+      ],
+      "requires": []
+     },
+     {
+      "directive_id": "aa_action_itano_evasion",
+      "title": "Mecha evasion among converging missiles",
+      "mark": "avoid",
+      "sub_genre": "mecha_aerobatics",
+      "default_priority": "locked",
+      "budget_class": "dominant_action",
+      "subject": "actor",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": [
+       "authored_actor_path",
+       "distinct_missile_paths"
+      ]
+     }
+    ],
+    "secondary_motion": [
+     {
+      "directive_id": "aa_secondary_hair_snap",
+      "title": "Hair clump snap and lag",
+      "mark": "neutral",
+      "sub_genre": "supernatural_speed",
+      "default_priority": "medium",
+      "budget_class": "secondary_body",
+      "subject": "actor",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": []
+     },
+     {
+      "directive_id": "aa_secondary_kanada_flame_dragon",
+      "title": "Graphic flame-dragon contour",
+      "mark": "avoid",
+      "sub_genre": "supernatural_speed",
+      "default_priority": "medium",
+      "budget_class": "material_response",
+      "subject": "scene",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": [
+       "authored_attack_path"
+      ]
+     }
+    ],
+    "temporal_cadence": [
+     {
+      "directive_id": "aa_time_mixed_exposures",
+      "title": "Selective ones within twos",
+      "mark": "preferred",
+      "sub_genre": "shonen_impact",
+      "default_priority": "high",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": []
+     },
+     {
+      "directive_id": "aa_time_itano_depth",
+      "title": "Depth-dependent missile cadence",
+      "mark": "neutral",
+      "sub_genre": "mecha_aerobatics",
+      "default_priority": "high",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": [
+       "distinct_missile_paths",
+       "depth_layer_assignments"
+      ]
+     },
+     {
+      "directive_id": "aa_time_pose_snapping",
+      "title": "Stepped pose snapping",
+      "mark": "neutral",
+      "sub_genre": "shonen_impact",
+      "default_priority": "high",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "camera_optics": [
+     {
+      "directive_id": "aa_camera_lateral_track",
+      "title": "Lateral action tracking",
+      "mark": "neutral",
+      "sub_genre": "cyberpunk_cqc",
+      "default_priority": "high",
+      "budget_class": "camera_move",
+      "subject": "scene",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [
+       "aa_action_flash_step"
+      ],
+      "requires": []
+     },
+     {
+      "directive_id": "aa_camera_incoming_wide",
+      "title": "Barrel-distorted incoming-strike view",
+      "mark": "avoid",
+      "sub_genre": "shonen_impact",
+      "default_priority": "high",
+      "budget_class": "camera_static",
+      "subject": "scene",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "lighting": [
+     {
+      "directive_id": "aa_light_kagenashi",
+      "title": "Kagenashi-style form-shadow suppression",
+      "mark": "avoid",
+      "sub_genre": "shonen_impact",
+      "default_priority": "low",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [
+       "aa_light_hard_shadow",
+       "aa_material_two_tone_cel"
+      ],
+      "requires": []
+     },
+     {
+      "directive_id": "aa_light_thin_rim",
+      "title": "Thin rim separating fast silhouettes",
+      "mark": "avoid",
+      "sub_genre": "mecha_aerobatics",
+      "default_priority": "medium",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "material_shading": [
+     {
+      "directive_id": "aa_material_controlled_line_boil",
+      "title": "Controlled contour line boil",
+      "mark": "avoid",
+      "sub_genre": "shonen_impact",
+      "default_priority": "low",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ]
+   }
+  },
+  {
+   "event_id": "block_contact",
+   "actor_id": "A",
+   "target_id": "B",
+   "moment_type": "impact",
+   "frames": [
+    40,
+    43
+   ],
+   "empty_slots": [],
+   "slots": {
+    "subject_anchor": [
+     {
+      "directive_id": "aa_subject_elastic_contact",
+      "title": "Bounded impact deformation",
+      "mark": "neutral",
+      "sub_genre": "shonen_impact",
+      "default_priority": "high",
+      "budget_class": "secondary_body",
+      "subject": "target",
+      "placeholders": [
+       "target"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "environment": [
+     {
+      "directive_id": "aa_env_radial_fracture",
+      "title": "Contact-origin ground fracture",
+      "mark": "neutral",
+      "sub_genre": "shonen_impact",
+      "default_priority": "medium",
+      "budget_class": "material_response",
+      "subject": "scene",
+      "placeholders": [
+       "contact_origin"
+      ],
+      "conflicts": [],
+      "requires": [
+       "contact_event_on_solid_surface"
+      ]
+     }
+    ],
+    "primary_action": [
+     {
+      "directive_id": "aa_action_forearm_block",
+      "title": "Readable forearm block",
+      "mark": "preferred",
+      "sub_genre": "cyberpunk_cqc",
+      "default_priority": "locked",
+      "budget_class": "dominant_action",
+      "subject": "both",
+      "placeholders": [
+       "actor",
+       "target"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "secondary_motion": [
+     {
+      "directive_id": "aa_secondary_angular_impact_star",
+      "title": "Angular contact star",
+      "mark": "avoid",
+      "sub_genre": "shonen_impact",
+      "default_priority": "medium",
+      "budget_class": "material_response",
+      "subject": "scene",
+      "placeholders": [
+       "contact_origin"
+      ],
+      "conflicts": [],
+      "requires": []
+     },
+     {
+      "directive_id": "aa_secondary_contact_ring",
+      "title": "Contact-centered shock ring",
+      "mark": "avoid",
+      "sub_genre": "shonen_impact",
+      "default_priority": "medium",
+      "budget_class": "material_response",
+      "subject": "scene",
+      "placeholders": [
+       "contact_origin"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "temporal_cadence": [
+     {
+      "directive_id": "aa_time_contact_hitstop",
+      "title": "Brief contact hit-stop",
+      "mark": "preferred",
+      "sub_genre": "shonen_impact",
+      "default_priority": "required",
+      "budget_class": "none",
+      "subject": "both",
+      "placeholders": [],
+      "conflicts": [
+       "aa_camera_crash_zoom"
+      ],
+      "requires": []
+     }
+    ],
+    "camera_optics": [
+     {
+      "directive_id": "aa_camera_contact_lock",
+      "title": "Contact readability lock",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "required",
+      "budget_class": "camera_static",
+      "subject": "scene",
+      "placeholders": [],
+      "conflicts": [
+       "aa_camera_crash_zoom"
+      ],
+      "requires": []
+     },
+     {
+      "directive_id": "aa_camera_crash_zoom",
+      "title": "Crash zoom onto a contact",
+      "mark": "avoid",
+      "sub_genre": "shonen_impact",
+      "default_priority": "medium",
+      "budget_class": "camera_move",
+      "subject": "scene",
+      "placeholders": [],
+      "conflicts": [
+       "aa_action_flash_step",
+       "aa_camera_contact_lock",
+       "aa_time_contact_hitstop"
+      ],
+      "requires": []
+     }
+    ],
+    "lighting": [
+     {
+      "directive_id": "aa_light_directional_lightning",
+      "title": "Directional lightning illumination",
+      "mark": "neutral",
+      "sub_genre": "supernatural_speed",
+      "default_priority": "low",
+      "budget_class": "material_response",
+      "subject": "scene",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": []
+     },
+     {
+      "directive_id": "aa_light_silhouette_flash",
+      "title": "Backlight silhouette flash",
+      "mark": "neutral",
+      "sub_genre": "supernatural_speed",
+      "default_priority": "low",
+      "budget_class": "material_response",
+      "subject": "scene",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "material_shading": [
+     {
+      "directive_id": "aa_material_monochrome_impact",
+      "title": "Monochrome graphic impact frame",
+      "mark": "preferred",
+      "sub_genre": "shonen_impact",
+      "default_priority": "low",
+      "budget_class": "material_response",
+      "subject": "scene",
+      "placeholders": [],
+      "conflicts": [
+       "aa_material_charcoal_impact",
+       "aa_material_inverted_impact"
+      ],
+      "requires": []
+     },
+     {
+      "directive_id": "aa_material_charcoal_impact",
+      "title": "Charcoal-style impact accent",
+      "mark": "neutral",
+      "sub_genre": "shonen_impact",
+      "default_priority": "low",
+      "budget_class": "material_response",
+      "subject": "scene",
+      "placeholders": [],
+      "conflicts": [
+       "aa_material_inverted_impact",
+       "aa_material_monochrome_impact"
+      ],
+      "requires": []
+     },
+     {
+      "directive_id": "aa_material_inverted_impact",
+      "title": "Single inverted-palette accent",
+      "mark": "avoid",
+      "sub_genre": "supernatural_speed",
+      "default_priority": "low",
+      "budget_class": "material_response",
+      "subject": "scene",
+      "placeholders": [],
+      "conflicts": [
+       "aa_material_charcoal_impact",
+       "aa_material_monochrome_impact"
+      ],
+      "requires": []
+     }
+    ]
+   }
+  },
+  {
+   "event_id": "a_finish",
+   "actor_id": "A",
+   "target_id": null,
+   "moment_type": "follow_through",
+   "frames": [
+    43,
+    67
+   ],
+   "empty_slots": [],
+   "slots": {
+    "subject_anchor": [
+     {
+      "directive_id": "aa_subject_costume_attachment",
+      "title": "Stable costume attachment points",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "locked",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "environment": [
+     {
+      "directive_id": "aa_env_layered_dust",
+      "title": "Layered dust billow",
+      "mark": "neutral",
+      "sub_genre": "shonen_impact",
+      "default_priority": "low",
+      "budget_class": "material_response",
+      "subject": "scene",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": [
+       "surface_fracture_event"
+      ]
+     }
+    ],
+    "primary_action": [
+     {
+      "directive_id": "aa_action_followthrough_arc",
+      "title": "Continuous strike follow-through",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "locked",
+      "budget_class": "dominant_action",
+      "subject": "actor",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "secondary_motion": [
+     {
+      "directive_id": "aa_secondary_weapon_contrail",
+      "title": "Blade-attached tapering contrail",
+      "mark": "neutral",
+      "sub_genre": "cyberpunk_cqc",
+      "default_priority": "low",
+      "budget_class": "material_response",
+      "subject": "actor",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "temporal_cadence": [
+     {
+      "directive_id": "aa_time_overlap_offsets",
+      "title": "Staggered follow-through timing",
+      "mark": "neutral",
+      "sub_genre": "shonen_impact",
+      "default_priority": "medium",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "camera_optics": [
+     {
+      "directive_id": "aa_camera_whip_reacquire",
+      "title": "Whip pan with a readable destination",
+      "mark": "avoid",
+      "sub_genre": "cyberpunk_cqc",
+      "default_priority": "medium",
+      "budget_class": "camera_move",
+      "subject": "scene",
+      "placeholders": [
+       "target"
+      ],
+      "conflicts": [
+       "aa_action_flash_step"
+      ],
+      "requires": []
+     }
+    ],
+    "lighting": [
+     {
+      "directive_id": "aa_light_sparks_local",
+      "title": "Localized spark illumination",
+      "mark": "neutral",
+      "sub_genre": "cyberpunk_cqc",
+      "default_priority": "low",
+      "budget_class": "material_response",
+      "subject": "scene",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": [
+       "existing_spark_event"
+      ]
+     }
+    ],
+    "material_shading": [
+     {
+      "directive_id": "aa_material_flat_debris_faces",
+      "title": "Flat-shaded debris faces",
+      "mark": "neutral",
+      "sub_genre": "shonen_impact",
+      "default_priority": "low",
+      "budget_class": "none",
+      "subject": "scene",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": [
+       "existing_debris_objects"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "event_id": "b_recoil",
+   "actor_id": "B",
+   "target_id": null,
+   "moment_type": "recoil",
+   "frames": [
+    43,
+    73
+   ],
+   "empty_slots": [],
+   "slots": {
+    "subject_anchor": [
+     {
+      "directive_id": "aa_subject_recoil_identity",
+      "title": "Recoil identity anchor",
+      "mark": "preferred",
+      "sub_genre": "cyberpunk_cqc",
+      "default_priority": "locked",
+      "budget_class": "none",
+      "subject": "target",
+      "placeholders": [
+       "target"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "environment": [
+     {
+      "directive_id": "aa_env_skid_gouge",
+      "title": "Grounded skid gouge",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "medium",
+      "budget_class": "material_response",
+      "subject": "target",
+      "placeholders": [
+       "target"
+      ],
+      "conflicts": [],
+      "requires": [
+       "heel_ground_contact_interval"
+      ]
+     },
+     {
+      "directive_id": "aa_env_yutapon_cubes",
+      "title": "Cubic debris fan",
+      "mark": "avoid",
+      "sub_genre": "shonen_impact",
+      "default_priority": "medium",
+      "budget_class": "material_response",
+      "subject": "scene",
+      "placeholders": [
+       "contact_origin"
+      ],
+      "conflicts": [],
+      "requires": [
+       "surface_fracture_event"
+      ]
+     }
+    ],
+    "primary_action": [
+     {
+      "directive_id": "aa_action_absorb_recoil",
+      "title": "Absorb force with a recovery step",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "locked",
+      "budget_class": "dominant_action",
+      "subject": "target",
+      "placeholders": [
+       "target"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "secondary_motion": [
+     {
+      "directive_id": "aa_secondary_cape_overshoot",
+      "title": "Cape overshoot after body reversal",
+      "mark": "preferred",
+      "sub_genre": "shonen_impact",
+      "default_priority": "low",
+      "budget_class": "secondary_body",
+      "subject": "target",
+      "placeholders": [
+       "target"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "temporal_cadence": [
+     {
+      "directive_id": "aa_time_recoil_spacing",
+      "title": "Fast displacement then controlled catch",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "required",
+      "budget_class": "none",
+      "subject": "target",
+      "placeholders": [
+       "target"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "camera_optics": [
+     {
+      "directive_id": "aa_camera_falling_track",
+      "title": "Synchronous falling-subject track",
+      "mark": "neutral",
+      "sub_genre": "mecha_aerobatics",
+      "default_priority": "high",
+      "budget_class": "camera_move",
+      "subject": "scene",
+      "placeholders": [
+       "target"
+      ],
+      "conflicts": [
+       "aa_action_flash_step"
+      ],
+      "requires": []
+     }
+    ],
+    "lighting": [
+     {
+      "directive_id": "aa_light_recoil_falloff",
+      "title": "Contact-light falloff",
+      "mark": "neutral",
+      "sub_genre": "supernatural_speed",
+      "default_priority": "low",
+      "budget_class": "none",
+      "subject": "target",
+      "placeholders": [
+       "target"
+      ],
+      "conflicts": [],
+      "requires": [
+       "prior_contact_light_event"
+      ]
+     }
+    ],
+    "material_shading": [
+     {
+      "directive_id": "aa_material_expressive_rough",
+      "title": "Expressive rough ink during recoil",
+      "mark": "preferred",
+      "sub_genre": "shonen_impact",
+      "default_priority": "low",
+      "budget_class": "none",
+      "subject": "target",
+      "placeholders": [
+       "target"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ]
+   }
+  },
+  {
+   "event_id": "a_guard",
+   "actor_id": "A",
+   "target_id": null,
+   "moment_type": "recovery",
+   "frames": [
+    67,
+    120
+   ],
+   "empty_slots": [],
+   "slots": {
+    "subject_anchor": [
+     {
+      "directive_id": "aa_subject_recovery_model",
+      "title": "Restore the model after exaggeration",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "locked",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "environment": [
+     {
+      "directive_id": "aa_env_debris_settle",
+      "title": "Persistent debris and damage",
+      "mark": "preferred",
+      "sub_genre": "shonen_impact",
+      "default_priority": "required",
+      "budget_class": "none",
+      "subject": "scene",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": [
+       "established_damage_state"
+      ]
+     }
+    ],
+    "primary_action": [
+     {
+      "directive_id": "aa_action_guard_recovery",
+      "title": "Return to balanced guard",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "locked",
+      "budget_class": "dominant_action",
+      "subject": "actor",
+      "placeholders": [
+       "actor",
+       "target"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "secondary_motion": [
+     {
+      "directive_id": "aa_secondary_cloth_settle",
+      "title": "Damped cloth settle",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "low",
+      "budget_class": "secondary_body",
+      "subject": "actor",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "temporal_cadence": [
+     {
+      "directive_id": "aa_time_moving_hold",
+      "title": "Quiet moving hold",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "high",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "camera_optics": [
+     {
+      "directive_id": "aa_camera_recovery_settle",
+      "title": "Decelerate into a settled frame",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "high",
+      "budget_class": "camera_static",
+      "subject": "scene",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "lighting": [
+     {
+      "directive_id": "aa_light_restore_key",
+      "title": "Restore the established scene key",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "high",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "material_shading": [
+     {
+      "directive_id": "aa_material_restore_palette",
+      "title": "Restore local colors and contour weight",
+      "mark": "preferred",
+      "sub_genre": "shonen_impact",
+      "default_priority": "high",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": []
+     }
+    ]
+   }
+  },
+  {
+   "event_id": "b_guard",
+   "actor_id": "B",
+   "target_id": null,
+   "moment_type": "recovery",
+   "frames": [
+    73,
+    120
+   ],
+   "empty_slots": [],
+   "slots": {
+    "subject_anchor": [
+     {
+      "directive_id": "aa_subject_recovery_model",
+      "title": "Restore the model after exaggeration",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "locked",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "environment": [
+     {
+      "directive_id": "aa_env_debris_settle",
+      "title": "Persistent debris and damage",
+      "mark": "preferred",
+      "sub_genre": "shonen_impact",
+      "default_priority": "required",
+      "budget_class": "none",
+      "subject": "scene",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": [
+       "established_damage_state"
+      ]
+     }
+    ],
+    "primary_action": [
+     {
+      "directive_id": "aa_action_guard_recovery",
+      "title": "Return to balanced guard",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "locked",
+      "budget_class": "dominant_action",
+      "subject": "actor",
+      "placeholders": [
+       "actor",
+       "target"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "secondary_motion": [
+     {
+      "directive_id": "aa_secondary_cloth_settle",
+      "title": "Damped cloth settle",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "low",
+      "budget_class": "secondary_body",
+      "subject": "actor",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "temporal_cadence": [
+     {
+      "directive_id": "aa_time_moving_hold",
+      "title": "Quiet moving hold",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "high",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "camera_optics": [
+     {
+      "directive_id": "aa_camera_recovery_settle",
+      "title": "Decelerate into a settled frame",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "high",
+      "budget_class": "camera_static",
+      "subject": "scene",
+      "placeholders": [
+       "actor"
+      ],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "lighting": [
+     {
+      "directive_id": "aa_light_restore_key",
+      "title": "Restore the established scene key",
+      "mark": "preferred",
+      "sub_genre": "grounded_martial_arts",
+      "default_priority": "high",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": []
+     }
+    ],
+    "material_shading": [
+     {
+      "directive_id": "aa_material_restore_palette",
+      "title": "Restore local colors and contour weight",
+      "mark": "preferred",
+      "sub_genre": "shonen_impact",
+      "default_priority": "high",
+      "budget_class": "none",
+      "subject": "actor",
+      "placeholders": [],
+      "conflicts": [],
+      "requires": []
+     }
+    ]
+   }
+  }
+ ],
+ "lexical_gaps": [
+  "hero",
+  "hook",
+  "solar",
+  "plexus"
+ ],
+ "taste_gaps": [
+  "film grain / cel dust",
+  "heavy ink line weight",
+  "dark saturated palette",
+  "blood / sweat",
+  "clinch / grab"
+ ],
+ "matched_tags": [
+  "heavy",
+  "brutal",
+  "old school"
+ ]
+}

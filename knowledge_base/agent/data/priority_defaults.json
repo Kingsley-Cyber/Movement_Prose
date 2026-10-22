@@ -1,0 +1,119 @@
+{
+ "schema_version": 1,
+ "classes": [
+  "locked",
+  "required",
+  "high",
+  "medium",
+  "low",
+  "optional"
+ ],
+ "reasons": [
+  "low_observability",
+  "provider_unsupported",
+  "redundant",
+  "conflicting",
+  "lower_priority",
+  "already_encoded_by_stronger_control",
+  "token_budget"
+ ],
+ "source": "cpcs.compiler.control_priority_attention_budget (six classes, suppression reason codes); the slot x moment defaults are authored for this toolkit",
+ "table": {
+  "subject_anchor": {
+   "anticipation": "locked",
+   "execution": "high",
+   "impact": "high",
+   "recoil": "locked",
+   "follow_through": "locked",
+   "recovery": "locked"
+  },
+  "primary_action": {
+   "anticipation": "locked",
+   "execution": "locked",
+   "impact": "locked",
+   "recoil": "locked",
+   "follow_through": "locked",
+   "recovery": "locked"
+  },
+  "environment": {
+   "anticipation": "required",
+   "execution": "medium",
+   "impact": "medium",
+   "recoil": "medium",
+   "follow_through": "low",
+   "recovery": "required"
+  },
+  "secondary_motion": {
+   "anticipation": "low",
+   "execution": "medium",
+   "impact": "medium",
+   "recoil": "low",
+   "follow_through": "low",
+   "recovery": "low"
+  },
+  "temporal_cadence": {
+   "anticipation": "required",
+   "execution": "high",
+   "impact": "required",
+   "recoil": "required",
+   "follow_through": "medium",
+   "recovery": "high"
+  },
+  "camera_optics": {
+   "anticipation": "medium",
+   "execution": "high",
+   "impact": "required",
+   "recoil": "high",
+   "follow_through": "medium",
+   "recovery": "high"
+  },
+  "lighting": {
+   "anticipation": "medium",
+   "execution": "medium",
+   "impact": "low",
+   "recoil": "low",
+   "follow_through": "low",
+   "recovery": "high"
+  },
+  "material_shading": {
+   "anticipation": "high",
+   "execution": "low",
+   "impact": "low",
+   "recoil": "low",
+   "follow_through": "low",
+   "recovery": "high"
+  }
+ },
+ "row_overrides": {
+  "aa_camera_crash_zoom": "medium",
+  "aa_light_kagenashi": "low"
+ },
+ "locked_ids": [
+  "aa_action_weight_load",
+  "aa_action_hip_led_punch",
+  "aa_action_forearm_block",
+  "aa_action_absorb_recoil",
+  "aa_action_followthrough_arc",
+  "aa_action_guard_recovery",
+  "aa_action_flash_step",
+  "aa_action_itano_evasion",
+  "aa_subject_loaded_silhouette",
+  "aa_subject_costume_attachment",
+  "aa_subject_recoil_identity",
+  "aa_subject_recovery_model"
+ ],
+ "locked_authored_slots": [
+  "primary_action"
+ ],
+ "suppression_policy": {
+  "locked": [],
+  "required": [
+   "provider_unsupported",
+   "already_encoded_by_stronger_control"
+  ],
+  "high": "any",
+  "medium": "any",
+  "low": "any",
+  "optional": "any"
+ }
+}

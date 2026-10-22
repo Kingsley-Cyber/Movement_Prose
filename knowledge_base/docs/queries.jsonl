@@ -1,0 +1,37 @@
+{"meta": true, "authored_by": "agent", "owner_reviewed": false, "created": "2026-10-21", "note": "Expected ids chosen by reading candidate passages; dropped for no handbook coverage: cel shading two-tone, rim light, kagenashi/shadowless. Short ids a<article>#<ordinal>; the lookup-mode records use moment/slot.", "dropped_no_coverage": ["cel shading two-tone", "rim light", "shadowless shading"], "reviewed_by": "agent (owner delegated 2026-10-22)", "accepted_as_ground_truth": true, "revised": "2026-10-22", "revision_note": "q31/q32 replaced by six label-mode queries whose expected ids were chosen by reading candidate passages, not by lexical order"}
+{"id": "q01", "query": "impact hold", "expected": ["a043#0009", "a036#0315", "a035#0027"], "mode": "find", "note": "cross-alias: hit-stop definition must surface"}
+{"id": "q02", "query": "freeze frame", "expected": ["a035#0027", "a035#0067", "a043#0030"], "mode": "find", "note": "cross-alias"}
+{"id": "q03", "query": "hit-stop", "expected": ["a035#0027", "a035#0067", "a035#0042"], "mode": "find", "note": "exact alias"}
+{"id": "q04", "query": "floaty deceleration", "expected": ["a047#0019", "a045#0021", "a047#0026"], "mode": "find", "note": "symptom vocabulary, rhythm metrics"}
+{"id": "q05", "query": "snappy motion", "expected": ["a045#0021", "a045#0027", "a020#0001"], "mode": "find", "note": ""}
+{"id": "q06", "query": "wind-up", "expected": ["a035#0021", "a035#0023", "a036#0263"], "mode": "find", "note": "hyphenated query"}
+{"id": "q07", "query": "follow-through overshoot", "expected": ["a019#0008", "a035#0029", "a054#0357"], "mode": "find", "note": ""}
+{"id": "q08", "query": "return to guard", "expected": ["a054#0456", "a022#0009", "a036#0263"], "mode": "find", "note": "recovery phase"}
+{"id": "q09", "query": "smear frame", "expected": ["a079#0150", "a015#0095", "a092#0014"], "mode": "find", "note": ""}
+{"id": "q10", "query": "on twos exposure", "expected": ["a036#0335", "a036#0332"], "mode": "find", "note": "layer-local cadence"}
+{"id": "q11", "query": "exposure sheet", "expected": ["a036#0059", "a036#0511"], "mode": "find", "note": ""}
+{"id": "q12", "query": "speed lines", "expected": ["a031#2181", "a043#0027", "a035#0028"], "mode": "find", "note": ""}
+{"id": "q13", "query": "cubic debris", "expected": ["a035#0028", "a076#0090"], "mode": "find", "note": "no yutapon passage in the handbook; debris-from-impact-point is the answer"}
+{"id": "q14", "query": "crash zoom", "expected": ["a041#0016", "a079#0040"], "mode": "find", "note": "no crash-zoom passage; push-in/zoom readability passages are the answer"}
+{"id": "q15", "query": "whip pan", "expected": ["a079#0100", "a071#0090", "a041#0014"], "mode": "find", "note": ""}
+{"id": "q16", "query": "camera shake on impact", "expected": ["a079#0050", "a079#0053", "a031#1323"], "mode": "find", "note": ""}
+{"id": "q17", "query": "camera lock on contact", "expected": ["a053#0149", "a102#0004", "a031#0569"], "mode": "find", "note": ""}
+{"id": "q18", "query": "parallax background layers", "expected": ["a043#0022", "a043#0018", "a036#0360"], "mode": "find", "note": ""}
+{"id": "q19", "query": "ground fracture crater", "expected": ["a054#0475"], "mode": "find", "note": "single passage in the handbook"}
+{"id": "q20", "query": "cloth and hair lag", "expected": ["a016#0109", "a055#0355", "a056#0115"], "mode": "find", "note": ""}
+{"id": "q21", "query": "kinetic chain feet hips shoulder", "expected": ["a018#0050", "a022#0011", "a031#0487"], "mode": "find", "note": ""}
+{"id": "q22", "query": "center of mass weight transfer", "expected": ["a016#0431", "a031#0383", "a055#0350"], "mode": "find", "note": ""}
+{"id": "q23", "query": "Laban effort weight time space flow", "expected": ["a017#0025", "a017#0021", "a017#0017"], "mode": "find", "note": "state/drive table rows"}
+{"id": "q24", "query": "attention budget one dominant action", "expected": ["a016#0175", "a080#0099", "a080#0100"], "mode": "find", "note": "the budget lines themselves are a code block, excluded by default"}
+{"id": "q25", "query": "locked constraints survive the budget", "expected": ["a031#1436", "a057#0740", "a054#0800"], "mode": "find", "note": ""}
+{"id": "q26", "query": "negative prompt avoid list", "expected": ["a053#0010", "a072#0045", "a053#0024"], "mode": "find", "note": ""}
+{"id": "q27", "query": "image-to-video motion delta", "expected": ["a015#0154", "a005#0057", "a015#0298"], "mode": "find", "note": ""}
+{"id": "q28", "query": "impact frame white flash hides contact", "expected": ["a035#0067", "a035#0035"], "mode": "find", "note": "impact_flash concept"}
+{"id": "q29", "query": "proximal to distal sequencing", "expected": ["a022#0011", "a031#0487", "a018#0050"], "mode": "find", "note": "cross-alias: kinetic chain"}
+{"id": "q30", "query": "feint breakdown on twos", "expected": ["a036#0329", "a036#0335"], "mode": "find", "note": "exposure table row"}
+{"id": "q31", "query": "impact x temporal_cadence", "mode": "lookup", "moment": "impact", "slot": "temporal_cadence", "expected": ["a035#0027", "a036#0315", "a036#0354", "a094#0018"], "note": "label lookup; hit-stop definition, impact_hold row, impact mush, shonen held impact frames"}
+{"id": "q32", "query": "anticipation x primary_action", "mode": "lookup", "moment": "anticipation", "slot": "primary_action", "expected": ["a019#0005", "a035#0023", "a035#0021", "a022#0006"], "note": "label lookup; preparation row, anticipation expansion, no wind-up = weightless, pre-impact loading"}
+{"id": "q33", "query": "execution x primary_action", "mode": "lookup", "moment": "execution", "slot": "primary_action", "expected": ["a031#2432", "a017#0008", "a055#0350", "a018#0050"], "note": "label lookup; hips commit before the punch, core initiation, weight transfer into strike, kinetic-chain evidence"}
+{"id": "q34", "query": "recovery x primary_action", "mode": "lookup", "moment": "recovery", "slot": "primary_action", "expected": ["a031#0486", "a054#0456", "a022#0009"], "note": "label lookup; recovery to guard, reorientation, balance recovery"}
+{"id": "q35", "query": "impact x camera_optics", "mode": "lookup", "moment": "impact", "slot": "camera_optics", "expected": ["a035#0035", "a054#0104", "a079#0050"], "note": "label lookup; impact concealment, presentation controls incl. impact frame, shake coincides with contact"}
+{"id": "q36", "query": "follow_through x secondary_motion", "mode": "lookup", "moment": "follow_through", "slot": "secondary_motion", "expected": ["a016#0113", "a056#0115", "a035#0029", "a054#0357"], "note": "label lookup; follow-through & overlapping action, causal secondary motion, hair/cloth trail, bound flow reduces overshoot"}

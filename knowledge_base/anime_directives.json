@@ -1,0 +1,1159 @@
+{
+  "schema_version": 1,
+  "curated_on": "2026-10-20",
+  "research_scope": "64 authored candidates grounded in primary production sources; no model generation benchmark performed.",
+  "slot_order": [
+    "subject_anchor",
+    "environment",
+    "primary_action",
+    "secondary_motion",
+    "temporal_cadence",
+    "camera_optics",
+    "lighting",
+    "material_shading"
+  ],
+  "moment_labels": [
+    "anticipation",
+    "execution",
+    "impact",
+    "recoil",
+    "follow_through",
+    "recovery"
+  ],
+  "directives": [
+    {
+      "directive_id": "aa_subject_loaded_silhouette",
+      "archetype": "anime_action",
+      "sub_genre": "grounded_martial_arts",
+      "slot_id": "subject_anchor",
+      "moment_type": "anticipation",
+      "prompt_snippet": "During the windup, keep {actor} recognizable by the same face, hair outline and costume panels. Separate both forearms from the torso in silhouette; draw taut diagonal folds across the loaded shoulder while the supporting foot remains visible.",
+      "negative_snippet": "merged forearms, costume redesign, hair topology changes, detached sleeves",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Hold the readable preparation drawing for 4 editorial frames before release; this is an authored starting recipe.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Three-quarter full-body view; keep the supporting foot and striking arm visible.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Compare face, hair and costume landmarks before and after the hold; both arm silhouettes stay legible.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Readable loaded silhouette",
+        "aliases": [],
+        "anticipated_failure": "A crowded silhouette can conceal which limb is loaded; texture changes can masquerade as costume tension.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_subject_angular_pose",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "subject_anchor",
+      "moment_type": "execution",
+      "prompt_snippet": "On the decisive action drawing, construct {actor} from bold wedges: a triangular torso, a sharply bent leading elbow and a clean zigzag line of action. Keep the face and costume markings identifiable inside the angular silhouette.",
+      "negative_snippet": "rounded clay anatomy, melted elbows, changing costume symbols, plush surface shading",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Use one emphatic action drawing between readable entry and exit drawings; its hold is set by the beat.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Use a three-quarter view that separates the elbow from the ribcage.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"The pose reads as one actor with connected joints and the same costume after the exaggeration.\",\"conflicts_with\":[],\"sources\":[\"I_TRIGGER\",\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Angular graphic pose",
+        "aliases": [
+          "angular graphic posing"
+        ],
+        "anticipated_failure": "Angular simplification may be expanded into rigid armor or change the character design.",
+        "source_scope": "The TRIGGER interview supports Imaishi's Kanada influence; the wedge construction and zigzag pose are an authored interpretation, not a documented studio-wide or artist-wide prescription.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_subject_elastic_contact",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "subject_anchor",
+      "moment_type": "impact",
+      "prompt_snippet": "At the contact beat, compress {target}'s torso into a short graphic curve and stretch the far contour with the force direction. Preserve the connected neck, shoulders, pelvis and limb roots, then restore the established body design on the next readable pose.",
+      "negative_snippet": "detached pelvis, permanent stretched torso, duplicated shoulders, disconnected neck",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Limit the deformation to 1 or 2 editorial frames; restore the model in the recoil pose.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Hold a side or three-quarter view so the deformation follows the visible incoming force.\",\"preferred_route\":\"pose_reference_or_post\",\"validation\":\"Check joint connectivity on the effect drawing and restored proportions immediately afterward.\",\"conflicts_with\":[],\"sources\":[\"I_OHIRA\",\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Bounded impact deformation",
+        "aliases": [
+          "expressive deformation"
+        ],
+        "anticipated_failure": "Temporary expressive distortion can persist as a new anatomy or introduce disconnected joints.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_subject_recoil_identity",
+      "archetype": "anime_action",
+      "sub_genre": "cyberpunk_cqc",
+      "slot_id": "subject_anchor",
+      "moment_type": "recoil",
+      "prompt_snippet": "As {target} recoils, preserve the same jaw contour, hair clumps, glove shape and jacket seam map. Keep the struck shoulder joined to the chest and the elbow visibly connected to its forearm throughout the backward bend.",
+      "negative_snippet": "face substitution, shoulder separation, fused glove and sleeve, mirrored costume panels",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Use readable recoil keys; maintain landmarks on every held or passing drawing.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep the struck side visible; avoid a simultaneous orbit through the contact axis.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Track the same shoulder, elbow, glove and three face landmarks through the recoil.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Recoil identity anchor",
+        "aliases": [],
+        "anticipated_failure": "Large orientation changes can hide joint disconnections or swap identity between fighters.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_subject_costume_attachment",
+      "archetype": "anime_action",
+      "sub_genre": "grounded_martial_arts",
+      "slot_id": "subject_anchor",
+      "moment_type": "follow_through",
+      "prompt_snippet": "During {actor}'s follow-through, keep the belt fixed to the waist, cuffs fixed to the wrists and collar fixed to the neck. Preserve the same garment panel boundaries while the torso turns; the fabric remains a distinct layer over the body.",
+      "negative_snippet": "sliding belt, migrating cuffs, collar fused into skin, costume panel swaps",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Carry the attachment landmarks continuously across the follow-through keys.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Use enough medium-wide space to see waist and wrists.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Inspect belt, collar and cuff attachment points through the body rotation.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Stable costume attachment points",
+        "aliases": [],
+        "anticipated_failure": "Loose fabric descriptions can cause garment anchors to slide or become part of the anatomy.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_subject_recovery_model",
+      "archetype": "anime_action",
+      "sub_genre": "grounded_martial_arts",
+      "slot_id": "subject_anchor",
+      "moment_type": "recovery",
+      "prompt_snippet": "In the recovery pose, return {actor} to the established face proportions, hand size and full body silhouette. Keep the same hairstyle, costume damage and left-right markings; the final readable pose matches the character established before the exchange.",
+      "negative_snippet": "residual stretched limbs, reset costume damage, swapped left-right markings, new hairstyle",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Hold a restored key for 4 editorial frames, with any breathing authored separately.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Finish at a view that exposes the face, hands and stance.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Compare the recovery key to the pre-action reference while preserving newly caused damage.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Restore the model after exaggeration",
+        "aliases": [],
+        "anticipated_failure": "A final hold may freeze a distorted intermediate pose or erase continuity changes.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_subject_foreshortened_fist",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "subject_anchor",
+      "moment_type": "execution",
+      "prompt_snippet": "As {actor}'s punch approaches the viewpoint, enlarge the near fist dramatically while the forearm tapers back to the same connected elbow. Keep the far shoulder and torso readable behind it; the hand keeps its original glove design and one coherent knuckle silhouette.",
+      "negative_snippet": "detached floating fist, swollen glove after the punch, additional forearms, finger knots",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Use 1 or 2 strongly foreshortened drawings bracketed by readable anatomy.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Use a deliberate near-lens strike view; resolve to a normal-scale key after passage.\",\"preferred_route\":\"pose_reference_or_post\",\"validation\":\"Trace fist-to-elbow-to-shoulder continuity and verify apparent scale returns with depth.\",\"conflicts_with\":[],\"sources\":[\"I_KANADA\",\"P_LENS\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Extreme foreshortened fist",
+        "aliases": [
+          "Kanada-associated perspective exaggeration"
+        ],
+        "anticipated_failure": "Perspective enlargement can be interpreted as permanent size change or a separate hand.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_subject_multiple_limb_smear",
+      "archetype": "anime_action",
+      "sub_genre": "supernatural_speed",
+      "slot_id": "subject_anchor",
+      "moment_type": "execution",
+      "prompt_snippet": "For one transition drawing of {actor}'s rapid strike, show the leading arm plus two faint drawn contour echoes along its previous arc. All echoes belong to that same moving arm; the next clean drawing contains the original two arms and one unchanged face.",
+      "negative_snippet": "persistent extra arms, detached limb copies, duplicated faces, permanent ghost bodies",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Use a single editorial smear drawing; clear every contour echo on the next clean key.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep a fixed readable action plane; avoid overlapping the echoes with the opponent's face.\",\"preferred_route\":\"post_or_drawn_reference\",\"validation\":\"Count real limbs before and after the smear; check that echoes disappear immediately.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Transient multiple-contour smear",
+        "aliases": [
+          "multiple-image smear"
+        ],
+        "anticipated_failure": "A model may treat a graphic motion trace as additional anatomy; a broad extra-limbs negative also conflicts with the intended smear.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_env_preimpact_quiet",
+      "archetype": "anime_action",
+      "sub_genre": "grounded_martial_arts",
+      "slot_id": "environment",
+      "moment_type": "anticipation",
+      "prompt_snippet": "Before the release, preserve the courtyard floor in its established state, keeping pre-existing cracks, tile boundaries and loose stones fixed. Leave a clear patch of ground beneath {actor}'s support foot so the upcoming displacement has a stable visual reference.",
+      "negative_snippet": "premature explosion, drifting floor texture, moving horizon, floating support stones",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"environment_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Keep the environment unchanged throughout the anticipation interval.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Preserve a stable floor landmark in the frame.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Verify no damage or airborne debris appears before the triggering contact.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Quiet ground before release",
+        "aliases": [],
+        "anticipated_failure": "Strong action language can trigger destruction early and erase the visual baseline.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_env_speed_void",
+      "archetype": "anime_action",
+      "sub_genre": "supernatural_speed",
+      "slot_id": "environment",
+      "moment_type": "execution",
+      "prompt_snippet": "During the dash only, replace distant scenery with flat parallel streaks along the travel axis, sweeping opposite {actor}'s screen travel. Keep the immediate ground plane and contact shadows readable; restore the established distant scenery when the dash finishes.",
+      "negative_snippet": "randomly oriented streaks, streaks painted over the face, permanent missing scenery, tunnel of smoke",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"background_layers_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Bound the speed background to the travel interval; return on the arrival key.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Maintain the same screen travel direction across entry and exit.\",\"preferred_route\":\"post_or_reference\",\"validation\":\"Confirm streak direction opposes travel and the environment returns to the same location.\",\"conflicts_with\":[\"aa_env_layered_parallax\"],\"sources\":[\"P_SPEED_LINES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Directional speed background",
+        "aliases": [
+          "speed lines",
+          "speed void"
+        ],
+        "anticipated_failure": "Speed lines can be mistaken for physical rods, a new location or all-frame motion blur.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_env_radial_fracture",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "environment",
+      "moment_type": "impact",
+      "prompt_snippet": "At {contact_origin}, split the struck stone surface into a few sharp radial cracks that originate at the exact contact point. The crack network expands outward while the surrounding undamaged floor retains its original perspective and texture.",
+      "negative_snippet": "cracks before contact, fracture on the wrong surface, liquid stone, entire ground melting",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"contact_surface_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Start the first visible crack on the contact frame; enlarge it only afterward.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep the contact point and first crack junction visible.\",\"preferred_route\":\"contact_reference_or_post\",\"validation\":\"Check that damage begins at the contact anchor and never precedes it.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[\"contact_event_on_solid_surface\"],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Contact-origin ground fracture",
+        "aliases": [],
+        "anticipated_failure": "A general destruction request can start an unrelated explosion or fracture the wrong surface.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_env_yutapon_cubes",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "environment",
+      "moment_type": "recoil",
+      "prompt_snippet": "After the surface breaks, eject a limited cluster of angular cuboid stone fragments from {contact_origin}. Show flat faces and crisp corners; larger blocks follow readable outward arcs while a few smaller chips trail behind. The debris remains separate from both fighters.",
+      "negative_snippet": "rounded gravel soup, liquid rubble, endless multiplying cubes, fighter converted into blocks",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"debris_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Begin after contact; stagger fragment motion across the recoil interval.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Use a side or three-quarter view with negative space around the debris fan.\",\"preferred_route\":\"reference_or_post\",\"validation\":\"Trace every major block back to the damaged surface; check stable shape and finite count.\",\"conflicts_with\":[],\"sources\":[\"I_NAKAMURA\"],\"requires\":[\"surface_fracture_event\"],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Cubic debris fan",
+        "aliases": [
+          "Yutapon cubes",
+          "Nakamura cubic debris"
+        ],
+        "anticipated_failure": "An unexplained cube nickname may produce abstract cubes or transform the subject rather than the broken surface.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_env_layered_dust",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "environment",
+      "moment_type": "follow_through",
+      "prompt_snippet": "From the damaged ground, roll a low dust front outward in distinct flat lobes while a softer upper plume rises behind it. Keep a readable opening around the fighters' silhouettes; the dust follows the debris event and gradually loses density.",
+      "negative_snippet": "opaque full-screen fog, dust before impact, boiling liquid ground, smoke attached to the face",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"environment_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Start after the fracture; let the heavier front slow before the upper plume disperses.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep the dust source and at least one fighter outline visible.\",\"preferred_route\":\"reference_or_post\",\"validation\":\"Check source continuity, silhouette visibility and decreasing density after the burst.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[\"surface_fracture_event\"],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Layered dust billow",
+        "aliases": [],
+        "anticipated_failure": "Dense atmosphere can hide contacts and make an already ambiguous action impossible to inspect.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_env_debris_settle",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "environment",
+      "moment_type": "recovery",
+      "prompt_snippet": "As the exchange settles, keep the new crater, cracks and fallen blocks in their established positions. Let only the last few small chips bounce to rest; the thinning dust reveals the same damaged ground beneath the recovering fighters.",
+      "negative_snippet": "restored pristine ground, disappearing blocks, new unexplained crater, perpetual dust eruption",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"environment_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Use diminishing chip bounces, then a stable environmental hold.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Retain visible damage landmarks into the closing view.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Match crater and large-block positions between recoil and recovery.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[\"established_damage_state\"],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Persistent debris and damage",
+        "aliases": [],
+        "anticipated_failure": "A scene may reset its environment once action pressure decreases unless changed state is retained.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_env_layered_parallax",
+      "archetype": "anime_action",
+      "sub_genre": "mecha_aerobatics",
+      "slot_id": "environment",
+      "moment_type": "execution",
+      "prompt_snippet": "During the lateral pursuit, move nearby structural beams fastest across the frame, the middle-distance buildings more slowly and the distant skyline slowest. Preserve each layer's shape and the same horizon while {actor} remains clearly separated from the background.",
+      "negative_snippet": "all layers sliding at one speed, bending buildings, moving horizon independent of camera, liquid scenery",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"background_layers_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Maintain consistent parallax through the whole tracked interval; no cadence reset midshot.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Pair with a single lateral tracking move; keep the background depth order fixed.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Compare landmark screen displacement across foreground, midground and background.\",\"conflicts_with\":[\"aa_env_speed_void\"],\"sources\":[\"P_CAMERA\",\"I_ITANO\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Depth-separated background parallax",
+        "aliases": [],
+        "anticipated_failure": "An unspecified moving background can become one flat texture sliding behind the subject.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_env_skid_gouge",
+      "archetype": "anime_action",
+      "sub_genre": "grounded_martial_arts",
+      "slot_id": "environment",
+      "moment_type": "recoil",
+      "prompt_snippet": "As {target} slides backward, carve a narrow continuous gouge directly beneath the contacting heel. Push small chips outward along the two edges of the track; the groove begins at the landing point and ends where the foot stops.",
+      "negative_snippet": "groove ahead of the foot, floating skid, disconnected track, shoe fused into stone",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Extend the track only while the heel moves in contact with the ground.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Use a low three-quarter view that shows the contacting heel and the track behind it.\",\"preferred_route\":\"contact_reference_or_post\",\"validation\":\"Track heel contact and groove endpoint on each sampled frame.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[\"heel_ground_contact_interval\"],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Grounded skid gouge",
+        "aliases": [],
+        "anticipated_failure": "A dramatic skid can leave a track detached from the foot or continue through airborne travel.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_action_weight_load",
+      "archetype": "anime_action",
+      "sub_genre": "grounded_martial_arts",
+      "slot_id": "primary_action",
+      "moment_type": "anticipation",
+      "prompt_snippet": "Before striking, {actor} lowers the pelvis over the rear support leg, bends the rear knee and draws the striking elbow back. The chest turns slightly away from {target}; the rear foot keeps firm ground contact until the forward drive begins.",
+      "negative_snippet": "floating planted foot, sliding support heel, knee bending backward, strike before weight load",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Use a compact loading interval followed by a 4-frame held key; customize to the shot.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Frame both feet and the loaded hip in a three-quarter full-body view.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Verify support contact and visible load before forward travel.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Load the support before striking",
+        "aliases": [
+          "exaggerated anticipation"
+        ],
+        "anticipated_failure": "A windup described only as power can become arbitrary arm waving without a loaded base.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_action_hip_led_punch",
+      "archetype": "anime_action",
+      "sub_genre": "grounded_martial_arts",
+      "slot_id": "primary_action",
+      "moment_type": "execution",
+      "prompt_snippet": "{actor} drives from the rear foot and rotates the pelvis toward {target}; the shoulder follows, then the fist extends along one clear path. Keep the opposite hand near the face and finish the strike without locking the elbow backward.",
+      "negative_snippet": "arm detached from torso, reversed elbow, fist teleporting between poses, support foot skating",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Use closer pose spacing at launch and wider spacing toward contact; timing is authored.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Use a three-quarter or side view to show hip-to-shoulder sequencing.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Observe ordered pelvis, shoulder and fist motion with a continuous fist path.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Hip-led straight punch",
+        "aliases": [
+          "momentum transfer",
+          "hip-led punch"
+        ],
+        "anticipated_failure": "A punch keyword alone may generate repeated arm motion with no body transfer or a discontinuous hand trajectory.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_action_forearm_block",
+      "archetype": "anime_action",
+      "sub_genre": "cyberpunk_cqc",
+      "slot_id": "primary_action",
+      "moment_type": "impact",
+      "prompt_snippet": "At the contact beat, {target} meets {actor}'s incoming forearm with the outside of one raised forearm. Show the two distinct limbs touching at one visible point; the defender's elbow remains bent and both torsos stay separated.",
+      "negative_snippet": "merged fighters, fused forearms, contact across empty space, palm passing through wrist",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"actor_target_contact\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Align contact and any effect to the same editorial frame; hold 2 frames only if the shot uses hit-stop.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep the contact point unobscured in a side or three-quarter medium-wide view.\",\"preferred_route\":\"contact_reference_or_post\",\"validation\":\"Verify the same two named limbs meet at one contact and separate afterward.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Readable forearm block",
+        "aliases": [],
+        "anticipated_failure": "Occluded hands and generic clash wording make it difficult to distinguish contact from overlap or fusion.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_action_absorb_recoil",
+      "archetype": "anime_action",
+      "sub_genre": "grounded_martial_arts",
+      "slot_id": "primary_action",
+      "moment_type": "recoil",
+      "prompt_snippet": "After contact, {target}'s struck shoulder moves backward first; the torso follows and one foot steps behind to catch the weight. Keep the other foot as a temporary pivot, then settle the pelvis over the widened stance.",
+      "negative_snippet": "reaction before contact, sliding both feet, backward knee, torso moving without the struck shoulder",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Start recoil after contact; author the catch step before the body reaches its final position.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep both feet and the struck shoulder visible.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Confirm impact precedes recoil and the new support foot lands before the final settle.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Absorb force with a recovery step",
+        "aliases": [],
+        "anticipated_failure": "Unscoped recoil language can move the wrong fighter or produce a weightless backwards glide.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_action_followthrough_arc",
+      "archetype": "anime_action",
+      "sub_genre": "grounded_martial_arts",
+      "slot_id": "primary_action",
+      "moment_type": "follow_through",
+      "prompt_snippet": "After the strike reaches its contact or authored miss point, {actor}'s shoulder and torso continue a short distance along the established arc. The arm decelerates with the body turn while the support foot pivots; the motion finishes before the guard is rebuilt.",
+      "negative_snippet": "instant pose reset, reversed follow-through, elbow hyperextension, pivot foot sliding sideways",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Use progressively tighter spacing as the motion decelerates; overlap defender recoil if required.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Preserve the action side and show the pivoting support foot when possible.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Check that the post-contact path continues the incoming direction before slowing.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Continuous strike follow-through",
+        "aliases": [],
+        "anticipated_failure": "A multi-phase prompt may skip the finish and snap directly to an unrelated idle pose.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_action_guard_recovery",
+      "archetype": "anime_action",
+      "sub_genre": "grounded_martial_arts",
+      "slot_id": "primary_action",
+      "moment_type": "recovery",
+      "prompt_snippet": "After the motion has finished, {actor} brings the striking hand back toward the face, squares the stance toward {target} and settles the pelvis between the supporting feet. Finish in a stable guard with a small visible breath.",
+      "negative_snippet": "instant teleport to idle, endlessly repeated punch, floating feet, frozen distorted hand",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Reserve a real recovery interval after follow-through rather than extending the attack key.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Use a medium-wide view that shows stance and guard.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Confirm the hand returns by a visible path and both feet support the final stance.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Return to balanced guard",
+        "aliases": [],
+        "anticipated_failure": "Without an authored end state, a clip can freeze a mid-action pose or repeat the attack.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_action_flash_step",
+      "archetype": "anime_action",
+      "sub_genre": "supernatural_speed",
+      "slot_id": "primary_action",
+      "moment_type": "execution",
+      "prompt_snippet": "In a fixed view, {actor} launches from the marked starting point, vanishes for a brief interval and reappears at the marked destination facing {target}. Preserve the same body, costume and travel direction; one clear departure pose precedes one clear arrival pose.",
+      "negative_snippet": "persistent duplicate fighter, multiple simultaneous arrivals, costume replacement, unintended crossfade",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Author departure, absence and arrival as separate editorial states; 2/1/2 frames is only a trial recipe.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Lock the camera and keep both departure and arrival positions in frame.\",\"preferred_route\":\"post_or_keyframe_sequence\",\"validation\":\"Count one actor before and after; confirm destination and facing match the plan.\",\"conflicts_with\":[\"aa_camera_lateral_track\",\"aa_camera_falling_track\",\"aa_camera_whip_reacquire\",\"aa_camera_crash_zoom\"],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Discrete vanish and arrival",
+        "aliases": [
+          "flash step",
+          "shunpo as genre shorthand"
+        ],
+        "anticipated_failure": "A flash-step request may become ordinary running, a dissolve or persistent clones.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_action_itano_evasion",
+      "archetype": "anime_action",
+      "sub_genre": "mecha_aerobatics",
+      "slot_id": "primary_action",
+      "moment_type": "execution",
+      "prompt_snippet": "{actor} banks across the frame and rolls through a clear gap between incoming missile paths. Keep the fuselage or torso orientation continuous as the missiles curve past; preserve one readable evasion trajectory instead of unrelated spins.",
+      "negative_snippet": "teleporting vehicle, disconnected wings, random tumbling, missiles passing through the body",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Resolve rapid near-camera passes with distinct poses; do not impose global twos.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Plan one continuous chase view; retain a horizon or other depth reference at entry.\",\"preferred_route\":\"trajectory_reference_or_post\",\"validation\":\"Trace actor orientation and each near-miss path through the chosen gap.\",\"conflicts_with\":[],\"sources\":[\"I_ITANO\"],\"requires\":[\"authored_actor_path\",\"distinct_missile_paths\"],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Mecha evasion among converging missiles",
+        "aliases": [
+          "Itano Circus evasion"
+        ],
+        "anticipated_failure": "Dense missiles and uncontrolled camera motion can obscure whether a deliberate evasion occurred.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_secondary_cloth_lag",
+      "archetype": "anime_action",
+      "sub_genre": "grounded_martial_arts",
+      "slot_id": "secondary_motion",
+      "moment_type": "anticipation",
+      "prompt_snippet": "As {actor} draws back into the windup, the loose jacket hem initially lags behind the torso, then catches up in a small fold. Keep the collar and cuffs attached; the fabric movement remains subordinate to the loaded body pose.",
+      "negative_snippet": "cloth moving before the body, detached jacket, endless flag flapping, fabric fused with hands",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Delay the hem response by an authored 2-frame offset from the torso key.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep the hem separate from the legs in silhouette.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Compare torso and hem motion starts; check fixed attachment points.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Cloth lags the loading motion",
+        "aliases": [],
+        "anticipated_failure": "Independent wind-like motion can overpower or contradict a small anticipation.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_secondary_hair_snap",
+      "archetype": "anime_action",
+      "sub_genre": "supernatural_speed",
+      "slot_id": "secondary_motion",
+      "moment_type": "execution",
+      "prompt_snippet": "As {actor} accelerates, the existing hair clumps trail opposite the head's motion, then snap toward their resting shape when the head changes speed. Keep the same clump count and scalp attachment throughout the action.",
+      "negative_snippet": "new hair strands growing, detached wig, hair fused into speed lines, scalp sliding",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Offset hair response after head acceleration; resolve the clumps on clean keys.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Use enough silhouette separation to distinguish hair from the background.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Track scalp anchors and the direction of lag relative to head travel.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Hair clump snap and lag",
+        "aliases": [],
+        "anticipated_failure": "Fast hair descriptions can produce changing geometry or a permanent energy plume.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_secondary_contact_ring",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "secondary_motion",
+      "moment_type": "impact",
+      "prompt_snippet": "At the instant of contact, emit one thin drawn shock ring from {contact_origin}. Expand it outward across the local contact plane, tapering its line weight as it grows; the ring fades before the next major action and remains separate from the fighters.",
+      "negative_snippet": "persistent halo, ring around the wrong fighter, multiple unplanned rings, opaque energy disc",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"contact_effect\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Trigger on contact; expand over an authored 3-to-6-frame editorial interval.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep the origin visible and use an angle that shows the ring's planar ellipse.\",\"preferred_route\":\"post_effect\",\"validation\":\"Verify exact origin, a single ring and a finite fade-out.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Contact-centered shock ring",
+        "aliases": [],
+        "anticipated_failure": "A ring may become a lasting magical object unrelated to contact.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_secondary_cape_overshoot",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "secondary_motion",
+      "moment_type": "recoil",
+      "prompt_snippet": "When {target}'s torso reverses under the hit, the cape continues briefly along its previous path, then folds around the new body direction. Keep the shoulder fasteners fixed and the cape behind the limbs rather than swallowing their silhouettes.",
+      "negative_snippet": "cape welded to hands, detached shoulder fasteners, cloth reversing before impact, opaque body-covering sheet",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Let the cape reverse after the torso; reduce amplitude as the recoil ends.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Show the shoulders and free edge of the cape.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Observe the torso reversal before the free cape edge reverses.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Cape overshoot after body reversal",
+        "aliases": [],
+        "anticipated_failure": "Synchronous cloth and body motion removes inertia; excessive cloth hides the action.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_secondary_weapon_contrail",
+      "archetype": "anime_action",
+      "sub_genre": "cyberpunk_cqc",
+      "slot_id": "secondary_motion",
+      "moment_type": "follow_through",
+      "prompt_snippet": "As {actor}'s blade finishes its swing, leave a thin curved ribbon following the blade tip's recent path. The ribbon is widest nearest the moving tip and fades along its older end; the physical blade stays single, rigid and attached to the gripping hand.",
+      "negative_snippet": "duplicate solid blades, trail disconnected from weapon, glowing ribbon through the face, hand fused to hilt",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Keep the trail short and decay it after the blade slows; do not persist into recovery.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Show the blade arc in a side or three-quarter view with clear space behind it.\",\"preferred_route\":\"trajectory_reference_or_post\",\"validation\":\"Trace the ribbon head to the blade tip and verify one physical weapon.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Blade-attached tapering contrail",
+        "aliases": [],
+        "anticipated_failure": "A contrail can be interpreted as an extra weapon or an unrelated energy ribbon.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_secondary_cloth_settle",
+      "archetype": "anime_action",
+      "sub_genre": "grounded_martial_arts",
+      "slot_id": "secondary_motion",
+      "moment_type": "recovery",
+      "prompt_snippet": "As {actor} reaches the recovered stance, let the jacket hem make one small overshoot and a smaller return before resting. Keep the shoulders and cuffs fixed; the cloth settles while the body maintains a quiet breathing pose.",
+      "negative_snippet": "endless cloth flutter, floating sleeve anchors, garment snapping to a new design, repeated large cape waves",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Use decreasing displacement on successive settle keys; exact duration is shot-dependent.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep the free fabric edge in frame through the settle.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Check that the last fabric excursion is smaller than the previous one.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Damped cloth settle",
+        "aliases": [],
+        "anticipated_failure": "A generic flutter instruction can keep secondary motion active after the action ends.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_secondary_kanada_flame_dragon",
+      "archetype": "anime_action",
+      "sub_genre": "supernatural_speed",
+      "slot_id": "secondary_motion",
+      "moment_type": "execution",
+      "prompt_snippet": "Along the authored attack path, curl the flame effect into a long angular dragon-like silhouette with a pointed head and tapering tail. Build it from flat interlocking tongues of color and sharp contour breaks, keeping it a drawn energy effect separate from the attacker.",
+      "negative_snippet": "realistic scaled animal, volumetric smoke creature, flame fused into actor, permanent solid dragon",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Shape successive effect keys along a clear arc; hold the recognizable head briefly.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Use a wide three-quarter view that reveals the head-to-tail gesture.\",\"preferred_route\":\"drawn_reference_or_post\",\"validation\":\"Verify the flame remains an effect and the body does not transform into a creature.\",\"conflicts_with\":[],\"sources\":[\"I_TRIGGER\"],\"requires\":[\"authored_attack_path\"],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Graphic flame-dragon contour",
+        "aliases": [
+          "Kanada dragon"
+        ],
+        "anticipated_failure": "The nickname can be interpreted literally as a biological dragon rather than graphic fire.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_secondary_angular_impact_star",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "secondary_motion",
+      "moment_type": "impact",
+      "prompt_snippet": "On contact, place a sharp asymmetrical starburst exactly at {contact_origin}. Use a few long tapered spikes aligned with the force direction and shorter cross-spikes; the graphic burst clears immediately so both contacting limbs remain readable afterward.",
+      "negative_snippet": "persistent star object, burst before contact, full-screen opaque explosion, rounded jelly splat",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"contact_effect\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Limit the star to 1 or 2 editorial frames, then clear it.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep the burst centered on visible contact rather than the middle of the frame.\",\"preferred_route\":\"post_effect\",\"validation\":\"Check onset against contact and verify limbs are visible again on the next clean key.\",\"conflicts_with\":[],\"sources\":[\"I_FAURE\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Angular contact star",
+        "aliases": [
+          "graphic impact star"
+        ],
+        "anticipated_failure": "A decorative star can drift from the collision or hide whether limbs meet.",
+        "source_scope": "Faure describes purposeful impact frames. This particular angular starburst is an authored graphic effect, not a documented universal Sushio or Imaishi signature.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_time_hold_then_burst",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "temporal_cadence",
+      "moment_type": "anticipation",
+      "prompt_snippet": "Let the preparation pose register as a deliberate still hold, then release into a sudden short acceleration. The pause belongs before movement; preserve a clear contrast between restrained anticipation and fast execution.",
+      "negative_snippet": "uniform motion speed, constant slow motion, interpolated drift during the hold, repeated micro-windups",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Trial recipe at 24 editorial fps: 4-frame anticipation hold, then 2-frame launch transition; adapt to readability.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep the camera quiet during the tension hold.\",\"preferred_route\":\"editorial_exposure_control\",\"validation\":\"Measure the held-pose duration and verify the launch follows it without crossfading.\",\"conflicts_with\":[],\"sources\":[\"P_TIMING\",\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Tension hold then burst",
+        "aliases": [],
+        "anticipated_failure": "Uniform interpolation can turn the intended stop-and-burst into continuous easing.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_time_mixed_exposures",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "temporal_cadence",
+      "moment_type": "execution",
+      "prompt_snippet": "Use clearly held drawings through the readable poses, then use a brief run of distinct fast-transition drawings during the strike. Return to held drawings once the action resolves; preserve the intentional difference in drawing cadence.",
+      "negative_snippet": "uniform optical-flow smoothing, blended in-between frames, identical cadence across every phase, motionless strike",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"At 24 editorial fps, hold selected character drawings for 2 frames; use 1-frame drawings only at chosen fast transitions.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep camera motion independent from character exposure changes.\",\"preferred_route\":\"editorial_exposure_control\",\"validation\":\"Inspect character exposures frame by frame; do not infer twos from export fps alone.\",\"conflicts_with\":[],\"sources\":[\"P_TIMING\",\"P_RETIME\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Selective ones within twos",
+        "aliases": [
+          "on twos",
+          "selective ones"
+        ],
+        "anticipated_failure": "A request for 12fps can change playback or global choppiness without preserving chosen poses.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_time_contact_hitstop",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "temporal_cadence",
+      "moment_type": "impact",
+      "prompt_snippet": "Pause the contacting fighters on the clearest contact drawing for a brief beat, then release into recoil and follow-through. Keep their relative contact position fixed during the pause; secondary effects may continue only if separately authored.",
+      "negative_snippet": "recoil before touch, prolonged frozen clip, blended contact frames, continued fist penetration during pause",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"actor_target_contact\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Trial recipe: hold the contact drawing for 2 frames on a 24fps editorial timeline; generation text alone is insufficient.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Lock the camera through the contact hold unless camera shake is a separate planned overlay.\",\"preferred_route\":\"editorial_exposure_control\",\"validation\":\"Confirm contact is established before the hold and motion resumes afterward.\",\"conflicts_with\":[\"aa_camera_crash_zoom\"],\"sources\":[\"P_TIMING\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Brief contact hit-stop",
+        "aliases": [],
+        "anticipated_failure": "A pause can become a long freeze or occur before the fighters actually meet.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_time_recoil_spacing",
+      "archetype": "anime_action",
+      "sub_genre": "grounded_martial_arts",
+      "slot_id": "temporal_cadence",
+      "moment_type": "recoil",
+      "prompt_snippet": "Make {target}'s first recoil displacement brisk, followed by progressively smaller changes as the recovering foot catches the body. Preserve the visible order of hit, backward motion, support step and deceleration.",
+      "negative_snippet": "constant-speed sliding, reaction before impact, sudden end freeze, repeated backward bounces",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Author wide position spacing immediately after impact, tightening spacing toward the support catch.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep a stable framing reference so changes in displacement remain visible.\",\"preferred_route\":\"pose_reference_or_retime\",\"validation\":\"Plot the struck shoulder's screen displacement and check it reduces during the catch.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Fast displacement then controlled catch",
+        "aliases": [],
+        "anticipated_failure": "A generic slow-down may stretch the whole hit instead of changing recoil spacing.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_time_overlap_offsets",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "temporal_cadence",
+      "moment_type": "follow_through",
+      "prompt_snippet": "Let {actor}'s torso finish before the loose hair and cloth complete their trailing motion. Offset the secondary peaks so the body turn, hair snap and fabric settle do not all stop on the same drawing.",
+      "negative_snippet": "all parts freezing simultaneously, cloth leading the torso, unrelated repeated oscillation",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Trial offsets at 24 editorial fps: torso finish at t, hair peak at t+1, fabric peak at t+2; adjust to material and shot.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep the relevant torso and free fabric edges visible.\",\"preferred_route\":\"reference_or_layered_post\",\"validation\":\"Compare peak times rather than assigning one global end time to every moving part.\",\"conflicts_with\":[],\"sources\":[\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Staggered follow-through timing",
+        "aliases": [],
+        "anticipated_failure": "Flat concatenation of movement instructions can synchronize parts that should overlap.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_time_moving_hold",
+      "archetype": "anime_action",
+      "sub_genre": "grounded_martial_arts",
+      "slot_id": "temporal_cadence",
+      "moment_type": "recovery",
+      "prompt_snippet": "Finish with a readable recovered pose held long enough to register, while a small chest breath and a final cloth settle preserve life. Keep the gesture and center of balance stable during these subtle changes.",
+      "negative_snippet": "total mannequin freeze, large idle sway, looping attack restart, drifting feet",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Trial recipe: 6-to-12-frame closing hold with separately authored subtle motion; do not repeatedly interpolate the whole body.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Settle the camera before the final hold.\",\"preferred_route\":\"reference_or_editorial_hold\",\"validation\":\"Check stable feet and gesture while only the planned breathing and cloth channels move.\",\"conflicts_with\":[],\"sources\":[\"P_TIMING\",\"P_PRINCIPLES\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Quiet moving hold",
+        "aliases": [],
+        "anticipated_failure": "A request to hold can freeze everything, while a request for life can introduce an unplanned sway.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_time_itano_depth",
+      "archetype": "anime_action",
+      "sub_genre": "mecha_aerobatics",
+      "slot_id": "temporal_cadence",
+      "moment_type": "execution",
+      "prompt_snippet": "Give the nearest fast missiles the most continuous visible motion; let more distant missile groups use broader held spacing. As a missile approaches the viewpoint, its cadence becomes more continuous while its path remains easy to trace.",
+      "negative_snippet": "identical stutter in every depth layer, missile teleportation, fused trails, near-camera motion frozen on long holds",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Itano describes near missiles on ones, middle on twos, far on threes, with depth transitions; translate into explicit layered exposure control.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"For missile-following pans, prioritize continuous camera-relative motion.\",\"preferred_route\":\"layered_editorial_exposure_control\",\"validation\":\"Inspect near, middle and far layers separately and track cadence changes with depth.\",\"conflicts_with\":[],\"sources\":[\"I_ITANO\"],\"requires\":[\"distinct_missile_paths\",\"depth_layer_assignments\"],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Depth-dependent missile cadence",
+        "aliases": [
+          "Itano Circus cadence"
+        ],
+        "anticipated_failure": "Global low-fps treatment destroys the depth-specific timing that makes the trajectories readable.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_time_pose_snapping",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "temporal_cadence",
+      "moment_type": "execution",
+      "prompt_snippet": "Move through a small set of strongly differentiated action poses with decisive transitions. Let each silhouette read briefly, then snap to the next authored pose; preserve a continuous overall attack direction across the sharp changes.",
+      "negative_snippet": "soft morph between silhouettes, random jump cuts, unrelated pose order, uniform floaty easing",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Trial recipe: 2-frame pose, 1-frame transition, 2-frame pose; authored keys are required for exact timing.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep a consistent action axis so pose changes read as movement rather than shot changes.\",\"preferred_route\":\"editorial_exposure_control\",\"validation\":\"Check pose order and direction while confirming no blended intermediate is inserted.\",\"conflicts_with\":[],\"sources\":[\"P_TIMING\",\"I_KANADA\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Stepped pose snapping",
+        "aliases": [
+          "Kanada-associated pose snapping"
+        ],
+        "anticipated_failure": "The word snappy can become a faster clip without distinct graphic poses.",
+        "source_scope": "Firsthand witnesses describe Kanada's timing experiments and composed drawings; this particular pose-snapping recipe is an authored interpretation.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_camera_low_tilt",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "camera_optics",
+      "moment_type": "anticipation",
+      "prompt_snippet": "Frame the loaded fighter from slightly below waist height in a three-quarter full-body view, with a modest diagonal horizon. Keep the face, striking arm and both feet inside the frame; maintain this composition during the windup.",
+      "negative_snippet": "uncontrolled rolling horizon, cropped support feet, extreme facial stretch, constant orbit",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Establish the tilt before the anticipation and hold it through the tension beat.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"One low-angle composition; no simultaneous pan or crash zoom during the hold.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Check that all required body landmarks remain inside the image.\",\"conflicts_with\":[],\"sources\":[\"P_CAMERA\",\"P_LENS\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Low-angle restrained Dutch view",
+        "aliases": [],
+        "anticipated_failure": "Combining low angle with unbounded dynamic camera language can hide support and contact.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_camera_lateral_track",
+      "archetype": "anime_action",
+      "sub_genre": "cyberpunk_cqc",
+      "slot_id": "camera_optics",
+      "moment_type": "execution",
+      "prompt_snippet": "Track sideways with {actor} at a steady relative distance, keeping the leading hand and intended contact area inside a medium-wide frame. Let the background move laterally while the action axis and the fighters' left-right order remain clear.",
+      "negative_snippet": "unmotivated orbit, axis crossing, subject slipping out of frame, camera pulling away from contact",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Begin tracking before the fastest movement and avoid a new camera acceleration at contact.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Use one lateral tracking path; preserve screen direction.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Measure actor framing and verify the contact area never leaves the frame.\",\"conflicts_with\":[],\"sources\":[\"P_CAMERA\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Lateral action tracking",
+        "aliases": [],
+        "anticipated_failure": "Tracking may be confused with zooming, circling or independently moving the background.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_camera_contact_lock",
+      "archetype": "anime_action",
+      "sub_genre": "grounded_martial_arts",
+      "slot_id": "camera_optics",
+      "moment_type": "impact",
+      "prompt_snippet": "Hold a stable side or three-quarter medium-wide camera at the contact beat. Keep both contacting limbs, the defender's torso and enough ground for balance in view; give the exact touch point a clear silhouette against the background.",
+      "negative_snippet": "whip pan across impact, hidden contact point, cropped hands, sudden lens change",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"actor_target_contact\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Reserve a stable window around contact; an exact duration belongs to the editorial plan.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Lock framing across entry, contact and first separation.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Verify the touch and first separation can be seen without inferring them from a flash.\",\"conflicts_with\":[\"aa_camera_crash_zoom\"],\"sources\":[\"P_CAMERA\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Contact readability lock",
+        "aliases": [],
+        "anticipated_failure": "Camera spectacle can conceal a missed, fused or impossible contact.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_camera_falling_track",
+      "archetype": "anime_action",
+      "sub_genre": "mecha_aerobatics",
+      "slot_id": "camera_optics",
+      "moment_type": "recoil",
+      "prompt_snippet": "Descend with the falling {target}, keeping a stable relative framing while the surrounding structure rises through the image. Preserve the target's orientation changes and a consistent world-down direction; leave space below for the planned landing.",
+      "negative_snippet": "reversed gravity, camera and body falling at unrelated rates, target leaving frame, random horizon spins",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Keep camera velocity coordinated with the fall; change it only for the planned landing reveal.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Choose a downward tracking path with a visible environmental depth reference.\",\"preferred_route\":\"camera_reference_or_post\",\"validation\":\"Track target screen position and verify scenery motion is consistent with descent.\",\"conflicts_with\":[],\"sources\":[\"P_CAMERA\",\"I_ITANO\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Synchronous falling-subject track",
+        "aliases": [],
+        "anticipated_failure": "A following fall can become a static hovering subject over a scrolling texture.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_camera_whip_reacquire",
+      "archetype": "anime_action",
+      "sub_genre": "cyberpunk_cqc",
+      "slot_id": "camera_optics",
+      "moment_type": "follow_through",
+      "prompt_snippet": "After the initial action is readable, whip the camera along its established direction, briefly reducing the background to streaks aligned with the pan direction. End on the planned destination and hold a clean frame of {target}; keep the arrival view on the same action side.",
+      "negative_snippet": "endless camera spin, lost destination, axis reversal, all-frame blur",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Trial transition: 2-to-4 editorial pan frames followed by a clear destination hold.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Specify start view, pan direction and settled end view; do not place critical contact inside the blur.\",\"preferred_route\":\"camera_reference_or_post\",\"validation\":\"Verify both start and destination views, and that no required contact is hidden in transit.\",\"conflicts_with\":[],\"sources\":[\"P_CAMERA\",\"P_RETIME\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Whip pan with a readable destination",
+        "aliases": [],
+        "anticipated_failure": "A whip-pan instruction can continue indefinitely or substitute blur for missing action.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_camera_recovery_settle",
+      "archetype": "anime_action",
+      "sub_genre": "grounded_martial_arts",
+      "slot_id": "camera_optics",
+      "moment_type": "recovery",
+      "prompt_snippet": "Ease the camera to a complete stop as {actor} completes recovery, ending in a medium-wide composition that shows the guard and supporting feet. Keep the final horizon and subject size stable during the closing hold.",
+      "negative_snippet": "endless drift, unwanted zoom, horizon wobble, cropped final stance",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Finish camera deceleration before the final held pose is evaluated.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"End on an explicit stationary framing target.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Compare horizon and subject scale over the closing frames.\",\"conflicts_with\":[],\"sources\":[\"P_CAMERA\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Decelerate into a settled frame",
+        "aliases": [],
+        "anticipated_failure": "Camera motion may continue after the character settles and make the pose look unstable.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_camera_incoming_wide",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "camera_optics",
+      "moment_type": "execution",
+      "prompt_snippet": "Place the viewpoint close to the incoming strike so the near fist dominates the foreground and the connected arm recedes steeply toward the torso. Add deliberate barrel curvature near the frame edges while keeping the contact path and central face readable.",
+      "negative_snippet": "severed foreground hand, rubber room deformation, permanent body enlargement, random lens breathing",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Limit the strongest distortion to the near pass, then restore the chosen baseline view.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"This record deliberately combines near-camera perspective with barrel distortion; use a lens reference for both effects.\",\"preferred_route\":\"lens_reference_or_post\",\"validation\":\"Check connected anatomy, stable central subject and consistent curvature at the edges.\",\"conflicts_with\":[],\"sources\":[\"P_LENS\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Barrel-distorted incoming-strike view",
+        "aliases": [
+          "stylized barrel warp",
+          "near-camera foreshortening"
+        ],
+        "anticipated_failure": "Wide-angle perspective and fisheye distortion are different effects and may be conflated.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_camera_crash_zoom",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "camera_optics",
+      "moment_type": "impact",
+      "prompt_snippet": "Once the contact point is established, rapidly tighten the framing toward it, then stop at a readable close view. Keep the zoom centered on that same point; preserve the original viewing direction and the distinct boundaries of both contacting limbs.",
+      "negative_snippet": "dolly through bodies, contact outside frame, endless zoom, merged hands at close range",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"actor_target_contact\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Trial recipe: a 2-to-4-frame editorial zoom following established contact; exact crop is a post task.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Choose an optical-style zoom or a post crop; do not combine with a contact-lock directive in the same interval.\",\"preferred_route\":\"post_camera_transform\",\"validation\":\"Check the zoom center and final limb separation frame by frame.\",\"conflicts_with\":[\"aa_camera_contact_lock\"],\"sources\":[\"P_LENS\",\"P_CAMERA\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Crash zoom onto a contact",
+        "aliases": [],
+        "anticipated_failure": "A zoom request may become camera translation or conceal the actual touch.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_light_hard_shadow",
+      "archetype": "anime_action",
+      "sub_genre": "cyberpunk_cqc",
+      "slot_id": "lighting",
+      "moment_type": "anticipation",
+      "prompt_snippet": "During the preparation, illuminate {actor} from one fixed side and place a crisp, unsoftened shadow shape across the opposite cheek and torso. Keep the lit and shadow regions stable as the pose holds, preserving readable eyes and costume edges.",
+      "negative_snippet": "soft airbrushed face gradient, migrating light source, glossy plastic highlights, flickering shadow boundaries",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Maintain one light direction throughout the held preparation.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep the key-light side readable in the chosen three-quarter view.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Compare cheek and torso shadow direction across the hold.\",\"conflicts_with\":[\"aa_light_kagenashi\"],\"sources\":[\"P_LIGHTING\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Hard graphic key shadow",
+        "aliases": [],
+        "anticipated_failure": "Vague cinematic lighting can introduce moving realistic gradients that obscure flat graphic design.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_light_thin_rim",
+      "archetype": "anime_action",
+      "sub_genre": "mecha_aerobatics",
+      "slot_id": "lighting",
+      "moment_type": "execution",
+      "prompt_snippet": "Use a narrow bright rim along the side of {actor} facing the fixed backlight, separating the moving silhouette from the dark background. Keep the interior colors flat; the rim follows visible edges instead of filling the body with glow.",
+      "negative_snippet": "full-body neon fill, blooming outline hiding limbs, rim on every unrelated edge, glossy bevels",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Maintain rim direction during travel; avoid random per-frame light changes.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep silhouette edges distinct from bright background effects.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Check rim placement against the declared backlight and preserved limb boundaries.\",\"conflicts_with\":[],\"sources\":[\"P_LIGHTING\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Thin rim separating fast silhouettes",
+        "aliases": [],
+        "anticipated_failure": "Rim-light wording can become thick bloom or a permanent luminous body.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_light_silhouette_flash",
+      "archetype": "anime_action",
+      "sub_genre": "supernatural_speed",
+      "slot_id": "lighting",
+      "moment_type": "impact",
+      "prompt_snippet": "At contact, a brief light from behind the fighters turns their visible fronts into clean dark silhouettes while preserving the gap between their heads and limbs. Return to the established scene lighting immediately after the flash.",
+      "negative_snippet": "silhouette remaining after impact, fused black body mass, repeated strobe, erased limb gaps",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"contact_light_event\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Use one authored 1-to-2-frame illumination event; restore baseline on the next clean key.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Choose a view where both silhouettes and the contact point remain distinguishable.\",\"preferred_route\":\"post_lighting_or_composite\",\"validation\":\"Check flash onset, silhouette separation and full lighting restoration.\",\"conflicts_with\":[],\"sources\":[\"P_LIGHTING\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Backlight silhouette flash",
+        "aliases": [],
+        "anticipated_failure": "An unbounded silhouette instruction can black out the entire sequence.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_light_recoil_falloff",
+      "archetype": "anime_action",
+      "sub_genre": "supernatural_speed",
+      "slot_id": "lighting",
+      "moment_type": "recoil",
+      "prompt_snippet": "As {target} recoils away from the brief contact light, reduce that light's contribution on the retreating side of the face and jacket. Keep the original scene key intact; the transient illumination fades without changing the material colors.",
+      "negative_snippet": "new permanent palette, unrelated pulsing lights, total scene blackout, glow attached to skin",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Begin falloff after the flash and restore baseline by the end of recoil.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Preserve the spatial relationship between the contact light and the retreating target.\",\"preferred_route\":\"post_lighting_or_composite\",\"validation\":\"Verify only the transient light decays while scene key and material identity remain.\",\"conflicts_with\":[],\"sources\":[\"P_LIGHTING\"],\"requires\":[\"prior_contact_light_event\"],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Contact-light falloff",
+        "aliases": [],
+        "anticipated_failure": "A bright hit can permanently recolor the actor or become an attached glow.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_light_sparks_local",
+      "archetype": "anime_action",
+      "sub_genre": "cyberpunk_cqc",
+      "slot_id": "lighting",
+      "moment_type": "follow_through",
+      "prompt_snippet": "Let the few sparks from the contact cast brief small patches of warm light on nearby glove and jacket surfaces as they pass. Keep the illumination local to each spark's position; the distant background retains its established lighting.",
+      "negative_snippet": "global strobe, light patches unrelated to sparks, all surfaces becoming metallic, permanent orange tint",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Tie each illumination pulse to the corresponding passing spark; fade with it.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep the sparks and affected nearby surfaces in the same readable view.\",\"preferred_route\":\"post_lighting_or_composite\",\"validation\":\"Check that light pulses follow spark proximity rather than random frame flicker.\",\"conflicts_with\":[],\"sources\":[\"P_LIGHTING\"],\"requires\":[\"existing_spark_event\"],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Localized spark illumination",
+        "aliases": [],
+        "anticipated_failure": "Spark lighting can become full-scene flicker or change the actor's material.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_light_restore_key",
+      "archetype": "anime_action",
+      "sub_genre": "grounded_martial_arts",
+      "slot_id": "lighting",
+      "moment_type": "recovery",
+      "prompt_snippet": "During recovery, restore the same key-light direction and shadow policy established before the clash, with shadow placement following the new pose. Keep any new physical damage visible, but let the temporary attack illumination finish so the final guard reads under stable scene lighting.",
+      "negative_snippet": "lingering attack glow, random light-source change, reset surface damage, alternating bright and dark frames",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Complete transient light decay before the recovery hold.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"End where the key-light side and final guard remain visible.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Compare pre-action and recovery light direction while retaining new damage.\",\"conflicts_with\":[],\"sources\":[\"P_LIGHTING\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Restore the established scene key",
+        "aliases": [],
+        "anticipated_failure": "Attack effects may leave an unintended lighting state through the ending.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_light_kagenashi",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "lighting",
+      "moment_type": "execution",
+      "prompt_snippet": "For this action beat, suppress interior form-shadow patches on {actor} and let flat local colors plus the outer contour carry the pose. Keep the face and costume markings readable; ground contact shadows may remain as a separate environmental cue.",
+      "negative_snippet": "soft volumetric body shading, new interior cel-shadow bands, glossy skin highlights, lost outline",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"actor_rendering_override\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Apply only to the selected actor and beat; restore the chosen shadow policy afterward.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Use a clear silhouette and color separation because interior shadow is intentionally reduced.\",\"preferred_route\":\"reference_or_composite\",\"validation\":\"Inspect actor interior shadow removal separately from preserved ground/contact cues.\",\"conflicts_with\":[\"aa_light_hard_shadow\",\"aa_material_two_tone_cel\"],\"sources\":[\"I_KAGENASHI\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Kagenashi-style form-shadow suppression",
+        "aliases": [
+          "kagenashi",
+          "shadowless rendering"
+        ],
+        "anticipated_failure": "Shadowless rendering may be misread as overexposure or erase grounding shadows unless scope is explicit.",
+        "source_scope": "Practitioner Spencer Wan discusses selective omission of shadows in Matsumoto's work. The label kagenashi is used here as an operational alias; its standardized historical attribution was not independently verified.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_light_directional_lightning",
+      "archetype": "anime_action",
+      "sub_genre": "supernatural_speed",
+      "slot_id": "lighting",
+      "moment_type": "impact",
+      "prompt_snippet": "When the authored lightning strike flashes, light only the fighter surfaces facing its visible origin and cast crisp shadows away from it. Keep the flash brief and preserve recognizable facial and costume boundaries under the high contrast.",
+      "negative_snippet": "light from the wrong direction, prolonged full-white frame, random repeated lightning, missing facial contour",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"light_event\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"One authored illumination pulse at the lightning event; restore the previous key afterward.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Show the light origin or an unambiguous illuminated side.\",\"preferred_route\":\"post_lighting_or_composite\",\"validation\":\"Compare highlight side and cast-shadow direction against the event origin.\",\"conflicts_with\":[],\"sources\":[\"P_LIGHTING\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Directional lightning illumination",
+        "aliases": [],
+        "anticipated_failure": "Lightning vocabulary can generate repeated unrelated bolts and an uncontrolled strobe.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_material_two_tone_cel",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "material_shading",
+      "moment_type": "anticipation",
+      "prompt_snippet": "Render the held preparation with solid local-color fills and one sharply bounded darker shade per material. Preserve consistent black contours, simple readable folds and distinct skin, fabric and metal color regions.",
+      "negative_snippet": "airbrushed gradients, clay skin, photoreal pores, muddy textured fills, glossy plastic fabric",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Keep palette and contour weight stable through the hold.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Use a readable mid or full-body composition so contour and fill boundaries remain visible.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Inspect crisp fill boundaries and stable colors on consecutive frames.\",\"conflicts_with\":[\"aa_light_kagenashi\"],\"sources\":[\"P_TOON\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Two-tone cel construction",
+        "aliases": [],
+        "anticipated_failure": "General anime wording may still yield sculpted 3D surfaces or noisy painterly materials.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_material_controlled_line_boil",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "material_shading",
+      "moment_type": "execution",
+      "prompt_snippet": "Allow a slight hand-redrawn variation in the ink contour from drawing to drawing while preserving {actor}'s pose structure, facial landmarks and costume boundaries. Keep the interior color fills stable so the contour feels alive without the body changing shape.",
+      "negative_snippet": "silhouette crawling, face deformation, flickering fill colors, excessive scratch noise, rigid vector perfection",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Vary ink only on new drawings; hold it unchanged during repeated exposure of the same drawing.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep framing stable enough to distinguish contour variation from camera shake.\",\"preferred_route\":\"drawn_reference_or_post\",\"validation\":\"Verify small contour variation without systematic landmark drift or fill flicker.\",\"conflicts_with\":[],\"sources\":[\"P_LINE_BOIL\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Controlled contour line boil",
+        "aliases": [
+          "line boil"
+        ],
+        "anticipated_failure": "Line boil can be confused with whole-body morphing or unstable textures.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_material_monochrome_impact",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "material_shading",
+      "moment_type": "impact",
+      "prompt_snippet": "On the single designated contact drawing, replace the normal palette with stark black and white shapes and a few directional ink cuts around the collision. Keep the contacting limbs recognizable, then restore the established colors on the next clean drawing.",
+      "negative_snippet": "permanent grayscale sequence, muddy gray gradients, unreadable merged bodies, crossfaded palette transition",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"contact_frame_render_override\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Use 1 editorial frame unless a deliberate 2-frame accent is authored; composite for exact placement.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep the same camera and contact geometry through the palette change.\",\"preferred_route\":\"post_palette_effect\",\"validation\":\"Confirm contact alignment, recognizable limbs and immediate palette restoration.\",\"conflicts_with\":[\"aa_material_inverted_impact\",\"aa_material_charcoal_impact\"],\"sources\":[\"I_FAURE\",\"P_TOON\",\"P_TIMING\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Monochrome graphic impact frame",
+        "aliases": [],
+        "anticipated_failure": "The palette treatment may spread over the whole clip or become a separate scene.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_material_expressive_rough",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "material_shading",
+      "moment_type": "recoil",
+      "prompt_snippet": "During the strongest recoil drawing, use energetic broken ink strokes and a few searching contour lines that follow the force through {target}'s body. Keep joint connections and facial identity readable; return to the established clean contour treatment when the pose resolves.",
+      "negative_snippet": "random scribbles hiding anatomy, disconnected joints, permanent dirty texture, new facial features",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Limit rough treatment to the chosen recoil accent keys, with clean keys before and after.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Prefer a readable three-quarter silhouette over overlapping front-on limbs.\",\"preferred_route\":\"drawn_reference_or_post\",\"validation\":\"Check that expressive lines describe the existing body instead of replacing it.\",\"conflicts_with\":[],\"sources\":[\"I_OHIRA\",\"I_HASHIMOTO\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Expressive rough ink during recoil",
+        "aliases": [
+          "Ohira-inspired expressive line",
+          "Hashimoto sketch atmosphere"
+        ],
+        "anticipated_failure": "Rough ink may become indiscriminate noise; expressiveness is not permission for broken connectivity.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_material_flat_debris_faces",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "material_shading",
+      "moment_type": "follow_through",
+      "prompt_snippet": "Give each existing angular stone fragment two or three flat face colors separated by crisp edges. Preserve the fragment's shape and material as it turns; use clean drawn silhouettes instead of pebbled photoreal texture.",
+      "negative_snippet": "glossy plastic cubes, rounded melting edges, changing fragment material, noisy photogrammetry texture",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"debris_material_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Update face shading only as the existing fragment rotates under the established light.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Keep large fragments readable against the dust and sky.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Track the same major fragment silhouette and verify stable stone colors.\",\"conflicts_with\":[],\"sources\":[\"I_NAKAMURA\",\"P_TOON\"],\"requires\":[\"existing_debris_objects\"],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Flat-shaded debris faces",
+        "aliases": [],
+        "anticipated_failure": "Blocky debris can render as toy blocks or lose planar geometry under texture noise.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_material_restore_palette",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "material_shading",
+      "moment_type": "recovery",
+      "prompt_snippet": "In the recovered pose, restore the exact established costume colors, skin colors and contour weight after any impact treatment. Preserve new dirt, tears and damage as localized changes while the rest of the character returns to the baseline cel rendering.",
+      "negative_snippet": "lingering inverted colors, entire outfit recolored, erased battle damage, changing outline thickness",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"bound_actor_and_beat\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Complete restoration on the first clean recovery key and keep it stable.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Use a stable closing view suitable for comparing the model and palette.\",\"preferred_route\":\"prompt_plus_reference\",\"validation\":\"Compare known color patches and contour weight while checking persistent damage.\",\"conflicts_with\":[],\"sources\":[\"P_TOON\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Restore local colors and contour weight",
+        "aliases": [],
+        "anticipated_failure": "A temporary palette override can leak into the final character state.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_material_inverted_impact",
+      "archetype": "anime_action",
+      "sub_genre": "supernatural_speed",
+      "slot_id": "material_shading",
+      "moment_type": "impact",
+      "prompt_snippet": "At the designated contact frame, invert the established image colors for one sharp graphic accent while preserving the same silhouettes and geometry. Immediately return to the normal palette; keep this as an image treatment rather than a change to the fighters' materials.",
+      "negative_snippet": "permanent inverted costume, gradual color dissolve, new objects during flash, repeated strobing",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"contact_frame_render_override\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"One editorial frame; implement as an explicit postproduction color inversion.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Preserve identical framing across the inversion.\",\"preferred_route\":\"post_palette_effect\",\"validation\":\"Compare geometry before, during and after, and confirm only the chosen frame is inverted.\",\"conflicts_with\":[\"aa_material_monochrome_impact\",\"aa_material_charcoal_impact\"],\"sources\":[\"P_TIMING\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Single inverted-palette accent",
+        "aliases": [],
+        "anticipated_failure": "Text may be interpreted as a new palette rather than an exact temporary inversion.",
+        "source_scope": "Sources support the underlying technique or production principle, not the effectiveness of this authored prompt.",
+        "generation_tested": false
+      }
+    },
+    {
+      "directive_id": "aa_material_charcoal_impact",
+      "archetype": "anime_action",
+      "sub_genre": "shonen_impact",
+      "slot_id": "material_shading",
+      "moment_type": "impact",
+      "prompt_snippet": "For the designated impact drawing, replace polished contours with forceful charcoal-like black strokes on a pale field. Concentrate the marks around the collision and line of action while preserving distinct heads and limb roots; restore clean cel rendering immediately afterward.",
+      "negative_snippet": "all-frame charcoal filter, random illegible scribble, fused faces, permanent paper texture, blended accent frame",
+      "mechanical_guidance": "{\"schema_version\":1,\"evidence_status\":\"untested_prompt_candidate\",\"scope\":\"contact_frame_render_override\",\"editorial_timeline_fps\":24,\"editorial_recipe\":\"Use one authored accent drawing, optionally held for a second editorial frame.\",\"engine_parameters\":{\"motion_scale\":null,\"native_fps\":null,\"policy\":\"Resolve against the selected model, version and endpoint; these nulls are not API arguments.\"},\"camera_rule\":\"Retain the established contact composition and readable limb separation.\",\"preferred_route\":\"drawn_reference_or_post\",\"validation\":\"Verify the accent is localized in time and the original scene resumes with the same contact state.\",\"conflicts_with\":[\"aa_material_monochrome_impact\",\"aa_material_inverted_impact\"],\"sources\":[\"I_HASHIMOTO\",\"I_FAURE\",\"P_TIMING\"],\"requires\":[],\"conflict_policy\":\"Apply declared conflicts only to overlapping intervals and affected scopes. The list is curated and non-exhaustive.\"}",
+      "catalog": {
+        "title": "Charcoal-style impact accent",
+        "aliases": [],
+        "anticipated_failure": "A rough-medium request can replace the whole scene style or conceal actual contact.",
+        "source_scope": "Hashimoto supports atmospheric sketch-like rendering and Faure discusses impact frames. Charcoal medium and this exact accent are authored extensions.",
+        "generation_tested": false
+      }
+    }
+  ]
+}

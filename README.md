@@ -17,10 +17,15 @@ Movement_Prose/
 ├── scripts/
 │   ├── sakuga_compiler.py                                     # Original 05:34 (e91c686) Deterministic CLI Compiler & 17-Rule Physics Linter
 │   └── twelvelabs_bridge.py                                   # TwelveLabs Pegasus 1.2 Bridge (Mode A: Reference Extractor, Mode B: Render QA & Handoff)
+├── knowledge_base/                                            # 📚 In-Repo Knowledge Base (`anime_action_research_bundle` + `agent/` + `runs/002_rooftop_cage_fight`)
+│   ├── ai_video_compiler.db                                   # Frozen 64-row `semantic_directives` catalog (SHA256 locked)
+│   ├── agent_memory.db                                        # Growing memory (tags, judged_labels, causal_triples, module_relations, usage_events)
+│   ├── agent/                                                 # Bundle-local query/propose/check/emit/knobs/relations/causal/discover toolkit
+│   └── runs/002_rooftop_cage_fight/                           # Run 002 rooftop cage fight prompt + provenance surfaced from KB search
 ├── fight_move_system/                                         # 🚀 v2 Fight Move System + KB Bridge + Closed-Loop Verification & Repair Engine
-│   ├── cli.py                                                 # CLI (`validate`, `compile`, `packet`, `kb-sync`, `kb-find`, `kb-lookup`, `ingest-verdict`, `repair`, `next-clip`)
-│   ├── compiler.py                                            # 2-Layer Fluid Stack & `sakuga_Xperiment` / `lean` Compiler
-│   ├── kb_bridge.py                                           # Read-only bridge to `handbook_index.db` & `ai_video_compiler.db` + write to `agent_memory.db`
+│   ├── cli.py                                                 # CLI (`validate`, `compile`, `packet`, `kb-ask`, `kb-verify`, `kb-sync`, `kb-find`, `kb-lookup`, `ingest-verdict`, `repair`, `next-clip`)
+│   ├── compiler.py                                            # 2-Layer Fluid Stack & `sakuga_Xperiment` / `lean` Compiler (queries KB prior to semantic intent)
+│   ├── kb_bridge.py                                           # Pre-intent KB query engine (`query_kb_prior_to_semantic_intent`) + `knowledge_base/` bridge
 │   ├── closed_loop.py                                         # Verdict ingestion, RFC 6902 localized beat repair (`src-cpcs-mx-repair_strategy`), & Clip N+1 handoff
 │   ├── scene_graph_linter.py                                  # 25-Decision Scene Graph Linter (Decisions 18-25)
 │   └── validator.py                                           # V01-V22 Biomechanical & Kinetic Chain Validator
@@ -127,10 +132,11 @@ python3 -m fight_move_system.cli compile fight_move_system/fixtures/pass/variati
   --mode xperiment --schema sakuga_Xperiment \
   -o examples/variations/variation_3_eight_limbs_muay_thai_mma_war_sakuga_Xperiment.txt
 
-# Verify Knowledge Base SHA256 integrity, sync lexical/taste gaps to agent_memory.db, and query KB:
-python3 -m fight_move_system.cli kb-sync
+# Verify Knowledge Base SHA256 + 25-check agent.verify suite, query KB PRIOR to semantic intent (`kb-ask`), and search KB:
+python3 -m fight_move_system.cli kb-verify
+python3 -m fight_move_system.cli kb-ask fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json --taste "heavy, brutal, old school" --follow 2 --discover 2
 python3 -m fight_move_system.cli kb-find "hitstop"
-python3 -m fight_move_system.cli kb-lookup --moment strike_exchange --slot time_cadence
+python3 -m fight_move_system.cli kb-lookup --moment impact --slot temporal_cadence
 
 # Closed-Loop Verdict Ingestion, Localized RFC 6902 Beat Repair, and Clip N+1 Handoff:
 python3 -m fight_move_system.cli ingest-verdict --run-id run_001 --move-id low_calf_kick --status works

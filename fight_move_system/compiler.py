@@ -6,7 +6,11 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 
 from .chain import CHAIN_FRAME_KEY, CHAIN_KEY, build_causal_string, scan_prompt_v18
 from .dyad import DyadState
-from .kb_bridge import record_compile_usage, resolve_beat_kb_guidance
+from .kb_bridge import (
+    query_kb_prior_to_semantic_intent,
+    record_compile_usage,
+    resolve_beat_kb_guidance,
+)
 from .lexicon import Lexicon
 from .state import FighterState
 from .validator import ValidationResult, load_thresholds, validate_clip
@@ -373,6 +377,18 @@ def compile_to_sakuga_Fluid_stack(
     used_directives: List[str] = []
     used_cards: List[str] = []
     used_passages: List[str] = []
+
+    if use_kb_priors:
+        pre_intent_kb = query_kb_prior_to_semantic_intent(clip)
+        for d_item in pre_intent_kb.get("directives", []):
+            if isinstance(d_item, dict) and d_item.get("id"):
+                used_directives.append(d_item["id"])
+        for p_item in pre_intent_kb.get("pulled_relations", []):
+            if isinstance(p_item, dict) and p_item.get("id"):
+                used_directives.append(p_item["id"])
+        for hit in pre_intent_kb.get("passages", []):
+            if isinstance(hit, dict) and hit.get("id"):
+                used_passages.append(hit["id"])
 
     z_a = 3.20
     for idx, moment in enumerate(moments):

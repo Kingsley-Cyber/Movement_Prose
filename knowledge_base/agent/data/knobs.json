@@ -1,0 +1,192 @@
+{
+ "schema_version": 1,
+ "note": "Diversity knobs: one axis, three options, prose in words only (no frame counts, fps or amplitudes in prose; those belong to the post plan). Each option names the passages behind it and the catalog rows it prefers. Untested until rendered.",
+ "field_map": {
+  "laban_profile": "effort_quality",
+  "exposure_cadence": "exposure",
+  "smear_policy": "smear",
+  "impact_accent": "effects_after_contact",
+  "camera_behavior": "camera_between_contacts"
+ },
+ "axes": {
+  "laban_profile": {
+   "label": "Laban effort profile",
+   "options": {
+    "grounded_martial_arts": {
+     "prose": "Compact, sharp, grounded and controlled: strong weight, sudden time, direct space, bound flow; every strike stops where it lands and the body settles over its support.",
+     "from": [
+      "a003#0010",
+      "a031#1470"
+     ],
+     "prefers": [
+      "aa_action_weight_load",
+      "aa_time_recoil_spacing"
+     ]
+    },
+    "late_90s_ova_sakuga": {
+     "prose": "An explosive burst that locks into a hard graphic pose: strong weight, sudden time, direct space, flow free through the strike and bound the instant the pose holds.",
+     "from": [
+      "a003#0010",
+      "a036#0321"
+     ],
+     "prefers": [
+      "aa_time_pose_snapping",
+      "aa_subject_angular_pose"
+     ]
+    },
+    "supernatural_terminal_descent": {
+     "prose": "Momentum redirected through a continuous contact chain: strong weight, sudden time with a brief hold at each redirection, direct space, bound flow; nothing stops, everything is passed on.",
+     "from": [
+      "a003#0010",
+      "a036#0261"
+     ],
+     "prefers": [
+      "aa_action_flash_step",
+      "aa_time_overlap_offsets"
+     ]
+    }
+   }
+  },
+  "exposure_cadence": {
+   "label": "Exposure cadence",
+   "options": {
+    "continuous_real_time": {
+     "prose": "Character drawings change on every frame at an unbroken real-time cadence; no held drawings.",
+     "from": [
+      "a036#0335"
+     ],
+     "prefers": []
+    },
+    "twos_with_impact_hold": {
+     "prose": "Character drawings change on twos; on every landed strike the contact drawing is held while rain and effects keep moving on ones.",
+     "from": [
+      "a036#0335",
+      "a035#0027"
+     ],
+     "prefers": [
+      "aa_time_contact_hitstop",
+      "aa_time_mixed_exposures"
+     ]
+    },
+    "mixed_exposure_contact_key": {
+     "prose": "Drawings on twos through travel, on ones through the fastest instant of a strike, then a held contact key at impact; effects run on ones throughout.",
+     "from": [
+      "a036#0332",
+      "a036#0335"
+     ],
+     "prefers": [
+      "aa_time_mixed_exposures",
+      "aa_time_contact_hitstop"
+     ]
+    }
+   }
+  },
+  "smear_policy": {
+   "label": "Smear policy",
+   "options": {
+    "none": {
+     "prose": "Clean anatomical limb arcs with no smears; speed is shown by spacing between drawings.",
+     "from": [
+      "a036#0347"
+     ],
+     "prefers": []
+    },
+    "limb_smear": {
+     "prose": "The striking limb stretches into a smear along its path for its fastest instant; head, torso and the off-hand guard stay solid and sharp.",
+     "from": [
+      "a043#0026",
+      "a079#0150"
+     ],
+     "prefers": [
+      "aa_subject_multiple_limb_smear"
+     ]
+    },
+    "trajectory_smear": {
+     "prose": "A short trajectory smear traces the strike path and resolves at the contact point, preserving head identity and the contact destination.",
+     "from": [
+      "a036#0347",
+      "a043#0026"
+     ],
+     "prefers": [
+      "aa_subject_multiple_limb_smear",
+      "aa_env_speed_void"
+     ]
+    }
+   }
+  },
+  "impact_accent": {
+   "label": "Impact accent",
+   "options": {
+    "compression_only": {
+     "prose": "Tissue compression at the contact point and nothing else; effects emit from the contact after the contact frame.",
+     "from": [
+      "a035#0028"
+     ],
+     "prefers": [
+      "aa_subject_elastic_contact"
+     ]
+    },
+    "monochrome_flash": {
+     "prose": "A single held monochrome drawing at contact with a black speed-line burst, then the normal palette returns on the next drawing; effects emit from the contact after the contact frame.",
+     "from": [
+      "a035#0035",
+      "a035#0028"
+     ],
+     "prefers": [
+      "aa_material_monochrome_impact",
+      "aa_secondary_angular_impact_star"
+     ]
+    },
+    "inverse_flash_and_ring": {
+     "prose": "An inverse-color contact drawing and a concentric shock ring as the stored force fractures the surface under the receiver; effects emit from the contact after the contact frame.",
+     "from": [
+      "a035#0028",
+      "a035#0070"
+     ],
+     "prefers": [
+      "aa_material_inverted_impact",
+      "aa_secondary_contact_ring",
+      "aa_env_radial_fracture"
+     ]
+    }
+   }
+  },
+  "camera_behavior": {
+   "label": "Camera behaviour between contacts",
+   "options": {
+    "locked_medium_wide": {
+     "prose": "A stable medium-wide three-quarter view throughout, with handheld tension only after an impact; every contact stays locked.",
+     "from": [
+      "a031#1899",
+      "a079#0017"
+     ],
+     "prefers": [
+      "aa_camera_contact_lock"
+     ]
+    },
+    "low_angle_push": {
+     "prose": "A low angle with a brief push-in before each contact, then locked across the contact itself; no move during a hit.",
+     "from": [
+      "a031#1899",
+      "a079#0040"
+     ],
+     "prefers": [
+      "aa_camera_low_tilt",
+      "aa_camera_contact_lock"
+     ]
+    },
+    "lateral_countertrack": {
+     "prose": "A lateral counter-track that follows the footwork between exchanges, with a short impulse shake that begins on the contact frame and never before it.",
+     "from": [
+      "a079#0050",
+      "a031#2184"
+     ],
+     "prefers": [
+      "aa_camera_lateral_track",
+      "aa_camera_contact_lock"
+     ]
+    }
+   }
+  }
+ }
+}

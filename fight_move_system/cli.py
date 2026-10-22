@@ -18,6 +18,8 @@ from .composer import compose_clips
 from .kb_bridge import (
     kb_find,
     kb_lookup,
+    kb_verify,
+    query_kb_prior_to_semantic_intent,
     sync_lexicon_gaps_to_memory,
     verify_bundle_integrity,
 )
@@ -166,6 +168,19 @@ def main(argv: Optional[List[str]] = None) -> int:
     p_kblook.add_argument("--moment", type=str, default=None, help="Moment type (e.g. strike, reaction, camera)")
     p_kblook.add_argument("--slot", type=str, default=None, help="Grammar slot (e.g. verb, manner, camera_motion)")
 
+    p_kbask = sub.add_parser(
+        "kb-ask",
+        help="Query the Knowledge Base PRIOR to semantic intent (surfaces moments, slots, concepts, directives, relations, causal triples, knobs, and animation_grammar)",
+    )
+    p_kbask.add_argument("input_or_request", type=str, help="Natural language fight request OR path to beat-sheet JSON")
+    p_kbask.add_argument("--taste", type=str, default="heavy, brutal, old school", help="Taste profile vibe words")
+    p_kbask.add_argument("--follow", type=int, default=2, help="Module relation follow depth (1 or 2)")
+    p_kbask.add_argument("--discover", type=int, default=2, help="Swanson A->B<-C bridge hypotheses count")
+    p_kbask.add_argument("--knob", action="append", default=None, help="axis=option, repeatable")
+
+    p_kbver = sub.add_parser("kb-verify", help="Run SHA256SUMS.bundle + 25-check agent.verify integrity suite")
+    p_kbver.add_argument("--bundle-dir", type=Path, default=None, help="Optional path to knowledge_base")
+
     p_ing = sub.add_parser("ingest-verdict", help="Ingest a render verdict or markdown scorecard into priors + agent_memory")
     p_ing.add_argument("--run-id", type=str, default="manual_render_run", help="Render run identifier")
     p_ing.add_argument("--scorecard", type=Path, default=None, help="Path to markdown scorecard")
@@ -267,6 +282,27 @@ def main(argv: Optional[List[str]] = None) -> int:
     if args.cmd == "kb-lookup":
         print(json.dumps(kb_lookup(moment=args.moment, slot=args.slot), indent=2))
         return 0
+
+    if args.cmd == "kb-ask":
+        p = Path(args.input_or_request)
+        if p.is_file():
+            target_input = json.loads(p.read_text(encoding="utf-8"))
+        else:
+            target_input = args.input_or_request
+        res = query_kb_prior_to_semantic_intent(
+            target_input,
+            taste=args.taste,
+            follow_depth=args.follow,
+            discover_count=args.discover,
+            knobs_spec=args.knob,
+        )
+        print(json.dumps(res, indent=2))
+        return 0
+
+    if args.cmd == "kb-verify":
+        ver = kb_verify(args.bundle_dir) if args.bundle_dir else kb_verify()
+        print(json.dumps(ver, indent=2))
+        return 0 if ver.get("ok") else 1
 
     if args.cmd == "ingest-verdict":
         bleed_pair = tuple(args.quarantine_pair) if args.quarantine_pair else None

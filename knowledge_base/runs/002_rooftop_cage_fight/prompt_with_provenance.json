@@ -1,0 +1,345 @@
+{
+ "clip": {
+  "duration_s": 10.0,
+  "fps": 24,
+  "count": "exactly two bare-knuckle fighters, no weapons, no extra people",
+  "style": "pure 2D hand-drawn anime in the vein of Baki, Kengan Ashura and The God of High School: detailed anatomical muscle striations, flat cel shading with hard two-tone high-contrast shadows, heavy ink outlines, broken sketchy ink only on a limb while it smears, clean thick ink on every held impact drawing; not 3D, not CGI, not live action",
+  "setting": "rain-slicked neon-lit rooftop helipad cage arena over a dark cyberpunk skyline; magenta and cyan floodlights reflecting off wet concrete; octagonal chain-link fence in deep shadow behind the fighters"
+ },
+ "entities": {
+  "A": "screen-left, always facing right: lean razor-cut Muay Thai / MMA striker, shirtless, white cloth tape on both wrists and knuckles, gold ankle wraps, midnight-blue vale tudo shorts, bare feet",
+  "B": "screen-right, always facing left: heavyweight muscular Dutch kickboxer, shirtless broad scarred torso, urban-camo fight shorts, bare wrists and ankles with no tape, bare feet"
+ },
+ "locks": [
+  "A stays screen-left facing right and B stays screen-right facing left for all ten seconds; zero side swaps, zero outfit changes",
+  "strike reach: punches land at one full arm's length (about 0.8 m), hooks, uppercuts and clinch work at half an arm's length (about 0.6 m), kicks at one full leg's length (about 1.1 m); the two bodies never merge",
+  "both arms separate from the torso in silhouette on every hit; limb count constant; faces and costume panels identical in every frame",
+  "no on-screen text, numbers, HUD or labels"
+ ],
+ "animation_grammar": {
+  "exposure": {
+   "rule": "character drawings change on twos (twelve drawings per second); camera moves, rain and effects layers run on ones; this is a per-layer decision, never a global clip setting",
+   "from": [
+    "a036#0335",
+    "a036#0332",
+    "directive:aa_time_mixed_exposures"
+   ]
+  },
+  "smear": {
+   "rule": "a smear is drawn only on the striking limb and only across the one or two frames of its fastest travel; the head, torso and the off-hand guard stay solid and sharp; never a full-body blur",
+   "from": [
+    "a043#0026",
+    "a079#0150",
+    "directive:aa_subject_multiple_limb_smear"
+   ]
+  },
+  "hit_stop": {
+   "rule": "on every landed strike, hold the clearest contact drawing for two to four frames with the two bodies fixed in relative position; rain, sweat and shock effects keep moving during the hold; this is the single most important 'it landed' cue",
+   "from": [
+    "a035#0027",
+    "a036#0315",
+    "directive:aa_time_contact_hitstop"
+   ]
+  },
+  "cause_before_effect": {
+   "rule": "no flinch, knockback, head whip, sweat spray or shock flash before the contact frame; every reaction starts on the frame after contact and follows the force direction",
+   "from": [
+    "a035#0009",
+    "a035#0070",
+    "directive:aa_action_absorb_recoil"
+   ]
+  },
+  "kinetic_chain": {
+   "rule": "every strike travels proximal to distal: foot plant, then hips, then torso, then shoulder, then the striking limb; at launch the striker's weight is visibly over the support foot, so no strike ever reads weightless or all-arm",
+   "from": [
+    "a018#0050",
+    "a031#0487",
+    "a031#0383",
+    "directive:aa_action_weight_load",
+    "directive:aa_action_hip_led_punch"
+   ]
+  },
+  "effects_after_contact": {
+   "rule": "speed lines only during a limb's travel; shock rings, white impact flashes, sweat and rain spray only from the contact point and only after the contact frame; debris and spray never emit from the attacker",
+   "from": [
+    "a035#0028",
+    "a076#0090",
+    "directive:aa_env_speed_void",
+    "directive:aa_secondary_contact_ring"
+   ]
+  },
+  "camera_on_contact": {
+   "rule": "the camera is locked on every contact so the hit is readable: no whip pan, zoom or cut across a contact frame; camera shake is a short overlay that begins on the contact frame and never before it",
+   "from": [
+    "a071#0090",
+    "a079#0100",
+    "a079#0050",
+    "a031#2184",
+    "directive:aa_camera_contact_lock"
+   ]
+  },
+  "camera_between_contacts": {
+   "rule": "camera moves happen between exchanges only: one smooth lateral dolly on the footwork beat and one whip pan on the clinch break; at most one camera move per beat, never an orbit",
+   "from": [
+    "a079#0017",
+    "a031#1899",
+    "directive:aa_camera_whip_reacquire"
+   ]
+  },
+  "time_remap": {
+   "rule": "one slow-motion window only, 0.25x across the finisher's contact drawing and its hold, as an editing device; everything else at real time",
+   "from": [
+    "a054#1416",
+    "a053#0151"
+   ]
+  },
+  "effort_quality": {
+   "A": "strong weight, sudden time, direct space, bound flow throughout",
+   "B": "strong, sudden, direct, bound while striking; flow goes free during each stagger and returns to bound on recovery",
+   "rule": "these are movement qualities, not force values; weight is shown through support, timing and recoil, never stated as numbers",
+   "from": [
+    "a003#0010",
+    "a031#1470"
+   ]
+  }
+ },
+ "beats": [
+  {
+   "t": "0.00-0.90",
+   "name": "low calf kick vs lead leg buckle",
+   "range": "one leg's length",
+   "A": "weight settles over the left support foot, hips open first, torso whips low, then the right shin turns over flat and chops the outside of B's lead calf; the shin alone smears for two frames",
+   "B": "only after the shin lands: left calf chopped sideways, knee buckles inward, half-step stumble to catch balance; both arms flare slightly wide while guarding the jaw",
+   "contact": "A right shin into B lead calf, low, at full leg reach",
+   "camera": "ground-skimming low angle on the calf, locked through the contact; shake overlay begins on the contact frame",
+   "fx": "white bone-shock flash and rain spray from the calf, after contact only",
+   "hold_frames": 3,
+   "influences": [
+    "kinetic_chain",
+    "hit_stop",
+    "cause_before_effect",
+    "camera_on_contact"
+   ]
+  },
+  {
+   "t": "0.90-1.35",
+   "name": "burst step in vs slip inside",
+   "range": "closing from one leg's length to one arm's length",
+   "A": "drives off the right foot into a sharp forward step, guard high and elbows tucked, weight transferring onto the lead foot as he arrives",
+   "B": "slips the head briskly to the inside and loads weight onto the right hip, left foot planted, guard tucked by the jaw",
+   "contact": "none",
+   "camera": "the one lateral dolly of the clip, tracking the footwork at waist height, no orbit; speed lines on A's travel only",
+   "fx": "none",
+   "hold_frames": 0,
+   "influences": [
+    "camera_between_contacts",
+    "effects_after_contact",
+    "exposure"
+   ]
+  },
+  {
+   "t": "1.35-2.30",
+   "name": "slashing rear elbow vs head whip",
+   "range": "one arm's length",
+   "A": "left palm checks B's lead shoulder; from the planted left foot the hips square, torso snaps through, right shoulder drives and the right elbow point cuts horizontally across the brow and cheekbone; the elbow smears for two frames",
+   "B": "only after the elbow lands: jaw whipped sideways in the direction of the cut, lead foot twists, sweat sprays from the brow one frame after contact",
+   "contact": "A right elbow and forearm across B brow and cheekbone",
+   "camera": "tight three-quarter on the contact, locked; no whip pan here",
+   "fx": "crimson-and-white slash flash and sweat spray from the brow, after contact",
+   "hold_frames": 3,
+   "influences": [
+    "kinetic_chain",
+    "smear",
+    "hit_stop",
+    "cause_before_effect",
+    "camera_on_contact"
+   ]
+  },
+  {
+   "t": "2.30-3.50",
+   "name": "cross vs high shell guard",
+   "range": "one arm's length",
+   "B": "weight loads over the lead foot, right hip and heel pivot, shoulder drives, and a heavy straight right travels down the centerline; the fist smears for two frames",
+   "A": "both forearms already locked vertically in front of the face before the fist arrives; on contact the guard takes the shock, heel digs in to stop the pushback",
+   "contact": "B right fist into A twin-forearm shell",
+   "camera": "three-quarter on the guard, locked through the block",
+   "fx": "counter-shock ring rippling off the forearms, after contact",
+   "hold_frames": 3,
+   "influences": [
+    "kinetic_chain",
+    "hit_stop",
+    "camera_on_contact",
+    "effects_after_contact"
+   ]
+  },
+  {
+   "t": "3.50-4.45",
+   "name": "lead liver hook vs torso fold",
+   "range": "half an arm's length",
+   "A": "head slips outside the retracting right, left knee dips to load the upward angle, hips lift, torso whips, left shoulder drives and the left fist digs a shovel hook under the elbow into the floating ribs; the fist smears for two frames",
+   "B": "only after the fist sinks: folds forward at the waist with a sharp exhale, both arms drop toward the ribs, half-step rib buckle; flow goes free",
+   "contact": "A left fist into B floating ribs",
+   "camera": "low upward close-up on the ribs, locked",
+   "fx": "white shockwave from the ribs and a burst of breath vapor, after contact",
+   "hold_frames": 3,
+   "influences": [
+    "kinetic_chain",
+    "smear",
+    "hit_stop",
+    "cause_before_effect",
+    "effort_quality"
+   ]
+  },
+  {
+   "t": "4.45-5.70",
+   "name": "collar tie entry",
+   "range": "closing to chest-to-chest",
+   "A": "steps deep into the pocket, left palm hooks behind B's neck in a collar tie, right forearm frames across the collarbone, right leg braced wide",
+   "B": "neck pulled forward into the clinch, hands brace on A's shoulders fighting for posture, feet widen for base",
+   "contact": "A left palm behind B neck; continuous grip from here",
+   "camera": "wide profile of the clinch entry, locked",
+   "fx": "sweat spray from the neck on the grip frame",
+   "hold_frames": 3,
+   "influences": [
+    "camera_on_contact",
+    "cause_before_effect"
+   ]
+  },
+  {
+   "t": "5.70-6.80",
+   "name": "clinch rising knee vs rib fold",
+   "range": "chest-to-chest",
+   "A": "standing on the left pillar leg, both hands pull the collar tie down while the hips drive upward and the bent right knee spears vertically into the solar plexus; the knee smears for two frames",
+   "B": "only after the knee lands: jackknifes forward at the waist inside the clinch, toes lift, arms grip outside A's shoulders",
+   "contact": "A right kneecap into B solar plexus",
+   "camera": "medium-wide side profile showing the pillar leg and the knee, locked",
+   "fx": "radial white shock flash from the solar plexus, after contact",
+   "hold_frames": 3,
+   "influences": [
+    "kinetic_chain",
+    "hit_stop",
+    "smear",
+    "cause_before_effect"
+   ]
+  },
+  {
+   "t": "6.80-7.95",
+   "name": "two-hand shove vs heel skid",
+   "range": "chest-to-chest opening to one arm's length",
+   "A": "both palms flat on B's chest, hips drive forward, both arms extend fully to shove B out of the clinch",
+   "B": "only after the shove: driven back to arm's length, heels skidding on the wet floor, arms spread wide then snap back to guard",
+   "contact": "A both palms into B sternum",
+   "camera": "locked wide on the shove; then the clip's one whip pan re-acquires B at his new distance, between beats, across no contact",
+   "fx": "wet-floor spray from B's heels as he slides, after the shove",
+   "hold_frames": 3,
+   "influences": [
+    "camera_between_contacts",
+    "effects_after_contact",
+    "cause_before_effect"
+   ]
+  },
+  {
+   "t": "7.95-8.80",
+   "name": "rear body straight vs elbow tuck",
+   "range": "one arm's length",
+   "B": "slips inside, sinks the hips, weight over the lead foot, right heel turns out and a straight right drives into the midsection; the fist smears for two frames",
+   "A": "left elbow already crunched tight against hip and ribs before the fist arrives; the block takes the shock",
+   "contact": "B right fist into A tucked left elbow",
+   "camera": "three-quarter on the body shot, locked",
+   "fx": "compact shock ring on A's rib line, after contact",
+   "hold_frames": 3,
+   "influences": [
+    "kinetic_chain",
+    "hit_stop",
+    "camera_on_contact"
+   ]
+  },
+  {
+   "t": "8.80-10.00",
+   "name": "spinning back kick finisher vs torso fold",
+   "range": "one arm's length",
+   "A": "from the loaded right hip, spins on the planted left foot; hips lead the rotation, torso whips level, the right heel pistons straight back into the solar plexus; the leg smears across the fastest half-turn",
+   "B": "only after the heel lands: folds forward at the waist with a sharp exhale, arms drop to the ribs, half-step rib buckle, and holds the crouch to the end",
+   "contact": "A right heel into B solar plexus",
+   "camera": "telephoto three-quarter on the contact, locked; the clip's single 0.25x slow-motion window covers the contact drawing and its hold",
+   "fx": "double concentric white shockwave and rain-mist burst from the solar plexus, after contact; palette returns to normal on the next drawing",
+   "hold_frames": 6,
+   "end_state": "A holds a wide fighting stance screen-left, left arm extended in high guard, right chambered at the cheek; B stays crouched screen-right; both arms separate from torso in silhouette",
+   "influences": [
+    "kinetic_chain",
+    "hit_stop",
+    "time_remap",
+    "effects_after_contact",
+    "camera_on_contact"
+   ]
+  }
+ ],
+ "negative": [
+  "3D CGI look",
+  "mocap stiffness",
+  "floaty physics or weightless all-arm strikes",
+  "static flat camera",
+  "any weapon",
+  "side swap",
+  "outfit swap",
+  "torso merging or chest-to-chest clipping",
+  "extra fighters",
+  "missing or extra limbs",
+  "full-body blur during a smear",
+  "any reaction, flinch, spray or flash before contact",
+  "whip pan or zoom across a contact",
+  "on-screen text or numbers"
+ ],
+ "provenance": {
+  "note": "Authored 2026-10-22 from a knowledge-base search over the owner's rooftop prompt. Every rule in animation_grammar names the handbook passages (short ids, handbook_index.db) and catalog directives that shaped it; each beat's influences list says which rules it applies. Untested: no render exists.",
+  "what_changed_from_the_owner_prompt": [
+   "the 1.40 s whip pan over the elbow contact was removed: the handbook lists whip-pan-on-contact as a teleport failure; the clip's one whip pan now sits on the clinch break, across no contact",
+   "'on twos' became a per-layer rule (characters on twos, camera and effects on ones) instead of a global setting",
+   "every reaction is written to begin on the frame after contact, and every effect emits from the contact point, never from the attacker",
+   "the 0.25x slow motion is confined to the finisher's contact drawing and hold",
+   "hit-stop holds are explicit on every landed strike, with effects continuing during the hold",
+   "frame numbers, metres and coordinates were taken out of the prose and kept as reach words; the exposure sheet carries the frame schedule"
+  ],
+  "handbook_passages": [
+   "a036#0335",
+   "a036#0332",
+   "a043#0026",
+   "a079#0150",
+   "a035#0027",
+   "a036#0315",
+   "a035#0009",
+   "a035#0070",
+   "a018#0050",
+   "a031#0487",
+   "a031#0383",
+   "a035#0028",
+   "a076#0090",
+   "a071#0090",
+   "a079#0100",
+   "a079#0050",
+   "a031#2184",
+   "a079#0017",
+   "a031#1899",
+   "a054#1416",
+   "a053#0151",
+   "a003#0010",
+   "a031#1470"
+  ],
+  "catalog_directives": [
+   "aa_time_mixed_exposures",
+   "aa_subject_multiple_limb_smear",
+   "aa_time_contact_hitstop",
+   "aa_action_absorb_recoil",
+   "aa_action_weight_load",
+   "aa_action_hip_led_punch",
+   "aa_env_speed_void",
+   "aa_secondary_contact_ring",
+   "aa_camera_contact_lock",
+   "aa_camera_whip_reacquire"
+  ],
+  "uncovered_by_the_index": [
+   "calf kick, collar tie, liver/shovel hook, shell guard, clinch, spinning back kick (fight vocabulary: authored, not cited)",
+   "sweat spray, rain mist, breath vapor, dutch roll (not in the handbook)"
+  ]
+ }
+}
