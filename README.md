@@ -15,15 +15,19 @@ Movement_Prose/
 │   ├── TWO_LAYER_FLUID_STACK_ARCHITECTURE.md                  # Deep-dive guide: Mode 1 vs Mode 2 (--stack) & Choreography Separation
 │   └── VARIATIONS_AND_FIGHTING_STYLES.md                      # Deep-dive: Decisions 21-25, Entity Fighting Styles & Variations vs Golden Baseline
 ├── scripts/
-│   ├── sakuga_compiler.py                                     # Original 05:34 (e91c686) Deterministic CLI Compiler & 17-Rule Physics Linter
+│   ├── sakuga_compiler.py                                     # 🔒 Original 05:34 (e91c686) Deterministic CLI Compiler & 17-Rule Physics Linter (SHA256 Locked)
+│   ├── sakuga_original_kb.py                                  # 🔒 Dedicated 05:34 SAKUGA-MLLM-3.1-CAUSAL + Pre-Intent Knowledge Base Compiler Path
 │   └── twelvelabs_bridge.py                                   # TwelveLabs Pegasus 1.2 Bridge (Mode A: Reference Extractor, Mode B: Render QA & Handoff)
+├── templates/
+│   └── sakuga_mllm_3_1_causal_0534_template.json              # 🔒 Canonical Protected 05:34 (e91c686) Single-Layer SAKUGA-MLLM-3.1-CAUSAL Template
 ├── knowledge_base/                                            # 📚 In-Repo Knowledge Base (`anime_action_research_bundle` + `agent/` + `runs/002_rooftop_cage_fight`)
 │   ├── ai_video_compiler.db                                   # Frozen 64-row `semantic_directives` catalog (SHA256 locked)
 │   ├── agent_memory.db                                        # Growing memory (tags, judged_labels, causal_triples, module_relations, usage_events)
 │   ├── agent/                                                 # Bundle-local query/propose/check/emit/knobs/relations/causal/discover toolkit
 │   └── runs/002_rooftop_cage_fight/                           # Run 002 rooftop cage fight prompt + provenance surfaced from KB search
 ├── fight_move_system/                                         # 🚀 v2 Fight Move System + KB Bridge + Closed-Loop Verification & Repair Engine
-│   ├── cli.py                                                 # CLI (`validate`, `compile`, `packet`, `kb-ask`, `kb-verify`, `kb-sync`, `kb-find`, `kb-lookup`, `ingest-verdict`, `repair`, `next-clip`)
+│   ├── cli.py                                                 # CLI (`validate`, `compile`, `compile-original`, `packet`, `kb-ask`, `kb-verify`, `kb-sync`, `kb-find`, `kb-lookup`, `ingest-verdict`, `repair`, `next-clip`)
+│   ├── original_causal_compiler.py                            # 🔒 Protected 05:34 `SAKUGA-MLLM-3.1-CAUSAL` Single-Layer Compiler + Pre-Intent KB Bridge
 │   ├── compiler.py                                            # 2-Layer Fluid Stack & `sakuga_Xperiment` / `lean` Compiler (queries KB prior to semantic intent)
 │   ├── kb_bridge.py                                           # Pre-intent KB query engine (`query_kb_prior_to_semantic_intent`) + `knowledge_base/` bridge
 │   ├── closed_loop.py                                         # Verdict ingestion, RFC 6902 localized beat repair (`src-cpcs-mx-repair_strategy`), & Clip N+1 handoff
@@ -84,23 +88,24 @@ To eliminate any confusion, **both modes use the exact same `SAKUGA-MLLM-3.1-CAU
 
 ## Quick Start
 
-### 1. Lint & Validate Fight Choreography Specs (Checks All 20 Decisions)
+### 1. Protected Original `05:34` (`e91c686`) `SAKUGA-MLLM-3.1-CAUSAL` Single-Layer Path + Pre-Intent KB Query
 ```bash
-python3 scripts/sakuga_compiler.py lint examples/*.json
+# Verify SHA256 lock on scripts/sakuga_compiler.py (e91c686) and lint the 05:34 template:
+python3 scripts/sakuga_original_kb.py verify-protection
+
+# Path A: Query KB prior to semantic intent and compile an original 05:34 SAKUGA-MLLM-3.1-CAUSAL spec/template:
+python3 scripts/sakuga_original_kb.py compile-spec templates/sakuga_mllm_3_1_causal_0534_template.json --taste clean
+python3 scripts/sakuga_compiler.py lint examples/gold_master_1_blade_exchange.json examples/gold_master_2_disarm_dual_blade.json
+
+# Path B: Query KB prior to semantic intent and compile a beat-sheet into a pure 05:34 SAKUGA-MLLM-3.1-CAUSAL single-layer prompt:
+python3 scripts/sakuga_original_kb.py compile-beatsheet fight_move_system/fixtures/pass/10_beat_boxing_exchange.json --taste nakamura
+# (Or via fight_move_system.cli compile-original):
+python3 -m fight_move_system.cli compile-original templates/sakuga_mllm_3_1_causal_0534_template.json --taste clean
 ```
 
-### 2. Compile in Mode 1 (Single-Layer JSON) or Mode 2 (2-Layer Fluid Stack `--stack`)
+### 2. Lint 25-Decision Scene Graphs (Golden #3, #4 & Variations)
 ```bash
-# Mode 1: Single-Layer Causal JSON (default):
-python3 scripts/sakuga_compiler.py compile examples/gold_master_2_disarm_dual_blade.json --taste clean
-
-# Mode 2: 2-Layer Unrolled Fluid Stack (--stack) for complex acrobatic/weapon choreography:
-python3 scripts/sakuga_compiler.py compile examples/gold_master_3_courtyard_sky_cartwheel.json --stack --out examples/gold_master_3_courtyard_fluid_stack.txt
-python3 scripts/sakuga_compiler.py compile examples/gold_master_4_shrine_bo_staff_determinism_test.json --stack --out examples/gold_master_4_shrine_bo_staff_fluid_stack.txt
-
-# Optional Yutaka Nakamura taste layer or animation style presets (cel_default, genga, sumi_ink, trigger_neon, retro_90s, ufotable):
-python3 scripts/sakuga_compiler.py compile examples/gold_master_3_courtyard_sky_cartwheel.json --stack --taste nakamura
-python3 scripts/sakuga_compiler.py compile examples/gold_master_4_shrine_bo_staff_determinism_test.json --stack --style ufotable
+python3 -m fight_move_system.scene_graph_linter lint examples/*.json examples/variations/*.json
 ```
 
 ### 3. Stitch Multiple 10s Clips Into a YouTube Episode Pack

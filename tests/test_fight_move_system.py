@@ -29,6 +29,14 @@ from fight_move_system.kb_bridge import (
     verify_bundle_integrity,
 )
 from fight_move_system.lexicon import Lexicon, validate_card
+from fight_move_system.original_causal_compiler import (
+    FORBIDDEN_XPERIMENT_KEYS,
+    ORIGINAL_TEMPLATE_PATH,
+    assert_pure_0534_causal_spec,
+    compile_beatsheet_to_original_0534_causal,
+    compile_original_causal_spec_with_kb,
+    verify_original_compiler_protection,
+)
 from fight_move_system.validator import validate_clip
 
 
@@ -665,6 +673,54 @@ class TestFightMoveSystem(unittest.TestCase):
         self.assertEqual(handoff["fighters"]["A"]["screen_side"], "left")
         self.assertEqual(handoff["fighters"]["B"]["screen_side"], "right")
         self.assertEqual(handoff["fighters"]["B"]["support"], "crouched")
+
+    # --- M8: Protected 05:34 (e91c686) SAKUGA-MLLM-3.1-CAUSAL Code Path + Pre-Intent KB Integration ---
+    def test_m8_protected_0534_causal_path_and_kb_integration(self) -> None:
+        # 1. Verify scripts/sakuga_compiler.py is byte-identical to e91c686
+        ok_prot, sha = verify_original_compiler_protection()
+        self.assertTrue(ok_prot, sha)
+
+        # 2. Path A: Compile the protected 05:34 template with pre-intent KB query
+        prompt_a, spec_a, kb_a, errs_a, warns_a = compile_original_causal_spec_with_kb(
+            ORIGINAL_TEMPLATE_PATH,
+            taste="clean",
+            style="cel_default",
+        )
+        self.assertEqual(errs_a, [])
+        self.assertEqual(warns_a, [])
+        self.assertEqual(spec_a["schema"], "SAKUGA-MLLM-3.1-CAUSAL")
+        self.assertNotIn("=== LAYER 1", prompt_a)
+        self.assertNotIn("MOVEMENT LANGUAGE:", prompt_a)
+        self.assertTrue(kb_a["knobs"])
+        self.assertTrue(kb_a["pulled_relations"])
+        for beat in spec_a["A_beats"]:
+            self.assertEqual(set(beat.keys()).intersection(FORBIDDEN_XPERIMENT_KEYS), set())
+        for beat in spec_a["B_track"]:
+            self.assertEqual(set(beat.keys()).intersection(FORBIDDEN_XPERIMENT_KEYS), set())
+
+        # 3. Path B: Compile a beat-sheet into a pure 05:34 SAKUGA-MLLM-3.1-CAUSAL single-layer prompt via KB
+        prompt_b, spec_b, kb_b, val_b = compile_beatsheet_to_original_0534_causal(
+            self.valid_10_beat,
+            lexicon=self.lexicon,
+            taste="nakamura",
+            style="cel_default",
+        )
+        self.assertTrue(val_b.ok, val_b.errors)
+        self.assertEqual(val_b.warnings, [])
+        self.assertEqual(spec_b["schema"], "SAKUGA-MLLM-3.1-CAUSAL")
+        self.assertNotIn("=== LAYER 1", prompt_b)
+        self.assertNotIn("MOVEMENT LANGUAGE:", prompt_b)
+        self.assertTrue(kb_b["knobs"])
+        self.assertTrue(kb_b["pulled_relations"])
+        for beat in spec_b["A_beats"]:
+            self.assertEqual(set(beat.keys()).intersection(FORBIDDEN_XPERIMENT_KEYS), set())
+            self.assertNotIn(" -> chain: ", beat["causal"])
+        for beat in spec_b["B_track"]:
+            self.assertEqual(set(beat.keys()).intersection(FORBIDDEN_XPERIMENT_KEYS), set())
+
+        # 4. Verify KB integrity remains 25/25 after recording usage from both 05:34 paths
+        ver = kb_verify()
+        self.assertTrue(ver["ok"], ver)
 
 
 if __name__ == "__main__":

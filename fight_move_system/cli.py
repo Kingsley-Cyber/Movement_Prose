@@ -24,6 +24,11 @@ from .kb_bridge import (
     verify_bundle_integrity,
 )
 from .lexicon import Lexicon
+from .original_causal_compiler import (
+    compile_beatsheet_to_original_0534_causal,
+    compile_original_causal_spec_with_kb,
+    verify_original_compiler_protection,
+)
 from .validator import validate_clip
 
 
@@ -212,6 +217,23 @@ def main(argv: Optional[List[str]] = None) -> int:
     p_next.add_argument("input", type=Path, help="Path to Clip N beat-sheet JSON")
     p_next.add_argument("-o", "--output", type=Path, default=None, help="Optional path to write Clip N+1 seed JSON")
 
+    p_orig = sub.add_parser(
+        "compile-original",
+        help="Protected 05:34 (e91c686) SAKUGA-MLLM-3.1-CAUSAL single-layer compiler path with pre-intent Knowledge Base query",
+    )
+    p_orig.add_argument("input", type=Path, help="Path to 05:34 SAKUGA-MLLM-3.1-CAUSAL spec/template OR beat-sheet JSON")
+    p_orig.add_argument("-o", "--output", type=Path, default=None, help="Optional output file path")
+    p_orig.add_argument("--taste", choices=["clean", "nakamura"], default="clean", help="Original 05:34 taste preset")
+    p_orig.add_argument(
+        "--style",
+        choices=["cel_default", "genga", "sumi_ink", "trigger_neon", "retro_90s", "ufotable"],
+        default="cel_default",
+        help="Original 05:34 animation style preset",
+    )
+    p_orig.add_argument("--kb-taste", type=str, default="heavy, brutal, old school", help="Knowledge Base taste profile")
+    p_orig.add_argument("--knob", action="append", default=None, help="KB diversity knob axis=option")
+    p_orig.add_argument("--kb-report-out", type=Path, default=None, help="Optional path to write pre-intent KB query JSON")
+
     args = parser.parse_args(argv)
 
     if args.cmd == "validate":
@@ -342,6 +364,65 @@ def main(argv: Optional[List[str]] = None) -> int:
         else:
             print(json.dumps(handoff, indent=2))
         return 0
+
+    if args.cmd == "compile-original":
+        ok_prot, prot_msg = verify_original_compiler_protection()
+        if not ok_prot:
+            print(f"[ERROR] [PROTECTION] {prot_msg}", file=sys.stderr)
+            return 1
+        raw_text = args.input.read_text(encoding="utf-8")
+        # Detect whether input is an original 05:34 SAKUGA-MLLM-3.1-CAUSAL spec/template or a beat-sheet JSON
+        is_causal_spec = '"SAKUGA-MLLM-3.1-CAUSAL"' in raw_text and '"A_beats"' in raw_text
+        if is_causal_spec:
+            prompt, spec, kb_priors, errs, warns = compile_original_causal_spec_with_kb(
+                args.input,
+                taste=args.taste,
+                style=args.style,
+                kb_taste=args.kb_taste,
+                knobs_spec=args.knob,
+            )
+            for w in warns:
+                print(f"[WARN] {w}", file=sys.stderr)
+            if errs:
+                for e in errs:
+                    print(f"[ERROR] {e}", file=sys.stderr)
+                return 1
+            if args.kb_report_out:
+                args.kb_report_out.write_text(json.dumps(kb_priors, indent=2) + "\n", encoding="utf-8")
+            if args.output:
+                args.output.write_text(prompt + "\n", encoding="utf-8")
+            else:
+                print(prompt)
+            return 0
+        else:
+            data = json.loads(raw_text)
+            clips, _ = compose_clips(data)
+            prompts: List[str] = []
+            last_kb = {}
+            for clip in clips:
+                prompt, spec, kb_priors, val_res = compile_beatsheet_to_original_0534_causal(
+                    clip,
+                    taste=args.taste,
+                    style=args.style,
+                    kb_taste=args.kb_taste,
+                    knobs_spec=args.knob,
+                )
+                last_kb = kb_priors
+                for code, msg in val_res.warnings:
+                    print(f"[WARN] [{code}] {msg}", file=sys.stderr)
+                if not val_res.ok:
+                    for code, msg in val_res.errors:
+                        print(f"[ERROR] [{code}] {msg}", file=sys.stderr)
+                    return 1
+                prompts.append(prompt)
+            full_output = "\n\n---\n\n".join(prompts)
+            if args.kb_report_out:
+                args.kb_report_out.write_text(json.dumps(last_kb, indent=2) + "\n", encoding="utf-8")
+            if args.output:
+                args.output.write_text(full_output + "\n", encoding="utf-8")
+            else:
+                print(full_output)
+            return 0
 
     return 0
 

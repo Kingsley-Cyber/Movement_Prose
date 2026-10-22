@@ -24,7 +24,12 @@ This skill turns creative fight ideas or multi-clip YouTube episode concepts int
 * **Architecture & Fighting-Style Documentation:**
   * [TWO_LAYER_FLUID_STACK_ARCHITECTURE.md](./docs/TWO_LAYER_FLUID_STACK_ARCHITECTURE.md)
   * [VARIATIONS_AND_FIGHTING_STYLES.md](./docs/VARIATIONS_AND_FIGHTING_STYLES.md)
-* **Compiler & 25-Rule Physics/Diversity/Style Linter CLI:** [sakuga_compiler.py](./scripts/sakuga_compiler.py)
+* **Original `05:34` (`e91c686`) Single-Layer `SAKUGA-MLLM-3.1-CAUSAL` Protected Compiler & Pre-Intent KB Path:**
+  * [sakuga_compiler.py](./scripts/sakuga_compiler.py) (SHA256 Locked to `e91c686`)
+  * [sakuga_original_kb.py](./scripts/sakuga_original_kb.py) & [original_causal_compiler.py](./fight_move_system/original_causal_compiler.py)
+  * [sakuga_mllm_3_1_causal_0534_template.json](./templates/sakuga_mllm_3_1_causal_0534_template.json)
+* **v2 2-Layer `sakuga_Xperiment` Fluid Stack Compiler & 25-Rule Linter:**
+  * [compiler.py](./fight_move_system/compiler.py) & [scene_graph_linter.py](./fight_move_system/scene_graph_linter.py)
 * **TwelveLabs Video-to-Sakuga Bridge (Mode A & Mode B):** [twelvelabs_bridge.py](./scripts/twelvelabs_bridge.py)
 * **Full Master SOP:** [sakuga_prompt_schema_sop.md](./references/sakuga_prompt_schema_sop.md)
 * ⚠️ **CRITICAL RULE FOR AGENTS:** NEVER copy schemas or prompt structures from `_archive_rd_history_do_not_copy/`. Those files contain deprecated early baselines (`LBN-2.3-ADV` Euler dicts, Quaternion A/B tests, `v3.2` metadata bloat tests) kept strictly for historical benchmarking. Always use `examples/gold_master_1..4*.json` (`SAKUGA-MLLM-3.1-CAUSAL`).

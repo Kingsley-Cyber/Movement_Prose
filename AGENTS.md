@@ -17,10 +17,13 @@ Movement_Prose/
 │   ├── TWO_LAYER_FLUID_STACK_ARCHITECTURE.md                  # Deep-dive: Mode 1 (Single-Layer JSON) vs Mode 2 (--stack 2-Layer Fluid Stack)
 │   └── VARIATIONS_AND_FIGHTING_STYLES.md                      # Deep-dive: Decisions 21-25, Entity Fighting Styles & Variations vs Golden Baseline
 ├── scripts/
-│   ├── sakuga_compiler.py                                     # Original 05:34 (e91c686) Deterministic CLI Compiler & 17-Rule Physics Linter
+│   ├── sakuga_compiler.py                                     # 🔒 Original 05:34 (e91c686) Deterministic CLI Compiler & 17-Rule Physics Linter (SHA256 Locked)
+│   ├── sakuga_original_kb.py                                  # 🔒 Dedicated 05:34 SAKUGA-MLLM-3.1-CAUSAL + Pre-Intent Knowledge Base Compiler Path
 │   └── twelvelabs_bridge.py                                   # TwelveLabs Pegasus 1.2 Bridge (Mode A: Reference Extractor, Mode B: Render QA)
+├── templates/
+│   └── sakuga_mllm_3_1_causal_0534_template.json              # 🔒 Canonical Protected 05:34 (e91c686) Single-Layer SAKUGA-MLLM-3.1-CAUSAL Template
 ├── knowledge_base/                                            # 📚 IN-REPO KNOWLEDGE BASE (`anime_action_research_bundle` + `agent/` + `runs/002_rooftop_cage_fight`)
-├── fight_move_system/                                         # 🚀 v2 Fight Move System + Pre-Intent KB Query Engine (`kb_bridge.py`) + Closed-Loop Repair (`closed_loop.py`)
+├── fight_move_system/                                         # 🚀 v2 Fight Move System + Protected 05:34 Compiler (`original_causal_compiler.py`) + Pre-Intent KB Query Engine (`kb_bridge.py`) + Closed-Loop Repair (`closed_loop.py`)
 ├── examples/                                                  # ✅ ORIGINAL CANONICAL GOLDEN BASELINE PROMPTS (DO NOT OVERWRITE)
 │   ├── gold_master_1_blade_exchange.json                      # Golden #1 (Mode 1 Single-Layer JSON): Kunai vs. Blade Exchange
 │   ├── gold_master_2_disarm_dual_blade.json                   # Golden #2 (Mode 1 Single-Layer JSON): Wakizashi Disarm, Aerial Catch & X-Lock
@@ -102,13 +105,16 @@ Every rule below is enforced or audited by [`scripts/sakuga_compiler.py`](script
 Always run the linter and compiler before committing or returning any prompt:
 
 ```bash
-# 1. Lint Canonical Golden Prompts #1 & #2 with the locked 05:34 (e91c686) compiler:
+# 1. Verify Protected 05:34 (e91c686) SAKUGA-MLLM-3.1-CAUSAL Compiler Lock & Compile via Pre-Intent KB Path:
+python3 scripts/sakuga_original_kb.py verify-protection
+python3 scripts/sakuga_original_kb.py compile-spec templates/sakuga_mllm_3_1_causal_0534_template.json --taste clean
+python3 scripts/sakuga_original_kb.py compile-beatsheet fight_move_system/fixtures/pass/10_beat_boxing_exchange.json --taste nakamura
 python3 scripts/sakuga_compiler.py lint examples/gold_master_1_blade_exchange.json examples/gold_master_2_disarm_dual_blade.json
 
 # 2. Lint 25-Decision Scene Graphs (Golden #3, #4 & Variations) with the Fluid Stack Scene Graph Linter:
 python3 -m fight_move_system.scene_graph_linter lint examples/*.json examples/variations/*.json
 
-# 3. Query the in-repo Knowledge Base PRIOR to semantic intent, verify KB invariants, and compile:
+# 3. Query the in-repo Knowledge Base PRIOR to semantic intent, verify KB invariants, and compile 2-Layer `sakuga_Xperiment`:
 python3 -m fight_move_system.cli kb-verify
 python3 -m fight_move_system.cli kb-ask fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json --taste "heavy, brutal, old school" --follow 2 --discover 2
 python3 -m fight_move_system.cli compile fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json \
