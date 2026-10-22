@@ -1,15 +1,27 @@
 ---
 name: sakuga-fight-director
 description: >-
-  Use this skill whenever the user wants to design, write, lint, compile, or
-  chain 2D Sakuga anime fight choreography video prompts (for Seedance 2.0 Mini,
-  Seedance 2.5, Kling, Wan, or AI Video YouTube channel episodes) using the
-  empirically verified SAKUGA-MLLM-3.1-CAUSAL schema and 2-Layer Unrolled Fluid Stack.
+  Use this skill whenever the user wants to design, simulate, predict, write,
+  lint, compile, or repair 2D Sakuga anime fight choreography video prompts or
+  tactical BLOCK fight simulations (for Seedance 2.0 Mini, Seedance 2.5, Kling,
+  Wan, or AI Video YouTube channel episodes) using the Agent-Led BLUF workflow,
+  in-repo Knowledge Base, BLOCK Fight Engine, and SAKUGA-MLLM-3.1-CAUSAL /
+  2-Layer Unrolled Fluid Stack compilers.
 ---
 
-# Sakuga Fight Director & Compiler (`SAKUGA-MLLM-3.1-CAUSAL` & 2-Layer Fluid Stack)
+# Sakuga Fight Director, Knowledge Base & BLOCK Fight Simulator (`Movement_Prose`)
 
-This skill turns creative fight ideas or multi-clip YouTube episode concepts into empirically verified, non-regressing **`SAKUGA-MLLM-3.1-CAUSAL`** video prompts (in either **Single-Layer JSON** or **2-Layer Unrolled Fluid Stack `--stack`** format) and validates/compiles them using [sakuga_compiler.py](./scripts/sakuga_compiler.py).
+> **🤖 MANDATORY AGENT-LED OPERATING PROTOCOL (FOR NON-TECHNICAL USERS):**
+> This repository is **100% Agent-Led, Agent-Managed, Agent-Updated, and Agent-Executed**.
+> Users interacting with this skill may **not** be comfortable with terminals, CLI commands, Python environments, or JSON files.
+> - **Always lead with a plain-English BLUF (Bottom Line Up Front)** explaining what the system can do and what you are executing for them.
+> - **Execute all commands yourself in the background** based on the user's natural-language intent—never ask a non-technical user to run CLI commands manually.
+> - **Clearly explain the 3 Core Flows** when onboarding the user:
+>   1. **The Knowledge Base Flow (`knowledge_base/`):** Automatically queries the 30,275-passage Action & Biomechanics Handbook (`handbook_index.db`), 64 Sakuga directives (`ai_video_compiler.db`), and Growing Agent Memory (`agent_memory.db`) *prior* to writing any fight beat.
+>   2. **The Fighting Simulator (`BLOCK Fight Engine` — `predict.py`, `plan_fight.py`, `cards/`, `engine/`):** Evaluates fighter cards across 7 combat dimensions and 511 matchup cells, predicts win probabilities and tactical openings, and simulates 10-phase fights (either seeded or with a user-selected winner).
+>   3. **The Dual-Path Prompt Compiler & Glitch Repair (`fight_move_system/`, `scripts/sakuga_compiler.py`, `scripts/sakuga_original_kb.py`):** Compiles fights into either the **Protected Original `05:34` Single-Layer `SAKUGA-MLLM-3.1-CAUSAL` format**, the **2-Layer Unrolled Fluid Stack (`--stack`)**, or **Shot-by-Shot Cinematic Prose**, and repairs specific video glitches upon user feedback.
+
+This skill turns creative fight ideas, tactical style matchups, or multi-clip YouTube episode concepts into empirically verified, non-regressing **`SAKUGA-MLLM-3.1-CAUSAL`** video prompts (in either **Single-Layer JSON** or **2-Layer Unrolled Fluid Stack `--stack`** format) and validates/compiles them using [sakuga_compiler.py](./scripts/sakuga_compiler.py), [sakuga_original_kb.py](./scripts/sakuga_original_kb.py), and [plan_fight.py](./plan_fight.py).
 
 ## Directory Contents (STRICT TEMPLATE & VARIATION BOUNDARY RULE)
 * **AGENT ONBOARDING & 25-DECISION INDEX (READ FIRST):** [AGENTS.md](./AGENTS.md)

@@ -1,10 +1,50 @@
 # Movement_Prose (`SAKUGA-MLLM-3.1-CAUSAL`, 2-Layer Fluid Stack & BLOCK Fight Engine)
 
+> **🤖 100% AGENT-LED, AGENT-MANAGED, AGENT-UPDATED & AGENT-EXECUTED REPOSITORY**
+> **You do not need to know terminal commands, Python, or code to use this project.**
+> Open this repository in your AI coding agent (Antigravity, Codex, Claude Code, Cursor, etc.) and simply tell the agent what kind of fight you want to simulate or generate in plain English. The agent will read [`AGENTS.md`](AGENTS.md), explain your options using the **BLUF Guide** below, and run every tool automatically in the background for you.
+
+---
+
+## BLUF (Bottom Line Up Front) — What This Repo Does in Plain English
+
+**Movement_Prose** is an all-in-one **AI Fight Director, Martial Arts Matchup Simulator, and Anime Action ("Sakuga") Video Prompt Studio**. Instead of writing complex video prompts by hand or guessing how two fighting styles interact, you just tell your AI agent your idea—and the agent runs **3 Connected Flows** behind the scenes:
+
+### 1. 📚 The Knowledge Base Flow (`knowledge_base/` — Consulted *Before* Every Fight)
+Before your agent writes any choreography, it automatically searches a built-in martial arts and animation library containing:
+- **30,275 Passages from a 21-Chapter Action & Biomechanics Handbook** (`handbook_index.db`, automatically unpacked on first run) covering real strike mechanics, footwork, camera angles, and impact framing.
+- **64 Verified Sakuga Physics Directives** (`ai_video_compiler.db`) that prevent common AI video glitches (like floating jumps, missing arms, or early flinches).
+- **Growing Agent Memory** (`agent_memory.db`) that remembers which prompt fixes solved video glitches in earlier renders so the system gets smarter over time.
+
+### 2. 🥋 The Fighting Simulator & Matchup Engine (`BLOCK Fight Engine` — `predict.py`, `plan_fight.py`, `cards/`, `data/`, `engine/`)
+Want to know how two fighters match up—or want a realistic fight story generated automatically?
+- **Tactical Matchup Predictor:** Compares **11 built-in fighter cards** (or custom fighters your agent builds for you) across **7 combat dimensions** (`hands`, `defense`, `stance`, `clinch/tie`, `target`, `kicking`, `mentality`) and **511 style-vs-style interactions**. It calculates uncalibrated win probabilities, exposes tactical weaknesses (such as a missing clinch game or a multi-hit combo edge), and supports Boxing, Muay Thai, Kickboxing, MMA, and Street rulesets.
+- **10-Phase Fight Simulator & Director Mode:** Simulates a complete 30-to-60-second bout beat-by-beat (`Read -> Setup -> Exchange -> Clinch/Counter -> Finish/Decision`). You can let the simulation decide the winner **or** tell the agent who must win (`Director Mode`), producing a causal event graph, limb-by-limb choreography, and camera shot list.
+
+### 3. 🎬 The Dual-Path Sakuga Video Prompt Compiler & Glitch Repair Loop (`Movement_Prose` — `fight_move_system/`, `scripts/`)
+Takes either a **simulated BLOCK fight** or your **custom fight concept** and compiles it into ready-to-paste AI video prompts (for Seedance 2.0 Mini, Seedance 2.5, Kling, Wan, etc.) in any of **3 protected formats**:
+1. **Protected Original `05:34` Single-Layer `SAKUGA-MLLM-3.1-CAUSAL` Format (`scripts/sakuga_compiler.py` & `scripts/sakuga_original_kb.py`):** Our original compact single-layer prompt structure (header + 1-line-per-beat causal JSON), cryptographically locked (`SHA256`) so its format never drifts, and wired directly into the Knowledge Base.
+2. **2-Layer Unrolled Fluid Stack (`sakuga_Xperiment` / `--stack`):** Pairs a human-readable *Labanotation-as-Words* movement timeline (Layer 1) directly above a strict 3D kinematic scene graph (Layer 2) to lock two-arm visibility, grounded footwork, and impact holds.
+3. **BLOCK Shot-by-Shot Cinematic Prose (`video_prompts.jsonl`):** Clean, model-agnostic shot-by-shot camera and movement descriptions.
+- **Instant Video Glitch Repair:** If a rendered video has a flaw (e.g., *"his arm vanished at 3 seconds"* or *"they stood too far apart"*), just tell your agent. The agent automatically repairs only that specific beat and saves the lesson into Agent Memory.
+
+### 💬 What You Can Ask Your Agent Right Now (Zero Terminal Required)
+- *"Give me the BLUF on this repo and show me the fighters available."*
+- *"Who wins between Maleek and Donnell under MMA rules, and what is Donnell's biggest opening?"*
+- *"Simulate a 60-second fight between Imani Vale (wrestler) and Donnell where Imani exploits his missing clinch game, and generate the video prompts."*
+- *"Create a 10-second grounded Baki-style bare-knuckle brawl prompt using the Knowledge Base."*
+- *"Compile my fight using the original 05:34 single-layer prompt format."*
+- *"In my video render, the kick at 4 seconds looked floaty—fix that beat."*
+
+---
+
+## Technical Overview (For Agents & Developers)
+
 **Movement_Prose** (`movement-prose-e2e` / `sakuga-fight-director`) is an integrated, offline-first combat reasoning, semantic fight direction, and biomechanical Sakuga prompt compilation system combining:
 1. **BLOCK Fight Engine (`engine/`, `cards/`, `data/`, `schemas/`, `predict.py`, `plan_fight.py`):** Loads fictional fighter cards, calculates deterministic uncalibrated matchup probabilities across 7 dimensions and 511 canonical cells, constructs seeded or director-controlled causal fight event graphs, and compiles traceable model-agnostic cinematic shotlists and prompts (`shotlist.json`, `video_prompts.jsonl`).
 2. **Fight Move System v2 (`fight_move_system/`):** Deterministic 2-Layer Unrolled Fluid Stack (`sakuga_Xperiment` & `lean`) compiler, V01–V22 biomechanical & kinetic-chain validator, closed-loop render verdict ingestion, RFC 6902 localized beat repair, and `block_bridge.py` (which compiles planned BLOCK fights into both Movement_Prose prompt pipelines).
 3. **Protected Original `05:34` (`e91c686`) Single-Layer Path (`scripts/sakuga_compiler.py`, `scripts/sakuga_original_kb.py`, `templates/sakuga_mllm_3_1_causal_0534_template.json`):** Cryptographically SHA256-locked (`fdf54e55...`) original `SAKUGA-MLLM-3.1-CAUSAL` single-layer compiler and 17-Rule physics linter with its own dedicated pre-intent Knowledge Base path.
-4. **In-Repository Knowledge Base (`knowledge_base/`):** Frozen 64-row `ai_video_compiler.db` (`semantic_directives`), growing `agent_memory.db` (tags, judged labels, causal triples, module relations, usage events), and FTS5 `handbook_index.db` queried prior to semantic intent decomposition.
+4. **In-Repository Knowledge Base (`knowledge_base/`):** Frozen 64-row `ai_video_compiler.db` (`semantic_directives`), growing `agent_memory.db` (tags, judged labels, causal triples, module relations, usage events), and FTS5 `handbook_index.db` (auto-extracted from `handbook_index.db.gz`) queried prior to semantic intent decomposition.
 
 ---
 

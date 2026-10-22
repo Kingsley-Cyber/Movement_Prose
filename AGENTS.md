@@ -1,7 +1,55 @@
-# AGENTS.md — Deterministic Onboarding & Standard Operating Procedure
+# AGENTS.md — Agent-Led Operating Protocol, Non-Technical User BLUF Guide & Deterministic Onboarding
 
 Welcome to **Movement_Prose** (`SAKUGA-MLLM-3.1-CAUSAL`, 2-Layer Unrolled Fluid Stack, & **BLOCK Fight Engine**).
-Read this file **first** before reading, editing, linting, planning, or generating any fight plan or prompt in this repository.
+Read this file **first** before interacting with the user, reading, editing, linting, planning, or generating any fight plan or prompt in this repository.
+
+---
+
+## 0. AGENT-LED OPERATING MODEL & NON-TECHNICAL USER BLUF PROTOCOL (MANDATORY)
+
+> **CRITICAL DIRECTIVE FOR ALL AI AGENTS:**
+> This repository is **100% Agent-Led, Agent-Managed, Agent-Updated, and Agent-Executed**.
+> Your human user may **not** be technical or comfortable with terminals, CLI flags, Python virtual environments, or JSON schemas.
+> **Your job is to:**
+> 1. **Onboard the user in plain English with a BLUF (Bottom Line Up Front) overview** of what this repository does and its 3 Core Flows whenever they ask what this repo is or how to use it.
+> 2. **Execute everything in the background based on the user's plain-English intent** (auto-creating `.venv` if needed, querying the Knowledge Base, simulating matchups, planning fights, compiling prompts, or repairing renders) and return ready-to-use results and plain-English explanations—**never dump raw terminal commands on a non-technical user and ask them to run them manually.**
+> 3. **Maintain and update the repository yourself** (running tests, audits, Knowledge Base updates, and Git operations) while keeping the user informed in clear, jargon-free language.
+
+### What to Tell the User: Plain-English BLUF (Bottom Line Up Front)
+
+When introducing this system to a user, explain it using this **BLUF Summary**:
+
+* **BLUF (Bottom Line Up Front):** **Movement_Prose** is an AI-operated fight director, tactical combat simulator, and anime action ("Sakuga") video prompt studio. You simply tell the agent **who is fighting**, **what style or outcome you want**, or **what went wrong in a video render**, and the agent automatically handles all the math, martial arts research, choreography planning, and prompt engineering behind the scenes.
+
+### The 3 Core Flows (Explain These Clearly to Users & Execute Automatically)
+
+#### Flow 1: The Knowledge Base Flow (`knowledge_base/` — Queried *Before* Any Fight Is Written)
+* **What It Does (Plain English):** Before the agent writes a single punch or camera move, it automatically looks up real martial arts biomechanics and 2D anime animation principles from an built-in library of **30,275 indexed combat & animation passages** (`handbook_index.db`, auto-extracted on first use), **64 empirical Sakuga physics rules** (`ai_video_compiler.db`), and **Agent Memory** (`agent_memory.db` — which remembers past fixes that worked).
+* **Why It Matters to the User:** Every fight beat uses authentic weight transfer, impact freeze-frames ("hit-stop"), smear rules, and camera framing instead of generic AI guesswork—and the system gets smarter after every video you judge.
+
+#### Flow 2: The Fighting Simulator & Matchup Engine (`BLOCK Fight Engine` — `predict.py`, `plan_fight.py`, `cards/`, `data/`, `engine/`)
+* **What It Does (Plain English):** Acts as a tactical martial-arts simulator across **11 pre-built fighters** (or custom fighters the agent creates for you), **7 combat dimensions** (`hands`, `defense`, `stance`, `tie/clinch`, `target`, `kicking`, `mentality`), and **511 style-vs-style matchup interactions**.
+  * **Mode A — Matchup Predictor:** Tells you each fighter's tactical win probability (e.g., `54.5% vs 45.5%`), what openings/weaknesses exist (like a missing clinch game or a 2-piece combo advantage), and how they match up under Boxing, Muay Thai, Kickboxing, MMA, or Street rules.
+  * **Mode B — 10-Phase Fight Simulator & Director:** Simulates a complete 30-to-60-second fight step-by-step (`Read -> Setup -> Exchange -> Clinch/Counter -> Finish/Decision`)—either letting the simulation decide the winner or locking in **your chosen winner** (`Director Mode`)—and outputs a full move-by-move fight plan, camera shot list, and video prompts.
+
+#### Flow 3: The Dual-Path Sakuga Video Prompt Compiler & Render Repair Loop (`Movement_Prose` — `fight_move_system/`, `scripts/`)
+* **What It Does (Plain English):** Turns either a **simulated BLOCK fight** or your **custom fight idea** into copy-paste-ready prompts for AI video generators (Seedance 2.0 Mini, Seedance 2.5, Kling, Wan, etc.) in your choice of three verified formats:
+  1. **Protected Original `05:34` Single-Layer `SAKUGA-MLLM-3.1-CAUSAL` Prompt:** Our original compact single-layer format (header + 1-line-per-beat causal JSON) locked to its exact proven structure and connected to the Knowledge Base.
+  2. **2-Layer Unrolled Fluid Stack (`sakuga_Xperiment` / `--stack`):** Pairs a plain-English *Labanotation-as-Words* movement timeline (Layer 1) directly above a strict kinematic scene graph (Layer 2) to prevent missing limbs, floating physics, or style bleed.
+  3. **Shot-by-Shot Cinematic Prose (`video_prompts.jsonl`):** Clean, model-agnostic shot-by-shot camera and movement descriptions.
+* **Closed-Loop Video Fixer:** If a rendered video clip has a glitch (e.g., *"at 3 seconds his left arm disappears"* or *"the kick looked floaty"*), just tell the agent in plain English—the agent automatically patches only that specific beat and records the lesson in Agent Memory.
+
+### Agent Intent-to-Action Routing Table (How Agents Must Execute User Intent Automatically)
+
+| When the User Says (Plain-English Intent)... | What the Agent Automatically Runs in the Background | What the Agent Presents Back to the User |
+| :--- | :--- | :--- |
+| *"What does this repo do?"* / *"How do I use this?"* | Nothing needed (or quick health check) | The **BLUF summary** above + the **3 Core Flows** + 3 simple examples of what they can ask for right now. |
+| *"Who wins between Maleek and Donnell?"* / *"Compare a Philly Shell boxer vs a Muay Thai kickboxer"* | `.venv/bin/python predict.py --fighter-a cards/<A>.json --fighter-b cards/<B>.json --ruleset <ruleset>` | A plain-English breakdown of the matchup probabilities, each fighter's key tactical advantages, and exploitable openings. |
+| *"Simulate a 60-second fight between [A] and [B] (or make [A] win) and give me the video prompts"* | `.venv/bin/python plan_fight.py --fighter-a cards/<A>.json --fighter-b cards/<B>.json --duration 60 --seed 42 [--winner a\|b] --movement-prose --output-dir outputs/<run>` | A clear summary of the 10-phase fight story, key exchanges, and the ready-to-paste video prompts (`2-Layer Fluid Stack`, `05:34 Single-Layer`, and `Shot-by-Shot Prose`). |
+| *"Write me a 10-second anime fight prompt (grounded Baki brawl / ninja blade duel / Muay Thai rooftop war)"* | Queries KB (`kb-query`) $\to$ builds/selects spec $\to$ compiles via `fight_move_system.cli compile` (`--mode sakuga_Xperiment`) **or** `compile-original` (`05:34` path) $\to$ runs 25-rule linter | The verified, copy-paste-ready prompt file + a short explanation of the choreography beats and camera cuts. |
+| *"Use the original 05:34 prompt format with the knowledge base"* | `.venv/bin/python scripts/sakuga_original_kb.py compile-spec <spec.json> --out <out.txt>` | The protected `05:34` (`e91c686`) Single-Layer `SAKUGA-MLLM-3.1-CAUSAL` prompt enriched by the Knowledge Base, plus verification that all 17 physics rules passed. |
+| *"In my rendered video, the fighter lost an arm / merged bodies / floated at 3.5 seconds—fix it"* | `.venv/bin/python -m fight_move_system.cli repair --spec <spec.json> ...` (and logs verdict in `agent_memory.db`) | The updated, repaired prompt with only the broken beat fixed, explaining what changed and confirming the lesson was saved to Agent Memory. |
+| *"Make sure everything in the repo is working / installed"* | Creates `.venv` if missing, installs `requirements.txt`, and runs `.venv/bin/python scripts/regress.py` | A simple green-light confirmation that all databases, 105 automated tests, and example pipelines passed. |
 
 ---
 
