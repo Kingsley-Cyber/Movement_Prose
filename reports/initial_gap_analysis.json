@@ -1,0 +1,103 @@
+{
+  "contract": {
+    "outcome": "Executable, researched, populated offline BLOCK combat reasoning and cinematic direction engine.",
+    "acceptance": {
+      "options": 57,
+      "matrix_cells": 511,
+      "minimum_cards": 11,
+      "prediction": "deterministic, complementary probability, directional edges, gated NULLs and slots",
+      "backfill": "dry-run, atomic apply, idempotence, provenance and conflict preservation",
+      "direction": "seeded predictive and explicit director modes; causal state replay",
+      "visualization": "event-linked choreography, shots and prompts",
+      "demonstrations": [
+        "Maleek vs Donnell, 30\u201360 seconds",
+        "two-slot upset of three-slot through reachable NULL"
+      ],
+      "validation": "content audits, negative validators, regression CLI and recorded real execution"
+    },
+    "assumptions": [
+      "No pre-existing BLOCK canon beyond the supplied specification. All new fighter details and quantitative tactical choices are explicitly CANON.",
+      "Offline semantic choreography is the required physical fidelity; no installed skeletal solver was found in the empty workspace.",
+      "No paid video generation or provider-specific integration is required for model-agnostic prompt packages."
+    ]
+  },
+  "gaps": [
+    {
+      "id": "REQ-001",
+      "capability": "combat ontology",
+      "status": "MISSING",
+      "evidence": "Repository inventory: files=0; no entrypoints, schemas or tests.",
+      "verifier": "python scripts/regress.py"
+    },
+    {
+      "id": "REQ-002",
+      "capability": "fighter cards",
+      "status": "MISSING",
+      "evidence": "Repository inventory: files=0; no entrypoints, schemas or tests.",
+      "verifier": "python scripts/regress.py"
+    },
+    {
+      "id": "REQ-003",
+      "capability": "matchup matrices",
+      "status": "MISSING",
+      "evidence": "Repository inventory: files=0; no entrypoints, schemas or tests.",
+      "verifier": "python scripts/regress.py"
+    },
+    {
+      "id": "REQ-004",
+      "capability": "source registry",
+      "status": "MISSING",
+      "evidence": "Repository inventory: files=0; no entrypoints, schemas or tests.",
+      "verifier": "python scripts/regress.py"
+    },
+    {
+      "id": "REQ-005",
+      "capability": "prediction",
+      "status": "MISSING",
+      "evidence": "Repository inventory: files=0; no entrypoints, schemas or tests.",
+      "verifier": "python scripts/regress.py"
+    },
+    {
+      "id": "REQ-006",
+      "capability": "backfill",
+      "status": "MISSING",
+      "evidence": "Repository inventory: files=0; no entrypoints, schemas or tests.",
+      "verifier": "python scripts/regress.py"
+    },
+    {
+      "id": "REQ-007",
+      "capability": "fight planning",
+      "status": "MISSING",
+      "evidence": "Repository inventory: files=0; no entrypoints, schemas or tests.",
+      "verifier": "python scripts/regress.py"
+    },
+    {
+      "id": "REQ-008",
+      "capability": "event graph",
+      "status": "MISSING",
+      "evidence": "Repository inventory: files=0; no entrypoints, schemas or tests.",
+      "verifier": "python scripts/regress.py"
+    },
+    {
+      "id": "REQ-009",
+      "capability": "choreography",
+      "status": "MISSING",
+      "evidence": "Repository inventory: files=0; no entrypoints, schemas or tests.",
+      "verifier": "python scripts/regress.py"
+    },
+    {
+      "id": "REQ-010",
+      "capability": "prompt compiler",
+      "status": "MISSING",
+      "evidence": "Repository inventory: files=0; no entrypoints, schemas or tests.",
+      "verifier": "python scripts/regress.py"
+    },
+    {
+      "id": "REQ-011",
+      "capability": "validation",
+      "status": "MISSING",
+      "evidence": "Repository inventory: files=0; no entrypoints, schemas or tests.",
+      "verifier": "python scripts/regress.py"
+    }
+  ]
+}

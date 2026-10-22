@@ -1,0 +1,1756 @@
+{
+  "model_version": "block-1",
+  "knowledge_sha256": "9ed302793feca9cd3a8927fee7210588b1674bfaa066dd21757ea6741e324990",
+  "ruleset": "mma",
+  "fighter_a": "maleek",
+  "fighter_b": "donnell",
+  "probability_a": 0.4852126469153967,
+  "probability_b": 0.5147873530846033,
+  "logit_a": -0.05916666666666666,
+  "probability_classification": "Uncalibrated model-derived probability",
+  "matrix_edges": [
+    {
+      "matrix_id": "mentality_mentality",
+      "raw_weight": 0.3,
+      "normalized_weight": 0.29999999999999993,
+      "signed_edge_for_a": 0.0,
+      "weighted_contribution": 0.0,
+      "directions": [
+        {
+          "cell_id": "mentality_mentality|mentality.boxer_puncher|mentality.pressure",
+          "authored_edge": 0.0,
+          "edge": 0.0,
+          "mechanism": "Boxer-puncher can access body in Pressure fighter; Pressure fighter can access tempo in Boxer-puncher. Equal lane fractions cancel; unmatched lanes remain conditional. A probe can become a combination when the opponent commits. A tracking entry can lose a new angle and expose the torso.",
+          "how": "Boxer-puncher can access body in Pressure fighter; Pressure fighter can access tempo in Boxer-puncher. Equal lane fractions cancel; unmatched lanes remain conditional.",
+          "adaptations": [
+            "mma",
+            "mma"
+          ],
+          "attack_capability_gate": true,
+          "active_forward_lanes": [
+            "body"
+          ],
+          "active_reverse_lanes": [
+            "tempo"
+          ],
+          "classification": "CANON"
+        }
+      ]
+    },
+    {
+      "matrix_id": "stance_stance",
+      "raw_weight": 0.16,
+      "normalized_weight": 0.15999999999999998,
+      "signed_edge_for_a": -0.1875,
+      "weighted_contribution": -0.029999999999999995,
+      "directions": [
+        {
+          "cell_id": "stance_stance|stance.switch|stance.crouch",
+          "authored_edge": -0.25,
+          "edge": -0.1875,
+          "mechanism": "Switch can access no listed primary opening in Crouch; Crouch can access entry in Switch. Equal lane fractions cancel; unmatched lanes remain conditional. Changing lead alters the line of jabs, checks and exits. Front loading slows leg withdrawal and invites rising strikes.",
+          "how": "Switch can access no listed primary opening in Crouch; Crouch can access entry in Switch. Equal lane fractions cancel; unmatched lanes remain conditional.",
+          "adaptations": [
+            "mma",
+            "mma"
+          ],
+          "attack_capability_gate": true,
+          "active_forward_lanes": [],
+          "active_reverse_lanes": [
+            "entry"
+          ],
+          "classification": "CANON"
+        }
+      ]
+    },
+    {
+      "matrix_id": "hands_target",
+      "raw_weight": 0.07,
+      "normalized_weight": 0.06999999999999999,
+      "signed_edge_for_a": 0.16666666666666666,
+      "weighted_contribution": 0.011666666666666665,
+      "directions": [
+        {
+          "cell_id": "hands_target|hands.shield52|target.head_hunter",
+          "authored_edge": 0.3333333333333333,
+          "edge": 0.3333333333333333,
+          "mechanism": "52 Blocks shield covers head_straight against Head hunter; the attack can reach no primary listed exposure. Coverage-minus-exposure is 1 minus 0 over 3 attack lanes. CANON forearm wedges redirect a punch into a lateral counter line. Head fixation leaves torso and level-change defenses late.",
+          "how": "52 Blocks shield covers head_straight against Head hunter; the attack can reach no primary listed exposure. Coverage-minus-exposure is 1 minus 0 over 3 attack lanes.",
+          "adaptations": [
+            "mma",
+            "mma"
+          ],
+          "attack_capability_gate": true,
+          "active_forward_lanes": [
+            "head_straight"
+          ],
+          "active_reverse_lanes": [],
+          "classification": "CANON"
+        },
+        {
+          "cell_id": "hands_target|hands.peekaboo|target.mixer",
+          "authored_edge": 0.0,
+          "edge": 0.0,
+          "mechanism": "Peek-a-boo covers head_hook against Mixer; the attack can reach leg. Coverage-minus-exposure is 1 minus 1 over 3 attack lanes. Compact gloves and head movement support short hooks during entry. Changing targets demands resets that can be timed.",
+          "how": "Peek-a-boo covers head_hook against Mixer; the attack can reach leg. Coverage-minus-exposure is 1 minus 1 over 3 attack lanes.",
+          "adaptations": [
+            "mma",
+            "mma"
+          ],
+          "attack_capability_gate": true,
+          "active_forward_lanes": [
+            "head_hook"
+          ],
+          "active_reverse_lanes": [
+            "leg"
+          ],
+          "classification": "CANON"
+        }
+      ]
+    },
+    {
+      "matrix_id": "defense_target",
+      "raw_weight": 0.07,
+      "normalized_weight": 0.06999999999999999,
+      "signed_edge_for_a": 0.0,
+      "weighted_contribution": 0.0,
+      "directions": [
+        {
+          "cell_id": "defense_target|defense.check_frame|target.head_hunter",
+          "authored_edge": 0.0,
+          "edge": 0.0,
+          "mechanism": "Check-and-frame covers none of the selected attack lanes against Head hunter; the attack can reach no primary listed exposure. Coverage-minus-exposure is 0 minus 0 over 3 attack lanes. A shin check and forearm frame protect entry distance. Head fixation leaves torso and level-change defenses late.",
+          "how": "Check-and-frame covers none of the selected attack lanes against Head hunter; the attack can reach no primary listed exposure. Coverage-minus-exposure is 0 minus 0 over 3 attack lanes.",
+          "adaptations": [
+            "mma",
+            "mma"
+          ],
+          "attack_capability_gate": true,
+          "active_forward_lanes": [],
+          "active_reverse_lanes": [],
+          "classification": "CANON"
+        },
+        {
+          "cell_id": "defense_target|defense.slip_roll|target.mixer",
+          "authored_edge": 0.0,
+          "edge": 0.0,
+          "mechanism": "Slip-and-roll covers head_hook against Mixer; the attack can reach leg. Coverage-minus-exposure is 1 minus 1 over 3 attack lanes. Head displacement removes the chin from punch trajectories. Changing targets demands resets that can be timed.",
+          "how": "Slip-and-roll covers head_hook against Mixer; the attack can reach leg. Coverage-minus-exposure is 1 minus 1 over 3 attack lanes.",
+          "adaptations": [
+            "mma",
+            "mma"
+          ],
+          "attack_capability_gate": true,
+          "active_forward_lanes": [
+            "head_hook"
+          ],
+          "active_reverse_lanes": [
+            "leg"
+          ],
+          "classification": "CANON"
+        }
+      ]
+    },
+    {
+      "matrix_id": "defense_kicking",
+      "raw_weight": 0.07,
+      "normalized_weight": 0.06999999999999999,
+      "signed_edge_for_a": -0.25,
+      "weighted_contribution": -0.017499999999999998,
+      "directions": [
+        {
+          "cell_id": "defense_kicking|defense.check_frame|kicking.none",
+          "authored_edge": -0.5,
+          "edge": -0.5,
+          "mechanism": "Check-and-frame covers none of the selected attack lanes against None/pure boxer; the attack can reach single_support. Coverage-minus-exposure is 0 minus 1 over 2 attack lanes. A shin check and forearm frame protect entry distance. Punch-only reach concedes the lead leg and outside distance.",
+          "how": "Check-and-frame covers none of the selected attack lanes against None/pure boxer; the attack can reach single_support. Coverage-minus-exposure is 0 minus 1 over 2 attack lanes.",
+          "adaptations": [
+            "mma",
+            "mma"
+          ],
+          "attack_capability_gate": true,
+          "active_forward_lanes": [],
+          "active_reverse_lanes": [
+            "single_support"
+          ],
+          "classification": "CANON"
+        },
+        {
+          "cell_id": "defense_kicking|defense.slip_roll|kicking.dutch",
+          "authored_edge": 0.0,
+          "edge": 0.0,
+          "mechanism": "Slip-and-roll covers head_hook against Dutch kickboxing; the attack can reach leg. Coverage-minus-exposure is 1 minus 1 over 2 attack lanes. Head displacement removes the chin from punch trajectories. The final kick and square punching reset expose the hips.",
+          "how": "Slip-and-roll covers head_hook against Dutch kickboxing; the attack can reach leg. Coverage-minus-exposure is 1 minus 1 over 2 attack lanes.",
+          "adaptations": [
+            "mma",
+            "mma"
+          ],
+          "attack_capability_gate": true,
+          "active_forward_lanes": [
+            "head_hook"
+          ],
+          "active_reverse_lanes": [
+            "leg"
+          ],
+          "classification": "CANON"
+        }
+      ]
+    },
+    {
+      "matrix_id": "stance_kicking",
+      "raw_weight": 0.07,
+      "normalized_weight": 0.06999999999999999,
+      "signed_edge_for_a": -0.33333333333333337,
+      "weighted_contribution": -0.023333333333333334,
+      "directions": [
+        {
+          "cell_id": "stance_kicking|stance.switch|kicking.none",
+          "authored_edge": -0.5,
+          "edge": -0.5,
+          "mechanism": "Switch covers none of the selected attack lanes against None/pure boxer; the attack can reach single_support. Coverage-minus-exposure is 0 minus 1 over 2 attack lanes. Changing lead alters the line of jabs, checks and exits. Punch-only reach concedes the lead leg and outside distance.",
+          "how": "Switch covers none of the selected attack lanes against None/pure boxer; the attack can reach single_support. Coverage-minus-exposure is 0 minus 1 over 2 attack lanes.",
+          "adaptations": [
+            "mma",
+            "mma"
+          ],
+          "attack_capability_gate": true,
+          "active_forward_lanes": [],
+          "active_reverse_lanes": [
+            "single_support"
+          ],
+          "classification": "CANON"
+        },
+        {
+          "cell_id": "stance_kicking|stance.crouch|kicking.dutch",
+          "authored_edge": -0.5,
+          "edge": 0.16666666666666669,
+          "mechanism": "Crouch covers none of the selected attack lanes against Dutch kickboxing; the attack can reach leg. Coverage-minus-exposure is 0 minus 1 over 2 attack lanes. Lowered hips drive short punching entries and head-level changes. The final kick and square punching reset expose the hips.",
+          "how": "Crouch covers none of the selected attack lanes against Dutch kickboxing; the attack can reach leg. Coverage-minus-exposure is 0 minus 1 over 2 attack lanes.",
+          "adaptations": [
+            "mma",
+            "mma"
+          ],
+          "attack_capability_gate": true,
+          "active_forward_lanes": [
+            "leg"
+          ],
+          "active_reverse_lanes": [
+            "leg"
+          ],
+          "classification": "CANON"
+        }
+      ]
+    },
+    {
+      "matrix_id": "tie_tie",
+      "raw_weight": 0.16,
+      "normalized_weight": 0.15999999999999998,
+      "signed_edge_for_a": 0.0,
+      "weighted_contribution": 0.0,
+      "directions": [
+        {
+          "cell_id": null,
+          "edge": 0.0,
+          "reason": "Uncovered selection; only reachable NULL rules can penalize it."
+        }
+      ]
+    },
+    {
+      "matrix_id": "tie_stance",
+      "raw_weight": 0.1,
+      "normalized_weight": 0.09999999999999998,
+      "signed_edge_for_a": 0.0,
+      "weighted_contribution": 0.0,
+      "directions": [
+        {
+          "cell_id": null,
+          "edge": 0.0,
+          "reason": "Uncovered selection; only reachable NULL rules can penalize it."
+        },
+        {
+          "cell_id": null,
+          "edge": 0.0,
+          "reason": "Uncovered selection; only reachable NULL rules can penalize it."
+        }
+      ]
+    }
+  ],
+  "top_tactical_influences": [
+    {
+      "source": "stance_stance",
+      "logit": -0.029999999999999995,
+      "why": [
+        "Switch can access no listed primary opening in Crouch; Crouch can access entry in Switch. Equal lane fractions cancel; unmatched lanes remain conditional."
+      ]
+    },
+    {
+      "source": "stance_kicking",
+      "logit": -0.023333333333333334,
+      "why": [
+        "Switch covers none of the selected attack lanes against None/pure boxer; the attack can reach single_support. Coverage-minus-exposure is 0 minus 1 over 2 attack lanes.",
+        "Crouch covers none of the selected attack lanes against Dutch kickboxing; the attack can reach leg. Coverage-minus-exposure is 0 minus 1 over 2 attack lanes."
+      ]
+    },
+    {
+      "source": "defense_kicking",
+      "logit": -0.017499999999999998,
+      "why": [
+        "Check-and-frame covers none of the selected attack lanes against None/pure boxer; the attack can reach single_support. Coverage-minus-exposure is 0 minus 1 over 2 attack lanes.",
+        "Slip-and-roll covers head_hook against Dutch kickboxing; the attack can reach leg. Coverage-minus-exposure is 1 minus 1 over 2 attack lanes."
+      ]
+    }
+  ],
+  "accessible_weaknesses": [
+    {
+      "debt_id": "debt.hands.peekaboo.leg",
+      "victim_id": "donnell",
+      "attacker_id": "maleek",
+      "opening": "leg",
+      "reachable": true,
+      "technique_ids": [
+        "low_kick"
+      ],
+      "required_range": "kick",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "Forward loading narrows vision and leaves a low-kick target while closing.",
+      "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+    },
+    {
+      "debt_id": "debt.hands.peekaboo.vision",
+      "victim_id": "donnell",
+      "attacker_id": "maleek",
+      "opening": "vision",
+      "reachable": true,
+      "technique_ids": [
+        "jab"
+      ],
+      "required_range": "punch",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "Forward loading narrows vision and leaves a low-kick target while closing.",
+      "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+    },
+    {
+      "debt_id": "debt.defense.slip_roll.head_uppercut",
+      "victim_id": "donnell",
+      "attacker_id": "maleek",
+      "opening": "head_uppercut",
+      "reachable": true,
+      "technique_ids": [
+        "uppercut"
+      ],
+      "required_range": "close",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "Deep dips can enter a rising strike or clinch and delay a kick check.",
+      "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+    },
+    {
+      "debt_id": "debt.defense.slip_roll.leg",
+      "victim_id": "donnell",
+      "attacker_id": "maleek",
+      "opening": "leg",
+      "reachable": true,
+      "technique_ids": [
+        "low_kick"
+      ],
+      "required_range": "kick",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "Deep dips can enter a rising strike or clinch and delay a kick check.",
+      "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+    },
+    {
+      "debt_id": "debt.stance.crouch.leg",
+      "victim_id": "donnell",
+      "attacker_id": "maleek",
+      "opening": "leg",
+      "reachable": true,
+      "technique_ids": [
+        "low_kick"
+      ],
+      "required_range": "kick",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "Front loading slows leg withdrawal and invites rising strikes.",
+      "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+    },
+    {
+      "debt_id": "debt.stance.crouch.head_uppercut",
+      "victim_id": "donnell",
+      "attacker_id": "maleek",
+      "opening": "head_uppercut",
+      "reachable": true,
+      "technique_ids": [
+        "uppercut"
+      ],
+      "required_range": "close",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "Front loading slows leg withdrawal and invites rising strikes.",
+      "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+    },
+    {
+      "debt_id": "debt.target.head_hunter.body",
+      "victim_id": "donnell",
+      "attacker_id": "maleek",
+      "opening": "body",
+      "reachable": true,
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "Head fixation leaves torso and level-change defenses late.",
+      "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+    },
+    {
+      "debt_id": "debt.kicking.none.leg",
+      "victim_id": "donnell",
+      "attacker_id": "maleek",
+      "opening": "leg",
+      "reachable": true,
+      "technique_ids": [
+        "low_kick"
+      ],
+      "required_range": "kick",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "Punch-only reach concedes the lead leg and outside distance.",
+      "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+    },
+    {
+      "debt_id": "debt.kicking.none.body",
+      "victim_id": "donnell",
+      "attacker_id": "maleek",
+      "opening": "body",
+      "reachable": true,
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "Punch-only reach concedes the lead leg and outside distance.",
+      "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+    },
+    {
+      "debt_id": "debt.mentality.pressure.angle",
+      "victim_id": "donnell",
+      "attacker_id": "maleek",
+      "opening": "angle",
+      "reachable": true,
+      "technique_ids": [
+        "pivot"
+      ],
+      "required_range": "punch",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "A tracking entry can lose a new angle and expose the torso.",
+      "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+    },
+    {
+      "debt_id": "debt.mentality.pressure.body",
+      "victim_id": "donnell",
+      "attacker_id": "maleek",
+      "opening": "body",
+      "reachable": true,
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "A tracking entry can lose a new angle and expose the torso.",
+      "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+    },
+    {
+      "debt_id": "debt.hands.shield52.body",
+      "victim_id": "maleek",
+      "attacker_id": "donnell",
+      "opening": "body",
+      "reachable": true,
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "Crossing forearms can lose the torso lane and inside grip position.",
+      "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+    },
+    {
+      "debt_id": "debt.defense.check_frame.body",
+      "victim_id": "maleek",
+      "attacker_id": "donnell",
+      "opening": "body",
+      "reachable": true,
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "Lifting one leg exposes support and framing can reveal a torso lane.",
+      "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+    },
+    {
+      "debt_id": "debt.target.mixer.recovery",
+      "victim_id": "maleek",
+      "attacker_id": "donnell",
+      "opening": "recovery",
+      "reachable": true,
+      "technique_ids": [
+        "cross"
+      ],
+      "required_range": "punch",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "Changing targets demands resets that can be timed.",
+      "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+    },
+    {
+      "debt_id": "debt.target.mixer.tempo",
+      "victim_id": "maleek",
+      "attacker_id": "donnell",
+      "opening": "tempo",
+      "reachable": true,
+      "technique_ids": [
+        "feint"
+      ],
+      "required_range": "punch",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "Changing targets demands resets that can be timed.",
+      "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+    },
+    {
+      "debt_id": "debt.kicking.dutch.recovery",
+      "victim_id": "maleek",
+      "attacker_id": "donnell",
+      "opening": "recovery",
+      "reachable": true,
+      "technique_ids": [
+        "cross"
+      ],
+      "required_range": "punch",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "The final kick and square punching reset expose the hips.",
+      "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+    },
+    {
+      "debt_id": "debt.mentality.boxer_puncher.tempo",
+      "victim_id": "maleek",
+      "attacker_id": "donnell",
+      "opening": "tempo",
+      "reachable": true,
+      "technique_ids": [
+        "feint"
+      ],
+      "required_range": "punch",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "Switching between patience and pursuit creates a readable reset.",
+      "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+    }
+  ],
+  "inaccessible_weaknesses": [
+    {
+      "debt_id": "debt.defense.slip_roll.clinch",
+      "victim_id": "donnell",
+      "attacker_id": "maleek",
+      "opening": "clinch",
+      "reachable": false,
+      "technique_ids": [],
+      "required_range": "clinch",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "Deep dips can enter a rising strike or clinch and delay a kick check.",
+      "reason": "Required technique is not active."
+    },
+    {
+      "debt_id": "debt.target.head_hunter.entry",
+      "victim_id": "donnell",
+      "attacker_id": "maleek",
+      "opening": "entry",
+      "reachable": false,
+      "technique_ids": [],
+      "required_range": "punch",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "Head fixation leaves torso and level-change defenses late.",
+      "reason": "Required technique is not active."
+    },
+    {
+      "debt_id": "debt.hands.shield52.clinch",
+      "victim_id": "maleek",
+      "attacker_id": "donnell",
+      "opening": "clinch",
+      "reachable": false,
+      "technique_ids": [],
+      "required_range": "clinch",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "Crossing forearms can lose the torso lane and inside grip position.",
+      "reason": "Required technique is not active."
+    },
+    {
+      "debt_id": "debt.defense.check_frame.single_support",
+      "victim_id": "maleek",
+      "attacker_id": "donnell",
+      "opening": "single_support",
+      "reachable": false,
+      "technique_ids": [],
+      "required_range": "punch",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "Lifting one leg exposes support and framing can reveal a torso lane.",
+      "reason": "Required technique is not active."
+    },
+    {
+      "debt_id": "debt.stance.switch.entry",
+      "victim_id": "maleek",
+      "attacker_id": "donnell",
+      "opening": "entry",
+      "reachable": false,
+      "technique_ids": [],
+      "required_range": "punch",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "The crossing changeover briefly exposes entry and balance.",
+      "reason": "Required technique is not active."
+    },
+    {
+      "debt_id": "debt.stance.switch.single_support",
+      "victim_id": "maleek",
+      "attacker_id": "donnell",
+      "opening": "single_support",
+      "reachable": false,
+      "technique_ids": [],
+      "required_range": "punch",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "The crossing changeover briefly exposes entry and balance.",
+      "reason": "Required technique is not active."
+    },
+    {
+      "debt_id": "debt.kicking.dutch.entry",
+      "victim_id": "maleek",
+      "attacker_id": "donnell",
+      "opening": "entry",
+      "reachable": false,
+      "technique_ids": [],
+      "required_range": "punch",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "The final kick and square punching reset expose the hips.",
+      "reason": "Required technique is not active."
+    },
+    {
+      "debt_id": "debt.mentality.boxer_puncher.entry",
+      "victim_id": "maleek",
+      "attacker_id": "donnell",
+      "opening": "entry",
+      "reachable": false,
+      "technique_ids": [],
+      "required_range": "punch",
+      "path": [
+        "adjacent standing steps"
+      ],
+      "mechanism": "Switching between patience and pursuit creates a readable reset.",
+      "reason": "Required technique is not active."
+    }
+  ],
+  "null_seams": [
+    {
+      "victim_id": "maleek",
+      "attacker_id": "donnell",
+      "dimension": "tie",
+      "reachable": false,
+      "technique_ids": [],
+      "required_range": null,
+      "reason": "Opponent has no legal trained entry.",
+      "conditional_mitigations": [
+        "maleek.cage_plum"
+      ]
+    },
+    {
+      "victim_id": "donnell",
+      "attacker_id": "maleek",
+      "dimension": "tie",
+      "reachable": false,
+      "technique_ids": [],
+      "required_range": null,
+      "reason": "Opponent has no legal trained entry.",
+      "conditional_mitigations": []
+    }
+  ],
+  "compatibility_effects": [
+    {
+      "fighter_id": "maleek",
+      "options": [
+        "hands.shield52",
+        "defense.check_frame"
+      ],
+      "shared_ranges": [
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "maleek",
+      "options": [
+        "hands.shield52",
+        "stance.switch"
+      ],
+      "shared_ranges": [
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "maleek",
+      "options": [
+        "hands.shield52",
+        "target.mixer"
+      ],
+      "shared_ranges": [
+        "close",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "maleek",
+      "options": [
+        "hands.shield52",
+        "kicking.dutch"
+      ],
+      "shared_ranges": [
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "maleek",
+      "options": [
+        "hands.shield52",
+        "mentality.boxer_puncher"
+      ],
+      "shared_ranges": [
+        "close",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "maleek",
+      "options": [
+        "defense.check_frame",
+        "stance.switch"
+      ],
+      "shared_ranges": [
+        "kick",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "maleek",
+      "options": [
+        "defense.check_frame",
+        "target.mixer"
+      ],
+      "shared_ranges": [
+        "kick",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "maleek",
+      "options": [
+        "defense.check_frame",
+        "kicking.dutch"
+      ],
+      "shared_ranges": [
+        "kick",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "maleek",
+      "options": [
+        "defense.check_frame",
+        "mentality.boxer_puncher"
+      ],
+      "shared_ranges": [
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "maleek",
+      "options": [
+        "stance.switch",
+        "target.mixer"
+      ],
+      "shared_ranges": [
+        "kick",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "maleek",
+      "options": [
+        "stance.switch",
+        "kicking.dutch"
+      ],
+      "shared_ranges": [
+        "kick",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "maleek",
+      "options": [
+        "stance.switch",
+        "mentality.boxer_puncher"
+      ],
+      "shared_ranges": [
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "maleek",
+      "options": [
+        "target.mixer",
+        "kicking.dutch"
+      ],
+      "shared_ranges": [
+        "kick",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "maleek",
+      "options": [
+        "target.mixer",
+        "mentality.boxer_puncher"
+      ],
+      "shared_ranges": [
+        "close",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "maleek",
+      "options": [
+        "kicking.dutch",
+        "mentality.boxer_puncher"
+      ],
+      "shared_ranges": [
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "donnell",
+      "options": [
+        "hands.peekaboo",
+        "defense.slip_roll"
+      ],
+      "shared_ranges": [
+        "close",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "donnell",
+      "options": [
+        "hands.peekaboo",
+        "stance.crouch"
+      ],
+      "shared_ranges": [
+        "close",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "donnell",
+      "options": [
+        "hands.peekaboo",
+        "target.head_hunter"
+      ],
+      "shared_ranges": [
+        "close",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "donnell",
+      "options": [
+        "hands.peekaboo",
+        "kicking.none"
+      ],
+      "shared_ranges": [
+        "close",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "donnell",
+      "options": [
+        "hands.peekaboo",
+        "mentality.pressure"
+      ],
+      "shared_ranges": [
+        "close",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "donnell",
+      "options": [
+        "defense.slip_roll",
+        "stance.crouch"
+      ],
+      "shared_ranges": [
+        "close",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "donnell",
+      "options": [
+        "defense.slip_roll",
+        "target.head_hunter"
+      ],
+      "shared_ranges": [
+        "close",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "donnell",
+      "options": [
+        "defense.slip_roll",
+        "kicking.none"
+      ],
+      "shared_ranges": [
+        "close",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "donnell",
+      "options": [
+        "defense.slip_roll",
+        "mentality.pressure"
+      ],
+      "shared_ranges": [
+        "close",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "donnell",
+      "options": [
+        "stance.crouch",
+        "target.head_hunter"
+      ],
+      "shared_ranges": [
+        "close",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "donnell",
+      "options": [
+        "stance.crouch",
+        "kicking.none"
+      ],
+      "shared_ranges": [
+        "close",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "donnell",
+      "options": [
+        "stance.crouch",
+        "mentality.pressure"
+      ],
+      "shared_ranges": [
+        "close",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "donnell",
+      "options": [
+        "target.head_hunter",
+        "kicking.none"
+      ],
+      "shared_ranges": [
+        "close",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "donnell",
+      "options": [
+        "target.head_hunter",
+        "mentality.pressure"
+      ],
+      "shared_ranges": [
+        "close",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    },
+    {
+      "fighter_id": "donnell",
+      "options": [
+        "kicking.none",
+        "mentality.pressure"
+      ],
+      "shared_ranges": [
+        "close",
+        "punch"
+      ],
+      "status": "shared range",
+      "effect": "Sequence the two trained expressions after recovery.",
+      "additional_logit": 0
+    }
+  ],
+  "slot_effect": {
+    "net_slots_a": 0,
+    "logit": 0.0
+  },
+  "null_effect": {
+    "a_count": 0,
+    "b_count": 0,
+    "logit": 0.0
+  },
+  "resolved_configurations": {
+    "maleek": {
+      "adaptation": "mma",
+      "orientation": "switching",
+      "options": {
+        "hands": {
+          "description": "CANON forearm wedges redirect a punch into a lateral counter line. Shorten extended arms, keep fingers away from eyes, and recover hips before defending leg kicks, takedowns or wall pressure. Crossing forearms can lose the torso lane and inside grip position.",
+          "ratings": {
+            "head_coverage": 4,
+            "body_coverage": 3,
+            "vision": 3,
+            "counter_speed": 4,
+            "takedown_readiness": 3
+          },
+          "covers": [
+            "angle",
+            "head_straight"
+          ],
+          "exposure_weights": {
+            "body": 1.0,
+            "clinch": 1.0
+          }
+        },
+        "defense": {
+          "description": "A shin check and forearm frame protect entry distance. Shorten extended arms, keep fingers away from eyes, and recover hips before defending leg kicks, takedowns or wall pressure. Lifting one leg exposes support and framing can reveal a torso lane.",
+          "ratings": {
+            "straight_punch_defense": 3,
+            "hook_defense": 3,
+            "uppercut_defense": 3,
+            "body_shot_defense": 3,
+            "kick_defense": 5,
+            "takedown_defense": 3
+          },
+          "covers": [
+            "clinch",
+            "leg"
+          ],
+          "exposure_weights": {
+            "single_support": 1.0,
+            "body": 1.0
+          }
+        },
+        "stance": {
+          "description": "Changing lead alters the line of jabs, checks and exits. Shorten extended arms, keep fingers away from eyes, and recover hips before defending leg kicks, takedowns or wall pressure. The crossing changeover briefly exposes entry and balance.",
+          "ratings": {
+            "mobility": 5,
+            "pivot_speed": 5,
+            "kick_check_readiness": 5,
+            "sprawl_readiness": 4,
+            "punching_power": 3
+          },
+          "covers": [
+            "angle",
+            "tempo"
+          ],
+          "exposure_weights": {
+            "entry": 0.75,
+            "single_support": 1.0
+          }
+        },
+        "tie": null,
+        "target": {
+          "description": "Alternating head, torso and leg lines overloads one-level coverage. Shorten extended arms, keep fingers away from eyes, and recover hips before defending leg kicks, takedowns or wall pressure. Changing targets demands resets that can be timed.",
+          "ratings": {
+            "head_focus": 4,
+            "body_focus": 4,
+            "leg_focus": 4
+          },
+          "covers": [
+            "body",
+            "head_hook",
+            "leg"
+          ],
+          "exposure_weights": {
+            "recovery": 1.0,
+            "tempo": 1.0
+          }
+        },
+        "kicking": {
+          "description": "Punch cover draws a high guard before the low kick. Shorten extended arms, keep fingers away from eyes, and recover hips before defending leg kicks, takedowns or wall pressure. The final kick and square punching reset expose the hips.",
+          "ratings": {
+            "range_control": 4,
+            "damage_accumulation": 5,
+            "takedown_exposure": 4,
+            "energy_cost": 4
+          },
+          "covers": [
+            "head_hook",
+            "leg"
+          ],
+          "exposure_weights": {
+            "entry": 1.0,
+            "recovery": 1.0
+          }
+        },
+        "mentality": {
+          "description": "A probe can become a combination when the opponent commits. Shorten extended arms, keep fingers away from eyes, and recover hips before defending leg kicks, takedowns or wall pressure. Switching between patience and pursuit creates a readable reset.",
+          "ratings": {
+            "natural_tempo": 3,
+            "stamina_drain": 3
+          },
+          "covers": [
+            "body",
+            "recovery"
+          ],
+          "exposure_weights": {
+            "tempo": 1.0,
+            "entry": 1.0
+          }
+        }
+      },
+      "available_techniques": [
+        "body_hook",
+        "body_kick",
+        "check",
+        "cross",
+        "feint",
+        "haymaker",
+        "hook",
+        "jab",
+        "low_kick",
+        "parry",
+        "pivot",
+        "pummel",
+        "retreat",
+        "shell_block",
+        "shield_frame",
+        "slip",
+        "sprawl",
+        "step",
+        "switch_step",
+        "teep",
+        "uppercut"
+      ]
+    },
+    "donnell": {
+      "adaptation": "mma",
+      "orientation": "orthodox",
+      "options": {
+        "hands": {
+          "description": "Compact gloves and head movement support short hooks during entry. Shorten extended arms, keep fingers away from eyes, and recover hips before defending leg kicks, takedowns or wall pressure. Forward loading narrows vision and leaves a low-kick target while closing.",
+          "ratings": {
+            "head_coverage": 5,
+            "body_coverage": 4,
+            "vision": 2,
+            "counter_speed": 4,
+            "takedown_readiness": 4
+          },
+          "covers": [
+            "head_hook",
+            "head_straight"
+          ],
+          "exposure_weights": {
+            "leg": 1.0,
+            "vision": 1.0
+          }
+        },
+        "defense": {
+          "description": "Head displacement removes the chin from punch trajectories. Shorten extended arms, keep fingers away from eyes, and recover hips before defending leg kicks, takedowns or wall pressure. Deep dips can enter a rising strike or clinch and delay a kick check.",
+          "ratings": {
+            "straight_punch_defense": 5,
+            "hook_defense": 5,
+            "uppercut_defense": 2,
+            "body_shot_defense": 3,
+            "kick_defense": 1,
+            "takedown_defense": 2
+          },
+          "covers": [
+            "head_hook",
+            "head_straight"
+          ],
+          "exposure_weights": {
+            "head_uppercut": 1.0,
+            "clinch": 1.0,
+            "leg": 1.0
+          }
+        },
+        "stance": {
+          "description": "Lowered hips drive short punching entries and head-level changes. Shorten extended arms, keep fingers away from eyes, and recover hips before defending leg kicks, takedowns or wall pressure. Front loading slows leg withdrawal and invites rising strikes.",
+          "ratings": {
+            "mobility": 3,
+            "pivot_speed": 3,
+            "kick_check_readiness": 3,
+            "sprawl_readiness": 5,
+            "punching_power": 5
+          },
+          "covers": [
+            "entry",
+            "head_straight",
+            "leg"
+          ],
+          "exposure_weights": {
+            "leg": 0.6666666666666666,
+            "head_uppercut": 1.0
+          }
+        },
+        "tie": null,
+        "target": {
+          "description": "Repeated head threats force high reactions and narrow vision. Shorten extended arms, keep fingers away from eyes, and recover hips before defending leg kicks, takedowns or wall pressure. Head fixation leaves torso and level-change defenses late.",
+          "ratings": {
+            "head_focus": 5,
+            "body_focus": 1,
+            "leg_focus": 1
+          },
+          "covers": [
+            "head_hook",
+            "head_straight",
+            "vision"
+          ],
+          "exposure_weights": {
+            "body": 1.0,
+            "entry": 1.0
+          }
+        },
+        "kicking": {
+          "description": "Keeping both feet available favors short hand counters and immediate steps. Shorten extended arms, keep fingers away from eyes, and recover hips before defending leg kicks, takedowns or wall pressure. Punch-only reach concedes the lead leg and outside distance.",
+          "ratings": {
+            "range_control": 1,
+            "damage_accumulation": 1,
+            "takedown_exposure": 1,
+            "energy_cost": 1
+          },
+          "covers": [
+            "recovery",
+            "single_support"
+          ],
+          "exposure_weights": {
+            "leg": 1.0,
+            "body": 1.0
+          }
+        },
+        "mentality": {
+          "description": "Deliberate forward steps remove retreat space and enforce repeated decisions. Shorten extended arms, keep fingers away from eyes, and recover hips before defending leg kicks, takedowns or wall pressure. A tracking entry can lose a new angle and expose the torso.",
+          "ratings": {
+            "natural_tempo": 4,
+            "stamina_drain": 4
+          },
+          "covers": [
+            "tempo",
+            "wall"
+          ],
+          "exposure_weights": {
+            "angle": 1.0,
+            "body": 1.0
+          }
+        }
+      },
+      "available_techniques": [
+        "body_hook",
+        "cross",
+        "feint",
+        "haymaker",
+        "hook",
+        "jab",
+        "parry",
+        "pivot",
+        "retreat",
+        "shell_block",
+        "slip",
+        "step",
+        "uppercut"
+      ]
+    }
+  },
+  "range_control": {
+    "early_initiator": "donnell",
+    "preferred_fight_favorite": "donnell",
+    "contest": {
+      "maleek": [
+        "punch",
+        "kick"
+      ],
+      "donnell": [
+        "close",
+        "punch"
+      ]
+    },
+    "explanation": "Early initiative follows authored tempo. Long-run preference follows the complete conditional model, not tempo alone."
+  },
+  "tactical_win_paths": [
+    {
+      "fighter_id": "maleek",
+      "establish": [
+        "punch",
+        "kick"
+      ],
+      "first_weakness_candidates": [
+        {
+          "debt_id": "debt.hands.peekaboo.leg",
+          "victim_id": "donnell",
+          "attacker_id": "maleek",
+          "opening": "leg",
+          "reachable": true,
+          "technique_ids": [
+            "low_kick"
+          ],
+          "required_range": "kick",
+          "path": [
+            "adjacent standing steps"
+          ],
+          "mechanism": "Forward loading narrows vision and leaves a low-kick target while closing.",
+          "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+        },
+        {
+          "debt_id": "debt.hands.peekaboo.vision",
+          "victim_id": "donnell",
+          "attacker_id": "maleek",
+          "opening": "vision",
+          "reachable": true,
+          "technique_ids": [
+            "jab"
+          ],
+          "required_range": "punch",
+          "path": [
+            "adjacent standing steps"
+          ],
+          "mechanism": "Forward loading narrows vision and leaves a low-kick target while closing.",
+          "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+        },
+        {
+          "debt_id": "debt.defense.slip_roll.head_uppercut",
+          "victim_id": "donnell",
+          "attacker_id": "maleek",
+          "opening": "head_uppercut",
+          "reachable": true,
+          "technique_ids": [
+            "uppercut"
+          ],
+          "required_range": "close",
+          "path": [
+            "adjacent standing steps"
+          ],
+          "mechanism": "Deep dips can enter a rising strike or clinch and delay a kick check.",
+          "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+        },
+        {
+          "debt_id": "debt.defense.slip_roll.leg",
+          "victim_id": "donnell",
+          "attacker_id": "maleek",
+          "opening": "leg",
+          "reachable": true,
+          "technique_ids": [
+            "low_kick"
+          ],
+          "required_range": "kick",
+          "path": [
+            "adjacent standing steps"
+          ],
+          "mechanism": "Deep dips can enter a rising strike or clinch and delay a kick check.",
+          "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+        },
+        {
+          "debt_id": "debt.stance.crouch.leg",
+          "victim_id": "donnell",
+          "attacker_id": "maleek",
+          "opening": "leg",
+          "reachable": true,
+          "technique_ids": [
+            "low_kick"
+          ],
+          "required_range": "kick",
+          "path": [
+            "adjacent standing steps"
+          ],
+          "mechanism": "Front loading slows leg withdrawal and invites rising strikes.",
+          "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+        },
+        {
+          "debt_id": "debt.stance.crouch.head_uppercut",
+          "victim_id": "donnell",
+          "attacker_id": "maleek",
+          "opening": "head_uppercut",
+          "reachable": true,
+          "technique_ids": [
+            "uppercut"
+          ],
+          "required_range": "close",
+          "path": [
+            "adjacent standing steps"
+          ],
+          "mechanism": "Front loading slows leg withdrawal and invites rising strikes.",
+          "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+        },
+        {
+          "debt_id": "debt.target.head_hunter.body",
+          "victim_id": "donnell",
+          "attacker_id": "maleek",
+          "opening": "body",
+          "reachable": true,
+          "technique_ids": [
+            "body_hook"
+          ],
+          "required_range": "punch",
+          "path": [
+            "adjacent standing steps"
+          ],
+          "mechanism": "Head fixation leaves torso and level-change defenses late.",
+          "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+        },
+        {
+          "debt_id": "debt.kicking.none.leg",
+          "victim_id": "donnell",
+          "attacker_id": "maleek",
+          "opening": "leg",
+          "reachable": true,
+          "technique_ids": [
+            "low_kick"
+          ],
+          "required_range": "kick",
+          "path": [
+            "adjacent standing steps"
+          ],
+          "mechanism": "Punch-only reach concedes the lead leg and outside distance.",
+          "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+        },
+        {
+          "debt_id": "debt.kicking.none.body",
+          "victim_id": "donnell",
+          "attacker_id": "maleek",
+          "opening": "body",
+          "reachable": true,
+          "technique_ids": [
+            "body_hook"
+          ],
+          "required_range": "punch",
+          "path": [
+            "adjacent standing steps"
+          ],
+          "mechanism": "Punch-only reach concedes the lead leg and outside distance.",
+          "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+        },
+        {
+          "debt_id": "debt.mentality.pressure.angle",
+          "victim_id": "donnell",
+          "attacker_id": "maleek",
+          "opening": "angle",
+          "reachable": true,
+          "technique_ids": [
+            "pivot"
+          ],
+          "required_range": "punch",
+          "path": [
+            "adjacent standing steps"
+          ],
+          "mechanism": "A tracking entry can lose a new angle and expose the torso.",
+          "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+        },
+        {
+          "debt_id": "debt.mentality.pressure.body",
+          "victim_id": "donnell",
+          "attacker_id": "maleek",
+          "opening": "body",
+          "reachable": true,
+          "technique_ids": [
+            "body_hook"
+          ],
+          "required_range": "punch",
+          "path": [
+            "adjacent standing steps"
+          ],
+          "mechanism": "A tracking entry can lose a new angle and expose the torso.",
+          "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+        }
+      ],
+      "mechanism": "Draw a high reaction, change the lead, and kick the loaded support; an unattached clinch remains a seam.",
+      "reversal_risk": [
+        "debt.hands.shield52.body",
+        "debt.defense.check_frame.body",
+        "debt.target.mixer.recovery",
+        "debt.target.mixer.tempo",
+        "debt.kicking.dutch.recovery",
+        "debt.mentality.boxer_puncher.tempo"
+      ]
+    },
+    {
+      "fighter_id": "donnell",
+      "establish": [
+        "close",
+        "punch"
+      ],
+      "first_weakness_candidates": [
+        {
+          "debt_id": "debt.hands.shield52.body",
+          "victim_id": "maleek",
+          "attacker_id": "donnell",
+          "opening": "body",
+          "reachable": true,
+          "technique_ids": [
+            "body_hook"
+          ],
+          "required_range": "punch",
+          "path": [
+            "adjacent standing steps"
+          ],
+          "mechanism": "Crossing forearms can lose the torso lane and inside grip position.",
+          "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+        },
+        {
+          "debt_id": "debt.defense.check_frame.body",
+          "victim_id": "maleek",
+          "attacker_id": "donnell",
+          "opening": "body",
+          "reachable": true,
+          "technique_ids": [
+            "body_hook"
+          ],
+          "required_range": "punch",
+          "path": [
+            "adjacent standing steps"
+          ],
+          "mechanism": "Lifting one leg exposes support and framing can reveal a torso lane.",
+          "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+        },
+        {
+          "debt_id": "debt.target.mixer.recovery",
+          "victim_id": "maleek",
+          "attacker_id": "donnell",
+          "opening": "recovery",
+          "reachable": true,
+          "technique_ids": [
+            "cross"
+          ],
+          "required_range": "punch",
+          "path": [
+            "adjacent standing steps"
+          ],
+          "mechanism": "Changing targets demands resets that can be timed.",
+          "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+        },
+        {
+          "debt_id": "debt.target.mixer.tempo",
+          "victim_id": "maleek",
+          "attacker_id": "donnell",
+          "opening": "tempo",
+          "reachable": true,
+          "technique_ids": [
+            "feint"
+          ],
+          "required_range": "punch",
+          "path": [
+            "adjacent standing steps"
+          ],
+          "mechanism": "Changing targets demands resets that can be timed.",
+          "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+        },
+        {
+          "debt_id": "debt.kicking.dutch.recovery",
+          "victim_id": "maleek",
+          "attacker_id": "donnell",
+          "opening": "recovery",
+          "reachable": true,
+          "technique_ids": [
+            "cross"
+          ],
+          "required_range": "punch",
+          "path": [
+            "adjacent standing steps"
+          ],
+          "mechanism": "The final kick and square punching reset expose the hips.",
+          "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+        },
+        {
+          "debt_id": "debt.mentality.boxer_puncher.tempo",
+          "victim_id": "maleek",
+          "attacker_id": "donnell",
+          "opening": "tempo",
+          "reachable": true,
+          "technique_ids": [
+            "feint"
+          ],
+          "required_range": "punch",
+          "path": [
+            "adjacent standing steps"
+          ],
+          "mechanism": "Switching between patience and pursuit creates a readable reset.",
+          "reason": "Trained technique and a legal access path exist; opponent can still deny access."
+        }
+      ],
+      "mechanism": "Crowd the reset with a compact hook; lead-leg loading and absent tie training give opponents entries.",
+      "reversal_risk": [
+        "debt.hands.peekaboo.leg",
+        "debt.hands.peekaboo.vision",
+        "debt.defense.slip_roll.head_uppercut",
+        "debt.defense.slip_roll.leg",
+        "debt.stance.crouch.leg",
+        "debt.stance.crouch.head_uppercut",
+        "debt.target.head_hunter.body",
+        "debt.kicking.none.leg",
+        "debt.kicking.none.body",
+        "debt.mentality.pressure.angle",
+        "debt.mentality.pressure.body"
+      ]
+    }
+  ],
+  "confidence": {
+    "classification": "uncalibrated",
+    "uncertainty": [
+      "Authored equal-lane scores and weights",
+      "Range access can be denied",
+      "No athlete measurements or empirical calibration"
+    ]
+  },
+  "provenance": {
+    "classification": "CANON",
+    "sources": [
+      "abc_boxing",
+      "abc_mma",
+      "eb_drills",
+      "evolve_counters",
+      "green_52",
+      "ijf_trip",
+      "lyte_52",
+      "usaw"
+    ],
+    "formula": "logit_A = sum(normalized_weight * signed_matrix_edge) + 0.15*(slots_A-slots_B) + 0.20*(exploitable_NULLs_B-exploitable_NULLs_A); P_A = sigmoid(logit_A)."
+  }
+}

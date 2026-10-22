@@ -1,0 +1,17 @@
+{
+  "mode": "apply",
+  "release": "block-1",
+  "change_count": 0,
+  "changes": [],
+  "conflicts": [],
+  "procedure": [
+    "INVENTORY",
+    "DETECT GAPS",
+    "CLASSIFY",
+    "RESEARCH/DERIVE",
+    "BACKFILL",
+    "VALIDATE",
+    "RECHECK"
+  ],
+  "validation": "PASS"
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "tag": "duplicate_slot",
+    "command": [
+      "/Users/king/.gemini/antigravity/scratch/Movement_Prose/.venv/bin/python",
+      "/Users/king/.gemini/antigravity/scratch/Movement_Prose/predict.py",
+      "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_after_repair/inputs/duplicate_slot_a.json",
+      "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_after_repair/inputs/duplicate_slot_b.json",
+      "--ruleset",
+      "mma",
+      "--output",
+      "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_after_repair/duplicate_slot_prediction.json"
+    ],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/Users/king/.gemini/antigravity/scratch/Movement_Prose/predict.py\", line 28, in <module>\n    main()\n  File \"/Users/king/.gemini/antigravity/scratch/Movement_Prose/predict.py\", line 21, in main\n    result = predict(args.fighter_a, args.fighter_b, args.ruleset)\n  File \"/Users/king/.gemini/antigravity/scratch/Movement_Prose/engine/probability.py\", line 9, in predict\n    a, b = k.card(a), k.card(b)\n  File \"/Users/king/.gemini/antigravity/scratch/Movement_Prose/engine/ontology.py\", line 97, in card\n    raise ValueError(\"duplicate synchronized capability bundle\")\nValueError: duplicate synchronized capability bundle\n"
+  },
+  {
+    "tag": "unearned_tie_label",
+    "command": [
+      "/Users/king/.gemini/antigravity/scratch/Movement_Prose/.venv/bin/python",
+      "/Users/king/.gemini/antigravity/scratch/Movement_Prose/predict.py",
+      "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_after_repair/inputs/unearned_tie_label_a.json",
+      "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_after_repair/inputs/unearned_tie_label_b.json",
+      "--ruleset",
+      "mma",
+      "--output",
+      "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_after_repair/unearned_tie_label_prediction.json"
+    ],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/Users/king/.gemini/antigravity/scratch/Movement_Prose/predict.py\", line 28, in <module>\n    main()\n  File \"/Users/king/.gemini/antigravity/scratch/Movement_Prose/predict.py\", line 21, in main\n    result = predict(args.fighter_a, args.fighter_b, args.ruleset)\n  File \"/Users/king/.gemini/antigravity/scratch/Movement_Prose/engine/probability.py\", line 9, in predict\n    a, b = k.card(a), k.card(b)\n  File \"/Users/king/.gemini/antigravity/scratch/Movement_Prose/engine/ontology.py\", line 85, in card\n    raise ValueError(\"unsupported dimension option for card training: \" + str(ident))\nValueError: unsupported dimension option for card training: tie.anti_grappling\n"
+  },
+  {
+    "tag": "invalid_id_control",
+    "command": [
+      "/Users/king/.gemini/antigravity/scratch/Movement_Prose/.venv/bin/python",
+      "/Users/king/.gemini/antigravity/scratch/Movement_Prose/predict.py",
+      "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_after_repair/inputs/invalid_id_control_a.json",
+      "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_after_repair/inputs/invalid_id_control_b.json",
+      "--ruleset",
+      "mma",
+      "--output",
+      "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_after_repair/invalid_id_control_prediction.json"
+    ],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/Users/king/.gemini/antigravity/scratch/Movement_Prose/predict.py\", line 28, in <module>\n    main()\n  File \"/Users/king/.gemini/antigravity/scratch/Movement_Prose/predict.py\", line 21, in main\n    result = predict(args.fighter_a, args.fighter_b, args.ruleset)\n  File \"/Users/king/.gemini/antigravity/scratch/Movement_Prose/engine/probability.py\", line 9, in predict\n    a, b = k.card(a), k.card(b)\n  File \"/Users/king/.gemini/antigravity/scratch/Movement_Prose/engine/ontology.py\", line 83, in card\n    raise ValueError(\"invalid dimension reference: \" + str(ident))\nValueError: invalid dimension reference: hands.nonexistent_audit_option\n"
+  }
+]

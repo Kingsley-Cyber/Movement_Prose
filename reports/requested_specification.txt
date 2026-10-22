@@ -1,0 +1,1367 @@
+# BLOCK FIGHT ENGINE — AUTONOMOUS END-TO-END IMPLEMENTATION DIRECTIVE
+
+## ROLE AND EXECUTION AUTHORITY
+
+Act as an autonomous principal software architect, combat-systems researcher, ontology engineer, quantitative modeling engineer, fight choreographer, and AI video-pipeline engineer.
+
+Your assignment is to **research, build, populate, backfill, integrate, execute, test, and deliver a fully operational BLOCK Fight Engine**.
+
+This is an implementation assignment, not a request for a proposal, roadmap, architecture recommendation, or proof of concept.
+
+Do not stop after creating schemas, scaffolding, documentation, or example JSON.
+
+Build the working system and verify it end to end.
+
+You are authorized to make routine engineering and architectural decisions independently. Prefer existing, functioning repository components over unnecessary rewrites.
+
+Do not ask for confirmation on ordinary design choices. If a noncritical detail is unspecified, select a defensible implementation, document the decision, and continue.
+
+Do not fabricate research, test results, generated outputs, or successful tool executions.
+
+If a genuine external blocker prevents one capability, complete everything else possible, document the blocked capability precisely, and identify its unmet acceptance criteria.
+
+**Your final deliverable must be an executable, populated, verified system—not an implementation plan.**
+
+---
+
+# 1. PRIMARY OBJECTIVE
+
+Build BLOCK as a machine-readable, research-grounded combat reasoning and cinematic fight-direction engine.
+
+Given two fighter cards, the engine must:
+
+1. Retrieve each fighter's complete combat configuration.
+2. Resolve their fighting styles, guards, defenses, stances, grappling, target preferences, kicking systems, and mentalities.
+3. Identify advantages, disadvantages, compatibility, and exploitable weaknesses.
+4. Calculate a deterministic, reproducible model-derived win probability.
+5. Explain the mechanisms behind that probability.
+6. Determine which fighter is more likely to establish their preferred fight.
+7. Identify the first reachable weakness, subsequent vulnerabilities, and opportunities for reversal.
+8. Plan a temporally coherent fight with opening exchanges, tactical adjustments, turning points, and a justified conclusion.
+9. Resolve techniques into structured actions, reactions, positions, and causal events.
+10. Translate the fight into coherent cinematic choreography.
+11. Produce machine-readable shot lists and AI-video prompt packages.
+12. Validate consistency between the fighter cards, predicted result, fight events, and visualization prompts.
+
+The system must support two outcome modes:
+
+- **Predictive:** The engine computes probabilities and samples a winner reproducibly using a recorded random seed.
+- **Director-controlled:** The author selects a winner, and the engine constructs a plausible, explicitly labeled dramatized path to that result without falsifying the original prediction.
+
+Distinguish model-derived probability from empirically calibrated real-world win probability. Do not imply the former has been statistically validated as the latter.
+
+## Foundational rule
+
+**Every fighting style buys an advantage by accepting a liability. A fight is determined by which fighter can reach, exploit, and capitalize on the opponent's liabilities first.**
+
+Never equate a numeric style tendency with overall power.
+
+Never create universally dominant styles.
+
+All advantages must be conditional on tactical circumstances.
+
+---
+
+# 2. REPOSITORY DISCOVERY AND BASELINE
+
+Before changing files:
+
+1. Inspect the existing working directory and available project files.
+2. Identify all combat ontologies, fighter cards, matchup datasets, scripts, schemas, source documents, choreography systems, event graphs, visualization tools, and prompt compilers.
+3. Determine what already works.
+4. Identify missing and incomplete components.
+5. Identify duplicate concepts, inconsistent IDs, conflicting rules, and broken references.
+6. Identify existing implementations that can be reused.
+7. Record a baseline inventory and validation status.
+
+If no relevant repository exists, initialize `block_fight_engine/` in the active workspace.
+
+Do not invent or assume paths that have not been verified.
+
+Preserve existing validated data and working implementations.
+
+Do not destroy source material or overwrite authored canon without preserving provenance.
+
+Create:
+
+- `reports/baseline_inventory.json`
+- `reports/initial_gap_analysis.json`
+- `reports/implementation_decisions.md`
+
+Inventory must distinguish:
+
+- Existing and valid
+- Existing but incomplete
+- Existing but invalid
+- Missing
+- Conflicting
+- Unverifiable
+
+Treat the provided BLOCK specification as mandatory coverage, not as an optional reference.
+
+---
+
+# 3. RESEARCH REQUIREMENT
+
+Research real-world combat craft before populating the ontology and matrices.
+
+Use authoritative sources where available, prioritizing:
+
+- Official combat-sport rules and governing-body publications.
+- Recognized coaching and instructional materials.
+- Primary-source fighter and coach demonstrations or explanations.
+- Credible combat-sport technical analysis.
+- Peer-reviewed biomechanics and combat-sport research where applicable.
+
+Record source URL, title, publisher or author, access date, applicable claim, and evidence limitations.
+
+Every option must distinguish:
+
+- `[VERIFIED: source_id]`: A claim supported by an identifiable source.
+- `[CANON]`: A BLOCK-specific interpretation, adaptation, or fictional invention.
+
+Do not use famous fighters as proof of unrelated techniques.
+
+Fighters and gyms are reference anchors only, never fictional BLOCK characters.
+
+Handle 52 Blocks with particular care. Separate documented practices and cultural history from inconsistent lineage claims, folklore, and invented technique names.
+
+If a technique or name cannot be established from reliable evidence, do not present it as verified. Use an explicitly identified fictional adaptation where appropriate.
+
+Separate three kinds of information:
+
+1. Documented martial-arts mechanics.
+2. Inferred tactical relationships.
+3. BLOCK-specific authored combat rules.
+
+A documented technique does not automatically make a subjective matchup score scientifically verified.
+
+Create a source registry and claim-to-source mapping.
+
+---
+
+# 4. COMPLETE THE SEVEN-DIMENSION COMBAT ONTOLOGY
+
+Create `data/engine_index.json`.
+
+Every option must include:
+
+- Stable ID
+- Canonical name
+- Plain-language description
+- Pop-culture reference anchor
+- Boxing form, where applicable
+- MMA adaptation, where applicable
+- Mechanical advantages
+- Derived liabilities
+- Counter relationships
+- Compatible options
+- Incompatible options
+- Relevant 1–5 tendency ratings
+- Preferred ranges
+- Tactical conditions
+- Technique references
+- Exploitable debt IDs
+- Provenance and research classification
+
+Store machine-computable properties as structured fields rather than relying solely on prose.
+
+Each liability must identify the opening created by an actual mechanical trade-off.
+
+## Required dimensions
+
+### A. Hands style — 10 options
+
+- High guard
+- Philly shell
+- Peek-a-boo
+- Cross-arm
+- Long guard
+- Bone/helmet guard
+- 52 Blocks shield
+- Hands-down
+- Kronk flicker lead
+- Dutch high guard
+
+Ratings:
+
+- Head coverage
+- Body coverage
+- Vision
+- Counter speed
+- Takedown readiness
+
+### B. Defense style — 8 options
+
+- Slip-and-roll
+- Parry-and-catch
+- Block-and-absorb
+- Footwork/outfight
+- Shoulder roll
+- Clinch-and-smother
+- Check-and-frame
+- Sprawl-and-pummel
+
+Ratings:
+
+- Straight-punch defense
+- Hook defense
+- Uppercut defense
+- Body-shot defense
+- Kick defense
+- Takedown defense
+
+### C. Stance — 7 paired options
+
+- Upright
+- Bladed
+- Crouch
+- Balanced
+- Planted
+- Switch
+- Shuffle
+
+Every stance must include its boxing expression and MMA equivalent.
+
+Document what carries over and what changes when defending against leg kicks, takedowns, or cage pressure.
+
+Orientation must be represented independently:
+
+- Orthodox
+- Southpaw
+- Switching
+
+Ratings:
+
+- Mobility
+- Pivot speed
+- Kick-check readiness
+- Sprawl readiness
+- Punching power
+
+### D. Tie and grappling — 8 options
+
+- Thai plum
+- Greco body-lock
+- Folkstyle ride
+- Freestyle shooter
+- Judo/sambo throws and trips
+- Jiu-jitsu guard/submissions
+- Dirty boxing on the wall
+- Anti-grappling
+
+Ratings:
+
+- Control
+- Finishing
+- Wall use
+- Floor use
+- Energy cost
+
+Distinguish an intentional anti-grappling strategy from a fighter with no grappling foundation.
+
+### E. Hit-target preference — 6 options
+
+- Head hunter
+- Body puncher
+- Leg chopper
+- Liver/ribs specialist
+- Knees-to-body clincher
+- Mixer
+
+Each option must identify guards and defenses it exploits and guards and defenses that shut it down.
+
+### F. Kicking style — 6 options
+
+- None/pure boxer
+- Muay Thai
+- Dutch kickboxing
+- Karate/taekwondo
+- Sanda/sweeps
+- Wrestler's teep
+
+Ratings:
+
+- Range control
+- Damage accumulation
+- Takedown exposure
+- Energy cost
+
+### G. Mentality — 12 options
+
+- Out-boxer
+- Swarmer
+- Counter-puncher
+- Slugger
+- Boxer-puncher
+- Switch-hitter
+- Defensive specialist
+- Pressure fighter
+- Spoiler
+- Slickster
+- Showman
+- Slick technician
+
+Each mentality requires:
+
+- Strengths
+- Weaknesses
+- Natural tempo
+- Stamina-drain tendency
+- Boxing and MMA expression
+- At least two options it can counter
+- At least one option that counters it
+- Tactical explanations
+- On-screen matchup behavior
+
+## Minimum ontology coverage
+
+**57 complete options across seven dimensions.**
+
+No placeholder entries, blank explanations, unknown IDs, or unimplemented mandatory fields.
+
+Every option must have at least two supported outgoing counter relationships and at least one incoming counter relationship, including valid cross-dimensional relationships where needed.
+
+---
+
+# 5. BUILD THE COUNTER AND LIABILITY GRAPH
+
+Create a machine-readable combat relationship graph.
+
+Use stable IDs and typed relationships including:
+
+- `BEATS`
+- `LOSES_TO`
+- `COMPATIBLE_WITH`
+- `INCOMPATIBLE_WITH`
+- `EXPOSES`
+- `EXPLOITED_BY`
+- `REQUIRES`
+- `ENABLES`
+- `COUNTERS`
+- `TRANSITIONS_TO`
+- `ADAPTS_TO`
+- `CAUSES`
+
+Every relationship must include:
+
+- Source ID
+- Destination ID
+- Relationship type
+- Mechanism
+- Preconditions
+- Applicable ruleset
+- Evidence or CANON classification
+
+Build a debt-to-exploit registry.
+
+Every meaningful style liability must have at least one reachable exploitation mechanism represented in the relevant counter graph, matchup matrix, or executable technique interaction.
+
+A weakness that nobody can exploit is not operationally useful. Identify it during audit and either complete its counter relationships or revise the unsupported liability.
+
+Preserve non-transitive counter cycles.
+
+The classic out-boxer/slugger/swarmer triangle is a reference model, not a guarantee that every fight follows its simplified outcome.
+
+Detect dominant options and unsupported counter relationships through automated graph audits.
+
+---
+
+# 6. POPULATE ALL MATCHUP MATRICES
+
+Create `data/matchups.json`.
+
+Generate and populate all required matrices:
+
+| Matrix | Size | Cells |
+|---|---:|---:|
+| Mentality × Mentality | 12×12 | 144 |
+| Stance × Stance | 7×7 | 49 |
+| Hands × Hit Target | 10×6 | 60 |
+| Defense × Hit Target | 8×6 | 48 |
+| Defense × Kicking | 8×6 | 48 |
+| Stance × Kicking | 7×6 | 42 |
+| Tie × Tie | 8×8 | 64 |
+| Tie × Stance | 8×7 | 56 |
+| **Total** | | **511** |
+
+Every cell must contain:
+
+- Row ID
+- Column ID
+- Numeric edge from -1.0 through +1.0
+- Favored side or neutral result
+- Specific tactical mechanism
+- Preconditions
+- Exploited debt or defended opening
+- Short human-readable `how` explanation
+
+Use a consistent convention: a positive edge favors the row option, and a negative edge favors the column option.
+
+Neutral cells must explain why the interaction does not provide a meaningful advantage.
+
+Do not fill matrices with arbitrary rankings, fabricated empirical percentages, generic repeated descriptions, or meaningless zeroes.
+
+Where real evidence cannot establish a numerical advantage, classify the value as an authored BLOCK modeling assumption.
+
+Enforce valid self-matchups, consistent orientation, and coherent reciprocal relationships.
+
+## Dimension weighting
+
+Create a configurable dimension-weight table, initially satisfying:
+
+1. Mentality contributes the most.
+2. Grappling/tie and stance contribute next.
+3. Guard, defense, targeting, and kicking contribute less individually.
+
+Use normalized weights across the eight actual matrices.
+
+Do not confuse dimension weights with the 1–5 style tendency ratings.
+
+Weights must be versioned and auditable.
+
+For rulesets where a dimension is unavailable, renormalize applicable matrix weights transparently rather than silently treating missing abilities as failures.
+
+---
+
+# 7. COMPLETE THE FIGHTER CARD SYSTEM
+
+Create `schemas/fighter_card.schema.json` and a populated `cards/` directory.
+
+Each fighter card must include:
+
+- Fighter ID and name
+- Combat identity
+- One option or explicit NULL per relevant dimension
+- Boxing/MMA adaptation selection
+- Stance orientation
+- Slot count
+- Synchronized combat capabilities
+- Tempo
+- Preferred ranges
+- Debt sentence
+- Exploitable seams
+- Active techniques
+- Conditional abilities
+- Combat limitations
+- Plain-language fighting description
+
+Implement slot definitions:
+
+- 1 slot: Brawler
+- 2 slots: Two-piece
+- 3 slots: Triad
+- 4 slots: Anomaly
+
+Explicitly define the difference between a dimension selection and a synchronized capability slot. They are not the same concept.
+
+Implement NULL as a meaningful uncovered capability.
+
+A NULL only becomes a penalty when:
+
+1. The missing ability matters under the selected ruleset.
+2. The opponent has a viable exploitation mechanism.
+3. The opponent can reach the required range or position.
+4. The relevant technique and preconditions are available.
+
+Do not penalize an irrelevant NULL automatically.
+
+## Mandatory cards
+
+- Maleek: 52-Dutch combination, Uno switch stance, boxer-puncher, Dutch kicking, mixer, initially NULL tie with a conditional cage-plum capability.
+- Donnell: Peek-a-boo, orthodox forward-loaded crouch, pressure fighter, head hunter, no kicks, NULL tie.
+- Macklin: 52 Blocks, planted stance, spoiler mentality, dirty boxing.
+- Detroit Kronk flicker counter-puncher.
+- Philly shell smotherer with a wrestler's crouch.
+- At least six additional distinct fighters spanning wrestling, Muay Thai, jiu-jitsu, Greco, karate, and street fighting without a formal foundation.
+
+Provide at least 11 complete fighter cards, with sufficient two-slot and three-slot variation for meaningful regression testing.
+
+Treat 52-Dutch and Uno as explicit composites or CANON adaptations, not silently invented real-world disciplines.
+
+For Maleek, represent the transition from NULL tie to cage-plum as an explicit, gated capability-state change. Do not allow capabilities to materialize spontaneously during a fight.
+
+---
+
+# 8. IMPLEMENT THE PREDICTION ENGINE
+
+Create `predict.py` or an equivalent importable engine with that CLI entry point.
+
+The engine must:
+
+1. Load two cards.
+2. Validate schemas and canonical references.
+3. Resolve each applicable matchup matrix.
+4. Resolve both attack/defense directions for asymmetric matrices.
+5. Evaluate compatibility.
+6. Evaluate reachable exploits.
+7. Apply dimension weights.
+8. Apply synchronized-slot advantages.
+9. Apply exploitable NULL penalties.
+10. Convert the final score into a logistic probability.
+11. Generate a complete prediction trace.
+
+Required slot rules:
+
+- Add +0.15 for each net additional synchronized slot.
+- Apply -0.20 for each reachable, exploitable NULL capability.
+
+Define precisely how these terms enter the logit so fighter order is handled symmetrically and bonuses are not double-counted.
+
+The engine must produce consistent results when fighters A and B are exchanged:
+
+`P(A beats B) + P(B beats A) = 1`
+
+within floating-point tolerance, for the same ruleset and assumptions.
+
+Output:
+
+- Fighter A probability
+- Fighter B probability
+- Individual matrix edges
+- Weighted contributions
+- Three largest tactical influences
+- Accessible weaknesses
+- Inaccessible weaknesses
+- Relevant NULL seams
+- Compatibility effects
+- Slot effects
+- Expected range-control contest
+- Tactical win paths
+- Confidence and uncertainty classification
+- Provenance and model version
+
+Use deterministic computation.
+
+Randomized outcome selection must use an explicit reproducible seed.
+
+Never tune results solely to force a particular acceptance fixture to pass.
+
+---
+
+# 9. BUILD A TECHNIQUE ONTOLOGY
+
+Create `data/techniques.json`.
+
+This is mandatory for converting fight predictions into actual choreography.
+
+The technique library must include sufficient researched or explicitly CANON movements to represent the full fighter roster and all seven dimensions.
+
+For each technique, store:
+
+- Canonical technique ID
+- Name
+- Description
+- Applicable combat schools
+- Ruleset legality
+- Starting stance
+- Required range
+- Required body configuration
+- Setup actions
+- Execution phases
+- Attacking limb or body part
+- Target region
+- Direction and trajectory
+- Contact conditions
+- Defensive counters
+- Follow-up opportunities
+- Recovery requirements
+- Balance/support requirements
+- Expected state changes
+- Potential failure conditions
+- Visual readability requirements
+- Provenance
+
+Build combination and transition relationships between techniques.
+
+For example:
+
+`jab → defensive reaction → angle change → low kick`
+
+The system must distinguish a possible combination from a guaranteed successful sequence.
+
+Technique availability must derive from the fighter card and applicable capabilities.
+
+A pure boxer must not spontaneously perform an advanced submission.
+
+A non-grappler must not acquire wrestling transitions without a specific CANON explanation.
+
+A named move must have a documented or CANON mechanical definition before being used in generated choreography.
+
+---
+
+# 10. IMPLEMENT THE DYNAMIC FIGHT STATE
+
+Create `schemas/fight_state.schema.json`.
+
+Represent:
+
+- Current time
+- Round and phase
+- Actor positions
+- Facing directions
+- Stance/orientation
+- Current guard
+- Range category
+- Foot support
+- Balance
+- Momentum
+- Damage state
+- Fatigue state
+- Clinch/grip state
+- Cage/wall proximity
+- Tactical initiative
+- Active vulnerabilities
+- Available responses
+- Previously established injuries
+- Temporary tactical advantages
+
+Track each fighter independently.
+
+A state update must have a causal predecessor.
+
+Enforce:
+
+- No attack before its required setup.
+- No reaction before its triggering event unless it is anticipation.
+- No teleporting between unrelated positions.
+- No impossible range transitions.
+- No unearned grip changes.
+- No unsupported movement capabilities.
+- No instantaneous recovery from established injuries.
+- No contradictory positions for the same actor.
+- No successful contact without an identified contact event.
+
+For geometry, use a consistent coordinate convention, units, actor orientation, and left/right naming.
+
+Where skeletal solvers, IK, FK, or pose validation are available, integrate them.
+
+If a physically accurate solution is unavailable, label the output as semantically validated rather than physically verified.
+
+Do not claim that textual validation alone guarantees biomechanical correctness.
+
+---
+
+# 11. BUILD THE FIGHT-DIRECTION ENGINE
+
+Create a fight-planning engine that converts matchup results into ordered tactical events.
+
+The engine must plan the fight through these phases:
+
+1. Initial assessment
+2. Range establishment
+3. First meaningful exchange
+4. First weakness exploited
+5. Defensive adaptation
+6. Tactical escalation
+7. Counter-adaptation
+8. Turning point
+9. Resolution
+10. Aftermath
+
+Phases may expand into multiple exchanges.
+
+Every major event must explain:
+
+- Who initiated it
+- What they attempted
+- Why they attempted it
+- Which weakness they targeted
+- Which prerequisite enabled it
+- What the opponent attempted in response
+- Whether contact occurred
+- What changed in the fight
+- What options became available afterward
+
+## Causal combat narrative
+
+The system must answer:
+
+**What did Fighter A try to make Fighter B do, and why?**
+
+This is more useful than simply listing attacks.
+
+Represent setups, feints, induced reactions, punishments, counters, and reversals explicitly.
+
+Generate an event graph with:
+
+- Event IDs
+- Actor IDs
+- Technique IDs
+- Dependency edges
+- Causal edges
+- Temporal ordering
+- Preconditions
+- Effects
+- Contact events
+- State snapshots
+- Source counter/weakness IDs
+
+The narrative must be generated from the actual combat relationships.
+
+Do not invent a new style advantage merely because the writer wants a dramatic ending.
+
+A fight should allow multiple plausible paths from the same initial matchup, provided every path respects its capabilities and tactical constraints.
+
+---
+
+# 12. IMPLEMENT CINEMATIC CHOREOGRAPHY
+
+Create a choreography translation layer.
+
+It must map fight events into:
+
+- Choreographed movement phases
+- Character positions
+- Orientation changes
+- Individual limb actions
+- Motion trajectories
+- Contact timings
+- Balance and weight shifts
+- Defensive responses
+- Environmental interaction
+- Prop interaction
+- Camera-visible consequences
+
+Use explicit action phases:
+
+- Preparation
+- Initiation
+- Execution
+- Contact
+- Reaction
+- Recovery
+
+Support anime-style exaggeration without discarding identity, sequence, contact causality, and movement continuity.
+
+Distinguish:
+
+- Realistic biomechanical motion
+- Stylized anime exaggeration
+- Impossible supernatural CANON action
+
+Do not label impossible stylized motion as verified physical movement.
+
+## Visual observability
+
+Every important combat event must be visually readable.
+
+For example, an important kick should show the relevant setup, leg trajectory, contact region, and defender reaction.
+
+Avoid generating shots where the key action occurs outside the frame or is hidden by the camera angle.
+
+Preserve screen direction and character identity across shot cuts.
+
+Provide explicit continuity anchors for:
+
+- Stance
+- Facing
+- Screen position
+- Injury
+- Clothing
+- Guard
+- Prop position
+- Environment
+- Contact consequences
+
+---
+
+# 13. BUILD THE VIDEO PROMPT COMPILER
+
+Create model-agnostic output first.
+
+Represent the planned visualization through structured shot objects.
+
+Each shot must specify:
+
+- Shot ID
+- Source fight-event IDs
+- Duration
+- Location
+- Character identities
+- Starting positions
+- Required action
+- Motion trajectory
+- Action timing
+- Contact timing
+- Defensive response
+- Facial/body performance
+- Environmental reaction
+- Camera position and movement
+- Lens/framing intent
+- Animation style
+- Lighting
+- Continuity constraints
+- Negative constraints where useful
+- Required visual references
+
+Create machine-readable:
+
+- `fight_plan.json`
+- `event_graph.json`
+- `choreography.json`
+- `shotlist.json`
+- `video_prompts.jsonl`
+
+Support optional model-specific compilation profiles for available video generators.
+
+Research actual model constraints before implementing a provider-specific profile.
+
+Do not invent provider features such as structured pose input, reference-video conditioning, keyframe support, or maximum prompt length.
+
+If a model only accepts prose, compile the structured representation into dense, ordered prose while preserving identity, choreography, causality, and critical temporal instructions as much as the model can support.
+
+Preserve the original structured representation as the authoritative record.
+
+Never claim that prompt text guarantees exact motion reproduction.
+
+---
+
+# 14. MANDATORY BACKFILL ENGINE
+
+**This is a non-negotiable requirement.**
+
+Build `scripts/backfill.py` and a full coverage-audit system.
+
+Backfill must operate on both newly initialized projects and existing partially populated repositories.
+
+## Backfill responsibilities
+
+Inspect and recover missing or incomplete:
+
+1. Ontology options
+2. Required fields
+3. Source provenance
+4. Counter relationships
+5. Reciprocal relationships
+6. Compatible/incompatible relationships
+7. Derived debts
+8. Debt exploitation paths
+9. Matrix rows
+10. Matrix columns
+11. Matrix cells
+12. Cell explanations
+13. Fighter-card references
+14. Capability slots
+15. NULL exploit conditions
+16. Technique definitions
+17. Technique prerequisites
+18. Technique transitions
+19. Event types
+20. Event-to-technique mappings
+21. State-transition handlers
+22. Choreography mappings
+23. Prompt compilation mappings
+24. Validation fixtures
+25. Documentation references
+
+## Backfill procedure
+
+Implement the following process:
+
+`INVENTORY → DETECT GAPS → CLASSIFY → RESEARCH/DERIVE → BACKFILL → VALIDATE → RECHECK`
+
+Continue the cycle until all mandatory coverage requirements pass or a genuine documented blocker remains.
+
+Never convert an unverified factual claim into a verified claim merely to satisfy coverage.
+
+## Backfill characteristics
+
+Backfill must be:
+
+- Deterministic
+- Idempotent
+- Version-aware
+- Schema-aware
+- Reference-safe
+- Provenance-preserving
+- Compatible with existing validated data
+- Safe against duplicate insertion
+
+A second backfill run with unchanged inputs must produce no semantic changes.
+
+Add a dry-run mode that reports intended changes without writing files.
+
+Use stable ordering and atomic writes.
+
+Preserve authored canonical content while correcting structural defects.
+
+If conflicts exist, record the competing values, evidence, selected resolution, and reason.
+
+Do not silently discard conflicts.
+
+Create:
+
+- `reports/backfill_coverage.json`
+- `reports/backfill_changes.json`
+- `reports/unresolved_conflicts.json`
+- `reports/provenance_audit.json`
+- `reports/final_integrity_report.json`
+
+## Mandatory coverage requirements
+
+After successful backfill:
+
+- 57/57 ontology options completed
+- 511/511 matchup cells completed
+- 11 or more valid fighter cards
+- 0 missing required IDs
+- 0 dangling references
+- 0 blank required explanations
+- 0 unsupported verified-source labels
+- 0 unmodeled required option debts
+- 0 unresolved mandatory schema violations
+- 0 unreachable mandatory pipeline components
+- 0 silent capability inventions in fight plans
+
+Do not declare completion based on file existence alone.
+
+Verify record contents and executable behavior.
+
+---
+
+# 15. CREATE AUTOMATED VALIDATION
+
+Implement unit, integration, invariant, and end-to-end tests.
+
+## A. Ontology tests
+
+Verify:
+
+- All options exist.
+- All fields are valid.
+- All ratings are within their ranges.
+- All references resolve.
+- Boxing/MMA duality is represented.
+- Counter relationships have tactical mechanisms.
+- Required counter cycles exist.
+- No option dominates its dimension universally.
+- All derived debts have exploit relationships.
+
+## B. Matrix tests
+
+Verify:
+
+- Exactly 511 required cells exist.
+- Every row and column corresponds to a valid option.
+- Edge values are within [-1.0, +1.0].
+- Every cell includes an appropriate mechanism explanation.
+- Same-dimension reciprocity is coherent.
+- No duplicates exist.
+- No missing combinations exist.
+- Non-transitive interactions are preserved.
+
+## C. Prediction tests
+
+Verify:
+
+- Deterministic scores for unchanged inputs.
+- Correct normalization.
+- Correct directional matrix evaluation.
+- Correct slot bonuses.
+- Correct conditional NULL penalties.
+- Correct ruleset handling.
+- Correct probability complementarity when fighters are swapped.
+- Finite numeric outputs.
+- No unexplained score changes.
+
+## D. Required golden matchups
+
+### Golden 1 — Maleek versus Donnell
+
+Under the documented baseline MMA scenario, produce a near-coin-flip prediction, targeting 45–55% if justified by the established combat rules.
+
+The explanation must revolve around:
+
+- Donnell's early pressure
+- Maleek's Uno switch adaptation
+- Changing attack angles
+- Exposed positional vulnerabilities
+- Which fighter establishes their preferred tempo
+
+Do not manipulate arbitrary values merely to hit the target.
+
+If the credible implemented model produces a different result, diagnose the discrepancy and document whether the fixture expectation or the model assumptions require revision.
+
+### Golden 2 — Two-slot versus three-slot
+
+Across a representative deck of matchups, three-slot fighters must generally have an advantage.
+
+However, at least one two-slot fighter must defeat a specific three-slot fighter because of a reachable, exploitable capability gap.
+
+The explanation must identify that specific NULL capability and the technique or strategy that accesses it.
+
+This test must establish a real counter relationship, not an exception hardcoded for named fighters.
+
+### Golden 3 — Boxing/MMA adaptation
+
+Change a fighter from a boxing configuration to its documented MMA adaptation.
+
+Verify that:
+
+- Guard/stance characteristics update.
+- Kick exposure changes appropriately.
+- Takedown exposure changes appropriately.
+- Relevant matchup calculations change.
+- The explanation identifies the actual tactical consequences.
+
+### Golden 4 — Fighter comprehension
+
+Every fighter card must expose a concise explanation allowing a non-expert reader to understand:
+
+- What the fighter does
+- How the fighter wins
+- What the fighter avoids
+- What beats the fighter
+
+## E. Fight-plan tests
+
+Verify:
+
+- Every significant attack uses an available technique.
+- Required setups precede executions.
+- Contact precedes contact-triggered reactions.
+- Fighter identity is never swapped.
+- Left/right identity is preserved.
+- Range transitions are valid.
+- State consequences persist.
+- Grappling occurs only with relevant capabilities.
+- No fighter spontaneously gains techniques.
+- The final outcome matches the selected fight-director mode.
+
+## F. Visualization tests
+
+Verify:
+
+- Every key action has a visual representation.
+- Contact events map to shot instructions.
+- Camera placement does not systematically obscure important actions.
+- Shot order respects event dependencies.
+- Character orientation is consistent.
+- Prompt compilation preserves required events and constraints.
+- Reference-frame requirements are explicitly identified.
+
+Use negative tests with intentionally broken input data.
+
+Tests must detect missing contacts, inverted actor identities, invalid technique use, contradictory positions, missing prerequisites, and missing matrix references.
+
+Do not weaken validators to pass tests.
+
+---
+
+# 16. AUTOMATED REGRESSION AND HONEST COMPLETION
+
+Create a single command that executes:
+
+1. Schema validation
+2. Ontology coverage audit
+3. Matrix coverage audit
+4. Counter-graph integrity audit
+5. Backfill dry-run
+6. Prediction tests
+7. Fighter-card tests
+8. Fight-plan tests
+9. Event-graph tests
+10. Choreography tests
+11. Prompt-compilation tests
+12. Full end-to-end golden fixtures
+
+Save test outputs and execution evidence.
+
+Use independent assertions rather than checking for the existence of expected strings alone.
+
+Do not hardcode the expected golden outcomes inside production prediction logic.
+
+Do not alter tests simply to make failing implementation behavior appear acceptable.
+
+When tests fail:
+
+1. Identify the underlying mechanism.
+2. Correct the relevant implementation or unsupported assumption.
+3. Rerun the failing test.
+4. Rerun affected regression suites.
+5. Confirm that unrelated behavior did not regress.
+
+If full completion is impossible, report the exact remaining deficiencies. Never describe incomplete coverage as complete.
+
+---
+
+# 17. REQUIRED PROJECT STRUCTURE
+
+Use an organization equivalent to:
+
+```text
+block_fight_engine/
+├── data/
+│   ├── engine_index.json
+│   ├── matchups.json
+│   ├── techniques.json
+│   ├── combinations.json
+│   ├── counter_graph.json
+│   ├── debt_registry.json
+│   ├── sources.json
+│   └── model_profiles/
+│
+├── cards/
+│   ├── maleek.json
+│   ├── donnell.json
+│   ├── macklin.json
+│   └── ...
+│
+├── schemas/
+│   ├── fighter_card.schema.json
+│   ├── fight_state.schema.json
+│   ├── fight_plan.schema.json
+│   ├── event_graph.schema.json
+│   └── shot.schema.json
+│
+├── engine/
+│   ├── ontology.py
+│   ├── matchups.py
+│   ├── probability.py
+│   ├── capabilities.py
+│   ├── fight_state.py
+│   ├── technique_resolver.py
+│   ├── fight_director.py
+│   ├── event_graph.py
+│   ├── choreography.py
+│   └── prompt_compiler.py
+│
+├── scripts/
+│   ├── backfill.py
+│   ├── audit_coverage.py
+│   └── validate_data.py
+│
+├── tests/
+│   ├── test_ontology.py
+│   ├── test_matchups.py
+│   ├── test_prediction.py
+│   ├── test_slots.py
+│   ├── test_backfill.py
+│   ├── test_fight_plan.py
+│   ├── test_event_graph.py
+│   └── test_end_to_end.py
+│
+├── outputs/
+│   └── example_fights/
+│
+├── reports/
+│
+├── predict.py
+├── plan_fight.py
+├── README.md
+└── pyproject.toml
+```
+
+Adapt module placement to existing architecture when appropriate.
+
+Keep canonical data separate from generated outputs and derived indexes.
+
+Optional SQLite indexing may be used for efficient retrieval, but JSON remains authoritative unless an existing architecture provides a stronger justified alternative.
+
+---
+
+# 18. REQUIRED RUNNABLE COMMANDS
+
+Provide working command-line interfaces equivalent to:
+
+```bash
+python scripts/backfill.py --dry-run
+python scripts/backfill.py --apply
+python scripts/backfill.py --verify
+
+python scripts/audit_coverage.py
+
+python predict.py \
+  cards/maleek.json \
+  cards/donnell.json \
+  --ruleset mma \
+  --output outputs/example_fights/prediction.json
+
+python plan_fight.py \
+  cards/maleek.json \
+  cards/donnell.json \
+  --ruleset mma \
+  --duration 60 \
+  --seed 42 \
+  --output-dir outputs/example_fights/maleek_vs_donnell
+
+python -m pytest
+```
+
+Implement and document any reasonable environment-specific setup.
+
+Do not require paid external services for the core prediction, data validation, or offline fight planning.
+
+Optional remote model integration must not prevent offline core-system verification.
+
+---
+
+# 19. LLM CONSUMPTION CONTRACT
+
+Create `docs/llm_reasoning_guide.md`.
+
+Describe exactly how an LLM should consume this system when executing Python is unavailable.
+
+The LLM must:
+
+1. Resolve fighter IDs.
+2. Retrieve relevant options.
+3. Retrieve corresponding matrix cells.
+4. Apply the documented weighting formula.
+5. Check reachable debts.
+6. Evaluate slots and NULL vulnerabilities.
+7. Distinguish supported counter relationships from inferred storytelling.
+8. Explain the likely fight trajectory.
+9. Produce structured fight events.
+10. Preserve provenance.
+
+The LLM must never claim to have executed the prediction program unless it actually ran.
+
+Include worked examples with intermediate calculations.
+
+Provide retrieval guidance so the LLM can locate relevant styles, counters, and techniques without reading unrelated files.
+
+---
+
+# 20. REQUIRED END-TO-END DEMONSTRATION
+
+Run a full demonstration with Maleek versus Donnell.
+
+The demonstration must produce:
+
+1. Validated fighter cards.
+2. An explicit ruleset.
+3. Prediction results.
+4. All contributing matrix edges.
+5. Top tactical advantages and weaknesses.
+6. A selected outcome with its selection mode recorded.
+7. A full 30–60-second fight plan.
+8. A sequence of executable semantic techniques.
+9. A validated event graph.
+10. A choreography representation.
+11. A shot list.
+12. AI-video-ready prompts.
+13. A validation report.
+14. A human-readable explanation of the complete fight.
+
+Then run at least one additional matchup featuring a two-slot upset against a three-slot fighter.
+
+Show how the reachable weakness creates the upset.
+
+The two fights must not be superficial copies with different character names.
+
+Their technical and narrative differences must emerge from the actual underlying combat relationships.
+
+---
+
+# 21. DEFINITION OF DONE
+
+Do not declare the project finished until the following are true:
+
+**Research and data**
+
+- All mandatory ontology entries are present.
+- All 511 matchup cells are populated.
+- Source classifications are recorded.
+- All mandatory fighter cards are completed.
+- Counter and debt relationships resolve.
+- No mandatory field contains a placeholder.
+
+**Software**
+
+- Prediction CLI works.
+- Backfill CLI works.
+- Coverage auditing works.
+- Fight planning works.
+- Event graph construction works.
+- Prompt compilation works.
+- Reproducible tests execute.
+
+**Correctness**
+
+- No dangling references.
+- No missing mandatory matrix cells.
+- No impossible capability injection.
+- No silent NULL handling errors.
+- No invalid probability calculations.
+- No invented research citations.
+- No contradiction between the chosen outcome and resulting fight narrative.
+
+**Visualization**
+
+- The fight plan can be translated into structured cinematic shots.
+- Important actions have explicit contact and reaction semantics.
+- The video compiler emits usable prompts.
+- Prompt output preserves source event IDs for traceability.
+
+**Backfill**
+
+- Missing content is detected automatically.
+- Valid missing records can be populated safely.
+- Unverifiable claims are not fabricated.
+- Repeated backfill is idempotent.
+- Final coverage is independently audited.
+
+---
+
+# 22. FINAL DELIVERY REQUIREMENTS
+
+After implementing and executing the system, provide:
+
+## A. Implementation summary
+
+What was built, what was reused, and important architectural decisions.
+
+## B. Coverage report
+
+Report actual verified totals for:
+
+- Ontology options
+- Matchup cells
+- Fighter cards
+- Technique records
+- Counter relationships
+- Debt/exploit relationships
+- Event types
+- Successful tests
+
+## C. Execution evidence
+
+Show commands run and relevant actual output.
+
+## D. Working demonstrations
+
+Provide Maleek versus Donnell and the two-slot upset example.
+
+## E. Outstanding limitations
+
+Clearly distinguish unfinished functionality, unverified combat interpretations, missing external integrations, and known video-model limitations.
+
+## F. Deliverable locations
+
+Identify every important file and how to run the system.
+
+---
+
+# FINAL EXECUTION INSTRUCTION
+
+Begin with repository inspection and the baseline inventory.
+
+Then research, implement, backfill, integrate, test, and validate the complete system.
+
+Do not stop after planning.
+
+Do not substitute architectural diagrams for running software.
+
+Do not use superficial test passes, fabricated fixtures, duplicate content, or arbitrary matrix values to create the appearance of completion.
+
+Do not omit difficult parts of the specification.
+
+Treat incomplete data as an implementation problem to resolve through research, deterministic derivation, or explicitly labeled BLOCK canon—not something to hide.
+
+Preserve existing work where valid, repair it where necessary, and continue until all achievable acceptance criteria are verified.
+
+**The deliverable is a working BLOCK combat-reasoning and AI fight-direction engine that can calculate a matchup, explain its causal mechanics, plan an internally consistent fight, and produce structured cinematic prompts—with automated backfill ensuring the required knowledge system remains complete.**
+
+**Execute the build now.**

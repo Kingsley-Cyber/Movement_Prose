@@ -1,0 +1,125 @@
+{
+  "audit_contract": "Validate the previously reported fairness findings through public CLI and actual planner execution; do not patch the implementation.",
+  "root": "/Users/king/.gemini/antigravity/scratch/Movement_Prose",
+  "model_version": "block-1",
+  "knowledge_sha256": "9ed302793feca9cd3a8927fee7210588b1674bfaa066dd21757ea6741e324990",
+  "fairness_gate_status": "NO_PREVIOUS_DEFECT_REPRODUCED",
+  "findings": [
+    {
+      "id": "F-001",
+      "classification": "NOT_REPRODUCED",
+      "oracle": "Cloning an existing slot while changing only its ID/description must not earn another synchronization bonus.",
+      "public_cli_accepted": false,
+      "same_training": true,
+      "same_available_techniques": true,
+      "before_probability": 0.5047915199827228,
+      "after_probability": null,
+      "extra_logit": null,
+      "source": [
+        "engine/ontology.py:72",
+        "engine/probability.py:18"
+      ],
+      "important_distinction": "Legitimate new coordination may use existing techniques. Equality of the available-technique set alone is not evidence of fraud; this probe copies an existing bundle without a new mechanism."
+    },
+    {
+      "id": "F-002",
+      "classification": "NOT_REPRODUCED",
+      "oracle": "A style label unsupported by the card's training and techniques must not erase an uncovered capability or earn trained-style matrix credit.",
+      "public_cli_accepted": false,
+      "same_training": true,
+      "same_available_techniques": true,
+      "has_anti_grappling_training": false,
+      "before_probability": 0.4952084800172773,
+      "after_probability": null,
+      "before_null_logit": -0.2,
+      "after_null_logit": null,
+      "source": [
+        "engine/ontology.py:66",
+        "engine/capabilities.py:41",
+        "engine/matchups.py:9"
+      ]
+    },
+    {
+      "id": "F-003",
+      "classification": "CONFIRMED_DESIGN_LIMIT",
+      "oracle": "Conditional choreography must not be represented as independent evidence that its preselected winner earned a victory.",
+      "source": [
+        "engine/fight_director.py:125",
+        "engine/fight_director.py:213",
+        "engine/fight_state.py:237"
+      ],
+      "runs": [
+        {
+          "seed": 42,
+          "winner": "maleek",
+          "probability_maleek": 0.4852126469153967,
+          "marks": {
+            "maleek": 3,
+            "donnell": 2
+          },
+          "validation": {
+            "status": "PASS",
+            "events_replayed": 68,
+            "contacts": 5,
+            "fidelity": "Semantically validated staging; no IK, skeletal solver, or biomechanical proof.",
+            "winner": "maleek"
+          },
+          "score_increasing_loop_event_ids": [
+            "e62"
+          ]
+        },
+        {
+          "seed": 43,
+          "winner": "donnell",
+          "probability_maleek": 0.4852126469153967,
+          "marks": {
+            "maleek": 1,
+            "donnell": 3
+          },
+          "validation": {
+            "status": "PASS",
+            "events_replayed": 53,
+            "contacts": 4,
+            "fidelity": "Semantically validated staging; no IK, skeletal solver, or biomechanical proof.",
+            "winner": "donnell"
+          },
+          "score_increasing_loop_event_ids": []
+        }
+      ],
+      "interpretation": "Outcome-first planning is allowed by the original predictive/director contract. It is unsuitable as independent adjudication and its manufactured marks must not update empirical rankings."
+    }
+  ],
+  "controls": {
+    "invalid_id_rejected": true,
+    "probability_complementarity": true,
+    "display_metadata_does_not_change_probability": true
+  },
+  "protected_files_unchanged": true,
+  "test_hashes_before": {
+    "tests/conftest.py": "37566dd7f17b7d90003ea48595c06b2b0f79e29e341ef5230173f4bf63dd9642",
+    "tests/test_backfill.py": "1fa3978f5e09e3b18dc77d1aaf428a7af831b2bd2a16414aea2c727030879705",
+    "tests/test_end_to_end.py": "ea29e4e88bf6839b17eaa78bc0431010652247ad0879101dc230d5c691cae045",
+    "tests/test_event_graph.py": "1cb775859b032954e8fca56e8a31f256d0e01104f1131506c335901432467c18",
+    "tests/test_fairness_plan.py": "8121c08f788f2c4e656e6ecc76d0bd7efa88f4233fa610c9c790c7ebab434386",
+    "tests/test_fight_move_system.py": "68f5dc506f72bb466f604134073e9f732ed11601652bb6e04ee6c55ebc51d741",
+    "tests/test_fight_plan.py": "21755d91d0d31e654be784368fc98c190debf2e9409230ab973418e390d7267b",
+    "tests/test_matchups.py": "0c3c18f48b2074451a0d80cd8efe0c1efa155f1ebe460c21d04161d3490dcbe7",
+    "tests/test_ontology.py": "6572157e4a75da6f827cfcacc5760da66420d91277c080ba74186a62a22656bd",
+    "tests/test_prediction.py": "96c070895e9ffff538e129dfbfe9f37ae55124255d33161126bd91c06e6ec72f",
+    "tests/test_slots.py": "f4de3c88db3c60d6bbf8593b7e0c8e5365b6ebfd3fcded1a7e3f5b26d03450e4"
+  },
+  "test_hashes_after": {
+    "tests/conftest.py": "37566dd7f17b7d90003ea48595c06b2b0f79e29e341ef5230173f4bf63dd9642",
+    "tests/test_backfill.py": "1fa3978f5e09e3b18dc77d1aaf428a7af831b2bd2a16414aea2c727030879705",
+    "tests/test_end_to_end.py": "ea29e4e88bf6839b17eaa78bc0431010652247ad0879101dc230d5c691cae045",
+    "tests/test_event_graph.py": "1cb775859b032954e8fca56e8a31f256d0e01104f1131506c335901432467c18",
+    "tests/test_fairness_plan.py": "8121c08f788f2c4e656e6ecc76d0bd7efa88f4233fa610c9c790c7ebab434386",
+    "tests/test_fight_move_system.py": "68f5dc506f72bb466f604134073e9f732ed11601652bb6e04ee6c55ebc51d741",
+    "tests/test_fight_plan.py": "21755d91d0d31e654be784368fc98c190debf2e9409230ab973418e390d7267b",
+    "tests/test_matchups.py": "0c3c18f48b2074451a0d80cd8efe0c1efa155f1ebe460c21d04161d3490dcbe7",
+    "tests/test_ontology.py": "6572157e4a75da6f827cfcacc5760da66420d91277c080ba74186a62a22656bd",
+    "tests/test_prediction.py": "96c070895e9ffff538e129dfbfe9f37ae55124255d33161126bd91c06e6ec72f",
+    "tests/test_slots.py": "f4de3c88db3c60d6bbf8593b7e0c8e5365b6ebfd3fcded1a7e3f5b26d03450e4"
+  },
+  "scope_limit": "These are concrete counterexamples and selected controls, not an exhaustive fairness or statistical calibration proof."
+}

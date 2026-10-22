@@ -1,0 +1,2744 @@
+{
+  "version": "block-1",
+  "capability_semantics": "required_capabilities is an ANY-OF training gate. All setup, range and grip constraints are conjunctive.",
+  "techniques": [
+    {
+      "id": "step",
+      "name": "Measured entry",
+      "description": "Step toward the opponent without crossing the feet.",
+      "combat_schools": [
+        "basic_movement"
+      ],
+      "required_capabilities": [
+        "basic_movement"
+      ],
+      "ruleset_legality": [
+        "boxing",
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "outside",
+        "kick",
+        "punch",
+        "close",
+        "clinch"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "observe"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "feet",
+      "target_region": "space",
+      "direction_trajectory": "Step toward the opponent without crossing the feet.",
+      "contact_conditions": {
+        "requires_event": false,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "move": "inward"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_eb_drills"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "movement"
+    },
+    {
+      "id": "retreat",
+      "name": "Measured retreat",
+      "description": "Step away while preserving lead and facing.",
+      "combat_schools": [
+        "basic_movement"
+      ],
+      "required_capabilities": [
+        "basic_movement"
+      ],
+      "ruleset_legality": [
+        "boxing",
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "kick",
+        "punch",
+        "close",
+        "clinch"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "observe"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "feet",
+      "target_region": "space",
+      "direction_trajectory": "Step away while preserving lead and facing.",
+      "contact_conditions": {
+        "requires_event": false,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "move": "outward"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_eb_drills"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "movement"
+    },
+    {
+      "id": "pivot",
+      "name": "Angle pivot",
+      "description": "Turn around the lead support foot to a lateral angle, then recover the rear foot.",
+      "combat_schools": [
+        "basic_movement"
+      ],
+      "required_capabilities": [
+        "basic_movement"
+      ],
+      "ruleset_legality": [
+        "boxing",
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "kick",
+        "punch",
+        "close"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "observe"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "feet",
+      "target_region": "angle",
+      "direction_trajectory": "Turn around the lead support foot to a lateral angle, then recover the rear foot.",
+      "contact_conditions": {
+        "requires_event": false,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [
+        "low_kick"
+      ],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "angle_change": true
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_eb_drills"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "movement"
+    },
+    {
+      "id": "switch_step",
+      "name": "Uno changeover",
+      "description": "CANON Uno: replace the lead with a short retreating switch, then re-square without crossing.",
+      "combat_schools": [
+        "switch_step"
+      ],
+      "required_capabilities": [
+        "switch_step"
+      ],
+      "ruleset_legality": [
+        "boxing",
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "kick",
+        "punch"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "observe"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "feet",
+      "target_region": "angle",
+      "direction_trajectory": "CANON Uno: replace the lead with a short retreating switch, then re-square without crossing.",
+      "contact_conditions": {
+        "requires_event": false,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "switch_orientation": true
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_eb_drills"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "movement"
+    },
+    {
+      "id": "feint",
+      "name": "Hand feint",
+      "description": "Show an incomplete lead extension; withdraw before contact.",
+      "combat_schools": [
+        "basic_movement"
+      ],
+      "required_capabilities": [
+        "basic_movement"
+      ],
+      "ruleset_legality": [
+        "boxing",
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "kick",
+        "punch",
+        "close"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "observe"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "lead hand",
+      "target_region": "vision",
+      "direction_trajectory": "Show an incomplete lead extension; withdraw before contact.",
+      "contact_conditions": {
+        "requires_event": false,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [
+        "double_leg"
+      ],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "induce": "guard_attention"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_eb_drills"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "feint"
+    },
+    {
+      "id": "jab",
+      "name": "Lead jab",
+      "description": "Extend along the center head line and retract.",
+      "combat_schools": [
+        "boxing"
+      ],
+      "required_capabilities": [
+        "boxing"
+      ],
+      "ruleset_legality": [
+        "boxing",
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "punch",
+        "close"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "feint"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "lead fist",
+      "target_region": "head",
+      "direction_trajectory": "Extend along the center head line and retract.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "retreat",
+        "shell_block"
+      ],
+      "follow_up_opportunities": [
+        "parry"
+      ],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "damage_region": "head"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_eb_drills"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "punch"
+    },
+    {
+      "id": "cross",
+      "name": "Rear straight",
+      "description": "Rotate rear hip behind the straight fist; return the hand to guard.",
+      "combat_schools": [
+        "boxing"
+      ],
+      "required_capabilities": [
+        "boxing"
+      ],
+      "ruleset_legality": [
+        "boxing",
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "punch",
+        "close"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "feint"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "rear fist",
+      "target_region": "head",
+      "direction_trajectory": "Rotate rear hip behind the straight fist; return the hand to guard.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "retreat",
+        "shell_block"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "damage_region": "head"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_eb_drills"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "punch"
+    },
+    {
+      "id": "hook",
+      "name": "Lead hook",
+      "description": "Pivot the torso and carry a bent lead arm around the outside head line.",
+      "combat_schools": [
+        "boxing"
+      ],
+      "required_capabilities": [
+        "boxing"
+      ],
+      "ruleset_legality": [
+        "boxing",
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "punch",
+        "close"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "feint"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "lead fist",
+      "target_region": "head",
+      "direction_trajectory": "Pivot the torso and carry a bent lead arm around the outside head line.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "retreat",
+        "shell_block"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "damage_region": "head"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_eb_drills"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "punch"
+    },
+    {
+      "id": "body_hook",
+      "name": "Lead body hook",
+      "description": "Lower the level with the legs and rotate a bent lead arm toward the lateral ribs.",
+      "combat_schools": [
+        "boxing"
+      ],
+      "required_capabilities": [
+        "boxing"
+      ],
+      "ruleset_legality": [
+        "boxing",
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "punch",
+        "close"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "feint"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "lead fist",
+      "target_region": "body",
+      "direction_trajectory": "Lower the level with the legs and rotate a bent lead arm toward the lateral ribs.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "retreat",
+        "shell_block"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "damage_region": "body"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_eb_drills"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "punch"
+    },
+    {
+      "id": "uppercut",
+      "name": "Rear uppercut",
+      "description": "Drive from bent knees on a short rising center path without dropping the rear hand.",
+      "combat_schools": [
+        "boxing"
+      ],
+      "required_capabilities": [
+        "boxing"
+      ],
+      "ruleset_legality": [
+        "boxing",
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "punch",
+        "close"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "feint"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "rear fist",
+      "target_region": "head",
+      "direction_trajectory": "Drive from bent knees on a short rising center path without dropping the rear hand.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "retreat",
+        "shell_block"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "damage_region": "head"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_eb_drills"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "punch"
+    },
+    {
+      "id": "haymaker",
+      "name": "Untrained looping swing",
+      "description": "Telegraph a broad rear-hand arc; the long recovery remains exposed.",
+      "combat_schools": [
+        "untrained_striking"
+      ],
+      "required_capabilities": [
+        "untrained_striking"
+      ],
+      "ruleset_legality": [
+        "boxing",
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "punch",
+        "close"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "feint"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "rear fist",
+      "target_region": "head",
+      "direction_trajectory": "Telegraph a broad rear-hand arc; the long recovery remains exposed.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "retreat",
+        "shell_block"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "damage_region": "head"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "punch"
+    },
+    {
+      "id": "parry",
+      "name": "Short parry",
+      "description": "Displace an incoming straight with a small inward hand motion.",
+      "combat_schools": [
+        "boxing"
+      ],
+      "required_capabilities": [
+        "boxing"
+      ],
+      "ruleset_legality": [
+        "boxing",
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "punch",
+        "close"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "observe"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "rear palm",
+      "target_region": "incoming fist",
+      "direction_trajectory": "Displace an incoming straight with a small inward hand motion.",
+      "contact_conditions": {
+        "requires_event": false,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [
+        "pivot"
+      ],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "defend": "head_straight"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_evolve_counters"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "defense"
+    },
+    {
+      "id": "shell_block",
+      "name": "Sealed forearm block",
+      "description": "Brace both forearms without turning away; recover visual contact.",
+      "combat_schools": [
+        "boxing"
+      ],
+      "required_capabilities": [
+        "boxing"
+      ],
+      "ruleset_legality": [
+        "boxing",
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "punch",
+        "close"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "observe"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "forearms",
+      "target_region": "head",
+      "direction_trajectory": "Brace both forearms without turning away; recover visual contact.",
+      "contact_conditions": {
+        "requires_event": false,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "defend": "head_hook"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_eb_drills"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "defense"
+    },
+    {
+      "id": "shield_frame",
+      "name": "CANON 52 forearm wedge",
+      "description": "Wedge closed forearms between the shoulders; no finger points toward the eyes.",
+      "combat_schools": [
+        "shield"
+      ],
+      "required_capabilities": [
+        "shield"
+      ],
+      "ruleset_legality": [
+        "boxing",
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "punch",
+        "close",
+        "clinch"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "observe"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "forearms",
+      "target_region": "shoulder line",
+      "direction_trajectory": "Wedge closed forearms between the shoulders; no finger points toward the eyes.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [
+        "cage_plum"
+      ],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "frame": true
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_lyte_52"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "defense"
+    },
+    {
+      "id": "slip",
+      "name": "Shallow slip",
+      "description": "Bend the knees and translate the head outside the straight line without a deep knee-level dip.",
+      "combat_schools": [
+        "boxing"
+      ],
+      "required_capabilities": [
+        "boxing"
+      ],
+      "ruleset_legality": [
+        "boxing",
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "punch",
+        "close"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "observe"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "torso",
+      "target_region": "head",
+      "direction_trajectory": "Bend the knees and translate the head outside the straight line without a deep knee-level dip.",
+      "contact_conditions": {
+        "requires_event": false,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "defend": "head_straight"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_eb_drills"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "defense"
+    },
+    {
+      "id": "check",
+      "name": "Shin check",
+      "description": "Lift and turn the lead knee outward; return the foot before another action.",
+      "combat_schools": [
+        "kickboxing"
+      ],
+      "required_capabilities": [
+        "kickboxing"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "kick"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "observe"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "lead shin",
+      "target_region": "incoming shin",
+      "direction_trajectory": "Lift and turn the lead knee outward; return the foot before another action.",
+      "contact_conditions": {
+        "requires_event": false,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "defend": "leg"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_evolve_counters"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "defense"
+    },
+    {
+      "id": "low_kick",
+      "name": "Rear low kick",
+      "description": "Pivot the support foot and arc the rear shin into the outside lead thigh.",
+      "combat_schools": [
+        "kickboxing"
+      ],
+      "required_capabilities": [
+        "kickboxing"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "kick"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "feint"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "rear shin",
+      "target_region": "leg",
+      "direction_trajectory": "Pivot the support foot and arc the rear shin into the outside lead thigh.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "single_foot",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "damage_region": "leg"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_evolve_counters"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "kick"
+    },
+    {
+      "id": "body_kick",
+      "name": "Rear body round kick",
+      "description": "Turn the hip and swing the rear shin into the lateral torso; retract on the same arc.",
+      "combat_schools": [
+        "kickboxing"
+      ],
+      "required_capabilities": [
+        "kickboxing"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "kick"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "feint"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "rear shin",
+      "target_region": "body",
+      "direction_trajectory": "Turn the hip and swing the rear shin into the lateral torso; retract on the same arc.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "single_foot",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "damage_region": "body"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "kick"
+    },
+    {
+      "id": "teep",
+      "name": "Lead teep",
+      "description": "Chamber the lead knee and extend the sole toward the torso; retract before landing.",
+      "combat_schools": [
+        "kickboxing"
+      ],
+      "required_capabilities": [
+        "kickboxing"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "kick"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "feint"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "lead sole",
+      "target_region": "body",
+      "direction_trajectory": "Chamber the lead knee and extend the sole toward the torso; retract before landing.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "single_foot",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "damage_region": "body"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_evolve_counters"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "kick"
+    },
+    {
+      "id": "side_kick",
+      "name": "Lead side kick",
+      "description": "Chamber across the body and extend the heel on a lateral line; retract and replace.",
+      "combat_schools": [
+        "karate"
+      ],
+      "required_capabilities": [
+        "karate"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "kick"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "feint"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "lead heel",
+      "target_region": "body",
+      "direction_trajectory": "Chamber across the body and extend the heel on a lateral line; retract and replace.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "single_foot",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "damage_region": "body"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "kick"
+    },
+    {
+      "id": "sprawl",
+      "name": "Hip sprawl",
+      "description": "Drive hips back from the incoming leg connection; regain stance before striking.",
+      "combat_schools": [
+        "wrestling",
+        "anti_grappling"
+      ],
+      "required_capabilities": [
+        "wrestling",
+        "anti_grappling"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "punch",
+        "clinch"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "observe"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "hips",
+      "target_region": "entry",
+      "direction_trajectory": "Drive hips back from the incoming leg connection; regain stance before striking.",
+      "contact_conditions": {
+        "requires_event": false,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "defend": "entry"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_usaw"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "defense"
+    },
+    {
+      "id": "pummel",
+      "name": "Inside-arm pummel",
+      "description": "Thread an underhook from legal chest contact without gripping the fence.",
+      "combat_schools": [
+        "clinch",
+        "wrestling",
+        "anti_grappling"
+      ],
+      "required_capabilities": [
+        "clinch",
+        "wrestling",
+        "anti_grappling"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "clinch"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "observe"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "forearms",
+      "target_region": "inside tie",
+      "direction_trajectory": "Thread an underhook from legal chest contact without gripping the fence.",
+      "contact_conditions": {
+        "requires_event": false,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "defend": "clinch"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_usaw"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "defense"
+    },
+    {
+      "id": "collar_tie",
+      "name": "Inside collar tie",
+      "description": "Establish inside forearms before placing closed hands behind the crown.",
+      "combat_schools": [
+        "clinch"
+      ],
+      "required_capabilities": [
+        "clinch"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "clinch"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "feint"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "forearms",
+      "target_region": "posture",
+      "direction_trajectory": "Establish inside forearms before placing closed hands behind the crown.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "sprawl",
+        "pummel"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "grip": "collar"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "grip"
+    },
+    {
+      "id": "cage_plum",
+      "name": "Gated cage plum",
+      "description": "From an established frame at the wall, slide both trained inside forearms into a collar tie.",
+      "combat_schools": [
+        "cage_plum"
+      ],
+      "required_capabilities": [
+        "cage_plum"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "clinch"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "shield_frame"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "forearms",
+      "target_region": "posture",
+      "direction_trajectory": "From an established frame at the wall, slide both trained inside forearms into a collar tie.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "sprawl",
+        "pummel"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "grip": "collar"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "grip"
+    },
+    {
+      "id": "knee_body",
+      "name": "Clinch body knee",
+      "description": "With an established collar tie, draw the torso toward a rising rear knee and replace the foot.",
+      "combat_schools": [
+        "clinch",
+        "cage_plum"
+      ],
+      "required_capabilities": [
+        "clinch",
+        "cage_plum"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "clinch"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": "collar",
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "grip"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "rear knee",
+      "target_region": "body",
+      "direction_trajectory": "With an established collar tie, draw the torso toward a rising rear knee and replace the foot.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "damage_region": "body"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_evolve_counters"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "knee"
+    },
+    {
+      "id": "body_lock",
+      "name": "Body-lock attachment",
+      "description": "Pummel inside, connect hands around the trunk and stabilize feet without a fence grip.",
+      "combat_schools": [
+        "clinch",
+        "wrestling",
+        "judo"
+      ],
+      "required_capabilities": [
+        "clinch",
+        "wrestling",
+        "judo"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "clinch"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "feint"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "arms",
+      "target_region": "hips",
+      "direction_trajectory": "Pummel inside, connect hands around the trunk and stabilize feet without a fence grip.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "sprawl",
+        "pummel"
+      ],
+      "follow_up_opportunities": [
+        "outside_trip"
+      ],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "grip": "body_lock"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_usaw"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "grip"
+    },
+    {
+      "id": "double_leg",
+      "name": "Double-leg entry",
+      "description": "Change elevation before penetration, connect both legs, drive to the side, and settle top hip coverage.",
+      "combat_schools": [
+        "wrestling"
+      ],
+      "required_capabilities": [
+        "wrestling"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "punch"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "feint"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "arms and shoulder",
+      "target_region": "hips",
+      "direction_trajectory": "Change elevation before penetration, connect both legs, drive to the side, and settle top hip coverage.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "sprawl",
+        "pummel"
+      ],
+      "follow_up_opportunities": [
+        "ride"
+      ],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "posture": "ground",
+        "control": "top"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_usaw"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "takedown"
+    },
+    {
+      "id": "single_leg",
+      "name": "Single-leg capture",
+      "description": "Change level and attach the lead leg, turn the corner, and settle above the hips.",
+      "combat_schools": [
+        "wrestling"
+      ],
+      "required_capabilities": [
+        "wrestling"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "punch"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "feint"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "arms",
+      "target_region": "support leg",
+      "direction_trajectory": "Change level and attach the lead leg, turn the corner, and settle above the hips.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "sprawl",
+        "pummel"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "posture": "ground",
+        "control": "top"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_usaw"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "takedown"
+    },
+    {
+      "id": "outside_trip",
+      "name": "Small outer reap adaptation",
+      "description": "From a body lock, unbalance rearward and reap the near ankle with the sole before settling top.",
+      "combat_schools": [
+        "judo",
+        "wrestling"
+      ],
+      "required_capabilities": [
+        "judo",
+        "wrestling"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "clinch"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": "body_lock",
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "grip"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "lead sole and arms",
+      "target_region": "ankle",
+      "direction_trajectory": "From a body lock, unbalance rearward and reap the near ankle with the sole before settling top.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "sprawl",
+        "pummel"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "posture": "ground",
+        "control": "top"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_ijf_trip"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "takedown"
+    },
+    {
+      "id": "sanda_sweep",
+      "name": "CANON kick-catch sweep",
+      "description": "Capture the extended kick, enter to its support, sweep and guide the fall.",
+      "combat_schools": [
+        "sanda"
+      ],
+      "required_capabilities": [
+        "sanda"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "kick"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "feint"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "arms and lead foot",
+      "target_region": "support leg",
+      "direction_trajectory": "Capture the extended kick, enter to its support, sweep and guide the fall.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "sprawl",
+        "pummel"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "posture": "ground",
+        "control": "top"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "takedown"
+    },
+    {
+      "id": "ride",
+      "name": "Hip-and-wrist ride",
+      "description": "Maintain top hip coverage and wrist control; follow the bottom actor without neck cranking.",
+      "combat_schools": [
+        "wrestling"
+      ],
+      "required_capabilities": [
+        "wrestling"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "ground"
+      ],
+      "required_body_configuration": {
+        "posture": "ground",
+        "grip": "top",
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "grip"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "hips and hands",
+      "target_region": "hips",
+      "direction_trajectory": "Maintain top hip coverage and wrist control; follow the bottom actor without neck cranking.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "mat",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "control": "top"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_usaw"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "control"
+    },
+    {
+      "id": "guard_pull",
+      "name": "CANON guard entry",
+      "description": "From legal attachment sit under control, keep frames and draw the opponent into bottom guard.",
+      "combat_schools": [
+        "bjj"
+      ],
+      "required_capabilities": [
+        "bjj"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "clinch"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "feint"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "legs and arms",
+      "target_region": "hips",
+      "direction_trajectory": "From legal attachment sit under control, keep frames and draw the opponent into bottom guard.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "sprawl",
+        "pummel"
+      ],
+      "follow_up_opportunities": [
+        "armbar"
+      ],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "posture": "ground",
+        "control": "bottom"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "takedown"
+    },
+    {
+      "id": "armbar",
+      "name": "CANON controlled armbar",
+      "description": "From established bottom guard isolate an arm, turn the hips and place the leg over the shoulder; release on tap.",
+      "combat_schools": [
+        "bjj"
+      ],
+      "required_capabilities": [
+        "bjj"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "ground"
+      ],
+      "required_body_configuration": {
+        "posture": "ground",
+        "grip": "bottom",
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "grip"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "hips and legs",
+      "target_region": "arm",
+      "direction_trajectory": "From established bottom guard isolate an arm, turn the hips and place the leg over the shoulder; release on tap.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "mat",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "submission": "arm"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "submission"
+    },
+    {
+      "id": "escape",
+      "name": "Framed ground recovery",
+      "description": "Frame the torso and rotate the hips to recover a defensive base; no automatic standing reset.",
+      "combat_schools": [
+        "bjj",
+        "wrestling"
+      ],
+      "required_capabilities": [
+        "bjj",
+        "wrestling"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "ground"
+      ],
+      "required_body_configuration": {
+        "posture": "ground",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "observe"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "forearms and hips",
+      "target_region": "space",
+      "direction_trajectory": "Frame the torso and rotate the hips to recover a defensive base; no automatic standing reset.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "pivot"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "mat",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "defend": "ground"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "control"
+    },
+    {
+      "id": "wall_tie",
+      "name": "CANON wall single tie",
+      "description": "Establish one inside forearm at the wall, leaving the other hand free.",
+      "combat_schools": [
+        "wall_boxing"
+      ],
+      "required_capabilities": [
+        "wall_boxing"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "clinch"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": null,
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "feint"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "forearms",
+      "target_region": "posture",
+      "direction_trajectory": "Place one closed forearm inside the shoulder line and pin posture with a single tie; no fence grip.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "sprawl",
+        "pummel"
+      ],
+      "follow_up_opportunities": [
+        "wall_punch"
+      ],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "grip": "single_tie"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "grip"
+    },
+    {
+      "id": "wall_punch",
+      "name": "CANON wall body punch",
+      "description": "Use the free hand to strike the body while the other maintains a single tie.",
+      "combat_schools": [
+        "wall_boxing"
+      ],
+      "required_capabilities": [
+        "wall_boxing"
+      ],
+      "ruleset_legality": [
+        "mma"
+      ],
+      "starting_stance": [
+        "orthodox",
+        "southpaw",
+        "switching"
+      ],
+      "required_range": [
+        "clinch"
+      ],
+      "required_body_configuration": {
+        "posture": "standing",
+        "grip": "single_tie",
+        "balance": "stable"
+      },
+      "setup_actions": [
+        "grip"
+      ],
+      "execution_phases": [
+        "preparation",
+        "initiation",
+        "execution",
+        "contact",
+        "reaction",
+        "recovery"
+      ],
+      "attacking_limb": "lead fist",
+      "target_region": "body",
+      "direction_trajectory": "Maintain a single inside tie with one forearm; use the free rear fist on a short torso line.",
+      "contact_conditions": {
+        "requires_event": true,
+        "opponent_in_range": true,
+        "unblocked_target": true
+      },
+      "defensive_counters": [
+        "retreat",
+        "shell_block"
+      ],
+      "follow_up_opportunities": [],
+      "recovery_requirements": "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat.",
+      "balance_support": {
+        "before": "stable",
+        "during": "two_feet",
+        "after": "stable"
+      },
+      "expected_state_changes": {
+        "damage_region": "body"
+      },
+      "potential_failure_conditions": [
+        "opponent denies the listed range",
+        "setup interrupted",
+        "required capability inactive"
+      ],
+      "visual_readability": "Keep both actors, the attacking limb, target region and resulting reaction in the same full-body frame.",
+      "provenance": {
+        "classification": "CANON",
+        "label": "[CANON]",
+        "basis_claims": [
+          "claim_eb_drills"
+        ],
+        "distinction": "Semantic adaptation; sourced claim text alone is verified."
+      },
+      "kind": "punch"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "round": 2,
+  "status": "PASS",
+  "test_summary": "58 passed in 72.77s (0:01:12)",
+  "command": "python scripts/regress.py",
+  "exit_code": 0,
+  "original_tests_modified": false,
+  "evidence": "reports/execution_evidence.json"
+}

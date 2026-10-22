@@ -1,0 +1,147 @@
+{
+  "clip_id": "block_maleek_vs_donnell_predictive_movement_prose_10s",
+  "name": "block_maleek_vs_donnell_predictive_movement_prose_10s",
+  "regime": "standup_striking",
+  "initial_range": "kick",
+  "arena": "rain-slicked neon-lit rooftop helipad cage arena overlooking a dark cyberpunk skyline, harsh magenta-and-cyan floodlights reflecting off wet concrete, octagonal chain-link perimeter fence in deep background shadow",
+  "block_provenance": {
+    "version": "block-1",
+    "ruleset": "mma",
+    "seed": 42,
+    "duration": 60.0,
+    "selection": {
+      "mode": "predictive",
+      "winner_id": "maleek",
+      "draw": 0.6394267984578837,
+      "original_probabilities": {
+        "maleek": 0.4852126469153967,
+        "donnell": 0.5147873530846033
+      },
+      "label": "Seeded outcome, sampled in sorted fighter-ID order; conditional path to that outcome."
+    },
+    "fighter_a_id": "maleek",
+    "fighter_b_id": "donnell",
+    "event_count": 68,
+    "choreography_Summary": {
+      "sequence_count": 0
+    }
+  },
+  "fighters": {
+    "A": {
+      "style": "mma",
+      "stance": "orthodox",
+      "screen_side": "left",
+      "facing": "right",
+      "support": "standing",
+      "coil": "neutral",
+      "label": "lean, razor-cut striker (Maleek, fifty-two-Dutch and Uno specialist), shirtless bare torso, white cloth tape on both wrists/knuckles and gold ankle wraps, midnight-blue Vale Tudo fight shorts, bare feet",
+      "short_name": "the midnight-blue-shorts striker on the left"
+    },
+    "B": {
+      "style": "mma",
+      "stance": "orthodox",
+      "screen_side": "right",
+      "facing": "left",
+      "support": "standing",
+      "coil": "neutral",
+      "label": "muscular counter-fighter (Donnell, Forward-loaded pressure boxer specialist), shirtless broad scarred torso, urban-camo fight shorts, bare wrists and bare ankles with NO tape, bare feet",
+      "short_name": "the camo-shorts fighter on the right"
+    }
+  },
+  "moments": [
+    {
+      "frames": 8,
+      "A": {
+        "move": "low_calf_kick"
+      },
+      "B": {
+        "move": "lead_leg_buckle"
+      }
+    },
+    {
+      "frames": 6,
+      "A": {
+        "move": "burst_step_in"
+      },
+      "B": {
+        "move": "slip_inside"
+      }
+    },
+    {
+      "frames": 8,
+      "A": {
+        "move": "slashing_rear_elbow"
+      },
+      "B": {
+        "move": "head_whip_side"
+      }
+    },
+    {
+      "frames": 7,
+      "A": {
+        "move": "high_shell_guard"
+      },
+      "B": {
+        "move": "cross"
+      }
+    },
+    {
+      "frames": 8,
+      "A": {
+        "overlaps_move": "slip_outside",
+        "move": "lead_liver_hook"
+      },
+      "B": {
+        "move": "torso_fold_rib_hit"
+      }
+    },
+    {
+      "frames": 7,
+      "A": {
+        "move": "single_collar_tie"
+      },
+      "B": {
+        "move": "clinch_captured_react"
+      }
+    },
+    {
+      "frames": 9,
+      "A": {
+        "move": "clinch_rising_knee"
+      },
+      "B": {
+        "move": "clinch_rib_fold"
+      }
+    },
+    {
+      "frames": 7,
+      "A": {
+        "move": "two_hand_clinch_shove"
+      },
+      "B": {
+        "move": "shoved_back_react"
+      }
+    },
+    {
+      "frames": 7,
+      "A": {
+        "move": "body_elbow_tuck"
+      },
+      "B": {
+        "overlaps_move": "slip_inside",
+        "move": "rear_body_straight"
+      }
+    },
+    {
+      "frames": 12,
+      "is_hero": true,
+      "A": {
+        "overlaps_move": "slip_inside",
+        "move": "spinning_back_kick"
+      },
+      "B": {
+        "move": "torso_fold_rib_hit"
+      }
+    }
+  ]
+}

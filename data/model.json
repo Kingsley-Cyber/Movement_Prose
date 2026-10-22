@@ -1,0 +1,81 @@
+{
+  "version": "block-1",
+  "classification": "CANON",
+  "probability_label": "Uncalibrated model-derived probability",
+  "weights": {
+    "mentality_mentality": 0.3,
+    "stance_stance": 0.16,
+    "hands_target": 0.07,
+    "defense_target": 0.07,
+    "defense_kicking": 0.07,
+    "stance_kicking": 0.07,
+    "tie_tie": 0.16,
+    "tie_stance": 0.1
+  },
+  "weight_rationale": "Mentality is largest, stance and tie next; cross tie\u2013stance follows. Remaining matrices individually smaller. Values are explicitly authored dimension weighting required by the specification.",
+  "slot_logit_per_net_slot": 0.15,
+  "null_logit_per_reachable_seam": 0.2,
+  "formula": "logit_A = sum(normalized_weight * signed_matrix_edge) + 0.15*(slots_A-slots_B) + 0.20*(exploitable_NULLs_B-exploitable_NULLs_A); P_A = sigmoid(logit_A).",
+  "rulesets": {
+    "mma": {
+      "dimensions": [
+        "hands",
+        "defense",
+        "stance",
+        "tie",
+        "target",
+        "kicking",
+        "mentality"
+      ],
+      "legal_kinds": [
+        "movement",
+        "defense",
+        "feint",
+        "punch",
+        "kick",
+        "knee",
+        "grip",
+        "takedown",
+        "control",
+        "submission"
+      ],
+      "environment": "cage"
+    },
+    "boxing": {
+      "dimensions": [
+        "hands",
+        "defense",
+        "stance",
+        "target",
+        "mentality"
+      ],
+      "legal_kinds": [
+        "movement",
+        "defense",
+        "feint",
+        "punch"
+      ],
+      "environment": "ring"
+    }
+  },
+  "range_order": [
+    "clinch",
+    "close",
+    "punch",
+    "kick",
+    "outside"
+  ],
+  "range_distance_m": {
+    "clinch": 0.45,
+    "close": 0.7,
+    "punch": 1.05,
+    "kick": 1.65,
+    "outside": 2.4
+  },
+  "geometry_authority": "Authored staging distances for a semantic scene, not physical reach estimates. Range transitions follow adjacent bins.",
+  "arena_half_width_m": 3.0,
+  "wall_near_m": 0.5,
+  "damage_unit": "One authored contact mark, not physiological damage.",
+  "outcome_policy": "Requested duration is a condensed CANON exhibition. Resolution uses demonstrated contact/control in the selected path, not an official commission score.",
+  "adaptation_policy": "For the specific entry or leg exposure only, multiply susceptibility by boxing readiness / MMA readiness. This is an authored sensitivity rule, not a physical success rate. It does not sum ratings or treat them as overall power."
+}

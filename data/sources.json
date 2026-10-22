@@ -1,0 +1,85 @@
+{
+  "version": "block-1",
+  "sources": [
+    {
+      "id": "eb_drills",
+      "title": "England Boxing shadow boxing drills, week six",
+      "publisher": "England Boxing / Talent Pathway coaches",
+      "url": "https://www.englandboxing.org/news_articles/england-boxing-shadow-boxing-drills-week-six/",
+      "access_date": "2026-10-22",
+      "applicable_claim": "Stance changes, angle exits, range and tempo changes are coached training tasks.",
+      "evidence_limitations": "Instructional drills do not quantify competitive advantage.",
+      "access_method": "Exa search and direct primary-page read"
+    },
+    {
+      "id": "usaw",
+      "title": "USA Wrestling Core Curriculum",
+      "publisher": "USA Wrestling",
+      "url": "https://www.usawmembership.com/usa_wrestling_core_curriculum",
+      "access_date": "2026-10-22",
+      "applicable_claim": "Curriculum includes elevation before penetration, double/single legs, sprawl, ties and rides.",
+      "evidence_limitations": "A technique listing is not an MMA success estimate.",
+      "access_method": "Exa search and direct primary-page read"
+    },
+    {
+      "id": "ijf_trip",
+      "title": "Ko-soto-gari",
+      "publisher": "International Judo Federation",
+      "url": "https://judo.ijf.org/techniques/ko-soto-gari",
+      "access_date": "2026-10-22",
+      "applicable_claim": "Small outer reap follows rearward unbalancing of the opponent.",
+      "evidence_limitations": "No-gi and cage adaptations are BLOCK inferences.",
+      "access_method": "Exa search and direct primary-page read"
+    },
+    {
+      "id": "evolve_counters",
+      "title": "3 Muay Thai Counters You Need To Know",
+      "publisher": "Evolve MMA",
+      "url": "https://evolve-mma.com/blog/3-muay-thai-counters-you-need-to-know/",
+      "access_date": "2026-10-22",
+      "applicable_claim": "Check-to-teep, parry-to-knee and teep counter sequences are instructed.",
+      "evidence_limitations": "Coaching examples establish possible counters, not guaranteed combinations.",
+      "access_method": "Exa search and direct primary-page read"
+    },
+    {
+      "id": "abc_mma",
+      "title": "Unified Rules of MMA, August 2026",
+      "publisher": "Association of Boxing Commissions",
+      "url": "https://www.abcboxing.com/wp-content/uploads/2026/08/Unified-Rules-of-MMA-8.2026.pdf",
+      "access_date": "2026-10-22",
+      "applicable_claim": "Grounded head kicks/knees, groin attacks, fence grabbing and eye pokes are fouls.",
+      "evidence_limitations": "Jurisdiction adoption varies; the engine uses a restricted legal technique subset.",
+      "access_method": "Exa search and direct primary-page read"
+    },
+    {
+      "id": "abc_boxing",
+      "title": "Unified Boxing Rules",
+      "publisher": "Association of Boxing Commissions",
+      "url": "https://www.abcboxing.com/unified-rules-boxing/",
+      "access_date": "2026-10-22",
+      "applicable_claim": "Published boxing bout, knockdown and stoppage rules.",
+      "evidence_limitations": "The short BLOCK vignette is not an official sanctioned boxing bout.",
+      "access_method": "Exa search and direct primary-page read"
+    },
+    {
+      "id": "green_52",
+      "title": "The fifty-two hand blocks re-framed: the rehabilitation of a vernacular martial art",
+      "publisher": "Thomas A. Green / Martial Arts Studies",
+      "url": "https://mas.cardiffuniversitypress.org/articles/10.18573/j.2016.10062",
+      "access_date": "2026-10-22",
+      "applicable_claim": "Research documents 52s as African-American vernacular fighting practice and heritage reframing.",
+      "evidence_limitations": "Cultural documentation does not verify a universal technique taxonomy or lineage.",
+      "access_method": "Exa search and direct primary-page read"
+    },
+    {
+      "id": "lyte_52",
+      "title": "What is 52 Blocks Boxing?",
+      "publisher": "Lyte Burly",
+      "url": "https://lyteburly.com/",
+      "access_date": "2026-10-22",
+      "applicable_claim": "A contemporary practitioner describes defensive blocks and feints.",
+      "evidence_limitations": "Self-description; lineage and efficacy claims are unverified. Page also contains unrelated injected promotional links, excluded from evidence.",
+      "access_method": "Exa search and direct primary-page read"
+    }
+  ]
+}

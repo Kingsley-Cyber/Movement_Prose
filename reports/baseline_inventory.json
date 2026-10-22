@@ -1,0 +1,30 @@
+{
+  "workspace": "/Users/king/Documents/Codex/2026-10-22/g",
+  "inspection": [
+    "ls -la",
+    "rg --files",
+    "git status --short",
+    "skill inventory.py --repo ."
+  ],
+  "files_found": 0,
+  "git_repository": false,
+  "existing_and_valid": [],
+  "existing_but_incomplete": [],
+  "existing_but_invalid": [],
+  "missing": [
+    "combat ontology",
+    "fighter cards",
+    "matchup matrices",
+    "source registry",
+    "prediction",
+    "backfill",
+    "fight planning",
+    "event graph",
+    "choreography",
+    "prompt compiler",
+    "validation"
+  ],
+  "conflicting": [],
+  "unverifiable": [],
+  "baseline_validation": "No project, tests, or executable components exist. System python lacks pytest; isolated project environment will supply pytest and jsonschema."
+}

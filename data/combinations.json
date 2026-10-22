@@ -1,0 +1,86 @@
+{
+  "version": "block-1",
+  "combinations": [
+    {
+      "id": "combo.jab.parry",
+      "from": "jab",
+      "to": "parry",
+      "mechanism": "An opponent may redirect the probe.",
+      "success": "possible, never guaranteed",
+      "requires_recovery": true,
+      "classification": "CANON"
+    },
+    {
+      "id": "combo.parry.pivot",
+      "from": "parry",
+      "to": "pivot",
+      "mechanism": "A parry can buy an angle exit.",
+      "success": "possible, never guaranteed",
+      "requires_recovery": true,
+      "classification": "CANON"
+    },
+    {
+      "id": "combo.pivot.low_kick",
+      "from": "pivot",
+      "to": "low_kick",
+      "mechanism": "A recovered pivot can expose the opponent lead leg.",
+      "success": "possible, never guaranteed",
+      "requires_recovery": true,
+      "classification": "CANON"
+    },
+    {
+      "id": "combo.feint.double_leg",
+      "from": "feint",
+      "to": "double_leg",
+      "mechanism": "A high reaction can precede an elevation change.",
+      "success": "possible, never guaranteed",
+      "requires_recovery": true,
+      "classification": "CANON"
+    },
+    {
+      "id": "combo.double_leg.ride",
+      "from": "double_leg",
+      "to": "ride",
+      "mechanism": "A completed takedown creates top control.",
+      "success": "possible, never guaranteed",
+      "requires_recovery": true,
+      "classification": "CANON"
+    },
+    {
+      "id": "combo.body_lock.outside_trip",
+      "from": "body_lock",
+      "to": "outside_trip",
+      "mechanism": "A stabilized body lock can load the support leg.",
+      "success": "possible, never guaranteed",
+      "requires_recovery": true,
+      "classification": "CANON"
+    },
+    {
+      "id": "combo.guard_pull.armbar",
+      "from": "guard_pull",
+      "to": "armbar",
+      "mechanism": "Bottom guard can allow arm isolation.",
+      "success": "possible, never guaranteed",
+      "requires_recovery": true,
+      "classification": "CANON"
+    },
+    {
+      "id": "combo.shield_frame.cage_plum",
+      "from": "shield_frame",
+      "to": "cage_plum",
+      "mechanism": "Only the explicit conditional wall gate unlocks Maleek training.",
+      "success": "possible, never guaranteed",
+      "requires_recovery": true,
+      "classification": "CANON"
+    },
+    {
+      "id": "combo.wall_tie.wall_punch",
+      "from": "wall_tie",
+      "to": "wall_punch",
+      "mechanism": "Single-arm control leaves a free fist.",
+      "success": "possible, never guaranteed",
+      "requires_recovery": true,
+      "classification": "CANON"
+    }
+  ]
+}

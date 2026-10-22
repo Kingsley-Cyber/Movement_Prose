@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "time": {
+      "type": "number",
+      "minimum": 0
+    },
+    "round": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "phase": {
+      "type": "string",
+      "minLength": 1
+    },
+    "range": {
+      "enum": [
+        "outside",
+        "kick",
+        "punch",
+        "close",
+        "clinch",
+        "ground"
+      ]
+    },
+    "actors": {
+      "type": "object",
+      "minProperties": 2,
+      "maxProperties": 2,
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "position",
+          "facing",
+          "orientation",
+          "stance",
+          "guard",
+          "posture",
+          "foot_support",
+          "balance",
+          "momentum",
+          "damage",
+          "fatigue",
+          "grip",
+          "wall_proximity",
+          "tactical_initiative",
+          "active_vulnerabilities",
+          "available_responses",
+          "injuries",
+          "temporary_advantages",
+          "activated_abilities",
+          "setups",
+          "pending",
+          "contact_marks",
+          "control_marks"
+        ],
+        "properties": {
+          "position": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "facing": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "orientation": {
+            "enum": [
+              "orthodox",
+              "southpaw"
+            ]
+          },
+          "stance": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "guard": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "posture": {
+            "enum": [
+              "standing",
+              "ground"
+            ]
+          },
+          "foot_support": {
+            "type": "string",
+            "minLength": 1
+          },
+          "balance": {
+            "type": "string",
+            "minLength": 1
+          },
+          "momentum": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "damage": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "fatigue": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "grip": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "wall_proximity": {
+            "type": "string",
+            "minLength": 1
+          },
+          "tactical_initiative": {
+            "type": "boolean"
+          },
+          "active_vulnerabilities": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "available_responses": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "injuries": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "temporary_advantages": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "activated_abilities": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "setups": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "pending": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "contact_marks": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "control_marks": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "observed": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "resolved_winner": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "finished": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "time",
+    "round",
+    "phase",
+    "range",
+    "actors",
+    "observed",
+    "resolved_winner",
+    "finished"
+  ],
+  "additionalProperties": false
+}

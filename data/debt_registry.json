@@ -1,0 +1,3004 @@
+{
+  "version": "block-1",
+  "debts": [
+    {
+      "id": "debt.hands.high_guard.body",
+      "option_id": "hands.high_guard",
+      "opening": "body",
+      "mechanical_tradeoff": "Raised elbows and a covered gaze concede torso access and information.",
+      "exploiters": [
+        "hands.cross_arm",
+        "stance.bladed",
+        "stance.planted",
+        "target.body_puncher",
+        "target.liver_ribs",
+        "target.knee_clincher",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.karate",
+        "kicking.wrestler_teep",
+        "mentality.slugger",
+        "mentality.boxer_puncher"
+      ],
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.hands.high_guard.vision",
+      "option_id": "hands.high_guard",
+      "opening": "vision",
+      "mechanical_tradeoff": "Raised elbows and a covered gaze concede torso access and information.",
+      "exploiters": [
+        "hands.kronk",
+        "stance.upright",
+        "stance.shuffle",
+        "target.head_hunter",
+        "target.liver_ribs",
+        "mentality.showman"
+      ],
+      "technique_ids": [
+        "jab"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.hands.philly_shell.head_hook",
+      "option_id": "hands.philly_shell",
+      "opening": "head_hook",
+      "mechanical_tradeoff": "The low lead hand and bladed torso require accurate reads against hooks and level changes.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.peekaboo",
+        "hands.cross_arm",
+        "hands.helmet",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.smother",
+        "tie.wall_boxing",
+        "target.head_hunter",
+        "target.mixer",
+        "kicking.dutch",
+        "mentality.slugger",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.hands.philly_shell.entry",
+      "option_id": "hands.philly_shell",
+      "opening": "entry",
+      "mechanical_tradeoff": "The low lead hand and bladed torso require accurate reads against hooks and level changes.",
+      "exploiters": [
+        "hands.long_guard",
+        "defense.sprawl_pummel",
+        "stance.crouch",
+        "stance.balanced",
+        "tie.freestyle",
+        "tie.anti_grappling",
+        "kicking.karate",
+        "kicking.wrestler_teep"
+      ],
+      "technique_ids": [
+        "double_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.hands.peekaboo.leg",
+      "option_id": "hands.peekaboo",
+      "opening": "leg",
+      "mechanical_tradeoff": "Forward loading narrows vision and leaves a low-kick target while closing.",
+      "exploiters": [
+        "defense.check_frame",
+        "stance.upright",
+        "stance.balanced",
+        "target.leg_chopper",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.dutch",
+        "kicking.sanda"
+      ],
+      "technique_ids": [
+        "low_kick"
+      ],
+      "required_range": "kick",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.hands.peekaboo.vision",
+      "option_id": "hands.peekaboo",
+      "opening": "vision",
+      "mechanical_tradeoff": "Forward loading narrows vision and leaves a low-kick target while closing.",
+      "exploiters": [
+        "hands.kronk",
+        "stance.upright",
+        "stance.shuffle",
+        "target.head_hunter",
+        "target.liver_ribs",
+        "mentality.showman"
+      ],
+      "technique_ids": [
+        "jab"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.hands.cross_arm.head_uppercut",
+      "option_id": "hands.cross_arm",
+      "opening": "head_uppercut",
+      "mechanical_tradeoff": "Uncrossing delays the return and leaves a rising center channel.",
+      "exploiters": [
+        "hands.helmet",
+        "tie.thai_plum"
+      ],
+      "technique_ids": [
+        "uppercut"
+      ],
+      "required_range": "close",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.hands.cross_arm.recovery",
+      "option_id": "hands.cross_arm",
+      "opening": "recovery",
+      "mechanical_tradeoff": "Uncrossing delays the return and leaves a rising center channel.",
+      "exploiters": [
+        "hands.philly_shell",
+        "hands.hands_down",
+        "defense.parry_catch",
+        "defense.shoulder_roll",
+        "stance.planted",
+        "target.body_puncher",
+        "kicking.none",
+        "mentality.outboxer",
+        "mentality.counter",
+        "mentality.boxer_puncher",
+        "mentality.spoiler",
+        "mentality.slickster",
+        "mentality.technician"
+      ],
+      "technique_ids": [
+        "cross"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.hands.long_guard.clinch",
+      "option_id": "hands.long_guard",
+      "opening": "clinch",
+      "mechanical_tradeoff": "The reaching arm can be redirected into a tie or a body opening.",
+      "exploiters": [
+        "defense.check_frame",
+        "defense.sprawl_pummel",
+        "tie.thai_plum",
+        "tie.greco",
+        "tie.bjj",
+        "tie.anti_grappling",
+        "target.knee_clincher"
+      ],
+      "technique_ids": [
+        "collar_tie"
+      ],
+      "required_range": "clinch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.hands.long_guard.body",
+      "option_id": "hands.long_guard",
+      "opening": "body",
+      "mechanical_tradeoff": "The reaching arm can be redirected into a tie or a body opening.",
+      "exploiters": [
+        "hands.cross_arm",
+        "stance.bladed",
+        "stance.planted",
+        "target.body_puncher",
+        "target.liver_ribs",
+        "target.knee_clincher",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.karate",
+        "kicking.wrestler_teep",
+        "mentality.slugger",
+        "mentality.boxer_puncher"
+      ],
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.hands.helmet.body",
+      "option_id": "hands.helmet",
+      "opening": "body",
+      "mechanical_tradeoff": "Sealing both sides sacrifices torso coverage and vision.",
+      "exploiters": [
+        "hands.cross_arm",
+        "stance.bladed",
+        "stance.planted",
+        "target.body_puncher",
+        "target.liver_ribs",
+        "target.knee_clincher",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.karate",
+        "kicking.wrestler_teep",
+        "mentality.slugger",
+        "mentality.boxer_puncher"
+      ],
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.hands.helmet.vision",
+      "option_id": "hands.helmet",
+      "opening": "vision",
+      "mechanical_tradeoff": "Sealing both sides sacrifices torso coverage and vision.",
+      "exploiters": [
+        "hands.kronk",
+        "stance.upright",
+        "stance.shuffle",
+        "target.head_hunter",
+        "target.liver_ribs",
+        "mentality.showman"
+      ],
+      "technique_ids": [
+        "jab"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.hands.shield52.body",
+      "option_id": "hands.shield52",
+      "opening": "body",
+      "mechanical_tradeoff": "Crossing forearms can lose the torso lane and inside grip position.",
+      "exploiters": [
+        "hands.cross_arm",
+        "stance.bladed",
+        "stance.planted",
+        "target.body_puncher",
+        "target.liver_ribs",
+        "target.knee_clincher",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.karate",
+        "kicking.wrestler_teep",
+        "mentality.slugger",
+        "mentality.boxer_puncher"
+      ],
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.hands.shield52.clinch",
+      "option_id": "hands.shield52",
+      "opening": "clinch",
+      "mechanical_tradeoff": "Crossing forearms can lose the torso lane and inside grip position.",
+      "exploiters": [
+        "defense.check_frame",
+        "defense.sprawl_pummel",
+        "tie.thai_plum",
+        "tie.greco",
+        "tie.bjj",
+        "tie.anti_grappling",
+        "target.knee_clincher"
+      ],
+      "technique_ids": [
+        "collar_tie"
+      ],
+      "required_range": "clinch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.hands.hands_down.head_straight",
+      "option_id": "hands.hands_down",
+      "opening": "head_straight",
+      "mechanical_tradeoff": "An unprotected head depends on timely footwork rather than a sealed guard.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.philly_shell",
+        "hands.peekaboo",
+        "hands.long_guard",
+        "hands.shield52",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.parry_catch",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.shoulder_roll",
+        "defense.smother",
+        "stance.bladed",
+        "stance.crouch",
+        "target.head_hunter",
+        "mentality.counter",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "jab"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.hands.hands_down.head_hook",
+      "option_id": "hands.hands_down",
+      "opening": "head_hook",
+      "mechanical_tradeoff": "An unprotected head depends on timely footwork rather than a sealed guard.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.peekaboo",
+        "hands.cross_arm",
+        "hands.helmet",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.smother",
+        "tie.wall_boxing",
+        "target.head_hunter",
+        "target.mixer",
+        "kicking.dutch",
+        "mentality.slugger",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.hands.kronk.head_hook",
+      "option_id": "hands.kronk",
+      "opening": "head_hook",
+      "mechanical_tradeoff": "The extended low lead exposes hooks and committed entries.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.peekaboo",
+        "hands.cross_arm",
+        "hands.helmet",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.smother",
+        "tie.wall_boxing",
+        "target.head_hunter",
+        "target.mixer",
+        "kicking.dutch",
+        "mentality.slugger",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.hands.kronk.entry",
+      "option_id": "hands.kronk",
+      "opening": "entry",
+      "mechanical_tradeoff": "The extended low lead exposes hooks and committed entries.",
+      "exploiters": [
+        "hands.long_guard",
+        "defense.sprawl_pummel",
+        "stance.crouch",
+        "stance.balanced",
+        "tie.freestyle",
+        "tie.anti_grappling",
+        "kicking.karate",
+        "kicking.wrestler_teep"
+      ],
+      "technique_ids": [
+        "double_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.hands.dutch_guard.entry",
+      "option_id": "hands.dutch_guard",
+      "opening": "entry",
+      "mechanical_tradeoff": "A square planted exchange makes level changes and body attacks accessible.",
+      "exploiters": [
+        "hands.long_guard",
+        "defense.sprawl_pummel",
+        "stance.crouch",
+        "stance.balanced",
+        "tie.freestyle",
+        "tie.anti_grappling",
+        "kicking.karate",
+        "kicking.wrestler_teep"
+      ],
+      "technique_ids": [
+        "double_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.hands.dutch_guard.body",
+      "option_id": "hands.dutch_guard",
+      "opening": "body",
+      "mechanical_tradeoff": "A square planted exchange makes level changes and body attacks accessible.",
+      "exploiters": [
+        "hands.cross_arm",
+        "stance.bladed",
+        "stance.planted",
+        "target.body_puncher",
+        "target.liver_ribs",
+        "target.knee_clincher",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.karate",
+        "kicking.wrestler_teep",
+        "mentality.slugger",
+        "mentality.boxer_puncher"
+      ],
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.defense.slip_roll.head_uppercut",
+      "option_id": "defense.slip_roll",
+      "opening": "head_uppercut",
+      "mechanical_tradeoff": "Deep dips can enter a rising strike or clinch and delay a kick check.",
+      "exploiters": [
+        "hands.helmet",
+        "tie.thai_plum"
+      ],
+      "technique_ids": [
+        "uppercut"
+      ],
+      "required_range": "close",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.defense.slip_roll.clinch",
+      "option_id": "defense.slip_roll",
+      "opening": "clinch",
+      "mechanical_tradeoff": "Deep dips can enter a rising strike or clinch and delay a kick check.",
+      "exploiters": [
+        "defense.check_frame",
+        "defense.sprawl_pummel",
+        "tie.thai_plum",
+        "tie.greco",
+        "tie.bjj",
+        "tie.anti_grappling",
+        "target.knee_clincher"
+      ],
+      "technique_ids": [
+        "collar_tie"
+      ],
+      "required_range": "clinch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.defense.slip_roll.leg",
+      "option_id": "defense.slip_roll",
+      "opening": "leg",
+      "mechanical_tradeoff": "Deep dips can enter a rising strike or clinch and delay a kick check.",
+      "exploiters": [
+        "defense.check_frame",
+        "stance.upright",
+        "stance.balanced",
+        "target.leg_chopper",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.dutch",
+        "kicking.sanda"
+      ],
+      "technique_ids": [
+        "low_kick"
+      ],
+      "required_range": "kick",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.defense.parry_catch.head_hook",
+      "option_id": "defense.parry_catch",
+      "opening": "head_hook",
+      "mechanical_tradeoff": "Hand attention can be drawn away from hooks and torso changes.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.peekaboo",
+        "hands.cross_arm",
+        "hands.helmet",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.smother",
+        "tie.wall_boxing",
+        "target.head_hunter",
+        "target.mixer",
+        "kicking.dutch",
+        "mentality.slugger",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.defense.parry_catch.body",
+      "option_id": "defense.parry_catch",
+      "opening": "body",
+      "mechanical_tradeoff": "Hand attention can be drawn away from hooks and torso changes.",
+      "exploiters": [
+        "hands.cross_arm",
+        "stance.bladed",
+        "stance.planted",
+        "target.body_puncher",
+        "target.liver_ribs",
+        "target.knee_clincher",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.karate",
+        "kicking.wrestler_teep",
+        "mentality.slugger",
+        "mentality.boxer_puncher"
+      ],
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.defense.block_absorb.body",
+      "option_id": "defense.block_absorb",
+      "opening": "body",
+      "mechanical_tradeoff": "Static coverage gives up vision and accumulates body pressure.",
+      "exploiters": [
+        "hands.cross_arm",
+        "stance.bladed",
+        "stance.planted",
+        "target.body_puncher",
+        "target.liver_ribs",
+        "target.knee_clincher",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.karate",
+        "kicking.wrestler_teep",
+        "mentality.slugger",
+        "mentality.boxer_puncher"
+      ],
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.defense.block_absorb.vision",
+      "option_id": "defense.block_absorb",
+      "opening": "vision",
+      "mechanical_tradeoff": "Static coverage gives up vision and accumulates body pressure.",
+      "exploiters": [
+        "hands.kronk",
+        "stance.upright",
+        "stance.shuffle",
+        "target.head_hunter",
+        "target.liver_ribs",
+        "mentality.showman"
+      ],
+      "technique_ids": [
+        "jab"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.defense.outfight.wall",
+      "option_id": "defense.outfight",
+      "opening": "wall",
+      "mechanical_tradeoff": "Retreat eventually meets the wall and resets have a readable tempo.",
+      "exploiters": [
+        "tie.greco",
+        "tie.folk_ride",
+        "tie.judo_sambo",
+        "tie.wall_boxing",
+        "mentality.swarmer",
+        "mentality.pressure"
+      ],
+      "technique_ids": [
+        "body_lock"
+      ],
+      "required_range": "clinch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.defense.outfight.tempo",
+      "option_id": "defense.outfight",
+      "opening": "tempo",
+      "mechanical_tradeoff": "Retreat eventually meets the wall and resets have a readable tempo.",
+      "exploiters": [
+        "hands.hands_down",
+        "hands.kronk",
+        "stance.switch",
+        "mentality.swarmer",
+        "mentality.switch_hitter",
+        "mentality.pressure",
+        "mentality.spoiler",
+        "mentality.slickster",
+        "mentality.showman"
+      ],
+      "technique_ids": [
+        "feint"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.defense.shoulder_roll.leg",
+      "option_id": "defense.shoulder_roll",
+      "opening": "leg",
+      "mechanical_tradeoff": "The roll does not cover the lead leg or both hooking directions.",
+      "exploiters": [
+        "defense.check_frame",
+        "stance.upright",
+        "stance.balanced",
+        "target.leg_chopper",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.dutch",
+        "kicking.sanda"
+      ],
+      "technique_ids": [
+        "low_kick"
+      ],
+      "required_range": "kick",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.defense.shoulder_roll.head_hook",
+      "option_id": "defense.shoulder_roll",
+      "opening": "head_hook",
+      "mechanical_tradeoff": "The roll does not cover the lead leg or both hooking directions.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.peekaboo",
+        "hands.cross_arm",
+        "hands.helmet",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.smother",
+        "tie.wall_boxing",
+        "target.head_hunter",
+        "target.mixer",
+        "kicking.dutch",
+        "mentality.slugger",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.defense.smother.clinch",
+      "option_id": "defense.smother",
+      "opening": "clinch",
+      "mechanical_tradeoff": "Voluntary attachment gives inside ties and takedowns a starting connection.",
+      "exploiters": [
+        "defense.check_frame",
+        "defense.sprawl_pummel",
+        "tie.thai_plum",
+        "tie.greco",
+        "tie.bjj",
+        "tie.anti_grappling",
+        "target.knee_clincher"
+      ],
+      "technique_ids": [
+        "collar_tie"
+      ],
+      "required_range": "clinch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.defense.smother.entry",
+      "option_id": "defense.smother",
+      "opening": "entry",
+      "mechanical_tradeoff": "Voluntary attachment gives inside ties and takedowns a starting connection.",
+      "exploiters": [
+        "hands.long_guard",
+        "defense.sprawl_pummel",
+        "stance.crouch",
+        "stance.balanced",
+        "tie.freestyle",
+        "tie.anti_grappling",
+        "kicking.karate",
+        "kicking.wrestler_teep"
+      ],
+      "technique_ids": [
+        "double_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.defense.check_frame.single_support",
+      "option_id": "defense.check_frame",
+      "opening": "single_support",
+      "mechanical_tradeoff": "Lifting one leg exposes support and framing can reveal a torso lane.",
+      "exploiters": [
+        "tie.freestyle",
+        "tie.judo_sambo",
+        "kicking.none",
+        "kicking.sanda"
+      ],
+      "technique_ids": [
+        "single_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.defense.check_frame.body",
+      "option_id": "defense.check_frame",
+      "opening": "body",
+      "mechanical_tradeoff": "Lifting one leg exposes support and framing can reveal a torso lane.",
+      "exploiters": [
+        "hands.cross_arm",
+        "stance.bladed",
+        "stance.planted",
+        "target.body_puncher",
+        "target.liver_ribs",
+        "target.knee_clincher",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.karate",
+        "kicking.wrestler_teep",
+        "mentality.slugger",
+        "mentality.boxer_puncher"
+      ],
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.defense.sprawl_pummel.head_straight",
+      "option_id": "defense.sprawl_pummel",
+      "opening": "head_straight",
+      "mechanical_tradeoff": "Commitment to hip defense reduces head coverage and long-range initiative.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.philly_shell",
+        "hands.peekaboo",
+        "hands.long_guard",
+        "hands.shield52",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.parry_catch",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.shoulder_roll",
+        "defense.smother",
+        "stance.bladed",
+        "stance.crouch",
+        "target.head_hunter",
+        "mentality.counter",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "jab"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.defense.sprawl_pummel.tempo",
+      "option_id": "defense.sprawl_pummel",
+      "opening": "tempo",
+      "mechanical_tradeoff": "Commitment to hip defense reduces head coverage and long-range initiative.",
+      "exploiters": [
+        "hands.hands_down",
+        "hands.kronk",
+        "stance.switch",
+        "mentality.swarmer",
+        "mentality.switch_hitter",
+        "mentality.pressure",
+        "mentality.spoiler",
+        "mentality.slickster",
+        "mentality.showman"
+      ],
+      "technique_ids": [
+        "feint"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.stance.upright.entry",
+      "option_id": "stance.upright",
+      "opening": "entry",
+      "mechanical_tradeoff": "A high center offers body-lock access and straight body lanes.",
+      "exploiters": [
+        "hands.long_guard",
+        "defense.sprawl_pummel",
+        "stance.crouch",
+        "stance.balanced",
+        "tie.freestyle",
+        "tie.anti_grappling",
+        "kicking.karate",
+        "kicking.wrestler_teep"
+      ],
+      "technique_ids": [
+        "double_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.stance.upright.body",
+      "option_id": "stance.upright",
+      "opening": "body",
+      "mechanical_tradeoff": "A high center offers body-lock access and straight body lanes.",
+      "exploiters": [
+        "hands.cross_arm",
+        "stance.bladed",
+        "stance.planted",
+        "target.body_puncher",
+        "target.liver_ribs",
+        "target.knee_clincher",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.karate",
+        "kicking.wrestler_teep",
+        "mentality.slugger",
+        "mentality.boxer_puncher"
+      ],
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.stance.bladed.leg",
+      "option_id": "stance.bladed",
+      "opening": "leg",
+      "mechanical_tradeoff": "The lead leg stays exposed and squared hip defense takes time.",
+      "exploiters": [
+        "defense.check_frame",
+        "stance.upright",
+        "stance.balanced",
+        "target.leg_chopper",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.dutch",
+        "kicking.sanda"
+      ],
+      "technique_ids": [
+        "low_kick"
+      ],
+      "required_range": "kick",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.stance.bladed.entry",
+      "option_id": "stance.bladed",
+      "opening": "entry",
+      "mechanical_tradeoff": "The lead leg stays exposed and squared hip defense takes time.",
+      "exploiters": [
+        "hands.long_guard",
+        "defense.sprawl_pummel",
+        "stance.crouch",
+        "stance.balanced",
+        "tie.freestyle",
+        "tie.anti_grappling",
+        "kicking.karate",
+        "kicking.wrestler_teep"
+      ],
+      "technique_ids": [
+        "double_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.stance.crouch.leg",
+      "option_id": "stance.crouch",
+      "opening": "leg",
+      "mechanical_tradeoff": "Front loading slows leg withdrawal and invites rising strikes.",
+      "exploiters": [
+        "defense.check_frame",
+        "stance.upright",
+        "stance.balanced",
+        "target.leg_chopper",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.dutch",
+        "kicking.sanda"
+      ],
+      "technique_ids": [
+        "low_kick"
+      ],
+      "required_range": "kick",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.stance.crouch.head_uppercut",
+      "option_id": "stance.crouch",
+      "opening": "head_uppercut",
+      "mechanical_tradeoff": "Front loading slows leg withdrawal and invites rising strikes.",
+      "exploiters": [
+        "hands.helmet",
+        "tie.thai_plum"
+      ],
+      "technique_ids": [
+        "uppercut"
+      ],
+      "required_range": "close",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.stance.balanced.tempo",
+      "option_id": "stance.balanced",
+      "opening": "tempo",
+      "mechanical_tradeoff": "Splitting readiness sacrifices specialized burst timing and long reach.",
+      "exploiters": [
+        "hands.hands_down",
+        "hands.kronk",
+        "stance.switch",
+        "mentality.swarmer",
+        "mentality.switch_hitter",
+        "mentality.pressure",
+        "mentality.spoiler",
+        "mentality.slickster",
+        "mentality.showman"
+      ],
+      "technique_ids": [
+        "feint"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.stance.balanced.head_straight",
+      "option_id": "stance.balanced",
+      "opening": "head_straight",
+      "mechanical_tradeoff": "Splitting readiness sacrifices specialized burst timing and long reach.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.philly_shell",
+        "hands.peekaboo",
+        "hands.long_guard",
+        "hands.shield52",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.parry_catch",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.shoulder_roll",
+        "defense.smother",
+        "stance.bladed",
+        "stance.crouch",
+        "target.head_hunter",
+        "mentality.counter",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "jab"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.stance.planted.angle",
+      "option_id": "stance.planted",
+      "opening": "angle",
+      "mechanical_tradeoff": "Rooting slows the pivot and lead-leg escape.",
+      "exploiters": [
+        "hands.shield52",
+        "stance.switch",
+        "stance.shuffle",
+        "target.leg_chopper",
+        "mentality.outboxer",
+        "mentality.switch_hitter",
+        "mentality.technician"
+      ],
+      "technique_ids": [
+        "pivot"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.stance.planted.leg",
+      "option_id": "stance.planted",
+      "opening": "leg",
+      "mechanical_tradeoff": "Rooting slows the pivot and lead-leg escape.",
+      "exploiters": [
+        "defense.check_frame",
+        "stance.upright",
+        "stance.balanced",
+        "target.leg_chopper",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.dutch",
+        "kicking.sanda"
+      ],
+      "technique_ids": [
+        "low_kick"
+      ],
+      "required_range": "kick",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.stance.switch.entry",
+      "option_id": "stance.switch",
+      "opening": "entry",
+      "mechanical_tradeoff": "The crossing changeover briefly exposes entry and balance.",
+      "exploiters": [
+        "hands.long_guard",
+        "defense.sprawl_pummel",
+        "stance.crouch",
+        "stance.balanced",
+        "tie.freestyle",
+        "tie.anti_grappling",
+        "kicking.karate",
+        "kicking.wrestler_teep"
+      ],
+      "technique_ids": [
+        "double_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.stance.switch.single_support",
+      "option_id": "stance.switch",
+      "opening": "single_support",
+      "mechanical_tradeoff": "The crossing changeover briefly exposes entry and balance.",
+      "exploiters": [
+        "tie.freestyle",
+        "tie.judo_sambo",
+        "kicking.none",
+        "kicking.sanda"
+      ],
+      "technique_ids": [
+        "single_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.stance.shuffle.single_support",
+      "option_id": "stance.shuffle",
+      "opening": "single_support",
+      "mechanical_tradeoff": "Bouncing lifts support and can make the reset predictable.",
+      "exploiters": [
+        "tie.freestyle",
+        "tie.judo_sambo",
+        "kicking.none",
+        "kicking.sanda"
+      ],
+      "technique_ids": [
+        "single_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.stance.shuffle.tempo",
+      "option_id": "stance.shuffle",
+      "opening": "tempo",
+      "mechanical_tradeoff": "Bouncing lifts support and can make the reset predictable.",
+      "exploiters": [
+        "hands.hands_down",
+        "hands.kronk",
+        "stance.switch",
+        "mentality.swarmer",
+        "mentality.switch_hitter",
+        "mentality.pressure",
+        "mentality.spoiler",
+        "mentality.slickster",
+        "mentality.showman"
+      ],
+      "technique_ids": [
+        "feint"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.tie.thai_plum.entry",
+      "option_id": "tie.thai_plum",
+      "opening": "entry",
+      "mechanical_tradeoff": "Reaching high leaves hip attachment and level changes underneath.",
+      "exploiters": [
+        "hands.long_guard",
+        "defense.sprawl_pummel",
+        "stance.crouch",
+        "stance.balanced",
+        "tie.freestyle",
+        "tie.anti_grappling",
+        "kicking.karate",
+        "kicking.wrestler_teep"
+      ],
+      "technique_ids": [
+        "double_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.tie.thai_plum.body",
+      "option_id": "tie.thai_plum",
+      "opening": "body",
+      "mechanical_tradeoff": "Reaching high leaves hip attachment and level changes underneath.",
+      "exploiters": [
+        "hands.cross_arm",
+        "stance.bladed",
+        "stance.planted",
+        "target.body_puncher",
+        "target.liver_ribs",
+        "target.knee_clincher",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.karate",
+        "kicking.wrestler_teep",
+        "mentality.slugger",
+        "mentality.boxer_puncher"
+      ],
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.tie.greco.head_hook",
+      "option_id": "tie.greco",
+      "opening": "head_hook",
+      "mechanical_tradeoff": "Closing both arms around the trunk gives up head coverage and ground submission awareness.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.peekaboo",
+        "hands.cross_arm",
+        "hands.helmet",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.smother",
+        "tie.wall_boxing",
+        "target.head_hunter",
+        "target.mixer",
+        "kicking.dutch",
+        "mentality.slugger",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.tie.greco.ground",
+      "option_id": "tie.greco",
+      "opening": "ground",
+      "mechanical_tradeoff": "Closing both arms around the trunk gives up head coverage and ground submission awareness.",
+      "exploiters": [
+        "tie.folk_ride",
+        "tie.bjj"
+      ],
+      "technique_ids": [
+        "ride"
+      ],
+      "required_range": "ground",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.tie.folk_ride.clinch",
+      "option_id": "tie.folk_ride",
+      "opening": "clinch",
+      "mechanical_tradeoff": "Chasing a ride can leave the neck and standing entry unprotected.",
+      "exploiters": [
+        "defense.check_frame",
+        "defense.sprawl_pummel",
+        "tie.thai_plum",
+        "tie.greco",
+        "tie.bjj",
+        "tie.anti_grappling",
+        "target.knee_clincher"
+      ],
+      "technique_ids": [
+        "collar_tie"
+      ],
+      "required_range": "clinch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.tie.folk_ride.head_straight",
+      "option_id": "tie.folk_ride",
+      "opening": "head_straight",
+      "mechanical_tradeoff": "Chasing a ride can leave the neck and standing entry unprotected.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.philly_shell",
+        "hands.peekaboo",
+        "hands.long_guard",
+        "hands.shield52",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.parry_catch",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.shoulder_roll",
+        "defense.smother",
+        "stance.bladed",
+        "stance.crouch",
+        "target.head_hunter",
+        "mentality.counter",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "jab"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.tie.freestyle.head_uppercut",
+      "option_id": "tie.freestyle",
+      "opening": "head_uppercut",
+      "mechanical_tradeoff": "A failed shot leaves a recovering head line and inside-tie exposure.",
+      "exploiters": [
+        "hands.helmet",
+        "tie.thai_plum"
+      ],
+      "technique_ids": [
+        "uppercut"
+      ],
+      "required_range": "close",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.tie.freestyle.clinch",
+      "option_id": "tie.freestyle",
+      "opening": "clinch",
+      "mechanical_tradeoff": "A failed shot leaves a recovering head line and inside-tie exposure.",
+      "exploiters": [
+        "defense.check_frame",
+        "defense.sprawl_pummel",
+        "tie.thai_plum",
+        "tie.greco",
+        "tie.bjj",
+        "tie.anti_grappling",
+        "target.knee_clincher"
+      ],
+      "technique_ids": [
+        "collar_tie"
+      ],
+      "required_range": "clinch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.tie.judo_sambo.tempo",
+      "option_id": "tie.judo_sambo",
+      "opening": "tempo",
+      "mechanical_tradeoff": "Seeking a throwing connection concedes long-range initiative and the back if the turn fails.",
+      "exploiters": [
+        "hands.hands_down",
+        "hands.kronk",
+        "stance.switch",
+        "mentality.swarmer",
+        "mentality.switch_hitter",
+        "mentality.pressure",
+        "mentality.spoiler",
+        "mentality.slickster",
+        "mentality.showman"
+      ],
+      "technique_ids": [
+        "feint"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.tie.judo_sambo.ground",
+      "option_id": "tie.judo_sambo",
+      "opening": "ground",
+      "mechanical_tradeoff": "Seeking a throwing connection concedes long-range initiative and the back if the turn fails.",
+      "exploiters": [
+        "tie.folk_ride",
+        "tie.bjj"
+      ],
+      "technique_ids": [
+        "ride"
+      ],
+      "required_range": "ground",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.tie.bjj.head_straight",
+      "option_id": "tie.bjj",
+      "opening": "head_straight",
+      "mechanical_tradeoff": "Accepting the floor concedes standing range and top-strike initiative.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.philly_shell",
+        "hands.peekaboo",
+        "hands.long_guard",
+        "hands.shield52",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.parry_catch",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.shoulder_roll",
+        "defense.smother",
+        "stance.bladed",
+        "stance.crouch",
+        "target.head_hunter",
+        "mentality.counter",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "jab"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.tie.bjj.wall",
+      "option_id": "tie.bjj",
+      "opening": "wall",
+      "mechanical_tradeoff": "Accepting the floor concedes standing range and top-strike initiative.",
+      "exploiters": [
+        "tie.greco",
+        "tie.folk_ride",
+        "tie.judo_sambo",
+        "tie.wall_boxing",
+        "mentality.swarmer",
+        "mentality.pressure"
+      ],
+      "technique_ids": [
+        "body_lock"
+      ],
+      "required_range": "clinch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.tie.wall_boxing.entry",
+      "option_id": "tie.wall_boxing",
+      "opening": "entry",
+      "mechanical_tradeoff": "Wall commitment makes hips reachable and ties up the exit hand.",
+      "exploiters": [
+        "hands.long_guard",
+        "defense.sprawl_pummel",
+        "stance.crouch",
+        "stance.balanced",
+        "tie.freestyle",
+        "tie.anti_grappling",
+        "kicking.karate",
+        "kicking.wrestler_teep"
+      ],
+      "technique_ids": [
+        "double_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.tie.wall_boxing.body",
+      "option_id": "tie.wall_boxing",
+      "opening": "body",
+      "mechanical_tradeoff": "Wall commitment makes hips reachable and ties up the exit hand.",
+      "exploiters": [
+        "hands.cross_arm",
+        "stance.bladed",
+        "stance.planted",
+        "target.body_puncher",
+        "target.liver_ribs",
+        "target.knee_clincher",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.karate",
+        "kicking.wrestler_teep",
+        "mentality.slugger",
+        "mentality.boxer_puncher"
+      ],
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.tie.anti_grappling.tempo",
+      "option_id": "tie.anti_grappling",
+      "opening": "tempo",
+      "mechanical_tradeoff": "A disengagement priority cedes initiative during the exit reset.",
+      "exploiters": [
+        "hands.hands_down",
+        "hands.kronk",
+        "stance.switch",
+        "mentality.swarmer",
+        "mentality.switch_hitter",
+        "mentality.pressure",
+        "mentality.spoiler",
+        "mentality.slickster",
+        "mentality.showman"
+      ],
+      "technique_ids": [
+        "feint"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.tie.anti_grappling.head_straight",
+      "option_id": "tie.anti_grappling",
+      "opening": "head_straight",
+      "mechanical_tradeoff": "A disengagement priority cedes initiative during the exit reset.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.philly_shell",
+        "hands.peekaboo",
+        "hands.long_guard",
+        "hands.shield52",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.parry_catch",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.shoulder_roll",
+        "defense.smother",
+        "stance.bladed",
+        "stance.crouch",
+        "target.head_hunter",
+        "mentality.counter",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "jab"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.target.head_hunter.body",
+      "option_id": "target.head_hunter",
+      "opening": "body",
+      "mechanical_tradeoff": "Head fixation leaves torso and level-change defenses late.",
+      "exploiters": [
+        "hands.cross_arm",
+        "stance.bladed",
+        "stance.planted",
+        "target.body_puncher",
+        "target.liver_ribs",
+        "target.knee_clincher",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.karate",
+        "kicking.wrestler_teep",
+        "mentality.slugger",
+        "mentality.boxer_puncher"
+      ],
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.target.head_hunter.entry",
+      "option_id": "target.head_hunter",
+      "opening": "entry",
+      "mechanical_tradeoff": "Head fixation leaves torso and level-change defenses late.",
+      "exploiters": [
+        "hands.long_guard",
+        "defense.sprawl_pummel",
+        "stance.crouch",
+        "stance.balanced",
+        "tie.freestyle",
+        "tie.anti_grappling",
+        "kicking.karate",
+        "kicking.wrestler_teep"
+      ],
+      "technique_ids": [
+        "double_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.target.body_puncher.head_uppercut",
+      "option_id": "target.body_puncher",
+      "opening": "head_uppercut",
+      "mechanical_tradeoff": "Lower targeting requires entering a rising counter lane.",
+      "exploiters": [
+        "hands.helmet",
+        "tie.thai_plum"
+      ],
+      "technique_ids": [
+        "uppercut"
+      ],
+      "required_range": "close",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.target.body_puncher.head_straight",
+      "option_id": "target.body_puncher",
+      "opening": "head_straight",
+      "mechanical_tradeoff": "Lower targeting requires entering a rising counter lane.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.philly_shell",
+        "hands.peekaboo",
+        "hands.long_guard",
+        "hands.shield52",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.parry_catch",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.shoulder_roll",
+        "defense.smother",
+        "stance.bladed",
+        "stance.crouch",
+        "target.head_hunter",
+        "mentality.counter",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "jab"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.target.leg_chopper.single_support",
+      "option_id": "target.leg_chopper",
+      "opening": "single_support",
+      "mechanical_tradeoff": "Kicking commits one support leg and delays hand recovery.",
+      "exploiters": [
+        "tie.freestyle",
+        "tie.judo_sambo",
+        "kicking.none",
+        "kicking.sanda"
+      ],
+      "technique_ids": [
+        "single_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.target.leg_chopper.head_straight",
+      "option_id": "target.leg_chopper",
+      "opening": "head_straight",
+      "mechanical_tradeoff": "Kicking commits one support leg and delays hand recovery.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.philly_shell",
+        "hands.peekaboo",
+        "hands.long_guard",
+        "hands.shield52",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.parry_catch",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.shoulder_roll",
+        "defense.smother",
+        "stance.bladed",
+        "stance.crouch",
+        "target.head_hunter",
+        "mentality.counter",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "jab"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.target.liver_ribs.tempo",
+      "option_id": "target.liver_ribs",
+      "opening": "tempo",
+      "mechanical_tradeoff": "Seeking a specific side makes the entry and reset readable.",
+      "exploiters": [
+        "hands.hands_down",
+        "hands.kronk",
+        "stance.switch",
+        "mentality.swarmer",
+        "mentality.switch_hitter",
+        "mentality.pressure",
+        "mentality.spoiler",
+        "mentality.slickster",
+        "mentality.showman"
+      ],
+      "technique_ids": [
+        "feint"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.target.liver_ribs.head_hook",
+      "option_id": "target.liver_ribs",
+      "opening": "head_hook",
+      "mechanical_tradeoff": "Seeking a specific side makes the entry and reset readable.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.peekaboo",
+        "hands.cross_arm",
+        "hands.helmet",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.smother",
+        "tie.wall_boxing",
+        "target.head_hunter",
+        "target.mixer",
+        "kicking.dutch",
+        "mentality.slugger",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.target.knee_clincher.entry",
+      "option_id": "target.knee_clincher",
+      "opening": "entry",
+      "mechanical_tradeoff": "Tying the head leaves the hips available underneath.",
+      "exploiters": [
+        "hands.long_guard",
+        "defense.sprawl_pummel",
+        "stance.crouch",
+        "stance.balanced",
+        "tie.freestyle",
+        "tie.anti_grappling",
+        "kicking.karate",
+        "kicking.wrestler_teep"
+      ],
+      "technique_ids": [
+        "double_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.target.knee_clincher.head_straight",
+      "option_id": "target.knee_clincher",
+      "opening": "head_straight",
+      "mechanical_tradeoff": "Tying the head leaves the hips available underneath.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.philly_shell",
+        "hands.peekaboo",
+        "hands.long_guard",
+        "hands.shield52",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.parry_catch",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.shoulder_roll",
+        "defense.smother",
+        "stance.bladed",
+        "stance.crouch",
+        "target.head_hunter",
+        "mentality.counter",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "jab"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.target.mixer.recovery",
+      "option_id": "target.mixer",
+      "opening": "recovery",
+      "mechanical_tradeoff": "Changing targets demands resets that can be timed.",
+      "exploiters": [
+        "hands.philly_shell",
+        "hands.hands_down",
+        "defense.parry_catch",
+        "defense.shoulder_roll",
+        "stance.planted",
+        "target.body_puncher",
+        "kicking.none",
+        "mentality.outboxer",
+        "mentality.counter",
+        "mentality.boxer_puncher",
+        "mentality.spoiler",
+        "mentality.slickster",
+        "mentality.technician"
+      ],
+      "technique_ids": [
+        "cross"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.target.mixer.tempo",
+      "option_id": "target.mixer",
+      "opening": "tempo",
+      "mechanical_tradeoff": "Changing targets demands resets that can be timed.",
+      "exploiters": [
+        "hands.hands_down",
+        "hands.kronk",
+        "stance.switch",
+        "mentality.swarmer",
+        "mentality.switch_hitter",
+        "mentality.pressure",
+        "mentality.spoiler",
+        "mentality.slickster",
+        "mentality.showman"
+      ],
+      "technique_ids": [
+        "feint"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.kicking.none.leg",
+      "option_id": "kicking.none",
+      "opening": "leg",
+      "mechanical_tradeoff": "Punch-only reach concedes the lead leg and outside distance.",
+      "exploiters": [
+        "defense.check_frame",
+        "stance.upright",
+        "stance.balanced",
+        "target.leg_chopper",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.dutch",
+        "kicking.sanda"
+      ],
+      "technique_ids": [
+        "low_kick"
+      ],
+      "required_range": "kick",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.kicking.none.body",
+      "option_id": "kicking.none",
+      "opening": "body",
+      "mechanical_tradeoff": "Punch-only reach concedes the lead leg and outside distance.",
+      "exploiters": [
+        "hands.cross_arm",
+        "stance.bladed",
+        "stance.planted",
+        "target.body_puncher",
+        "target.liver_ribs",
+        "target.knee_clincher",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.karate",
+        "kicking.wrestler_teep",
+        "mentality.slugger",
+        "mentality.boxer_puncher"
+      ],
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.kicking.muay_thai.entry",
+      "option_id": "kicking.muay_thai",
+      "opening": "entry",
+      "mechanical_tradeoff": "Committed hip rotation and one-leg support invite entries.",
+      "exploiters": [
+        "hands.long_guard",
+        "defense.sprawl_pummel",
+        "stance.crouch",
+        "stance.balanced",
+        "tie.freestyle",
+        "tie.anti_grappling",
+        "kicking.karate",
+        "kicking.wrestler_teep"
+      ],
+      "technique_ids": [
+        "double_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.kicking.muay_thai.single_support",
+      "option_id": "kicking.muay_thai",
+      "opening": "single_support",
+      "mechanical_tradeoff": "Committed hip rotation and one-leg support invite entries.",
+      "exploiters": [
+        "tie.freestyle",
+        "tie.judo_sambo",
+        "kicking.none",
+        "kicking.sanda"
+      ],
+      "technique_ids": [
+        "single_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.kicking.dutch.entry",
+      "option_id": "kicking.dutch",
+      "opening": "entry",
+      "mechanical_tradeoff": "The final kick and square punching reset expose the hips.",
+      "exploiters": [
+        "hands.long_guard",
+        "defense.sprawl_pummel",
+        "stance.crouch",
+        "stance.balanced",
+        "tie.freestyle",
+        "tie.anti_grappling",
+        "kicking.karate",
+        "kicking.wrestler_teep"
+      ],
+      "technique_ids": [
+        "double_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.kicking.dutch.recovery",
+      "option_id": "kicking.dutch",
+      "opening": "recovery",
+      "mechanical_tradeoff": "The final kick and square punching reset expose the hips.",
+      "exploiters": [
+        "hands.philly_shell",
+        "hands.hands_down",
+        "defense.parry_catch",
+        "defense.shoulder_roll",
+        "stance.planted",
+        "target.body_puncher",
+        "kicking.none",
+        "mentality.outboxer",
+        "mentality.counter",
+        "mentality.boxer_puncher",
+        "mentality.spoiler",
+        "mentality.slickster",
+        "mentality.technician"
+      ],
+      "technique_ids": [
+        "cross"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.kicking.karate.single_support",
+      "option_id": "kicking.karate",
+      "opening": "single_support",
+      "mechanical_tradeoff": "Blading and an extended kick expose support to capture.",
+      "exploiters": [
+        "tie.freestyle",
+        "tie.judo_sambo",
+        "kicking.none",
+        "kicking.sanda"
+      ],
+      "technique_ids": [
+        "single_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.kicking.karate.leg",
+      "option_id": "kicking.karate",
+      "opening": "leg",
+      "mechanical_tradeoff": "Blading and an extended kick expose support to capture.",
+      "exploiters": [
+        "defense.check_frame",
+        "stance.upright",
+        "stance.balanced",
+        "target.leg_chopper",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.dutch",
+        "kicking.sanda"
+      ],
+      "technique_ids": [
+        "low_kick"
+      ],
+      "required_range": "kick",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.kicking.sanda.head_straight",
+      "option_id": "kicking.sanda",
+      "opening": "head_straight",
+      "mechanical_tradeoff": "Closing for a catch exposes the head and a failed sweep reset.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.philly_shell",
+        "hands.peekaboo",
+        "hands.long_guard",
+        "hands.shield52",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.parry_catch",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.shoulder_roll",
+        "defense.smother",
+        "stance.bladed",
+        "stance.crouch",
+        "target.head_hunter",
+        "mentality.counter",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "jab"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.kicking.sanda.recovery",
+      "option_id": "kicking.sanda",
+      "opening": "recovery",
+      "mechanical_tradeoff": "Closing for a catch exposes the head and a failed sweep reset.",
+      "exploiters": [
+        "hands.philly_shell",
+        "hands.hands_down",
+        "defense.parry_catch",
+        "defense.shoulder_roll",
+        "stance.planted",
+        "target.body_puncher",
+        "kicking.none",
+        "mentality.outboxer",
+        "mentality.counter",
+        "mentality.boxer_puncher",
+        "mentality.spoiler",
+        "mentality.slickster",
+        "mentality.technician"
+      ],
+      "technique_ids": [
+        "cross"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.kicking.wrestler_teep.angle",
+      "option_id": "kicking.wrestler_teep",
+      "opening": "angle",
+      "mechanical_tradeoff": "A modest kick repertoire concedes lateral and low-line variety.",
+      "exploiters": [
+        "hands.shield52",
+        "stance.switch",
+        "stance.shuffle",
+        "target.leg_chopper",
+        "mentality.outboxer",
+        "mentality.switch_hitter",
+        "mentality.technician"
+      ],
+      "technique_ids": [
+        "pivot"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.kicking.wrestler_teep.leg",
+      "option_id": "kicking.wrestler_teep",
+      "opening": "leg",
+      "mechanical_tradeoff": "A modest kick repertoire concedes lateral and low-line variety.",
+      "exploiters": [
+        "defense.check_frame",
+        "stance.upright",
+        "stance.balanced",
+        "target.leg_chopper",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.dutch",
+        "kicking.sanda"
+      ],
+      "technique_ids": [
+        "low_kick"
+      ],
+      "required_range": "kick",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.outboxer.wall",
+      "option_id": "mentality.outboxer",
+      "opening": "wall",
+      "mechanical_tradeoff": "Retreat and a deliberate reset invite pressure at the boundary.",
+      "exploiters": [
+        "tie.greco",
+        "tie.folk_ride",
+        "tie.judo_sambo",
+        "tie.wall_boxing",
+        "mentality.swarmer",
+        "mentality.pressure"
+      ],
+      "technique_ids": [
+        "body_lock"
+      ],
+      "required_range": "clinch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.outboxer.tempo",
+      "option_id": "mentality.outboxer",
+      "opening": "tempo",
+      "mechanical_tradeoff": "Retreat and a deliberate reset invite pressure at the boundary.",
+      "exploiters": [
+        "hands.hands_down",
+        "hands.kronk",
+        "stance.switch",
+        "mentality.swarmer",
+        "mentality.switch_hitter",
+        "mentality.pressure",
+        "mentality.spoiler",
+        "mentality.slickster",
+        "mentality.showman"
+      ],
+      "technique_ids": [
+        "feint"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.swarmer.body",
+      "option_id": "mentality.swarmer",
+      "opening": "body",
+      "mechanical_tradeoff": "Chasing forward opens body counters and lateral exits.",
+      "exploiters": [
+        "hands.cross_arm",
+        "stance.bladed",
+        "stance.planted",
+        "target.body_puncher",
+        "target.liver_ribs",
+        "target.knee_clincher",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.karate",
+        "kicking.wrestler_teep",
+        "mentality.slugger",
+        "mentality.boxer_puncher"
+      ],
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.swarmer.angle",
+      "option_id": "mentality.swarmer",
+      "opening": "angle",
+      "mechanical_tradeoff": "Chasing forward opens body counters and lateral exits.",
+      "exploiters": [
+        "hands.shield52",
+        "stance.switch",
+        "stance.shuffle",
+        "target.leg_chopper",
+        "mentality.outboxer",
+        "mentality.switch_hitter",
+        "mentality.technician"
+      ],
+      "technique_ids": [
+        "pivot"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.counter.tempo",
+      "option_id": "mentality.counter",
+      "opening": "tempo",
+      "mechanical_tradeoff": "Low initiative leaves ground for feints and repeated pressure.",
+      "exploiters": [
+        "hands.hands_down",
+        "hands.kronk",
+        "stance.switch",
+        "mentality.swarmer",
+        "mentality.switch_hitter",
+        "mentality.pressure",
+        "mentality.spoiler",
+        "mentality.slickster",
+        "mentality.showman"
+      ],
+      "technique_ids": [
+        "feint"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.counter.wall",
+      "option_id": "mentality.counter",
+      "opening": "wall",
+      "mechanical_tradeoff": "Low initiative leaves ground for feints and repeated pressure.",
+      "exploiters": [
+        "tie.greco",
+        "tie.folk_ride",
+        "tie.judo_sambo",
+        "tie.wall_boxing",
+        "mentality.swarmer",
+        "mentality.pressure"
+      ],
+      "technique_ids": [
+        "body_lock"
+      ],
+      "required_range": "clinch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.slugger.angle",
+      "option_id": "mentality.slugger",
+      "opening": "angle",
+      "mechanical_tradeoff": "Planting and loading power is trackable from an angle.",
+      "exploiters": [
+        "hands.shield52",
+        "stance.switch",
+        "stance.shuffle",
+        "target.leg_chopper",
+        "mentality.outboxer",
+        "mentality.switch_hitter",
+        "mentality.technician"
+      ],
+      "technique_ids": [
+        "pivot"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.slugger.recovery",
+      "option_id": "mentality.slugger",
+      "opening": "recovery",
+      "mechanical_tradeoff": "Planting and loading power is trackable from an angle.",
+      "exploiters": [
+        "hands.philly_shell",
+        "hands.hands_down",
+        "defense.parry_catch",
+        "defense.shoulder_roll",
+        "stance.planted",
+        "target.body_puncher",
+        "kicking.none",
+        "mentality.outboxer",
+        "mentality.counter",
+        "mentality.boxer_puncher",
+        "mentality.spoiler",
+        "mentality.slickster",
+        "mentality.technician"
+      ],
+      "technique_ids": [
+        "cross"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.boxer_puncher.tempo",
+      "option_id": "mentality.boxer_puncher",
+      "opening": "tempo",
+      "mechanical_tradeoff": "Switching between patience and pursuit creates a readable reset.",
+      "exploiters": [
+        "hands.hands_down",
+        "hands.kronk",
+        "stance.switch",
+        "mentality.swarmer",
+        "mentality.switch_hitter",
+        "mentality.pressure",
+        "mentality.spoiler",
+        "mentality.slickster",
+        "mentality.showman"
+      ],
+      "technique_ids": [
+        "feint"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.boxer_puncher.entry",
+      "option_id": "mentality.boxer_puncher",
+      "opening": "entry",
+      "mechanical_tradeoff": "Switching between patience and pursuit creates a readable reset.",
+      "exploiters": [
+        "hands.long_guard",
+        "defense.sprawl_pummel",
+        "stance.crouch",
+        "stance.balanced",
+        "tie.freestyle",
+        "tie.anti_grappling",
+        "kicking.karate",
+        "kicking.wrestler_teep"
+      ],
+      "technique_ids": [
+        "double_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.switch_hitter.entry",
+      "option_id": "mentality.switch_hitter",
+      "opening": "entry",
+      "mechanical_tradeoff": "The stance transition briefly cedes support and entry protection.",
+      "exploiters": [
+        "hands.long_guard",
+        "defense.sprawl_pummel",
+        "stance.crouch",
+        "stance.balanced",
+        "tie.freestyle",
+        "tie.anti_grappling",
+        "kicking.karate",
+        "kicking.wrestler_teep"
+      ],
+      "technique_ids": [
+        "double_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.switch_hitter.single_support",
+      "option_id": "mentality.switch_hitter",
+      "opening": "single_support",
+      "mechanical_tradeoff": "The stance transition briefly cedes support and entry protection.",
+      "exploiters": [
+        "tie.freestyle",
+        "tie.judo_sambo",
+        "kicking.none",
+        "kicking.sanda"
+      ],
+      "technique_ids": [
+        "single_leg"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.defensive.tempo",
+      "option_id": "mentality.defensive",
+      "opening": "tempo",
+      "mechanical_tradeoff": "A low-output shell gives the opponent time to change level and target.",
+      "exploiters": [
+        "hands.hands_down",
+        "hands.kronk",
+        "stance.switch",
+        "mentality.swarmer",
+        "mentality.switch_hitter",
+        "mentality.pressure",
+        "mentality.spoiler",
+        "mentality.slickster",
+        "mentality.showman"
+      ],
+      "technique_ids": [
+        "feint"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.defensive.body",
+      "option_id": "mentality.defensive",
+      "opening": "body",
+      "mechanical_tradeoff": "A low-output shell gives the opponent time to change level and target.",
+      "exploiters": [
+        "hands.cross_arm",
+        "stance.bladed",
+        "stance.planted",
+        "target.body_puncher",
+        "target.liver_ribs",
+        "target.knee_clincher",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.karate",
+        "kicking.wrestler_teep",
+        "mentality.slugger",
+        "mentality.boxer_puncher"
+      ],
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.pressure.angle",
+      "option_id": "mentality.pressure",
+      "opening": "angle",
+      "mechanical_tradeoff": "A tracking entry can lose a new angle and expose the torso.",
+      "exploiters": [
+        "hands.shield52",
+        "stance.switch",
+        "stance.shuffle",
+        "target.leg_chopper",
+        "mentality.outboxer",
+        "mentality.switch_hitter",
+        "mentality.technician"
+      ],
+      "technique_ids": [
+        "pivot"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.pressure.body",
+      "option_id": "mentality.pressure",
+      "opening": "body",
+      "mechanical_tradeoff": "A tracking entry can lose a new angle and expose the torso.",
+      "exploiters": [
+        "hands.cross_arm",
+        "stance.bladed",
+        "stance.planted",
+        "target.body_puncher",
+        "target.liver_ribs",
+        "target.knee_clincher",
+        "target.mixer",
+        "kicking.muay_thai",
+        "kicking.karate",
+        "kicking.wrestler_teep",
+        "mentality.slugger",
+        "mentality.boxer_puncher"
+      ],
+      "technique_ids": [
+        "body_hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.spoiler.head_straight",
+      "option_id": "mentality.spoiler",
+      "opening": "head_straight",
+      "mechanical_tradeoff": "Seeking disruption gives up outside scoring and risks inside ties.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.philly_shell",
+        "hands.peekaboo",
+        "hands.long_guard",
+        "hands.shield52",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.parry_catch",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.shoulder_roll",
+        "defense.smother",
+        "stance.bladed",
+        "stance.crouch",
+        "target.head_hunter",
+        "mentality.counter",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "jab"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.spoiler.clinch",
+      "option_id": "mentality.spoiler",
+      "opening": "clinch",
+      "mechanical_tradeoff": "Seeking disruption gives up outside scoring and risks inside ties.",
+      "exploiters": [
+        "defense.check_frame",
+        "defense.sprawl_pummel",
+        "tie.thai_plum",
+        "tie.greco",
+        "tie.bjj",
+        "tie.anti_grappling",
+        "target.knee_clincher"
+      ],
+      "technique_ids": [
+        "collar_tie"
+      ],
+      "required_range": "clinch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.slickster.wall",
+      "option_id": "mentality.slickster",
+      "opening": "wall",
+      "mechanical_tradeoff": "Extended evasion can end at the wall with the head unprotected.",
+      "exploiters": [
+        "tie.greco",
+        "tie.folk_ride",
+        "tie.judo_sambo",
+        "tie.wall_boxing",
+        "mentality.swarmer",
+        "mentality.pressure"
+      ],
+      "technique_ids": [
+        "body_lock"
+      ],
+      "required_range": "clinch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.slickster.head_straight",
+      "option_id": "mentality.slickster",
+      "opening": "head_straight",
+      "mechanical_tradeoff": "Extended evasion can end at the wall with the head unprotected.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.philly_shell",
+        "hands.peekaboo",
+        "hands.long_guard",
+        "hands.shield52",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.parry_catch",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.shoulder_roll",
+        "defense.smother",
+        "stance.bladed",
+        "stance.crouch",
+        "target.head_hunter",
+        "mentality.counter",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "jab"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.showman.head_straight",
+      "option_id": "mentality.showman",
+      "opening": "head_straight",
+      "mechanical_tradeoff": "Performing with a low guard concedes head lines and attention.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.philly_shell",
+        "hands.peekaboo",
+        "hands.long_guard",
+        "hands.shield52",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.parry_catch",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.shoulder_roll",
+        "defense.smother",
+        "stance.bladed",
+        "stance.crouch",
+        "target.head_hunter",
+        "mentality.counter",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "jab"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.showman.head_hook",
+      "option_id": "mentality.showman",
+      "opening": "head_hook",
+      "mechanical_tradeoff": "Performing with a low guard concedes head lines and attention.",
+      "exploiters": [
+        "hands.high_guard",
+        "hands.peekaboo",
+        "hands.cross_arm",
+        "hands.helmet",
+        "hands.dutch_guard",
+        "defense.slip_roll",
+        "defense.block_absorb",
+        "defense.outfight",
+        "defense.smother",
+        "tie.wall_boxing",
+        "target.head_hunter",
+        "target.mixer",
+        "kicking.dutch",
+        "mentality.slugger",
+        "mentality.defensive"
+      ],
+      "technique_ids": [
+        "hook"
+      ],
+      "required_range": "punch",
+      "ruleset": [
+        "boxing",
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.technician.clinch",
+      "option_id": "mentality.technician",
+      "opening": "clinch",
+      "mechanical_tradeoff": "Deliberate reads can be crowded by short repeated pressure.",
+      "exploiters": [
+        "defense.check_frame",
+        "defense.sprawl_pummel",
+        "tie.thai_plum",
+        "tie.greco",
+        "tie.bjj",
+        "tie.anti_grappling",
+        "target.knee_clincher"
+      ],
+      "technique_ids": [
+        "collar_tie"
+      ],
+      "required_range": "clinch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    },
+    {
+      "id": "debt.mentality.technician.wall",
+      "option_id": "mentality.technician",
+      "opening": "wall",
+      "mechanical_tradeoff": "Deliberate reads can be crowded by short repeated pressure.",
+      "exploiters": [
+        "tie.greco",
+        "tie.folk_ride",
+        "tie.judo_sambo",
+        "tie.wall_boxing",
+        "mentality.swarmer",
+        "mentality.pressure"
+      ],
+      "technique_ids": [
+        "body_lock"
+      ],
+      "required_range": "clinch",
+      "ruleset": [
+        "mma"
+      ],
+      "classification": "CANON"
+    }
+  ]
+}

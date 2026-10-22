@@ -1,7 +1,7 @@
 # AGENTS.md — Deterministic Onboarding & Standard Operating Procedure
 
-Welcome to **Movement_Prose** (`SAKUGA-MLLM-3.1-CAUSAL` & 2-Layer Unrolled Fluid Stack).
-Read this file **first** before reading, editing, linting, or generating any prompt in this repository.
+Welcome to **Movement_Prose** (`SAKUGA-MLLM-3.1-CAUSAL`, 2-Layer Unrolled Fluid Stack, & **BLOCK Fight Engine**).
+Read this file **first** before reading, editing, linting, planning, or generating any fight plan or prompt in this repository.
 
 ---
 
@@ -9,21 +9,36 @@ Read this file **first** before reading, editing, linting, or generating any pro
 
 ```text
 Movement_Prose/
-├── AGENTS.md                                                  # 👈 START HERE: Deterministic agent onboarding & 25-Decision index
-├── README.md                                                  # Project overview & CLI quick-start
+├── AGENTS.md                                                  # 👈 START HERE: Deterministic agent onboarding, BLOCK & 25-Decision index
+├── README.md                                                  # Unified setup, architecture, BLOCK model & CLI quick-start
 ├── SKILL.md                                                   # Antigravity / Claude Skill instructions (mirrored to ~/.gemini/config/skills/sakuga-fight-director)
+├── pyproject.toml / requirements.txt                          # Package definition (`engine`, `fight_move_system`, `scripts`) & pinned deps
+├── predict.py                                                 # 🥋 BLOCK CLI: Deterministic, uncalibrated matchup probability prediction
+├── plan_fight.py                                              # 🥋 BLOCK CLI: Seeded/director-controlled fight planning, shotlist, prompts & `--movement-prose`
+├── cards/                                                     # 🥋 11 BLOCK Fighter Identity Cards (`maleek`, `donnell`, `wrestler`, `macklin`, `detroit`, `philly`, etc.)
+├── data/                                                      # 📊 Authoritative BLOCK Canon (`engine_index`, `matchups`, `model`, `counter_graph`, `debt_registry`, `techniques`, `combinations`, `pipeline`, `sources`, `claims`)
+├── schemas/                                                   # 📐 Versioned BLOCK JSON Schemas (`fighter_card`, `fight_plan`, `fight_state`, `event`, `event_graph`, `shot`)
+├── engine/                                                    # ⚙️ BLOCK Fight Engine Core (`ontology`, `audit`, `capabilities`, `matchups`, `probability`, `fight_director`, `fight_state`, `event_graph`, `choreography`, `prompt_compiler`)
+├── resources/recovery.json                                    # Frozen BLOCK recovery bundle (restores only BLOCK-owned content; preserves authored values)
+├── reports/                                                   # BLOCK audit, backfill, provenance, implementation decisions & `execution_evidence.json`
+├── outputs/example_fights/                                    # Generated BLOCK + Movement_Prose fight packages (`maleek_vs_donnell`, `two_slot_upset`, `prediction.json`)
 ├── docs/
+│   ├── model.md                                               # Exact BLOCK matchup calculation, logistic formula, state contract & research boundary
+│   ├── llm_reasoning_guide.md                                 # Manual LLM retrieval/calculation sequence & worked trace tables
 │   ├── FIGHT_MOVE_SYSTEM_PLAN.md                              # 🚀 v2 Master Architecture & Execution Plan (Move Lexicon, State Machine, Dyad Coupling, Wording Compiler)
 │   ├── TWO_LAYER_FLUID_STACK_ARCHITECTURE.md                  # Deep-dive: Mode 1 (Single-Layer JSON) vs Mode 2 (--stack 2-Layer Fluid Stack)
 │   └── VARIATIONS_AND_FIGHTING_STYLES.md                      # Deep-dive: Decisions 21-25, Entity Fighting Styles & Variations vs Golden Baseline
 ├── scripts/
+│   ├── regress.py                                             # ✅ Single end-to-end acceptance workflow runner (`reports/execution_evidence.json`)
+│   ├── audit_coverage.py / validate_data.py                   # Independent BLOCK 511-cell ontology, card, handler & provenance coverage audit
+│   ├── backfill.py                                            # Deterministic, idempotent BLOCK missing-record recovery & conflict reporter
 │   ├── sakuga_compiler.py                                     # 🔒 Original 05:34 (e91c686) Deterministic CLI Compiler & 17-Rule Physics Linter (SHA256 Locked)
 │   ├── sakuga_original_kb.py                                  # 🔒 Dedicated 05:34 SAKUGA-MLLM-3.1-CAUSAL + Pre-Intent Knowledge Base Compiler Path
 │   └── twelvelabs_bridge.py                                   # TwelveLabs Pegasus 1.2 Bridge (Mode A: Reference Extractor, Mode B: Render QA)
 ├── templates/
 │   └── sakuga_mllm_3_1_causal_0534_template.json              # 🔒 Canonical Protected 05:34 (e91c686) Single-Layer SAKUGA-MLLM-3.1-CAUSAL Template
 ├── knowledge_base/                                            # 📚 IN-REPO KNOWLEDGE BASE (`anime_action_research_bundle` + `agent/` + `runs/002_rooftop_cage_fight`)
-├── fight_move_system/                                         # 🚀 v2 Fight Move System + Protected 05:34 Compiler (`original_causal_compiler.py`) + Pre-Intent KB Query Engine (`kb_bridge.py`) + Closed-Loop Repair (`closed_loop.py`)
+├── fight_move_system/                                         # 🚀 v2 Fight Move System + `block_bridge.py` + Protected 05:34 Compiler (`original_causal_compiler.py`) + Pre-Intent KB Query Engine (`kb_bridge.py`) + Closed-Loop Repair (`closed_loop.py`)
 ├── examples/                                                  # ✅ ORIGINAL CANONICAL GOLDEN BASELINE PROMPTS (DO NOT OVERWRITE)
 │   ├── gold_master_1_blade_exchange.json                      # Golden #1 (Mode 1 Single-Layer JSON): Kunai vs. Blade Exchange
 │   ├── gold_master_2_disarm_dual_blade.json                   # Golden #2 (Mode 1 Single-Layer JSON): Wakizashi Disarm, Aerial Catch & X-Lock
@@ -40,6 +55,7 @@ Movement_Prose/
 │       └── variation_3_eight_limbs_muay_thai_mma_war_fluid_stack.txt
 ├── references/
 │   └── sakuga_prompt_schema_sop.md                            # Complete Master SOP (Decisions 01-25)
+├── tests/                                                     # 🧪 98 Automated Tests (58 original BLOCK pytest tests + 40 Movement_Prose tests)
 └── _archive_rd_history_do_not_copy/                           # ⛔ DEPRECATED R&D ARCHIVE (Euler/Quaternion/Bloat tests — NEVER COPY FROM HERE)
 ```
 
@@ -48,6 +64,9 @@ Movement_Prose/
 2. **Keep `examples/gold_master_1..4` Distinct from `examples/variations/`**:
    - `examples/gold_master_1..4` are the **Original Canonical Golden Prompts** (ninja blade/kunai exchanges, courtyard sky-cartwheel/wall-run, and shrine bo-staff).
    - `examples/variations/` holds **Combat-Style & Biomechanical Variations** (such as `variation_1_baki_grounded_standup_war` and `variation_2_multidomain_combative_showcase`). All new fighting-style variations belong in `examples/variations/`.
+3. **Preserve Protected `05:34` (`e91c686`) Single-Layer Compiler & BLOCK Provenance Boundaries**:
+   - Never modify `scripts/sakuga_compiler.py` (`SHA256 = fdf54e5543e3ac9981878521136daafdd4086c1a1559af4673153512d433b498`).
+   - Preserve the strict distinction in BLOCK between `[VERIFIED]` source claims (`data/claims.json` + `data/sources.json`), `[CANON]` tactical/numerical rules (`data/engine_index.json`, `data/matchups.json`), uncalibrated probabilities (`engine/probability.py`), and semantic motion validation (`engine/event_graph.py`, `engine/prompt_compiler.py`).
 
 ---
 
@@ -55,7 +74,9 @@ Movement_Prose/
 
 | If the User Wants To... | Read This File First | Template / Tool to Use |
 | :--- | :--- | :--- |
-| Implement or extend the **v2 Fight Move System** (closed Move Card lexicon, Fighter/Dyad state machines, `V01–V17` validator, no-numbers/no-forbidden-names Wording Compiler, `H1–H7` render packets) | [`docs/FIGHT_MOVE_SYSTEM_PLAN.md`](docs/FIGHT_MOVE_SYSTEM_PLAN.md) | Follow Milestones `M1` $\to$ `M6` in [`docs/FIGHT_MOVE_SYSTEM_PLAN.md`](docs/FIGHT_MOVE_SYSTEM_PLAN.md) |
+| Run the **BLOCK Fight Engine** (fighter cards $\to$ uncalibrated matchup prediction $\to$ 10-phase fight plan $\to$ event graph $\to$ choreography $\to$ shotlist $\to$ prompts $\to$ Movement_Prose bridge) | [`docs/model.md`](docs/model.md) & [`docs/llm_reasoning_guide.md`](docs/llm_reasoning_guide.md) | `.venv/bin/python predict.py ...`, `.venv/bin/python plan_fight.py ... --movement-prose`, or `.venv/bin/python scripts/regress.py` |
+| Implement or extend the **v2 Fight Move System** (closed Move Card lexicon, Fighter/Dyad state machines, `V01–V22` validator, Wording Compiler, `block_bridge.py`) | [`docs/FIGHT_MOVE_SYSTEM_PLAN.md`](docs/FIGHT_MOVE_SYSTEM_PLAN.md) | Follow Milestones `M1` $\to$ `M6` in [`docs/FIGHT_MOVE_SYSTEM_PLAN.md`](docs/FIGHT_MOVE_SYSTEM_PLAN.md) |
+| Compile via the **Protected Original `05:34` (`e91c686`) `SAKUGA-MLLM-3.1-CAUSAL` Single-Layer Path** with pre-intent Knowledge Base queries | [`fight_move_system/original_causal_compiler.py`](fight_move_system/original_causal_compiler.py) | `python3 scripts/sakuga_original_kb.py compile-spec ...` or `python3 -m fight_move_system.cli compile-original ...` |
 | Generate a **grounded bare-knuckle / Baki / Kengan / UFC / boxing / kickboxing** fight (ZERO wall-runs, ZERO ground punches, ZERO aerial flip bleed) | [`docs/VARIATIONS_AND_FIGHTING_STYLES.md`](docs/VARIATIONS_AND_FIGHTING_STYLES.md) | [`examples/variations/variation_1_baki_grounded_standup_war.json`](examples/variations/variation_1_baki_grounded_standup_war.json) (`fighting_style: "grounded_striker_boxer_baki"` or `"ufc_mma_octagon"`) |
 | Generate an **acrobatic multi-domain martial arts showcase** (floor sweeps, ground up-kicks, kip-ups, jumping knees, aerial axe kicks) | [`docs/VARIATIONS_AND_FIGHTING_STYLES.md`](docs/VARIATIONS_AND_FIGHTING_STYLES.md) | [`examples/variations/variation_2_multidomain_combative_showcase.json`](examples/variations/variation_2_multidomain_combative_showcase.json) (`fighting_style: "acrobatic_multidomain_freestyle"`) |
 | Generate a **weapon / ninja / blade / bo-staff / acrobatic wall-dive** fight | [`docs/TWO_LAYER_FLUID_STACK_ARCHITECTURE.md`](docs/TWO_LAYER_FLUID_STACK_ARCHITECTURE.md) | [`examples/gold_master_2_disarm_dual_blade.json`](examples/gold_master_2_disarm_dual_blade.json), [`examples/gold_master_3_courtyard_sky_cartwheel.json`](examples/gold_master_3_courtyard_sky_cartwheel.json), or [`examples/gold_master_4_shrine_bo_staff_determinism_test.json`](examples/gold_master_4_shrine_bo_staff_determinism_test.json) |
@@ -65,7 +86,7 @@ Movement_Prose/
 
 ## 3. Master Index of All 25 Empirical Decisions (`Decisions 01–25`)
 
-Every rule below is enforced or audited by [`scripts/sakuga_compiler.py`](scripts/sakuga_compiler.py):
+Every rule below is enforced or audited by [`scripts/sakuga_compiler.py`](scripts/sakuga_compiler.py) and [`fight_move_system/scene_graph_linter.py`](fight_move_system/scene_graph_linter.py):
 
 ### Tier 1: Core Schema & Causal Physics (`Decisions 01–17` — [`references/sakuga_prompt_schema_sop.md`](references/sakuga_prompt_schema_sop.md))
 - **Decision 01 (No 10-Bone Euler Dicts):** Never put per-joint Euler angle dictionaries inside beats; use `pos`, `vel`, `axis`, `arc`, `support`, `limbs`, `pose`.
@@ -102,35 +123,42 @@ Every rule below is enforced or audited by [`scripts/sakuga_compiler.py`](script
 
 ## 4. Standard CLI Verification Workflow
 
-Always run the linter and compiler before committing or returning any prompt:
+Run the single end-to-end acceptance command or individual subsystem commands before committing:
 
 ```bash
+# 0. Single End-to-End Acceptance Command (audits BLOCK, verifies backfill, runs all 98 pytest tests, verifies KB & 05:34 lock, and builds both example fights):
+.venv/bin/python scripts/regress.py
+
 # 1. Verify Protected 05:34 (e91c686) SAKUGA-MLLM-3.1-CAUSAL Compiler Lock & Compile via Pre-Intent KB Path:
-python3 scripts/sakuga_original_kb.py verify-protection
-python3 scripts/sakuga_original_kb.py compile-spec templates/sakuga_mllm_3_1_causal_0534_template.json --taste clean
-python3 scripts/sakuga_original_kb.py compile-beatsheet fight_move_system/fixtures/pass/10_beat_boxing_exchange.json --taste nakamura
-python3 scripts/sakuga_compiler.py lint examples/gold_master_1_blade_exchange.json examples/gold_master_2_disarm_dual_blade.json
+.venv/bin/python scripts/sakuga_original_kb.py verify-protection
+.venv/bin/python scripts/sakuga_original_kb.py compile-spec templates/sakuga_mllm_3_1_causal_0534_template.json --taste clean
+.venv/bin/python scripts/sakuga_original_kb.py compile-beatsheet fight_move_system/fixtures/pass/10_beat_boxing_exchange.json --taste nakamura
+.venv/bin/python scripts/sakuga_compiler.py lint examples/gold_master_1_blade_exchange.json examples/gold_master_2_disarm_dual_blade.json
 
 # 2. Lint 25-Decision Scene Graphs (Golden #3, #4 & Variations) with the Fluid Stack Scene Graph Linter:
-python3 -m fight_move_system.scene_graph_linter lint examples/*.json examples/variations/*.json
+.venv/bin/python -m fight_move_system.scene_graph_linter lint examples/*.json examples/variations/*.json
 
 # 3. Query the in-repo Knowledge Base PRIOR to semantic intent, verify KB invariants, and compile 2-Layer `sakuga_Xperiment`:
-python3 -m fight_move_system.cli kb-verify
-python3 -m fight_move_system.cli kb-ask fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json --taste "heavy, brutal, old school" --follow 2 --discover 2
-python3 -m fight_move_system.cli compile fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json \
+.venv/bin/python -m fight_move_system.cli kb-verify
+.venv/bin/python -m fight_move_system.cli kb-ask fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json --taste "heavy, brutal, old school" --follow 2 --discover 2
+.venv/bin/python -m fight_move_system.cli compile fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json \
   --mode xperiment --schema sakuga_Xperiment \
   -o examples/variations/variation_3_eight_limbs_muay_thai_mma_war_sakuga_Xperiment.txt
-python3 -m unittest discover -s tests -v
+
+# 4. Run BLOCK Fight Engine Prediction, Fight Planning, & Movement_Prose Bridge:
+.venv/bin/python predict.py cards/maleek.json cards/donnell.json --ruleset mma --output outputs/example_fights/prediction.json
+.venv/bin/python plan_fight.py cards/maleek.json cards/donnell.json --ruleset mma --duration 60 --seed 42 --output-dir outputs/example_fights/maleek_vs_donnell --movement-prose
+.venv/bin/python plan_fight.py cards/wrestler.json cards/donnell.json --ruleset mma --duration 60 --seed 42 --output-dir outputs/example_fights/two_slot_upset --movement-prose
 ```
 
 ---
 
 ## 5. Cross-Platform Compatibility (macOS / Mac Studio, Windows, & Linux)
 
-This repository is engineered to run identically across **macOS (Mac Studio / Apple Silicon)**, **Windows (PowerShell / CMD / WSL2)**, and **Linux** using Python 3.9+ standard library (`pathlib.Path`, `sqlite3`, `json`, `hashlib`, `unittest` — zero external pip dependencies required for core compilation and Knowledge Base queries):
+This repository is engineered to run identically across **macOS (Mac Studio / Apple Silicon)**, **Windows (PowerShell / CMD / WSL2)**, and **Linux** using Python 3.9+ (`pathlib.Path`, `sqlite3`, `json`, `hashlib`, `jsonschema`, `pytest`, `unittest`):
 
 1. **Zero Hardcoded Machine Paths (`pathlib.Path` & URI Resolution):**
-   - All repository modules (`fight_move_system/`, `scripts/`, `knowledge_base/agent/`) resolve paths dynamically relative to `__file__` (`Path(__file__).resolve().parent.parent`) and use `Path.resolve().as_uri()` for read-only SQLite URI connections so Windows drive letters (`C:\...`) and POSIX paths (`/Users/...`, `/home/...`) both work out of the box.
+   - All repository modules (`engine/`, `fight_move_system/`, `scripts/`, `knowledge_base/agent/`) resolve paths dynamically relative to `__file__` and use `Path.resolve().as_uri()` for read-only SQLite URI connections so Windows drive letters (`C:\...`) and POSIX paths (`/Users/...`, `/home/...`) both work out of the box.
    - To override the Knowledge Base location on any OS, set the `ANIME_KB_BUNDLE_DIR` environment variable:
      - **macOS / Linux (`zsh` / `bash`):** `export ANIME_KB_BUNDLE_DIR="/path/to/knowledge_base"`
      - **Windows (`PowerShell`):** `$env:ANIME_KB_BUNDLE_DIR = "C:\path\to\knowledge_base"`
@@ -144,7 +172,6 @@ This repository is engineered to run identically across **macOS (Mac Studio / Ap
      # Windows (PowerShell):
      cd knowledge_base; python -m agent index-handbook C:\path\to\handbook.html; python -m agent verify
      ```
-   - When `handbook_index.db` is copied across machines (where the original `handbook.html` build path is offline), `python -m fight_move_system.cli kb-verify` and `python -m agent verify` automatically validate the recorded `source_sha256` in `handbook_meta` so all 25 integrity checks pass on every OS.
 3. **Python Executable Invocation (`python3` vs `python` / `py -3`):**
-   - On **macOS (Mac Studio) & Linux**, use `python3` (e.g., `python3 -m fight_move_system.cli ...`).
-   - On **Windows**, use `python` or `py -3` (e.g., `python -m fight_move_system.cli ...` or `py -3 scripts\sakuga_original_kb.py ...`).
+   - On **macOS (Mac Studio) & Linux**, use `.venv/bin/python` or `python3`.
+   - On **Windows**, use `.venv\Scripts\python.exe`, `python`, or `py -3`.

@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "errors": [],
+  "warnings": [
+    {
+      "option": "mentality.switch_hitter",
+      "finding": "Weakly non-losing base row; ties and cross-dimensional liabilities remain. Not universal dominance.",
+      "incoming_counters": 11
+    },
+    {
+      "option": "mentality.spoiler",
+      "finding": "Weakly non-losing base row; ties and cross-dimensional liabilities remain. Not universal dominance.",
+      "incoming_counters": 24
+    },
+    {
+      "option": "mentality.technician",
+      "finding": "Weakly non-losing base row; ties and cross-dimensional liabilities remain. Not universal dominance.",
+      "incoming_counters": 12
+    },
+    {
+      "option": "stance.crouch",
+      "finding": "Weakly non-losing base row; ties and cross-dimensional liabilities remain. Not universal dominance.",
+      "incoming_counters": 10
+    },
+    {
+      "option": "stance.balanced",
+      "finding": "Weakly non-losing base row; ties and cross-dimensional liabilities remain. Not universal dominance.",
+      "incoming_counters": 26
+    },
+    {
+      "option": "tie.anti_grappling",
+      "finding": "Weakly non-losing base row; ties and cross-dimensional liabilities remain. Not universal dominance.",
+      "incoming_counters": 26
+    }
+  ],
+  "counts": {
+    "ontology_options": 57,
+    "matchup_cells": 511,
+    "fighter_cards": 11,
+    "techniques": 36,
+    "relationships": 5813,
+    "counter_relationships": 1020,
+    "debts": 115,
+    "debt_exploit_relationships": 1091,
+    "event_types": 11,
+    "sources": 8,
+    "verified_claims": 8
+  },
+  "knowledge_sha256": "9ed302793feca9cd3a8927fee7210588b1674bfaa066dd21757ea6741e324990",
+  "provenance": "Verified claims resolve to accessed sources. All matchup values and tactical interpretations are CANON; factual verification is not inferred from pointer validity."
+}

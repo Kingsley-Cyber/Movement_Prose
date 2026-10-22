@@ -1,0 +1,5041 @@
+{
+  "version": "block-1",
+  "shots": [
+    {
+      "shot_id": "shot.e1",
+      "source_event_ids": [
+        "e1"
+      ],
+      "duration": 0.8823529411764706,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "maleek",
+          "name": "Maleek",
+          "appearance": {
+            "clothing": "charcoal shorts",
+            "identity_anchor": "Maleek / 52-Dutch / Uno",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "maleek": [
+          -0.825,
+          0.0
+        ],
+        "donnell": [
+          0.825,
+          0.0
+        ]
+      },
+      "required_action": "Draw a high reaction, change the lead, and kick the loaded support.",
+      "motion_trajectory": "Observe/adjust without an invented attack.: Draw a high reaction, change the lead, and kick the loaded support.",
+      "action_timing": {
+        "start": 0.0,
+        "end": 0.8823529411764706,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e1"
+            ],
+            "timing": [
+              {
+                "start": 0.0,
+                "end": 0.8823529411764706
+              }
+            ],
+            "instructions": [
+              "Draw a high reaction, change the lead, and kick the loaded support."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No initiation action in this beat."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No execution action in this beat."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No reaction action in this beat."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No recovery action in this beat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Observe the other actor without inventing a counter.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.825,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.825,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Maleek / 52-Dutch / Uno; charcoal shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e2",
+      "source_event_ids": [
+        "e2"
+      ],
+      "duration": 0.8823529411764706,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "maleek",
+          "name": "Maleek",
+          "appearance": {
+            "clothing": "charcoal shorts",
+            "identity_anchor": "Maleek / 52-Dutch / Uno",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "maleek": [
+          -0.825,
+          0.0
+        ],
+        "donnell": [
+          0.825,
+          0.0
+        ]
+      },
+      "required_action": "Crowd the reset with a compact hook.",
+      "motion_trajectory": "Observe/adjust without an invented attack.: Crowd the reset with a compact hook.",
+      "action_timing": {
+        "start": 0.8823529411764706,
+        "end": 1.7647058823529411,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e2"
+            ],
+            "timing": [
+              {
+                "start": 0.8823529411764706,
+                "end": 1.7647058823529411
+              }
+            ],
+            "instructions": [
+              "Crowd the reset with a compact hook."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No initiation action in this beat."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No execution action in this beat."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No reaction action in this beat."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No recovery action in this beat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Observe the other actor without inventing a counter.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.825,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.825,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Maleek / 52-Dutch / Uno; charcoal shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e3",
+      "source_event_ids": [
+        "e3",
+        "e4",
+        "e5"
+      ],
+      "duration": 2.647058823529412,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "maleek",
+          "name": "Maleek",
+          "appearance": {
+            "clothing": "charcoal shorts",
+            "identity_anchor": "Maleek / 52-Dutch / Uno",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "maleek": [
+          -0.825,
+          0.0
+        ],
+        "donnell": [
+          0.825,
+          0.0
+        ]
+      },
+      "required_action": "Establish punch through one adjacent range step.",
+      "motion_trajectory": "feet: Step toward the opponent without crossing the feet.",
+      "action_timing": {
+        "start": 1.7647058823529411,
+        "end": 4.411764705882353,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e3"
+            ],
+            "timing": [
+              {
+                "start": 1.7647058823529411,
+                "end": 2.6470588235294117
+              }
+            ],
+            "instructions": [
+              "Establish punch through one adjacent range step."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e4"
+            ],
+            "timing": [
+              {
+                "start": 2.6470588235294117,
+                "end": 3.5294117647058822
+              }
+            ],
+            "instructions": [
+              "Establish punch through one adjacent range step."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e4"
+            ],
+            "timing": [
+              {
+                "start": 2.6470588235294117,
+                "end": 3.5294117647058822
+              }
+            ],
+            "instructions": [
+              "Establish punch through one adjacent range step."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No reaction action in this beat."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e5"
+            ],
+            "timing": [
+              {
+                "start": 3.5294117647058822,
+                "end": 4.411764705882353
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Observe the other actor without inventing a counter.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.825,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Maleek / 52-Dutch / Uno; charcoal shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e6",
+      "source_event_ids": [
+        "e6",
+        "e7",
+        "e8",
+        "e9"
+      ],
+      "duration": 3.5294117647058822,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "maleek",
+          "name": "Maleek",
+          "appearance": {
+            "clothing": "charcoal shorts",
+            "identity_anchor": "Maleek / 52-Dutch / Uno",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "maleek": [
+          -0.825,
+          0.0
+        ],
+        "donnell": [
+          0.2250000000000001,
+          0.0
+        ]
+      },
+      "required_action": "Draw high attention before entering the technique's required range.",
+      "motion_trajectory": "left hand: Show an incomplete lead extension; withdraw before contact.",
+      "action_timing": {
+        "start": 4.411764705882353,
+        "end": 7.9411764705882355,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e6"
+            ],
+            "timing": [
+              {
+                "start": 4.411764705882353,
+                "end": 5.294117647058823
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e7"
+            ],
+            "timing": [
+              {
+                "start": 5.294117647058823,
+                "end": 6.176470588235294
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e7"
+            ],
+            "timing": [
+              {
+                "start": 5.294117647058823,
+                "end": 6.176470588235294
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [
+              "e8"
+            ],
+            "timing": [
+              {
+                "start": 6.176470588235294,
+                "end": 7.0588235294117645
+              }
+            ],
+            "instructions": [
+              "Attend the shown high line; the feint has no contact."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e9"
+            ],
+            "timing": [
+              {
+                "start": 7.0588235294117645,
+                "end": 7.9411764705882355
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Attend the shown high line; the feint has no contact.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Maleek / 52-Dutch / Uno; charcoal shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e10",
+      "source_event_ids": [
+        "e10",
+        "e11",
+        "e12",
+        "e13",
+        "e14",
+        "e15"
+      ],
+      "duration": 5.2941176470588225,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "maleek",
+          "name": "Maleek",
+          "appearance": {
+            "clothing": "charcoal shorts",
+            "identity_anchor": "Maleek / 52-Dutch / Uno",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "maleek": [
+          -0.825,
+          0.0
+        ],
+        "donnell": [
+          0.2250000000000001,
+          0.0
+        ]
+      },
+      "required_action": "Establish the preferred early tempo and make the opponent answer the head threat.",
+      "motion_trajectory": "left fist: Extend along the center head line and retract.",
+      "action_timing": {
+        "start": 7.9411764705882355,
+        "end": 13.235294117647058,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e10"
+            ],
+            "timing": [
+              {
+                "start": 7.9411764705882355,
+                "end": 8.823529411764707
+              }
+            ],
+            "instructions": [
+              "Establish the preferred early tempo and make the opponent answer the head threat."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e11"
+            ],
+            "timing": [
+              {
+                "start": 8.823529411764707,
+                "end": 9.705882352941176
+              }
+            ],
+            "instructions": [
+              "Establish the preferred early tempo and make the opponent answer the head threat."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e11"
+            ],
+            "timing": [
+              {
+                "start": 8.823529411764707,
+                "end": 9.705882352941176
+              }
+            ],
+            "instructions": [
+              "Establish the preferred early tempo and make the opponent answer the head threat."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [
+              "e13"
+            ],
+            "timing": [
+              {
+                "start": 10.588235294117647,
+                "end": 11.470588235294118
+              }
+            ],
+            "instructions": [
+              "Resolve explicit contact with the head."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [
+              "e12",
+              "e14"
+            ],
+            "timing": [
+              {
+                "start": 9.705882352941176,
+                "end": 10.588235294117647
+              },
+              {
+                "start": 11.470588235294118,
+                "end": 12.352941176470589
+              }
+            ],
+            "instructions": [
+              "Attempt a trained defensive response; success remains contingent.",
+              "Show the consequence of contact; preserve established damage and position."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e15"
+            ],
+            "timing": [
+              {
+                "start": 12.352941176470589,
+                "end": 13.235294117647058
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": {
+        "event_id": "e13",
+        "time": 10.588235294117647,
+        "region": "head",
+        "outcome": "landed",
+        "initiator": "donnell",
+        "recipient": "maleek"
+      },
+      "defensive_response": "Attempt a trained defensive response; success remains contingent. Show the consequence of contact; preserve established damage and position.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Maleek / 52-Dutch / Uno; charcoal shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e16",
+      "source_event_ids": [
+        "e16",
+        "e17",
+        "e18",
+        "e19"
+      ],
+      "duration": 3.529411764705884,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "maleek",
+          "name": "Maleek",
+          "appearance": {
+            "clothing": "charcoal shorts",
+            "identity_anchor": "Maleek / 52-Dutch / Uno",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "maleek": [
+          -0.825,
+          0.0
+        ],
+        "donnell": [
+          0.2250000000000001,
+          0.0
+        ]
+      },
+      "required_action": "Draw high attention before entering the technique's required range.",
+      "motion_trajectory": "left hand: Show an incomplete lead extension; withdraw before contact.",
+      "action_timing": {
+        "start": 13.235294117647058,
+        "end": 16.764705882352942,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e16"
+            ],
+            "timing": [
+              {
+                "start": 13.235294117647058,
+                "end": 14.117647058823529
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e17"
+            ],
+            "timing": [
+              {
+                "start": 14.117647058823529,
+                "end": 15.0
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e17"
+            ],
+            "timing": [
+              {
+                "start": 14.117647058823529,
+                "end": 15.0
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [
+              "e18"
+            ],
+            "timing": [
+              {
+                "start": 15.0,
+                "end": 15.882352941176471
+              }
+            ],
+            "instructions": [
+              "Attend the shown high line; the feint has no contact."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e19"
+            ],
+            "timing": [
+              {
+                "start": 15.882352941176471,
+                "end": 16.764705882352942
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Attend the shown high line; the feint has no contact.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Maleek / 52-Dutch / Uno; charcoal shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e20",
+      "source_event_ids": [
+        "e20",
+        "e21",
+        "e22",
+        "e23",
+        "e24",
+        "e25"
+      ],
+      "duration": 5.2941176470588225,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "maleek",
+          "name": "Maleek",
+          "appearance": {
+            "clothing": "charcoal shorts",
+            "identity_anchor": "Maleek / 52-Dutch / Uno",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "maleek": [
+          -0.825,
+          0.0
+        ],
+        "donnell": [
+          0.2250000000000001,
+          0.0
+        ]
+      },
+      "required_action": "Reach the first weakness: Head fixation leaves torso and level-change defenses late.",
+      "motion_trajectory": "left fist: Lower the level with the legs and rotate a bent lead arm toward the lateral ribs.",
+      "action_timing": {
+        "start": 16.764705882352942,
+        "end": 22.058823529411764,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e20"
+            ],
+            "timing": [
+              {
+                "start": 16.764705882352942,
+                "end": 17.647058823529413
+              }
+            ],
+            "instructions": [
+              "Reach the first weakness: Head fixation leaves torso and level-change defenses late."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e21"
+            ],
+            "timing": [
+              {
+                "start": 17.647058823529413,
+                "end": 18.529411764705884
+              }
+            ],
+            "instructions": [
+              "Reach the first weakness: Head fixation leaves torso and level-change defenses late."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e21"
+            ],
+            "timing": [
+              {
+                "start": 17.647058823529413,
+                "end": 18.529411764705884
+              }
+            ],
+            "instructions": [
+              "Reach the first weakness: Head fixation leaves torso and level-change defenses late."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [
+              "e23"
+            ],
+            "timing": [
+              {
+                "start": 19.41176470588235,
+                "end": 20.294117647058822
+              }
+            ],
+            "instructions": [
+              "Resolve explicit contact with the body."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [
+              "e22",
+              "e24"
+            ],
+            "timing": [
+              {
+                "start": 18.529411764705884,
+                "end": 19.41176470588235
+              },
+              {
+                "start": 20.294117647058822,
+                "end": 21.176470588235293
+              }
+            ],
+            "instructions": [
+              "Attempt a trained defensive response; success remains contingent.",
+              "Show the consequence of contact; preserve established damage and position."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e25"
+            ],
+            "timing": [
+              {
+                "start": 21.176470588235293,
+                "end": 22.058823529411764
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": {
+        "event_id": "e23",
+        "time": 19.41176470588235,
+        "region": "body",
+        "outcome": "landed",
+        "initiator": "maleek",
+        "recipient": "donnell"
+      },
+      "defensive_response": "Attempt a trained defensive response; success remains contingent. Show the consequence of contact; preserve established damage and position.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Maleek / 52-Dutch / Uno; charcoal shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e26",
+      "source_event_ids": [
+        "e26",
+        "e27",
+        "e28"
+      ],
+      "duration": 2.647058823529413,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "maleek",
+          "name": "Maleek",
+          "appearance": {
+            "clothing": "charcoal shorts",
+            "identity_anchor": "Maleek / 52-Dutch / Uno",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "maleek": [
+          -0.825,
+          0.0
+        ],
+        "donnell": [
+          0.2250000000000001,
+          0.0
+        ]
+      },
+      "required_action": "Uno changes the lead line after the pressure entry; the transition must recover.",
+      "motion_trajectory": "feet: CANON Uno: replace the lead with a short retreating switch, then re-square without crossing.",
+      "action_timing": {
+        "start": 22.058823529411764,
+        "end": 24.705882352941178,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e26"
+            ],
+            "timing": [
+              {
+                "start": 22.058823529411764,
+                "end": 22.941176470588236
+              }
+            ],
+            "instructions": [
+              "Uno changes the lead line after the pressure entry; the transition must recover."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e27"
+            ],
+            "timing": [
+              {
+                "start": 22.941176470588236,
+                "end": 23.823529411764707
+              }
+            ],
+            "instructions": [
+              "Uno changes the lead line after the pressure entry; the transition must recover."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e27"
+            ],
+            "timing": [
+              {
+                "start": 22.941176470588236,
+                "end": 23.823529411764707
+              }
+            ],
+            "instructions": [
+              "Uno changes the lead line after the pressure entry; the transition must recover."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No reaction action in this beat."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e28"
+            ],
+            "timing": [
+              {
+                "start": 23.823529411764707,
+                "end": 24.705882352941178
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Observe the other actor without inventing a counter.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Maleek / 52-Dutch / Uno; charcoal shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e29",
+      "source_event_ids": [
+        "e29",
+        "e30",
+        "e31",
+        "e32"
+      ],
+      "duration": 3.5294117647058805,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "maleek",
+          "name": "Maleek",
+          "appearance": {
+            "clothing": "charcoal shorts",
+            "identity_anchor": "Maleek / 52-Dutch / Uno",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "maleek": [
+          -0.825,
+          0.0
+        ],
+        "donnell": [
+          0.2250000000000001,
+          0.0
+        ]
+      },
+      "required_action": "Draw high attention before entering the technique's required range.",
+      "motion_trajectory": "left hand: Show an incomplete lead extension; withdraw before contact.",
+      "action_timing": {
+        "start": 24.705882352941178,
+        "end": 28.235294117647058,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e29"
+            ],
+            "timing": [
+              {
+                "start": 24.705882352941178,
+                "end": 25.58823529411765
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e30"
+            ],
+            "timing": [
+              {
+                "start": 25.58823529411765,
+                "end": 26.470588235294116
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e30"
+            ],
+            "timing": [
+              {
+                "start": 25.58823529411765,
+                "end": 26.470588235294116
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [
+              "e31"
+            ],
+            "timing": [
+              {
+                "start": 26.470588235294116,
+                "end": 27.352941176470587
+              }
+            ],
+            "instructions": [
+              "Attend the shown high line; the feint has no contact."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e32"
+            ],
+            "timing": [
+              {
+                "start": 27.352941176470587,
+                "end": 28.235294117647058
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Attend the shown high line; the feint has no contact.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Maleek / 52-Dutch / Uno; charcoal shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e33",
+      "source_event_ids": [
+        "e33",
+        "e34",
+        "e35",
+        "e36",
+        "e37",
+        "e38"
+      ],
+      "duration": 5.294117647058826,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "maleek",
+          "name": "Maleek",
+          "appearance": {
+            "clothing": "charcoal shorts",
+            "identity_anchor": "Maleek / 52-Dutch / Uno",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "maleek": [
+          -0.825,
+          0.0
+        ],
+        "donnell": [
+          0.2250000000000001,
+          0.0
+        ]
+      },
+      "required_action": "Counter the recovery and force a tactical answer; the selected path is still reversible.",
+      "motion_trajectory": "left fist: Lower the level with the legs and rotate a bent lead arm toward the lateral ribs.",
+      "action_timing": {
+        "start": 28.235294117647058,
+        "end": 33.529411764705884,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e33"
+            ],
+            "timing": [
+              {
+                "start": 28.235294117647058,
+                "end": 29.11764705882353
+              }
+            ],
+            "instructions": [
+              "Counter the recovery and force a tactical answer; the selected path is still reversible."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e34"
+            ],
+            "timing": [
+              {
+                "start": 29.11764705882353,
+                "end": 30.0
+              }
+            ],
+            "instructions": [
+              "Counter the recovery and force a tactical answer; the selected path is still reversible."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e34"
+            ],
+            "timing": [
+              {
+                "start": 29.11764705882353,
+                "end": 30.0
+              }
+            ],
+            "instructions": [
+              "Counter the recovery and force a tactical answer; the selected path is still reversible."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [
+              "e36"
+            ],
+            "timing": [
+              {
+                "start": 30.88235294117647,
+                "end": 31.764705882352942
+              }
+            ],
+            "instructions": [
+              "Resolve explicit contact with the body."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [
+              "e35",
+              "e37"
+            ],
+            "timing": [
+              {
+                "start": 30.0,
+                "end": 30.88235294117647
+              },
+              {
+                "start": 31.764705882352942,
+                "end": 32.64705882352941
+              }
+            ],
+            "instructions": [
+              "Attempt a trained defensive response; success remains contingent.",
+              "Show the consequence of contact; preserve established damage and position."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e38"
+            ],
+            "timing": [
+              {
+                "start": 32.64705882352941,
+                "end": 33.529411764705884
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": {
+        "event_id": "e36",
+        "time": 30.88235294117647,
+        "region": "body",
+        "outcome": "landed",
+        "initiator": "donnell",
+        "recipient": "maleek"
+      },
+      "defensive_response": "Attempt a trained defensive response; success remains contingent. Show the consequence of contact; preserve established damage and position.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark",
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Maleek / 52-Dutch / Uno; charcoal shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e39",
+      "source_event_ids": [
+        "e39",
+        "e40",
+        "e41"
+      ],
+      "duration": 2.647058823529413,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "maleek",
+          "name": "Maleek",
+          "appearance": {
+            "clothing": "charcoal shorts",
+            "identity_anchor": "Maleek / 52-Dutch / Uno",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "maleek": [
+          -0.825,
+          0.0
+        ],
+        "donnell": [
+          0.2250000000000001,
+          0.0
+        ]
+      },
+      "required_action": "Change the attack angle after the counter rather than repeating the same line.",
+      "motion_trajectory": "feet: Turn around the lead support foot to a lateral angle, then recover the rear foot.",
+      "action_timing": {
+        "start": 33.529411764705884,
+        "end": 36.1764705882353,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e39"
+            ],
+            "timing": [
+              {
+                "start": 33.529411764705884,
+                "end": 34.411764705882355
+              }
+            ],
+            "instructions": [
+              "Change the attack angle after the counter rather than repeating the same line."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e40"
+            ],
+            "timing": [
+              {
+                "start": 34.411764705882355,
+                "end": 35.294117647058826
+              }
+            ],
+            "instructions": [
+              "Change the attack angle after the counter rather than repeating the same line."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e40"
+            ],
+            "timing": [
+              {
+                "start": 34.411764705882355,
+                "end": 35.294117647058826
+              }
+            ],
+            "instructions": [
+              "Change the attack angle after the counter rather than repeating the same line."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No reaction action in this beat."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e41"
+            ],
+            "timing": [
+              {
+                "start": 35.294117647058826,
+                "end": 36.1764705882353
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Observe the other actor without inventing a counter.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "maleek": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark",
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "maleek": {
+            "position": [
+              -0.7711174629530394,
+              -0.3320391543176799
+            ],
+            "facing": [
+              0.9486832980505138,
+              0.316227766016838
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark",
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -0.9486832980505138,
+              -0.316227766016838
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Maleek / 52-Dutch / Uno; charcoal shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e42",
+      "source_event_ids": [
+        "e42",
+        "e43",
+        "e44",
+        "e45"
+      ],
+      "duration": 3.529411764705877,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "maleek",
+          "name": "Maleek",
+          "appearance": {
+            "clothing": "charcoal shorts",
+            "identity_anchor": "Maleek / 52-Dutch / Uno",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "maleek": [
+          -0.7711174629530394,
+          -0.3320391543176799
+        ],
+        "donnell": [
+          0.2250000000000001,
+          0.0
+        ]
+      },
+      "required_action": "Draw high attention before entering the technique's required range.",
+      "motion_trajectory": "right hand: Show an incomplete lead extension; withdraw before contact.",
+      "action_timing": {
+        "start": 36.1764705882353,
+        "end": 39.705882352941174,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e42"
+            ],
+            "timing": [
+              {
+                "start": 36.1764705882353,
+                "end": 37.05882352941177
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e43"
+            ],
+            "timing": [
+              {
+                "start": 37.05882352941177,
+                "end": 37.94117647058823
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e43"
+            ],
+            "timing": [
+              {
+                "start": 37.05882352941177,
+                "end": 37.94117647058823
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [
+              "e44"
+            ],
+            "timing": [
+              {
+                "start": 37.94117647058823,
+                "end": 38.8235294117647
+              }
+            ],
+            "instructions": [
+              "Attend the shown high line; the feint has no contact."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e45"
+            ],
+            "timing": [
+              {
+                "start": 38.8235294117647,
+                "end": 39.705882352941174
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Attend the shown high line; the feint has no contact.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "maleek": {
+            "position": [
+              -0.7711174629530394,
+              -0.3320391543176799
+            ],
+            "facing": [
+              0.9486832980505138,
+              0.316227766016838
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark",
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -0.9486832980505138,
+              -0.316227766016838
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "maleek": {
+            "position": [
+              -0.7711174629530394,
+              -0.3320391543176799
+            ],
+            "facing": [
+              0.9486832980505138,
+              0.316227766016838
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark",
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -0.9486832980505138,
+              -0.316227766016838
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Maleek / 52-Dutch / Uno; charcoal shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e46",
+      "source_event_ids": [
+        "e46",
+        "e47",
+        "e48"
+      ],
+      "duration": 2.647058823529413,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "maleek",
+          "name": "Maleek",
+          "appearance": {
+            "clothing": "charcoal shorts",
+            "identity_anchor": "Maleek / 52-Dutch / Uno",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "maleek": [
+          -0.7711174629530394,
+          -0.3320391543176799
+        ],
+        "donnell": [
+          0.2250000000000001,
+          0.0
+        ]
+      },
+      "required_action": "Establish kick through one adjacent range step.",
+      "motion_trajectory": "feet: Step away while preserving lead and facing.",
+      "action_timing": {
+        "start": 39.705882352941174,
+        "end": 42.35294117647059,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e46"
+            ],
+            "timing": [
+              {
+                "start": 39.705882352941174,
+                "end": 40.588235294117645
+              }
+            ],
+            "instructions": [
+              "Establish kick through one adjacent range step."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e47"
+            ],
+            "timing": [
+              {
+                "start": 40.588235294117645,
+                "end": 41.470588235294116
+              }
+            ],
+            "instructions": [
+              "Establish kick through one adjacent range step."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e47"
+            ],
+            "timing": [
+              {
+                "start": 40.588235294117645,
+                "end": 41.470588235294116
+              }
+            ],
+            "instructions": [
+              "Establish kick through one adjacent range step."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No reaction action in this beat."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e48"
+            ],
+            "timing": [
+              {
+                "start": 41.470588235294116,
+                "end": 42.35294117647059
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Observe the other actor without inventing a counter.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "maleek": {
+            "position": [
+              -0.7711174629530394,
+              -0.3320391543176799
+            ],
+            "facing": [
+              0.9486832980505138,
+              0.316227766016838
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark",
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -0.9486832980505138,
+              -0.316227766016838
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "maleek": {
+            "position": [
+              -1.3403274417833475,
+              -0.5217758139277827
+            ],
+            "facing": [
+              0.9486832980505138,
+              0.31622776601683805
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark",
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -0.9486832980505138,
+              -0.31622776601683805
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Maleek / 52-Dutch / Uno; charcoal shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e49",
+      "source_event_ids": [
+        "e49",
+        "e50",
+        "e51",
+        "e52",
+        "e53"
+      ],
+      "duration": 4.411764705882355,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "maleek",
+          "name": "Maleek",
+          "appearance": {
+            "clothing": "charcoal shorts",
+            "identity_anchor": "Maleek / 52-Dutch / Uno",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "maleek": [
+          -1.3403274417833475,
+          -0.5217758139277827
+        ],
+        "donnell": [
+          0.2250000000000001,
+          0.0
+        ]
+      },
+      "required_action": "The recovered angle enables the defined combination into the loaded support leg.",
+      "motion_trajectory": "left shin: Pivot the support foot and arc the rear shin into the outside lead thigh.",
+      "action_timing": {
+        "start": 42.35294117647059,
+        "end": 46.76470588235294,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e49"
+            ],
+            "timing": [
+              {
+                "start": 42.35294117647059,
+                "end": 43.23529411764706
+              }
+            ],
+            "instructions": [
+              "The recovered angle enables the defined combination into the loaded support leg."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e50"
+            ],
+            "timing": [
+              {
+                "start": 43.23529411764706,
+                "end": 44.11764705882353
+              }
+            ],
+            "instructions": [
+              "The recovered angle enables the defined combination into the loaded support leg."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e50"
+            ],
+            "timing": [
+              {
+                "start": 43.23529411764706,
+                "end": 44.11764705882353
+              }
+            ],
+            "instructions": [
+              "The recovered angle enables the defined combination into the loaded support leg."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [
+              "e51"
+            ],
+            "timing": [
+              {
+                "start": 44.11764705882353,
+                "end": 45.0
+              }
+            ],
+            "instructions": [
+              "Resolve explicit contact with the leg."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [
+              "e52"
+            ],
+            "timing": [
+              {
+                "start": 45.0,
+                "end": 45.88235294117647
+              }
+            ],
+            "instructions": [
+              "Show the consequence of contact; preserve established damage and position."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e53"
+            ],
+            "timing": [
+              {
+                "start": 45.88235294117647,
+                "end": 46.76470588235294
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": {
+        "event_id": "e51",
+        "time": 44.11764705882353,
+        "region": "leg",
+        "outcome": "landed",
+        "initiator": "maleek",
+        "recipient": "donnell"
+      },
+      "defensive_response": "Show the consequence of contact; preserve established damage and position.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "maleek": {
+            "position": [
+              -1.3403274417833475,
+              -0.5217758139277827
+            ],
+            "facing": [
+              0.9486832980505138,
+              0.31622776601683805
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark",
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -0.9486832980505138,
+              -0.31622776601683805
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "maleek": {
+            "position": [
+              -1.3403274417833475,
+              -0.5217758139277827
+            ],
+            "facing": [
+              0.9486832980505138,
+              0.31622776601683805
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark",
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -0.9486832980505138,
+              -0.31622776601683805
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark",
+              "leg contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 1
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Maleek / 52-Dutch / Uno; charcoal shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e54",
+      "source_event_ids": [
+        "e54",
+        "e55",
+        "e56",
+        "e57"
+      ],
+      "duration": 3.529411764705884,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "maleek",
+          "name": "Maleek",
+          "appearance": {
+            "clothing": "charcoal shorts",
+            "identity_anchor": "Maleek / 52-Dutch / Uno",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "maleek": [
+          -1.3403274417833475,
+          -0.5217758139277827
+        ],
+        "donnell": [
+          0.2250000000000001,
+          0.0
+        ]
+      },
+      "required_action": "Draw high attention before entering the technique's required range.",
+      "motion_trajectory": "right hand: Show an incomplete lead extension; withdraw before contact.",
+      "action_timing": {
+        "start": 46.76470588235294,
+        "end": 50.294117647058826,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e54"
+            ],
+            "timing": [
+              {
+                "start": 46.76470588235294,
+                "end": 47.64705882352941
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e55"
+            ],
+            "timing": [
+              {
+                "start": 47.64705882352941,
+                "end": 48.529411764705884
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e55"
+            ],
+            "timing": [
+              {
+                "start": 47.64705882352941,
+                "end": 48.529411764705884
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [
+              "e56"
+            ],
+            "timing": [
+              {
+                "start": 48.529411764705884,
+                "end": 49.411764705882355
+              }
+            ],
+            "instructions": [
+              "Attend the shown high line; the feint has no contact."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e57"
+            ],
+            "timing": [
+              {
+                "start": 49.411764705882355,
+                "end": 50.294117647058826
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Attend the shown high line; the feint has no contact.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "maleek": {
+            "position": [
+              -1.3403274417833475,
+              -0.5217758139277827
+            ],
+            "facing": [
+              0.9486832980505138,
+              0.31622776601683805
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark",
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -0.9486832980505138,
+              -0.31622776601683805
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark",
+              "leg contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 1
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "maleek": {
+            "position": [
+              -1.3403274417833475,
+              -0.5217758139277827
+            ],
+            "facing": [
+              0.9486832980505138,
+              0.31622776601683805
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark",
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -0.9486832980505138,
+              -0.31622776601683805
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark",
+              "leg contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 1
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Maleek / 52-Dutch / Uno; charcoal shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e58",
+      "source_event_ids": [
+        "e58",
+        "e59",
+        "e60"
+      ],
+      "duration": 2.647058823529406,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "maleek",
+          "name": "Maleek",
+          "appearance": {
+            "clothing": "charcoal shorts",
+            "identity_anchor": "Maleek / 52-Dutch / Uno",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "maleek": [
+          -1.3403274417833475,
+          -0.5217758139277827
+        ],
+        "donnell": [
+          0.2250000000000001,
+          0.0
+        ]
+      },
+      "required_action": "Establish punch through one adjacent range step.",
+      "motion_trajectory": "feet: Step toward the opponent without crossing the feet.",
+      "action_timing": {
+        "start": 50.294117647058826,
+        "end": 52.94117647058823,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e58"
+            ],
+            "timing": [
+              {
+                "start": 50.294117647058826,
+                "end": 51.1764705882353
+              }
+            ],
+            "instructions": [
+              "Establish punch through one adjacent range step."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e59"
+            ],
+            "timing": [
+              {
+                "start": 51.1764705882353,
+                "end": 52.05882352941177
+              }
+            ],
+            "instructions": [
+              "Establish punch through one adjacent range step."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e59"
+            ],
+            "timing": [
+              {
+                "start": 51.1764705882353,
+                "end": 52.05882352941177
+              }
+            ],
+            "instructions": [
+              "Establish punch through one adjacent range step."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No reaction action in this beat."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e60"
+            ],
+            "timing": [
+              {
+                "start": 52.05882352941177,
+                "end": 52.94117647058823
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Observe the other actor without inventing a counter.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "maleek": {
+            "position": [
+              -1.3403274417833475,
+              -0.5217758139277827
+            ],
+            "facing": [
+              0.9486832980505138,
+              0.31622776601683805
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark",
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -0.9486832980505138,
+              -0.31622776601683805
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark",
+              "leg contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 1
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "maleek": {
+            "position": [
+              -0.7711174629530394,
+              -0.33203915431768
+            ],
+            "facing": [
+              0.9486832980505138,
+              0.31622776601683805
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark",
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -0.9486832980505138,
+              -0.31622776601683805
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark",
+              "leg contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 1
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Maleek / 52-Dutch / Uno; charcoal shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e61",
+      "source_event_ids": [
+        "e61",
+        "e62",
+        "e63",
+        "e64",
+        "e65",
+        "e66"
+      ],
+      "duration": 5.294117647058826,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "maleek",
+          "name": "Maleek",
+          "appearance": {
+            "clothing": "charcoal shorts",
+            "identity_anchor": "Maleek / 52-Dutch / Uno",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "maleek": [
+          -0.7711174629530394,
+          -0.33203915431768
+        ],
+        "donnell": [
+          0.2250000000000001,
+          0.0
+        ]
+      },
+      "required_action": "Establish a demonstrated contact/control advantage in this conditional outcome path.",
+      "motion_trajectory": "right fist: Lower the level with the legs and rotate a bent lead arm toward the lateral ribs.",
+      "action_timing": {
+        "start": 52.94117647058823,
+        "end": 58.23529411764706,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e61"
+            ],
+            "timing": [
+              {
+                "start": 52.94117647058823,
+                "end": 53.8235294117647
+              }
+            ],
+            "instructions": [
+              "Establish a demonstrated contact/control advantage in this conditional outcome path."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e62"
+            ],
+            "timing": [
+              {
+                "start": 53.8235294117647,
+                "end": 54.705882352941174
+              }
+            ],
+            "instructions": [
+              "Establish a demonstrated contact/control advantage in this conditional outcome path."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e62"
+            ],
+            "timing": [
+              {
+                "start": 53.8235294117647,
+                "end": 54.705882352941174
+              }
+            ],
+            "instructions": [
+              "Establish a demonstrated contact/control advantage in this conditional outcome path."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [
+              "e64"
+            ],
+            "timing": [
+              {
+                "start": 55.588235294117645,
+                "end": 56.470588235294116
+              }
+            ],
+            "instructions": [
+              "Resolve explicit contact with the body."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [
+              "e63",
+              "e65"
+            ],
+            "timing": [
+              {
+                "start": 54.705882352941174,
+                "end": 55.588235294117645
+              },
+              {
+                "start": 56.470588235294116,
+                "end": 57.35294117647059
+              }
+            ],
+            "instructions": [
+              "Attempt a trained defensive response; success remains contingent.",
+              "Show the consequence of contact; preserve established damage and position."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e66"
+            ],
+            "timing": [
+              {
+                "start": 57.35294117647059,
+                "end": 58.23529411764706
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": {
+        "event_id": "e64",
+        "time": 55.588235294117645,
+        "region": "body",
+        "outcome": "landed",
+        "initiator": "maleek",
+        "recipient": "donnell"
+      },
+      "defensive_response": "Attempt a trained defensive response; success remains contingent. Show the consequence of contact; preserve established damage and position.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "maleek": {
+            "position": [
+              -0.7711174629530394,
+              -0.33203915431768
+            ],
+            "facing": [
+              0.9486832980505138,
+              0.31622776601683805
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark",
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -0.9486832980505138,
+              -0.31622776601683805
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark",
+              "leg contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 1,
+              "leg": 1
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "maleek": {
+            "position": [
+              -0.7711174629530394,
+              -0.33203915431768
+            ],
+            "facing": [
+              0.9486832980505138,
+              0.31622776601683805
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark",
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -0.9486832980505138,
+              -0.31622776601683805
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark",
+              "leg contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 2,
+              "leg": 1
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Maleek / 52-Dutch / Uno; charcoal shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e67",
+      "source_event_ids": [
+        "e67"
+      ],
+      "duration": 0.882352941176471,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "maleek",
+          "name": "Maleek",
+          "appearance": {
+            "clothing": "charcoal shorts",
+            "identity_anchor": "Maleek / 52-Dutch / Uno",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "maleek": [
+          -0.7711174629530394,
+          -0.33203915431768
+        ],
+        "donnell": [
+          0.2250000000000001,
+          0.0
+        ]
+      },
+      "required_action": "Award the condensed BLOCK exhibition on the recorded contact/control advantage; this is not official commission scoring.",
+      "motion_trajectory": "Observe/adjust without an invented attack.: Award the condensed BLOCK exhibition on the recorded contact/control advantage; this is not official commission scoring.",
+      "action_timing": {
+        "start": 58.23529411764706,
+        "end": 59.11764705882353,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No preparation action in this beat."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No initiation action in this beat."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No execution action in this beat."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No reaction action in this beat."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e67"
+            ],
+            "timing": [
+              {
+                "start": 58.23529411764706,
+                "end": 59.11764705882353
+              }
+            ],
+            "instructions": [
+              "Award the condensed BLOCK exhibition on the recorded contact/control advantage; this is not official commission scoring."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Observe the other actor without inventing a counter.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "maleek": {
+            "position": [
+              -0.7711174629530394,
+              -0.33203915431768
+            ],
+            "facing": [
+              0.9486832980505138,
+              0.31622776601683805
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark",
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -0.9486832980505138,
+              -0.31622776601683805
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark",
+              "leg contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 2,
+              "leg": 1
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "maleek": {
+            "position": [
+              -0.7711174629530394,
+              -0.33203915431768
+            ],
+            "facing": [
+              0.9486832980505138,
+              0.31622776601683805
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark",
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -0.9486832980505138,
+              -0.31622776601683805
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark",
+              "leg contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 2,
+              "leg": 1
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Maleek / 52-Dutch / Uno; charcoal shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e68",
+      "source_event_ids": [
+        "e68"
+      ],
+      "duration": 0.882352941176471,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "maleek",
+          "name": "Maleek",
+          "appearance": {
+            "clothing": "charcoal shorts",
+            "identity_anchor": "Maleek / 52-Dutch / Uno",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "maleek": [
+          -0.7711174629530394,
+          -0.33203915431768
+        ],
+        "donnell": [
+          0.2250000000000001,
+          0.0
+        ]
+      },
+      "required_action": "Separate after the decision. Retain all contact marks, fatigue and established posture.",
+      "motion_trajectory": "Observe/adjust without an invented attack.: Separate after the decision. Retain all contact marks, fatigue and established posture.",
+      "action_timing": {
+        "start": 59.11764705882353,
+        "end": 60.0,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No preparation action in this beat."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No initiation action in this beat."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No execution action in this beat."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No reaction action in this beat."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e68"
+            ],
+            "timing": [
+              {
+                "start": 59.11764705882353,
+                "end": 60.0
+              }
+            ],
+            "instructions": [
+              "Separate after the decision. Retain all contact marks, fatigue and established posture."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Observe the other actor without inventing a counter.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "maleek": {
+            "position": [
+              -0.7711174629530394,
+              -0.33203915431768
+            ],
+            "facing": [
+              0.9486832980505138,
+              0.31622776601683805
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark",
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -0.9486832980505138,
+              -0.31622776601683805
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark",
+              "leg contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 2,
+              "leg": 1
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "maleek": {
+            "position": [
+              -0.7711174629530394,
+              -0.33203915431768
+            ],
+            "facing": [
+              0.9486832980505138,
+              0.31622776601683805
+            ],
+            "orientation": "southpaw",
+            "stance": "stance.switch",
+            "guard": "hands.shield52",
+            "injuries": [
+              "head contact mark",
+              "body contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 1,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "charcoal shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              -0.9486832980505138,
+              -0.31622776601683805
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "body contact mark",
+              "leg contact mark"
+            ],
+            "damage": {
+              "head": 0,
+              "body": 2,
+              "leg": 1
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Maleek / 52-Dutch / Uno; charcoal shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    }
+  ]
+}

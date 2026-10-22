@@ -723,6 +723,34 @@ class TestFightMoveSystem(unittest.TestCase):
         ver = kb_verify()
         self.assertTrue(ver["ok"], ver)
 
+    def test_m5_block_fight_engine_bridge_compiles_both_pipelines(self) -> None:
+        from fight_move_system.block_bridge import compile_block_fight_to_movement_prose
+        from plan_fight import deliver as block_deliver
+
+        with tempfile.TemporaryDirectory() as tmp:
+            out_dir = Path(tmp) / "maleek_vs_donnell"
+            result, report = block_deliver(
+                "cards/maleek.json",
+                "cards/donnell.json",
+                "mma",
+                60.0,
+                42,
+                str(out_dir),
+                movement_prose=True,
+            )
+            self.assertEqual(report["events"]["status"], "PASS")
+            self.assertEqual(report["visuals"]["status"], "PASS")
+            self.assertEqual(report["movement_prose"]["status"], "PASS")
+            mp_dir = out_dir / "movement_prose"
+            self.assertTrue((mp_dir / "movement_prose_fluid_stack.txt").is_file())
+            self.assertTrue((mp_dir / "movement_prose_0534_causal.txt").is_file())
+
+            mp_direct = compile_block_fight_to_movement_prose(result)
+            self.assertTrue(mp_direct["fluid_stack"]["passed"])
+            self.assertTrue(mp_direct["original_0534_causal"]["passed"])
+            self.assertEqual(mp_direct["original_0534_causal"]["lint_errors"], 0)
+            self.assertEqual(mp_direct["original_0534_causal"]["lint_warnings"], 0)
+
 
 if __name__ == "__main__":
     unittest.main()

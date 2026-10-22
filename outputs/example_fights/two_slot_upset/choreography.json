@@ -1,0 +1,5497 @@
+{
+  "version": "block-1",
+  "geometry": {
+    "units": "meters",
+    "world_axes": "+x screen right; +y away from camera",
+    "limbs": "anatomical left/right resolved at each execution",
+    "arena_half_width_m": 3.0
+  },
+  "fidelity": "Semantically validated staging; no IK, skeletal solver, or biomechanical proof.",
+  "movements": [
+    {
+      "movement_id": "movement.e1",
+      "source_event_ids": [
+        "e1"
+      ],
+      "start": 0.0,
+      "end": 1.5384615384615385,
+      "phases": [
+        {
+          "phase": "preparation",
+          "event_ids": [
+            "e1"
+          ],
+          "timing": [
+            {
+              "start": 0.0,
+              "end": 1.5384615384615385
+            }
+          ],
+          "instructions": [
+            "A high probe buys an elevation change into a ride."
+          ]
+        },
+        {
+          "phase": "initiation",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No initiation action in this beat."
+          ]
+        },
+        {
+          "phase": "execution",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No execution action in this beat."
+          ]
+        },
+        {
+          "phase": "contact",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No contact action in this beat."
+          ]
+        },
+        {
+          "phase": "reaction",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No reaction action in this beat."
+          ]
+        },
+        {
+          "phase": "recovery",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No recovery action in this beat."
+          ]
+        }
+      ],
+      "actor_id": "wrestler",
+      "target_id": "donnell",
+      "technique_id": null,
+      "limb_action": "Observe/adjust without an invented attack.",
+      "motion_trajectory": "A high probe buys an elevation change into a ride.",
+      "contact": null,
+      "start_actors": {
+        "wrestler": {
+          "position": [
+            -0.825,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        },
+        "donnell": {
+          "position": [
+            0.825,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "end_actors": {
+        "wrestler": {
+          "position": [
+            -0.825,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        },
+        "donnell": {
+          "position": [
+            0.825,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "weight_support": [
+        {
+          "event_id": "e1",
+          "support": "two_feet",
+          "balance": "stable"
+        }
+      ],
+      "environment": "Cage or ring floor; no hand grasps the fence. No props are introduced.",
+      "prop_interaction": [],
+      "visible_consequences": [],
+      "motion_class": "realistic semantic staging",
+      "physical_claim": "No skeletal solver; not physically verified. Impossible supernatural action requires an explicitly authored technique, absent in this release."
+    },
+    {
+      "movement_id": "movement.e2",
+      "source_event_ids": [
+        "e2"
+      ],
+      "start": 1.5384615384615385,
+      "end": 3.076923076923077,
+      "phases": [
+        {
+          "phase": "preparation",
+          "event_ids": [
+            "e2"
+          ],
+          "timing": [
+            {
+              "start": 1.5384615384615385,
+              "end": 3.076923076923077
+            }
+          ],
+          "instructions": [
+            "Crowd the reset with a compact hook."
+          ]
+        },
+        {
+          "phase": "initiation",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No initiation action in this beat."
+          ]
+        },
+        {
+          "phase": "execution",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No execution action in this beat."
+          ]
+        },
+        {
+          "phase": "contact",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No contact action in this beat."
+          ]
+        },
+        {
+          "phase": "reaction",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No reaction action in this beat."
+          ]
+        },
+        {
+          "phase": "recovery",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No recovery action in this beat."
+          ]
+        }
+      ],
+      "actor_id": "donnell",
+      "target_id": "wrestler",
+      "technique_id": null,
+      "limb_action": "Observe/adjust without an invented attack.",
+      "motion_trajectory": "Crowd the reset with a compact hook.",
+      "contact": null,
+      "start_actors": {
+        "wrestler": {
+          "position": [
+            -0.825,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        },
+        "donnell": {
+          "position": [
+            0.825,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "end_actors": {
+        "wrestler": {
+          "position": [
+            -0.825,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        },
+        "donnell": {
+          "position": [
+            0.825,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "weight_support": [
+        {
+          "event_id": "e2",
+          "support": "two_feet",
+          "balance": "stable"
+        }
+      ],
+      "environment": "Cage or ring floor; no hand grasps the fence. No props are introduced.",
+      "prop_interaction": [],
+      "visible_consequences": [],
+      "motion_class": "realistic semantic staging",
+      "physical_claim": "No skeletal solver; not physically verified. Impossible supernatural action requires an explicitly authored technique, absent in this release."
+    },
+    {
+      "movement_id": "movement.e3",
+      "source_event_ids": [
+        "e3",
+        "e4",
+        "e5"
+      ],
+      "start": 3.076923076923077,
+      "end": 7.6923076923076925,
+      "phases": [
+        {
+          "phase": "preparation",
+          "event_ids": [
+            "e3"
+          ],
+          "timing": [
+            {
+              "start": 3.076923076923077,
+              "end": 4.615384615384615
+            }
+          ],
+          "instructions": [
+            "Establish punch through one adjacent range step."
+          ]
+        },
+        {
+          "phase": "initiation",
+          "event_ids": [
+            "e4"
+          ],
+          "timing": [
+            {
+              "start": 4.615384615384615,
+              "end": 6.153846153846154
+            }
+          ],
+          "instructions": [
+            "Establish punch through one adjacent range step."
+          ]
+        },
+        {
+          "phase": "execution",
+          "event_ids": [
+            "e4"
+          ],
+          "timing": [
+            {
+              "start": 4.615384615384615,
+              "end": 6.153846153846154
+            }
+          ],
+          "instructions": [
+            "Establish punch through one adjacent range step."
+          ]
+        },
+        {
+          "phase": "contact",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No contact action in this beat."
+          ]
+        },
+        {
+          "phase": "reaction",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No reaction action in this beat."
+          ]
+        },
+        {
+          "phase": "recovery",
+          "event_ids": [
+            "e5"
+          ],
+          "timing": [
+            {
+              "start": 6.153846153846154,
+              "end": 7.6923076923076925
+            }
+          ],
+          "instructions": [
+            "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+          ]
+        }
+      ],
+      "actor_id": "wrestler",
+      "target_id": "donnell",
+      "technique_id": "step",
+      "limb_action": "feet",
+      "motion_trajectory": "Step toward the opponent without crossing the feet.",
+      "contact": null,
+      "start_actors": {
+        "wrestler": {
+          "position": [
+            -0.825,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        },
+        "donnell": {
+          "position": [
+            0.825,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "end_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 1,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [
+            "step"
+          ],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        },
+        "donnell": {
+          "position": [
+            0.825,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "weight_support": [
+        {
+          "event_id": "e3",
+          "support": "two_feet",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e4",
+          "support": "two_feet",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e5",
+          "support": "two_feet",
+          "balance": "stable"
+        }
+      ],
+      "environment": "Cage or ring floor; no hand grasps the fence. No props are introduced.",
+      "prop_interaction": [],
+      "visible_consequences": [],
+      "motion_class": "realistic semantic staging",
+      "physical_claim": "No skeletal solver; not physically verified. Impossible supernatural action requires an explicitly authored technique, absent in this release."
+    },
+    {
+      "movement_id": "movement.e6",
+      "source_event_ids": [
+        "e6",
+        "e7",
+        "e8",
+        "e9"
+      ],
+      "start": 7.6923076923076925,
+      "end": 13.846153846153847,
+      "phases": [
+        {
+          "phase": "preparation",
+          "event_ids": [
+            "e6"
+          ],
+          "timing": [
+            {
+              "start": 7.6923076923076925,
+              "end": 9.23076923076923
+            }
+          ],
+          "instructions": [
+            "Draw high attention before entering the technique's required range."
+          ]
+        },
+        {
+          "phase": "initiation",
+          "event_ids": [
+            "e7"
+          ],
+          "timing": [
+            {
+              "start": 9.23076923076923,
+              "end": 10.76923076923077
+            }
+          ],
+          "instructions": [
+            "Draw high attention before entering the technique's required range."
+          ]
+        },
+        {
+          "phase": "execution",
+          "event_ids": [
+            "e7"
+          ],
+          "timing": [
+            {
+              "start": 9.23076923076923,
+              "end": 10.76923076923077
+            }
+          ],
+          "instructions": [
+            "Draw high attention before entering the technique's required range."
+          ]
+        },
+        {
+          "phase": "contact",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No contact action in this beat."
+          ]
+        },
+        {
+          "phase": "reaction",
+          "event_ids": [
+            "e8"
+          ],
+          "timing": [
+            {
+              "start": 10.76923076923077,
+              "end": 12.307692307692308
+            }
+          ],
+          "instructions": [
+            "Attend the shown high line; the feint has no contact."
+          ]
+        },
+        {
+          "phase": "recovery",
+          "event_ids": [
+            "e9"
+          ],
+          "timing": [
+            {
+              "start": 12.307692307692308,
+              "end": 13.846153846153847
+            }
+          ],
+          "instructions": [
+            "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+          ]
+        }
+      ],
+      "actor_id": "wrestler",
+      "target_id": "donnell",
+      "technique_id": "feint",
+      "limb_action": "left hand",
+      "motion_trajectory": "Show an incomplete lead extension; withdraw before contact.",
+      "contact": null,
+      "start_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 1,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [
+            "step"
+          ],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        },
+        "donnell": {
+          "position": [
+            0.825,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "end_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 2,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [
+            "opponent invited to attend the high line"
+          ],
+          "activated_abilities": [],
+          "setups": [
+            "step",
+            "feint"
+          ],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        },
+        "donnell": {
+          "position": [
+            0.825,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "weight_support": [
+        {
+          "event_id": "e6",
+          "support": "two_feet",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e7",
+          "support": "two_feet",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e8",
+          "support": "two_feet",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e9",
+          "support": "two_feet",
+          "balance": "stable"
+        }
+      ],
+      "environment": "Cage or ring floor; no hand grasps the fence. No props are introduced.",
+      "prop_interaction": [],
+      "visible_consequences": [],
+      "motion_class": "realistic semantic staging",
+      "physical_claim": "No skeletal solver; not physically verified. Impossible supernatural action requires an explicitly authored technique, absent in this release."
+    },
+    {
+      "movement_id": "movement.e10",
+      "source_event_ids": [
+        "e10",
+        "e11",
+        "e12",
+        "e13",
+        "e14",
+        "e15"
+      ],
+      "start": 13.846153846153847,
+      "end": 23.076923076923077,
+      "phases": [
+        {
+          "phase": "preparation",
+          "event_ids": [
+            "e10"
+          ],
+          "timing": [
+            {
+              "start": 13.846153846153847,
+              "end": 15.384615384615385
+            }
+          ],
+          "instructions": [
+            "Establish the preferred early tempo and make the opponent answer the head threat."
+          ]
+        },
+        {
+          "phase": "initiation",
+          "event_ids": [
+            "e11"
+          ],
+          "timing": [
+            {
+              "start": 15.384615384615385,
+              "end": 16.923076923076923
+            }
+          ],
+          "instructions": [
+            "Establish the preferred early tempo and make the opponent answer the head threat."
+          ]
+        },
+        {
+          "phase": "execution",
+          "event_ids": [
+            "e11"
+          ],
+          "timing": [
+            {
+              "start": 15.384615384615385,
+              "end": 16.923076923076923
+            }
+          ],
+          "instructions": [
+            "Establish the preferred early tempo and make the opponent answer the head threat."
+          ]
+        },
+        {
+          "phase": "contact",
+          "event_ids": [
+            "e13"
+          ],
+          "timing": [
+            {
+              "start": 18.46153846153846,
+              "end": 20.0
+            }
+          ],
+          "instructions": [
+            "Resolve explicit contact with the head."
+          ]
+        },
+        {
+          "phase": "reaction",
+          "event_ids": [
+            "e12",
+            "e14"
+          ],
+          "timing": [
+            {
+              "start": 16.923076923076923,
+              "end": 18.46153846153846
+            },
+            {
+              "start": 20.0,
+              "end": 21.53846153846154
+            }
+          ],
+          "instructions": [
+            "Attempt a trained defensive response; success remains contingent.",
+            "Show the consequence of contact; preserve established damage and position."
+          ]
+        },
+        {
+          "phase": "recovery",
+          "event_ids": [
+            "e15"
+          ],
+          "timing": [
+            {
+              "start": 21.53846153846154,
+              "end": 23.076923076923077
+            }
+          ],
+          "instructions": [
+            "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+          ]
+        }
+      ],
+      "actor_id": "wrestler",
+      "target_id": "donnell",
+      "technique_id": "jab",
+      "limb_action": "left fist",
+      "motion_trajectory": "Extend along the center head line and retract.",
+      "contact": {
+        "event_id": "e13",
+        "time": 18.46153846153846,
+        "region": "head",
+        "outcome": "landed",
+        "initiator": "wrestler",
+        "recipient": "donnell"
+      },
+      "start_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 2,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [
+            "opponent invited to attend the high line"
+          ],
+          "activated_abilities": [],
+          "setups": [
+            "step",
+            "feint"
+          ],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        },
+        "donnell": {
+          "position": [
+            0.825,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "end_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 3,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": true,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [
+            "opponent invited to attend the high line"
+          ],
+          "activated_abilities": [],
+          "setups": [
+            "step",
+            "jab"
+          ],
+          "pending": null,
+          "contact_marks": 1,
+          "control_marks": 0
+        },
+        "donnell": {
+          "position": [
+            0.825,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 1,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [
+            "head contact mark"
+          ],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "weight_support": [
+        {
+          "event_id": "e10",
+          "support": "two_feet",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e11",
+          "support": "two_feet",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e12",
+          "support": "two_feet",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e13",
+          "support": "two_feet",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e14",
+          "support": "two_feet",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e15",
+          "support": "two_feet",
+          "balance": "stable"
+        }
+      ],
+      "environment": "Cage or ring floor; no hand grasps the fence. No props are introduced.",
+      "prop_interaction": [],
+      "visible_consequences": [
+        "head contact mark"
+      ],
+      "motion_class": "realistic semantic staging",
+      "physical_claim": "No skeletal solver; not physically verified. Impossible supernatural action requires an explicitly authored technique, absent in this release."
+    },
+    {
+      "movement_id": "movement.e16",
+      "source_event_ids": [
+        "e16",
+        "e17",
+        "e18",
+        "e19"
+      ],
+      "start": 23.076923076923077,
+      "end": 29.23076923076923,
+      "phases": [
+        {
+          "phase": "preparation",
+          "event_ids": [
+            "e16"
+          ],
+          "timing": [
+            {
+              "start": 23.076923076923077,
+              "end": 24.615384615384617
+            }
+          ],
+          "instructions": [
+            "Draw high attention before entering the technique's required range."
+          ]
+        },
+        {
+          "phase": "initiation",
+          "event_ids": [
+            "e17"
+          ],
+          "timing": [
+            {
+              "start": 24.615384615384617,
+              "end": 26.153846153846153
+            }
+          ],
+          "instructions": [
+            "Draw high attention before entering the technique's required range."
+          ]
+        },
+        {
+          "phase": "execution",
+          "event_ids": [
+            "e17"
+          ],
+          "timing": [
+            {
+              "start": 24.615384615384617,
+              "end": 26.153846153846153
+            }
+          ],
+          "instructions": [
+            "Draw high attention before entering the technique's required range."
+          ]
+        },
+        {
+          "phase": "contact",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No contact action in this beat."
+          ]
+        },
+        {
+          "phase": "reaction",
+          "event_ids": [
+            "e18"
+          ],
+          "timing": [
+            {
+              "start": 26.153846153846153,
+              "end": 27.692307692307693
+            }
+          ],
+          "instructions": [
+            "Attend the shown high line; the feint has no contact."
+          ]
+        },
+        {
+          "phase": "recovery",
+          "event_ids": [
+            "e19"
+          ],
+          "timing": [
+            {
+              "start": 27.692307692307693,
+              "end": 29.23076923076923
+            }
+          ],
+          "instructions": [
+            "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+          ]
+        }
+      ],
+      "actor_id": "wrestler",
+      "target_id": "donnell",
+      "technique_id": "feint",
+      "limb_action": "left hand",
+      "motion_trajectory": "Show an incomplete lead extension; withdraw before contact.",
+      "contact": null,
+      "start_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 3,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": true,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [
+            "opponent invited to attend the high line"
+          ],
+          "activated_abilities": [],
+          "setups": [
+            "step",
+            "jab"
+          ],
+          "pending": null,
+          "contact_marks": 1,
+          "control_marks": 0
+        },
+        "donnell": {
+          "position": [
+            0.825,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 1,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [
+            "head contact mark"
+          ],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "end_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 4,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": true,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [
+            "opponent invited to attend the high line"
+          ],
+          "activated_abilities": [],
+          "setups": [
+            "step",
+            "jab",
+            "feint"
+          ],
+          "pending": null,
+          "contact_marks": 1,
+          "control_marks": 0
+        },
+        "donnell": {
+          "position": [
+            0.825,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 1,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [
+            "head contact mark"
+          ],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "weight_support": [
+        {
+          "event_id": "e16",
+          "support": "two_feet",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e17",
+          "support": "two_feet",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e18",
+          "support": "two_feet",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e19",
+          "support": "two_feet",
+          "balance": "stable"
+        }
+      ],
+      "environment": "Cage or ring floor; no hand grasps the fence. No props are introduced.",
+      "prop_interaction": [],
+      "visible_consequences": [
+        "head contact mark"
+      ],
+      "motion_class": "realistic semantic staging",
+      "physical_claim": "No skeletal solver; not physically verified. Impossible supernatural action requires an explicitly authored technique, absent in this release."
+    },
+    {
+      "movement_id": "movement.e20",
+      "source_event_ids": [
+        "e20",
+        "e21",
+        "e22",
+        "e23",
+        "e24",
+        "e25"
+      ],
+      "start": 29.23076923076923,
+      "end": 38.46153846153846,
+      "phases": [
+        {
+          "phase": "preparation",
+          "event_ids": [
+            "e20"
+          ],
+          "timing": [
+            {
+              "start": 29.23076923076923,
+              "end": 30.76923076923077
+            }
+          ],
+          "instructions": [
+            "Reach the first weakness: Legal trained entry can reach an initially uncovered capability."
+          ]
+        },
+        {
+          "phase": "initiation",
+          "event_ids": [
+            "e21"
+          ],
+          "timing": [
+            {
+              "start": 30.76923076923077,
+              "end": 32.30769230769231
+            }
+          ],
+          "instructions": [
+            "Reach the first weakness: Legal trained entry can reach an initially uncovered capability."
+          ]
+        },
+        {
+          "phase": "execution",
+          "event_ids": [
+            "e21"
+          ],
+          "timing": [
+            {
+              "start": 30.76923076923077,
+              "end": 32.30769230769231
+            }
+          ],
+          "instructions": [
+            "Reach the first weakness: Legal trained entry can reach an initially uncovered capability."
+          ]
+        },
+        {
+          "phase": "contact",
+          "event_ids": [
+            "e23"
+          ],
+          "timing": [
+            {
+              "start": 33.84615384615385,
+              "end": 35.38461538461539
+            }
+          ],
+          "instructions": [
+            "Resolve explicit contact with the hips."
+          ]
+        },
+        {
+          "phase": "reaction",
+          "event_ids": [
+            "e22",
+            "e24"
+          ],
+          "timing": [
+            {
+              "start": 32.30769230769231,
+              "end": 33.84615384615385
+            },
+            {
+              "start": 35.38461538461539,
+              "end": 36.92307692307692
+            }
+          ],
+          "instructions": [
+            "Attempt a trained defensive response; success remains contingent.",
+            "Show the consequence of contact; preserve established damage and position."
+          ]
+        },
+        {
+          "phase": "recovery",
+          "event_ids": [
+            "e25"
+          ],
+          "timing": [
+            {
+              "start": 36.92307692307692,
+              "end": 38.46153846153846
+            }
+          ],
+          "instructions": [
+            "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+          ]
+        }
+      ],
+      "actor_id": "wrestler",
+      "target_id": "donnell",
+      "technique_id": "double_leg",
+      "limb_action": "arms and shoulder",
+      "motion_trajectory": "Change elevation before penetration, connect both legs, drive to the side, and settle top hip coverage.",
+      "contact": {
+        "event_id": "e23",
+        "time": 33.84615384615385,
+        "region": "hips",
+        "outcome": "landed",
+        "initiator": "wrestler",
+        "recipient": "donnell"
+      },
+      "start_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 4,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": true,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [
+            "opponent invited to attend the high line"
+          ],
+          "activated_abilities": [],
+          "setups": [
+            "step",
+            "jab",
+            "feint"
+          ],
+          "pending": null,
+          "contact_marks": 1,
+          "control_marks": 0
+        },
+        "donnell": {
+          "position": [
+            0.825,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "standing",
+          "foot_support": "two_feet",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 1,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": null,
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [
+            "head contact mark"
+          ],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "end_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 5,
+          "grip": "top",
+          "wall_proximity": "far",
+          "tactical_initiative": true,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [
+            "opponent invited to attend the high line"
+          ],
+          "activated_abilities": [],
+          "setups": [
+            "step",
+            "jab",
+            "double_leg"
+          ],
+          "pending": null,
+          "contact_marks": 1,
+          "control_marks": 1
+        },
+        "donnell": {
+          "position": [
+            0.22499999999999992,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 1,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": "bottom",
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [
+            "head contact mark"
+          ],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "weight_support": [
+        {
+          "event_id": "e20",
+          "support": "two_feet",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e21",
+          "support": "two_feet",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e22",
+          "support": "two_feet",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e23",
+          "support": "mat",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e24",
+          "support": "mat",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e25",
+          "support": "mat",
+          "balance": "stable"
+        }
+      ],
+      "environment": "Cage or ring floor; no hand grasps the fence. No props are introduced.",
+      "prop_interaction": [],
+      "visible_consequences": [
+        "head contact mark"
+      ],
+      "motion_class": "realistic semantic staging",
+      "physical_claim": "No skeletal solver; not physically verified. Impossible supernatural action requires an explicitly authored technique, absent in this release."
+    },
+    {
+      "movement_id": "movement.e26",
+      "source_event_ids": [
+        "e26"
+      ],
+      "start": 38.46153846153846,
+      "end": 40.0,
+      "phases": [
+        {
+          "phase": "preparation",
+          "event_ids": [
+            "e26"
+          ],
+          "timing": [
+            {
+              "start": 38.46153846153846,
+              "end": 40.0
+            }
+          ],
+          "instructions": [
+            "Try to frame and recover posture from the established bottom position; no trained escape is invented."
+          ]
+        },
+        {
+          "phase": "initiation",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No initiation action in this beat."
+          ]
+        },
+        {
+          "phase": "execution",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No execution action in this beat."
+          ]
+        },
+        {
+          "phase": "contact",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No contact action in this beat."
+          ]
+        },
+        {
+          "phase": "reaction",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No reaction action in this beat."
+          ]
+        },
+        {
+          "phase": "recovery",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No recovery action in this beat."
+          ]
+        }
+      ],
+      "actor_id": "donnell",
+      "target_id": "wrestler",
+      "technique_id": null,
+      "limb_action": "Observe/adjust without an invented attack.",
+      "motion_trajectory": "Try to frame and recover posture from the established bottom position; no trained escape is invented.",
+      "contact": null,
+      "start_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 5,
+          "grip": "top",
+          "wall_proximity": "far",
+          "tactical_initiative": true,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [
+            "opponent invited to attend the high line"
+          ],
+          "activated_abilities": [],
+          "setups": [
+            "step",
+            "jab",
+            "double_leg"
+          ],
+          "pending": null,
+          "contact_marks": 1,
+          "control_marks": 1
+        },
+        "donnell": {
+          "position": [
+            0.22499999999999992,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 1,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": "bottom",
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [
+            "head contact mark"
+          ],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "end_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 5,
+          "grip": "top",
+          "wall_proximity": "far",
+          "tactical_initiative": true,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [
+            "opponent invited to attend the high line"
+          ],
+          "activated_abilities": [],
+          "setups": [
+            "step",
+            "jab",
+            "double_leg"
+          ],
+          "pending": null,
+          "contact_marks": 1,
+          "control_marks": 1
+        },
+        "donnell": {
+          "position": [
+            0.22499999999999992,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 1,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": "bottom",
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [
+            "head contact mark"
+          ],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "weight_support": [
+        {
+          "event_id": "e26",
+          "support": "mat",
+          "balance": "stable"
+        }
+      ],
+      "environment": "Cage or ring floor; no hand grasps the fence. No props are introduced.",
+      "prop_interaction": [],
+      "visible_consequences": [],
+      "motion_class": "realistic semantic staging",
+      "physical_claim": "No skeletal solver; not physically verified. Impossible supernatural action requires an explicitly authored technique, absent in this release."
+    },
+    {
+      "movement_id": "movement.e27",
+      "source_event_ids": [
+        "e27",
+        "e28",
+        "e29",
+        "e30",
+        "e31"
+      ],
+      "start": 40.0,
+      "end": 47.69230769230769,
+      "phases": [
+        {
+          "phase": "preparation",
+          "event_ids": [
+            "e27"
+          ],
+          "timing": [
+            {
+              "start": 40.0,
+              "end": 41.53846153846154
+            }
+          ],
+          "instructions": [
+            "Capitalize on the established control rather than resetting to unrelated striking."
+          ]
+        },
+        {
+          "phase": "initiation",
+          "event_ids": [
+            "e28"
+          ],
+          "timing": [
+            {
+              "start": 41.53846153846154,
+              "end": 43.07692307692308
+            }
+          ],
+          "instructions": [
+            "Capitalize on the established control rather than resetting to unrelated striking."
+          ]
+        },
+        {
+          "phase": "execution",
+          "event_ids": [
+            "e28"
+          ],
+          "timing": [
+            {
+              "start": 41.53846153846154,
+              "end": 43.07692307692308
+            }
+          ],
+          "instructions": [
+            "Capitalize on the established control rather than resetting to unrelated striking."
+          ]
+        },
+        {
+          "phase": "contact",
+          "event_ids": [
+            "e29"
+          ],
+          "timing": [
+            {
+              "start": 43.07692307692308,
+              "end": 44.61538461538461
+            }
+          ],
+          "instructions": [
+            "Resolve explicit contact with the hips."
+          ]
+        },
+        {
+          "phase": "reaction",
+          "event_ids": [
+            "e30"
+          ],
+          "timing": [
+            {
+              "start": 44.61538461538461,
+              "end": 46.15384615384615
+            }
+          ],
+          "instructions": [
+            "Show the consequence of contact; preserve established damage and position."
+          ]
+        },
+        {
+          "phase": "recovery",
+          "event_ids": [
+            "e31"
+          ],
+          "timing": [
+            {
+              "start": 46.15384615384615,
+              "end": 47.69230769230769
+            }
+          ],
+          "instructions": [
+            "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+          ]
+        }
+      ],
+      "actor_id": "wrestler",
+      "target_id": "donnell",
+      "technique_id": "ride",
+      "limb_action": "hips and hands",
+      "motion_trajectory": "Maintain top hip coverage and wrist control; follow the bottom actor without neck cranking.",
+      "contact": {
+        "event_id": "e29",
+        "time": 43.07692307692308,
+        "region": "hips",
+        "outcome": "landed",
+        "initiator": "wrestler",
+        "recipient": "donnell"
+      },
+      "start_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 5,
+          "grip": "top",
+          "wall_proximity": "far",
+          "tactical_initiative": true,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [
+            "opponent invited to attend the high line"
+          ],
+          "activated_abilities": [],
+          "setups": [
+            "step",
+            "jab",
+            "double_leg"
+          ],
+          "pending": null,
+          "contact_marks": 1,
+          "control_marks": 1
+        },
+        "donnell": {
+          "position": [
+            0.22499999999999992,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 1,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": "bottom",
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [
+            "head contact mark"
+          ],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "end_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 6,
+          "grip": "top",
+          "wall_proximity": "far",
+          "tactical_initiative": true,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [
+            "opponent invited to attend the high line"
+          ],
+          "activated_abilities": [],
+          "setups": [
+            "step",
+            "jab",
+            "double_leg",
+            "ride"
+          ],
+          "pending": null,
+          "contact_marks": 1,
+          "control_marks": 2
+        },
+        "donnell": {
+          "position": [
+            0.22499999999999992,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 1,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": "bottom",
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [
+            "head contact mark"
+          ],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "weight_support": [
+        {
+          "event_id": "e27",
+          "support": "mat",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e28",
+          "support": "mat",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e29",
+          "support": "mat",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e30",
+          "support": "mat",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e31",
+          "support": "mat",
+          "balance": "stable"
+        }
+      ],
+      "environment": "Cage or ring floor; no hand grasps the fence. No props are introduced.",
+      "prop_interaction": [],
+      "visible_consequences": [
+        "head contact mark"
+      ],
+      "motion_class": "realistic semantic staging",
+      "physical_claim": "No skeletal solver; not physically verified. Impossible supernatural action requires an explicitly authored technique, absent in this release."
+    },
+    {
+      "movement_id": "movement.e32",
+      "source_event_ids": [
+        "e32"
+      ],
+      "start": 47.69230769230769,
+      "end": 49.23076923076923,
+      "phases": [
+        {
+          "phase": "preparation",
+          "event_ids": [
+            "e32"
+          ],
+          "timing": [
+            {
+              "start": 47.69230769230769,
+              "end": 49.23076923076923
+            }
+          ],
+          "instructions": [
+            "Contest the existing connection; the failed attempt does not erase top control or injury."
+          ]
+        },
+        {
+          "phase": "initiation",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No initiation action in this beat."
+          ]
+        },
+        {
+          "phase": "execution",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No execution action in this beat."
+          ]
+        },
+        {
+          "phase": "contact",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No contact action in this beat."
+          ]
+        },
+        {
+          "phase": "reaction",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No reaction action in this beat."
+          ]
+        },
+        {
+          "phase": "recovery",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No recovery action in this beat."
+          ]
+        }
+      ],
+      "actor_id": "donnell",
+      "target_id": "wrestler",
+      "technique_id": null,
+      "limb_action": "Observe/adjust without an invented attack.",
+      "motion_trajectory": "Contest the existing connection; the failed attempt does not erase top control or injury.",
+      "contact": null,
+      "start_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 6,
+          "grip": "top",
+          "wall_proximity": "far",
+          "tactical_initiative": true,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [
+            "opponent invited to attend the high line"
+          ],
+          "activated_abilities": [],
+          "setups": [
+            "step",
+            "jab",
+            "double_leg",
+            "ride"
+          ],
+          "pending": null,
+          "contact_marks": 1,
+          "control_marks": 2
+        },
+        "donnell": {
+          "position": [
+            0.22499999999999992,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 1,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": "bottom",
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [
+            "head contact mark"
+          ],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "end_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 6,
+          "grip": "top",
+          "wall_proximity": "far",
+          "tactical_initiative": true,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [
+            "opponent invited to attend the high line"
+          ],
+          "activated_abilities": [],
+          "setups": [
+            "step",
+            "jab",
+            "double_leg",
+            "ride"
+          ],
+          "pending": null,
+          "contact_marks": 1,
+          "control_marks": 2
+        },
+        "donnell": {
+          "position": [
+            0.22499999999999992,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 1,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": "bottom",
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [
+            "head contact mark"
+          ],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "weight_support": [
+        {
+          "event_id": "e32",
+          "support": "mat",
+          "balance": "stable"
+        }
+      ],
+      "environment": "Cage or ring floor; no hand grasps the fence. No props are introduced.",
+      "prop_interaction": [],
+      "visible_consequences": [],
+      "motion_class": "realistic semantic staging",
+      "physical_claim": "No skeletal solver; not physically verified. Impossible supernatural action requires an explicitly authored technique, absent in this release."
+    },
+    {
+      "movement_id": "movement.e33",
+      "source_event_ids": [
+        "e33",
+        "e34",
+        "e35",
+        "e36",
+        "e37"
+      ],
+      "start": 49.23076923076923,
+      "end": 56.92307692307692,
+      "phases": [
+        {
+          "phase": "preparation",
+          "event_ids": [
+            "e33"
+          ],
+          "timing": [
+            {
+              "start": 49.23076923076923,
+              "end": 50.76923076923077
+            }
+          ],
+          "instructions": [
+            "Deny the attempted reversal with the previously established control."
+          ]
+        },
+        {
+          "phase": "initiation",
+          "event_ids": [
+            "e34"
+          ],
+          "timing": [
+            {
+              "start": 50.76923076923077,
+              "end": 52.30769230769231
+            }
+          ],
+          "instructions": [
+            "Deny the attempted reversal with the previously established control."
+          ]
+        },
+        {
+          "phase": "execution",
+          "event_ids": [
+            "e34"
+          ],
+          "timing": [
+            {
+              "start": 50.76923076923077,
+              "end": 52.30769230769231
+            }
+          ],
+          "instructions": [
+            "Deny the attempted reversal with the previously established control."
+          ]
+        },
+        {
+          "phase": "contact",
+          "event_ids": [
+            "e35"
+          ],
+          "timing": [
+            {
+              "start": 52.30769230769231,
+              "end": 53.84615384615385
+            }
+          ],
+          "instructions": [
+            "Resolve explicit contact with the hips."
+          ]
+        },
+        {
+          "phase": "reaction",
+          "event_ids": [
+            "e36"
+          ],
+          "timing": [
+            {
+              "start": 53.84615384615385,
+              "end": 55.38461538461539
+            }
+          ],
+          "instructions": [
+            "Show the consequence of contact; preserve established damage and position."
+          ]
+        },
+        {
+          "phase": "recovery",
+          "event_ids": [
+            "e37"
+          ],
+          "timing": [
+            {
+              "start": 55.38461538461539,
+              "end": 56.92307692307692
+            }
+          ],
+          "instructions": [
+            "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+          ]
+        }
+      ],
+      "actor_id": "wrestler",
+      "target_id": "donnell",
+      "technique_id": "ride",
+      "limb_action": "hips and hands",
+      "motion_trajectory": "Maintain top hip coverage and wrist control; follow the bottom actor without neck cranking.",
+      "contact": {
+        "event_id": "e35",
+        "time": 52.30769230769231,
+        "region": "hips",
+        "outcome": "landed",
+        "initiator": "wrestler",
+        "recipient": "donnell"
+      },
+      "start_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 6,
+          "grip": "top",
+          "wall_proximity": "far",
+          "tactical_initiative": true,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [
+            "opponent invited to attend the high line"
+          ],
+          "activated_abilities": [],
+          "setups": [
+            "step",
+            "jab",
+            "double_leg",
+            "ride"
+          ],
+          "pending": null,
+          "contact_marks": 1,
+          "control_marks": 2
+        },
+        "donnell": {
+          "position": [
+            0.22499999999999992,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 1,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": "bottom",
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [
+            "head contact mark"
+          ],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "end_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 7,
+          "grip": "top",
+          "wall_proximity": "far",
+          "tactical_initiative": true,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [
+            "opponent invited to attend the high line"
+          ],
+          "activated_abilities": [],
+          "setups": [
+            "step",
+            "jab",
+            "double_leg",
+            "ride"
+          ],
+          "pending": null,
+          "contact_marks": 1,
+          "control_marks": 3
+        },
+        "donnell": {
+          "position": [
+            0.22499999999999992,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 1,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": "bottom",
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [
+            "head contact mark"
+          ],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "weight_support": [
+        {
+          "event_id": "e33",
+          "support": "mat",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e34",
+          "support": "mat",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e35",
+          "support": "mat",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e36",
+          "support": "mat",
+          "balance": "stable"
+        },
+        {
+          "event_id": "e37",
+          "support": "mat",
+          "balance": "stable"
+        }
+      ],
+      "environment": "Cage or ring floor; no hand grasps the fence. No props are introduced.",
+      "prop_interaction": [],
+      "visible_consequences": [
+        "head contact mark"
+      ],
+      "motion_class": "realistic semantic staging",
+      "physical_claim": "No skeletal solver; not physically verified. Impossible supernatural action requires an explicitly authored technique, absent in this release."
+    },
+    {
+      "movement_id": "movement.e38",
+      "source_event_ids": [
+        "e38"
+      ],
+      "start": 56.92307692307692,
+      "end": 58.46153846153846,
+      "phases": [
+        {
+          "phase": "preparation",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No preparation action in this beat."
+          ]
+        },
+        {
+          "phase": "initiation",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No initiation action in this beat."
+          ]
+        },
+        {
+          "phase": "execution",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No execution action in this beat."
+          ]
+        },
+        {
+          "phase": "contact",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No contact action in this beat."
+          ]
+        },
+        {
+          "phase": "reaction",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No reaction action in this beat."
+          ]
+        },
+        {
+          "phase": "recovery",
+          "event_ids": [
+            "e38"
+          ],
+          "timing": [
+            {
+              "start": 56.92307692307692,
+              "end": 58.46153846153846
+            }
+          ],
+          "instructions": [
+            "Award the condensed BLOCK exhibition on the recorded contact/control advantage; this is not official commission scoring."
+          ]
+        }
+      ],
+      "actor_id": "wrestler",
+      "target_id": "donnell",
+      "technique_id": null,
+      "limb_action": "Observe/adjust without an invented attack.",
+      "motion_trajectory": "Award the condensed BLOCK exhibition on the recorded contact/control advantage; this is not official commission scoring.",
+      "contact": null,
+      "start_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 7,
+          "grip": "top",
+          "wall_proximity": "far",
+          "tactical_initiative": true,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [
+            "opponent invited to attend the high line"
+          ],
+          "activated_abilities": [],
+          "setups": [
+            "step",
+            "jab",
+            "double_leg",
+            "ride"
+          ],
+          "pending": null,
+          "contact_marks": 1,
+          "control_marks": 3
+        },
+        "donnell": {
+          "position": [
+            0.22499999999999992,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 1,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": "bottom",
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [
+            "head contact mark"
+          ],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "end_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 7,
+          "grip": "top",
+          "wall_proximity": "far",
+          "tactical_initiative": true,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [
+            "opponent invited to attend the high line"
+          ],
+          "activated_abilities": [],
+          "setups": [
+            "step",
+            "jab",
+            "double_leg",
+            "ride"
+          ],
+          "pending": null,
+          "contact_marks": 1,
+          "control_marks": 3
+        },
+        "donnell": {
+          "position": [
+            0.22499999999999992,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 1,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": "bottom",
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [
+            "head contact mark"
+          ],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "weight_support": [
+        {
+          "event_id": "e38",
+          "support": "mat",
+          "balance": "stable"
+        }
+      ],
+      "environment": "Cage or ring floor; no hand grasps the fence. No props are introduced.",
+      "prop_interaction": [],
+      "visible_consequences": [
+        "head contact mark"
+      ],
+      "motion_class": "realistic semantic staging",
+      "physical_claim": "No skeletal solver; not physically verified. Impossible supernatural action requires an explicitly authored technique, absent in this release."
+    },
+    {
+      "movement_id": "movement.e39",
+      "source_event_ids": [
+        "e39"
+      ],
+      "start": 58.46153846153846,
+      "end": 60.0,
+      "phases": [
+        {
+          "phase": "preparation",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No preparation action in this beat."
+          ]
+        },
+        {
+          "phase": "initiation",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No initiation action in this beat."
+          ]
+        },
+        {
+          "phase": "execution",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No execution action in this beat."
+          ]
+        },
+        {
+          "phase": "contact",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No contact action in this beat."
+          ]
+        },
+        {
+          "phase": "reaction",
+          "event_ids": [],
+          "timing": [],
+          "instructions": [
+            "No reaction action in this beat."
+          ]
+        },
+        {
+          "phase": "recovery",
+          "event_ids": [
+            "e39"
+          ],
+          "timing": [
+            {
+              "start": 58.46153846153846,
+              "end": 60.0
+            }
+          ],
+          "instructions": [
+            "Separate after the decision. Retain all contact marks, fatigue and established posture."
+          ]
+        }
+      ],
+      "actor_id": "wrestler",
+      "target_id": "donnell",
+      "technique_id": null,
+      "limb_action": "Observe/adjust without an invented attack.",
+      "motion_trajectory": "Separate after the decision. Retain all contact marks, fatigue and established posture.",
+      "contact": null,
+      "start_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 7,
+          "grip": "top",
+          "wall_proximity": "far",
+          "tactical_initiative": true,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [
+            "opponent invited to attend the high line"
+          ],
+          "activated_abilities": [],
+          "setups": [
+            "step",
+            "jab",
+            "double_leg",
+            "ride"
+          ],
+          "pending": null,
+          "contact_marks": 1,
+          "control_marks": 3
+        },
+        "donnell": {
+          "position": [
+            0.22499999999999992,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 1,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": "bottom",
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [
+            "head contact mark"
+          ],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "end_actors": {
+        "wrestler": {
+          "position": [
+            -0.2250000000000001,
+            0.0
+          ],
+          "facing": [
+            1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.balanced",
+          "guard": "hands.high_guard",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 0,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 7,
+          "grip": "top",
+          "wall_proximity": "far",
+          "tactical_initiative": true,
+          "active_vulnerabilities": [
+            "debt.hands.high_guard.body",
+            "debt.hands.high_guard.vision",
+            "debt.defense.sprawl_pummel.head_straight",
+            "debt.defense.sprawl_pummel.tempo",
+            "debt.stance.balanced.tempo",
+            "debt.stance.balanced.head_straight",
+            "debt.tie.freestyle.head_uppercut",
+            "debt.tie.freestyle.clinch",
+            "debt.target.mixer.recovery",
+            "debt.target.mixer.tempo",
+            "debt.kicking.wrestler_teep.angle",
+            "debt.kicking.wrestler_teep.leg",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "body_kick",
+            "body_lock",
+            "check",
+            "cross",
+            "double_leg",
+            "escape",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "low_kick",
+            "outside_trip",
+            "parry",
+            "pivot",
+            "pummel",
+            "retreat",
+            "ride",
+            "shell_block",
+            "single_leg",
+            "slip",
+            "sprawl",
+            "step",
+            "teep",
+            "uppercut"
+          ],
+          "injuries": [],
+          "temporary_advantages": [
+            "opponent invited to attend the high line"
+          ],
+          "activated_abilities": [],
+          "setups": [
+            "step",
+            "jab",
+            "double_leg",
+            "ride"
+          ],
+          "pending": null,
+          "contact_marks": 1,
+          "control_marks": 3
+        },
+        "donnell": {
+          "position": [
+            0.22499999999999992,
+            0.0
+          ],
+          "facing": [
+            -1.0,
+            0.0
+          ],
+          "orientation": "orthodox",
+          "stance": "stance.crouch",
+          "guard": "hands.peekaboo",
+          "posture": "ground",
+          "foot_support": "mat",
+          "balance": "stable",
+          "momentum": [
+            0.0,
+            0.0
+          ],
+          "damage": {
+            "head": 1,
+            "body": 0,
+            "leg": 0
+          },
+          "fatigue": 0,
+          "grip": "bottom",
+          "wall_proximity": "far",
+          "tactical_initiative": false,
+          "active_vulnerabilities": [
+            "debt.hands.peekaboo.leg",
+            "debt.hands.peekaboo.vision",
+            "debt.defense.slip_roll.head_uppercut",
+            "debt.defense.slip_roll.clinch",
+            "debt.defense.slip_roll.leg",
+            "debt.stance.crouch.leg",
+            "debt.stance.crouch.head_uppercut",
+            "debt.target.head_hunter.body",
+            "debt.target.head_hunter.entry",
+            "debt.kicking.none.leg",
+            "debt.kicking.none.body",
+            "debt.mentality.pressure.angle",
+            "debt.mentality.pressure.body"
+          ],
+          "available_responses": [
+            "body_hook",
+            "cross",
+            "feint",
+            "haymaker",
+            "hook",
+            "jab",
+            "parry",
+            "pivot",
+            "retreat",
+            "shell_block",
+            "slip",
+            "step",
+            "uppercut"
+          ],
+          "injuries": [
+            "head contact mark"
+          ],
+          "temporary_advantages": [],
+          "activated_abilities": [],
+          "setups": [],
+          "pending": null,
+          "contact_marks": 0,
+          "control_marks": 0
+        }
+      },
+      "weight_support": [
+        {
+          "event_id": "e39",
+          "support": "mat",
+          "balance": "stable"
+        }
+      ],
+      "environment": "Cage or ring floor; no hand grasps the fence. No props are introduced.",
+      "prop_interaction": [],
+      "visible_consequences": [
+        "head contact mark"
+      ],
+      "motion_class": "realistic semantic staging",
+      "physical_claim": "No skeletal solver; not physically verified. Impossible supernatural action requires an explicitly authored technique, absent in this release."
+    }
+  ]
+}

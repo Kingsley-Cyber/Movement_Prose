@@ -1,0 +1,110 @@
+{
+  "verdict": "PASS",
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "requirement": "Research and ontology",
+      "status": "WORKING",
+      "entrypoint": "scripts/audit_coverage.py",
+      "wiring": "engine.audit.audit",
+      "outcome": "57 complete options and source/claim registry",
+      "verification": "PASS; reports/execution_evidence.json; python scripts/regress.py exit 0"
+    },
+    {
+      "id": "REQ-002",
+      "requirement": "Fighter cards",
+      "status": "WORKING",
+      "entrypoint": "predict.py",
+      "wiring": "Knowledge.card and capabilities.available",
+      "outcome": "11 schema-valid cards and explicit locked capabilities",
+      "verification": "PASS; reports/execution_evidence.json; python scripts/regress.py exit 0"
+    },
+    {
+      "id": "REQ-003",
+      "requirement": "Matchup matrices",
+      "status": "WORKING",
+      "entrypoint": "predict.py",
+      "wiring": "engine.matchups.evaluate",
+      "outcome": "511 valid cells, both asymmetric directions and normalized weights",
+      "verification": "PASS; reports/execution_evidence.json; python scripts/regress.py exit 0"
+    },
+    {
+      "id": "REQ-004",
+      "requirement": "Counter/debt graph",
+      "status": "WORKING",
+      "entrypoint": "scripts/audit_coverage.py",
+      "wiring": "engine.audit.audit",
+      "outcome": "Conditional graph, operational debts and reciprocal links",
+      "verification": "PASS; reports/execution_evidence.json; python scripts/regress.py exit 0"
+    },
+    {
+      "id": "REQ-005",
+      "requirement": "Prediction",
+      "status": "WORKING",
+      "entrypoint": "predict.py",
+      "wiring": "engine.probability.predict",
+      "outcome": "Deterministic complementary probabilities with auditable terms",
+      "verification": "PASS; reports/execution_evidence.json; python scripts/regress.py exit 0"
+    },
+    {
+      "id": "REQ-006",
+      "requirement": "Backfill",
+      "status": "WORKING",
+      "entrypoint": "scripts/backfill.py",
+      "wiring": "backfill and audit",
+      "outcome": "Dry-run, missing-field restoration, preserved conflicts and idempotence",
+      "verification": "PASS; reports/execution_evidence.json; python scripts/regress.py exit 0"
+    },
+    {
+      "id": "REQ-007",
+      "requirement": "Fight planning",
+      "status": "WORKING",
+      "entrypoint": "plan_fight.py",
+      "wiring": "fight_director.plan and fight_state.apply",
+      "outcome": "Ten tactical phases and seeded/director-controlled paths",
+      "verification": "PASS; reports/execution_evidence.json; python scripts/regress.py exit 0"
+    },
+    {
+      "id": "REQ-008",
+      "requirement": "Event graph",
+      "status": "WORKING",
+      "entrypoint": "plan_fight.py",
+      "wiring": "event_graph.graph and validate",
+      "outcome": "Causal snapshots and state/effect replay",
+      "verification": "PASS; reports/execution_evidence.json; python scripts/regress.py exit 0"
+    },
+    {
+      "id": "REQ-009",
+      "requirement": "Choreography",
+      "status": "WORKING",
+      "entrypoint": "plan_fight.py",
+      "wiring": "choreography.choreograph",
+      "outcome": "Six movement phases with anatomical limbs and persistent consequences",
+      "verification": "PASS; reports/execution_evidence.json; python scripts/regress.py exit 0"
+    },
+    {
+      "id": "REQ-010",
+      "requirement": "Prompt compilation",
+      "status": "WORKING",
+      "entrypoint": "plan_fight.py",
+      "wiring": "prompt_compiler.shots, compile_shot and validate_visuals",
+      "outcome": "Event-linked shots and model-agnostic JSONL prompts",
+      "verification": "PASS; reports/execution_evidence.json; python scripts/regress.py exit 0"
+    },
+    {
+      "id": "REQ-011",
+      "requirement": "Regression and demonstrations",
+      "status": "WORKING",
+      "entrypoint": "scripts/regress.py",
+      "wiring": "subprocess execution of audit, recovery, pytest and CLIs",
+      "outcome": "58 passing tests and both validated 60-second fights",
+      "verification": "PASS; reports/execution_evidence.json; python scripts/regress.py exit 0"
+    }
+  ],
+  "residual_unknowns": [
+    "No empirical probability calibration.",
+    "No skeletal/IK/FK or physical motion verification.",
+    "No remote rendered video; model-agnostic prompt packages are the required output."
+  ],
+  "interpretation": "These disclosed fidelity boundaries are explicitly allowed by the supplied specification, not unimplemented core paths."
+}

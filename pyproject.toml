@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "movement-prose-e2e"
+version = "1.0.0"
+description = "Movement_Prose Sakuga Prompt Compiler + BLOCK Fight Engine (offline combat reasoning, semantic fight direction, and 2-Layer / 05:34 causal compilation)"
+requires-python = ">=3.9"
+dependencies = ["jsonschema==4.25.1"]
+
+[project.optional-dependencies]
+test = ["pytest==8.4.2"]
+
+[tool.setuptools]
+packages = ["engine", "fight_move_system", "scripts"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

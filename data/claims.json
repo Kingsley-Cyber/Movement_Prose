@@ -1,0 +1,77 @@
+{
+  "version": "block-1",
+  "claims": [
+    {
+      "id": "claim_eb_drills",
+      "classification": "VERIFIED",
+      "source_ids": [
+        "eb_drills"
+      ],
+      "claim": "Stance changes, angle exits, range and tempo changes are coached training tasks.",
+      "limits": "Instructional drills do not quantify competitive advantage."
+    },
+    {
+      "id": "claim_usaw",
+      "classification": "VERIFIED",
+      "source_ids": [
+        "usaw"
+      ],
+      "claim": "Curriculum includes elevation before penetration, double/single legs, sprawl, ties and rides.",
+      "limits": "A technique listing is not an MMA success estimate."
+    },
+    {
+      "id": "claim_ijf_trip",
+      "classification": "VERIFIED",
+      "source_ids": [
+        "ijf_trip"
+      ],
+      "claim": "Small outer reap follows rearward unbalancing of the opponent.",
+      "limits": "No-gi and cage adaptations are BLOCK inferences."
+    },
+    {
+      "id": "claim_evolve_counters",
+      "classification": "VERIFIED",
+      "source_ids": [
+        "evolve_counters"
+      ],
+      "claim": "Check-to-teep, parry-to-knee and teep counter sequences are instructed.",
+      "limits": "Coaching examples establish possible counters, not guaranteed combinations."
+    },
+    {
+      "id": "claim_abc_mma",
+      "classification": "VERIFIED",
+      "source_ids": [
+        "abc_mma"
+      ],
+      "claim": "Grounded head kicks/knees, groin attacks, fence grabbing and eye pokes are fouls.",
+      "limits": "Jurisdiction adoption varies; the engine uses a restricted legal technique subset."
+    },
+    {
+      "id": "claim_abc_boxing",
+      "classification": "VERIFIED",
+      "source_ids": [
+        "abc_boxing"
+      ],
+      "claim": "Published boxing bout, knockdown and stoppage rules.",
+      "limits": "The short BLOCK vignette is not an official sanctioned boxing bout."
+    },
+    {
+      "id": "claim_green_52",
+      "classification": "VERIFIED",
+      "source_ids": [
+        "green_52"
+      ],
+      "claim": "Research documents 52s as African-American vernacular fighting practice and heritage reframing.",
+      "limits": "Cultural documentation does not verify a universal technique taxonomy or lineage."
+    },
+    {
+      "id": "claim_lyte_52",
+      "classification": "VERIFIED",
+      "source_ids": [
+        "lyte_52"
+      ],
+      "claim": "A contemporary practitioner describes defensive blocks and feints.",
+      "limits": "Self-description; lineage and efficacy claims are unverified. Page also contains unrelated injected promotional links, excluded from evidence."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "round": 1,
+  "commands": [
+    {
+      "command": "python scripts/audit_coverage.py --output reports/final_integrity_report.json",
+      "exit_code": 1,
+      "finding": "Three duplicate reciprocal graph relationships."
+    },
+    {
+      "command": "python -m pytest -q",
+      "exit_code": 1,
+      "actual_summary": "4 failed, 54 passed in 63.24s",
+      "failed_tests": [
+        "test_dry_run_restoration_and_second_apply_are_idempotent",
+        "test_roster_can_direct_its_trained_win_path[macklin]",
+        "test_roster_can_direct_its_trained_win_path[thai]",
+        "test_roster_can_direct_its_trained_win_path[jiujitsu]"
+      ]
+    }
+  ],
+  "repairs": [
+    "Merge duplicate reciprocal relationship mechanisms into the original stable record, preserving merged IDs as provenance.",
+    "Prepare the feint in a legal range before the clinch approach; the entry consumes the earned setup.",
+    "Refresh the recovery release to include these production fixes."
+  ],
+  "tests_changed": false
+}

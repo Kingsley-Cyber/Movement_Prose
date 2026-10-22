@@ -1,0 +1,15 @@
+{
+  "events": {
+    "status": "PASS",
+    "events_replayed": 39,
+    "contacts": 4,
+    "fidelity": "Semantically validated staging; no IK, skeletal solver, or biomechanical proof.",
+    "winner": "wrestler"
+  },
+  "visuals": {
+    "status": "PASS",
+    "shots": 13,
+    "prompts": 13,
+    "contacts_visible": 4
+  }
+}

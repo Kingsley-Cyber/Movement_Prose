@@ -1,5 +1,7 @@
-# Derived 75MB SQLite index (rebuilt in ~13s via `python3 -m fight_move_system.cli kb-rebuild` or `cd knowledge_base && python3 -m agent index-handbook ~/Downloads/handbook.html`)
+# Derived SQLite index (rebuilt in ~13s via `cd knowledge_base && python3 -m agent index-handbook /path/to/handbook.html`)
 knowledge_base/handbook_index.db
+.venv/
+.pytest_cache/
 __pycache__/
 *.pyc
 .DS_Store

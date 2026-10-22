@@ -1,0 +1,32 @@
+{
+  "access_date": "2026-10-22",
+  "queries": [
+    "England Boxing coaching stance guard footwork defense",
+    "USA Wrestling core curriculum elevation sprawl double leg",
+    "IJF ko-soto-gari mechanics",
+    "Muay Thai check teep parry knee Evolve",
+    "ABC Unified Rules MMA and boxing",
+    "52 Blocks Thomas Green heritage Lyte Burly"
+  ],
+  "backends": [
+    "Agent Reach Exa via mcporter",
+    "direct primary pages through web tool"
+  ],
+  "sources": [
+    "eb_drills",
+    "usaw",
+    "ijf_trip",
+    "evolve_counters",
+    "abc_mma",
+    "abc_boxing",
+    "green_52",
+    "lyte_52"
+  ],
+  "limitations": [
+    "Evolve clinch direct-page fetch timed out; excluded as a verified registry source.",
+    "DOI resolver fetch failed; the original Green journal page was successfully read.",
+    "Practitioner self-description does not validate lineage or efficacy.",
+    "No empirical matchup dataset was found or claimed."
+  ],
+  "classification": "Verified scoped claims in claims.json; all tactical and numerical derivations are CANON."
+}

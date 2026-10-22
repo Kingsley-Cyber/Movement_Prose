@@ -1,0 +1,107 @@
+{
+  "status": "PASS",
+  "counts": {
+    "ontology_options": 57,
+    "matchup_cells": 511,
+    "fighter_cards": 11,
+    "techniques": 36,
+    "relationships": 5813,
+    "counter_relationships": 1020,
+    "debts": 115,
+    "debt_exploit_relationships": 1091,
+    "event_types": 11,
+    "sources": 8,
+    "verified_claims": 8
+  },
+  "tests": "58 passed in 72.77s (0:01:12)",
+  "demonstrations": [
+    {
+      "folder": "outputs/example_fights/maleek_vs_donnell",
+      "fighters": [
+        "Maleek",
+        "Donnell"
+      ],
+      "fighter_ids": [
+        "maleek",
+        "donnell"
+      ],
+      "probability_a": 0.4852126469153967,
+      "probability_b": 0.5147873530846033,
+      "winner": "maleek",
+      "mode": "predictive",
+      "seed": 42,
+      "duration": 60.0,
+      "events": 68,
+      "contacts": 5,
+      "shots": 19,
+      "validation": {
+        "events": {
+          "status": "PASS",
+          "events_replayed": 68,
+          "contacts": 5,
+          "fidelity": "Semantically validated staging; no IK, skeletal solver, or biomechanical proof.",
+          "winner": "maleek"
+        },
+        "visuals": {
+          "status": "PASS",
+          "shots": 19,
+          "prompts": 19,
+          "contacts_visible": 5
+        }
+      },
+      "logit_terms": {
+        "matrix": -0.05916666666666666,
+        "slots": 0.0,
+        "NULL": 0.0
+      }
+    },
+    {
+      "folder": "outputs/example_fights/two_slot_upset",
+      "fighters": [
+        "Imani Vale",
+        "Donnell"
+      ],
+      "fighter_ids": [
+        "wrestler",
+        "donnell"
+      ],
+      "probability_a": 0.5047915199827228,
+      "probability_b": 0.49520848001727724,
+      "winner": "wrestler",
+      "mode": "predictive",
+      "seed": 42,
+      "duration": 60.0,
+      "events": 39,
+      "contacts": 4,
+      "shots": 13,
+      "validation": {
+        "events": {
+          "status": "PASS",
+          "events_replayed": 39,
+          "contacts": 4,
+          "fidelity": "Semantically validated staging; no IK, skeletal solver, or biomechanical proof.",
+          "winner": "wrestler"
+        },
+        "visuals": {
+          "status": "PASS",
+          "shots": 13,
+          "prompts": 13,
+          "contacts_visible": 4
+        }
+      },
+      "logit_terms": {
+        "matrix": -0.03083333333333333,
+        "slots": -0.15,
+        "NULL": 0.2
+      }
+    }
+  ],
+  "evaluation_rounds": 2,
+  "original_tests_modified": false,
+  "rejected_claims": [
+    "Provider-specific video adapters: unnecessary for the offline model-agnostic contract.",
+    "SQLite and additional abstraction layers: JSON and the direct runtime paths satisfy the contract.",
+    "Automatic Agent Reach update checks: unrelated to implementing or proving BLOCK."
+  ],
+  "open_contract_gaps": []
+}

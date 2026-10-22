@@ -234,6 +234,28 @@ def main(argv: Optional[List[str]] = None) -> int:
     p_orig.add_argument("--knob", action="append", default=None, help="KB diversity knob axis=option")
     p_orig.add_argument("--kb-report-out", type=Path, default=None, help="Optional path to write pre-intent KB query JSON")
 
+    p_bpred = sub.add_parser(
+        "block-predict",
+        help="Run BLOCK deterministic matchup prediction between two fighter cards",
+    )
+    p_bpred.add_argument("fighter_a", type=str, help="Fighter A ID or path to card JSON")
+    p_bpred.add_argument("fighter_b", type=str, help="Fighter B ID or path to card JSON")
+    p_bpred.add_argument("--ruleset", choices=["mma", "boxing"], default="mma")
+    p_bpred.add_argument("--output", type=Path, default=None, help="Optional path to write prediction JSON")
+
+    p_bplan = sub.add_parser(
+        "block-plan",
+        help="Run full BLOCK semantic fight planning + compile into Movement_Prose 2-Layer Fluid Stack & protected 05:34 SAKUGA-MLLM-3.1-CAUSAL prompts",
+    )
+    p_bplan.add_argument("fighter_a", type=str, help="Fighter A ID or path to card JSON")
+    p_bplan.add_argument("fighter_b", type=str, help="Fighter B ID or path to card JSON")
+    p_bplan.add_argument("--ruleset", choices=["mma", "boxing"], default="mma")
+    p_bplan.add_argument("--duration", type=float, default=60.0)
+    p_bplan.add_argument("--seed", type=int, default=42)
+    p_bplan.add_argument("--winner", type=str, default=None, help="Optional director-controlled winner ID")
+    p_bplan.add_argument("--style", choices=["realistic", "anime"], default="realistic")
+    p_bplan.add_argument("--output-dir", type=Path, required=True, help="Output directory for BLOCK and Movement_Prose artifacts")
+
     args = parser.parse_args(argv)
 
     if args.cmd == "validate":
@@ -423,6 +445,42 @@ def main(argv: Optional[List[str]] = None) -> int:
             else:
                 print(full_output)
             return 0
+
+    if args.cmd == "block-predict":
+        from engine.ontology import write as block_write
+        from engine.probability import predict as block_predict
+
+        result = block_predict(args.fighter_a, args.fighter_b, args.ruleset)
+        if args.output:
+            block_write(args.output, result)
+        print(json.dumps(result, indent=2, allow_nan=False))
+        return 0
+
+    if args.cmd == "block-plan":
+        from plan_fight import deliver as block_deliver
+
+        result, report = block_deliver(
+            args.fighter_a,
+            args.fighter_b,
+            args.ruleset,
+            args.duration,
+            args.seed,
+            str(args.output_dir),
+            winner=args.winner,
+            style=args.style,
+            movement_prose=True,
+        )
+        print(
+            json.dumps(
+                {
+                    "selection": result["selection"],
+                    "validation": report,
+                    "output_dir": str(args.output_dir),
+                },
+                indent=2,
+            )
+        )
+        return 0
 
     return 0
 

@@ -1,0 +1,15 @@
+{
+  "events": {
+    "status": "PASS",
+    "events_replayed": 68,
+    "contacts": 5,
+    "fidelity": "Semantically validated staging; no IK, skeletal solver, or biomechanical proof.",
+    "winner": "maleek"
+  },
+  "visuals": {
+    "status": "PASS",
+    "shots": 19,
+    "prompts": 19,
+    "contacts_visible": 5
+  }
+}

@@ -1,0 +1,3312 @@
+{
+  "version": "block-1",
+  "shots": [
+    {
+      "shot_id": "shot.e1",
+      "source_event_ids": [
+        "e1"
+      ],
+      "duration": 1.5384615384615385,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "wrestler",
+          "name": "Imani Vale",
+          "appearance": {
+            "clothing": "slate shorts",
+            "identity_anchor": "Imani Vale / Freestyle two-piece",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "wrestler": [
+          -0.825,
+          0.0
+        ],
+        "donnell": [
+          0.825,
+          0.0
+        ]
+      },
+      "required_action": "A high probe buys an elevation change into a ride.",
+      "motion_trajectory": "Observe/adjust without an invented attack.: A high probe buys an elevation change into a ride.",
+      "action_timing": {
+        "start": 0.0,
+        "end": 1.5384615384615385,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e1"
+            ],
+            "timing": [
+              {
+                "start": 0.0,
+                "end": 1.5384615384615385
+              }
+            ],
+            "instructions": [
+              "A high probe buys an elevation change into a ride."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No initiation action in this beat."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No execution action in this beat."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No reaction action in this beat."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No recovery action in this beat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Observe the other actor without inventing a counter.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "wrestler": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.825,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "wrestler": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.825,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Imani Vale / Freestyle two-piece; slate shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e2",
+      "source_event_ids": [
+        "e2"
+      ],
+      "duration": 1.5384615384615385,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "wrestler",
+          "name": "Imani Vale",
+          "appearance": {
+            "clothing": "slate shorts",
+            "identity_anchor": "Imani Vale / Freestyle two-piece",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "wrestler": [
+          -0.825,
+          0.0
+        ],
+        "donnell": [
+          0.825,
+          0.0
+        ]
+      },
+      "required_action": "Crowd the reset with a compact hook.",
+      "motion_trajectory": "Observe/adjust without an invented attack.: Crowd the reset with a compact hook.",
+      "action_timing": {
+        "start": 1.5384615384615385,
+        "end": 3.076923076923077,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e2"
+            ],
+            "timing": [
+              {
+                "start": 1.5384615384615385,
+                "end": 3.076923076923077
+              }
+            ],
+            "instructions": [
+              "Crowd the reset with a compact hook."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No initiation action in this beat."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No execution action in this beat."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No reaction action in this beat."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No recovery action in this beat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Observe the other actor without inventing a counter.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "wrestler": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.825,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "wrestler": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.825,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Imani Vale / Freestyle two-piece; slate shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e3",
+      "source_event_ids": [
+        "e3",
+        "e4",
+        "e5"
+      ],
+      "duration": 4.615384615384615,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "wrestler",
+          "name": "Imani Vale",
+          "appearance": {
+            "clothing": "slate shorts",
+            "identity_anchor": "Imani Vale / Freestyle two-piece",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "wrestler": [
+          -0.825,
+          0.0
+        ],
+        "donnell": [
+          0.825,
+          0.0
+        ]
+      },
+      "required_action": "Establish punch through one adjacent range step.",
+      "motion_trajectory": "feet: Step toward the opponent without crossing the feet.",
+      "action_timing": {
+        "start": 3.076923076923077,
+        "end": 7.6923076923076925,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e3"
+            ],
+            "timing": [
+              {
+                "start": 3.076923076923077,
+                "end": 4.615384615384615
+              }
+            ],
+            "instructions": [
+              "Establish punch through one adjacent range step."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e4"
+            ],
+            "timing": [
+              {
+                "start": 4.615384615384615,
+                "end": 6.153846153846154
+              }
+            ],
+            "instructions": [
+              "Establish punch through one adjacent range step."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e4"
+            ],
+            "timing": [
+              {
+                "start": 4.615384615384615,
+                "end": 6.153846153846154
+              }
+            ],
+            "instructions": [
+              "Establish punch through one adjacent range step."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No reaction action in this beat."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e5"
+            ],
+            "timing": [
+              {
+                "start": 6.153846153846154,
+                "end": 7.6923076923076925
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Observe the other actor without inventing a counter.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "wrestler": {
+            "position": [
+              -0.825,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.825,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.825,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Imani Vale / Freestyle two-piece; slate shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e6",
+      "source_event_ids": [
+        "e6",
+        "e7",
+        "e8",
+        "e9"
+      ],
+      "duration": 6.153846153846154,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "wrestler",
+          "name": "Imani Vale",
+          "appearance": {
+            "clothing": "slate shorts",
+            "identity_anchor": "Imani Vale / Freestyle two-piece",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "wrestler": [
+          -0.2250000000000001,
+          0.0
+        ],
+        "donnell": [
+          0.825,
+          0.0
+        ]
+      },
+      "required_action": "Draw high attention before entering the technique's required range.",
+      "motion_trajectory": "left hand: Show an incomplete lead extension; withdraw before contact.",
+      "action_timing": {
+        "start": 7.6923076923076925,
+        "end": 13.846153846153847,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e6"
+            ],
+            "timing": [
+              {
+                "start": 7.6923076923076925,
+                "end": 9.23076923076923
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e7"
+            ],
+            "timing": [
+              {
+                "start": 9.23076923076923,
+                "end": 10.76923076923077
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e7"
+            ],
+            "timing": [
+              {
+                "start": 9.23076923076923,
+                "end": 10.76923076923077
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [
+              "e8"
+            ],
+            "timing": [
+              {
+                "start": 10.76923076923077,
+                "end": 12.307692307692308
+              }
+            ],
+            "instructions": [
+              "Attend the shown high line; the feint has no contact."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e9"
+            ],
+            "timing": [
+              {
+                "start": 12.307692307692308,
+                "end": 13.846153846153847
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Attend the shown high line; the feint has no contact.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.825,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.825,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Imani Vale / Freestyle two-piece; slate shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e10",
+      "source_event_ids": [
+        "e10",
+        "e11",
+        "e12",
+        "e13",
+        "e14",
+        "e15"
+      ],
+      "duration": 9.23076923076923,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "wrestler",
+          "name": "Imani Vale",
+          "appearance": {
+            "clothing": "slate shorts",
+            "identity_anchor": "Imani Vale / Freestyle two-piece",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "wrestler": [
+          -0.2250000000000001,
+          0.0
+        ],
+        "donnell": [
+          0.825,
+          0.0
+        ]
+      },
+      "required_action": "Establish the preferred early tempo and make the opponent answer the head threat.",
+      "motion_trajectory": "left fist: Extend along the center head line and retract.",
+      "action_timing": {
+        "start": 13.846153846153847,
+        "end": 23.076923076923077,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e10"
+            ],
+            "timing": [
+              {
+                "start": 13.846153846153847,
+                "end": 15.384615384615385
+              }
+            ],
+            "instructions": [
+              "Establish the preferred early tempo and make the opponent answer the head threat."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e11"
+            ],
+            "timing": [
+              {
+                "start": 15.384615384615385,
+                "end": 16.923076923076923
+              }
+            ],
+            "instructions": [
+              "Establish the preferred early tempo and make the opponent answer the head threat."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e11"
+            ],
+            "timing": [
+              {
+                "start": 15.384615384615385,
+                "end": 16.923076923076923
+              }
+            ],
+            "instructions": [
+              "Establish the preferred early tempo and make the opponent answer the head threat."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [
+              "e13"
+            ],
+            "timing": [
+              {
+                "start": 18.46153846153846,
+                "end": 20.0
+              }
+            ],
+            "instructions": [
+              "Resolve explicit contact with the head."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [
+              "e12",
+              "e14"
+            ],
+            "timing": [
+              {
+                "start": 16.923076923076923,
+                "end": 18.46153846153846
+              },
+              {
+                "start": 20.0,
+                "end": 21.53846153846154
+              }
+            ],
+            "instructions": [
+              "Attempt a trained defensive response; success remains contingent.",
+              "Show the consequence of contact; preserve established damage and position."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e15"
+            ],
+            "timing": [
+              {
+                "start": 21.53846153846154,
+                "end": 23.076923076923077
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": {
+        "event_id": "e13",
+        "time": 18.46153846153846,
+        "region": "head",
+        "outcome": "landed",
+        "initiator": "wrestler",
+        "recipient": "donnell"
+      },
+      "defensive_response": "Attempt a trained defensive response; success remains contingent. Show the consequence of contact; preserve established damage and position.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.825,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.825,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Imani Vale / Freestyle two-piece; slate shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e16",
+      "source_event_ids": [
+        "e16",
+        "e17",
+        "e18",
+        "e19"
+      ],
+      "duration": 6.153846153846153,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "wrestler",
+          "name": "Imani Vale",
+          "appearance": {
+            "clothing": "slate shorts",
+            "identity_anchor": "Imani Vale / Freestyle two-piece",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "wrestler": [
+          -0.2250000000000001,
+          0.0
+        ],
+        "donnell": [
+          0.825,
+          0.0
+        ]
+      },
+      "required_action": "Draw high attention before entering the technique's required range.",
+      "motion_trajectory": "left hand: Show an incomplete lead extension; withdraw before contact.",
+      "action_timing": {
+        "start": 23.076923076923077,
+        "end": 29.23076923076923,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e16"
+            ],
+            "timing": [
+              {
+                "start": 23.076923076923077,
+                "end": 24.615384615384617
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e17"
+            ],
+            "timing": [
+              {
+                "start": 24.615384615384617,
+                "end": 26.153846153846153
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e17"
+            ],
+            "timing": [
+              {
+                "start": 24.615384615384617,
+                "end": 26.153846153846153
+              }
+            ],
+            "instructions": [
+              "Draw high attention before entering the technique's required range."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [
+              "e18"
+            ],
+            "timing": [
+              {
+                "start": 26.153846153846153,
+                "end": 27.692307692307693
+              }
+            ],
+            "instructions": [
+              "Attend the shown high line; the feint has no contact."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e19"
+            ],
+            "timing": [
+              {
+                "start": 27.692307692307693,
+                "end": 29.23076923076923
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Attend the shown high line; the feint has no contact.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.825,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.825,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Imani Vale / Freestyle two-piece; slate shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e20",
+      "source_event_ids": [
+        "e20",
+        "e21",
+        "e22",
+        "e23",
+        "e24",
+        "e25"
+      ],
+      "duration": 9.23076923076923,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "wrestler",
+          "name": "Imani Vale",
+          "appearance": {
+            "clothing": "slate shorts",
+            "identity_anchor": "Imani Vale / Freestyle two-piece",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "wrestler": [
+          -0.2250000000000001,
+          0.0
+        ],
+        "donnell": [
+          0.825,
+          0.0
+        ]
+      },
+      "required_action": "Reach the first weakness: Legal trained entry can reach an initially uncovered capability.",
+      "motion_trajectory": "arms and shoulder: Change elevation before penetration, connect both legs, drive to the side, and settle top hip coverage.",
+      "action_timing": {
+        "start": 29.23076923076923,
+        "end": 38.46153846153846,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e20"
+            ],
+            "timing": [
+              {
+                "start": 29.23076923076923,
+                "end": 30.76923076923077
+              }
+            ],
+            "instructions": [
+              "Reach the first weakness: Legal trained entry can reach an initially uncovered capability."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e21"
+            ],
+            "timing": [
+              {
+                "start": 30.76923076923077,
+                "end": 32.30769230769231
+              }
+            ],
+            "instructions": [
+              "Reach the first weakness: Legal trained entry can reach an initially uncovered capability."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e21"
+            ],
+            "timing": [
+              {
+                "start": 30.76923076923077,
+                "end": 32.30769230769231
+              }
+            ],
+            "instructions": [
+              "Reach the first weakness: Legal trained entry can reach an initially uncovered capability."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [
+              "e23"
+            ],
+            "timing": [
+              {
+                "start": 33.84615384615385,
+                "end": 35.38461538461539
+              }
+            ],
+            "instructions": [
+              "Resolve explicit contact with the hips."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [
+              "e22",
+              "e24"
+            ],
+            "timing": [
+              {
+                "start": 32.30769230769231,
+                "end": 33.84615384615385
+              },
+              {
+                "start": 35.38461538461539,
+                "end": 36.92307692307692
+              }
+            ],
+            "instructions": [
+              "Attempt a trained defensive response; success remains contingent.",
+              "Show the consequence of contact; preserve established damage and position."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e25"
+            ],
+            "timing": [
+              {
+                "start": 36.92307692307692,
+                "end": 38.46153846153846
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": {
+        "event_id": "e23",
+        "time": 33.84615384615385,
+        "region": "hips",
+        "outcome": "landed",
+        "initiator": "wrestler",
+        "recipient": "donnell"
+      },
+      "defensive_response": "Attempt a trained defensive response; success remains contingent. Show the consequence of contact; preserve established damage and position.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.825,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "standing",
+            "grip": null,
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "top",
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.22499999999999992,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "bottom",
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Imani Vale / Freestyle two-piece; slate shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e26",
+      "source_event_ids": [
+        "e26"
+      ],
+      "duration": 1.53846153846154,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "wrestler",
+          "name": "Imani Vale",
+          "appearance": {
+            "clothing": "slate shorts",
+            "identity_anchor": "Imani Vale / Freestyle two-piece",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "wrestler": [
+          -0.2250000000000001,
+          0.0
+        ],
+        "donnell": [
+          0.22499999999999992,
+          0.0
+        ]
+      },
+      "required_action": "Try to frame and recover posture from the established bottom position; no trained escape is invented.",
+      "motion_trajectory": "Observe/adjust without an invented attack.: Try to frame and recover posture from the established bottom position; no trained escape is invented.",
+      "action_timing": {
+        "start": 38.46153846153846,
+        "end": 40.0,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e26"
+            ],
+            "timing": [
+              {
+                "start": 38.46153846153846,
+                "end": 40.0
+              }
+            ],
+            "instructions": [
+              "Try to frame and recover posture from the established bottom position; no trained escape is invented."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No initiation action in this beat."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No execution action in this beat."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No reaction action in this beat."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No recovery action in this beat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Observe the other actor without inventing a counter.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "top",
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.22499999999999992,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "bottom",
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "top",
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.22499999999999992,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "bottom",
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Imani Vale / Freestyle two-piece; slate shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e27",
+      "source_event_ids": [
+        "e27",
+        "e28",
+        "e29",
+        "e30",
+        "e31"
+      ],
+      "duration": 7.692307692307693,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "wrestler",
+          "name": "Imani Vale",
+          "appearance": {
+            "clothing": "slate shorts",
+            "identity_anchor": "Imani Vale / Freestyle two-piece",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "wrestler": [
+          -0.2250000000000001,
+          0.0
+        ],
+        "donnell": [
+          0.22499999999999992,
+          0.0
+        ]
+      },
+      "required_action": "Capitalize on the established control rather than resetting to unrelated striking.",
+      "motion_trajectory": "hips and hands: Maintain top hip coverage and wrist control; follow the bottom actor without neck cranking.",
+      "action_timing": {
+        "start": 40.0,
+        "end": 47.69230769230769,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e27"
+            ],
+            "timing": [
+              {
+                "start": 40.0,
+                "end": 41.53846153846154
+              }
+            ],
+            "instructions": [
+              "Capitalize on the established control rather than resetting to unrelated striking."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e28"
+            ],
+            "timing": [
+              {
+                "start": 41.53846153846154,
+                "end": 43.07692307692308
+              }
+            ],
+            "instructions": [
+              "Capitalize on the established control rather than resetting to unrelated striking."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e28"
+            ],
+            "timing": [
+              {
+                "start": 41.53846153846154,
+                "end": 43.07692307692308
+              }
+            ],
+            "instructions": [
+              "Capitalize on the established control rather than resetting to unrelated striking."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [
+              "e29"
+            ],
+            "timing": [
+              {
+                "start": 43.07692307692308,
+                "end": 44.61538461538461
+              }
+            ],
+            "instructions": [
+              "Resolve explicit contact with the hips."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [
+              "e30"
+            ],
+            "timing": [
+              {
+                "start": 44.61538461538461,
+                "end": 46.15384615384615
+              }
+            ],
+            "instructions": [
+              "Show the consequence of contact; preserve established damage and position."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e31"
+            ],
+            "timing": [
+              {
+                "start": 46.15384615384615,
+                "end": 47.69230769230769
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": {
+        "event_id": "e29",
+        "time": 43.07692307692308,
+        "region": "hips",
+        "outcome": "landed",
+        "initiator": "wrestler",
+        "recipient": "donnell"
+      },
+      "defensive_response": "Show the consequence of contact; preserve established damage and position.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "top",
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.22499999999999992,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "bottom",
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "top",
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.22499999999999992,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "bottom",
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Imani Vale / Freestyle two-piece; slate shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e32",
+      "source_event_ids": [
+        "e32"
+      ],
+      "duration": 1.53846153846154,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "wrestler",
+          "name": "Imani Vale",
+          "appearance": {
+            "clothing": "slate shorts",
+            "identity_anchor": "Imani Vale / Freestyle two-piece",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "wrestler": [
+          -0.2250000000000001,
+          0.0
+        ],
+        "donnell": [
+          0.22499999999999992,
+          0.0
+        ]
+      },
+      "required_action": "Contest the existing connection; the failed attempt does not erase top control or injury.",
+      "motion_trajectory": "Observe/adjust without an invented attack.: Contest the existing connection; the failed attempt does not erase top control or injury.",
+      "action_timing": {
+        "start": 47.69230769230769,
+        "end": 49.23076923076923,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e32"
+            ],
+            "timing": [
+              {
+                "start": 47.69230769230769,
+                "end": 49.23076923076923
+              }
+            ],
+            "instructions": [
+              "Contest the existing connection; the failed attempt does not erase top control or injury."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No initiation action in this beat."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No execution action in this beat."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No reaction action in this beat."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No recovery action in this beat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Observe the other actor without inventing a counter.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "top",
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.22499999999999992,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "bottom",
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "top",
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.22499999999999992,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "bottom",
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Imani Vale / Freestyle two-piece; slate shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e33",
+      "source_event_ids": [
+        "e33",
+        "e34",
+        "e35",
+        "e36",
+        "e37"
+      ],
+      "duration": 7.692307692307686,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "wrestler",
+          "name": "Imani Vale",
+          "appearance": {
+            "clothing": "slate shorts",
+            "identity_anchor": "Imani Vale / Freestyle two-piece",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "wrestler": [
+          -0.2250000000000001,
+          0.0
+        ],
+        "donnell": [
+          0.22499999999999992,
+          0.0
+        ]
+      },
+      "required_action": "Deny the attempted reversal with the previously established control.",
+      "motion_trajectory": "hips and hands: Maintain top hip coverage and wrist control; follow the bottom actor without neck cranking.",
+      "action_timing": {
+        "start": 49.23076923076923,
+        "end": 56.92307692307692,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [
+              "e33"
+            ],
+            "timing": [
+              {
+                "start": 49.23076923076923,
+                "end": 50.76923076923077
+              }
+            ],
+            "instructions": [
+              "Deny the attempted reversal with the previously established control."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [
+              "e34"
+            ],
+            "timing": [
+              {
+                "start": 50.76923076923077,
+                "end": 52.30769230769231
+              }
+            ],
+            "instructions": [
+              "Deny the attempted reversal with the previously established control."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [
+              "e34"
+            ],
+            "timing": [
+              {
+                "start": 50.76923076923077,
+                "end": 52.30769230769231
+              }
+            ],
+            "instructions": [
+              "Deny the attempted reversal with the previously established control."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [
+              "e35"
+            ],
+            "timing": [
+              {
+                "start": 52.30769230769231,
+                "end": 53.84615384615385
+              }
+            ],
+            "instructions": [
+              "Resolve explicit contact with the hips."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [
+              "e36"
+            ],
+            "timing": [
+              {
+                "start": 53.84615384615385,
+                "end": 55.38461538461539
+              }
+            ],
+            "instructions": [
+              "Show the consequence of contact; preserve established damage and position."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e37"
+            ],
+            "timing": [
+              {
+                "start": 55.38461538461539,
+                "end": 56.92307692307692
+              }
+            ],
+            "instructions": [
+              "Return the active limb and re-establish two-foot support, or stabilize top/bottom support on the mat."
+            ]
+          }
+        ]
+      },
+      "contact_timing": {
+        "event_id": "e35",
+        "time": 52.30769230769231,
+        "region": "hips",
+        "outcome": "landed",
+        "initiator": "wrestler",
+        "recipient": "donnell"
+      },
+      "defensive_response": "Show the consequence of contact; preserve established damage and position.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "top",
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.22499999999999992,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "bottom",
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "top",
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.22499999999999992,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "bottom",
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Imani Vale / Freestyle two-piece; slate shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e38",
+      "source_event_ids": [
+        "e38"
+      ],
+      "duration": 1.53846153846154,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "wrestler",
+          "name": "Imani Vale",
+          "appearance": {
+            "clothing": "slate shorts",
+            "identity_anchor": "Imani Vale / Freestyle two-piece",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "wrestler": [
+          -0.2250000000000001,
+          0.0
+        ],
+        "donnell": [
+          0.22499999999999992,
+          0.0
+        ]
+      },
+      "required_action": "Award the condensed BLOCK exhibition on the recorded contact/control advantage; this is not official commission scoring.",
+      "motion_trajectory": "Observe/adjust without an invented attack.: Award the condensed BLOCK exhibition on the recorded contact/control advantage; this is not official commission scoring.",
+      "action_timing": {
+        "start": 56.92307692307692,
+        "end": 58.46153846153846,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No preparation action in this beat."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No initiation action in this beat."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No execution action in this beat."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No reaction action in this beat."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e38"
+            ],
+            "timing": [
+              {
+                "start": 56.92307692307692,
+                "end": 58.46153846153846
+              }
+            ],
+            "instructions": [
+              "Award the condensed BLOCK exhibition on the recorded contact/control advantage; this is not official commission scoring."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Observe the other actor without inventing a counter.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "top",
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.22499999999999992,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "bottom",
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "top",
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.22499999999999992,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "bottom",
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Imani Vale / Freestyle two-piece; slate shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    },
+    {
+      "shot_id": "shot.e39",
+      "source_event_ids": [
+        "e39"
+      ],
+      "duration": 1.53846153846154,
+      "location": "cage / fixed arena floor",
+      "characters": [
+        {
+          "fighter_id": "wrestler",
+          "name": "Imani Vale",
+          "appearance": {
+            "clothing": "slate shorts",
+            "identity_anchor": "Imani Vale / Freestyle two-piece",
+            "props": []
+          }
+        },
+        {
+          "fighter_id": "donnell",
+          "name": "Donnell",
+          "appearance": {
+            "clothing": "cobalt shorts",
+            "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+            "props": []
+          }
+        }
+      ],
+      "starting_positions": {
+        "wrestler": [
+          -0.2250000000000001,
+          0.0
+        ],
+        "donnell": [
+          0.22499999999999992,
+          0.0
+        ]
+      },
+      "required_action": "Separate after the decision. Retain all contact marks, fatigue and established posture.",
+      "motion_trajectory": "Observe/adjust without an invented attack.: Separate after the decision. Retain all contact marks, fatigue and established posture.",
+      "action_timing": {
+        "start": 58.46153846153846,
+        "end": 60.0,
+        "phases": [
+          {
+            "phase": "preparation",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No preparation action in this beat."
+            ]
+          },
+          {
+            "phase": "initiation",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No initiation action in this beat."
+            ]
+          },
+          {
+            "phase": "execution",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No execution action in this beat."
+            ]
+          },
+          {
+            "phase": "contact",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No contact action in this beat."
+            ]
+          },
+          {
+            "phase": "reaction",
+            "event_ids": [],
+            "timing": [],
+            "instructions": [
+              "No reaction action in this beat."
+            ]
+          },
+          {
+            "phase": "recovery",
+            "event_ids": [
+              "e39"
+            ],
+            "timing": [
+              {
+                "start": 58.46153846153846,
+                "end": 60.0
+              }
+            ],
+            "instructions": [
+              "Separate after the decision. Retain all contact marks, fatigue and established posture."
+            ]
+          }
+        ]
+      },
+      "contact_timing": null,
+      "defensive_response": "Observe the other actor without inventing a counter.",
+      "performance": "Show attention before commitment; show strain and retained contact marks after impact.",
+      "environmental_reaction": "Feet maintain floor contact except the documented single-support beat; falls follow the contact event only.",
+      "camera": {
+        "world_position": [
+          0,
+          -3.0
+        ],
+        "movement": "fixed side of action axis",
+        "visibility": "both full bodies, active limb and contact region in frame",
+        "cut_rule": "No cut during the contact and immediate reaction."
+      },
+      "lens_intent": "Wide full-body two-shot; prioritize target visibility over facial close-ups.",
+      "animation_style": "realistic semantic staging",
+      "lighting": "Stable overhead arena light; preserve clothing colors.",
+      "continuity_constraints": {
+        "start": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "top",
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.22499999999999992,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "bottom",
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "end": {
+          "wrestler": {
+            "position": [
+              -0.2250000000000001,
+              0.0
+            ],
+            "facing": [
+              1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.balanced",
+            "guard": "hands.high_guard",
+            "injuries": [],
+            "damage": {
+              "head": 0,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "top",
+            "clothing": "slate shorts",
+            "props": []
+          },
+          "donnell": {
+            "position": [
+              0.22499999999999992,
+              0.0
+            ],
+            "facing": [
+              -1.0,
+              0.0
+            ],
+            "orientation": "orthodox",
+            "stance": "stance.crouch",
+            "guard": "hands.peekaboo",
+            "injuries": [
+              "head contact mark"
+            ],
+            "damage": {
+              "head": 1,
+              "body": 0,
+              "leg": 0
+            },
+            "posture": "ground",
+            "grip": "bottom",
+            "clothing": "cobalt shorts",
+            "props": []
+          }
+        },
+        "axis": "+x is screen right, +y away from camera; do not reverse the camera side",
+        "environment": "same arena, no props"
+      },
+      "negative_constraints": [
+        "No identity or clothing swaps",
+        "No off-frame contact",
+        "No injury reset",
+        "No new grips or techniques",
+        "No fence grabbing",
+        "No teleporting or unearned flight"
+      ],
+      "required_visual_references": [
+        "Imani Vale / Freestyle two-piece; slate shorts",
+        "Donnell / Forward-loaded pressure boxer; cobalt shorts",
+        "Starting geometry and stance from structured continuity anchors; references are requirements, not supplied generated images."
+      ]
+    }
+  ]
+}

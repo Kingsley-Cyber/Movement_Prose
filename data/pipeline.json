@@ -1,0 +1,209 @@
+{
+  "version": "block-1",
+  "event_types": [
+    {
+      "id": "assessment",
+      "state_handler": "engine.fight_state.observe",
+      "choreography_handler": "engine.choreography.translate",
+      "prompt_handler": "engine.prompt_compiler.compile_shot",
+      "technique_kinds": [
+        "movement",
+        "defense",
+        "feint",
+        "punch",
+        "kick",
+        "knee",
+        "grip",
+        "takedown",
+        "control",
+        "submission"
+      ]
+    },
+    {
+      "id": "setup",
+      "state_handler": "engine.fight_state.setup",
+      "choreography_handler": "engine.choreography.translate",
+      "prompt_handler": "engine.prompt_compiler.compile_shot",
+      "technique_kinds": [
+        "movement",
+        "defense",
+        "feint",
+        "punch",
+        "kick",
+        "knee",
+        "grip",
+        "takedown",
+        "control",
+        "submission"
+      ]
+    },
+    {
+      "id": "movement",
+      "state_handler": "engine.fight_state.move",
+      "choreography_handler": "engine.choreography.translate",
+      "prompt_handler": "engine.prompt_compiler.compile_shot",
+      "technique_kinds": [
+        "movement",
+        "defense",
+        "feint",
+        "punch",
+        "kick",
+        "knee",
+        "grip",
+        "takedown",
+        "control",
+        "submission"
+      ]
+    },
+    {
+      "id": "execution",
+      "state_handler": "engine.fight_state.execute",
+      "choreography_handler": "engine.choreography.translate",
+      "prompt_handler": "engine.prompt_compiler.compile_shot",
+      "technique_kinds": [
+        "movement",
+        "defense",
+        "feint",
+        "punch",
+        "kick",
+        "knee",
+        "grip",
+        "takedown",
+        "control",
+        "submission"
+      ]
+    },
+    {
+      "id": "contact",
+      "state_handler": "engine.fight_state.contact",
+      "choreography_handler": "engine.choreography.translate",
+      "prompt_handler": "engine.prompt_compiler.compile_shot",
+      "technique_kinds": [
+        "movement",
+        "defense",
+        "feint",
+        "punch",
+        "kick",
+        "knee",
+        "grip",
+        "takedown",
+        "control",
+        "submission"
+      ]
+    },
+    {
+      "id": "reaction",
+      "state_handler": "engine.fight_state.react",
+      "choreography_handler": "engine.choreography.translate",
+      "prompt_handler": "engine.prompt_compiler.compile_shot",
+      "technique_kinds": [
+        "movement",
+        "defense",
+        "feint",
+        "punch",
+        "kick",
+        "knee",
+        "grip",
+        "takedown",
+        "control",
+        "submission"
+      ]
+    },
+    {
+      "id": "recovery",
+      "state_handler": "engine.fight_state.recover",
+      "choreography_handler": "engine.choreography.translate",
+      "prompt_handler": "engine.prompt_compiler.compile_shot",
+      "technique_kinds": [
+        "movement",
+        "defense",
+        "feint",
+        "punch",
+        "kick",
+        "knee",
+        "grip",
+        "takedown",
+        "control",
+        "submission"
+      ]
+    },
+    {
+      "id": "activation",
+      "state_handler": "engine.fight_state.activate",
+      "choreography_handler": "engine.choreography.translate",
+      "prompt_handler": "engine.prompt_compiler.compile_shot",
+      "technique_kinds": [
+        "movement",
+        "defense",
+        "feint",
+        "punch",
+        "kick",
+        "knee",
+        "grip",
+        "takedown",
+        "control",
+        "submission"
+      ]
+    },
+    {
+      "id": "adjustment",
+      "state_handler": "engine.fight_state.adjust",
+      "choreography_handler": "engine.choreography.translate",
+      "prompt_handler": "engine.prompt_compiler.compile_shot",
+      "technique_kinds": [
+        "movement",
+        "defense",
+        "feint",
+        "punch",
+        "kick",
+        "knee",
+        "grip",
+        "takedown",
+        "control",
+        "submission"
+      ]
+    },
+    {
+      "id": "resolution",
+      "state_handler": "engine.fight_state.resolve",
+      "choreography_handler": "engine.choreography.translate",
+      "prompt_handler": "engine.prompt_compiler.compile_shot",
+      "technique_kinds": [
+        "movement",
+        "defense",
+        "feint",
+        "punch",
+        "kick",
+        "knee",
+        "grip",
+        "takedown",
+        "control",
+        "submission"
+      ]
+    },
+    {
+      "id": "aftermath",
+      "state_handler": "engine.fight_state.aftermath",
+      "choreography_handler": "engine.choreography.translate",
+      "prompt_handler": "engine.prompt_compiler.compile_shot",
+      "technique_kinds": [
+        "movement",
+        "defense",
+        "feint",
+        "punch",
+        "kick",
+        "knee",
+        "grip",
+        "takedown",
+        "control",
+        "submission"
+      ]
+    }
+  ],
+  "required_docs": [
+    "README.md",
+    "docs/llm_reasoning_guide.md",
+    "docs/model.md"
+  ],
+  "validation_entrypoint": "scripts/regress.py"
+}

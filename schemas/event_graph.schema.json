@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "phase",
+          "actor_id",
+          "target_id",
+          "technique_id",
+          "timestamp",
+          "duration",
+          "cause_id",
+          "dependencies",
+          "source_weakness_ids",
+          "intent",
+          "preconditions",
+          "parameters",
+          "effects",
+          "state_before",
+          "state_after"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "enum": [
+              "assessment",
+              "setup",
+              "movement",
+              "execution",
+              "contact",
+              "reaction",
+              "recovery",
+              "activation",
+              "adjustment",
+              "resolution",
+              "aftermath"
+            ]
+          },
+          "phase": {
+            "type": "string",
+            "minLength": 1
+          },
+          "actor_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "technique_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "timestamp": {
+            "type": "number",
+            "minimum": 0
+          },
+          "duration": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "cause_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "dependencies": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "source_weakness_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "intent": {
+            "type": "string",
+            "minLength": 1
+          },
+          "preconditions": {
+            "type": "object"
+          },
+          "parameters": {
+            "type": "object"
+          },
+          "effects": {
+            "type": "object"
+          },
+          "state_before": {
+            "type": "object"
+          },
+          "state_after": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "dependency_edges": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "causal_edges": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "contact_events": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "final_winner": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "version",
+    "nodes",
+    "dependency_edges",
+    "causal_edges",
+    "contact_events",
+    "final_winner"
+  ],
+  "additionalProperties": false
+}

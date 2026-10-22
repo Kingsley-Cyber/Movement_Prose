@@ -1,0 +1,103 @@
+{
+  "version": "block-1",
+  "fighter_id": "donnell",
+  "name": "Donnell",
+  "combat_identity": "Forward-loaded pressure boxer",
+  "dimensions": {
+    "hands": "hands.peekaboo",
+    "defense": "defense.slip_roll",
+    "stance": "stance.crouch",
+    "tie": "tie.anti_grappling",
+    "target": "target.head_hunter",
+    "kicking": "kicking.none",
+    "mentality": "mentality.pressure"
+  },
+  "adaptation": "mma",
+  "orientation": "orthodox",
+  "slot_count": 3,
+  "slot_label": "Triad",
+  "synchronized_capabilities": [
+    {
+      "id": "donnell.slot.1",
+      "capabilities": [
+        "boxing"
+      ],
+      "description": "Trained synchronized bundle: boxing"
+    },
+    {
+      "id": "donnell.slot.2",
+      "capabilities": [
+        "pressure_footwork"
+      ],
+      "description": "Coordinate forward steps with a recovered high cover."
+    },
+    {
+      "id": "donnell.slot.3",
+      "capabilities": [
+        "inside_combinations"
+      ],
+      "description": "Coordinate a short hook after a shallow slip without changing the forward-loaded base."
+    }
+  ],
+  "baseline_capabilities": [
+    "basic_movement",
+    "untrained_striking"
+  ],
+  "tempo": 4,
+  "preferred_ranges": [
+    "close",
+    "punch"
+  ],
+  "debt_sentence": "Crowd the reset with a compact hook; lead-leg loading and absent tie training give opponents entries.",
+  "exploitable_seams": [
+    "debt.hands.peekaboo.leg",
+    "debt.hands.peekaboo.vision",
+    "debt.defense.slip_roll.head_uppercut",
+    "debt.defense.slip_roll.clinch",
+    "debt.defense.slip_roll.leg",
+    "debt.stance.crouch.leg",
+    "debt.stance.crouch.head_uppercut",
+    "debt.target.head_hunter.body",
+    "debt.target.head_hunter.entry",
+    "debt.kicking.none.leg",
+    "debt.kicking.none.body",
+    "debt.mentality.pressure.angle",
+    "debt.mentality.pressure.body"
+  ],
+  "active_techniques": [
+    "step",
+    "retreat",
+    "pivot",
+    "feint",
+    "jab",
+    "cross",
+    "hook",
+    "body_hook",
+    "uppercut",
+    "haymaker",
+    "parry",
+    "shell_block",
+    "slip"
+  ],
+  "conditional_abilities": [],
+  "combat_limitations": [
+    "Only listed trained capabilities are available.",
+    "A NULL tie is untrained attachment, not intentional anti-grappling."
+  ],
+  "fighting_description": {
+    "does": "Crowd the reset with a compact hook.",
+    "wins": "Reach close, punch and use Forward-loaded pressure boxer.",
+    "avoids": "Unrecovered support and opponent control of the next range.",
+    "beaten_by": "lead-leg loading and absent tie training give opponents entries."
+  },
+  "appearance": {
+    "clothing": "cobalt shorts",
+    "identity_anchor": "Donnell / Forward-loaded pressure boxer",
+    "props": []
+  },
+  "provenance": {
+    "classification": "CANON",
+    "label": "[CANON]",
+    "source": "Supplied mandatory identity where specified; all other details authored for this release."
+  }
+}
