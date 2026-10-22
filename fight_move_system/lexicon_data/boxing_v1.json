@@ -85,7 +85,7 @@
         35
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "snap_hold_snap_settle",
+      "easing_curve": "snap_snap_hold_snap",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -186,7 +186,7 @@
         30
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "snap_hold_snap_settle",
+      "easing_curve": "snap_snap_hold_snap",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -288,7 +288,7 @@
         20
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "explosive_snap_hold_recoil",
+      "easing_curve": "snap_snap_hold_snap",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -390,7 +390,7 @@
         20
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "explosive_snap_hold_recoil",
+      "easing_curve": "snap_snap_hold_snap",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -494,7 +494,7 @@
         70
       ],
       "com_position": "over_rear_foot",
-      "easing_curve": "snap_hold_snap_settle",
+      "easing_curve": "snap_snap_hold_snap",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -595,7 +595,7 @@
         25
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "snap_hold_snap_settle",
+      "easing_curve": "snap_snap_hold_snap",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -698,7 +698,7 @@
         30
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "snap_hold_snap_settle",
+      "easing_curve": "snap_snap_hold_snap",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -799,7 +799,7 @@
         35
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "explosive_snap_hold_recoil",
+      "easing_curve": "snap_snap_hold_snap",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -901,7 +901,7 @@
         35
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "explosive_snap_hold_recoil",
+      "easing_curve": "snap_snap_hold_snap",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -1004,7 +1004,7 @@
         15
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "explosive_snap_hold_recoil",
+      "easing_curve": "snap_snap_hold_snap",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -1776,7 +1776,7 @@
         60
       ],
       "com_position": "over_rear_foot",
-      "easing_curve": "snap_hold_snap_settle",
+      "easing_curve": "snap_snap_hold_snap",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -2680,7 +2680,7 @@
         15
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "snap_hold_snap_settle",
+      "easing_curve": "snap_snap_hold_snap",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -2778,7 +2778,7 @@
         10
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "snap_hold_snap_settle",
+      "easing_curve": "snap_snap_hold_snap",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -2879,7 +2879,7 @@
         65
       ],
       "com_position": "over_rear_foot",
-      "easing_curve": "snap_hold_snap_settle",
+      "easing_curve": "snap_snap_hold_snap",
       "spacing_phases": {
         "slow_in": [
           0,

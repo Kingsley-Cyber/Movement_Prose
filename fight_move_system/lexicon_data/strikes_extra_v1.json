@@ -84,7 +84,7 @@
         15
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "snap_hold_snap_settle",
+      "easing_curve": "snap_snap_hold_snap",
       "spacing_phases": {
         "slow_in": [
           0,
@@ -188,7 +188,7 @@
         15
       ],
       "com_position": "over_lead_foot",
-      "easing_curve": "explosive_snap_hold_recoil",
+      "easing_curve": "snap_snap_hold_snap",
       "spacing_phases": {
         "slow_in": [
           0,

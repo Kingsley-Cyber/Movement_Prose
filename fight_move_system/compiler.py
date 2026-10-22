@@ -480,16 +480,21 @@ def compile_to_sakuga_Fluid_stack(
             )
             a_com = a_act.get("com_position", a_card.get("com_position", "centered")) if a_act else a_card.get("com_position", "centered")
             if prev_a_lead is not None and (not a_act or "weight_split" not in a_act):
-                same_dominant_foot = (a_ws[0] > 55 and prev_a_lead > 55) or (a_ws[0] < 45 and prev_a_lead < 45)
-                if a_ws[0] == prev_a_lead or same_dominant_foot:
-                    # Enforce beat-to-beat weight transfer so the base shifts every beat
-                    a_ws = [a_ws[1], a_ws[0]]
-                    if a_com == "over_lead_foot":
-                        a_com = "over_rear_foot"
-                    elif a_com == "over_rear_foot":
-                        a_com = "over_lead_foot"
+                if a_card["class"] in {"BLOCK.PASSIVE", "BLOCK.ACTIVE"}:
+                    # Braced defensive guard anchors on both feet with slight rear brace
+                    a_ws = [50, 50] if prev_a_lead != 50 else [45, 55]
+                    a_com = "centered"
+                else:
+                    same_dominant_foot = (a_ws[0] > 55 and prev_a_lead > 55) or (a_ws[0] < 45 and prev_a_lead < 45)
+                    if a_ws[0] == prev_a_lead or same_dominant_foot:
+                        # Enforce beat-to-beat weight transfer so the base shifts every beat
+                        a_ws = [a_ws[1], a_ws[0]]
+                        if a_com == "over_lead_foot":
+                            a_com = "over_rear_foot"
+                        elif a_com == "over_rear_foot":
+                            a_com = "over_lead_foot"
             prev_a_lead = a_ws[0]
-            a_easing = a_act.get("easing_curve", a_card.get("easing_curve", "explosive_snap_hold_recoil")) if a_act else a_card.get("easing_curve", "explosive_snap_hold_recoil")
+            a_easing = a_act.get("easing_curve", a_card.get("easing_curve", "snap_snap_hold_snap")) if a_act else a_card.get("easing_curve", "snap_snap_hold_snap")
             a_impulse = int(a_act.get("impulse_tier", a_card.get("impulse_tier", 1))) if a_act else int(a_card.get("impulse_tier", 1))
             if is_hero and a_impulse >= 2:
                 a_impulse = 3
@@ -540,21 +545,50 @@ def compile_to_sakuga_Fluid_stack(
                 ),
             }
             if a_card["contact"] in {"strike", "grapple", "block"} and b_card:
-                t_y = LEVEL_TARGET_Y[a_card["level"]]
-                t_anat = LEVEL_TARGET_ANATOMY[a_card["level"]]
-                hit_z = round(z_b - 0.12, 2)
-                if "parry" in a_card["id"] or "tie" in a_card["id"] or "shove" in a_card["id"]:
-                    surf = "open_palm_collar_tie"
-                elif "calf" in a_card["id"]:
-                    surf = "right_shin_calf_kick"
-                elif "back_kick" in a_card["id"] or "heel" in a_card["id"] or "sweep" in a_card["id"]:
-                    surf = "right_heel_back_kick"
+                if a_card["contact"] == "block" and b_card["contact"] in {"strike", "grapple"}:
+                    # Defender (A) is blocking an incoming attack from B: B's weapon strikes A's guard!
+                    t_y = LEVEL_TARGET_Y[b_card["level"]]
+                    hit_z_def = round(z_a + 0.12, 2)
+                    surf_b_att = LIMB_SURFACE_TAG.get(b_card["limb"], b_card["limb"])
+                    if "shell" in a_card["id"]:
+                        a_guard_anat = "twin_forearm_high_shell_guard"
+                    elif "elbow_tuck" in a_card["id"]:
+                        a_guard_anat = "tucked_left_elbow_rib_shield"
+                    elif "shin_check" in a_card["id"]:
+                        a_guard_anat = "raised_lead_shin_shield"
+                    elif "parry" in a_card["id"]:
+                        a_guard_anat = "lead_open_palm_parry"
+                    else:
+                        a_guard_anat = a_card["id"]
+                    a_beat_obj["contact"] = (
+                        f"pre:B_{b_card['id']}_launch -> hit:B_{surf_b_att}_into_A_{a_guard_anat}_at_[0,{t_y},{hit_z_def}]_at_{sep_m:.2f}m_reach -> "
+                        f"post:white_impact_shock_absorbed_by_A_{a_card['id']}"
+                    )
                 else:
-                    surf = LIMB_SURFACE_TAG.get(a_card["limb"], a_card["limb"])
-                a_beat_obj["contact"] = (
-                    f"pre:A_{a_card['id']}_windup -> hit:A_{surf}_into_B_{t_anat}_at_[0,{t_y},{hit_z}]_at_{sep_m:.2f}m_reach -> "
-                    f"post:white_impact_shock_triggers_B_{b_card['id']}"
-                )
+                    t_y = LEVEL_TARGET_Y[a_card["level"]]
+                    hit_z = round(z_b - 0.12, 2)
+                    if "tie" in a_card["id"]:
+                        surf = "left_open_palm_collar_tie"
+                        t_anat = "back_of_neck_and_collar"
+                    elif "shove" in a_card["id"]:
+                        surf = "both_open_palms_shove"
+                        t_anat = "upper_chest_and_sternum"
+                    elif "parry" in a_card["id"]:
+                        surf = "open_palm_parry"
+                        t_anat = "incoming_wrist"
+                    elif "calf" in a_card["id"]:
+                        surf = "right_shin_calf_kick"
+                        t_anat = LEVEL_TARGET_ANATOMY[a_card["level"]]
+                    elif "back_kick" in a_card["id"] or "heel" in a_card["id"] or "sweep" in a_card["id"]:
+                        surf = "right_heel_back_kick"
+                        t_anat = LEVEL_TARGET_ANATOMY[a_card["level"]]
+                    else:
+                        surf = LIMB_SURFACE_TAG.get(a_card["limb"], a_card["limb"])
+                        t_anat = LEVEL_TARGET_ANATOMY[a_card["level"]]
+                    a_beat_obj["contact"] = (
+                        f"pre:A_{a_card['id']}_windup -> hit:A_{surf}_into_B_{t_anat}_at_[0,{t_y},{hit_z}]_at_{sep_m:.2f}m_reach -> "
+                        f"post:white_impact_shock_triggers_B_{b_card['id']}"
+                    )
                 # V21: Compute smear window from spacing_phases['snap'] window at 24fps
                 snap_win = a_card.get("spacing_phases", {}).get("snap", [1, 4])
                 snap_dur_s = round(max(2, snap_win[1] - snap_win[0]) / 24.0, 2)
@@ -645,13 +679,33 @@ def compile_to_sakuga_Fluid_stack(
                 ),
             }
             if b_card["contact"] in {"strike", "grapple", "block"} and a_card:
-                t_y = LEVEL_TARGET_Y[b_card["level"]]
-                t_anat = LEVEL_TARGET_ANATOMY[b_card["level"]]
-                hit_z_b = round(z_a + 0.12, 2)
-                surf_b = "open_palm_parry" if "parry" in b_card["id"] else LIMB_SURFACE_TAG.get(b_card["limb"], b_card["limb"])
-                b_entry["contact"] = (
-                    f"B_{surf_b} -> into_A_{t_anat}_at_[0,{t_y},{hit_z_b}]_at_{sep_m:.2f}m_reach"
-                )
+                if b_card["contact"] == "block" and a_card["contact"] in {"strike", "grapple"}:
+                    t_y = LEVEL_TARGET_Y[a_card["level"]]
+                    hit_z_def_b = round(z_b - 0.12, 2)
+                    surf_a_att = LIMB_SURFACE_TAG.get(a_card["limb"], a_card["limb"])
+                    b_entry["contact"] = (
+                        f"B_{b_card['id']}_guard -> absorbs_A_{surf_a_att}_at_[0,{t_y},{hit_z_def_b}]_at_{sep_m:.2f}m_reach"
+                    )
+                else:
+                    t_y = LEVEL_TARGET_Y[b_card["level"]]
+                    hit_z_b = round(z_a + 0.12, 2)
+                    surf_b = "open_palm_parry" if "parry" in b_card["id"] else LIMB_SURFACE_TAG.get(b_card["limb"], b_card["limb"])
+                    if a_card["contact"] == "block":
+                        if "shell" in a_card["id"]:
+                            a_target_anat = "twin_forearm_high_shell_guard"
+                        elif "elbow_tuck" in a_card["id"]:
+                            a_target_anat = "tucked_left_elbow_rib_shield"
+                        elif "shin_check" in a_card["id"]:
+                            a_target_anat = "raised_lead_shin_shield"
+                        elif "parry" in a_card["id"]:
+                            a_target_anat = "lead_open_palm_parry"
+                        else:
+                            a_target_anat = a_card["id"]
+                    else:
+                        a_target_anat = LEVEL_TARGET_ANATOMY[b_card["level"]]
+                    b_entry["contact"] = (
+                        f"B_{surf_b} -> into_A_{a_target_anat}_at_[0,{t_y},{hit_z_b}]_at_{sep_m:.2f}m_reach"
+                    )
                 if b_card["contact"] == "strike":
                     snap_win_b = b_card.get("spacing_phases", {}).get("snap", [1, 4])
                     snap_dur_b = round(max(2, snap_win_b[1] - snap_win_b[0]) / 24.0, 2)
@@ -677,7 +731,12 @@ def compile_to_sakuga_Fluid_stack(
                         fx_map[str(t_val)] = fx_template_b.format(attacker="B", defender="A")
             elif a_card and a_card["contact"] in {"strike", "grapple"}:
                 t_y = LEVEL_TARGET_Y[a_card["level"]]
-                t_anat = LEVEL_TARGET_ANATOMY[a_card["level"]]
+                if "tie" in a_card["id"]:
+                    t_anat = "back_of_neck_and_collar"
+                elif "shove" in a_card["id"]:
+                    t_anat = "upper_chest_and_sternum"
+                else:
+                    t_anat = LEVEL_TARGET_ANATOMY[a_card["level"]]
                 b_entry["contact"] = (
                     f"B_{t_anat} -> struck_by_A_{a_card['id']}_at_[0,{t_y},{round(z_b - 0.12, 2)}]"
                 )
@@ -698,32 +757,52 @@ def compile_to_sakuga_Fluid_stack(
         strike_level = active_strike_card["level"] if active_strike_card else "high"
         t_y_cam = LEVEL_TARGET_Y.get(strike_level, 1.08)
         hit_z_cam = round(z_b - 0.12, 2) if attacker_id == "A" else round(z_a + 0.12, 2)
+        mid_z = round((z_a + z_b) / 2.0, 2)
+        active_id = active_strike_card["id"] if active_strike_card else ""
 
         if is_knee_beat:
             shot_name = f"medium_wide_side_profile_{beat_label}"
             cam_fov = 38
-            cam_pos = [1.75, 0.92, round((z_a + z_b) / 2.0, 2)]
+            cam_pos = [1.82, 0.88, mid_z]
         elif is_hero:
             shot_name = f"telephoto_snap_zoom_3_4_{beat_label}"
-            cam_fov = 28
-            cam_pos = [1.45, 0.92, round((z_a + z_b) / 2.0, 2)]
+            cam_fov = 26
+            cam_pos = [1.18, 0.94, mid_z]
+        elif "collar_tie" in active_id:
+            shot_name = f"wide_clinch_entry_profile_{beat_label}"
+            cam_fov = 42
+            cam_pos = [1.88, 1.12, mid_z]
+        elif "shove" in active_id:
+            shot_name = f"wide_pullback_clinch_break_{beat_label}"
+            cam_fov = 44
+            cam_pos = [1.95, 0.85, mid_z]
         elif is_contact:
             if strike_level == "low":
-                shot_name = f"low_3_4_shin_level_tracking_{beat_label}"
-                cam_fov = 34
-                cam_pos = [1.45, 0.65, round((z_a + z_b) / 2.0, 2)]
+                shot_name = f"ground_skimming_shin_angle_{beat_label}"
+                cam_fov = 32
+                cam_pos = [1.28, 0.42, mid_z]
             elif strike_level == "mid":
-                shot_name = f"low_3_4_upward_rib_angle_{beat_label}"
-                cam_fov = 34
-                cam_pos = [1.42, 0.78, round((z_a + z_b) / 2.0, 2)]
+                if attacker_id == "A":
+                    shot_name = f"low_upward_rib_crush_close_up_{beat_label}"
+                    cam_fov = 30
+                    cam_pos = [1.22, 0.68, mid_z]
+                else:
+                    shot_name = f"pocket_body_counter_3_4_{beat_label}"
+                    cam_fov = 35
+                    cam_pos = [1.52, 0.82, mid_z]
             else:
-                shot_name = f"tight_3_4_front_hemisphere_whip_pan_{beat_label}"
-                cam_fov = 34
-                cam_pos = [1.40, 1.15, round((z_a + z_b) / 2.0, 2)]
+                if attacker_id == "A":
+                    shot_name = f"intimate_pocket_elbow_whip_pan_{beat_label}"
+                    cam_fov = 30
+                    cam_pos = [1.20, 1.24, mid_z]
+                else:
+                    shot_name = f"counter_cross_guard_impact_3_4_{beat_label}"
+                    cam_fov = 34
+                    cam_pos = [1.48, 1.18, mid_z]
         else:
-            shot_name = f"low_3_4_tracking_dolly_{beat_label}"
-            cam_fov = 40
-            cam_pos = [1.65, 0.95, round((z_a + z_b) / 2.0, 2)]
+            shot_name = f"dynamic_footwork_tracking_dolly_{beat_label}"
+            cam_fov = 42
+            cam_pos = [1.72, 0.96, mid_z]
 
         if is_contact and active_strike_card:
             look_tmpl = SPECIFIC_CAMERA_LOOK_BY_MOVE.get(
@@ -844,12 +923,18 @@ def compile_to_sakuga_Fluid_stack(
             "A": {
                 "fighting_style": style_map.get(fighter_a.style, "grounded_striker_boxer_baki"),
                 "chain": " > ".join(a_chain_parts),
-                "effort": {"weight": "heavy_striker_power", "time": "sudden", "space": "direct", "flow": "bound"},
+                "effort": a_cfg.get(
+                    "effort",
+                    {"weight": "strong_snappy", "time": "sudden", "space": "direct", "flow": "bound"},
+                ),
             },
             "B": {
                 "fighting_style": style_map.get(fighter_b.style, "grounded_striker_boxer_baki"),
                 "chain": " > ".join(b_chain_parts),
-                "effort": {"weight": "heavy_brawler_power", "time": "sudden", "space": "direct", "flow": "bound"},
+                "effort": b_cfg.get(
+                    "effort",
+                    {"weight": "heavy_crushing", "time": "sudden_explosive", "space": "direct", "flow": "bound"},
+                ),
             },
         },
         "beats": beat_names,

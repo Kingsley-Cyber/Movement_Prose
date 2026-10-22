@@ -161,6 +161,7 @@ IMPULSE_TIERS: Set[int] = {0, 1, 2, 3}
 
 # Spacing / Easing Curve Profiles (V21)
 EASING_CURVES: Set[str] = {
+    "snap_snap_hold_snap",
     "snap_hold_snap_settle",
     "burst_launch_snap_lock",
     "explosive_snap_hold_recoil",
