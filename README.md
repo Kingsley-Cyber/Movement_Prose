@@ -148,3 +148,26 @@ python3 -m fight_move_system.cli ingest-verdict --run-id run_001 --move-id low_c
 python3 -m fight_move_system.cli repair fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json --beat 2 --failure contact_flicker
 python3 -m fight_move_system.cli next-clip fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json
 ```
+
+---
+
+## Cross-Platform Usage (macOS / Mac Studio, Windows, & Linux)
+
+All tools in this repository use Python 3.9+ standard library (`pathlib.Path`, `sqlite3`, `json`, `hashlib`, `unittest`) with **zero OS-specific hardcoded paths**:
+- **macOS (Mac Studio) & Linux (`zsh` / `bash`):**
+  ```bash
+  python3 scripts/sakuga_original_kb.py verify-protection
+  python3 -m fight_move_system.cli kb-verify
+  python3 -m unittest discover -s tests -v
+  ```
+- **Windows (`PowerShell` / `CMD`):**
+  ```powershell
+  python scripts\sakuga_original_kb.py verify-protection
+  python -m fight_move_system.cli kb-verify
+  python -m unittest discover -s tests -v
+  ```
+- **Knowledge Base Index (`knowledge_base/handbook_index.db`):**
+  - `knowledge_base/ai_video_compiler.db` and `knowledge_base/agent_memory.db` ship in Git. Because `handbook_index.db` (~131 MB) exceeds GitHub's 100 MB file limit, on a fresh clone either copy `handbook_index.db` into `knowledge_base/` or build it locally in ~13s via:
+    - macOS / Linux: `cd knowledge_base && python3 -m agent index-handbook /path/to/handbook.html`
+    - Windows: `cd knowledge_base; python -m agent index-handbook C:\path\to\handbook.html`
+  - Optional environment variable override for custom Knowledge Base locations on any OS: `ANIME_KB_BUNDLE_DIR`.

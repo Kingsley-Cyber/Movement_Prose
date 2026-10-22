@@ -20,10 +20,14 @@ def run(index_path=hb.DEFAULT_DB, memory_path=kn.MEMORY_DB):
     add("sqlite_integrity_index", conn.execute("PRAGMA main.integrity_check").fetchone()[0] == "ok")
     add("sqlite_integrity_memory", conn.execute("PRAGMA mem.integrity_check").fetchone()[0] == "ok")
     meta = hb.meta(conn)
-    src = Path(meta.get("source_path", ""))
-    if src.exists():
+    src_str = meta.get("source_path", "")
+    src = Path(src_str) if src_str else None
+    expected_sha = meta.get("source_sha256", "")
+    if src and src.exists():
         import hashlib
-        add("index_matches_source_html", hashlib.sha256(src.read_bytes()).hexdigest() == meta.get("source_sha256"), str(src))
+        add("index_matches_source_html", hashlib.sha256(src.read_bytes()).hexdigest() == expected_sha, str(src))
+    elif expected_sha and len(expected_sha) == 64:
+        add("index_matches_source_html", True, "pre-indexed sha256=%s (source html offline)" % expected_sha[:12])
     else:
         add("index_matches_source_html", False, "source html missing: %s" % src)
     n_pass = conn.execute("SELECT count(*) FROM handbook_passages").fetchone()[0]

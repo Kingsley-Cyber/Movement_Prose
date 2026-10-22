@@ -595,13 +595,14 @@ class TestFightMoveSystem(unittest.TestCase):
     # --- M7: Original e91c686 Compiler Lock, Compiler Bug Fixes, KB Bridge & Closed-Loop ---
     def test_m7_original_e91c686_sakuga_compiler_preserved(self) -> None:
         import subprocess
+        import sys
         repo_root = Path(__file__).parent.parent
         gm1 = repo_root / "examples" / "gold_master_1_blade_exchange.json"
         gm2 = repo_root / "examples" / "gold_master_2_disarm_dual_blade.json"
         script = repo_root / "scripts" / "sakuga_compiler.py"
         for gm in (gm1, gm2):
             proc = subprocess.run(
-                ["python3", str(script), "lint", str(gm)],
+                [sys.executable, str(script), "lint", str(gm)],
                 capture_output=True,
                 text=True,
                 check=False,

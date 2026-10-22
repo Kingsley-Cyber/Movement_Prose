@@ -293,7 +293,7 @@ Every validator code `V01–V17` ships with at least one failing unit-test fixtu
 
 ## 9. Repository Layout & Coexistence with `Movement_Prose`
 
-We build this cleanly inside the existing GitHub repository (`/Users/king/.gemini/antigravity/scratch/Movement_Prose`) under a dedicated package `fight_move_system/` while keeping a synced copy of `PLAN.md` in `/Users/king/Downloads/fight-move-system/PLAN.md`:
+We build this cleanly inside the repository root (`Movement_Prose/`) under a dedicated package `fight_move_system/` using cross-platform `pathlib.Path` resolution (supporting macOS / Mac Studio, Windows, and Linux):
 
 ```text
 Movement_Prose/

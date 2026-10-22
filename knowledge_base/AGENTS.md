@@ -16,9 +16,9 @@ A bundle-local prompt agent and a SQLite knowledge index for anime-action video 
 4. No embedding model, no network calls, no pip packages: Python 3.9 stdlib only (no `X | Y`, no `match`).
 5. Every relation or label written to memory carries evidence (a span, a sentence, a reason). No silent labels: `label` refuses an empty reason; use `none` to record that no label applies instead of deleting a lexical one.
 
-## Daily commands (run from this folder)
-- Tests: `python3 -m unittest discover -s agent/tests`
-- Rebuild index (≈13 s): `python3 -m agent index-handbook ~/Downloads/handbook.html`, then `python3 -m agent verify`
+## Daily commands (run from this folder on macOS / Mac Studio, Linux, or Windows)
+- Tests: `python3 -m unittest discover -s agent/tests` (or `python -m unittest discover -s agent/tests` on Windows)
+- Rebuild index (≈13 s): `python3 -m agent index-handbook /path/to/handbook.html`, then `python3 -m agent verify` (note: `verify` passes even when the original `handbook.html` path is offline on another machine as long as `source_sha256` is recorded in `handbook_meta`)
 - Query: `find`, `lookup`, `ask`, `concept`, `walk`, `outline`, `read`, `near`, `deps` (see `agent/README.md`)
 - Prompt pipeline: `propose` → write `runs/<n>_<slug>/ir.json` → `check` → `emit`
 

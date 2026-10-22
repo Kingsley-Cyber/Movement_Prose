@@ -23,13 +23,13 @@ from .lexicon import Lexicon
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 IN_REPO_KB_DIR = REPO_ROOT / "knowledge_base"
-EXTERNAL_KB_DIR = Path("/Users/king/Downloads/anime_action_research_bundle")
+EXTERNAL_KB_DIR = Path.home() / "Downloads" / "anime_action_research_bundle"
 
 
 def _resolve_default_bundle_dir() -> Path:
     env_dir = os.environ.get("ANIME_KB_BUNDLE_DIR")
     if env_dir:
-        return Path(env_dir)
+        return Path(env_dir).expanduser().resolve()
     if (IN_REPO_KB_DIR / "ai_video_compiler.db").is_file():
         return IN_REPO_KB_DIR
     return EXTERNAL_KB_DIR
@@ -219,7 +219,7 @@ def verify_bundle_integrity(bundle_dir: Path = DEFAULT_BUNDLE_DIR) -> Tuple[bool
 
 
 def _connect_ro(db_path: Path) -> sqlite3.Connection:
-    conn = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
+    conn = sqlite3.connect(db_path.resolve().as_uri() + "?mode=ro", uri=True)
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -744,7 +744,7 @@ def kb_find(query_text: str, limit: int = 8, bundle_dir: Path = DEFAULT_BUNDLE_D
     mem_path = bundle_dir / "agent_memory.db"
     try:
         if mem_path.is_file():
-            conn.execute("ATTACH DATABASE ? AS mem", (f"file:{mem_path}?mode=ro",))
+            conn.execute("ATTACH DATABASE ? AS mem", (str(mem_path),))
         phrase = query_text if any(ch in query_text for ch in '"*') else " ".join(query_text.split())
         try:
             c_rows = conn.execute(

@@ -122,3 +122,29 @@ python3 -m fight_move_system.cli compile fight_move_system/fixtures/pass/variati
   -o examples/variations/variation_3_eight_limbs_muay_thai_mma_war_sakuga_Xperiment.txt
 python3 -m unittest discover -s tests -v
 ```
+
+---
+
+## 5. Cross-Platform Compatibility (macOS / Mac Studio, Windows, & Linux)
+
+This repository is engineered to run identically across **macOS (Mac Studio / Apple Silicon)**, **Windows (PowerShell / CMD / WSL2)**, and **Linux** using Python 3.9+ standard library (`pathlib.Path`, `sqlite3`, `json`, `hashlib`, `unittest` — zero external pip dependencies required for core compilation and Knowledge Base queries):
+
+1. **Zero Hardcoded Machine Paths (`pathlib.Path` & URI Resolution):**
+   - All repository modules (`fight_move_system/`, `scripts/`, `knowledge_base/agent/`) resolve paths dynamically relative to `__file__` (`Path(__file__).resolve().parent.parent`) and use `Path.resolve().as_uri()` for read-only SQLite URI connections so Windows drive letters (`C:\...`) and POSIX paths (`/Users/...`, `/home/...`) both work out of the box.
+   - To override the Knowledge Base location on any OS, set the `ANIME_KB_BUNDLE_DIR` environment variable:
+     - **macOS / Linux (`zsh` / `bash`):** `export ANIME_KB_BUNDLE_DIR="/path/to/knowledge_base"`
+     - **Windows (`PowerShell`):** `$env:ANIME_KB_BUNDLE_DIR = "C:\path\to\knowledge_base"`
+     - **Windows (`CMD`):** `set ANIME_KB_BUNDLE_DIR=C:\path\to\knowledge_base`
+2. **Pre-Indexed `handbook_index.db` Setup (Mac Studio, Windows, Linux):**
+   - `knowledge_base/ai_video_compiler.db` (frozen 64-row lexicon) and `knowledge_base/agent_memory.db` (growing memory) are tracked directly in Git.
+   - `knowledge_base/handbook_index.db` (~131 MB FTS5 index) is ignored by Git (`.gitignore`) to stay under GitHub's 100 MB file limit. On a new clone (Mac Studio, Windows, or Linux), either copy `handbook_index.db` into `knowledge_base/` or rebuild it locally in ~13 seconds from `handbook.html`:
+     ```bash
+     # macOS / Linux:
+     cd knowledge_base && python3 -m agent index-handbook /path/to/handbook.html && python3 -m agent verify
+     # Windows (PowerShell):
+     cd knowledge_base; python -m agent index-handbook C:\path\to\handbook.html; python -m agent verify
+     ```
+   - When `handbook_index.db` is copied across machines (where the original `handbook.html` build path is offline), `python -m fight_move_system.cli kb-verify` and `python -m agent verify` automatically validate the recorded `source_sha256` in `handbook_meta` so all 25 integrity checks pass on every OS.
+3. **Python Executable Invocation (`python3` vs `python` / `py -3`):**
+   - On **macOS (Mac Studio) & Linux**, use `python3` (e.g., `python3 -m fight_move_system.cli ...`).
+   - On **Windows**, use `python` or `py -3` (e.g., `python -m fight_move_system.cli ...` or `py -3 scripts\sakuga_original_kb.py ...`).
