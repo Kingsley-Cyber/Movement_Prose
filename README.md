@@ -15,8 +15,15 @@ Movement_Prose/
 │   ├── TWO_LAYER_FLUID_STACK_ARCHITECTURE.md                  # Deep-dive guide: Mode 1 vs Mode 2 (--stack) & Choreography Separation
 │   └── VARIATIONS_AND_FIGHTING_STYLES.md                      # Deep-dive: Decisions 21-25, Entity Fighting Styles & Variations vs Golden Baseline
 ├── scripts/
-│   ├── sakuga_compiler.py                                     # Deterministic CLI Compiler, 25-Rule Physics/Diversity/Style Linter, --stack Generator & Stitcher
+│   ├── sakuga_compiler.py                                     # Original 05:34 (e91c686) Deterministic CLI Compiler & 17-Rule Physics Linter
 │   └── twelvelabs_bridge.py                                   # TwelveLabs Pegasus 1.2 Bridge (Mode A: Reference Extractor, Mode B: Render QA & Handoff)
+├── fight_move_system/                                         # 🚀 v2 Fight Move System + KB Bridge + Closed-Loop Verification & Repair Engine
+│   ├── cli.py                                                 # CLI (`validate`, `compile`, `packet`, `kb-sync`, `kb-find`, `kb-lookup`, `ingest-verdict`, `repair`, `next-clip`)
+│   ├── compiler.py                                            # 2-Layer Fluid Stack & `sakuga_Xperiment` / `lean` Compiler
+│   ├── kb_bridge.py                                           # Read-only bridge to `handbook_index.db` & `ai_video_compiler.db` + write to `agent_memory.db`
+│   ├── closed_loop.py                                         # Verdict ingestion, RFC 6902 localized beat repair (`src-cpcs-mx-repair_strategy`), & Clip N+1 handoff
+│   ├── scene_graph_linter.py                                  # 25-Decision Scene Graph Linter (Decisions 18-25)
+│   └── validator.py                                           # V01-V22 Biomechanical & Kinetic Chain Validator
 ├── examples/                                                  # ✅ ORIGINAL CANONICAL GOLDEN BASELINE PROMPTS (gold_master_1..4)
 │   ├── gold_master_1_blade_exchange.json                      # Gold-Master #1: Single-Layer JSON (Reverse-Grip Kunai vs. Forearm Blade Exchange)
 │   ├── gold_master_2_disarm_dual_blade.json                   # Gold-Master #2: Single-Layer JSON (Wakizashi vs. Katana Disarm, Aerial Catch & X-Lock)
@@ -110,4 +117,23 @@ python3 scripts/twelvelabs_bridge.py extract reference_fight.mp4 --tier full   -
 
 # Mode B (Audit a Seedance render against your spec & extract true t=10.0s state for Clip N+1):
 python3 scripts/twelvelabs_bridge.py audit-render examples/gold_master_3_courtyard_sky_cartwheel.json rendered_clip.mp4 --out audit_report.json
+```
+
+### 5. Fight Move System v2 (`sakuga_Xperiment` Compiler, Knowledge Base Bridge & Closed-Loop Repair)
+```bash
+# Validate & compile a beat-sheet into the 2-Layer `sakuga_Xperiment` prompt (or `--mode lean`):
+python3 -m fight_move_system.cli validate fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json
+python3 -m fight_move_system.cli compile fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json \
+  --mode xperiment --schema sakuga_Xperiment \
+  -o examples/variations/variation_3_eight_limbs_muay_thai_mma_war_sakuga_Xperiment.txt
+
+# Verify Knowledge Base SHA256 integrity, sync lexical/taste gaps to agent_memory.db, and query KB:
+python3 -m fight_move_system.cli kb-sync
+python3 -m fight_move_system.cli kb-find "hitstop"
+python3 -m fight_move_system.cli kb-lookup --moment strike_exchange --slot time_cadence
+
+# Closed-Loop Verdict Ingestion, Localized RFC 6902 Beat Repair, and Clip N+1 Handoff:
+python3 -m fight_move_system.cli ingest-verdict --run-id run_001 --move-id low_calf_kick --status works
+python3 -m fight_move_system.cli repair fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json --beat 2 --failure contact_flicker
+python3 -m fight_move_system.cli next-clip fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json
 ```

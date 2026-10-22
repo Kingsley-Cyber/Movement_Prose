@@ -9,8 +9,22 @@ from pathlib import Path
 
 from fight_move_system.chain import scan_prompt_v18, validate_chain_frames, validate_kinetic_chain
 from fight_move_system.cli import generate_m4_packets
+from fight_move_system.closed_loop import (
+    apply_localized_repair,
+    build_next_clip_handoff,
+    ingest_render_verdict,
+    parse_scorecard_markdown,
+    plan_localized_repair,
+)
 from fight_move_system.compiler import compile_clip_prompt, scan_prompt_v15
 from fight_move_system.composer import compose_clips
+from fight_move_system.kb_bridge import (
+    kb_find,
+    kb_lookup,
+    load_semantic_directives,
+    sync_lexicon_gaps_to_memory,
+    verify_bundle_integrity,
+)
 from fight_move_system.lexicon import Lexicon, validate_card
 from fight_move_system.validator import validate_clip
 
@@ -566,6 +580,77 @@ class TestFightMoveSystem(unittest.TestCase):
             self.assertIn("H5_four_limb_occupancy_vs_single_limb", bundle["hypothesis_packets"])
             self.assertIn("H6_fluid_coil_chained_vs_neutral_reset", bundle["hypothesis_packets"])
             self.assertGreaterEqual(len(bundle["boxing_word_probes"]), 25)
+
+    # --- M7: Original e91c686 Compiler Lock, Compiler Bug Fixes, KB Bridge & Closed-Loop ---
+    def test_m7_original_e91c686_sakuga_compiler_preserved(self) -> None:
+        import subprocess
+        repo_root = Path(__file__).parent.parent
+        gm1 = repo_root / "examples" / "gold_master_1_blade_exchange.json"
+        gm2 = repo_root / "examples" / "gold_master_2_disarm_dual_blade.json"
+        script = repo_root / "scripts" / "sakuga_compiler.py"
+        for gm in (gm1, gm2):
+            proc = subprocess.run(
+                ["python3", str(script), "lint", str(gm)],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+            self.assertIn("0 errors, 0 warnings", proc.stdout)
+
+    def test_m7_compiler_bug_fixes_in_variation_3(self) -> None:
+        prompt, res = compile_clip_prompt(self.valid_var3, lexicon=self.lexicon)
+        self.assertTrue(res.ok)
+        # 1. No empty 'L_arm:left arm ;' split bug
+        self.assertNotIn("L_arm:left arm ;", prompt)
+        # 2. 'slashing_rear_elbow' does not match 'shin' substring
+        self.assertNotIn("A_slashing_rear_elbow_windup -> hit:A_right_shin", prompt)
+        self.assertIn("hit:A_right_elbow_and_forearm_into_B_jawline_and_chin", prompt)
+        # 3. Passive blocks at 2.64s and 7.04s record B's strike meeting A's guard
+        self.assertIn("hit:B_right_fist_cross_meets_A_vertical_forearm_shell", prompt)
+        self.assertIn("hit:B_right_fist_cross_meets_A_tucked_left_elbow_guard", prompt)
+        # 4. Wardrobe legend dynamically reflects beat-sheet wardrobe
+        self.assertIn("midnight-blue shorts, white wrist tape, gold ankle wraps", prompt)
+
+    def test_m7_knowledge_base_bridge_and_bundle_integrity(self) -> None:
+        ok, errs = verify_bundle_integrity()
+        self.assertTrue(ok, errs)
+        directives = load_semantic_directives()
+        if directives:
+            self.assertEqual(len(directives), 64)
+            sync_res = sync_lexicon_gaps_to_memory()
+            self.assertGreaterEqual(sync_res["concepts_synced"], 47)
+            hits = kb_find("hitstop", limit=5)
+            self.assertTrue(hits["passages"] or hits["concepts"])
+            sample_dir = next(iter(directives.values()))
+            look = kb_lookup(moment=sample_dir["moment_type"], slot=sample_dir["slot_id"])
+            self.assertTrue(look["directives"] or look["passages"])
+
+    def test_m7_closed_loop_verdict_repair_and_next_clip_handoff(self) -> None:
+        # 1. Parse scorecard markdown
+        sample_md = """
+| Prompt Variant | Engine / Model ID | Verdict | Notes |
+|---|---|---|---|
+| compiled | seedance-2.0 | works | Clean hitstop and zero torso merge |
+"""
+        parsed = parse_scorecard_markdown(sample_md)
+        self.assertEqual(len(parsed), 1)
+        self.assertEqual(parsed[0]["verdict"], "works")
+
+        # 2. Plan & apply RFC 6902 localized repair across failure classes
+        clip = copy.deepcopy(self.valid_var3)
+        for fclass in ("contact_flicker", "phantom_force", "dead_contact", "pose_reset", "camera_occlusion"):
+            plan = plan_localized_repair(clip, beat_index=2, failure_type=fclass)
+            self.assertIn(fclass, plan["failure_id"])
+            self.assertTrue(len(plan["patch"]) >= 1)
+            patched = apply_localized_repair(clip, plan)
+            self.assertIsInstance(patched, dict)
+
+        # 3. Build next-clip handoff at t=10.0s
+        handoff = build_next_clip_handoff(self.valid_var3)
+        self.assertEqual(handoff["fighters"]["A"]["screen_side"], "left")
+        self.assertEqual(handoff["fighters"]["B"]["screen_side"], "right")
+        self.assertEqual(handoff["fighters"]["B"]["support"], "crouched")
 
 
 if __name__ == "__main__":

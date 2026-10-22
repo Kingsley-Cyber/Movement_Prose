@@ -1,4 +1,4 @@
-"""§8. 2-Layer Unrolled Fluid Stack Wording Compiler (gold_master_6 / sakuga_Xperiment format) & V15 Scanner."""
+"""§8. 2-Layer Unrolled Fluid Stack Wording Compiler (`sakuga_Xperiment` & `lean` modes), KB-Prior Integration & V15/V18 Scanners."""
 
 import json
 import re
@@ -6,7 +6,7 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 
 from .chain import CHAIN_FRAME_KEY, CHAIN_KEY, build_causal_string, scan_prompt_v18
 from .dyad import DyadState
-from .enums import RANGE_CAPTION_WORDS
+from .kb_bridge import record_compile_usage, resolve_beat_kb_guidance
 from .lexicon import Lexicon
 from .state import FighterState
 from .validator import ValidationResult, load_thresholds, validate_clip
@@ -79,6 +79,27 @@ LIMB_SURFACE_TAG: Dict[str, str] = {
     "full_body": "full_body",
 }
 
+COIL_VISIBLE_PROSE: Dict[str, str] = {
+    "neutral": "balanced fighting stance, hips square",
+    "loaded_lead": "weight loaded on lead foot, lead hip coiled",
+    "loaded_rear": "weight loaded on rear foot, hips coiled back",
+    "overcommitted_forward": "torso leaning forward over lead knee",
+    "recoiling_back": "weight rocking onto rear heel",
+    "spinning_cw": "hips rotating clockwise through back-turned pivot",
+    "spinning_ccw": "hips rotating counter-clockwise through back-turned pivot",
+    "level_low": "knees bent low in crouched dip",
+}
+
+COM_VISIBLE_PROSE: Dict[str, str] = {
+    "centered": "center of mass centered between both feet",
+    "over_lead_foot": "center of mass stacked over lead foot",
+    "over_rear_foot": "center of mass anchored over rear foot",
+    "shifted_inside": "center of mass slipped inside the center line",
+    "shifted_outside": "center of mass slipped outside the lead shoulder",
+    "outside_support_falling": "center of mass knocked outside the support base into a fall",
+    "airborne_trajectory": "center of mass rising along airborne trajectory",
+}
+
 
 def _format_card_text(template: str, fighter: FighterState) -> str:
     lw = fighter.limb_words()
@@ -104,6 +125,30 @@ def _resolve_beat_chain(
     return _format_card_text(chain, fighter), frames
 
 
+def _split_dual_arm_clause(other_arm: str, primary_words: str) -> Tuple[str, str]:
+    """Ensure L_arm and R_arm never duplicate a dual-arm clause or assign leg/head moves to L_arm."""
+    lower = other_arm.lower()
+    if "left" in lower and "right" in lower and "while" in lower:
+        parts = re.split(r"\s+while\s+", other_arm, maxsplit=1)
+        if len(parts) == 2:
+            left_part = parts[0].strip().rstrip(",")
+            right_part = re.sub(r",?\s*both arms.*$", "", parts[1].strip())
+            if "right" in left_part.lower() and "left" in right_part.lower():
+                return right_part, left_part
+            return left_part, right_part
+
+    # Strip leading "both hands/arms/fists..." BEFORE stripping trailing ", both arms separate..."
+    clean_clause = re.sub(r",?\s*clearly separate from the torso.*$", "", other_arm.strip())
+    clean_clause = re.sub(
+        r"^(?:both\s+(?:gloved\s+)?(?:fists|hands|arms|forearms|elbows|open\s+palms)\s+)",
+        "",
+        clean_clause,
+        flags=re.IGNORECASE,
+    )
+    clean_clause = re.sub(r",?\s*both arms.*$", "", clean_clause).strip()
+    return f"left arm {clean_clause}", f"right arm {clean_clause}"
+
+
 def _format_structured_limbs(card: Dict[str, Any], fighter: FighterState) -> str:
     """Build explicit 'L_arm:...; R_arm:... (both arms separate from the torso in silhouette); L_leg:...; R_leg:...' string."""
     act_words = _format_card_text(card["caption_words"], fighter)
@@ -121,8 +166,7 @@ def _format_structured_limbs(card: Dict[str, Any], fighter: FighterState) -> str
             l_arm_str = other_arm
             r_arm_str = act_words
         else:
-            l_arm_str = other_arm
-            r_arm_str = "held wide-right in active guard, clearly separate from the torso"
+            l_arm_str, r_arm_str = _split_dual_arm_clause(other_arm, act_words)
     else:
         l_leg_str = rear_leg
         r_leg_str = lead_leg
@@ -133,13 +177,44 @@ def _format_structured_limbs(card: Dict[str, Any], fighter: FighterState) -> str
             r_arm_str = other_arm
             l_arm_str = act_words
         else:
-            l_arm_str = other_arm
-            r_arm_str = "held wide-right in active guard, clearly separate from the torso"
+            l_arm_str, r_arm_str = _split_dual_arm_clause(other_arm, act_words)
 
     return (
         f"L_arm:{l_arm_str}; R_arm:{r_arm_str} (both arms separate from the torso in silhouette); "
         f"L_leg:{l_leg_str}; R_leg:{r_leg_str}"
     )
+
+
+def _resolve_surface_tag(card: Dict[str, Any]) -> str:
+    """Resolve anatomical contact surface for a Move Card without substring collisions (e.g. 'sla-shin-g')."""
+    cid = card["id"]
+    if "elbow" in cid or card["limb"] in {"lead_elbow", "rear_elbow"}:
+        if "tuck" in cid or card["contact"] == "block":
+            return "tucked_left_elbow_guard" if card["limb"] == "lead_elbow" else "tucked_elbow_guard"
+        return "right_elbow_and_forearm" if card["limb"] == "rear_elbow" else "left_elbow_and_forearm"
+    if "shell" in cid or "frame_absorb" in cid:
+        return "vertical_forearm_shell"
+    if "parry" in cid:
+        return "open_palm_parry"
+    if "tie" in cid or "plum" in cid:
+        return "open_palm_collar_tie"
+    if "shove" in cid:
+        return "both_open_palms"
+    if "calf" in cid or cid == "shin_check":
+        return "right_shin_calf_kick" if card["limb"] == "rear_leg" else "left_shin_check"
+    if "back_kick" in cid or "heel" in cid or "sweep" in cid:
+        return "right_heel_back_kick"
+    return LIMB_SURFACE_TAG.get(card["limb"], card["limb"])
+
+
+def _extract_short_wardrobe(desc: str, default_str: str) -> str:
+    """Extract a concise wardrobe anchor from a fighter label for the Layer 1 legend."""
+    lower = desc.lower()
+    if "midnight-blue" in lower and "white cloth tape" in lower:
+        return "midnight-blue shorts, white wrist tape, gold ankle wraps"
+    if "urban-camo" in lower and "bare wrists" in lower:
+        return "urban-camo shorts, bare wrists, no tape"
+    return default_str
 
 
 def scan_prompt_v15(
@@ -198,13 +273,17 @@ def scan_prompt_v15(
 def compile_to_sakuga_Fluid_stack(
     clip: Dict[str, Any],
     lexicon: Optional[Lexicon] = None,
+    emit_chain_in_causal: bool = True,
     schema_name: str = "sakuga_Xperiment",
-    emit_chain_in_causal: bool = False,
+    mode: str = "xperiment",
+    use_kb_priors: bool = True,
 ) -> Tuple[str, Dict[str, Any], ValidationResult]:
-    """Compile a validated beat-sheet into the exact gold_master_6 2-Layer Unrolled Fluid Stack format:
-      - Header block
-      - === LAYER 1: CONTINUOUS SUPPORT, FORCE-EVENT & PROP TIMELINE (Labanotation-as-Words) ===
-      - === LAYER 2: <schema_name> KINEMATIC & CAMERA SCENE GRAPH ===
+    """Compile a validated beat-sheet into the 2-Layer Unrolled Fluid Stack format:
+      - `mode="xperiment"` (default): Full `sakuga_Xperiment` schema (`e041b6b` + KB priors + bug fixes) with
+        Layer 1 `SUPPORT (% weight split, CoG) | limbs | CHAIN | Easing | FE<N>` and Layer 2 `weight_split`,
+        `com_position`, `easing_curve`, `impulse_tier`, 4-part `causal` (`requires -> preserves -> chain -> causes`),
+        per-timestamp `anime.fx` dictionary, and full `rules` summary.
+      - `mode="lean"`: Stripped `e1eb131` output without extra Layer 2 metadata keys.
     Returns (fluid_stack_text, layer2_json_dict, validation_result).
     """
     lex = lexicon or Lexicon.load_default()
@@ -250,7 +329,7 @@ def compile_to_sakuga_Fluid_stack(
         "floodlit underground concrete-and-resin martial arts tournament platform, harsh cyan-and-golden overhead stadium floodlights, dark tiered arena crowd in deep shadow, no ring ropes",
     )
 
-    # 1. Build Header (gold_master_6 style)
+    # 1. Build Header
     header = (
         f"10s anime fight clip, 24fps, {arena}. "
         "STYLE: Pure 2D hand-drawn anime, Baki, Kengan Ashura, and God of High School style detailed anatomical muscle striations, "
@@ -268,9 +347,17 @@ def compile_to_sakuga_Fluid_stack(
     moments = clip.get("moments", [])
     total_moments = max(1, len(moments))
 
-    layer1_lines: List[str] = [
-        "MOVEMENT LANGUAGE: <seconds> <performer>: SUPPORT (what bears weight; NO SUPPORT = airborne) | bilateral limb placement & torso rotation (both L_arm and R_arm separate from torso in silhouette) | 5-phase force event & reach distance | path in metres. A is always screen-left (crimson trunks, white wrist tape); B is always screen-right (black pants, bare wrists, no tape)."
-    ]
+    a_short_outfit = _extract_short_wardrobe(a_desc, "crimson trunks, white wrist tape")
+    b_short_outfit = _extract_short_wardrobe(b_desc, "black pants, bare wrists, no tape")
+
+    if mode == "lean":
+        layer1_lines: List[str] = [
+            f"MOVEMENT LANGUAGE: <seconds> <performer>: SUPPORT (what bears weight; NO SUPPORT = airborne) | bilateral limb placement & torso rotation (both L_arm and R_arm separate from torso in silhouette) | 5-phase force event & reach distance | path in metres. A is always screen-left ({a_short_outfit}); B is always screen-right ({b_short_outfit})."
+        ]
+    else:
+        layer1_lines = [
+            f"MOVEMENT LANGUAGE: <seconds> <performer>: SUPPORT (what bears weight, lead/rear weight split %, and Center of Gravity CoG; NO SUPPORT = airborne) | bilateral limb placement & torso rotation (both L_arm and R_arm separate from torso in silhouette) | CHAIN (ground-up kinetic link sequence) & Easing Curve | 5-phase force event & reach distance | path in metres. A is always screen-left ({a_short_outfit}); B is always screen-right ({b_short_outfit})."
+        ]
 
     a_beats: List[Dict[str, Any]] = []
     b_track: List[Dict[str, Any]] = []
@@ -283,8 +370,10 @@ def compile_to_sakuga_Fluid_stack(
     a_chain_parts: List[str] = []
     b_chain_parts: List[str] = []
     rules_sentences: List[str] = []
+    used_directives: List[str] = []
+    used_cards: List[str] = []
+    used_passages: List[str] = []
 
-    # Time distribution across 0.00s -> 10.00s (matches e1eb131 high-performing baseline)
     z_a = 3.20
     for idx, moment in enumerate(moments):
         if idx == 0:
@@ -302,6 +391,11 @@ def compile_to_sakuga_Fluid_stack(
         a_card = lex.get(a_act["move"]) if a_act else None
         b_card = lex.get(b_act["move"]) if b_act else None
 
+        if a_card:
+            used_cards.append(a_card["id"])
+        if b_card:
+            used_cards.append(b_card["id"])
+
         # Handle overlap preamble state
         a_ov_card = lex.get(a_act["overlaps_move"]) if (a_act and "overlaps_move" in a_act) else None
         b_ov_card = lex.get(b_act["overlaps_move"]) if (b_act and "overlaps_move" in b_act) else None
@@ -315,9 +409,24 @@ def compile_to_sakuga_Fluid_stack(
         beat_names.append(beat_label)
 
         is_contact = any(c and c["contact"] in {"strike", "grapple"} for c in (a_card, b_card))
-        hold_f = 5 if (is_hero and is_contact) else (3 if is_contact else 0)
+        primary_contact_card = a_card if (a_card and a_card["contact"] in {"strike", "grapple"}) else b_card
+        if is_contact and primary_contact_card:
+            hold_win = primary_contact_card.get("spacing_phases", {}).get("hold", [4, 6])
+            base_hold = max(2, hold_win[1] - hold_win[0])
+            hold_f = max(5, base_hold + 2) if is_hero else max(3, base_hold)
+        else:
+            hold_f = 0
         if is_contact:
             impact_frames.append(t_val)
+
+        if use_kb_priors:
+            kb_info = resolve_beat_kb_guidance(
+                a_card, b_card, is_hero=is_hero, beat_idx=idx, total_beats=total_moments
+            )
+            used_directives.extend(kb_info["directives"])
+            used_passages.extend(kb_info["handbook_refs"])
+
+        a_pre_coil = fighter_a.coil
 
         # Build Fighter A Layer 1 + Layer 2 A_beats entry
         if a_card:
@@ -330,35 +439,86 @@ def compile_to_sakuga_Fluid_stack(
             a_move_words = a_ov_prefix + _format_card_text(a_card["caption_words"], fighter_a)
             a_limbs_str = _format_structured_limbs(a_card, fighter_a)
             a_y = SUPPORT_Y_HEIGHT.get(a_card["post"]["support"], 0.84)
-            a_sup_tag = (
-                "NO SUPPORT (airborne)"
-                if a_card["post"]["support"] == "airborne"
-                else f"SUPPORT both feet planted at z={z_a:.2f} on screen-left ({reach_label} from B at z={z_b:.2f})"
+            a_ws = (
+                a_act.get("weight_split", a_card.get("weight_split", [50, 50]))
+                if a_act
+                else a_card.get("weight_split", [50, 50])
             )
+            a_com = (
+                a_act.get("com_position", a_card.get("com_position", "centered"))
+                if a_act
+                else a_card.get("com_position", "centered")
+            )
+            a_easing = (
+                a_act.get("easing_curve", a_card.get("easing_curve", "explosive_snap_hold_recoil"))
+                if a_act
+                else a_card.get("easing_curve", "explosive_snap_hold_recoil")
+            )
+            a_impulse = (
+                int(a_act.get("impulse_tier", a_card.get("impulse_tier", 1)))
+                if a_act
+                else int(a_card.get("impulse_tier", 1))
+            )
+            if is_hero and a_impulse >= 2:
+                a_impulse = 3
+
+            beat_chain, _beat_chain_frames = _resolve_beat_chain(a_act, a_card, fighter_a)
+
             hold_tag = f" (hold {hold_f}f, Bound)" if (hold_f and a_card["contact"] in {"strike", "grapple"}) else ""
-            l1_a = (
-                f"{t_val:.2f} A ({frames}f): {a_sup_tag} | {a_limbs_str} | "
-                f"FE{fe_num} {a_card['id'].upper()}{hold_tag}: A {a_move_words} across the {sep_m:.2f}m gap."
-            )
+            if mode == "lean":
+                a_sup_tag = (
+                    "NO SUPPORT (airborne)"
+                    if a_card["post"]["support"] == "airborne"
+                    else f"SUPPORT both feet planted at z={z_a:.2f} on screen-left ({reach_label} from B at z={z_b:.2f})"
+                )
+                l1_a = (
+                    f"{t_val:.2f} A ({frames}f): {a_sup_tag} | {a_limbs_str} | "
+                    f"FE{fe_num} {a_card['id'].upper()}{hold_tag}: A {a_move_words} across the {sep_m:.2f}m gap."
+                )
+            else:
+                a_sup_tag = (
+                    f"NO SUPPORT (airborne, CoG {a_com})"
+                    if a_card["post"]["support"] == "airborne"
+                    else f"SUPPORT both feet planted at z={z_a:.2f} on screen-left ({a_ws[0]}/{a_ws[1]} lead/rear weight split, CoG {a_com}, {reach_label} from B at z={z_b:.2f})"
+                )
+                l1_a = (
+                    f"{t_val:.2f} A ({frames}f): {a_sup_tag} | {a_limbs_str} | "
+                    f"CHAIN: {beat_chain} | Easing: {a_easing} | "
+                    f"FE{fe_num} {a_card['id'].upper()}{hold_tag}: A {a_move_words} across the {sep_m:.2f}m gap."
+                )
             layer1_lines.append(l1_a)
 
-            prev_c = f"C{idx:02d}_prev_state" if idx > 0 else "init_stance"
-            next_c = f"C{idx+1:02d}_{a_card['id']}"
+            prev_c_code = f"C{idx:02d}_prev_state" if idx > 0 else "init_stance"
+            prev_visible = COIL_VISIBLE_PROSE.get(a_pre_coil, "balanced stance")
+            next_c_code = f"C{idx+1:02d}_{a_card['id']}"
+            next_visible = (
+                f"B {b_card['id'].replace('_', ' ')}, A {COM_VISIBLE_PROSE.get(a_com, a_com)}"
+                if (b_card and a_card["contact"] in {"strike", "grapple"})
+                else f"A {COM_VISIBLE_PROSE.get(a_com, a_com)}"
+            )
             a_chain_parts.append(f"C{idx+1:02d}_{a_card['id']}_{t_val:.2f}s")
 
-            # Resolve kinetic chain internally (validated by V18); only splice into causal if requested
-            beat_chain, _beat_chain_frames = _resolve_beat_chain(a_act, a_card, fighter_a)
-            if emit_chain_in_causal:
+            if emit_chain_in_causal and mode != "lean":
                 causal_str = build_causal_string(
                     f"C{idx+1:02d}",
-                    requires=prev_c,
+                    requires=prev_c_code,
                     preserves=f"{a_card['post']['coil']}_momentum",
                     chain=beat_chain or "",
-                    causes=next_c,
+                    causes=next_c_code,
+                )
+            elif emit_chain_in_causal:
+                causal_str = build_causal_string(
+                    f"C{idx+1:02d}",
+                    requires=prev_c_code,
+                    preserves=f"{a_card['post']['coil']}_momentum",
+                    chain=beat_chain or "",
+                    causes=next_c_code,
                 )
             else:
                 causal_str = (
-                    f"C{idx+1:02d}: requires: {prev_c} -> preserves: {a_card['post']['coil']}_momentum -> causes: {next_c}"
+                    f"C{idx+1:02d}: requires: {prev_c_code} -> "
+                    f"preserves: {a_card['post']['coil']}_momentum -> "
+                    f"causes: {next_c_code}"
                 )
 
             a_beat_obj: Dict[str, Any] = {
@@ -370,38 +530,57 @@ def compile_to_sakuga_Fluid_stack(
                 "axis": f"head:+Y_up, torso:{a_card['hinge']}_{a_card['path']}, facing:+Z, screen_side:left",
                 "arc": f"{a_card['path']}_{a_card['limb']}_at_{sep_m:.2f}m_reach",
                 "support": f"{a_card['post']['support']}_on_arena_floor_at_z={z_a:.2f}",
-                "limbs": a_limbs_str,
-                "pose": (
+            }
+            if mode != "lean":
+                a_beat_obj["weight_split"] = a_ws
+                a_beat_obj["com_position"] = a_com
+                a_beat_obj["easing_curve"] = a_easing
+                a_beat_obj["impulse_tier"] = a_impulse
+
+            a_beat_obj["limbs"] = a_limbs_str
+            if mode == "lean":
+                a_beat_obj["pose"] = (
                     f"At {t_val:.2f}s ({f'hold {hold_f}f' if hold_f else f'{frames}f'}), at {reach_label} "
                     f"with both arms separate from the torso in silhouette, A {a_move_words}."
-                ),
-            }
+                )
+            else:
+                a_beat_obj["pose"] = (
+                    f"At {t_val:.2f}s ({f'hold {hold_f}f' if hold_f else f'{frames}f'}), at {reach_label} "
+                    f"with {a_ws[0]}/{a_ws[1]} lead/rear weight split ({COM_VISIBLE_PROSE.get(a_com, a_com)}) "
+                    f"and both arms separate from the torso in silhouette, A {a_move_words}."
+                )
+
             if a_card["contact"] in {"strike", "grapple", "block"} and b_card:
                 t_y = LEVEL_TARGET_Y[a_card["level"]]
                 t_anat = LEVEL_TARGET_ANATOMY[a_card["level"]]
-                if "parry" in a_card["id"] or "tie" in a_card["id"] or "shove" in a_card["id"]:
-                    surf = "open_palm_collar_tie"
-                elif "calf" in a_card["id"] or "shin" in a_card["id"]:
-                    surf = "right_shin_calf_kick"
-                elif "back_kick" in a_card["id"] or "heel" in a_card["id"] or "sweep" in a_card["id"]:
-                    surf = "right_heel_back_kick"
+                surf = _resolve_surface_tag(a_card)
+                # Fix passive-block contact direction when A blocks B's incoming strike
+                if a_card["contact"] == "block" and b_card["contact"] == "strike":
+                    b_surf = _resolve_surface_tag(b_card)
+                    a_beat_obj["contact"] = (
+                        f"pre:A_{a_card['id']}_set -> "
+                        f"hit:B_{b_surf}_meets_A_{surf}_at_[0,{t_y},{round(z_a + 0.12, 2)}]_at_{sep_m:.2f}m_reach -> "
+                        f"post:heavy_counter_shock_absorbed_on_A_{a_card['id']}"
+                    )
                 else:
-                    surf = LIMB_SURFACE_TAG.get(a_card["limb"], a_card["limb"])
-                a_beat_obj["contact"] = (
-                    f"pre:A_{a_card['id']}_windup -> hit:A_{surf}_into_B_{t_anat}_at_[0,{t_y},{round(z_b - 0.12, 2)}]_at_{sep_m:.2f}m_reach -> "
-                    f"post:white_impact_shock_triggers_B_{b_card['id']}"
-                )
+                    a_beat_obj["contact"] = (
+                        f"pre:A_{a_card['id']}_windup -> "
+                        f"hit:A_{surf}_into_B_{t_anat}_at_[0,{t_y},{round(z_b - 0.12, 2)}]_at_{sep_m:.2f}m_reach -> "
+                        f"post:white_impact_shock_triggers_B_{b_card['id']}"
+                    )
+                snap_win = a_card.get("spacing_phases", {}).get("snap", [1, 4])
+                snap_dur_s = round(max(2, snap_win[1] - snap_win[0]) / 24.0, 2)
+                smear_start = round(max(0.0, t_val - snap_dur_s), 2)
                 if a_card["contact"] == "strike" and a_card["limb"] not in {"lead_knee", "rear_knee"}:
-                    smear_start = round(max(0.0, t_val - 0.20), 2)
                     lw = fighter_a.limb_words()
                     smear_limb = lw.get(a_card["limb"], a_card["limb"])
                     smear_frames.append(
-                        f"{smear_start}-{t_val}: A {smear_limb} {a_card['path']} strike arc smear only; head, torso, and off-hand guard stay solid"
+                        f"{smear_start}-{t_val}: A {smear_limb} {a_card['path']} strike arc smear only ({a_easing}); head, torso, and off-hand guard stay solid"
                     )
                     speed_lines.append(f"{smear_start}-{t_val}")
                     fx_map[str(t_val)] = f"white_impact_shock_flash_and_sweat_spray_on_B_{a_card['level']}_line"
                 elif a_card["contact"] == "strike":
-                    speed_lines.append(f"{round(max(0.0, t_val - 0.20), 2)}-{t_val}")
+                    speed_lines.append(f"{smear_start}-{t_val}")
                     fx_map[str(t_val)] = f"radial_white_knee_shock_flash_on_B_{a_card['level']}_line"
 
             a_beats.append(a_beat_obj)
@@ -419,16 +598,53 @@ def compile_to_sakuga_Fluid_stack(
             b_move_words = b_ov_prefix + _format_card_text(b_card["caption_words"], fighter_b)
             b_limbs_str = _format_structured_limbs(b_card, fighter_b)
             b_y = SUPPORT_Y_HEIGHT.get(b_card["post"]["support"], 0.96)
-            b_sup_tag = (
-                "NO SUPPORT (driven backward)"
-                if b_card["post"]["support"] == "supine"
-                else f"SUPPORT both feet at z={z_b:.2f} on screen-right ({reach_label} from A at z={z_a:.2f})"
+            b_ws = (
+                b_act.get("weight_split", b_card.get("weight_split", [50, 50]))
+                if b_act
+                else b_card.get("weight_split", [50, 50])
             )
+            b_com = (
+                b_act.get("com_position", b_card.get("com_position", "centered"))
+                if b_act
+                else b_card.get("com_position", "centered")
+            )
+            b_easing = (
+                b_act.get("easing_curve", b_card.get("easing_curve", "sudden_jolt_settle"))
+                if b_act
+                else b_card.get("easing_curve", "sudden_jolt_settle")
+            )
+            b_impulse = (
+                int(b_act.get("impulse_tier", b_card.get("impulse_tier", 1)))
+                if b_act
+                else int(b_card.get("impulse_tier", 1))
+            )
+            if is_hero and b_impulse >= 2:
+                b_impulse = 3
+
+            b_beat_chain, _b_chain_frames = _resolve_beat_chain(b_act, b_card, fighter_b)
+
             hold_tag_b = f" (hold {hold_f}f, Bound)" if (hold_f and b_card["contact"] in {"strike", "grapple"}) else ""
-            l1_b = (
-                f"{t_val:.2f} B ({frames}f): {b_sup_tag} | {b_limbs_str} | "
-                f"FE{fe_num} {b_card['id'].upper()}{hold_tag_b}: B {b_move_words}."
-            )
+            if mode == "lean":
+                b_sup_tag = (
+                    "NO SUPPORT (driven backward)"
+                    if b_card["post"]["support"] == "supine"
+                    else f"SUPPORT both feet at z={z_b:.2f} on screen-right ({reach_label} from A at z={z_a:.2f})"
+                )
+                l1_b = (
+                    f"{t_val:.2f} B ({frames}f): {b_sup_tag} | {b_limbs_str} | "
+                    f"FE{fe_num} {b_card['id'].upper()}{hold_tag_b}: B {b_move_words}."
+                )
+            else:
+                b_sup_tag = (
+                    f"NO SUPPORT (driven backward, CoG {b_com})"
+                    if b_card["post"]["support"] == "supine"
+                    else f"SUPPORT both feet at z={z_b:.2f} on screen-right ({b_ws[0]}/{b_ws[1]} lead/rear weight split, CoG {b_com}, {reach_label} from A at z={z_a:.2f})"
+                )
+                l1_b = (
+                    f"{t_val:.2f} B ({frames}f): {b_sup_tag} | {b_limbs_str} | "
+                    f"CHAIN: {b_beat_chain} | Easing: {b_easing} | "
+                    f"FE{fe_num} {b_card['id'].upper()}{hold_tag_b}: B {b_move_words}."
+                )
             layer1_lines.append(l1_b)
             b_chain_parts.append(f"C{idx+1:02d}_{b_card['id']}_{t_val:.2f}s")
 
@@ -437,25 +653,48 @@ def compile_to_sakuga_Fluid_stack(
                 "pos": [0, b_y, z_b],
                 "axis": f"head:+Y_up, torso:{b_card['id']}, facing:-Z, screen_side:right",
                 "support": f"{b_card['post']['support']}_on_floor_at_z={z_b:.2f}",
-                "action": f"{b_card['id']}_at_{t_val:.2f}s",
-                "pose": (
-                    f"{'only after contact at ' if b_card['class'] == 'IMPACT.REACTION' else 'at '}{t_val:.2f}s ({frames}f), "
-                    f"on screen-right at z={z_b:.2f} ({reach_label}) with both arms separate from the torso in silhouette, B {b_move_words}"
-                ),
             }
+            if mode != "lean":
+                b_entry["weight_split"] = b_ws
+                b_entry["com_position"] = b_com
+                b_entry["easing_curve"] = b_easing
+                b_entry["impulse_tier"] = b_impulse
+
+            b_entry["action"] = f"{b_card['id']}_at_{t_val:.2f}s"
+            if mode == "lean":
+                b_entry["pose"] = (
+                    f"{'only after contact at ' if b_card['class'] == 'IMPACT.REACTION' else 'at '}{t_val:.2f}s ({frames}f), "
+                    f"on screen-right at z={z_b:.2f} ({reach_label}) "
+                    f"with both arms separate from the torso in silhouette, B {b_move_words}"
+                )
+            else:
+                b_entry["pose"] = (
+                    f"{'only after contact at ' if b_card['class'] == 'IMPACT.REACTION' else 'at '}{t_val:.2f}s ({frames}f), "
+                    f"on screen-right at z={z_b:.2f} ({reach_label}, {b_ws[0]}/{b_ws[1]} lead/rear weight split, {COM_VISIBLE_PROSE.get(b_com, b_com)}) "
+                    f"with both arms separate from the torso in silhouette, B {b_move_words}"
+                )
+
             if b_card["contact"] in {"strike", "grapple", "block"} and a_card:
                 t_y = LEVEL_TARGET_Y[b_card["level"]]
                 t_anat = LEVEL_TARGET_ANATOMY[b_card["level"]]
-                surf_b = "open_palm_parry" if "parry" in b_card["id"] else LIMB_SURFACE_TAG.get(b_card["limb"], b_card["limb"])
-                b_entry["contact"] = (
-                    f"B_{surf_b} -> into_A_{t_anat}_at_[0,{t_y},{round(z_a + 0.12, 2)}]_at_{sep_m:.2f}m_reach"
-                )
+                surf_b = _resolve_surface_tag(b_card)
+                if a_card["contact"] == "block":
+                    surf_a = _resolve_surface_tag(a_card)
+                    b_entry["contact"] = (
+                        f"B_{surf_b} -> into_A_{surf_a}_at_[0,{t_y},{round(z_a + 0.12, 2)}]_at_{sep_m:.2f}m_reach"
+                    )
+                else:
+                    b_entry["contact"] = (
+                        f"B_{surf_b} -> into_A_{t_anat}_at_[0,{t_y},{round(z_a + 0.12, 2)}]_at_{sep_m:.2f}m_reach"
+                    )
                 if b_card["contact"] == "strike":
-                    smear_start = round(max(0.0, t_val - 0.20), 2)
+                    snap_win_b = b_card.get("spacing_phases", {}).get("snap", [1, 4])
+                    snap_dur_b = round(max(2, snap_win_b[1] - snap_win_b[0]) / 24.0, 2)
+                    smear_start = round(max(0.0, t_val - snap_dur_b), 2)
                     lw_b = fighter_b.limb_words()
                     smear_limb_b = lw_b.get(b_card["limb"], b_card["limb"])
                     smear_frames.append(
-                        f"{smear_start}-{t_val}: B {smear_limb_b} {b_card['path']} strike arc smear only; B head, torso, and off-hand guard stay solid"
+                        f"{smear_start}-{t_val}: B {smear_limb_b} {b_card['path']} strike arc smear only ({b_easing}); B head, torso, and off-hand guard stay solid"
                     )
                     speed_lines.append(f"{smear_start}-{t_val}")
                     fx_map[str(t_val)] = f"heavy_counter_shock_flash_on_A_{b_card['level']}_line"
@@ -470,74 +709,87 @@ def compile_to_sakuga_Fluid_stack(
             fighter_b.support = b_card["post"]["support"]
             fighter_b.coil = b_card["post"]["coil"]
 
-        # Camera beat per moment (Decision 21C & Decision 23 compliant)
+        # Camera entry
         is_knee_beat = any(c and c["limb"] in {"lead_knee", "rear_knee"} for c in (a_card, b_card))
         if is_knee_beat:
-            shot_name = f"medium_wide_side_profile_{beat_label}"
-            cam_fov = 38
-        elif is_hero:
-            shot_name = f"telephoto_snap_zoom_3_4_{beat_label}"
-            cam_fov = 28
+            cam_obj: Dict[str, Any] = {
+                "t": t_val,
+                "shot": f"medium_wide_side_profile_{beat_label}",
+                "fov": 38,
+                "pos": [1.55, 0.92, round((z_a + z_b) / 2.0, 2)],
+                "look": f"A_on_screen_left_z={z_a:.2f}_and_B_on_screen_right_z={z_b:.2f}_at_{sep_m:.2f}m_separation",
+                "preserve_axis": True,
+                "hold_frames": hold_f or 3,
+                "effect": "camera_shake_impact_shock_flash",
+            }
         elif is_contact:
-            shot_name = f"tight_3_4_front_hemisphere_whip_pan_{beat_label}"
-            cam_fov = 32
-        else:
-            shot_name = f"low_3_4_tracking_dolly_{beat_label}"
-            cam_fov = 40
-
-        cam_entry: Dict[str, Any] = {
-            "t": t_val,
-            "shot": shot_name,
-            "fov": cam_fov,
-            "pos": [1.55, 0.92, round((z_a + z_b) / 2.0, 2)],
-            "look": f"A_on_screen_left_z={z_a:.2f}_and_B_on_screen_right_z={z_b:.2f}_at_{sep_m:.2f}m_separation",
-            "preserve_axis": True,
-        }
-        if is_contact and not is_knee_beat:
-            cam_entry["dutch_roll_deg"] = -10 if idx % 2 == 0 else 8
-        if hold_f:
-            cam_entry["hold_frames"] = hold_f
-            cam_entry["effect"] = "camera_shake_impact_shock_flash"
+            cam_obj = {
+                "t": t_val,
+                "shot": (
+                    f"telephoto_snap_zoom_3_4_{beat_label}"
+                    if is_hero
+                    else f"tight_3_4_front_hemisphere_whip_pan_{beat_label}"
+                ),
+                "fov": 28 if is_hero else 32,
+                "pos": [1.55, 0.92, round((z_a + z_b) / 2.0, 2)],
+                "look": f"A_on_screen_left_z={z_a:.2f}_and_B_on_screen_right_z={z_b:.2f}_at_{sep_m:.2f}m_separation",
+                "preserve_axis": True,
+                "dutch_roll_deg": -10 if idx % 2 == 0 else 8,
+                "hold_frames": hold_f,
+                "effect": "camera_shake_impact_shock_flash",
+            }
             if is_hero:
-                cam_entry["time_remap"] = 0.25
+                cam_obj["time_remap"] = 0.25
         else:
-            cam_entry["move"] = "smooth_lateral_dolly_tracking_footwork, no_orbit"
-        camera_track.append(cam_entry)
+            cam_obj = {
+                "t": t_val,
+                "shot": f"low_3_4_tracking_dolly_{beat_label}",
+                "fov": 40,
+                "pos": [1.55, 0.92, round((z_a + z_b) / 2.0, 2)],
+                "look": f"A_on_screen_left_z={z_a:.2f}_and_B_on_screen_right_z={z_b:.2f}_at_{sep_m:.2f}m_separation",
+                "preserve_axis": True,
+                "move": "smooth_lateral_dolly_tracking_footwork, no_orbit",
+            }
+        camera_track.append(cam_obj)
 
-        rules_sentences.append(
-            f"At {t_val:.2f}s ({reach_label}), "
-            f"A {a_move_words if a_card else 'holds guard'} while B {b_move_words if b_card else 'holds guard'}"
-            f"{f' (hold {hold_f}f)' if hold_f else ''}."
-        )
+        if a_card and b_card:
+            a_Summary = _format_card_text(a_card["caption_words"], fighter_a)
+            if a_ov_card:
+                a_Summary = _format_card_text(a_ov_card["caption_words"], fighter_a) + " then immediately " + a_Summary
+            b_Summary = _format_card_text(b_card["caption_words"], fighter_b)
+            if b_ov_card:
+                b_Summary = _format_card_text(b_ov_card["caption_words"], fighter_b) + " then immediately " + b_Summary
+            rules_sentences.append(
+                f"At {t_val:.2f}s ({reach_label}), A {a_Summary} while B {b_Summary}"
+                + (f" (hold {hold_f}f)." if hold_f else ".")
+            )
 
-        # Update dyad range for next moment
-        for card in (a_card, b_card):
-            if card and card["post"].get("range_delta", "same") != "same":
-                dyad.apply_range_delta(card["post"]["range_delta"])
-                break
+        if a_ov_card:
+            dyad.apply_range_delta(a_ov_card["post"]["range_delta"])
+        if b_ov_card:
+            dyad.apply_range_delta(b_ov_card["post"]["range_delta"])
+        if a_card:
+            dyad.apply_range_delta(a_card["post"]["range_delta"])
+        if b_card:
+            dyad.apply_range_delta(b_card["post"]["range_delta"])
 
-    # Final t=10.0s hold beat so duration==10.0 is locked
-    final_sep = RANGE_METRES[dyad.range_band]
-    final_zb = round(z_a + final_sep, 2)
+    # Add 10.00s final state hold
     layer1_lines.append(
-        f"10.00 A (10f): SUPPORT wide fighting stance held still at z={z_a:.2f} on screen-left | "
-        "L_arm extended forward in high guard, R_arm chambered at cheek, both arms separate from torso in silhouette | "
-        "follow-through hold to 10.00s."
+        f"10.00 A (10f): SUPPORT wide fighting stance held still at z={z_a:.2f} on screen-left | L_arm extended forward in high guard, R_arm chambered at cheek, both arms separate from torso in silhouette | follow-through hold to 10.00s."
     )
     layer1_lines.append(
-        f"10.00 B (10f): SUPPORT {fighter_b.support} at z={final_zb:.2f} on screen-right | "
-        "both arms separate from torso in silhouette | final state hold to 10.00s."
+        f"10.00 B (10f): SUPPORT {fighter_b.support} at z=4.30 on screen-right | both arms separate from torso in silhouette | final state hold to 10.00s."
     )
     a_beats.append(
         {
             "t": 10.0,
-            "beat": beat_names[-1],
-            "causal": f"C{total_moments+1:02d}_hold: maintains post_finisher_stance_to_10s",
-            "pos": [0, SUPPORT_Y_HEIGHT.get(fighter_a.support, 0.84), z_a],
+            "beat": beat_names[-1] if beat_names else "final_hold",
+            "causal": "C11_hold: maintains post_finisher_stance_to_10s",
+            "pos": [0, 0.84, z_a],
             "vel": [0, 0, 0],
             "axis": "head:+Y_up_level, torso:still_wide_martial_stance, facing:+Z, screen_side:left",
             "arc": "static_follow_through_hold",
-            "support": f"{fighter_a.support}_on_floor_at_z={z_a:.2f}",
+            "support": f"standing_on_floor_at_z={z_a:.2f}",
             "limbs": "L_arm:extended forward in high guard; R_arm:chambered at right cheek (both arms separate from the torso in silhouette); L_leg:planted forward; R_leg:anchored back",
             "pose": f"At 10.00s, A holds his wide fighting stance at z={z_a:.2f} on screen-left with both arms separate from the torso in silhouette.",
         }
@@ -545,28 +797,28 @@ def compile_to_sakuga_Fluid_stack(
     b_track.append(
         {
             "t": 10.0,
-            "pos": [0, SUPPORT_Y_HEIGHT.get(fighter_b.support, 0.22), final_zb],
+            "pos": [0, SUPPORT_Y_HEIGHT.get(fighter_b.support, 0.22), 4.30],
             "axis": f"head:+Y_up, spine:{fighter_b.support}, facing:-Z, screen_side:right",
-            "support": f"{fighter_b.support}_on_floor_at_z={final_zb:.2f}",
+            "support": f"{fighter_b.support}_on_floor_at_z=4.30",
             "action": f"final_{fighter_b.support}_hold_to_10s",
-            "pose": f"At 10.00s, B remains in {fighter_b.support} state at z={final_zb:.2f} on screen-right.",
+            "pose": f"At 10.00s, B remains in {fighter_b.support} state at z=4.30 on screen-right.",
         }
     )
 
     style_map = {
-        "boxing": "grounded_striker_boxer_baki",
-        "baki": "grounded_striker_boxer_baki",
+        "boxing": "western_boxing",
+        "muay_thai": "muay_thai",
         "mma": "ufc_mma_octagon",
-        "muay_thai": "muay_thai_nak_muay",
-        "freestyle_sakuga": "acrobatic_multidomain_freestyle",
+        "baki": "baki_underground_arena",
+        "freestyle_sakuga": "freestyle_sakuga",
     }
 
     spec: Dict[str, Any] = {
-        "name": clip.get("clip_id", "fight_move_system_compiled_10s"),
+        "name": clip.get("name", f"fight_move_system_{fighter_a.style}_vs_{fighter_b.style}_10s"),
         "schema": schema_name,
         "fps": 24,
         "duration": 10.0,
-        "axes": f"Y_up, metres, arena floor y=0, combat pocket z=2.8 to z=5.0, A stays on screen_{fighter_a.screen_side} facing +Z right for all 10s, B stays on screen_{fighter_b.screen_side} facing -Z left for all 10s",
+        "axes": "Y_up, metres, arena floor y=0, combat pocket z=2.8 to z=5.0, A stays on screen_left facing +Z right for all 10s, B stays on screen_right facing -Z left for all 10s",
         "screen_geometry": (
             f"180_degree_camera_hemisphere_locked_for_all_10s: Fighter A remains strictly on screen_{fighter_a.screen_side} facing {fighter_a.facing} (+Z) "
             f"and Fighter B remains strictly on screen_{fighter_b.screen_side} facing {fighter_b.facing} (-Z) for the entire 10.0s clip (zero side swaps)."
@@ -585,12 +837,12 @@ def compile_to_sakuga_Fluid_stack(
         ],
         "laban": {
             "A": {
-                "fighting_style": style_map.get(fighter_a.style, "grounded_striker_boxer_baki"),
+                "fighting_style": style_map.get(fighter_a.style, "ufc_mma_octagon"),
                 "chain": " > ".join(a_chain_parts),
                 "effort": {"weight": "heavy_striker_power", "time": "sudden", "space": "direct", "flow": "bound"},
             },
             "B": {
-                "fighting_style": style_map.get(fighter_b.style, "grounded_striker_boxer_baki"),
+                "fighting_style": style_map.get(fighter_b.style, "ufc_mma_octagon"),
                 "chain": " > ".join(b_chain_parts),
                 "effort": {"weight": "heavy_brawler_power", "time": "sudden", "space": "direct", "flow": "bound"},
             },
@@ -619,7 +871,6 @@ def compile_to_sakuga_Fluid_stack(
         ),
     }
 
-    # Format Layer 2 JSON identically to gold_master_6 / e1eb131
     lines: List[str] = ["{"]
     lines.append(
         f'"name":{json.dumps(spec["name"])},"schema":{json.dumps(schema_name)},"fps":24,"duration":10.0,'
@@ -687,20 +938,32 @@ def compile_to_sakuga_Fluid_stack(
             val_res.errors.extend(v18_errs)
             return "", {}, val_res
 
+    if use_kb_priors:
+        record_compile_usage(
+            run_id=spec["name"],
+            used_directives=used_directives,
+            used_cards=used_cards,
+            used_passages=used_passages,
+        )
+
     return fluid_stack_prompt, spec, val_res
 
 
 def compile_clip_prompt(
     clip: Dict[str, Any],
     lexicon: Optional[Lexicon] = None,
+    emit_chain_in_causal: bool = True,
     schema_name: str = "sakuga_Xperiment",
-    emit_chain_in_causal: bool = False,
+    mode: str = "xperiment",
+    use_kb_priors: bool = True,
 ) -> Tuple[str, ValidationResult]:
-    """Default entrypoint: compiles the validated clip into the gold_master_6 / e1eb131 2-Layer Unrolled Fluid Stack format."""
+    """Default entrypoint: compiles the validated clip into the 2-Layer Unrolled Fluid Stack (`sakuga_Xperiment`) format."""
     prompt, _, res = compile_to_sakuga_Fluid_stack(
         clip,
         lexicon=lexicon,
-        schema_name=schema_name,
         emit_chain_in_causal=emit_chain_in_causal,
+        schema_name=schema_name,
+        mode=mode,
+        use_kb_priors=use_kb_priors,
     )
     return prompt, res

@@ -6,8 +6,21 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from .compiler import compile_clip_prompt
+from .closed_loop import (
+    apply_localized_repair,
+    build_next_clip_handoff,
+    ingest_render_verdict,
+    parse_scorecard_markdown,
+    plan_localized_repair,
+)
+from .compiler import compile_clip_prompt, compile_to_sakuga_Fluid_stack
 from .composer import compose_clips
+from .kb_bridge import (
+    kb_find,
+    kb_lookup,
+    sync_lexicon_gaps_to_memory,
+    verify_bundle_integrity,
+)
 from .lexicon import Lexicon
 from .validator import validate_clip
 
@@ -115,6 +128,24 @@ def main(argv: Optional[List[str]] = None) -> int:
     p_comp = sub.add_parser("compile", help="Validate, compose clips, and compile caption prompts")
     p_comp.add_argument("input", type=Path, help="Path to beat-sheet JSON")
     p_comp.add_argument("-o", "--output", type=Path, default=None, help="Optional output file path")
+    p_comp.add_argument(
+        "--mode",
+        choices=["xperiment", "lean"],
+        default="xperiment",
+        help="Compilation profile: 'xperiment' (full sakuga_Xperiment) or 'lean'",
+    )
+    p_comp.add_argument(
+        "--schema",
+        type=str,
+        default="sakuga_Xperiment",
+        help="Layer 2 schema tag (default: sakuga_Xperiment)",
+    )
+    p_comp.add_argument(
+        "--json-out",
+        type=Path,
+        default=None,
+        help="Optional path to write the compiled Layer 2 JSON spec",
+    )
 
     p_pkt = sub.add_parser("packet", help="Generate M4 hypothesis and word-probe render packets")
     p_pkt.add_argument(
@@ -123,6 +154,48 @@ def main(argv: Optional[List[str]] = None) -> int:
         default=Path(__file__).parent / "packets",
         help="Directory to write render packet JSON",
     )
+
+    p_kbsync = sub.add_parser("kb-sync", help="Verify KB bundle SHA256 and sync lexical/taste gaps to agent_memory.db")
+    p_kbsync.add_argument("--bundle-dir", type=Path, default=None, help="Optional path to anime_action_research_bundle")
+
+    p_kbfind = sub.add_parser("kb-find", help="Search the Handbook FTS5 index, semantic directives, and agent_memory")
+    p_kbfind.add_argument("query", type=str, help="Query string")
+    p_kbfind.add_argument("--limit", type=int, default=8, help="Max results")
+
+    p_kblook = sub.add_parser("kb-lookup", help="Look up aa_* semantic directives by moment/slot")
+    p_kblook.add_argument("--moment", type=str, default=None, help="Moment type (e.g. strike, reaction, camera)")
+    p_kblook.add_argument("--slot", type=str, default=None, help="Grammar slot (e.g. verb, manner, camera_motion)")
+
+    p_ing = sub.add_parser("ingest-verdict", help="Ingest a render verdict or markdown scorecard into priors + agent_memory")
+    p_ing.add_argument("--run-id", type=str, default="manual_render_run", help="Render run identifier")
+    p_ing.add_argument("--scorecard", type=Path, default=None, help="Path to markdown scorecard")
+    p_ing.add_argument("--move-id", type=str, default=None, help="Single move_id to update in word_probes.json")
+    p_ing.add_argument("--status", choices=["works", "partial", "fails"], default=None, help="Probe status")
+    p_ing.add_argument("--quarantine-pair", nargs=2, metavar=("PREV_MOVE", "NEXT_MOVE"), default=None)
+    p_ing.add_argument("--quarantine-reason", type=str, default="Empirical transition failure")
+
+    p_rep = sub.add_parser("repair", help="Generate and optionally apply a localized RFC 6902 JSON Patch repair for a beat")
+    p_rep.add_argument("input", type=Path, help="Path to beat-sheet JSON")
+    p_rep.add_argument("--beat", type=int, required=True, help="0-based beat index to repair")
+    p_rep.add_argument(
+        "--failure",
+        choices=[
+            "contact_flicker",
+            "phantom_force",
+            "dead_contact",
+            "pose_reset",
+            "support_swap",
+            "camera_occlusion",
+            "mismatched_hands",
+        ],
+        required=True,
+        help="Observed failure class from Handbook src-cpcs-mx-repair_strategy",
+    )
+    p_rep.add_argument("--apply-out", type=Path, default=None, help="Write patched beat-sheet JSON to this path")
+
+    p_next = sub.add_parser("next-clip", help="Extract t=10.0s terminal fighter & dyad state to seed Clip N+1")
+    p_next.add_argument("input", type=Path, help="Path to Clip N beat-sheet JSON")
+    p_next.add_argument("-o", "--output", type=Path, default=None, help="Optional path to write Clip N+1 seed JSON")
 
     args = parser.parse_args(argv)
 
@@ -151,18 +224,27 @@ def main(argv: Optional[List[str]] = None) -> int:
             data = json.load(f)
         clips, notes = compose_clips(data)
         prompts: List[str] = []
+        specs: List[Dict[str, Any]] = []
         for idx, clip in enumerate(clips):
-            prompt, res = compile_clip_prompt(clip)
+            prompt, spec, res = compile_to_sakuga_Fluid_stack(
+                clip,
+                emit_chain_in_causal=(args.mode != "lean"),
+                schema_name=args.schema,
+                mode=args.mode,
+            )
             if not res.ok:
                 for code, msg in res.errors:
                     print(f"[ERROR] [{code}] {msg}", file=sys.stderr)
                 return 1
             prompts.append(prompt)
+            specs.append(spec)
         full_output = "\n\n---\n\n".join(prompts)
         if args.output:
             args.output.write_text(full_output + "\n", encoding="utf-8")
         else:
             print(full_output)
+        if args.json_out and specs:
+            args.json_out.write_text(json.dumps(specs[0] if len(specs) == 1 else specs, indent=2) + "\n", encoding="utf-8")
         return 0
 
     if args.cmd == "packet":
@@ -170,6 +252,59 @@ def main(argv: Optional[List[str]] = None) -> int:
         print(
             f"[OK] Generated {len(bundle['boxing_word_probes'])} word probes and {len(bundle['hypothesis_packets'])} hypothesis packets in {args.out_dir / 'm4_render_packet.json'}"
         )
+        return 0
+
+    if args.cmd == "kb-sync":
+        ok, errs = verify_bundle_integrity(args.bundle_dir) if args.bundle_dir else verify_bundle_integrity()
+        sync_res = sync_lexicon_gaps_to_memory(args.bundle_dir) if args.bundle_dir else sync_lexicon_gaps_to_memory()
+        print(json.dumps({"integrity": {"ok": ok, "errors": errs}, "sync": sync_res}, indent=2))
+        return 0 if ok else 1
+
+    if args.cmd == "kb-find":
+        print(json.dumps(kb_find(args.query, limit=args.limit), indent=2))
+        return 0
+
+    if args.cmd == "kb-lookup":
+        print(json.dumps(kb_lookup(moment=args.moment, slot=args.slot), indent=2))
+        return 0
+
+    if args.cmd == "ingest-verdict":
+        bleed_pair = tuple(args.quarantine_pair) if args.quarantine_pair else None
+        verdict = args.status or "works"
+        scorecard_notes = ""
+        if args.scorecard and args.scorecard.exists():
+            sc_text = args.scorecard.read_text(encoding="utf-8")
+            rows = parse_scorecard_markdown(sc_text)
+            scorecard_notes = f"Parsed scorecard {args.scorecard.name}: {len(rows)} rows"
+        summary = ingest_render_verdict(
+            render_id=args.run_id,
+            model_id="seedance-2.0",
+            verdict=verdict,
+            move_id=args.move_id,
+            bleed_pair=bleed_pair,
+            notes=scorecard_notes or args.quarantine_reason,
+        )
+        print(json.dumps(summary, indent=2))
+        return 0
+
+    if args.cmd == "repair":
+        with open(args.input, "r", encoding="utf-8") as f:
+            clip = json.load(f)
+        plan = plan_localized_repair(clip, beat_index=args.beat, failure_type=args.failure)
+        if args.apply_out:
+            repaired = apply_localized_repair(clip, plan)
+            args.apply_out.write_text(json.dumps(repaired, indent=2) + "\n", encoding="utf-8")
+        print(json.dumps(plan, indent=2))
+        return 0
+
+    if args.cmd == "next-clip":
+        with open(args.input, "r", encoding="utf-8") as f:
+            clip = json.load(f)
+        handoff = build_next_clip_handoff(clip)
+        if args.output:
+            args.output.write_text(json.dumps(handoff, indent=2) + "\n", encoding="utf-8")
+        else:
+            print(json.dumps(handoff, indent=2))
         return 0
 
     return 0

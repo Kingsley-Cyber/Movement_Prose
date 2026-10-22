@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-SAKUGA-MLLM-3.1-CAUSAL Deterministic Compiler, 20-Rule Physics Linter,
-2-Layer Unrolled Fluid Stack Generator & Multi-Clip Stitcher
+SAKUGA-MLLM-3.1-CAUSAL Deterministic Compiler, Physics Linter & Multi-Clip Stitcher
 For Seedance 2.0 Mini, Seedance 2.5, and Kling AI Video YouTube Workflows.
 """
 
@@ -92,8 +91,8 @@ DEFAULT_HEADER_TEMPLATE = (
 
 
 def extract_prop_tracks(spec: Dict[str, Any]) -> List[str]:
-    """Identify prop state-machine tracks (e.g., kunai, wakizashi, katana, bo_staff)."""
-    reserved = set(CANONICAL_TOP_KEY_ORDER) | {"header", "meta", "layer_1_timeline"}
+    """Identify prop state-machine tracks (e.g., kunai, wakizashi, katana)."""
+    reserved = set(CANONICAL_TOP_KEY_ORDER) | {"header", "meta"}
     prop_keys = []
     for k, v in spec.items():
         if k not in reserved and isinstance(v, list):
@@ -156,79 +155,9 @@ def order_spec_causally(spec: Dict[str, Any]) -> Dict[str, Any]:
     return ordered
 
 
-def build_layer1_timeline(spec: Dict[str, Any]) -> List[str]:
-    """
-    Generate Layer 1 (Continuous Support, 5-Phase Force-Event & Prop Timeline in
-    Labanotation-as-Words) from a SAKUGA-MLLM-3.1-CAUSAL spec (Decision 18, 19, 20).
-    If the spec defines an explicit 'layer_1_timeline' list of strings, use that directly.
-    Otherwise, synthesize it deterministically from prop tracks, A_beats, and B_track.
-    """
-    if "layer_1_timeline" in spec and isinstance(spec["layer_1_timeline"], list):
-        return [str(line) for line in spec["layer_1_timeline"]]
-
-    lines: List[str] = [
-        "MOVEMENT LANGUAGE: Each line states <seconds> <performer>: SUPPORT (what bears weight; NO SUPPORT = airborne) | bilateral limb gestures & orientation (both L_arm and R_arm explicitly placed) | 5-phase force events (windup -> drive -> CONTACT -> reaction -> follow-through) | path (continuous translation in metres). Every key action is unrolled into separate timestamps for windup/entry, drive/apex, contact, and landing/recovery so nothing is left to inference."
-    ]
-
-    # Summarize prop tracks first
-    for pk in extract_prop_tracks(spec):
-        p_items = spec.get(pk, [])
-        if p_items:
-            chain_parts = []
-            for p in p_items:
-                t_val = float(p.get("t", 0.0))
-                owner = p.get("owner", "")
-                state = p.get("state", "")
-                event = p.get("event", p.get("grip", ""))
-                detail = f"{state} ({owner}" + (f", {event})" if event else ")")
-                chain_parts.append(f"{t_val:.2f}s {detail}")
-            lines.append(f"{pk.upper()} CONTINUITY: " + " -> ".join(chain_parts) + ".")
-
-    # Merge A_beats and B_track chronologically
-    events: List[Tuple[float, int, str]] = []
-    for ab in spec.get("A_beats", []):
-        t_val = float(ab.get("t", 0.0))
-        sup = ab.get("support", "")
-        sup_label = (
-            f"NO SUPPORT ({sup})"
-            if "none_airborne" in sup
-            else f"SUPPORT {sup.replace('_', ' ')}"
-        )
-        limbs = ab.get("limbs", "")
-        contact = ab.get("contact", "")
-        pose = ab.get("pose", "")
-        parts = [f"{t_val:0.2f} A: {sup_label}", limbs]
-        if contact:
-            parts.append(f"FE ({contact})")
-        parts.append(pose)
-        events.append((t_val, 0, " | ".join(parts)))
-
-    for bb in spec.get("B_track", []):
-        t_val = float(bb.get("t", 0.0))
-        sup = bb.get("support", "")
-        sup_label = (
-            f"NO SUPPORT ({sup})"
-            if "none_airborne" in sup
-            else f"SUPPORT {sup.replace('_', ' ')}"
-        )
-        contact = bb.get("contact", "")
-        pose = bb.get("pose", "")
-        parts = [f"{t_val:0.2f} B: {sup_label}"]
-        if contact:
-            parts.append(f"FE reaction ({contact})")
-        parts.append(pose)
-        events.append((t_val, 1, " | ".join(parts)))
-
-    events.sort(key=lambda x: (x[0], x[1]))
-    for _, _, line_text in events:
-        lines.append(line_text)
-
-    return lines
-
-
 def lint_clip(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
     """
-    Validate a clip specification against all 20 Empirical Decisions in the SOP.
+    Validate a clip specification against all 17 Empirical Decisions in the SOP.
     Returns (errors, warnings).
     """
     errors: List[str] = []
@@ -259,30 +188,26 @@ def lint_clip(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
         if req_key not in spec:
             errors.append(f"[Decision 09] Missing mandatory top-level track: '{req_key}'.")
 
-    # 3. Anti-HUD & Bilateral Arm negative check (Decision 02 & Decision 20)
+    # 3. Anti-HUD negative check (Decision 02)
     neg = spec.get("negative", "").lower()
     if "no on-screen text" not in neg or "no hud" not in neg:
         warnings.append(
             "[Decision 02] 'negative' should explicitly include 'no on-screen text or numbers, no HUD'."
         )
-    if "no missing arms" not in neg and "no one-armed" not in neg:
-        warnings.append(
-            "[Decision 20] 'negative' should explicitly include 'no missing arms, no one-armed fighter, both left and right arms and hands always visible'."
-        )
 
-    # 4. Validate A_beats (Decisions 01, 03, 04, 13, 14, 16, 18, 19, 20)
+    # 4. Validate A_beats (Decisions 01, 03, 04, 13, 14, 16)
     a_beats = spec.get("A_beats", [])
     b_track = spec.get("B_track", [])
     b_by_t = {round(float(b.get("t", -1)), 2): b for b in b_track}
 
     seen_screen_sides = set()
     prev_t = -1.0
-    prev_support = ""
 
     for idx, beat in enumerate(a_beats):
         t = float(beat.get("t", -1))
         if t <= prev_t:
             errors.append(f"[A_beats[{idx}]] Non-monotonic timestamp t={t} after t={prev_t}.")
+        prev_t = t
 
         # Check forbidden bloat keys (Decisions 01, 04, 13)
         bad_keys = set(beat.keys()) & FORBIDDEN_BEAT_KEYS
@@ -297,58 +222,14 @@ def lint_clip(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
             if rk not in beat:
                 errors.append(f"[Decision 14] A_beats t={t} is missing required key '{rk}'.")
 
-        # Check negation leakage & meta-negation inside beat (Decision 03 & Decision 19)
+        # Check negation leakage inside beat (Decision 03)
         beat_text = json.dumps(beat)
         if re.search(r"\bNOT\b", beat_text) or re.search(
-            r"\bnot a (kick|punch|throw|slash|flip)\b", beat_text, re.IGNORECASE
+            r"\bnot a (kick|punch|throw|slash)\b", beat_text, re.IGNORECASE
         ):
             errors.append(
                 f"[Decision 03] Negation leakage detected in A_beats t={t}. "
                 "Never write 'NOT' inside beats; use positive-only support locks."
-            )
-        if re.search(r"should not (float|drift|hover)", beat_text, re.IGNORECASE):
-            errors.append(
-                f"[Decision 19] Meta-negation leakage ('should not float/drift') in A_beats t={t}. "
-                "State positive downward velocity/gravity instead."
-            )
-
-        # Check XML/HTML markup tag pollution inside beat (Decision 19)
-        if re.search(r"<[a-zA-Z_][a-zA-Z0-9_-]*>", beat_text):
-            errors.append(
-                f"[Decision 19] Markup tag '<...>' detected inside A_beats t={t}. "
-                "Never wrap motions or events in '<>' tags; they activate the HTML/XML label prior."
-            )
-
-        # Decision 18: Check airborne-to-wall jump without intermediate ground landing
-        curr_support = beat.get("support", "").lower()
-        is_arch_wall_or_pillar = "wall" in curr_support or (
-            "pillar" in curr_support and "floor" not in curr_support and "sand" not in curr_support
-        )
-        if (
-            "none_airborne" in prev_support
-            and is_arch_wall_or_pillar
-            and (t - prev_t) > 0.65
-        ):
-            warnings.append(
-                f"[Decision 18] A_beats t={t} transitions directly from airborne (t={prev_t}) to wall/pillar support "
-                f"across {t - prev_t:.2f}s without an intermediate floor-landing keyframe. Unroll the floor landing!"
-            )
-        prev_support = curr_support
-        prev_t = t
-
-        # Decision 20: Bilateral Two-Arm Silhouette Check
-        limbs_str = beat.get("limbs", "")
-        has_both_arms = bool(
-            re.search(r"\b(both_arms|both_hands|arms)\s*:", limbs_str)
-            or (
-                re.search(r"\b(L_arm|L_hand|L)\s*:", limbs_str)
-                and re.search(r"\b(R_arm|R_hand|R)\s*:", limbs_str)
-            )
-        )
-        if not has_both_arms:
-            warnings.append(
-                f"[Decision 20] A_beats t={t} 'limbs' does not explicitly lock both left and right arms "
-                f"('L_arm'/'R_arm' or 'both_arms'). Explicit bilateral arm placement prevents one-arm silhouette occlusion."
             )
 
         # Check causal edge format (Decision 14)
@@ -377,15 +258,7 @@ def lint_clip(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
                         "'pre:... -> hit:... -> post:...' (or 'evasion_corridor:...')."
                     )
 
-        # Check Franchise Attack Name Pollution (Decision 22C)
-        for bad_name in ("triceratops fist", "cockroach dash", "mach straight", "mach punch"):
-            if bad_name in beat_text.lower():
-                warnings.append(
-                    f"[Decision 22C] A_beats t={t} uses franchise attack name '{bad_name}'. "
-                    "Describe the physical pose directly (e.g. 'deep lunge, rear knee low, right arm straight at chin height') instead of named moves."
-                )
-
-        # Check Close-Quarters distance against B_track (Decision 10 & Decision 22A)
+        # Check Close-Quarters distance against B_track (Decision 10)
         t_key = round(t, 2)
         if t_key in b_by_t and "pos" in beat and "pos" in b_by_t[t_key]:
             apos = beat["pos"]
@@ -395,11 +268,12 @@ def lint_clip(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
                 warnings.append(
                     f"[Decision 10] A_beats t={t} z-separation is {dz:.2f}m (> 1.65m close-quarters pocket)."
                 )
-            elif dz < 0.35 and "wall" not in curr_support and "pillar" not in curr_support:
-                warnings.append(
-                    f"[Decision 22A] A_beats t={t} z-separation is only {dz:.2f}m (< 0.35m chest-to-chest merging risk). "
-                    "Stage punches at ~0.75-0.90m (arm's length), kicks at ~1.00-1.20m (leg's length), and clinches at ~0.55-0.65m."
-                )
+
+    if len(seen_screen_sides) < 2:
+        warnings.append(
+            "[Decision 16] Fighter A stays on a single screen_side for the entire clip. "
+            "Include a physical midpoint cross (screen_left -> screen_right around t=4.8s-5.4s) to prevent a static standoff."
+        )
 
     # 5. Validate B_track (Decision 03 & Decision 11)
     for idx, bbeat in enumerate(b_track):
@@ -421,287 +295,26 @@ def lint_clip(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
                     "Use a true parabolic upward launch apex (y=2.0m-2.2m) and falling catch."
                 )
 
-    # 7. Validate Camera (Decision 10, Decision 12, Decision 21C & Decision 23)
-    cam_list = spec.get("camera", [])
-    side_profile_count = 0
-    fov_values = []
-    for cbeat in cam_list:
+    # 7. Validate Camera (Decision 10 & Decision 12)
+    for cbeat in spec.get("camera", []):
         t = cbeat.get("t", "?")
         fov = cbeat.get("fov", 35)
-        fov_values.append(float(fov))
         if fov > 40 or fov < 24:
             warnings.append(
-                f"[Decision 10] Camera t={t} has fov={fov} (recommended close-quarters range: 28-40)."
+                f"[Decision 10] Camera t={t} has fov={fov} (recommended close-quarters range: 28-38)."
             )
         if "look" not in cbeat:
             errors.append(f"[Decision 12] Camera t={t} is missing mandatory 'look' target anchor.")
-        shot_lower = str(cbeat.get("shot", "")).lower()
-        look_lower = str(cbeat.get("look", "")).lower()
-        if "side_profile" in shot_lower and "3_4" not in shot_lower and "arc" not in shot_lower:
-            side_profile_count += 1
-        if "worm_eye" in shot_lower and ("knee" in shot_lower or "knee" in look_lower):
-            warnings.append(
-                f"[Decision 21C] Camera t={t} uses 'worm_eye' on a knee strike. "
-                "Worm's-eye close-ups crop out the striker's pelvis and trigger the 'uppercut fist-leg hybrid' prior. "
-                "Use 'medium_wide_side_profile' (fov 38) showing the standing pillar leg and pelvis head-to-toe."
-            )
 
-    if len(cam_list) >= 6 and (side_profile_count / len(cam_list)) > 0.50:
-        warnings.append(
-            f"[Decision 23] {side_profile_count}/{len(cam_list)} camera shots are flat 'side_profile' (>50%). "
-            "Preserving the 180-degree line does NOT mean locking a flat 2D side-scroller camera: use 3/4 depth angles, "
-            "over-the-shoulder whip-pans, crane plunges, vertical pedestal drops, Dutch rolls, and telephoto snap-zooms within the front hemisphere."
-        )
-    if len(fov_values) >= 6 and (max(fov_values) - min(fov_values)) < 6.0:
-        warnings.append(
-            f"[Decision 23] Camera FOV range is only {min(fov_values):.0f}-{max(fov_values):.0f} (<6 deg dynamic range). "
-            "Vary focal length between wide entry/coil shots (fov 38-40) and telephoto impact compressions (fov 28-30)."
-        )
-
-    # 8. Validate Smear Isolation & Bent-Knee Smear Ban (Decision 04/07 & Decision 21B)
+    # 8. Validate Smear Isolation (Decision 07)
     anime = spec.get("anime", {})
     for sm in anime.get("smear_frames", []):
         if "solid" not in sm.lower():
             warnings.append(
-                f"[Decision 04] Smear frame '{sm}' should explicitly state that head/torso 'stay solid'."
+                f"[Decision 07] Smear frame '{sm}' should explicitly state that head/torso 'stay solid'."
             )
-        if re.search(r"\b(right|left)\s+knee\b", sm.lower()):
-            warnings.append(
-                f"[Decision 21B] Smear frame '{sm}' smears a bent knee joint, which melts thigh-calf separation. "
-                "Keep bent knee strikes in 100% solid sharp ink."
-            )
-
-    # 9. Validate Choreographic Diversity, Elevation Cycling & Multi-Domain Fluidity (Decision 24)
-    div_report = analyze_choreographic_diversity(spec)
-    if len(div_report["weapons_used"]) < 3 and len(a_beats) >= 6:
-        warnings.append(
-            f"[Decision 24A] Low anatomical weapon diversity ({sorted(div_report['weapons_used'])}). "
-            "Mix at least 3-5 distinct body weapons (fists/backfists, elbows/forearms, knees, shins/calves, ankles/heels, palms/throws) "
-            "so combos do not feel repetitive."
-        )
-    if div_report["max_consecutive_same_weapon"] >= 4:
-        warnings.append(
-            f"[Decision 24A] Weapon '{div_report['repeated_weapon']}' is used {div_report['max_consecutive_same_weapon']} times in a row. "
-            "Alternate striking surfaces (e.g. punch -> elbow -> knee -> heel/shin) so combos flow without redundancy."
-        )
-    if len(div_report["elevations_used"]) < 2 and len(a_beats) >= 6:
-        warnings.append(
-            f"[Decision 24B] Low vertical target/stance elevation diversity ({sorted(div_report['elevations_used'])}). "
-            "Cycle across low-line (ankles/calves/ground y<0.68m), mid-line (solar plexus/ribs), high-line (jaw/temple), and aerial/jumping."
-        )
-
-    # 10. Validate Entity Fighting Style Profiles & Cross-Move Attention Bleed (Decision 25)
-    style_errs, style_warns = validate_fighting_styles(spec)
-    errors.extend(style_errs)
-    warnings.extend(style_warns)
 
     return errors, warnings
-
-
-FIGHTING_STYLE_PROFILES: Dict[str, Dict[str, Any]] = {
-    "grounded_striker_boxer_baki": {
-        "description": "Grounded Baki/Kengan stand-up striker & kickboxer (head-bob weaves, calf kicks, X-block parries, slicing elbows, 3-punch boxing combos, standing pillar knees, in-place spinning back kicks, deep-lunge straight punches).",
-        "forbidden_patterns": [
-            r"\b(sky_cartwheel|cartwheel|wall_run|kip_up|kip-up|bicycle_up_kick|one_palm_floor_sweep|high_leap_12_to_6_axe|jumping_scissor_switch_knee)\b"
-        ],
-        "max_airborne_beats": 0,
-    },
-    "ufc_mma_octagon": {
-        "description": "Realistic UFC/MMA Octagon hybrid fighter (boxing/Muay Thai stand-up, calf kicks, level-change takedowns/ankle picks, collar-tie clinch knees, grounded guard up-kicks, technical stand-ups).",
-        "forbidden_patterns": [
-            r"\b(sky_cartwheel|cartwheel|wall_run|no_hands_kip_up|high_leap_12_to_6_axe)\b"
-        ],
-        "max_airborne_beats": 1,
-    },
-    "muay_thai_nak_muay": {
-        "description": "Traditional 8-limb Muay Thai striker (teep push-kicks, low shin calf/thigh chops, high X-guard blocks, horizontal/rising elbows, Thai plum collar-tie clinches, standing pillar knees).",
-        "forbidden_patterns": [
-            r"\b(sky_cartwheel|cartwheel|wall_run|kip_up|kip-up|bicycle_up_kick|one_palm_floor_sweep)\b"
-        ],
-        "max_airborne_beats": 1,
-    },
-    "acrobatic_multidomain_freestyle": {
-        "description": "Multi-domain acrobatic martial artist (God of High School / Taekwondo / Capoeira showcase: palm-planted floor sweeps, bicycle up-kicks, kip-ups, inside elbow/backfist flurries, jumping switch-knees, aerial 12-to-6 axe-heel drops).",
-        "forbidden_patterns": [r"\b(wall_run)\b"],
-        "max_airborne_beats": 3,
-        "anti_bleed_rule": "no_multi_hit_pure_boxing_combo_with_aerial_sweeps",
-    },
-    "shinobi_weapon_acrobat": {
-        "description": "Canonical Golden #1-#3 ninja/blade acrobat (kunai/wakizashi/katana exchanges, sky-cartwheels, wall-runs, aerial catches).",
-        "forbidden_patterns": [],
-        "max_airborne_beats": 5,
-    },
-    "heavy_weapon_master": {
-        "description": "Canonical Golden #4 polearm/bo-staff weapon master vs heavy gauntlets.",
-        "forbidden_patterns": [],
-        "max_airborne_beats": 4,
-    },
-}
-
-
-def validate_fighting_styles(spec: Dict[str, Any]) -> Tuple[List[str], List[str]]:
-    """
-    Validate each entity's declared 'fighting_style' (in laban.<entity>.fighting_style)
-    against the moves in A_beats and B_track to prevent temporal attention bleed
-    (e.g., aerial leg sweeps bleeding into grounded boxing punch combinations — Decision 25).
-    """
-    errs: List[str] = []
-    warns: List[str] = []
-    laban = spec.get("laban", {})
-    a_style = laban.get("A", {}).get("fighting_style")
-    if not a_style:
-        return errs, warns
-
-    if a_style not in FIGHTING_STYLE_PROFILES:
-        warns.append(
-            f"[Decision 25] Unknown fighting_style '{a_style}' in laban.A. "
-            f"Valid profiles: {sorted(FIGHTING_STYLE_PROFILES.keys())}."
-        )
-        return errs, warns
-
-    profile = FIGHTING_STYLE_PROFILES[a_style]
-    a_beats = spec.get("A_beats", [])
-    airborne_count = 0
-    has_pure_3_punch_combo = False
-    has_acrobatic_sweep_or_aerial = False
-
-    consec_punches = 0
-    for beat in a_beats:
-        t = beat.get("t", "?")
-        b_text = json.dumps(beat).lower()
-        sup = str(beat.get("support", "")).lower()
-        if "none_airborne" in sup:
-            airborne_count += 1
-        for pat in profile.get("forbidden_patterns", []):
-            m = re.search(pat, b_text)
-            if m:
-                warns.append(
-                    f"[Decision 25A] A_beats t={t} uses '{m.group(0)}' which violates fighting_style "
-                    f"'{a_style}' ({profile['description']}). This risks temporal attention bleed!"
-                )
-        if re.search(r"\b(jab|body_straight|left_hook|right_cross|shovel_hook)\b", b_text):
-            consec_punches += 1
-            if consec_punches >= 2:
-                has_pure_3_punch_combo = True
-        else:
-            consec_punches = 0
-        if re.search(r"\b(ankle_sweep|kip_up|up_kick|axe_heel|jumping_scissor)\b", b_text):
-            has_acrobatic_sweep_or_aerial = True
-
-    max_air = profile.get("max_airborne_beats", 99)
-    if airborne_count > max_air:
-        warns.append(
-            f"[Decision 25A] fighting_style '{a_style}' allows at most {max_air} airborne beat(s), "
-            f"but A_beats has {airborne_count}. Excess airborne beats cause aerial leg-sweep bleed into grounded strikes."
-        )
-
-    if (
-        profile.get("anti_bleed_rule") == "no_multi_hit_pure_boxing_combo_with_aerial_sweeps"
-        and has_pure_3_punch_combo
-        and has_acrobatic_sweep_or_aerial
-    ):
-        warns.append(
-            "[Decision 25B] Clip mixes a multi-hit pure boxing punch combination with floor sweeps / aerial kicks in the same 10s window. "
-            "Temporal self-attention can bleed aerial leg-sweeps into the punch combo. Use elbow/backfist spin-chains in acrobatic clips, "
-            "or keep multi-punch boxing combos inside 'grounded_striker_boxer_baki' / 'ufc_mma_octagon' clips."
-        )
-
-    return errs, warns
-
-
-def analyze_choreographic_diversity(spec: Dict[str, Any]) -> Dict[str, Any]:
-    """
-    Analyze anatomical weapon diversity, target/stance elevation cycling, and spatial domains
-    (standup, clinch, ground_scramble, jump_aerial) across A_beats and B_track (Decision 24).
-    """
-    weapons_used = set()
-    elevations_used = set()
-    domains_used = set()
-    weapon_sequence: List[str] = []
-
-    weapon_patterns = [
-        ("shin_calf_kick", r"\b(shin|calf|low kick|roundhouse|whip kick)\b"),
-        ("ankle_heel_foot", r"\b(heel|ankle|instep|sole|foot|stomp|axe kick|back kick|up kick)\b"),
-        ("knee", r"\b(knee|kneecap)\b"),
-        ("elbow_forearm", r"\b(elbow|forearm|x block)\b"),
-        ("fist_punch_backfist", r"\b(fist|jab|cross|hook|uppercut|backfist|straight right|body straight)\b"),
-        ("palm_clinch_grapple", r"\b(palm|hands|yanks|collar tie|clinch|neck pull|ankle pick|sweep|throw)\b"),
-        ("weapon_prop", r"\b(blade|sword|katana|kunai|staff|spear|dagger)\b"),
-    ]
-
-    for beat in spec.get("A_beats", []):
-        text = (
-            f"{beat.get('beat', '')} {beat.get('arc', '')} "
-            f"{beat.get('contact', '')} {beat.get('pose', '')}"
-        ).lower()
-        sup = str(beat.get("support", "")).lower()
-        pos = beat.get("pos", [0, 0.85, 0])
-        y_val = float(pos[1]) if isinstance(pos, list) and len(pos) >= 2 else 0.85
-
-        # Domains
-        if "none_airborne" in sup or y_val >= 1.10:
-            domains_used.add("jump_aerial")
-            elevations_used.add("aerial")
-        elif any(k in sup for k in ("back", "palm", "hand", "knee_on_sand", "crouch", "kip_up", "three_point")) or y_val <= 0.68:
-            domains_used.add("ground_or_low_crouch")
-            elevations_used.add("low_line")
-        elif "clinch" in text or "collar_tie" in text or "neck" in text:
-            domains_used.add("clinch_pocket")
-            elevations_used.add("mid_or_high")
-        else:
-            domains_used.add("standup_exchange")
-
-        # Target elevation in contact
-        contact_lower = str(beat.get("contact", "")).lower()
-        if any(k in contact_lower for k in ("calf", "ankle", "shin", "thigh", "knee_buckl")):
-            elevations_used.add("low_line")
-        if any(k in contact_lower for k in ("solar_plexus", "sternum", "ribs", "abdomen", "midsection", "chest")):
-            elevations_used.add("mid_line")
-        if any(k in contact_lower for k in ("chin", "jaw", "cheek", "nose", "temple", "head", "neck")):
-            elevations_used.add("high_line")
-
-        # Weapons on active contact beats
-        if "hit:" in contact_lower:
-            hit_part = contact_lower.split("hit:")[1].split("->")[0].replace("_", " ")
-            # Extract the striking limb clause before target preposition ('into', 'across', 'onto', 'outside')
-            striker_clause = re.split(r"\b(?:into|across|onto|outside|behind|against|catch|slaps)\b", hit_part)[0]
-            matched_w = None
-            for w_name, pat in weapon_patterns:
-                if re.search(pat, striker_clause):
-                    weapons_used.add(w_name)
-                    if matched_w is None:
-                        matched_w = w_name
-            if not matched_w:
-                for w_name, pat in weapon_patterns:
-                    if re.search(pat, hit_part):
-                        weapons_used.add(w_name)
-                        if matched_w is None:
-                            matched_w = w_name
-            if matched_w:
-                weapon_sequence.append(matched_w)
-
-    max_consec = 0
-    curr_consec = 0
-    prev_w = None
-    rep_w = None
-    for w in weapon_sequence:
-        if w == prev_w:
-            curr_consec += 1
-        else:
-            curr_consec = 1
-            prev_w = w
-        if curr_consec > max_consec:
-            max_consec = curr_consec
-            rep_w = w
-
-    return {
-        "weapons_used": weapons_used,
-        "elevations_used": elevations_used,
-        "domains_used": domains_used,
-        "weapon_sequence": weapon_sequence,
-        "max_consecutive_same_weapon": max_consec,
-        "repeated_weapon": rep_w,
-    }
 
 
 STYLE_PRESETS: Dict[str, Dict[str, str]] = {
@@ -782,14 +395,10 @@ def apply_taste_layer(
     return spec, header_text
 
 
-def format_sakuga_prompt(
-    spec: Dict[str, Any], header_text: str, stack: bool = False
-) -> str:
+def format_sakuga_prompt(spec: Dict[str, Any], header_text: str) -> str:
     """
-    Format the causally ordered JSON spec into either:
-      - Mode 1 (stack=False): Single-Layer Compact SAKUGA-MLLM-3.1-CAUSAL JSON (Gold-Masters #1 & #2)
-      - Mode 2 (stack=True):  2-Layer Unrolled Fluid Stack (Layer 1 Continuous Support/Force-Event/Prop
-                              Labanotation-as-Words Timeline + Layer 2 SAKUGA-MLLM-3.1-CAUSAL JSON, Gold-Master #3+)
+    Format the causally ordered JSON spec into our exact compact multi-line Gold-Master layout
+    (1 line per beat/track entry so it stays readable and token-efficient).
     """
     ordered = order_spec_causally(spec)
     lines: List[str] = ["{"]
@@ -865,20 +474,7 @@ def format_sakuga_prompt(
         lines.append(f'"rules":{json.dumps(ordered["rules"])}')
 
     lines.append("}")
-    json_block = "\n".join(lines)
-
-    if not stack:
-        return f"{header_text.strip()}\n\n{json_block}"
-
-    layer1_lines = build_layer1_timeline(spec)
-    layer1_block = "\n".join(layer1_lines)
-    return (
-        f"{header_text.strip()}\n\n"
-        f"=== LAYER 1: CONTINUOUS SUPPORT, FORCE-EVENT & PROP TIMELINE (Labanotation-as-Words) ===\n"
-        f"{layer1_block}\n\n"
-        f"=== LAYER 2: SAKUGA-MLLM-3.1-CAUSAL KINEMATIC & CAMERA SCENE GRAPH ===\n"
-        f"{json_block}"
-    )
+    return f"{header_text.strip()}\n\n" + "\n".join(lines)
 
 
 def stitch_multi_clip_continuity(clips: List[Dict[str, Any]]) -> Tuple[List[Dict[str, Any]], List[str]]:
@@ -932,7 +528,7 @@ def stitch_multi_clip_continuity(clips: List[Dict[str, Any]]) -> Tuple[List[Dict
 
 
 def load_clip_file(path: Path) -> Tuple[Dict[str, Any], str]:
-    """Load a pure JSON file, a Single-Layer hybrid text+JSON file, or a 2-Layer Fluid Stack text+JSON file."""
+    """Load either a pure JSON file (with optional 'header' field) or a hybrid text+JSON file."""
     raw = path.read_text(encoding="utf-8").strip()
     if raw.startswith("{"):
         data = json.loads(raw)
@@ -946,43 +542,28 @@ def load_clip_file(path: Path) -> Tuple[Dict[str, Any], str]:
             )
         return data, header
     else:
-        # Check if it's a 2-Layer Fluid Stack file with === LAYER 1 ... === and === LAYER 2 ... ===
-        layer2_marker = "=== LAYER 2:"
-        if layer2_marker in raw:
-            l2_idx = raw.find(layer2_marker)
-            brace_idx = raw.find("{", l2_idx)
-        else:
-            brace_idx = raw.find("{")
+        # Split plain-text header from the first '{'
+        brace_idx = raw.find("{")
         if brace_idx == -1:
             raise ValueError(f"No JSON object found in {path}")
-        preamble = raw[:brace_idx].strip()
-        if "=== LAYER 1:" in preamble:
-            l1_idx = preamble.find("=== LAYER 1:")
-            header = preamble[:l1_idx].strip()
-        else:
-            header = preamble
+        header = raw[:brace_idx].strip()
         data = json.loads(raw[brace_idx:])
         return data, header
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="SAKUGA-MLLM-3.1-CAUSAL Compiler, 20-Rule Linter, 2-Layer Fluid Stack & Multi-Clip Stitcher"
+        description="SAKUGA-MLLM-3.1-CAUSAL Compiler, Linter & Multi-Clip YouTube Stitcher"
     )
     sub = parser.add_subparsers(dest="cmd", required=True)
 
     # lint command
-    p_lint = sub.add_parser("lint", help="Validate one or more clip JSON/Stack files against the 20 SOP Decisions")
-    p_lint.add_argument("files", nargs="+", type=Path, help="Clip JSON or text file(s) to validate")
+    p_lint = sub.add_parser("lint", help="Validate one or more clip JSON files against the 17 SOP Decisions")
+    p_lint.add_argument("files", nargs="+", type=Path, help="Clip JSON file(s) to validate")
 
     # compile command
     p_compile = sub.add_parser("compile", help="Lint, causally order, apply taste/style layer, and output prompt")
     p_compile.add_argument("file", type=Path, help="Clip JSON file to compile")
-    p_compile.add_argument(
-        "--stack",
-        action="store_true",
-        help="Emit the 2-Layer Unrolled Fluid Stack (Layer 1 Labanotation-as-Words Timeline + Layer 2 Causal JSON)",
-    )
     p_compile.add_argument(
         "--taste",
         choices=["clean", "nakamura"],
@@ -1002,11 +583,6 @@ def main() -> int:
         "stitch", help="Validate and stitch multiple 10s clips into a continuous YouTube episode pack"
     )
     p_stitch.add_argument("files", nargs="+", type=Path, help="Ordered clip JSON files (Clip 1, Clip 2, ...)")
-    p_stitch.add_argument(
-        "--stack",
-        action="store_true",
-        help="Emit each clip in the 2-Layer Unrolled Fluid Stack format",
-    )
     p_stitch.add_argument(
         "--taste",
         choices=["clean", "nakamura"],
@@ -1028,17 +604,7 @@ def main() -> int:
         for f in args.files:
             spec, _ = load_clip_file(f)
             errs, warns = lint_clip(spec)
-            div = analyze_choreographic_diversity(spec)
-            a_st = spec.get("laban", {}).get("A", {}).get("fighting_style", "unspecified")
-            b_st = spec.get("laban", {}).get("B", {}).get("fighting_style", "unspecified")
             print(f"=== Linting {f.name} ({spec.get('name', 'unnamed')}) ===")
-            print(f"  [STYLE]     A: {a_st} | B: {b_st}")
-            print(
-                f"  [DIVERSITY] Weapons ({len(div['weapons_used'])}): {sorted(div['weapons_used'])} | "
-                f"Elevations ({len(div['elevations_used'])}): {sorted(div['elevations_used'])} | "
-                f"Domains ({len(div['domains_used'])}): {sorted(div['domains_used'])}"
-            )
-            print(f"  [CHAIN]     {' -> '.join(div['weapon_sequence'])}")
             for w in warns:
                 print(f"  [WARN]  {w}")
             for e in errs:
@@ -1063,12 +629,11 @@ def main() -> int:
             print(f"[WARN] {w}", file=sys.stderr)
 
         spec, header = apply_taste_layer(spec, header, args.taste, args.style)
-        prompt_text = format_sakuga_prompt(spec, header, stack=args.stack)
+        prompt_text = format_sakuga_prompt(spec, header)
 
         if args.out:
             args.out.write_text(prompt_text + "\n", encoding="utf-8")
-            mode_str = "2-Layer Fluid Stack" if args.stack else "Single-Layer Causal JSON"
-            print(f"[COMPILED: {mode_str}] Wrote verified prompt to {args.out}")
+            print(f"[COMPILED] Wrote verified prompt to {args.out}")
         else:
             print(prompt_text)
         return 0
@@ -1091,7 +656,7 @@ def main() -> int:
         md_sections = [
             "# YouTube Episode Sakuga Prompt Pack (`SAKUGA-MLLM-3.1-CAUSAL`)",
             f"- **Total Clips:** {len(stitched_specs)} ({len(stitched_specs) * 10}s total duration @ 24fps)",
-            f"- **Mode:** `{'2-Layer Unrolled Fluid Stack (--stack)' if args.stack else 'Single-Layer Causal JSON'}` | **Taste Preset:** `{args.taste}` | **Style Preset:** `{args.style}`",
+            f"- **Taste Preset:** `{args.taste}` | **Style Preset:** `{args.style}`",
             "",
             "## Cross-Clip Continuity Handoff Sheet",
             "\n\n".join(handoff_notes) if handoff_notes else "*Single clip — no cross-clip handoffs.*",
@@ -1101,7 +666,7 @@ def main() -> int:
 
         for idx, (s, h) in enumerate(zip(stitched_specs, headers)):
             s_tasted, h_tasted = apply_taste_layer(s, h, args.taste, args.style)
-            compiled_prompt = format_sakuga_prompt(s_tasted, h_tasted, stack=args.stack)
+            compiled_prompt = format_sakuga_prompt(s_tasted, h_tasted)
             md_sections.append(f"## Clip {idx+1}: `{s.get('name')}` (`{idx*10}s - {(idx+1)*10}s`)")
             md_sections.append("```text\n" + compiled_prompt + "\n```\n")
 

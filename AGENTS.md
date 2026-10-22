@@ -100,11 +100,16 @@ Every rule below is enforced or audited by [`scripts/sakuga_compiler.py`](script
 Always run the linter and compiler before committing or returning any prompt:
 
 ```bash
-# 1. Lint Canonical Golden Prompts (examples/*.json) and Variations (examples/variations/*.json)
-python3 scripts/sakuga_compiler.py lint examples/*.json examples/variations/*.json
+# 1. Lint Canonical Golden Prompts #1 & #2 with the locked 05:34 (e91c686) compiler:
+python3 scripts/sakuga_compiler.py lint examples/gold_master_1_blade_exchange.json examples/gold_master_2_disarm_dual_blade.json
 
-# 2. Compile a Variation into the 2-Layer Unrolled Fluid Stack (--stack) with Nakamura Taste Layer
-python3 scripts/sakuga_compiler.py compile examples/variations/variation_1_baki_grounded_standup_war.json \
-  --stack --taste nakamura \
-  --out examples/variations/variation_1_baki_grounded_standup_war_fluid_stack.txt
+# 2. Lint 25-Decision Scene Graphs (Golden #3, #4 & Variations) with the Fluid Stack Scene Graph Linter:
+python3 -m fight_move_system.scene_graph_linter lint examples/*.json examples/variations/*.json
+
+# 3. Validate, Compile, Query KB, and Run Closed-Loop Repair via Fight Move System v2 CLI:
+python3 -m fight_move_system.cli kb-sync
+python3 -m fight_move_system.cli compile fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json \
+  --mode xperiment --schema sakuga_Xperiment \
+  -o examples/variations/variation_3_eight_limbs_muay_thai_mma_war_sakuga_Xperiment.txt
+python3 -m unittest discover -s tests -v
 ```
