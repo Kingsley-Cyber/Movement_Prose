@@ -163,15 +163,9 @@ This repository is engineered to run identically across **macOS (Mac Studio / Ap
      - **macOS / Linux (`zsh` / `bash`):** `export ANIME_KB_BUNDLE_DIR="/path/to/knowledge_base"`
      - **Windows (`PowerShell`):** `$env:ANIME_KB_BUNDLE_DIR = "C:\path\to\knowledge_base"`
      - **Windows (`CMD`):** `set ANIME_KB_BUNDLE_DIR=C:\path\to\knowledge_base`
-2. **Pre-Indexed `handbook_index.db` Setup (Mac Studio, Windows, Linux):**
-   - `knowledge_base/ai_video_compiler.db` (frozen 64-row lexicon) and `knowledge_base/agent_memory.db` (growing memory) are tracked directly in Git.
-   - `knowledge_base/handbook_index.db` (~131 MB FTS5 index) is ignored by Git (`.gitignore`) to stay under GitHub's 100 MB file limit. On a new clone (Mac Studio, Windows, or Linux), either copy `handbook_index.db` into `knowledge_base/` or rebuild it locally in ~13 seconds from `handbook.html`:
-     ```bash
-     # macOS / Linux:
-     cd knowledge_base && python3 -m agent index-handbook /path/to/handbook.html && python3 -m agent verify
-     # Windows (PowerShell):
-     cd knowledge_base; python -m agent index-handbook C:\path\to\handbook.html; python -m agent verify
-     ```
+2. **Pre-Indexed `handbook_index.db.gz` Automatic Extraction (Mac Studio, Windows, Linux):**
+   - `knowledge_base/ai_video_compiler.db` (frozen 64-row lexicon), `knowledge_base/agent_memory.db` (growing memory), and `knowledge_base/handbook_index.db.gz` (`9.8 MB` compressed FTS5 index) are all tracked directly in Git.
+   - On any fresh `git clone` (Mac Studio, Windows, or Linux), `knowledge_base/agent/__init__.py` and `fight_move_system/kb_bridge.py` automatically decompress `handbook_index.db.gz` into `knowledge_base/handbook_index.db` on first import (~0.8s), so all 25 Knowledge Base checks and 105 tests pass out of the box with zero manual setup.
 3. **Python Executable Invocation (`python3` vs `python` / `py -3`):**
    - On **macOS (Mac Studio) & Linux**, use `.venv/bin/python` or `python3`.
    - On **Windows**, use `.venv\Scripts\python.exe`, `python`, or `py -3`.

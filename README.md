@@ -198,5 +198,5 @@ All tools in this repository use Python 3.9+ (`pathlib.Path`, `sqlite3`, `json`,
   ```powershell
   .venv\Scripts\python.exe scripts\regress.py
   ```
-- **Knowledge Base Index (`knowledge_base/handbook_index.db`):**
-  - `knowledge_base/ai_video_compiler.db` and `knowledge_base/agent_memory.db` ship in Git. Because `handbook_index.db` (~131 MB) exceeds GitHub's 100 MB file limit, on a fresh clone either copy `handbook_index.db` into `knowledge_base/` or build it locally in ~13s via `cd knowledge_base && python3 -m agent index-handbook /path/to/handbook.html`.
+- **Knowledge Base Index (`knowledge_base/handbook_index.db.gz`):**
+  - `knowledge_base/ai_video_compiler.db`, `knowledge_base/agent_memory.db`, and the compressed FTS5 index `knowledge_base/handbook_index.db.gz` (`9.8 MB`) all ship directly in Git. On a fresh clone, [`fight_move_system/kb_bridge.py`](fight_move_system/kb_bridge.py) and [`knowledge_base/agent/__init__.py`](knowledge_base/agent/__init__.py) automatically extract `knowledge_base/handbook_index.db` on first run with zero manual steps required.
