@@ -26,11 +26,33 @@ IN_REPO_KB_DIR = REPO_ROOT / "knowledge_base"
 EXTERNAL_KB_DIR = Path.home() / "Downloads" / "anime_action_research_bundle"
 
 
+def _ensure_handbook_index_db(bundle_dir: Path) -> None:
+    """Automatically extract handbook_index.db from handbook_index.db.gz on a fresh git clone."""
+    db_path = Path(bundle_dir) / "handbook_index.db"
+    gz_path = Path(bundle_dir) / "handbook_index.db.gz"
+    if not db_path.is_file() and gz_path.is_file():
+        import gzip
+        import shutil
+        import tempfile
+
+        fd, tmp = tempfile.mkstemp(dir=str(bundle_dir), prefix=".handbook_index_")
+        try:
+            with gzip.open(gz_path, "rb") as f_in, os.fdopen(fd, "wb") as f_out:
+                shutil.copyfileobj(f_in, f_out)
+            os.replace(tmp, db_path)
+        finally:
+            if os.path.exists(tmp):
+                os.unlink(tmp)
+
+
 def _resolve_default_bundle_dir() -> Path:
     env_dir = os.environ.get("ANIME_KB_BUNDLE_DIR")
     if env_dir:
-        return Path(env_dir).expanduser().resolve()
+        resolved = Path(env_dir).expanduser().resolve()
+        _ensure_handbook_index_db(resolved)
+        return resolved
     if (IN_REPO_KB_DIR / "ai_video_compiler.db").is_file():
+        _ensure_handbook_index_db(IN_REPO_KB_DIR)
         return IN_REPO_KB_DIR
     return EXTERNAL_KB_DIR
 
