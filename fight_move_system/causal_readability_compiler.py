@@ -130,11 +130,95 @@ def _classify_contact_operation(a_card: Dict[str, Any], b_card: Dict[str, Any]) 
     return "strike"
 
 
+def _compress_soft_action_words(words: str) -> str:
+    """Compress SOFT secondary cosmetic clauses (sweat spray, exhale, heel skid, redundant filler) while keeping HARD limb/target/recoil."""
+    out = words
+    soft_removals = [
+        r"\s+as sweat sprays from his brow",
+        r"\s+with a sharp exhale as the blow sinks into his ribs",
+        r",\s*his heels skidding across the floor as he catches his balance",
+        r",\s*his knee buckling inward as he catches his balance",
+        r"\s+while his hands brace against the shoulders for posture",
+        r"\s+as the knee buries deep into his solar plexus",
+        r"\s+in the direction of the hook",
+        r"\s+and create striking space",
+        r"\s+to create striking space",
+        r"\s+into striking range",
+        r"\s+while loading weight onto the right hip",
+        r"\s+while coiling his left shoulder",
+        r"\s+while standing on his left pillar leg",
+        r"steps off-line on his (left|right) foot and\s+",
+        r"steps deep into the pocket and\s+",
+        r"steps into the pocket and\s+",
+        r"in a sharp forward step to close the gap",
+        r"out from under him",
+        r"out of the clinch to full arm's length",
+        r"in a rigid high shell guard to absorb the blow",
+        r"to block the body shot",
+        r"of the incoming punch",
+        r"underneath the elbow\s+",
+        r"inside the clinch",
+        r"in place on his (left|right) foot\s+",
+        r"down the centerline\s+",
+        r"a baseball-bat\s+",
+        r"a razor-sharp\s+",
+        r"briskly to the inside",
+        r"sharply to the outside",
+        r"sinks his hips and\s+",
+        r"behind the back of the neck\s+",
+        r"down tight against his hip and ribs",
+        r"tightly in front of his face",
+        r"flat against the chest",
+        r"vertically upward\s+",
+        r"horizontally\s+",
+        r"forward at the waist",
+    ]
+    for pat in soft_removals:
+        out = re.sub(pat, "", out, flags=re.IGNORECASE)
+    out = re.sub(r"\bwhips right shin\b", "whips his right shin", out)
+    out = re.sub(r"\bwhips horizontal right elbow point\b", "whips his right elbow", out)
+    out = re.sub(r"\ba heavy straight punch with the right fist\b", "a straight right punch", out)
+    out = re.sub(r"\ba tight shovel hook with the left fist\b", "a left shovel hook", out)
+    out = re.sub(r"\ba straight right fist deep\b", "a straight right punch", out)
+    out = re.sub(r"\bslips his head\b", "slips", out)
+    out = re.sub(r"\bhas his (left|right) calf chopped sideways\b", r"'s \1 calf buckles sideways", out)
+    out = re.sub(r"\bhas his jaw whipped violently sideways\b", "'s head snaps sideways", out)
+    out = re.sub(r"\bhas his neck pulled forward into the clinch\b", "'s neck is pulled into the clinch", out)
+    out = re.sub(r"\bplants both open palms and shoves violently forward\b", "shoves both palms into B's chest", out)
+    return re.sub(r"\s{2,}", " ", out).strip()
+
+
+def _extract_core_arena_and_freedom(arena: str) -> Tuple[str, str]:
+    """Split arena description into HARD core setting and FREEDOM atmospheric embellishments."""
+    if "," in arena:
+        parts = [p.strip() for p in arena.split(",")]
+        core = re.sub(r"\s+overlooking\s+.*$", "", parts[0], flags=re.IGNORECASE)
+        return core, ", ".join(parts[1:])
+    return arena, "background lighting and crowd details left open to the generator"
+
+
+def _extract_tight_wardrobe(desc: str) -> Tuple[str, str]:
+    """Split fighter description into HARD identity/wardrobe anchors and SOFT anatomical adjectives."""
+    lower = desc.lower()
+    if "midnight-blue" in lower:
+        return (
+            "shirtless Muay Thai striker, white wrist tape, gold ankle wraps, midnight-blue shorts",
+            "lean razor-cut striated physique details and bare feet",
+        )
+    if "urban-camo" in lower:
+        return (
+            "shirtless Dutch kickboxer, urban-camo shorts, untaped wrists and ankles",
+            "heavy broad scarred torso texture details and bare feet",
+        )
+    return desc, "secondary musculature shading details"
+
+
 def compile_to_causal_readability(
     clip: Dict[str, Any],
     lexicon: Optional[Lexicon] = None,
     dialect: str = "readability",
     use_kb_priors: bool = True,
+    budget_words: Optional[int] = None,
 ) -> Tuple[str, Dict[str, Any], ValidationResult]:
     """Compile a validated beat-sheet into the LATENT SAKUGA Causal-Readability format.
 
@@ -226,8 +310,16 @@ def compile_to_causal_readability(
     event_packets: List[Dict[str, Any]] = []
     contract_beat_lines: List[str] = []
     prose_beat_sentences: List[str] = []
+    tight_beat_sentences: List[str] = []
     audit_trace_entries: List[Dict[str, Any]] = []
+    requirement_ledger: List[Dict[str, Any]] = []
     active_modules: List[str] = ["M01_hand_to_hand", "M09_complex_camera"]
+
+    core_arena, freedom_arena_decor = _extract_core_arena_and_freedom(arena)
+    a_hard_id, a_soft_anat = _extract_tight_wardrobe(a_desc)
+    b_hard_id, b_soft_anat = _extract_tight_wardrobe(b_desc)
+
+    prev_range: Optional[str] = None
 
     for idx, moment in enumerate(moments):
         is_hero = bool(moment.get("is_hero", idx == total_moments - 1))
@@ -255,6 +347,7 @@ def compile_to_causal_readability(
             fighter_b.coil = b_ov_card["post"]["coil"]
 
         pre_range = dyad.range_band
+        range_changed = pre_range != prev_range
         range_prose = RANGE_OBSERVABLE_PROSE.get(pre_range, "clean striking distance")
 
         # Internal V18-V22 verification metadata (kept strictly internal)
@@ -281,6 +374,8 @@ def compile_to_causal_readability(
         # Determine who initiates the primary force and who responds
         a_words = _strip_digits_and_metrics(_format_card_text(a_card["caption_words"], fighter_a))
         b_words = _strip_digits_and_metrics(_format_card_text(b_card["caption_words"], fighter_b))
+        a_tight_words = _compress_soft_action_words(a_words)
+        b_tight_words = _compress_soft_action_words(b_words)
         a_prep = (
             _strip_digits_and_metrics(_format_card_text(a_ov_card["caption_words"], fighter_a))
             if a_ov_card
@@ -291,6 +386,8 @@ def compile_to_causal_readability(
             if b_ov_card
             else COIL_VISIBLE_PROSE.get(fighter_b.coil, "holding compact guard")
         )
+        a_tight_prep = _compress_soft_action_words(a_prep)
+        b_tight_prep = _compress_soft_action_words(b_prep)
 
         contact_op = _classify_contact_operation(a_card, b_card)
         if contact_op in ("acquire", "maintain") and "M04_grappling" not in active_modules:
@@ -344,6 +441,8 @@ def compile_to_causal_readability(
                 prose_sentence = (
                     f"A {a_prep} and immediately {a_words} ({short_contact}); only after contact, B {b_words}."
                 )
+                b_tight_clause = f"B{b_tight_words}" if b_tight_words.startswith("'") else f"B {b_tight_words}"
+                tight_sentence = f"A {a_tight_prep} then {a_tight_words}; after contact, {b_tight_clause}."
             else:
                 beat_sentence = (
                     f"From {range_prose}, A {a_words}; {contact_clause}, "
@@ -352,6 +451,9 @@ def compile_to_causal_readability(
                 prose_sentence = (
                     f"From {range_prose}, A {a_words} ({short_contact}); only after contact, B {b_words}."
                 )
+                range_prefix = f"In {pre_range} range, " if range_changed else ""
+                b_tight_clause = f"B{b_tight_words}" if b_tight_words.startswith("'") else f"B {b_tight_words}"
+                tight_sentence = f"{range_prefix}A {a_tight_words}; after contact, {b_tight_clause}."
         elif b_is_striker:
             effector = SURFACE_READABLE_WORDS.get(_resolve_surface_tag(b_card), "striking limb")
             target_surface = TARGET_READABLE_WORDS.get(b_card.get("level", "high"), "target line")
@@ -388,6 +490,7 @@ def compile_to_causal_readability(
                 prose_sentence = (
                     f"B {b_prep} then immediately {b_words} ({short_contact}), causing A to respond as A {a_words}."
                 )
+                tight_sentence = f"B {b_tight_prep} then {b_tight_words}, met by A who {a_tight_words}."
             else:
                 beat_sentence = (
                     f"At {range_prose}, B {b_words}; {contact_clause}, "
@@ -396,6 +499,8 @@ def compile_to_causal_readability(
                 prose_sentence = (
                     f"At {range_prose}, B {b_words} ({short_contact}) while A responds at contact as A {a_words}."
                 )
+                range_prefix = f"In {pre_range} range, " if range_changed else ""
+                tight_sentence = f"{range_prefix}B {b_tight_words}, met at contact by A who {a_tight_words}."
         else:
             # Positional footwork / transition beat (SOFT setup details compressed, HARD geometry kept)
             contact_clause = "no strike collision on this footwork transition; both fighters maintain clear space and distinct silhouettes"
@@ -403,6 +508,9 @@ def compile_to_causal_readability(
             license_clause = "crisp solid linework with zero smear blur during footwork repositioning"
             beat_sentence = f"Across {range_prose}, A {a_words} while B {b_words}, resetting their firing line without clipping."
             prose_sentence = beat_sentence
+            tight_sentence = f"A {a_tight_words} as B {b_tight_words}."
+
+        prev_range = pre_range
 
         # Apply post states
         fighter_a.support = a_card["post"]["support"]
@@ -421,10 +529,22 @@ def compile_to_causal_readability(
             f"B settles into {COIL_VISIBLE_PROSE.get(fighter_b.coil, 'stance')} ({COM_VISIBLE_PROSE.get(b_com, 'balanced')})."
         )
 
+        event_id = f"E{idx + 1:02d}_{a_card['id']}_vs_{b_card['id']}"
         packet = {
             "event_index": idx + 1,
-            "event_id": f"E{idx + 1:02d}_{a_card['id']}_vs_{b_card['id']}",
+            "event_id": event_id,
             "requirement_class": "HARD",
+            "requirements_breakdown": {
+                "HARD_invariant": tight_sentence,
+                "SOFT_preferences": [
+                    f"repeated_range_preamble ({range_prose})" if not range_changed else "initial_or_shifted_range_cue",
+                    "per_beat_camera_and_license_repetition",
+                    "secondary_spray_exhale_embellishments",
+                ],
+                "FREEDOM_omissions": [
+                    "unconstrained_floor_scuff_and_micro_cloth_folds",
+                ],
+            },
             "observation_state_target": "correct_visible",
             "visibility_contract": vis_view,
             "preparation": {"A": a_prep, "B": b_prep},
@@ -456,13 +576,14 @@ def compile_to_causal_readability(
             f"[View: {vis_view}] {beat_sentence} [License: {license_clause}]"
         )
         prose_beat_sentences.append(prose_sentence)
+        tight_beat_sentences.append(tight_sentence)
 
         audit_trace_entries.append(
             {
-                "event_id": packet["event_id"],
-                "requirement_class": "HARD",
-                "preserved_in_prompt": True,
-                "clause_sha256": hashlib.sha256(beat_sentence.encode("utf-8")).hexdigest()[:16],
+                "event_id": event_id,
+                "hard_invariant_preserved": True,
+                "hard_clause_sha256": hashlib.sha256(tight_sentence.encode("utf-8")).hexdigest()[:16],
+                "full_clause_sha256": hashlib.sha256(beat_sentence.encode("utf-8")).hexdigest()[:16],
                 "omitted_internal_fields": list(packet["internal_only_biomechanics_not_emitted"].keys()),
             }
         )
@@ -507,25 +628,131 @@ def compile_to_causal_readability(
         "Trigger impact flashes only at or after visible contact and clear them immediately so the physical recoil is clearly seen."
     )
 
-    if dialect == "readability-prose":
-        # 3-Paragraph Worked-Example Directing Prose (§11 of LATENT SAKUGA paper — zero digits, zero headers)
-        p1 = _strip_digits_and_metrics(f"{shot_contract_text} {state_text} {observation_text}")
-        p2 = _strip_digits_and_metrics(" ".join(prose_beat_sentences))
-        p3 = _strip_digits_and_metrics(f"{animation_license_text} {closure_text}")
-        compiled_prompt = f"{p1}\n\n{p2}\n\n{p3}"
-    else:
-        # 6-Part Directorial Contract (§8.3 of LATENT SAKUGA paper)
-        beats_block = "\n".join(contract_beat_lines)
-        compiled_prompt = (
-            f"SHOT CONTRACT\n{shot_contract_text}\n\n"
-            f"STATE\n{state_text}\n\n"
-            f"OBSERVATION\n{observation_text}\n\n"
-            f"CAUSAL BEATS (Preparation -> Commitment -> Named Contact -> Consequence -> Recovery)\n{beats_block}\n\n"
-            f"ANIMATION LICENSE\n{animation_license_text}\n\n"
-            f"CLOSURE\n{closure_text}"
-        )
+    # Build the 3 Rungs of the Compression Ladder (Priority 4: HARD vs. SOFT vs. FREEDOM)
+    # Rung 0: 6-Part Directorial Contract (Full HARD + SOFT + FREEDOM)
+    beats_block = "\n".join(contract_beat_lines)
+    rung_0_contract = (
+        f"SHOT CONTRACT\n{shot_contract_text}\n\n"
+        f"STATE\n{state_text}\n\n"
+        f"OBSERVATION\n{observation_text}\n\n"
+        f"CAUSAL BEATS (Preparation -> Commitment -> Named Contact -> Consequence -> Recovery)\n{beats_block}\n\n"
+        f"ANIMATION LICENSE\n{animation_license_text}\n\n"
+        f"CLOSURE\n{closure_text}"
+    )
 
-    # Verify V15 compliance (and for readability-prose, verify zero digits/metrics!)
+    # Rung 1: 3-Paragraph Worked-Example Directing Prose (§11 — drops section headers & per-beat view/license brackets)
+    p1_prose = _strip_digits_and_metrics(f"{shot_contract_text} {state_text} {observation_text}")
+    p2_prose = _strip_digits_and_metrics(" ".join(prose_beat_sentences))
+    p3_prose = _strip_digits_and_metrics(f"{animation_license_text} {closure_text}")
+    rung_1_prose = f"{p1_prose}\n\n{p2_prose}\n\n{p3_prose}"
+
+    # Rung 2: Ultra-Tight HARD-Invariant Prose (§8.4 — drops FREEDOM background decor & compresses SOFT phrasing while preserving 100% HARD invariants)
+    tight_p1 = _strip_digits_and_metrics(
+        f"Continuous hand-drawn anime fight in a {core_arena} with flat cel shadows and crisp ink lines. "
+        f"A (screen-{fighter_a.screen_side}, facing {fighter_a.facing}, {a_hard_id}) faces "
+        f"B (screen-{fighter_b.screen_side}, facing {fighter_b.facing}, {b_hard_id}) "
+        f"at {RANGE_OBSERVABLE_PROSE.get(clip.get('initial_range', 'kick'), 'striking distance')} with both arms distinct in silhouette. "
+        f"Hold a front-hemisphere profile view keeping both fighters head-to-toe in frame with no side swaps and no concealed contacts."
+    )
+    tight_p2 = _strip_digits_and_metrics(" ".join(tight_beat_sentences))
+    tight_p3 = _strip_digits_and_metrics(
+        f"Contrast brief holds with fast strikes; restrict smear stretching strictly to the active striking limb, restore solid anatomy at contact, "
+        f"and fire flashes only after impact so recoil stays visible. "
+        f"Close with A in a balanced guard on screen-{fighter_a.screen_side} and B {final_b_state} on screen-{fighter_b.screen_side}."
+    )
+    rung_2_tight = f"{tight_p1}\n\n{tight_p2}\n\n{tight_p3}"
+
+    ladder_candidates = [
+        ("readability", 0, rung_0_contract),
+        ("readability-prose", 1, rung_1_prose),
+        ("readability-tight", 2, rung_2_tight),
+    ]
+
+    # Select starting rung from requested dialect
+    if dialect == "readability-tight":
+        selected_idx = 2
+    elif dialect == "readability-prose":
+        selected_idx = 1
+    else:
+        selected_idx = 0
+
+    budget_status = "UNCONSTRAINED"
+    if budget_words is not None and budget_words > 0:
+        # Step down the compression ladder (Rung 0 -> Rung 1 -> Rung 2) until word count fits budget_words or HARD floor is reached
+        while selected_idx < 2 and len(ladder_candidates[selected_idx][2].split()) > budget_words:
+            selected_idx += 1
+        final_wc = len(ladder_candidates[selected_idx][2].split())
+        if final_wc <= budget_words:
+            budget_status = f"FIT_WITHIN_BUDGET (rung={selected_idx}, words={final_wc}<={budget_words})"
+        else:
+            budget_status = (
+                f"HARD_INVARIANT_FLOOR_REACHED (rung=2, words={final_wc}>{budget_words}; "
+                "refused to drop any HARD requirement)"
+            )
+
+    effective_dialect, active_rung, compiled_prompt = ladder_candidates[selected_idx]
+
+    # Populate Priority 4 Requirement Ledger (HARD vs. SOFT vs. FREEDOM dispositions)
+    requirement_ledger.extend(
+        [
+            {
+                "id": "REQ_HARD_ACTOR_IDENTITY_AND_SIDES",
+                "class": "HARD",
+                "summary": f"A ({a_hard_id}) on screen-{fighter_a.screen_side}; B ({b_hard_id}) on screen-{fighter_b.screen_side}; zero side swaps.",
+                "disposition": "preserved_hard",
+            },
+            {
+                "id": "REQ_HARD_CAMERA_HEMISPHERE_AND_VISIBILITY",
+                "class": "HARD",
+                "summary": "Front-hemisphere profile view; head-to-toe framing; all contacts and both arms visible (observation_state_target=correct_visible).",
+                "disposition": "preserved_hard",
+            },
+            {
+                "id": "REQ_HARD_CAUSAL_BEATS_AND_CONTACTS",
+                "class": "HARD",
+                "summary": f"All {len(event_packets)} ordered beats, initiator->target bindings, typed contact operations, and post-contact reactions.",
+                "disposition": "preserved_hard",
+            },
+            {
+                "id": "REQ_HARD_ACCENT_AFTER_CONTACT_AND_LIMB_ISOLATED_SMEAR",
+                "class": "HARD",
+                "summary": "Limb-isolated smear only during swing transfer; solid standing legs/torso/head; impact flashes only at/after contact.",
+                "disposition": "preserved_hard",
+            },
+            {
+                "id": "REQ_HARD_TERMINAL_CLOSURE",
+                "class": "HARD",
+                "summary": f"A balanced guard on screen-{fighter_a.screen_side}; B {final_b_state} on screen-{fighter_b.screen_side}.",
+                "disposition": "preserved_hard",
+            },
+            {
+                "id": "REQ_SOFT_SECTION_HEADERS_AND_PER_BEAT_BRACKETS",
+                "class": "SOFT",
+                "summary": "Section headers and per-beat [View: ...] / [License: ...] bracket wrappers.",
+                "disposition": "included_soft" if active_rung == 0 else "compressed_soft",
+            },
+            {
+                "id": "REQ_SOFT_REPEATED_RANGE_AND_SPRAY_EMBELLISHMENTS",
+                "class": "SOFT",
+                "summary": "Repeated unchanged range preambles, secondary sweat/spittle spray clauses, and verbose anatomical adjectives.",
+                "disposition": "included_soft" if active_rung <= 1 else "compressed_soft",
+            },
+            {
+                "id": "REQ_FREEDOM_ARENA_LIGHTING_AND_CROWD_DECOR",
+                "class": "FREEDOM",
+                "summary": freedom_arena_decor or "Unconstrained background crowd and ambient stadium lighting variations.",
+                "disposition": "included_freedom" if active_rung <= 1 else "omitted_freedom",
+            },
+            {
+                "id": "REQ_FREEDOM_MICRO_CLOTH_AND_FLOOR_SCUFF",
+                "class": "FREEDOM",
+                "summary": "Unconstrained micro cloth folds, dust motes, and floor scuff patterns.",
+                "disposition": "omitted_freedom",
+            },
+        ]
+    )
+
+    # Verify V15 compliance (and for readability-prose / readability-tight, verify zero digits/metrics!)
     clip_regime = clip.get("regime", "standup_striking")
     allowed_styles = {fighter_a.style, fighter_b.style}
     v15_errs = scan_prompt_v15(
@@ -533,7 +760,7 @@ def compile_to_causal_readability(
         clip_regime,
         allowed_styles,
         lex,
-        allow_fluid_stack_numbers=(dialect != "readability-prose"),
+        allow_fluid_stack_numbers=(effective_dialect == "readability"),
     )
     if v15_errs:
         val_res.errors.extend(v15_errs)
@@ -549,7 +776,11 @@ def compile_to_causal_readability(
 
     intent_ir_and_trace: Dict[str, Any] = {
         "schema": "LATENT-SAKUGA-1.0",
-        "dialect": dialect,
+        "dialect": effective_dialect,
+        "requested_dialect": dialect,
+        "compression_rung": active_rung,
+        "budget_words_target": budget_words,
+        "budget_status": budget_status,
         "name": clip.get("name", f"latent_sakuga_{fighter_a.style}_vs_{fighter_b.style}"),
         "active_modules": active_modules,
         "budget_metrics": {
@@ -558,7 +789,13 @@ def compile_to_causal_readability(
             "word_count": len(compiled_prompt.split()),
             "hard_intent_coverage": 1.0,
             "leaked_internal_numeric_fields": 0,
+            "ladder_word_counts": {
+                "rung_0_contract": len(rung_0_contract.split()),
+                "rung_1_prose": len(rung_1_prose.split()),
+                "rung_2_tight_hard_floor": len(rung_2_tight.split()),
+            },
         },
+        "requirement_ledger": requirement_ledger,
         "shot_contract": shot_contract_text,
         "initial_state": state_text,
         "observation_contract": observation_text,

@@ -2,7 +2,7 @@
 
 - **Local Git Branch:** `exp/latent-sakuga-causal-readability` (`main` remains untouched until you approve the winner)
 - **Compiler Module Added:** [`fight_move_system/causal_readability_compiler.py`](../../fight_move_system/causal_readability_compiler.py)
-- **CLI Modes Added:** `--mode readability` (`6-Part Directorial Contract`) and `--mode readability-prose` (`3-Paragraph Directing Prose, Zero Numbers`)
+- **CLI Modes Added:** `--mode readability` (`Rung 0: 6-Part Directorial Contract`), `--mode readability-prose` (`Rung 1: 3-Paragraph Directing Prose, Zero Numbers`), `--mode readability-tight` (`Rung 2: Ultra-Tight HARD-Invariant Floor, ~320 words`), plus `--budget-words <N>` (`Automatic Compression Ladder`)
 - **Matched Choreography Input:** [`fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json`](../../fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json) (10-beat Muay Thai vs. Dutch Kickboxer Rooftop Helipad Cage War, 6 weapons: calf kick, step-in, slashing elbow, high shell vs cross, slip + liver hook, collar tie, clinch rising knee, two-hand shove, body elbow block vs body straight, spinning back kick)
 
 ---
@@ -11,30 +11,42 @@
 
 | Upgrade Priority | What Was Happening Before (`Original 05:34` & `Extreme sakuga_Xperiment`) | What `causal_readability_compiler.py` Does Now |
 | :--- | :--- | :--- |
-| **1. Zero Internal Math Leak** | Internal validation numbers (`weight_split: [85, 15]`, `com_position`, `impulse_tier: 3`, `pos: [0, 0.84, 3.20]`, `dutch_roll_deg: -10`, `FE1`, `C01`) were printed directly into the prompt sent to Seedance. | Keeps **100% of V01–V22 validation internal** and saves those numbers inside [`prompts/arm_C1_intent_ir_and_trace.json`](prompts/arm_C1_intent_ir_and_trace.json) (`leaked_internal_numeric_fields = 0`). The prompt receives **only inspectable visual consequences**. |
+| **1. Zero Internal Math Leak** | Internal validation numbers (`weight_split: [85, 15]`, `com_position`, `impulse_tier: 3`, `pos: [0, 0.84, 3.20]`, `dutch_roll_deg: -10`, `FE1`, `C01`) were printed directly into the prompt sent to Seedance. | Keeps **100% of V01–V22 validation internal** and saves those numbers inside `internal_only_biomechanics_not_emitted` in the JSON trace (`leaked_internal_numeric_fields = 0`). The prompt receives **only inspectable visual consequences**. |
 | **2. Event-Local Packets (Referential Locality)** | A single exchange was split across **5 distant sections** (`A_beats` $\to$ `B_track` 30 lines later $\to$ `camera` $\to$ `anime.smear_frames` $\to$ `rules`). | Binds **View + Preparation + Commitment + Named Limb-to-Surface Contact (`acquire`/`maintain`/`release`/`strike`) + Post-Contact Defender Reaction + Bounded Smear/Hold License** inside one contiguous sentence block per beat. |
-| **3. Visibility & Effect-Timing Contract (`RH1` & `RH3`)** | Impact flashes and camera shakes could fire over top of the collision, hiding whether the parry/strike actually landed. | Explicitly binds lateral/three-quarter silhouette separation to every contact and enforces **Accent-After-Contact** (*impact flash triggers only at/after visible contact and clears immediately so recoil is unobstructed*). |
-| **4. Requirement Classes (`HARD` / `SOFT` / `FREEDOM`) & Information Budget** | Every beat emitted the same full metadata payload (`51,026 bytes` in `sakuga_Xperiment`, `25,759 bytes` in `05:34`). | Preserves **100% of `HARD` invariants** (`hard_intent_coverage = 1.0`) while compressing redundant boilerplate—cutting prompt byte size by **77% (`Arm C1`) to 89% (`Arm C2`)**. |
+| **3. Visibility & Effect-Timing Contract (`RH1` & `RH3`)** | Impact flashes and camera shakes could fire over top of the collision, hiding whether the parry/strike actually landed. | Explicitly tags every beat with `observation_state_target: "correct_visible"`, binds lateral/three-quarter silhouette separation to every contact, bans bent-knee smear blur, and enforces **Accent-After-Contact** (*impact flash triggers only at/after visible contact and clears immediately so recoil is unobstructed*). |
+| **4. Requirement Classes (`HARD` / `SOFT` / `FREEDOM`) & Compression Ladder** | Every beat emitted the same full metadata payload (`51,026 bytes` in `sakuga_Xperiment`, `25,759 bytes` in `05:34`) with no distinction between non-negotiable choreography and cosmetic filler. | Classifies every requirement into **`HARD` Invariant** (actor identity/sides, camera hemisphere/visibility, all 10 ordered beats & contacts, accent-after-contact, terminal closure), **`SOFT` Preference** (headers, per-beat `[View]`/`[License]` brackets, repeated unchanged range preambles, secondary spray/exhale clauses), or **`FREEDOM` Omission** (ambient crowd/lighting details, micro cloth folds). Stepping down `Rung 0` (`1,787w`) $\to$ `Rung 1` (`937w`) $\to$ `Rung 2` (`320w`) drops `FREEDOM` first and compresses `SOFT` second while **refusing to drop any `HARD` invariant** (`hard_intent_coverage = 1.0`). |
 
 ---
 
-## 2. Side-by-Side Comparison Across All 4 Matched-Intent Arms
+## 2. Side-by-Side Comparison Across All 5 Matched-Intent Arms
 
-All 4 prompt files below were compiled from the **exact same 10-beat input sheet** and validated against the **same V01–V22 biomechanical & Knowledge Base rules**:
+All 5 prompt files below were compiled from the **exact same 10-beat input sheet** and validated against the **same V01–V22 biomechanical & Knowledge Base rules**:
 
 | Arm ID | Schema / Dialect | Prompt File | Word Count | UTF-8 Bytes | Byte Reduction vs. Extreme (`Arm B`) | Leaked Internal Math Fields |
 | :--- | :--- | :--- | :---: | :---: | :---: | :---: |
 | **`Arm A`** | **Original `05:34` (`SAKUGA-MLLM-3.1-CAUSAL`)** | [`prompts/arm_A_original_0534_causal.txt`](prompts/arm_A_original_0534_causal.txt) | `1,908` | `25,759 B` | `-49.5%` | Coordinates `[x,y,z]`, `vel`, timestamps |
 | **`Arm B`** | **Extreme (`sakuga_Xperiment` 2-Layer Fluid Stack)** | [`prompts/arm_B_extreme_sakuga_Xperiment.txt`](prompts/arm_B_extreme_sakuga_Xperiment.txt) | `5,886` | `51,026 B` | Baseline (`0%`) | `weight_split`, `CoG`, `impulse_tier`, `dutch_roll_deg`, `[x,y,z]`, `FE1..10` |
-| **`Arm C1`** | **Latent Sakuga 6-Part Directorial Contract (`--mode readability`)** | [`prompts/arm_C1_latent_sakuga_contract.txt`](prompts/arm_C1_latent_sakuga_contract.txt) | `1,787` | `11,592 B` | **`-77.3%`** | **`0` (Zero leaked math)** |
-| **`Arm C2`** | **Latent Sakuga 3-Paragraph Directing Prose (`--mode readability-prose`)** | [`prompts/arm_C2_latent_sakuga_prose.txt`](prompts/arm_C2_latent_sakuga_prose.txt) | **`937`** | **`5,779 B`** | **`-88.7%`** | **`0` (Zero digits, zero metrics)** |
+| **`Arm C1`** | **Latent Sakuga Rung 0: 6-Part Directorial Contract (`--mode readability`)** | [`prompts/arm_C1_latent_sakuga_contract.txt`](prompts/arm_C1_latent_sakuga_contract.txt) | `1,787` | `11,592 B` | **`-77.3%`** | **`0` (Zero leaked math)** |
+| **`Arm C2`** | **Latent Sakuga Rung 1: 3-Paragraph Directing Prose (`--mode readability-prose`)** | [`prompts/arm_C2_latent_sakuga_prose.txt`](prompts/arm_C2_latent_sakuga_prose.txt) | **`937`** | **`5,779 B`** | **`-88.7%`** | **`0` (Zero digits, zero metrics)** |
+| **`Arm C3`** | **Latent Sakuga Rung 2: Ultra-Tight HARD-Invariant Floor (`--mode readability-tight --budget-words 350`)** | [`prompts/arm_C3_latent_sakuga_tight.txt`](prompts/arm_C3_latent_sakuga_tight.txt) | **`320`** | **`1,898 B`** | **`-96.3%`** | **`0` (Zero digits, 100% HARD invariants preserved)** |
 
 ---
 
-## 3. Ready-to-Paste Test Prompts (`Arm C2` & `Arm C1`)
+## 3. Ready-to-Paste Test Prompts (`Arm C3`, `Arm C2`, & `Arm C1`)
 
-### Test Prompt `Arm C2` — Latent Sakuga 3-Paragraph Directing Prose (`937 words`, Zero Numbers, Event-Local)
-*(Copy and paste into Seedance 2.0 Mini / 2.5 to test pure event-local directing prose)*
+### Test Prompt `Arm C3` — Latent Sakuga Rung 2 Ultra-Tight HARD-Invariant Prose (`320 words` / `1,898 B`, `-96.3%`, Zero Numbers, 100% `HARD` Invariants)
+*(Copy and paste into Seedance 2.0 Mini / 2.5 to test the paper's ~300–350 word information budget with `FREEDOM` omitted and `SOFT` compressed)*
+
+```text
+Continuous hand-drawn anime fight in a rain-slicked neon-lit rooftop helipad cage arena with flat cel shadows and crisp ink lines. A (screen-left, facing right, shirtless Muay Thai striker, white wrist tape, gold ankle wraps, midnight-blue shorts) faces B (screen-right, facing left, shirtless Dutch kickboxer, urban-camo shorts, untaped wrists and ankles) at long kicking distance where an extended leg bridges the gap with both arms distinct in silhouette. Hold a front-hemisphere profile view keeping both fighters head-to-toe in frame with no side swaps and no concealed contacts.
+
+In kick range, A whips his right shin into the outside of the lead calf; after contact, B's left calf buckles sideways. A drives off his right foot as B slips. In punch range, A whips his right elbow across the brow and cheekbone; after contact, B's head snaps sideways. B drives a straight right punch toward the jaw, met at contact by A who locks both forearms. A slips then digs a left shovel hook into the floating ribs; after contact, B folds. A hooks his left palm in a tight collar tie; after contact, B's neck is pulled into the clinch. In clinch range, A pulls down hard on the collar tie and spears his bent right kneecap into the solar plexus; after contact, B jackknifes. A plants both open palms and shoves violently forward to break the clinch; after contact, B is shoved backward. B slips then drives a straight right punch into the midsection, met by A who crunches his left elbow. A slips then spins and drives his right heel straight back into the solar plexus; after contact, B folds.
+
+Contrast brief holds with fast strikes; restrict smear stretching strictly to the active striking limb, restore solid anatomy at contact, and fire flashes only after impact so recoil stays visible. Close with A in a balanced guard on screen-left and B braced in a crouched recovery posture on screen-right.
+```
+
+### Test Prompt `Arm C2` — Latent Sakuga Rung 1 3-Paragraph Directing Prose (`937 words` / `5,779 B`, `-88.7%`, Zero Numbers, Full `HARD` + `SOFT` + `FREEDOM`)
+*(Copy and paste into Seedance 2.0 Mini / 2.5 to test full descriptive directing prose with zero numbers)*
 
 ```text
 One continuous hand-drawn anime martial arts action cut inside a rain-slicked neon-lit rooftop helipad cage arena overlooking a dark cyberpunk skyline, harsh magenta-and-cyan floodlights reflecting off wet concrete, octagonal chain-link perimeter fence in deep background shadow. Expressive hand-drawn character animation with flat two-tone cel shadows, crisp anatomical ink outlines, and clear spacing contrast between brief loaded holds and whip-fast transfers. Keep Fighter A strictly on screen-left facing right and Fighter B strictly on screen-right facing left throughout the entire cut with zero side swaps and zero on-screen text. Fighter A (screen-left, facing right): lean, razor-cut Muay Thai and MMA striker, shirtless bare torso, white cloth tape on both wrists/knuckles and gold ankle wraps, midnight-blue Vale Tudo fight shorts, bare feet. Fighter B (screen-right, facing left): heavyweight muscular Dutch kickboxer, shirtless broad scarred torso, urban-camo fight shorts, bare wrists and bare ankles with NO tape, bare feet. Both fighters begin grounded at long kicking distance where an extended leg bridges the gap with both left and right arms visible outside their torso silhouettes. Maintain a readable front-hemisphere lateral and three-quarter camera view that keeps both fighters head-to-toe in frame and exposes every limb-to-target contact in profile. Never orbit across the center line, and never conceal a required block, parry, or strike behind an early flash or torso overlap.
@@ -51,11 +63,12 @@ Contrast short preparation holds with fast strike transfers and deliberate post-
 ## 4. User Reported Outcome Log (7-Dimension Rubric & Visibility States)
 
 > **How to Log Your Results:**  
-> Whenever you run `Arm A`, `Arm B`, `Arm C1`, or `Arm C2` (or any custom fight you ask me to compile on this branch), just tell me in plain English what happened in the video render. I will automatically score and log your reported outcome in the table below using the paper's **7 Dimensions (`0–4`)** and **4-State Contact Visibility (`correct_visible`, `incorrect_visible`, `occluded`, `indeterminate`)**.
+> Whenever you run `Arm A`, `Arm B`, `Arm C1`, `Arm C2`, or `Arm C3` (or any custom fight you ask me to compile on this branch), just tell me in plain English what happened in the video render. I will automatically score and log your reported outcome in the table below using the paper's **7 Dimensions (`0–4`)** and **4-State Contact Visibility (`correct_visible`, `incorrect_visible`, `occluded`, `indeterminate`)**.
 
-| Run ID & Date | Arm Tested (`A` / `B` / `C1` / `C2`) | Model & Settings | Tech Integrity (`0-4`) | Action Readability (`0-4`) | Intent Adherence (`0-4`) | Expressiveness (`0-4`) | Visual Identity (`0-4`) | Cinematic Quality (`0-4`) | Overall Merit (`0-4`) | Contact Visibility State | User Reported Outcome & Notes |
+| Run ID & Date | Arm Tested (`A` / `B` / `C1` / `C2` / `C3`) | Model & Settings | Tech Integrity (`0-4`) | Action Readability (`0-4`) | Intent Adherence (`0-4`) | Expressiveness (`0-4`) | Visual Identity (`0-4`) | Cinematic Quality (`0-4`) | Overall Merit (`0-4`) | Contact Visibility State | User Reported Outcome & Notes |
 | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- | :--- |
-| `EXP-001` *(Pending User Render)* | `Arm C2` (`readability-prose`) | Seedance 2.0 Mini / 2.5 | `—` | `—` | `—` | `—` | `—` | `—` | `—` | `PENDING` | Ready for test render |
-| `EXP-002` *(Pending User Render)* | `Arm C1` (`readability` 6-part contract) | Seedance 2.0 Mini / 2.5 | `—` | `—` | `—` | `—` | `—` | `—` | `—` | `PENDING` | Ready for test render |
-| `EXP-003` *(Pending User Render)* | `Arm A` (`Original 05:34`) | Seedance 2.0 Mini / 2.5 | `—` | `—` | `—` | `—` | `—` | `—` | `—` | `PENDING` | Baseline comparator |
-| `EXP-004` *(Pending User Render)* | `Arm B` (`Extreme sakuga_Xperiment`) | Seedance 2.0 Mini / 2.5 | `—` | `—` | `—` | `—` | `—` | `—` | `—` | `PENDING` | Baseline comparator |
+| `EXP-001` *(Pending User Render)* | `Arm C3` (`readability-tight`, `320w`) | Seedance 2.0 Mini / 2.5 | `—` | `—` | `—` | `—` | `—` | `—` | `—` | `PENDING` | Ready for test render (`HARD` floor) |
+| `EXP-002` *(Pending User Render)* | `Arm C2` (`readability-prose`, `937w`) | Seedance 2.0 Mini / 2.5 | `—` | `—` | `—` | `—` | `—` | `—` | `—` | `PENDING` | Ready for test render |
+| `EXP-003` *(Pending User Render)* | `Arm C1` (`readability` 6-part contract, `1787w`) | Seedance 2.0 Mini / 2.5 | `—` | `—` | `—` | `—` | `—` | `—` | `—` | `PENDING` | Ready for test render |
+| `EXP-004` *(Pending User Render)* | `Arm A` (`Original 05:34`, `1908w`) | Seedance 2.0 Mini / 2.5 | `—` | `—` | `—` | `—` | `—` | `—` | `—` | `PENDING` | Baseline comparator |
+| `EXP-005` *(Pending User Render)* | `Arm B` (`Extreme sakuga_Xperiment`, `5886w`) | Seedance 2.0 Mini / 2.5 | `—` | `—` | `—` | `—` | `—` | `—` | `—` | `PENDING` | Baseline comparator |

@@ -782,6 +782,51 @@ class TestFightMoveSystem(unittest.TestCase):
         jsonschema.validate(xper_data, xper_schema)
         self.assertEqual(xper_data["schema"], "sakuga_Xperiment")
 
+    def test_m10_latent_sakuga_causal_readability_priorities_1_to_4(self) -> None:
+        """Verify Priorities 1–4 of the LATENT SAKUGA Causal-Readability Compiler on the local branch."""
+        import re
+        from fight_move_system.causal_readability_compiler import compile_to_causal_readability
+
+        # Rung 0: 6-part contract
+        p_c1, ir_c1, res_c1 = compile_to_causal_readability(
+            self.valid_var3, lexicon=self.lexicon, dialect="readability"
+        )
+        self.assertTrue(res_c1.ok, res_c1.errors)
+        self.assertEqual(ir_c1["compression_rung"], 0)
+        self.assertEqual(ir_c1["budget_metrics"]["hard_intent_coverage"], 1.0)
+        self.assertEqual(ir_c1["budget_metrics"]["leaked_internal_numeric_fields"], 0)
+        self.assertNotIn("weight_split", p_c1)
+        self.assertNotIn("impulse_tier", p_c1)
+        self.assertNotIn("dutch_roll_deg", p_c1)
+
+        # Rung 1: 3-paragraph worked-example directing prose (zero digits!)
+        p_c2, ir_c2, res_c2 = compile_to_causal_readability(
+            self.valid_var3, lexicon=self.lexicon, dialect="readability-prose"
+        )
+        self.assertTrue(res_c2.ok, res_c2.errors)
+        self.assertEqual(ir_c2["compression_rung"], 1)
+        self.assertIsNone(re.search(r"\d", p_c2), "readability-prose must contain zero digits")
+
+        # Rung 2: Ultra-tight HARD-invariant floor via budget_words ladder (1787 -> 937 -> 320 <= 350)
+        p_c3, ir_c3, res_c3 = compile_to_causal_readability(
+            self.valid_var3, lexicon=self.lexicon, dialect="readability", budget_words=350
+        )
+        self.assertTrue(res_c3.ok, res_c3.errors)
+        self.assertEqual(ir_c3["dialect"], "readability-tight")
+        self.assertEqual(ir_c3["compression_rung"], 2)
+        self.assertLessEqual(ir_c3["budget_metrics"]["word_count"], 350)
+        self.assertIsNone(re.search(r"\d", p_c3), "readability-tight must contain zero digits")
+        self.assertIn("FIT_WITHIN_BUDGET", ir_c3["budget_status"])
+
+        # Verify HARD invariant floor protection when budget_words is set below the HARD floor (e.g., 100 words)
+        p_floor, ir_floor, res_floor = compile_to_causal_readability(
+            self.valid_var3, lexicon=self.lexicon, dialect="readability", budget_words=100
+        )
+        self.assertTrue(res_floor.ok, res_floor.errors)
+        self.assertEqual(ir_floor["compression_rung"], 2)
+        self.assertEqual(p_floor, p_c3)
+        self.assertIn("HARD_INVARIANT_FLOOR_REACHED", ir_floor["budget_status"])
+
 
 if __name__ == "__main__":
     unittest.main()

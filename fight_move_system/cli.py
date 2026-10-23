@@ -138,9 +138,23 @@ def main(argv: Optional[List[str]] = None) -> int:
     p_comp.add_argument("-o", "--output", type=Path, default=None, help="Optional output file path")
     p_comp.add_argument(
         "--mode",
-        choices=["xperiment", "extreme", "lean", "readability", "readability-prose", "latent_sakuga"],
+        choices=[
+            "xperiment",
+            "extreme",
+            "lean",
+            "readability",
+            "readability-prose",
+            "readability-tight",
+            "latent_sakuga",
+        ],
         default="xperiment",
-        help="Compilation profile: 'xperiment'/'extreme' (full sakuga_Xperiment), 'lean', or 'readability'/'readability-prose'/'latent_sakuga' (LATENT SAKUGA Causal-Readability)",
+        help="Compilation profile: 'xperiment'/'extreme' (full sakuga_Xperiment), 'lean', or 'readability'/'readability-prose'/'readability-tight'/'latent_sakuga' (LATENT SAKUGA Causal-Readability)",
+    )
+    p_comp.add_argument(
+        "--budget-words",
+        type=int,
+        default=None,
+        help="Optional target word budget for LATENT SAKUGA Causal-Readability compression ladder (drops FREEDOM then compresses SOFT while protecting 100%% HARD invariants)",
     )
     p_comp.add_argument(
         "--schema",
@@ -286,11 +300,17 @@ def main(argv: Optional[List[str]] = None) -> int:
         prompts: List[str] = []
         specs: List[Dict[str, Any]] = []
         for idx, clip in enumerate(clips):
-            if args.mode in ("readability", "readability-prose", "latent_sakuga"):
-                dialect = "readability-prose" if args.mode == "readability-prose" else "readability"
+            if args.mode in ("readability", "readability-prose", "readability-tight", "latent_sakuga"):
+                if args.mode == "readability-tight":
+                    dialect = "readability-tight"
+                elif args.mode == "readability-prose":
+                    dialect = "readability-prose"
+                else:
+                    dialect = "readability"
                 prompt, spec, res = compile_to_causal_readability(
                     clip,
                     dialect=dialect,
+                    budget_words=args.budget_words,
                 )
             else:
                 compile_mode = "xperiment" if args.mode in ("xperiment", "extreme") else args.mode
