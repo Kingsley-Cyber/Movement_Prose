@@ -21,10 +21,20 @@ description: >-
 >   2. **The Fighting Simulator (`BLOCK Fight Engine` — `predict.py`, `plan_fight.py`, `cards/`, `engine/`):** Evaluates fighter cards across 7 combat dimensions and 511 matchup cells, predicts win probabilities and tactical openings, and simulates 10-phase fights (either seeded or with a user-selected winner).
 >   3. **The Dual-Path Prompt Compiler & Glitch Repair (`fight_move_system/`, `scripts/sakuga_compiler.py`, `scripts/sakuga_original_kb.py`):** Compiles fights into either the **Protected Original `05:34` Single-Layer `SAKUGA-MLLM-3.1-CAUSAL` format**, the **2-Layer Unrolled Fluid Stack (`--stack`)**, or **Shot-by-Shot Cinematic Prose**, and repairs specific video glitches upon user feedback.
 
-This skill turns creative fight ideas, tactical style matchups, or multi-clip YouTube episode concepts into empirically verified, non-regressing **`SAKUGA-MLLM-3.1-CAUSAL`** video prompts (in either **Single-Layer JSON** or **2-Layer Unrolled Fluid Stack `--stack`** format) and validates/compiles them using [sakuga_compiler.py](./scripts/sakuga_compiler.py), [sakuga_original_kb.py](./scripts/sakuga_original_kb.py), and [plan_fight.py](./plan_fight.py).
+This skill turns creative fight ideas, tactical style matchups, or multi-clip YouTube episode concepts into empirically verified, non-regressing video prompts using **TWO CO-EQUAL PROMPT SCHEMAS**:
+1. **The Original Baseline Schema (`SAKUGA-MLLM-3.1-CAUSAL`):** Single-Layer Causal JSON format (header + 1-line-per-beat causal JSON). Locked to `05:34` (`e91c686`).
+2. **The Extreme Schema (`sakuga_Xperiment`):** 2-Layer Unrolled Fluid Stack format (Layer 1 Labanotation-as-Words timeline + Layer 2 Kinematic Scene Graph with V01-V22 biomechanical attributes).
 
-## Directory Contents (STRICT TEMPLATE & VARIATION BOUNDARY RULE)
+## Directory Contents & Schema Assets
 * **AGENT ONBOARDING & 25-DECISION INDEX (READ FIRST):** [AGENTS.md](./AGENTS.md)
+* **FORMAL PROMPT SCHEMAS & TEMPLATES (BOTH MUST BE ACKNOWLEDGED):**
+  * **Original Baseline Schema (`SAKUGA-MLLM-3.1-CAUSAL`):**
+    * JSON Schema: [sakuga_mllm_3_1_causal.schema.json](./schemas/sakuga_mllm_3_1_causal.schema.json)
+    * Template: [sakuga_mllm_3_1_causal_0534_template.json](./templates/sakuga_mllm_3_1_causal_0534_template.json)
+  * **Extreme 2-Layer Fluid Stack Schema (`sakuga_Xperiment`):**
+    * JSON Schema: [sakuga_xperiment.schema.json](./schemas/sakuga_xperiment.schema.json)
+    * JSON Input Spec Template: [sakuga_xperiment_template.json](./templates/sakuga_xperiment_template.json)
+    * Compiled 2-Layer Prompt Template: [sakuga_xperiment_2layer_template.txt](./templates/sakuga_xperiment_2layer_template.txt)
 * **ORIGINAL CANONICAL GOLDEN BASELINE TEMPLATES (`examples/`):**
   * **Verified Gold-Master #1 (Single-Layer JSON — Kunai vs. Blade Exchange):** [gold_master_1_blade_exchange.json](./examples/gold_master_1_blade_exchange.json)
   * **Verified Gold-Master #2 (Single-Layer JSON — Multi-Prop Disarm, Mid-Air Catch & Dual-Blade X-Lock):** [gold_master_2_disarm_dual_blade.json](./examples/gold_master_2_disarm_dual_blade.json)
@@ -33,18 +43,17 @@ This skill turns creative fight ideas, tactical style matchups, or multi-clip Yo
 * **COMBAT-STYLE & BIOMECHANICAL VARIATIONS (`examples/variations/` — Distinct from Golden #1–#4):**
   * **Variation #1 (`grounded_striker_boxer_baki` — 100% Grounded Baki / Kengan Stand-Up War):** [variation_1_baki_grounded_standup_war.json](./examples/variations/variation_1_baki_grounded_standup_war.json) & [variation_1_baki_grounded_standup_war_fluid_stack.txt](./examples/variations/variation_1_baki_grounded_standup_war_fluid_stack.txt)
   * **Variation #2 (`acrobatic_multidomain_freestyle` — 4-Domain Multi-Limb Martial Arts Showcase):** [variation_2_multidomain_combative_showcase.json](./examples/variations/variation_2_multidomain_combative_showcase.json) & [variation_2_multidomain_combative_showcase_fluid_stack.txt](./examples/variations/variation_2_multidomain_combative_showcase_fluid_stack.txt)
+  * **Variation #3 (`ufc_mma_octagon` — 6-Weapon Bare-Knuckle / Cage War via `sakuga_Xperiment`):** [variation_3_eight_limbs_muay_thai_mma_war.json](./examples/variations/variation_3_eight_limbs_muay_thai_mma_war.json) & [variation_3_eight_limbs_muay_thai_mma_war_sakuga_Xperiment.txt](./examples/variations/variation_3_eight_limbs_muay_thai_mma_war_sakuga_Xperiment.txt)
 * **Architecture & Fighting-Style Documentation:**
   * [TWO_LAYER_FLUID_STACK_ARCHITECTURE.md](./docs/TWO_LAYER_FLUID_STACK_ARCHITECTURE.md)
   * [VARIATIONS_AND_FIGHTING_STYLES.md](./docs/VARIATIONS_AND_FIGHTING_STYLES.md)
-* **Original `05:34` (`e91c686`) Single-Layer `SAKUGA-MLLM-3.1-CAUSAL` Protected Compiler & Pre-Intent KB Path:**
-  * [sakuga_compiler.py](./scripts/sakuga_compiler.py) (SHA256 Locked to `e91c686`)
-  * [sakuga_original_kb.py](./scripts/sakuga_original_kb.py) & [original_causal_compiler.py](./fight_move_system/original_causal_compiler.py)
-  * [sakuga_mllm_3_1_causal_0534_template.json](./templates/sakuga_mllm_3_1_causal_0534_template.json)
-* **v2 2-Layer `sakuga_Xperiment` Fluid Stack Compiler & 25-Rule Linter:**
-  * [compiler.py](./fight_move_system/compiler.py) & [scene_graph_linter.py](./fight_move_system/scene_graph_linter.py)
-* **TwelveLabs Video-to-Sakuga Bridge (Mode A & Mode B):** [twelvelabs_bridge.py](./scripts/twelvelabs_bridge.py)
+* **Compilers & Bridge Scripts:**
+  * Original Protected 05:34 Compiler: [sakuga_compiler.py](./scripts/sakuga_compiler.py) & [sakuga_original_kb.py](./scripts/sakuga_original_kb.py)
+  * v2 2-Layer `sakuga_Xperiment` Compiler: [compiler.py](./fight_move_system/compiler.py) & [scene_graph_linter.py](./fight_move_system/scene_graph_linter.py)
+  * BLOCK-to-Movement_Prose Bridge: [block_bridge.py](./fight_move_system/block_bridge.py)
+  * TwelveLabs Video-to-Sakuga Bridge (Mode A & Mode B): [twelvelabs_bridge.py](./scripts/twelvelabs_bridge.py)
 * **Full Master SOP:** [sakuga_prompt_schema_sop.md](./references/sakuga_prompt_schema_sop.md)
-* ⚠️ **CRITICAL RULE FOR AGENTS:** NEVER copy schemas or prompt structures from `_archive_rd_history_do_not_copy/`. Those files contain deprecated early baselines (`LBN-2.3-ADV` Euler dicts, Quaternion A/B tests, `v3.2` metadata bloat tests) kept strictly for historical benchmarking. Always use `examples/gold_master_1..4*.json` (`SAKUGA-MLLM-3.1-CAUSAL`).
+* ⚠️ **CRITICAL RULE FOR AGENTS:** NEVER copy schemas or prompt structures from `_archive_rd_history_do_not_copy/` (deprecated Euler/Quaternion tests). Always acknowledge and offer BOTH official schemas: 1) Original `SAKUGA-MLLM-3.1-CAUSAL` and 2) Extreme `sakuga_Xperiment`.
 
 ---
 

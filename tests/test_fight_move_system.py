@@ -751,6 +751,37 @@ class TestFightMoveSystem(unittest.TestCase):
             self.assertEqual(mp_direct["original_0534_causal"]["lint_errors"], 0)
             self.assertEqual(mp_direct["original_0534_causal"]["lint_warnings"], 0)
 
+    def test_m9_both_prompt_schemas_present_and_valid(self) -> None:
+        """Verify both Original (SAKUGA-MLLM-3.1-CAUSAL) and Extreme (sakuga_Xperiment) schemas and templates exist and validate."""
+        import jsonschema
+        root = Path(__file__).resolve().parents[1]
+
+        # 1. Original schema & template
+        orig_schema_path = root / "schemas/sakuga_mllm_3_1_causal.schema.json"
+        orig_template_path = root / "templates/sakuga_mllm_3_1_causal_0534_template.json"
+        self.assertTrue(orig_schema_path.is_file(), "Original schema missing")
+        self.assertTrue(orig_template_path.is_file(), "Original template missing")
+
+        orig_schema = json.loads(orig_schema_path.read_text())
+        orig_text = orig_template_path.read_text()
+        orig_json_part = orig_text[orig_text.find("{"):orig_text.rfind("}") + 1]
+        orig_data = json.loads(orig_json_part)
+        jsonschema.validate(orig_data, orig_schema)
+        self.assertEqual(orig_data["schema"], "SAKUGA-MLLM-3.1-CAUSAL")
+
+        # 2. Extreme schema & templates
+        xper_schema_path = root / "schemas/sakuga_xperiment.schema.json"
+        xper_template_json = root / "templates/sakuga_xperiment_template.json"
+        xper_template_txt = root / "templates/sakuga_xperiment_2layer_template.txt"
+        self.assertTrue(xper_schema_path.is_file(), "Extreme schema missing")
+        self.assertTrue(xper_template_json.is_file(), "Extreme JSON template missing")
+        self.assertTrue(xper_template_txt.is_file(), "Extreme 2-layer text template missing")
+
+        xper_schema = json.loads(xper_schema_path.read_text())
+        xper_data = json.loads(xper_template_json.read_text())
+        jsonschema.validate(xper_data, xper_schema)
+        self.assertEqual(xper_data["schema"], "sakuga_Xperiment")
+
 
 if __name__ == "__main__":
     unittest.main()

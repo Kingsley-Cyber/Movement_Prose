@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sakuga.dev/schemas/sakuga_xperiment.schema.json",
+  "title": "sakuga_Xperiment Prompt Schema (Extreme / 2-Layer Fluid Stack)",
+  "description": "Extreme 2-layer unrolled fluid stack schema (Layer 1 Labanotation-as-Words + Layer 2 Kinematic Scene Graph) with V01-V22 biomechanical attributes, bilateral two-arm silhouette locks, and fighting-style archetype gating.",
+  "type": "object",
+  "required": [
+    "name",
+    "schema",
+    "fps",
+    "duration",
+    "axes",
+    "screen_geometry",
+    "negative",
+    "conservation_laws",
+    "laban",
+    "beats",
+    "A_beats",
+    "B_track",
+    "camera",
+    "anime",
+    "rules"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique identifier for the fight scene"
+    },
+    "schema": {
+      "type": "string",
+      "const": "sakuga_Xperiment",
+      "description": "Extreme 2-layer fluid stack schema tag"
+    },
+    "fps": {
+      "type": "integer",
+      "enum": [24]
+    },
+    "duration": {
+      "type": "number",
+      "minimum": 1.0,
+      "maximum": 60.0
+    },
+    "axes": {
+      "type": "string"
+    },
+    "screen_geometry": {
+      "type": "string",
+      "description": "180-degree camera hemisphere lock, fixed screen-left A and screen-right B"
+    },
+    "negative": {
+      "type": "string"
+    },
+    "conservation_laws": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "laban": {
+      "type": "object",
+      "required": ["A", "B"],
+      "properties": {
+        "A": {
+          "type": "object",
+          "required": ["fighting_style", "chain", "effort"],
+          "properties": {
+            "fighting_style": {
+              "type": "string",
+              "enum": [
+                "grounded_striker_boxer_baki",
+                "ufc_mma_octagon",
+                "muay_thai_nak_muay",
+                "acrobatic_multidomain_freestyle",
+                "shinobi_weapon_acrobat",
+                "heavy_weapon_master"
+              ]
+            },
+            "chain": { "type": "string" },
+            "effort": {
+              "type": "object",
+              "required": ["weight", "time", "space", "flow"],
+              "properties": {
+                "weight": { "type": "string" },
+                "time": { "type": "string" },
+                "space": { "type": "string" },
+                "flow": { "type": "string" }
+              }
+            }
+          }
+        },
+        "B": {
+          "type": "object",
+          "required": ["fighting_style", "chain", "effort"],
+          "properties": {
+            "fighting_style": { "type": "string" },
+            "chain": { "type": "string" },
+            "effort": {
+              "type": "object",
+              "required": ["weight", "time", "space", "flow"],
+              "properties": {
+                "weight": { "type": "string" },
+                "time": { "type": "string" },
+                "space": { "type": "string" },
+                "flow": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "beats": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "A_beats": {
+      "type": "array",
+      "description": "Kinematic beats with bilateral silhouette locks, Center of Gravity, weight split, and easing",
+      "items": {
+        "type": "object",
+        "required": ["t", "beat", "causal", "pos", "vel", "axis", "arc", "support", "limbs", "pose"],
+        "properties": {
+          "t": { "type": "number" },
+          "beat": { "type": "string" },
+          "causal": { "type": "string" },
+          "pos": { "type": "array" },
+          "vel": { "type": "array" },
+          "axis": { "type": ["array", "string"] },
+          "arc": { "type": "string" },
+          "support": { "type": "string" },
+          "contact": { "type": "string" },
+          "limbs": { "type": "string" },
+          "pose": { "type": "string" },
+          "weight_split": { "type": ["string", "array"] },
+          "com_position": { "type": ["string", "array"] },
+          "easing_curve": { "type": "string" },
+          "impulse_tier": { "type": ["string", "integer"] },
+          "kinetic_chain": { "type": ["string", "array"] }
+        }
+      }
+    },
+    "B_track": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["t", "pos", "support", "pose"],
+        "properties": {
+          "t": { "type": "number" },
+          "beat": { "type": "string" },
+          "reaction": { "type": "string" },
+          "action": { "type": "string" },
+          "pos": { "type": "array" },
+          "vel": { "type": "array" },
+          "axis": { "type": ["array", "string"] },
+          "support": { "type": "string" },
+          "limbs": { "type": "string" },
+          "pose": { "type": "string" },
+          "weight_split": { "type": ["string", "array"] },
+          "com_position": { "type": ["string", "array"] },
+          "easing_curve": { "type": "string" },
+          "impulse_tier": { "type": ["string", "integer"] },
+          "kinetic_chain": { "type": ["string", "array"] }
+        }
+      }
+    },
+    "camera": {
+      "type": ["object", "array"],
+      "description": "Camera tracks, cuts, fov configuration, or shot list"
+    },
+    "anime": {
+      "type": "object",
+      "required": ["smear_frames", "speed_lines", "line_rule"],
+      "properties": {
+        "smear_frames": { "type": "array", "items": { "type": "string" } },
+        "speed_lines": { "type": "array", "items": { "type": "string" } },
+        "time_remap": { "type": "object" },
+        "anticipation_holds": { "type": "array" },
+        "fx": { "type": "object" },
+        "line_rule": { "type": "string" },
+        "chromatic_aberration": { "type": "string" }
+      }
+    },
+    "rules": {
+      "type": "string"
+    }
+  }
+}

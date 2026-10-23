@@ -22,18 +22,22 @@ Want to know how two fighters match up—or want a realistic fight story generat
 - **10-Phase Fight Simulator & Director Mode:** Simulates a complete 30-to-60-second bout beat-by-beat (`Read -> Setup -> Exchange -> Clinch/Counter -> Finish/Decision`). You can let the simulation decide the winner **or** tell the agent who must win (`Director Mode`), producing a causal event graph, limb-by-limb choreography, and camera shot list.
 
 ### 3. 🎬 The Dual-Path Sakuga Video Prompt Compiler & Glitch Repair Loop (`Movement_Prose` — `fight_move_system/`, `scripts/`)
-Takes either a **simulated BLOCK fight** or your **custom fight concept** and compiles it into ready-to-paste AI video prompts (for Seedance 2.0 Mini, Seedance 2.5, Kling, Wan, etc.) in any of **3 protected formats**:
-1. **Protected Original `05:34` Single-Layer `SAKUGA-MLLM-3.1-CAUSAL` Format (`scripts/sakuga_compiler.py` & `scripts/sakuga_original_kb.py`):** Our original compact single-layer prompt structure (header + 1-line-per-beat causal JSON), cryptographically locked (`SHA256`) so its format never drifts, and wired directly into the Knowledge Base.
-2. **2-Layer Unrolled Fluid Stack (`sakuga_Xperiment` / `--stack`):** Pairs a human-readable *Labanotation-as-Words* movement timeline (Layer 1) directly above a strict 3D kinematic scene graph (Layer 2) to lock two-arm visibility, grounded footwork, and impact holds.
+Takes either a **simulated BLOCK fight** or your **custom fight concept** and compiles it into ready-to-paste AI video prompts (for Seedance 2.0 Mini, Seedance 2.5, Kling, Wan, etc.) using **TWO OFFICIAL CO-EQUAL PROMPT SCHEMAS**:
+1. **Schema 1: The Original Baseline Schema (`SAKUGA-MLLM-3.1-CAUSAL`):**
+   - **Schema & Template:** [`schemas/sakuga_mllm_3_1_causal.schema.json`](schemas/sakuga_mllm_3_1_causal.schema.json) | [`templates/sakuga_mllm_3_1_causal_0534_template.json`](templates/sakuga_mllm_3_1_causal_0534_template.json)
+   - **Format:** Single-Layer causal JSON structure (header + 1-line-per-beat causal JSON with 11-key `A_beats`, 8-key `B_track`, explicit `C01..C16` causal graph, and 17-Rule physics linter). Cryptographically locked (`SHA256`) to the `05:34` (`e91c686`) baseline.
+2. **Schema 2: The Extreme / Advanced 2-Layer Schema (`sakuga_Xperiment`):**
+   - **Schema & Templates:** [`schemas/sakuga_xperiment.schema.json`](schemas/sakuga_xperiment.schema.json) | [`templates/sakuga_xperiment_template.json`](templates/sakuga_xperiment_template.json) | [`templates/sakuga_xperiment_2layer_template.txt`](templates/sakuga_xperiment_2layer_template.txt)
+   - **Format:** The extreme 2-Layer Unrolled Fluid Stack format: pairs Layer 1 (*Labanotation-as-Words* continuous support, force-event & prop timeline with weight split `%`, Center of Gravity `CoG`, and easing curves) directly above Layer 2 (Kinematic Scene Graph with V01–V22 biomechanical attributes: bilateral two-arm silhouette lock, standing-pillar leg separation, realistic reach spacing, 180° camera hemisphere lock, and fighting-style archetype gating).
 3. **BLOCK Shot-by-Shot Cinematic Prose (`video_prompts.jsonl`):** Clean, model-agnostic shot-by-shot camera and movement descriptions.
 - **Instant Video Glitch Repair:** If a rendered video has a flaw (e.g., *"his arm vanished at 3 seconds"* or *"they stood too far apart"*), just tell your agent. The agent automatically repairs only that specific beat and saves the lesson into Agent Memory.
 
 ### 💬 What You Can Ask Your Agent Right Now (Zero Terminal Required)
-- *"Give me the BLUF on this repo and show me the fighters available."*
+- *"Give me the BLUF on this repo, explain both the Original and Extreme prompt schemas, and show me the fighters available."*
 - *"Who wins between Maleek and Donnell under MMA rules, and what is Donnell's biggest opening?"*
-- *"Simulate a 60-second fight between Imani Vale (wrestler) and Donnell where Imani exploits his missing clinch game, and generate the video prompts."*
-- *"Create a 10-second grounded Baki-style bare-knuckle brawl prompt using the Knowledge Base."*
-- *"Compile my fight using the original 05:34 single-layer prompt format."*
+- *"Simulate a 60-second fight between Imani Vale (wrestler) and Donnell where Imani exploits his missing clinch game, and generate the video prompts in both Original and Extreme formats."*
+- *"Create a 10-second grounded Baki-style bare-knuckle brawl prompt using the Extreme sakuga_Xperiment schema and the Knowledge Base."*
+- *"Compile my fight using the original 05:34 SAKUGA-MLLM-3.1-CAUSAL single-layer prompt format."*
 - *"In my video render, the kick at 4 seconds looked floaty—fix that beat."*
 
 ---

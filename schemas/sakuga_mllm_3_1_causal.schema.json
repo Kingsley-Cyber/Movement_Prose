@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sakuga.dev/schemas/sakuga_mllm_3_1_causal.schema.json",
+  "title": "SAKUGA-MLLM-3.1-CAUSAL Prompt Schema (Original Baseline)",
+  "description": "Cryptographically locked (05:34 e91c686) single-layer causal JSON prompt schema for MLLM 2D anime action choreography.",
+  "type": "object",
+  "required": [
+    "name",
+    "schema",
+    "fps",
+    "duration",
+    "axes",
+    "screen_geometry",
+    "negative",
+    "conservation_laws",
+    "laban",
+    "beats",
+    "A_beats",
+    "B_track",
+    "camera",
+    "anime",
+    "rules"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique identifier for the fight scene"
+    },
+    "schema": {
+      "type": "string",
+      "const": "SAKUGA-MLLM-3.1-CAUSAL",
+      "description": "Original protected baseline schema tag"
+    },
+    "fps": {
+      "type": "integer",
+      "enum": [24]
+    },
+    "duration": {
+      "type": "number",
+      "minimum": 1.0,
+      "maximum": 60.0
+    },
+    "axes": {
+      "type": "string",
+      "description": "Axis definitions (Y_up, metres, combat pocket, facing directions)"
+    },
+    "screen_geometry": {
+      "type": "string",
+      "description": "180-degree camera hemisphere and screen-side lock constraints"
+    },
+    "negative": {
+      "type": "string",
+      "description": "Strict negative prompts preventing 3D CGI, missing limbs, floaty physics, HUD, text"
+    },
+    "conservation_laws": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "laban": {
+      "type": "object",
+      "description": "Fighter combat archetypes and Laban movement effort parameters"
+    },
+    "beats": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "A_beats": {
+      "type": "array",
+      "description": "11-key strictly kinematic and causal beats for Fighter A",
+      "items": {
+        "type": "object",
+        "required": ["t", "beat", "causal", "pos", "vel", "axis", "arc", "support", "limbs", "pose"],
+        "properties": {
+          "t": { "type": "number" },
+          "beat": { "type": "string" },
+          "causal": { "type": "string" },
+          "pos": { "type": "array" },
+          "vel": { "type": "array" },
+          "axis": { "type": ["array", "string"] },
+          "arc": { "type": "string" },
+          "support": { "type": "string" },
+          "contact": { "type": "string" },
+          "limbs": { "type": "string" },
+          "pose": { "type": "string" }
+        }
+      }
+    },
+    "B_track": {
+      "type": "array",
+      "description": "Reaction and counter track for Fighter B strictly conditioned on prior contact",
+      "items": {
+        "type": "object",
+        "required": ["t", "pos", "support", "pose"],
+        "properties": {
+          "t": { "type": "number" },
+          "beat": { "type": "string" },
+          "reaction": { "type": "string" },
+          "action": { "type": "string" },
+          "pos": { "type": "array" },
+          "vel": { "type": "array" },
+          "axis": { "type": ["array", "string"] },
+          "support": { "type": "string" },
+          "limbs": { "type": "string" },
+          "pose": { "type": "string" }
+        }
+      }
+    },
+    "camera": {
+      "type": ["array", "object"],
+      "description": "Camera shot list or camera configuration parameters"
+    },
+    "anime": {
+      "type": "object",
+      "required": ["smear_frames", "speed_lines", "line_rule"],
+      "properties": {
+        "smear_frames": { "type": "array", "items": { "type": "string" } },
+        "speed_lines": { "type": "array", "items": { "type": "string" } },
+        "time_remap": { "type": "object" },
+        "anticipation_holds": { "type": "array" },
+        "fx": { "type": "object" },
+        "line_rule": { "type": "string" },
+        "chromatic_aberration": { "type": "string" }
+      }
+    },
+    "rules": {
+      "type": "string",
+      "description": "Natural language summary of 10s continuous combat, outfit locks, and timing holds"
+    }
+  }
+}
