@@ -1,0 +1,364 @@
+10s anime fight clip, 24fps, moonlit stone courtyard ninja arena with a tall carved stone pillar rising vertically on the right-center stage plane, drifting night mist, crisp silver moonlight rim-lighting, and deep indigo courtyard shadows. STYLE: Pure 2D cel-shaded hand-drawn anime, Naruto Shippuden and Sword of the Stranger style high-speed ninja sakuga animation on twos, flat two-tone high-contrast cel shadows, heavy anatomical ink outlines on Fighter A and Fighter B, broken sketchy ink on active smear limbs and rope-dart whip arcs only, clean ultra-thick ink on impact holds. Not 3D, not CGI, not live action, not photoreal. SCREEN GEOMETRY LOCK: Maintain strict 180-degree front-hemisphere camera geometry — Fighter A stays on screen-left facing right and Fighter B stays on screen-right facing left with zero camera-cut side swaps and zero on-screen text, numbers, or HUD.
+ENTITY COUNT, OUTFIT & PROP CONTINUITY LOCK: Exactly TWO shinobi fighters and SIX tracked props with strict single-instance conservation (never duplicated, never teleported). Fighter A (agile shinobi striker): dark high-collar shinobi flak coat trailing behind, forearm wraps, dark shinobi trousers, strapped sandals; begins inverted high in mid-air above the stone pillar with rope dart holstered at left hip, smoke pellet at waist, and wooden substitution log concealed inside coat. Fighter B (heavy armored rogue shinobi): sleeveless charcoal combat vest over scarred broad shoulders, reinforced forearm bracers, dark hakama trousers; begins grounded at the base of the courtyard holding the single iron kunai in reverse grip in his right hand and three steel shuriken holstered in his right thigh pouch. PROP LEDGER INVARIANTS: (1) SINGLE KUNAI: Held by B in reverse grip (0.0s-0.5s) -> thrown upward at A (0.5s) -> kicked and deflected spinning high into the air by A's right foot (2.5s) -> caught falling out of the air by A's right hand (6.6s-8.0s) -> driven by A's right hand deep into B's right shoulder where it stays embedded to the end (8.5s-10.0s). (2) SINGLE ROPE DART: Holstered at A's left hip (0.0s-3.0s) -> drawn into A's left hand on crouch landing (3.0s) -> whipped by A's left hand to wrap tightly around B's right shoulder (7.5s-7.6s) -> pulled taut to drag B toward the pillar and slam him (8.0s-10.0s). (3) SMOKE PELLET & WOODEN SUBSTITUTION LOG (KAWARIMI STAND-IN): At 3.7s A deploys the smoke pellet and vanishes in a white smoke burst while a full-body-height upright wooden substitution log immediately occupies A's exact spot (3.7s-4.4s) to absorb B's palm strike at 4.0s before toppling to the stone floor as A reappears behind B at 4.4s. (4) THREE SHURIKEN: Holstered on B's right thigh (0.0s-5.5s) -> thrown in a fan volley by B while airborne (5.5s) -> pass cleanly over A's low ground slide (5.9s) and embed firmly into the stone pillar face (6.3s-10.0s). (5) STONE PILLAR: Solid vertical stone column anchored on the right-center stage plane from floor to high overhead; A lands near its top and sprints straight down its vertical face (0.6s-1.6s), three shuriken embed into its stone face (6.3s), and B hurls A's body against its face where A's feet plant to rebound (7.0s).
+
+=== LAYER 1: SYNCHRONIZED BILATERAL SUPPORT, 19-PART SILHOUETTE, PROP LEDGER & FORCE-EVENT TIMELINE ===
+MOVEMENT LANGUAGE: <timestamp> <exchange>: SUPPORT & WEIGHT TRANSFER (grounded/pillar/airborne support; NO SUPPORT = airborne) | ALL-19-PARTS 4-LIMB SILHOUETTE (head, torso, pelvis, L_arm, R_arm, L_leg, R_leg — every limb tracked, Kawarimi uses full-body wooden log stand-in at 3.70s-4.40s) | PROP LEDGER STATE (kunai, rope_dart, smoke_pellet, substitution_log, 3_shuriken, pillar) | SYNCHRONIZED CAUSE -> CONTACT -> POST-CONTACT REACTION.
+0.00s-0.60s E01 (INVERTED_DROP_AND_PILLAR_SPRINT vs REVERSE_GRIP_KUNAI_THROW): A [0.00s NO SUPPORT airborne inverted high above pillar -> 0.60s SUPPORT both feet planted high on vertical stone pillar face, sprinting straight down | head forward, torso forward, pelvis level, L_arm:back extended open, R_arm:forward extended open, L_leg:forward planted flat, R_leg:back extended pushing] <-> B [SUPPORT both feet planted wide on courtyard floor | head forward, torso forward twist, L_arm:forward folded open, R_arm:forward extended open throwing upward, L_leg:forward planted flat, R_leg:back planted flat] | PROPS [kunai: B_right_hand reverse_grip -> 0.50s thrown upward in flight toward A; rope_dart: A_left_hip; smoke_pellet: A_waist; substitution_log: A_coat; 3_shuriken: B_right_thigh] | EVENT: B hurls the single kunai upward at 0.50s as A lands high on the stone pillar at 0.60s and sprints straight down its vertical face toward B.
+1.60s-3.00s E02 (AIRBORNE_FOOT_KUNAI_DEFLECT_AND_CROUCH_LAND vs UPWARD_THROW_FOLLOW_THROUGH): A [1.60s pushes off pillar -> NO SUPPORT airborne diving arc -> 2.50s mid-air side-twist kick -> 3.00s SUPPORT both feet planted in low crouch | at 2.50s: head forward, torso side-twist, L_arm:out extended open, R_arm:forward folded fist, L_leg:tucked folded pointed, R_leg:extended flat striking kunai] <-> B [SUPPORT both feet planted | R_arm extended high in throw follow-through -> 2.60s both arms braced forward-high] | PROPS [kunai: 2.50s deflected upward spinning end-over-end by A's right foot; rope_dart: 3.00s drawn from A_left_hip into A_left_hand] | EVENT (STRIKE / DEFLECT): At 2.50s (hold 3f), A's extended right foot strikes the incoming kunai mid-air in clear profile, deflecting it spinning high into the air with a metallic spark ring; at 3.00s A lands in a low crouch and draws the rope dart into his left hand.
+3.70s-4.40s E03 (KAWARIMI_WOODEN_LOG_SUBSTITUTION vs B_PALM_STRIKE_INTO_LOG): A [3.70s cpcs:absent via Kawarimi smoke burst; FULL-BODY UPRIGHT WOODEN SUBSTITUTION LOG stands in A's exact place from 3.70s-4.40s -> 4.40s A reappears crouched behind B's flank with SUPPORT both feet planted | L_arm:forward folded open, R_arm:forward folded open, L_leg:forward planted flat, R_leg:back planted flat] <-> B [SUPPORT both feet planted | 4.00s torso twists forward, L_arm:back folded fist, R_arm:forward extended open palm striking log, L_leg:forward planted, R_leg:back planted] | PROPS [smoke_pellet: 3.70s deployed white smoke burst; substitution_log: 3.70s stands upright in A's place -> 4.00s struck by B's right palm -> 4.40s tips to floor] | EVENT (SUBSTITUTE & STRIKE): At 3.70s A vanishes in smoke and the upright wooden log stands in his place; at 4.00s B drives a heavy right palm strike into the wooden log (not A), and at 4.40s A reappears crouched directly behind B.
+4.55s-5.10s E04 (FE1_RISING_RIGHT_KNEE_TO_SPINE_AND_BACKFLIP vs B_LAUNCHED_AIRBORNE): A [4.55s FE1 windup on planted left leg -> 4.65s hip-to-knee upward drive -> 4.70s FE1 CONTACT right knee into B's spine -> 4.70s-5.10s NO SUPPORT airborne 360-degree backward somersault to inverted apex | at 4.70s: L_arm:guard folded open, R_arm:back extended fist, L_leg:forward planted flat, R_leg:forward folded knee driving up; at 5.10s: inverted head down, both arms overhead extended, both legs tucked] <-> B [4.70s-4.72s NO SUPPORT launched airborne by knee impact | spine flexes forward, torso folds, both feet lift off floor, both arms fling forward] | PROPS [kunai: spinning at high apex above courtyard; rope_dart: retained in A_left_hand] | EVENT (FE1 STRIKE): At 4.70s (hold 3f), A drives his rising right knee into B's spine; only after contact at 4.72s does B fold forward and launch off his feet while A rebounds into an inverted backflip at 5.10s.
+5.50s-6.30s E05 (LOW_GROUND_SLIDE_AND_LEFT_CARTWHEEL vs AIRBORNE_SHURIKEN_VOLLEY_INTO_PILLAR): A [5.90s SUPPORT both feet sliding low across flagstones under shuriken -> 6.30s left hand plants for 90-degree forward cartwheel left | at 5.90s: pelvis low, both arms forward folded, both legs extended flat sliding; at 6.30s: torso side-inverted, L_arm:down planted, R_arm:overhead extended, L_leg:tucked, R_leg:extended] <-> B [5.50s NO SUPPORT airborne twisting torso, R_arm extended throwing 3 shuriken downward -> 6.30s SUPPORT both feet land in braced crouch] | PROPS [3_shuriken: 5.50s thrown by B in flight -> 5.90s pass over A's low slide -> 6.30s embed firmly into stone pillar face] | EVENT (EVASION): At 5.50s airborne B throws three shuriken; at 5.90s A slides flat underneath the volley as the three shuriken embed into the stone pillar at 6.30s, and A cartwheels left onto his feet.
+6.60s-7.05s E06 (AIRBORNE_KUNAI_CATCH_AND_PILLAR_WALL_PLANT vs FE2_TWO_HAND_ELBOW_CATCH_AND_THROW): A [6.60s lunges in while R_hand catches falling kunai mid-air -> 6.80s left elbow locked by B, feet lifted off ground -> 7.00s hurled into stone pillar face, SUPPORT both feet plant flat on vertical pillar face | at 7.00s: head back, torso extended, both arms back extended, both legs forward planted on pillar] <-> B [6.60s FE2 windup -> 6.65s plants right foot, drives both hands to A's left elbow -> 6.80s FE2 CONTACT both hands lock A's left elbow -> 7.00s-7.05s circular hip-and-shoulder throw hurling A into pillar] | PROPS [kunai: 6.60s caught falling mid-air by A_right_hand and retained; pillar: 7.00s absorbs A's wall-plant impact] | EVENT (FE2 ACQUIRE & THROW): As A catches the falling kunai in his right hand at 6.60s, B clamps both hands onto A's left elbow at 6.80s (hold 2f) and hurls A circularly into the stone pillar face at 7.00s (hold 3f), where A plants both feet against the stone.
+7.50s-8.20s E07 (ROPE_DART_SHOULDER_WRAP_AND_FE4_TAUT_DRAG vs B_DRAGGED_TOWARD_PILLAR): A [7.50s rebounds off pillar -> 7.60s L_hand whips rope dart wrapping B's right shoulder -> 8.00s-8.20s SUPPORT grounded on planted left foot, FE4 drive pulling taut rope dart to drag B | L_arm:forward extended holding taut rope, R_arm:back extended fist holding kunai, L_leg:forward planted flat, R_leg:back extended] <-> B [7.60s right shoulder wrapped by rope dart -> 8.00s-8.20s SUPPORT feet stumbling forward as body is dragged toward pillar, both arms back extended] | PROPS [rope_dart: 7.60s wraps tightly around B_right_shoulder and remains taut to 10.00s; kunai: held ready in A_right_hand] | EVENT (ACQUIRE & MAINTAIN TETHER): At 7.50s-7.60s (hold 2f), A whips the rope dart from his left hand to wrap B's right shoulder, then lands at 8.00s-8.20s and drags B forward along the taut tether toward the pillar.
+8.30s-9.05s E08 (FE3_KUNAI_SHOULDER_IMPALE_AND_FE4_FLOOR_SLAM vs B_IMPALED_AND_SLAMMED_PRONE): A [8.30s FE3 windup coiling torso -> 8.42s plants left foot, drives R_hand kunai down-forward -> 8.50s FE3 CONTACT kunai penetrates B's right shoulder -> 8.75s FE4 CONTACT full-body downward slam driving B into stone floor -> 9.00s SUPPORT both feet in low shinobi crouch] <-> B [8.50s-8.53s right shoulder impaled by kunai, torso jerks, head snaps back -> 8.75s-8.77s slammed flat into stone floor with dust burst -> 9.00s-10.00s SUPPORT prone motionless on floor] | PROPS [kunai: 8.50s driven by A_right_hand into B_right_shoulder where it remains embedded through 10.00s; rope_dart: taut between A_left_hand and B_right_shoulder] | EVENT (FE3 PENETRATE & FE4 SLAM): At 8.50s (hold 4f, slow-motion), A drives the kunai deep into B's right shoulder where it stays embedded; without resetting stance, A wrenches the taut rope dart at 8.75s-9.00s (hold 5f) to slam B's body prone into the flagstones with a radial dust shockwave.
+9.00s-10.00s TERMINAL_HOLD: A [SUPPORT low shinobi crouch on screen-left facing right | both feet planted flat, both arms separate from torso in silhouette] <-> B [SUPPORT prone motionless on stone floor on screen-right | kunai embedded in right shoulder, never stands after knockdown] | CLOSURE: From 9.00s to 10.00s, end on a slow dolly-in as Fighter A holds a low, balanced shinobi crouch on screen-left with both feet planted flat, left hand relaxed forward, and both arms clearly separate from his torso in silhouette, while Fighter B lies prone and motionless face-down on the flagstones on screen-right with the single kunai still embedded in his right shoulder and the three shuriken embedded in the stone pillar behind them as courtyard dust settles in the moonlight.
+
+=== LAYER 2: LATENT-SAKUGA-SCENE-STACK KINEMATIC, PROP, CAMERA & ANIME FX SCENE GRAPH ===
+{
+  "name": "lbn23adv_10s_pillar_fight_latent_sakuga_stack",
+  "schema": "LATENT-SAKUGA-SCENE-STACK-1.0",
+  "fps": 24,
+  "duration": 10.0,
+  "environment_and_lighting": "moonlit stone courtyard ninja arena with an 8-meter vertical carved stone pillar on the right-center stage plane, drifting night mist, silver moonlight rim-lighting, and deep indigo shadows",
+  "screen_geometry": "180_degree_camera_hemisphere_locked_for_all_10s: Fighter A stays on screen_left facing right and Fighter B stays on screen_right facing left throughout all 10.0 seconds with zero camera-cut side swaps.",
+  "body_invariants": "ALL_19_PARTS_PRESENT (head, torso, pelvis, upper-arm L/R, forearm L/R, hand L/R, thigh L/R, shin L/R, foot L/R). Occlusion allowed; deletion forbidden. At 3.70s-4.40s Kawarimi substitution, the upright full-body wooden substitution log stands in A's exact place so no limb or actor slot is missing.",
+  "negative": "no 3D CGI, no mocap stiffness, no floaty physics, no distant wide shots, no on-screen text or numbers, no HUD, no extra fighters, no cloned A or B, no extra props beyond 1 kunai, 1 rope dart, 1 smoke pellet, 1 substitution log, 3 shuriken, and 1 stone pillar, no missing limbs, no limb merge, no L/R limb swap, no limb duplication during spins/somersaults/cartwheels, no kawarimi vanish without the full-body wooden log stand-in, no kunai teleporting or duplication, no full-body blur during smears, no reaction before contact, no zero-width strikes, no stance reset between the 8.50s kunai impale and 8.75s floor slam, no B standing after 5.00s",
+  "conservation_laws": [
+    "CONSERVE_SEMANTICALLY: prioritize continuous shinobi weight transfer, 5-phase force-event width (windup -> drive -> contact -> reaction -> follow-through), weapon ownership continuity, and causal order over isolated poses",
+    "single_kunai_ownership_continuity: B reverse-grip (0.0s) -> B upward throw (0.5s) -> A right-foot deflect upward spin (2.5s) -> A right-hand mid-air catch (6.6s) -> A drives into B right shoulder (8.5s) -> embedded in B right shoulder (8.5s-10.0s)",
+    "kawarimi_full_body_stand_in: at 3.70s A vanishes in smoke and the upright wooden substitution log immediately occupies A's spot to receive B's 4.00s palm strike before A reappears behind B at 4.40s",
+    "accent_after_contact_rule: impact sparks, smoke bursts, and radial dust rings fire strictly at or after visible contact and clear immediately so recoil and prop trajectories remain visible",
+    "terminal_knockdown_law: B never stands upright after the 4.70s spine-knee launch and remains prone and motionless from 9.00s to 10.00s"
+  ],
+  "laban": {
+    "A": {
+      "fighting_style": "shinobi_acrobatic_melee_and_rope_dart",
+      "chain": "E01_inverted_drop_and_pillar_sprint > E02_pillar_launch_and_foot_kunai_deflect > E03_kawarimi_log_swap_and_flank_reappear > E04_FE1_rising_right_knee_and_backflip > E05_low_slide_under_shuriken_and_left_cartwheel > E06_midair_kunai_catch_and_pillar_wall_plant > E07_rope_dart_shoulder_wrap_and_FE4_drag > E08_FE3_kunai_shoulder_impale_and_FE4_ground_slam > E09_low_crouch_final_hold",
+      "effort": {
+        "weight": "strong_snappy",
+        "time": "sudden_explosive",
+        "space": "direct_close_range",
+        "flow": "continuous_recoil_bound_at_impacts"
+      }
+    },
+    "B": {
+      "fighting_style": "heavy_rogue_shinobi_weapons_and_grapple",
+      "chain": "E01_reverse_grip_kunai_upward_throw > E02_upward_follow_through_and_brace > E03_palm_strike_into_substitution_log > E04_FE1_spine_struck_launched_airborne > E05_airborne_three_shuriken_volley_and_land > E06_FE2_two_hand_elbow_catch_and_pillar_throw > E07_right_shoulder_wrapped_and_dragged > E08_FE3_shoulder_impaled_and_FE4_slammed_prone > E09_prone_motionless_final",
+      "effort": {
+        "weight": "heavy_crushing",
+        "time": "sustained_to_sudden",
+        "space": "direct",
+        "flow": "bound"
+      }
+    }
+  },
+  "prop_tracks": {
+    "kunai": [
+      {
+        "t": "0.00s",
+        "owner": "B_right_hand",
+        "state": "held in reverse grip"
+      },
+      {
+        "t": "0.50s",
+        "owner": "airborne_flight",
+        "state": "thrown upward by B toward descending A"
+      },
+      {
+        "t": "2.50s",
+        "owner": "airborne_deflected",
+        "state": "struck by A's right foot and deflected spinning end-over-end high above the courtyard"
+      },
+      {
+        "t": "6.60s",
+        "owner": "A_right_hand",
+        "state": "caught falling out of the air by A's right hand during grapple entry"
+      },
+      {
+        "t": "8.50s-10.00s",
+        "owner": "B_right_shoulder_embedded",
+        "state": "driven deep into B's right shoulder by A's right hand and retained embedded in B's shoulder to 10.00s"
+      }
+    ],
+    "rope_dart": [
+      {
+        "t": "0.00s-3.00s",
+        "owner": "A_left_hip",
+        "state": "holstered at A's left hip"
+      },
+      {
+        "t": "3.00s-7.50s",
+        "owner": "A_left_hand",
+        "state": "drawn into A's left hand on crouch landing"
+      },
+      {
+        "t": "7.60s-10.00s",
+        "owner": "A_left_hand_to_B_right_shoulder",
+        "state": "wrapped tightly around B's right shoulder and pulled taut by A's left hand to drag and slam B"
+      }
+    ],
+    "smoke_pellet_and_substitution_log": [
+      {
+        "t": "0.00s-3.70s",
+        "owner": "A_waist_and_coat",
+        "state": "carried by A"
+      },
+      {
+        "t": "3.70s-4.40s",
+        "owner": "courtyard_stand_in",
+        "state": "smoke pellet bursts; upright full-body wooden substitution log stands in A's exact spot and absorbs B's 4.00s right palm strike"
+      },
+      {
+        "t": "4.40s-10.00s",
+        "owner": "courtyard_floor",
+        "state": "log tips onto stones as A reappears behind B"
+      }
+    ],
+    "shuriken_volley_3": [
+      {
+        "t": "0.00s-5.50s",
+        "owner": "B_right_thigh_pouch",
+        "state": "holstered"
+      },
+      {
+        "t": "5.50s-6.30s",
+        "owner": "airborne_volley",
+        "state": "thrown downward by airborne B, passing over A's 5.90s low ground slide"
+      },
+      {
+        "t": "6.30s-10.00s",
+        "owner": "stone_pillar_embedded",
+        "state": "all three shuriken embedded firmly in the stone pillar face"
+      }
+    ],
+    "stone_pillar": [
+      {
+        "t": "0.60s-1.60s",
+        "interaction": "A lands near top, sprints straight down vertical face, and kicks off"
+      },
+      {
+        "t": "6.30s",
+        "interaction": "three shuriken embed into pillar face"
+      },
+      {
+        "t": "7.00s",
+        "interaction": "B hurls A into pillar face; A plants both feet on pillar to rebound"
+      }
+    ]
+  },
+  "synchronized_exchanges": [
+    {
+      "t": "0.00s-0.60s",
+      "exchange": "E01_inverted_drop_and_pillar_sprint_vs_kunai_throw",
+      "A_state": "inverted airborne coil above pillar -> lands both feet on pillar face at 0.60s and sprints straight down",
+      "contact": {
+        "operation": "release_projectile_and_surface_plant",
+        "visibility_target": "correct_visible",
+        "event": "B releases reverse-grip kunai upward at 0.50s; A plants both feet on the stone pillar at 0.60s and sprints down"
+      },
+      "B_state": "grounded wide stance -> twists torso at 0.50s to throw kunai upward at A"
+    },
+    {
+      "t": "1.60s-3.00s",
+      "exchange": "E02_pillar_launch_and_midair_foot_kunai_deflect",
+      "A_state": "launches off pillar face at 1.60s -> side-twist right-foot kick at 2.50s -> lands in grounded crouch at 3.00s drawing rope dart into left hand",
+      "contact": {
+        "operation": "strike_deflect",
+        "visibility_target": "correct_visible",
+        "event": "A's flat right foot strikes the rising kunai mid-air at 2.50s (hold 3f), deflecting it spinning high into the air"
+      },
+      "B_state": "completes upward throw follow-through -> braces both forearms forward at 2.60s"
+    },
+    {
+      "t": "3.70s-4.40s",
+      "exchange": "E03_kawarimi_wooden_log_stand_in_and_flank_reappear",
+      "A_state": "vanishes in smoke at 3.70s leaving full-body upright wooden log stand-in -> reappears crouched behind B at 4.40s",
+      "contact": {
+        "operation": "strike_stand_in",
+        "visibility_target": "correct_visible",
+        "event": "B's right palm strikes the upright wooden substitution log at 4.00s (accent 3); log shudders and tips as A reappears behind B at 4.40s"
+      },
+      "B_state": "lunges forward at 4.00s driving right open palm into the substitution log"
+    },
+    {
+      "t": "4.55s-5.10s",
+      "exchange": "E04_FE1_rising_right_knee_to_spine_and_backflip",
+      "A_state": "4.55s loads right knee and coils torso on planted left leg -> 4.65s drives hip-to-knee up-forward -> 4.70s strikes B's spine -> 4.70s-5.10s 360-degree backward somersault to inverted apex",
+      "contact": {
+        "operation": "strike",
+        "visibility_target": "correct_visible",
+        "event": "FE1 (4.55s-4.85s): A's right knee strikes B's mid-spine at 4.70s (hold 3f); at 4.72s B's spine flexes forward, torso folds, and feet lift airborne"
+      },
+      "B_state": "launched airborne at 4.70s-4.85s, spine flexed forward and arms flung forward"
+    },
+    {
+      "t": "5.50s-6.30s",
+      "exchange": "E05_airborne_shuriken_volley_vs_low_slide_and_cartwheel",
+      "A_state": "5.90s slides low on flagstones underneath shuriken -> 6.30s plants left hand for 90-degree forward cartwheel left",
+      "contact": {
+        "operation": "projectile_embed",
+        "visibility_target": "correct_visible",
+        "event": "B throws three shuriken mid-air at 5.50s; A slides underneath at 5.90s; three shuriken embed into the stone pillar face at 6.30s"
+      },
+      "B_state": "5.50s throws three shuriken while airborne -> 6.30s lands in grounded brace"
+    },
+    {
+      "t": "6.60s-7.05s",
+      "exchange": "E06_FE2_two_hand_elbow_catch_and_throw_into_pillar",
+      "A_state": "6.60s right hand catches falling kunai mid-air -> 6.80s left elbow locked by B -> 7.00s hurled into stone pillar face, planting both feet on the stone",
+      "contact": {
+        "operation": "acquire_and_throw",
+        "visibility_target": "correct_visible",
+        "event": "FE2 (6.60s-7.05s): B clamps both hands onto A's left elbow at 6.80s (hold 2f), wrenches A off his feet at 6.82s, and hurls A into the stone pillar face at 7.00s (hold 3f)"
+      },
+      "B_state": "6.60s loads both hands -> 6.80s locks A's left elbow -> 7.00s-7.05s circular throw follow-through"
+    },
+    {
+      "t": "7.50s-8.20s",
+      "exchange": "E07_rope_dart_shoulder_wrap_and_FE4_taut_drag",
+      "A_state": "7.50s rebounds off pillar -> 7.60s wraps rope dart around B's right shoulder -> 8.00s-8.20s plants left foot and pulls taut rope dart to drag B toward pillar",
+      "contact": {
+        "operation": "acquire_and_maintain",
+        "visibility_target": "correct_visible",
+        "event": "Rope dart wraps B's right shoulder at 7.60s (hold 2f) and stays taut from A's left hand to B's right shoulder as A drags B at 8.00s-8.20s"
+      },
+      "B_state": "7.60s right shoulder captured by rope dart -> 8.00s-8.20s dragged forward off-balance toward pillar"
+    },
+    {
+      "t": "8.30s-9.05s",
+      "exchange": "E08_FE3_kunai_shoulder_impale_and_FE4_ground_slam",
+      "A_state": "8.30s coils torso -> 8.42s drives right-hand kunai down-forward -> 8.50s impales B's right shoulder -> 8.75s slams B into stone floor -> 9.00s-10.00s settles in low crouch",
+      "contact": {
+        "operation": "penetrate_and_slam",
+        "visibility_target": "correct_visible",
+        "event": "FE3 (8.30s-8.60s): A drives kunai into B's right shoulder at 8.50s (hold 4f, slow-motion) where it remains embedded; FE4 (8.75s-9.05s): A slams B's body into the stone floor at 8.75s-9.00s (hold 5f) with radial dust burst"
+      },
+      "B_state": "8.53s shoulder impaled, torso jerks, head snaps back -> 8.77s compressed flat against stone floor -> 9.00s-10.00s prone motionless"
+    }
+  ],
+  "camera": [
+    {
+      "t": "0.00s-0.60s",
+      "shot": "high_angle_crane_drop_to_vertical_pillar_track",
+      "framing": "tracks A's inverted drop onto the stone pillar top and vertical sprint down its face while keeping B's upward kunai throw visible below",
+      "preserve_axis": true
+    },
+    {
+      "t": "1.60s-2.50s",
+      "shot": "fast_push_in_to_tight_low_angle_kunai_deflect",
+      "framing": "exposes A's right foot striking and deflecting the kunai mid-air in clear profile",
+      "preserve_axis": true,
+      "accent_timing": "3-frame hit-stop hold and metallic spark ring strictly AFTER 2.50s foot-to-kunai contact"
+    },
+    {
+      "t": "3.70s-4.40s",
+      "shot": "wide_low_front_hemisphere_kawarimi_stage_view",
+      "framing": "shows the 3.70s smoke burst, the upright full-body wooden log stand-in, B's 4.00s palm strike into the log, and A's 4.40s reappearance behind B",
+      "preserve_axis": true
+    },
+    {
+      "t": "4.70s-5.10s",
+      "shot": "medium_close_side_profile_knee_strike_to_backflip_crane",
+      "framing": "exposes A's rising right knee into B's spine at 4.70s and cranes up with A's 360-degree backflip apex at 5.10s",
+      "preserve_axis": true,
+      "accent_timing": "3-frame hit-stop hold and blunt shock ring strictly AFTER 4.70s knee-to-spine contact"
+    },
+    {
+      "t": "5.50s-6.30s",
+      "shot": "low_lateral_tracking_slide_and_cartwheel",
+      "framing": "tracks A sliding flat underneath B's airborne three-shuriken volley at 5.90s and cartwheeling left at 6.30s as the shuriken embed in the pillar",
+      "preserve_axis": true
+    },
+    {
+      "t": "6.60s-7.00s",
+      "shot": "tight_grapple_bind_to_profile_pillar_wall_slam",
+      "framing": "shows A catching the falling kunai in his right hand as B locks A's left elbow with both hands at 6.80s and hurls A into the stone pillar face at 7.00s",
+      "preserve_axis": true,
+      "accent_timing": "2-frame grapple hold at 6.80s; 3-frame hit-stop hold and stone-crack dust burst strictly AFTER 7.00s pillar impact"
+    },
+    {
+      "t": "7.50s-8.20s",
+      "shot": "medium_close_rope_dart_wrap_and_taut_drag_track",
+      "framing": "keeps the rope-dart wrap around B's right shoulder at 7.60s and the taut tether line between A's left hand and B's shoulder unobstructed",
+      "preserve_axis": true
+    },
+    {
+      "t": "8.50s-9.00s",
+      "shot": "slow_motion_tight_profile_kunai_impale_to_wide_ground_slam_shockwave",
+      "framing": "captures A driving the kunai into B's right shoulder in slow motion at 8.50s, then widens for the full-body floor slam at 8.75s-9.00s",
+      "preserve_axis": true,
+      "accent_timing": "slow-motion 0.25x window (8.40s-8.60s) with 4-frame hit-stop hold AFTER kunai impale, followed by 5-frame hit-stop hold and radial dust shockwave ring AFTER floor slam"
+    },
+    {
+      "t": "9.00s-10.00s",
+      "shot": "slow_dolly_in_terminal_crouch_over_prone_B",
+      "framing": "locks on A's low shinobi crouch on screen-left and prone B on screen-right with the kunai embedded in B's shoulder as dust settles",
+      "preserve_axis": true
+    }
+  ],
+  "anime": {
+    "style": "2D cel-shaded hand-drawn anime, flat two-tone shadows, heavy anatomical ink outlines, broken sketchy ink on active smear limbs only, ultra-thick clean ink on impact holds (2.50s, 4.70s, 7.00s, 8.50s, 9.00s)",
+    "impact_moments": [
+      "0.60s",
+      "1.60s",
+      "2.50s",
+      "4.00s",
+      "4.70s",
+      "6.80s",
+      "7.00s",
+      "7.60s",
+      "8.50s",
+      "8.75s",
+      "9.00s"
+    ],
+    "smear_frames": [
+      "0.00s-0.60s: A vertical drop streak toward pillar top only; A inverted body stays solid",
+      "1.40s-1.60s: A ballistic push-off arc streak only; stone pillar stays solid",
+      "2.30s-2.50s: A right leg deflect kick arc smear only; head, torso, and tucked left leg stay solid, restoring exact anatomy at 2.50s kunai contact",
+      "4.55s-4.70s: ZERO smear on A's bent rising right knee (keep knee, standing left leg, and torso razor-sharp)",
+      "4.90s-5.10s: A backward somersault tuck rotation streak only; courtyard floor stays solid",
+      "5.70s-5.90s: A low ground slide speed streak only; flying shuriken and floor stay solid",
+      "6.10s-6.30s: A left-cartwheel leg arc smear only; planted left arm and torso stay solid",
+      "6.90s-7.00s: A thrown ballistic streak toward pillar only; B's throwing stance stays solid",
+      "7.40s-7.50s: rope-dart whip arc smear only; A and B bodies stay solid",
+      "8.30s-8.50s: A right-hand kunai drive streak only; B's right shoulder stays solid, restoring exact anatomy at 8.50s impale",
+      "8.65s-8.75s: A downward slam transfer streak only; B's body compresses solidly against floor at 8.75s"
+    ],
+    "speed_lines": [
+      "0.00s-0.60s",
+      "1.40s-1.60s",
+      "2.30s-2.50s",
+      "4.90s-5.10s",
+      "5.70s-5.90s",
+      "6.90s-7.00s",
+      "8.30s-8.50s",
+      "8.65s-8.75s"
+    ],
+    "time_remap": {
+      "8.40s-8.60s": "0.25x slow-motion impact window as A drives the kunai into B's right shoulder"
+    },
+    "anticipation_holds": [
+      "2.40s_pre_kunai_deflect_chamber",
+      "4.55s_FE1_knee_windup_coil",
+      "6.60s_FE2_elbow_catch_load",
+      "8.30s_FE3_kunai_drive_coil"
+    ],
+    "fx": {
+      "0.60s": "stone_pillar_top_landing_dust_puff (fires AFTER A's feet plant on pillar)",
+      "1.60s": "pillar_push_off_dust_burst (fires AFTER A launches off pillar face)",
+      "2.50s": "kunai_deflect_metallic_spark_ring (fires strictly AFTER A's right foot strikes kunai and clears immediately)",
+      "3.70s": "kawarimi_white_smoke_burst (clears immediately to reveal upright wooden substitution log stand-in)",
+      "4.00s": "wood_bark_impact_shudder on substitution log (fires AFTER B's right palm strikes log)",
+      "4.70s": "FE1_knee_spine_blunt_impact_shock_ring (fires strictly AFTER A's right knee hits B's spine and clears for B's airborne fold)",
+      "5.90s": "ground_slide_flagstone_dust_trail",
+      "6.30s": "three_shuriken_stone_pillar_embed_sparks_and_cartwheel_dust",
+      "7.00s": "stone_pillar_wall_plant_crack_and_dust_burst (fires strictly AFTER A's feet slam onto pillar face)",
+      "7.60s": "rope_dart_shoulder_wrap_metallic_spark",
+      "8.50s": "FE3_kunai_shoulder_impale_crimson_and_white_spark_flash (fires strictly AFTER kunai penetrates B's right shoulder)",
+      "8.75s-9.00s": "FE4_ground_slam_radial_shockwave_dust_ring (fires strictly AFTER B's body slams into courtyard flagstones)",
+      "9.00s-10.00s": "settling_courtyard_dust_motes_and_moonlight_rim_glow"
+    },
+    "line_rule": "heavy anatomical ink outlines on A and B, broken/sketchy outlines ONLY on active smear limbs and rope-dart whip arc, ultra-thick clean ink on held impact moments ['2.50s', '4.70s', '7.00s', '8.50s', '9.00s']"
+  },
+  "rules": "10s anime fight clip, 24fps, moonlit stone courtyard ninja arena with a tall carved stone pillar rising vertically on the right-center stage plane, drifting night mist, crisp silver moonlight rim-lighting, and deep indigo courtyard shadows. STYLE: Pure 2D cel-shaded hand-drawn anime, Naruto Shippuden and Sword of the Stranger style high-speed ninja sakuga animation on twos, flat two-tone high-contrast cel shadows, heavy anatomical ink outlines on Fighter A and Fighter B, broken sketchy ink on active smear limbs and rope-dart whip arcs only, clean ultra-thick ink on impact holds. Not 3D, not CGI, not live action, not photoreal. SCREEN GEOMETRY LOCK: Maintain strict 180-degree front-hemisphere camera geometry \u2014 Fighter A stays on screen-left facing right and Fighter B stays on screen-right facing left with zero camera-cut side swaps and zero on-screen text, numbers, or HUD. ENTITY COUNT, OUTFIT & PROP CONTINUITY LOCK: Exactly TWO shinobi fighters and SIX tracked props with strict single-instance conservation (never duplicated, never teleported). Fighter A (agile shinobi striker): dark high-collar shinobi flak coat trailing behind, forearm wraps, dark shinobi trousers, strapped sandals; begins inverted high in mid-air above the stone pillar with rope dart holstered at left hip, smoke pellet at waist, and wooden substitution log concealed inside coat. Fighter B (heavy armored rogue shinobi): sleeveless charcoal combat vest over scarred broad shoulders, reinforced forearm bracers, dark hakama trousers; begins grounded at the base of the courtyard holding the single iron kunai in reverse grip in his right hand and three steel shuriken holstered in his right thigh pouch. PROP LEDGER INVARIANTS: (1) SINGLE KUNAI: Held by B in reverse grip (0.0s-0.5s) -> thrown upward at A (0.5s) -> kicked and deflected spinning high into the air by A's right foot (2.5s) -> caught falling out of the air by A's right hand (6.6s-8.0s) -> driven by A's right hand deep into B's right shoulder where it stays embedded to the end (8.5s-10.0s). (2) SINGLE ROPE DART: Holstered at A's left hip (0.0s-3.0s) -> drawn into A's left hand on crouch landing (3.0s) -> whipped by A's left hand to wrap tightly around B's right shoulder (7.5s-7.6s) -> pulled taut to drag B toward the pillar and slam him (8.0s-10.0s). (3) SMOKE PELLET & WOODEN SUBSTITUTION LOG (KAWARIMI STAND-IN): At 3.7s A deploys the smoke pellet and vanishes in a white smoke burst while a full-body-height upright wooden substitution log immediately occupies A's exact spot (3.7s-4.4s) to absorb B's palm strike at 4.0s before toppling to the stone floor as A reappears behind B at 4.4s. (4) THREE SHURIKEN: Holstered on B's right thigh (0.0s-5.5s) -> thrown in a fan volley by B while airborne (5.5s) -> pass cleanly over A's low ground slide (5.9s) and embed firmly into the stone pillar face (6.3s-10.0s). (5) STONE PILLAR: Solid vertical stone column anchored on the right-center stage plane from floor to high overhead; A lands near its top and sprints straight down its vertical face (0.6s-1.6s), three shuriken embed into its stone face (6.3s), and B hurls A's body against its face where A's feet plant to rebound (7.0s). At 0.50s B throws the reverse-grip kunai upward as A lands on the stone pillar at 0.60s and sprints down its face; at 1.60s A launches off the pillar and at 2.50s deflects the kunai upward with his right foot before landing in a crouch at 3.00s and drawing his rope dart; at 3.70s A vanishes in a Kawarimi smoke burst leaving an upright full-body wooden log stand-in that absorbs B's 4.00s palm strike; at 4.40s A reappears crouched behind B and at 4.70s drives a rising right knee into B's spine (FE1), launching B airborne while A backflips at 5.10s; at 5.50s airborne B throws three shuriken as A slides underneath at 5.90s and cartwheels left at 6.30s while the shuriken embed in the pillar; at 6.60s A catches the falling kunai in his right hand as B catches A's left elbow with both hands at 6.80s (FE2) and throws A into the pillar face at 7.00s; at 7.50s-7.60s A wraps B's right shoulder with the rope dart, drags B toward the pillar at 8.00s-8.20s (FE4), drives the kunai into B's right shoulder at 8.50s (FE3), and slams B prone into the stone floor at 8.75s-9.00s (FE4). From 9.00s to 10.00s, end on a slow dolly-in as Fighter A holds a low, balanced shinobi crouch on screen-left with both feet planted flat, left hand relaxed forward, and both arms clearly separate from his torso in silhouette, while Fighter B lies prone and motionless face-down on the flagstones on screen-right with the single kunai still embedded in his right shoulder and the three shuriken embedded in the stone pillar behind them as courtyard dust settles in the moonlight."
+}

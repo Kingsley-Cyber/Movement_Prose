@@ -1,0 +1,137 @@
+{
+  "schema": "LATENT-SAKUGA-1.0",
+  "source_score": "LBN-2.3-ADV v3 (pillar fight with substitution, force-event melee)",
+  "internal_only_biomechanics_not_emitted_in_prose": {
+    "stage_dimensions_m": [
+      12,
+      12,
+      10
+    ],
+    "pillar_plane": "x=6, height=0..8m",
+    "A_locations_xyz": [
+      [
+        3.5,
+        0.0,
+        7.5
+      ],
+      [
+        5.8,
+        0.0,
+        7.2
+      ],
+      [
+        5.9,
+        -0.3,
+        4.5
+      ],
+      [
+        5.5,
+        -0.6,
+        3.2
+      ],
+      [
+        5.0,
+        -0.5,
+        2.5
+      ],
+      [
+        4.5,
+        -0.5,
+        1.5
+      ],
+      [
+        4.8,
+        -0.4,
+        0.9
+      ],
+      [
+        4.7,
+        -0.4,
+        1.1
+      ],
+      [
+        4.4,
+        -0.4,
+        1.1
+      ],
+      [
+        4.5,
+        -0.4,
+        1.4
+      ],
+      [
+        4.0,
+        -0.5,
+        2.2
+      ],
+      [
+        4.3,
+        -0.5,
+        1.8
+      ],
+      [
+        3.8,
+        -0.5,
+        0.6
+      ],
+      [
+        3.5,
+        -0.4,
+        1.5
+      ],
+      [
+        4.5,
+        -0.3,
+        1.8
+      ],
+      [
+        5.9,
+        -0.5,
+        2.8
+      ],
+      [
+        4.8,
+        -0.6,
+        2.2
+      ],
+      [
+        4.5,
+        -0.5,
+        1.8
+      ],
+      [
+        4.9,
+        -0.4,
+        1.5
+      ],
+      [
+        5.3,
+        -0.4,
+        0.7
+      ]
+    ],
+    "force_events_validated": [
+      "FE1_knee_strike_4.55_4.85",
+      "FE2_elbow_catch_throw_6.60_7.05",
+      "FE3_kunai_drive_8.30_8.60",
+      "FE4_drag_slam_8.00_9.05"
+    ]
+  },
+  "arm_metrics": {
+    "arm_C1_contract": {
+      "word_count": 2377,
+      "utf8_byte_count": 14799,
+      "sha256": "6570de45159ac837"
+    },
+    "arm_D_scene_stack": {
+      "word_count": 4769,
+      "utf8_byte_count": 35902,
+      "sha256": "a135902ad16679b4"
+    },
+    "arm_C3_tight": {
+      "word_count": 536,
+      "utf8_byte_count": 3223,
+      "sha256": "e1f5f6c8f9ebf32b"
+    }
+  }
+}
