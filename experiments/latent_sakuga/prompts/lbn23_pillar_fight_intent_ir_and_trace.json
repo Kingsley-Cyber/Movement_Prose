@@ -119,34 +119,34 @@
   },
   "arm_metrics": {
     "c1_plus_sakuga_mllm_causal": {
-      "word_count": 5332,
-      "utf8_byte_count": 44626,
-      "sha256": "57b98771e3693537"
+      "word_count": 5472,
+      "utf8_byte_count": 45569,
+      "sha256": "e48b1f767ec7efc3"
     },
     "golden_0534_causal": {
-      "word_count": 3494,
-      "utf8_byte_count": 33183,
-      "sha256": "fdbb19cb83324b8f"
+      "word_count": 3602,
+      "utf8_byte_count": 33946,
+      "sha256": "9a80c17057faeb73"
     },
     "golden_extreme_xperiment": {
-      "word_count": 5783,
-      "utf8_byte_count": 48149,
-      "sha256": "1dc57d74796d1b10"
+      "word_count": 5891,
+      "utf8_byte_count": 48912,
+      "sha256": "96586fe897d15c2c"
     },
     "arm_C1_contract": {
-      "word_count": 2377,
-      "utf8_byte_count": 14799,
-      "sha256": "6570de45159ac837"
+      "word_count": 2459,
+      "utf8_byte_count": 15325,
+      "sha256": "fd57a3499f75977c"
     },
     "arm_D_scene_stack": {
-      "word_count": 4769,
-      "utf8_byte_count": 35902,
-      "sha256": "a135902ad16679b4"
+      "word_count": 4886,
+      "utf8_byte_count": 36708,
+      "sha256": "0bdd5a4ba45d0425"
     },
     "arm_C3_tight": {
-      "word_count": 536,
-      "utf8_byte_count": 3223,
-      "sha256": "e1f5f6c8f9ebf32b"
+      "word_count": 563,
+      "utf8_byte_count": 3414,
+      "sha256": "a687abee53301587"
     }
   }
 }
