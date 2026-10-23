@@ -2,6 +2,7 @@
 
 - **Local Git Branch:** `exp/latent-sakuga-causal-readability` (`main` remains untouched until you approve the winner)
 - **Compiler Module Added:** [`fight_move_system/causal_readability_compiler.py`](../../fight_move_system/causal_readability_compiler.py)
+- **Future Compiler Session ADR & Semantic Verifier To-Do List:** [`docs/ADR_CLAIM_CHECKED_RENDERER_AND_SEMANTIC_VERIFIER.md`](../../docs/ADR_CLAIM_CHECKED_RENDERER_AND_SEMANTIC_VERIFIER.md) (Captures `SEM-BUG-01`–`SEM-BUG-06` from `LBN-2.3-ADV v3`, the 7 proven compiler/planner methods, and the 5-part **Claim-Checked Renderer** design)
 - **CLI Modes Added:** `--mode readability-stack` (`Arm D: Full Multi-Layer Scene Stack — Header + Layer 1 Synchronized Timeline + Layer 2 Scene Graph`), `--mode readability` (`Rung 0: 6-Part Directorial Contract with Full Scene Layers`), `--mode readability-prose` (`Rung 1: 3-Paragraph Directing Prose, Zero Numbers`), `--mode readability-tight` (`Rung 2: Ultra-Tight HARD-Invariant Floor, ~365 words`), plus `--budget-words <N>` (`Automatic Compression Ladder`)
 - **Matched Choreography Input:** [`fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json`](../../fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json) (10-beat Muay Thai vs. Dutch Kickboxer Rooftop Helipad Cage War, 6 weapons: calf kick, step-in, slashing elbow, high shell vs cross, slip + liver hook, collar tie, clinch rising knee, two-hand shove, body elbow block vs body straight, spinning back kick)
 

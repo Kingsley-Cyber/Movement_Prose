@@ -223,3 +223,33 @@ This repository is engineered to run identically across **macOS (Mac Studio / Ap
 3. **Python Executable Invocation (`python3` vs `python` / `py -3`):**
    - On **macOS (Mac Studio) & Linux**, use `.venv/bin/python` or `python3`.
    - On **Windows**, use `.venv\Scripts\python.exe`, `python`, or `py -3`.
+
+---
+
+## 6. Semantic Verification & Claim-Checked Renderer Backlog (Deferred to Future Compiler Session)
+
+> **Current Session Focus vs. Future Compiler Session:**  
+> Right now, our active focus on `exp/latent-sakuga-causal-readability` is **Pure Natural-Language (NL) Prompt Engineering A/B Testing** (sticking to NL contracts/prose rather than JSON schemas that can violate causal-readability rules).  
+> However, during our `LBN-2.3-ADV v3` Pillar Fight recompilation, we identified **6 semantic contradictions** in the source score/rendered prose that JSON Schema and our current validators did **not** catch. The full ADR and implementation blueprint are captured in **[`docs/ADR_CLAIM_CHECKED_RENDERER_AND_SEMANTIC_VERIFIER.md`](docs/ADR_CLAIM_CHECKED_RENDERER_AND_SEMANTIC_VERIFIER.md)** for our next dedicated compiler session.
+
+### 6.1 The 6 Uncaught Semantic Contradictions (`SEM-BUG-01` – `SEM-BUG-06`)
+1. **`SEM-BUG-01` (Ungoverned Style Literal):** Hand-typed franchise string (`"Naruto Shippuden and Sword of the Stranger style"`) instead of a governed style token from the IR.
+2. **`SEM-BUG-02` (Count vs. List Drift):** Prose header states `"SIX tracked props"`, while the numbered ledger lists only `5` entries (merging `smoke_pellet` and `substitution_log` into item `(3)` instead of rendering from `len(ir.props)`).
+3. **`SEM-BUG-03` (Stale Guardrail vs. State Replay Contradiction):** Negative guardrail says `"no B standing up after 5.00s knockdown"`, yet B throws shuriken (`5.5s`), lands (`6.3s`), grapples A (`6.6s–6.8s`), and throws A (`7.0s`). The actual terminal knockdown occurs at `8.75s–8.77s` (`9.00s` prone).
+4. **`SEM-BUG-04` (Qualitative Spatial / 2D Screen-Space Contradiction):** Global rule `"A stays on screen-left"` conflicts with A reappearing *behind* B at `4.4s` and B throwing A into the stone pillar at `7.0s` (located on the right at `x=6.0`).
+5. **`SEM-BUG-05` (Temporal Interval Containment Error):** `Beat 1` is labeled `0.00s–0.60s`, but the pillar sprint inside `Beat 1` runs from `0.60s` to `1.60s` (`Beat 2` starts at `1.60s`).
+6. **`SEM-BUG-06` (Ballistic Projectile Flight Implausibility):** Kunai is thrown at `0.50s` and does not reach A's foot until `2.50s` (`2.0s` flight time across a few meters, reading like a slow-motion float).
+
+### 6.2 Proven Compiler & Planner Methods to Wire In
+- [ ] **Single Source of Truth (`IR -> Prose`):** Never author a fact twice; counts (`len(props)`), interval labels (`[min_t, max_t]`), and prop ledgers are computed from `IntentIR`.
+- [ ] **State Replay / Event Sourcing (Petri-Net Conservation):** Replay every event chronologically against a single world state (`WorldStateAtTime[t]`) so each fighter and prop has exactly one state per moment.
+- [ ] **Precondition & Effect Checking (PDDL / VAL Validation):** Every action checks preconditions (`grapple` requires `B.support == standing`) and applies effects (`FE4_ground_slam` sets `B.support = prone` at `8.77s`).
+- [ ] **Temporal Constraint Networks (Allen's Interval Algebra & Dechter's STN):** Enforce beat interval containment (`Beat` interval $=$ convex hull of sub-events) and realistic projectile flight-time bounds ($\Delta t \in [d/v_{\max}, d/v_{\min}]$).
+- [ ] **Qualitative Spatial Reasoning & SAT/SMT Unsat Cores (Z3-Style):** Catch `"A stays screen-left"` vs. `"A behind B / at right-side pillar"` and return the **minimal unsat core** of conflicting clauses.
+
+### 6.3 The 5-Part "Claim-Checked Renderer" To-Do List (See [`docs/ADR_CLAIM_CHECKED_RENDERER_AND_SEMANTIC_VERIFIER.md`](docs/ADR_CLAIM_CHECKED_RENDERER_AND_SEMANTIC_VERIFIER.md))
+- [ ] **1. Fact-Linked Sentence IDs (`ClaimProvenance`):** Every emitted sentence carries an ID linking it to replayed world-state facts; unlinked sentences are flagged as decoration; false claims fail compilation.
+- [ ] **2. Round-Trip Prose Parse & Diff (`ProseClaimExtractor`):** Parse rendered prose back into structured facts (`who, what, which hand/prop, when, screen side, count`) and diff against the replayed graph to catch renderer/template leaks (like `"5.00s knockdown"`).
+- [ ] **3. State-Generated Guardrails (Never Hand-Written):** Synthesize negative lines (`"no B standing after 8.77s knockdown"`) directly from state changes in the replay graph.
+- [ ] **4. 2D Screen-Space Projection Check (`ScreenSpaceProjector`):** Project each beat into 2D for its camera phase to test the 180-degree rule, screen-left/right ordering, and occlusion.
+- [ ] **5. Human-in-the-Loop Conflict Resolution (Never Auto-Fixed):** When claims conflict, surface the minimal conflict set with 2–3 explicit repair options to the user so nothing is silently cut or trimmed.
