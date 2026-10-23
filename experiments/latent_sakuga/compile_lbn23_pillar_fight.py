@@ -538,7 +538,15 @@ def build_lbn23_pillar_fight() -> Dict[str, Any]:
         "rules": layer2_scene_graph["rules"],
     }
     gold_mod = _load_sakuga_compiler()
-    golden_0534_text = gold_mod.format_sakuga_prompt(golden_0534_json, golden_0534_header)
+    golden_0534_json_only = gold_mod.format_sakuga_prompt(golden_0534_json, "").lstrip()
+    golden_0534_text = f"{golden_0534_header}\n\n{golden_0534_json_only}"
+
+    # 4b. Combined Arm C1 (6-Part Translated Directorial Contract) + SAKUGA-MLLM-3.1-CAUSAL JSON
+    c1_plus_sakuga_mllm_causal_text = (
+        f"{arm_c1_text}\n\n"
+        "=== SAKUGA-MLLM-3.1-CAUSAL SCENE GRAPH ===\n"
+        f"{golden_0534_json_only}"
+    )
 
     # 5. Build Golden Format 2: Extreme (`sakuga_Xperiment` 2-Layer Unrolled Fluid Stack)
     xperiment_layer1_lines = [
@@ -592,6 +600,11 @@ def build_lbn23_pillar_fight() -> Dict[str, Any]:
             "force_events_validated": ["FE1_knee_strike_4.55_4.85", "FE2_elbow_catch_throw_6.60_7.05", "FE3_kunai_drive_8.30_8.60", "FE4_drag_slam_8.00_9.05"],
         },
         "arm_metrics": {
+            "c1_plus_sakuga_mllm_causal": {
+                "word_count": len(c1_plus_sakuga_mllm_causal_text.split()),
+                "utf8_byte_count": len(c1_plus_sakuga_mllm_causal_text.encode("utf-8")),
+                "sha256": hashlib.sha256(c1_plus_sakuga_mllm_causal_text.encode("utf-8")).hexdigest()[:16],
+            },
             "golden_0534_causal": {
                 "word_count": len(golden_0534_text.split()),
                 "utf8_byte_count": len(golden_0534_text.encode("utf-8")),
@@ -620,6 +633,9 @@ def build_lbn23_pillar_fight() -> Dict[str, Any]:
         },
     }
 
+    (PROMPT_DIR / "lbn23_pillar_fight_c1_plus_sakuga_mllm_causal.txt").write_text(
+        c1_plus_sakuga_mllm_causal_text + "\n", encoding="utf-8"
+    )
     (PROMPT_DIR / "lbn23_pillar_fight_golden_0534_causal.txt").write_text(golden_0534_text + "\n", encoding="utf-8")
     (PROMPT_DIR / "lbn23_pillar_fight_golden_extreme_xperiment.txt").write_text(golden_extreme_text + "\n", encoding="utf-8")
     (PROMPT_DIR / "lbn23_pillar_fight_arm_C1_contract.txt").write_text(arm_c1_text + "\n", encoding="utf-8")

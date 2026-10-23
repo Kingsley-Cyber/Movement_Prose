@@ -118,6 +118,11 @@
     ]
   },
   "arm_metrics": {
+    "c1_plus_sakuga_mllm_causal": {
+      "word_count": 5332,
+      "utf8_byte_count": 44626,
+      "sha256": "57b98771e3693537"
+    },
     "golden_0534_causal": {
       "word_count": 3494,
       "utf8_byte_count": 33183,
