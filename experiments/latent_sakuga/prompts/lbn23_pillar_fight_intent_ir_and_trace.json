@@ -118,6 +118,16 @@
     ]
   },
   "arm_metrics": {
+    "golden_0534_causal": {
+      "word_count": 3494,
+      "utf8_byte_count": 33183,
+      "sha256": "fdbb19cb83324b8f"
+    },
+    "golden_extreme_xperiment": {
+      "word_count": 5783,
+      "utf8_byte_count": 48149,
+      "sha256": "1dc57d74796d1b10"
+    },
     "arm_C1_contract": {
       "word_count": 2377,
       "utf8_byte_count": 14799,
