@@ -34,6 +34,7 @@ from .compiler import (
     LEVEL_TARGET_ANATOMY,
     RANGE_METRES,
     _format_card_text,
+    _format_structured_limbs,
     _resolve_beat_chain,
     _resolve_surface_tag,
     scan_prompt_v15,
@@ -311,6 +312,16 @@ def compile_to_causal_readability(
     contract_beat_lines: List[str] = []
     prose_beat_sentences: List[str] = []
     tight_beat_sentences: List[str] = []
+    stack_layer1_lines: List[str] = []
+    stack_exchanges: List[Dict[str, Any]] = []
+    stack_camera_track: List[Dict[str, Any]] = []
+    stack_impact_moments: List[str] = []
+    stack_smear_frames: List[str] = []
+    stack_speed_lines: List[str] = []
+    stack_fx_map: Dict[str, str] = {}
+    stack_beat_names: List[str] = []
+    stack_a_chain_parts: List[str] = []
+    stack_b_chain_parts: List[str] = []
     audit_trace_entries: List[Dict[str, Any]] = []
     requirement_ledger: List[Dict[str, Any]] = []
     active_modules: List[str] = ["M01_hand_to_hand", "M09_complex_camera"]
@@ -318,6 +329,13 @@ def compile_to_causal_readability(
     core_arena, freedom_arena_decor = _extract_core_arena_and_freedom(arena)
     a_hard_id, a_soft_anat = _extract_tight_wardrobe(a_desc)
     b_hard_id, b_soft_anat = _extract_tight_wardrobe(b_desc)
+
+    stack_layer1_lines.append(
+        f"MOVEMENT LANGUAGE: <timestamp> <exchange>: SUPPORT & WEIGHT TRANSFER (grounded stance & center of balance; NO SUPPORT = airborne) | "
+        f"BILATERAL 4-LIMB SILHOUETTE (L_arm, R_arm, L_leg, R_leg — both arms separate from torso in silhouette) | "
+        f"KINETIC CHAIN & SPACING | SYNCHRONIZED CAUSE -> CONTACT -> POST-CONTACT REACTION. "
+        f"A is always screen-{fighter_a.screen_side} ({a_hard_id}); B is always screen-{fighter_b.screen_side} ({b_hard_id})."
+    )
 
     prev_range: Optional[str] = None
 
@@ -578,6 +596,147 @@ def compile_to_causal_readability(
         prose_beat_sentences.append(prose_sentence)
         tight_beat_sentences.append(tight_sentence)
 
+        # Build Multi-Layer Scene Stack entries (Layer 1 + Layer 2 Synchronized Scene Graph with zero internal math leak)
+        if idx == 0:
+            t_val = 0.0
+        elif idx == total_moments - 1:
+            t_val = 8.85
+        else:
+            t_val = round((idx / max(1, total_moments)) * 8.8, 2)
+        t_tag = f"{t_val:.2f}s"
+
+        a_limbs_str = _format_structured_limbs(a_card, fighter_a)
+        b_limbs_str = _format_structured_limbs(b_card, fighter_b)
+        a_com_prose = COM_VISIBLE_PROSE.get(a_com, "balanced between both feet")
+        b_com_prose = COM_VISIBLE_PROSE.get(b_com, "balanced between both feet")
+        a_ease_prose = EASING_OBSERVABLE_PROSE.get(a_easing, "loaded pause into whip-fast snap and brief impact hold")
+        beat_label = f"exchange_{idx + 1}_{a_card['id']}_vs_{b_card['id']}"
+        stack_beat_names.append(beat_label)
+        stack_a_chain_parts.append(f"E{idx + 1:02d}_{a_card['id']}_{t_tag}")
+        stack_b_chain_parts.append(f"E{idx + 1:02d}_{b_card['id']}_{t_tag}")
+
+        stack_layer1_lines.append(
+            f"{t_tag} E{idx + 1:02d} ({a_card['id'].upper()} vs {b_card['id'].upper()}) @ {range_prose}: "
+            f"A [{fighter_a.support} on screen-{fighter_a.screen_side}, {a_com_prose} | {a_limbs_str} | CHAIN: {a_chain_text}] "
+            f"<-> B [{fighter_b.support} on screen-{fighter_b.screen_side}, {b_com_prose} | {b_limbs_str} | CHAIN: {b_chain_text}] | "
+            f"EVENT ({contact_op.upper()}): {prose_sentence}"
+        )
+
+        is_contact_beat = a_is_striker or b_is_striker
+        is_knee_beat = (
+            a_card["limb"] in ("lead_knee", "rear_knee")
+            or b_card["limb"] in ("lead_knee", "rear_knee")
+            or "knee" in a_card["id"]
+            or "knee" in b_card["id"]
+        )
+        if is_contact_beat:
+            stack_impact_moments.append(t_tag)
+            snap_win = (a_card if a_is_striker else b_card).get("spacing_phases", {}).get("snap", [1, 4])
+            snap_dur_s = round(max(2, snap_win[1] - snap_win[0]) / 24.0, 2)
+            smear_start = round(max(0.0, t_val - snap_dur_s), 2)
+            window_tag = f"{smear_start:.2f}s-{t_tag}"
+            stack_speed_lines.append(window_tag)
+            if not is_knee_beat:
+                active_actor = "A" if a_is_striker else "B"
+                active_eff = SURFACE_READABLE_WORDS.get(
+                    _resolve_surface_tag(a_card if a_is_striker else b_card), "striking limb"
+                )
+                stack_smear_frames.append(
+                    f"{window_tag}: {active_actor} {active_eff} strike transfer smear only; head, torso, standing legs, and off-hand guard stay solid, restoring exact anatomy at {t_tag} contact"
+                )
+            if a_is_striker:
+                lvl = a_card.get("level", "high")
+                if is_knee_beat:
+                    stack_fx_map[t_tag] = (
+                        f"radial white knee shock ring and rain-mist burst on B's {lvl} line (fires strictly AFTER visible knee contact at {t_tag} and clears immediately so B's jackknife recoil is unobstructed)"
+                    )
+                else:
+                    stack_fx_map[t_tag] = (
+                        f"white impact shock flash and sweat/rain spray on B's {lvl} line (fires strictly AFTER visible contact at {t_tag} and clears immediately so B's recoil is unobstructed)"
+                    )
+            else:
+                lvl = b_card.get("level", "high")
+                stack_fx_map[t_tag] = (
+                    f"heavy counter shock ring on A's {lvl} guard line (fires strictly AFTER visible contact at {t_tag} and clears immediately so A's block absorption is unobstructed)"
+                )
+
+        prev_ev_tag = f"E{idx:02d}_post_state" if idx > 0 else "initial_grounded_stance"
+        causal_chain_str = (
+            f"requires {prev_ev_tag} -> preserves {fighter_a.coil}_momentum -> "
+            f"chain: {a_chain_text} -> causes {beat_label} (B responds only after visible contact)"
+        )
+        stack_exchanges.append(
+            {
+                "t": t_tag,
+                "exchange": beat_label,
+                "range": range_prose,
+                "causal": causal_chain_str,
+                "A_state": {
+                    "screen_side": fighter_a.screen_side,
+                    "facing": fighter_a.facing,
+                    "support": f"{fighter_a.support}_grounded_on_screen_{fighter_a.screen_side}",
+                    "balance": a_com_prose,
+                    "limbs": a_limbs_str,
+                    "action": f"A {a_prep + ' then immediately ' + a_words if a_ov_card else a_words}",
+                },
+                "contact": {
+                    "operation": contact_op,
+                    "visibility_target": "correct_visible",
+                    "event": contact_clause,
+                    "spacing_rhythm": a_ease_prose,
+                },
+                "B_state": {
+                    "screen_side": fighter_b.screen_side,
+                    "facing": fighter_b.facing,
+                    "support": f"{fighter_b.support}_grounded_on_screen_{fighter_b.screen_side}",
+                    "balance": b_com_prose,
+                    "limbs": b_limbs_str,
+                    "reaction_timing": "strictly_after_visible_contact" if a_is_striker else "initiates_counter_met_at_contact",
+                    "action": f"B {b_prep + ' then immediately ' + b_words if b_ov_card else b_words}",
+                },
+            }
+        )
+
+        if is_knee_beat:
+            stack_camera_track.append(
+                {
+                    "t": t_tag,
+                    "shot": f"medium_wide_side_profile_{beat_label}",
+                    "framing": "unobstructed side-profile framing exposing the vertical knee path between both torsos with zero torso merge",
+                    "preserve_axis": True,
+                    "accent_timing": "brief hit-stop hold AFTER visible knee contact; shock flash clears immediately for B's fold",
+                }
+            )
+        elif is_contact_beat:
+            stack_camera_track.append(
+                {
+                    "t": t_tag,
+                    "shot": (
+                        f"telephoto_snap_zoom_side_profile_{beat_label}"
+                        if is_hero
+                        else f"tight_three_quarter_front_hemisphere_whip_pan_{beat_label}"
+                    ),
+                    "framing": vis_view,
+                    "preserve_axis": True,
+                    "camera_tilt": "subtle low-angle impact tilt" if idx % 2 == 0 else "subtle counter-angle impact tilt",
+                    "accent_timing": (
+                        "hero finisher hit-stop hold with brief slow-motion release AFTER visible heel-to-ribs contact"
+                        if is_hero
+                        else "brief hit-stop hold and camera jolt strictly AFTER visible contact; flash clears immediately"
+                    ),
+                }
+            )
+        else:
+            stack_camera_track.append(
+                {
+                    "t": t_tag,
+                    "shot": f"low_three_quarter_tracking_dolly_{beat_label}",
+                    "framing": vis_view,
+                    "preserve_axis": True,
+                    "move": "smooth lateral dolly tracking footwork across the wet concrete floor with zero camera orbit",
+                }
+            )
+
         audit_trace_entries.append(
             {
                 "event_id": event_id,
@@ -600,44 +759,188 @@ def compile_to_causal_readability(
         f"wardrobe markers, actor identities, and screen sides remain unchanged from start to finish."
     )
 
+    # Append 10.00s Terminal Closure to Multi-Layer Scene Stack
+    stack_layer1_lines.append(
+        f"10.00s TERMINAL_HOLD: A [standing wide balanced guard on screen-{fighter_a.screen_side} facing {fighter_a.facing} | L_arm extended forward in high guard, R_arm chambered at cheek, both arms separate from torso in silhouette] "
+        f"<-> B [{fighter_b.support} on screen-{fighter_b.screen_side} facing {fighter_b.facing} | {final_b_state}, both arms separate from torso in silhouette] | "
+        f"CLOSURE: {closure_text}"
+    )
+
+    style_map = {
+        "boxing": "western_boxing",
+        "muay_thai": "muay_thai",
+        "mma": "ufc_mma_octagon",
+        "baki": "baki_underground_arena",
+        "freestyle_sakuga": "freestyle_sakuga",
+    }
+    stack_header = (
+        f"10s anime fight clip, 24fps, {arena}. "
+        "STYLE: Pure 2D hand-drawn anime, Baki, Kengan Ashura, and God of High School style detailed anatomical muscle striations, "
+        "flat cel shading with hard 2-tone high-contrast shadows, heavy ink outlines on A and B, broken sketchy ink on active smear limbs only, "
+        "clean ultra-thick ink on impact holds, hyper-fluid bare-knuckle sakuga animation on twos. Not 3D, not CGI, not live action, not photoreal. "
+        f"ENTITY COUNT & OUTFIT LOCK: Exactly TWO shirtless bare-knuckle fighters (ZERO weapons). "
+        f"Fighter A (always on screen-{fighter_a.screen_side} facing {fighter_a.facing}): {a_desc}. "
+        f"Fighter B (always on screen-{fighter_b.screen_side} facing {fighter_b.facing}): {b_desc}. "
+        "SPACING & SILHOUETTE CONTRACT: Maintain realistic strike spacing at all times — clean arm-length distance for punches, "
+        "tight inside-pocket distance for hooks/elbows/clinch, and full extended-leg distance for kicks so the bodies never merge, "
+        "with both left and right arms separate from the torso in silhouette on every hit. "
+        "Execute with dynamic front-hemisphere Sakuga camera work; no on-screen text, no numbers, no HUD, and no coordinate labels."
+    )
+
+    stack_layer2_spec: Dict[str, Any] = {
+        "name": clip.get("name", f"latent_sakuga_scene_stack_{fighter_a.style}_vs_{fighter_b.style}_10s"),
+        "schema": "LATENT-SAKUGA-SCENE-STACK-1.0",
+        "fps": 24,
+        "duration": 10.0,
+        "environment_and_lighting": arena,
+        "screen_geometry": (
+            f"180_degree_camera_hemisphere_locked_for_all_10s: Fighter A remains strictly on screen_{fighter_a.screen_side} facing {fighter_a.facing} "
+            f"and Fighter B remains strictly on screen_{fighter_b.screen_side} facing {fighter_b.facing} for the entire 10.0s clip (zero side swaps)."
+        ),
+        "negative": (
+            "no 3D CGI, no mocap stiffness, no floaty physics, no static flat camera, no weapons, no swords, no knives, "
+            "no side swap, no outfit swap, no torso merging, no chest-to-chest clipping, no on-screen text or numbers, "
+            "no HUD, no coordinate labels, no extra fighters, no missing limbs, no missing arms, no one-armed fighter, "
+            "no extra legs, no deformed legs, no full-body blur during smears, no reaction before contact, no early flash hiding impact"
+        ),
+        "conservation_laws": [
+            "CONSERVE_SEMANTICALLY: every strike, evade, block, and counter is chained so the post-coil of Exchange N physically loads the pre-coil of Exchange N+1",
+            "event_local_contact_causality: every exchange binds preparation -> commitment -> visible limb-to-surface contact -> post-contact defender reaction",
+            "accent_after_contact_rule: impact flashes and shock rings trigger strictly at or after visible contact and clear immediately so physical recoil is unobstructed",
+            f"strict_screen_side_and_outfit_lock: A stays on screen_{fighter_a.screen_side} facing {fighter_a.facing} and B stays on screen_{fighter_b.screen_side} facing {fighter_b.facing} for all 10.0 seconds",
+        ],
+        "laban": {
+            "A": {
+                "fighting_style": style_map.get(fighter_a.style, "ufc_mma_octagon"),
+                "chain": " > ".join(stack_a_chain_parts),
+                "effort": {"weight": "heavy_striker_power", "time": "sudden_explosive", "space": "direct", "flow": "bound_at_contact"},
+            },
+            "B": {
+                "fighting_style": style_map.get(fighter_b.style, "ufc_mma_octagon"),
+                "chain": " > ".join(stack_b_chain_parts),
+                "effort": {"weight": "heavy_brawler_power", "time": "sudden", "space": "direct", "flow": "bound_at_contact"},
+            },
+        },
+        "beats": stack_beat_names,
+        "synchronized_exchanges": stack_exchanges,
+        "camera": stack_camera_track,
+        "anime": {
+            "style": "2D cel-shaded hand-drawn anime, Baki, Kengan Ashura, and God of High School style detailed anatomical muscle striations, hard 2-tone high-contrast shadows, heavy ink outlines on A and B, broken sketchy ink on active smear limbs only, clean ultra-thick ink on impact holds",
+            "impact_moments": stack_impact_moments,
+            "smear_frames": stack_smear_frames,
+            "speed_lines": stack_speed_lines,
+            "time_remap": (
+                {f"{stack_impact_moments[-1]}_finisher_window": "brief slow-motion impact release after visible heel-to-ribs contact"}
+                if stack_impact_moments
+                else {}
+            ),
+            "anticipation_holds": ["0.00s_initial_loaded_coiling_pause"],
+            "fx": stack_fx_map,
+            "line_rule": f"heavy anatomical ink outlines on A and B, broken/sketchy outlines ONLY on active striking limb during transfer, ultra-thick clean ink on all held impact moments {stack_impact_moments}",
+            "chromatic_aberration": f"impact_moments_only {stack_impact_moments} — keep all transition and recoil frames razor-sharp with zero chromatic aberration",
+        },
+        "rules": (
+            f"Render as one continuous 10-second 2D hand-drawn bare-knuckle martial arts fight inside the {arena}. "
+            f"OUTFIT & SIDE LOCK: Fighter A stays on screen-{fighter_a.screen_side} facing {fighter_a.facing} and Fighter B stays on screen-{fighter_b.screen_side} facing {fighter_b.facing} for all 10.0 seconds (zero side swaps, zero weapons). "
+            + " ".join(prose_beat_sentences)
+            + " "
+            + closure_text
+        ),
+    }
+
+    stack_lines: List[str] = ["{"]
+    stack_lines.append(
+        f'"name":{json.dumps(stack_layer2_spec["name"])},"schema":{json.dumps(stack_layer2_spec["schema"])},"fps":24,"duration":10.0,'
+    )
+    for k in ["environment_and_lighting", "screen_geometry", "negative"]:
+        stack_lines.append(f"{json.dumps(k)}:{json.dumps(stack_layer2_spec[k])},")
+    stack_lines.append('"conservation_laws":[')
+    for i, law in enumerate(stack_layer2_spec["conservation_laws"]):
+        comma = "," if i < len(stack_layer2_spec["conservation_laws"]) - 1 else ""
+        stack_lines.append(f"{json.dumps(law)}{comma}")
+    stack_lines.append("],")
+    stack_lines.append('"laban":{')
+    stack_lines.append(f'"A":{json.dumps(stack_layer2_spec["laban"]["A"], separators=(",", ":"))},')
+    stack_lines.append(f'"B":{json.dumps(stack_layer2_spec["laban"]["B"], separators=(",", ":"))}' + "},")
+    stack_lines.append(f'"beats":{json.dumps(stack_layer2_spec["beats"], separators=(",", ":"))},')
+    for tk in ["synchronized_exchanges", "camera"]:
+        stack_lines.append(f"{json.dumps(tk)}:[")
+        items = stack_layer2_spec[tk]
+        for i, item in enumerate(items):
+            comma = "," if i < len(items) - 1 else ""
+            stack_lines.append(f"{json.dumps(item, separators=(',', ':'))}{comma}")
+        stack_lines.append("],")
+    stack_lines.append('"anime":{')
+    akeys = list(stack_layer2_spec["anime"].keys())
+    for i, ak in enumerate(akeys):
+        is_last = i == len(akeys) - 1
+        if ak == "smear_frames":
+            stack_lines.append('"smear_frames":[')
+            for j, s_item in enumerate(stack_layer2_spec["anime"][ak]):
+                scomma = "," if j < len(stack_layer2_spec["anime"][ak]) - 1 else ""
+                stack_lines.append(f"{json.dumps(s_item)}{scomma}")
+            stack_lines.append("]}," if is_last else "],")
+        else:
+            val_str = json.dumps(stack_layer2_spec["anime"][ak], separators=(",", ":"))
+            stack_lines.append(f"{json.dumps(ak)}:{val_str}{'},' if is_last else ','}")
+    stack_lines.append(f'"rules":{json.dumps(stack_layer2_spec["rules"])}')
+    stack_lines.append("}")
+    stack_layer2_block = "\n".join(stack_lines)
+    stack_layer1_block = "\n".join(stack_layer1_lines)
+
+    rung_stack = (
+        f"{stack_header}\n\n"
+        f"=== LAYER 1: SYNCHRONIZED BILATERAL SUPPORT, 4-LIMB SILHOUETTE & CONTACT TIMELINE ===\n"
+        f"{stack_layer1_block}\n\n"
+        f"=== LAYER 2: LATENT-SAKUGA-SCENE-STACK KINEMATIC, CAMERA & ANIME FX SCENE GRAPH ===\n"
+        f"{stack_layer2_block}"
+    )
+
     shot_contract_text = (
-        f"One continuous hand-drawn anime martial arts action cut inside a {arena}. "
-        f"Expressive hand-drawn character animation with flat two-tone cel shadows, crisp anatomical ink outlines, "
-        f"and clear spacing contrast between brief loaded holds and whip-fast transfers. "
+        f"10s anime fight clip, 24fps, {arena}. "
+        "STYLE: Pure 2D hand-drawn anime, Baki, Kengan Ashura, and God of High School style detailed anatomical muscle striations, "
+        "flat cel shading with hard two-tone high-contrast shadows, heavy ink outlines on A and B, broken sketchy ink on active smear limbs only, "
+        "clean ultra-thick ink on impact holds, hyper-fluid bare-knuckle sakuga animation on twos. Not 3D, not CGI, not live action, not photoreal. "
         f"Keep Fighter A strictly on screen-{fighter_a.screen_side} facing {fighter_a.facing} and Fighter B strictly on "
-        f"screen-{fighter_b.screen_side} facing {fighter_b.facing} throughout the entire cut with zero side swaps and zero on-screen text."
+        f"screen-{fighter_b.screen_side} facing {fighter_b.facing} throughout the entire cut with zero side swaps, zero weapons, and zero on-screen text."
     )
 
     state_text = (
-        f"Fighter A (screen-{fighter_a.screen_side}, facing {fighter_a.facing}): {a_desc}. "
-        f"Fighter B (screen-{fighter_b.screen_side}, facing {fighter_b.facing}): {b_desc}. "
+        f"ENTITY COUNT & OUTFIT LOCK: Exactly TWO shirtless bare-knuckle fighters. "
+        f"Fighter A (always on screen-{fighter_a.screen_side}, facing {fighter_a.facing}): {a_desc}. "
+        f"Fighter B (always on screen-{fighter_b.screen_side}, facing {fighter_b.facing}): {b_desc}. "
         f"Both fighters begin grounded at {RANGE_OBSERVABLE_PROSE.get(clip.get('initial_range', 'kick'), 'striking distance')} "
         f"with both left and right arms visible outside their torso silhouettes."
     )
 
     observation_text = (
-        "Maintain a readable front-hemisphere lateral and three-quarter camera view that keeps both fighters head-to-toe in frame "
+        "CAMERA & SPACING CONTRACT: Maintain realistic strike spacing at all times — clean arm-length distance for punches, "
+        "tight inside-pocket distance for hooks/elbows/clinch, and full extended-leg distance for kicks so the bodies never merge. "
+        "Execute with dynamic front-hemisphere Sakuga camera work (tight three-quarter whip-pans on exchanges, low lateral tracking dollies on footwork, "
+        "unobstructed side-profile framing on clinch knees, and telephoto snap-zoom on the finisher) that keeps both fighters head-to-toe in frame "
         "and exposes every limb-to-target contact in profile. Never orbit across the center line, and never conceal a required block, "
         "parry, or strike behind an early flash or torso overlap."
     )
 
     animation_license_text = (
-        "Contrast short preparation holds with fast strike transfers and deliberate post-impact recovery. "
-        "Permit temporary limb-isolated smear stretching only on the active striking limb during swing transfer, "
-        "keeping heads, torsos, standing legs, and non-striking guards solid; restore full anatomical proportions immediately at contact. "
-        "Trigger impact flashes only at or after visible contact and clear them immediately so the physical recoil is clearly seen."
+        "SAKUGA FX, SMEAR & HIT-STOP LAYER: Contrast short loaded anticipation holds with whip-fast strike transfers and deliberate post-impact recovery. "
+        "Permit temporary broken-ink limb-isolated smear stretching ONLY on the active striking limb during swing transfer, "
+        "keeping heads, torsos, standing legs, and non-striking guards razor-sharp and solid; restore full anatomical proportions and ultra-thick ink outlines immediately at contact. "
+        "Punctuate each clean hit with a brief hit-stop hold, radial white impact shock rings, sweat/rain-mist spray, and subtle impact camera jolt "
+        "strictly AT or AFTER visible contact, clearing the flash immediately so the physical recoil is unobstructed. "
+        "NEGATIVE GUARDRAILS: no 3D CGI, no mocap stiffness, no floaty physics, no torso merging, no missing or one-armed limbs, no full-body blur, no reaction before contact."
     )
 
     # Build the 3 Rungs of the Compression Ladder (Priority 4: HARD vs. SOFT vs. FREEDOM)
     # Rung 0: 6-Part Directorial Contract (Full HARD + SOFT + FREEDOM)
     beats_block = "\n".join(contract_beat_lines)
     rung_0_contract = (
-        f"SHOT CONTRACT\n{shot_contract_text}\n\n"
-        f"STATE\n{state_text}\n\n"
-        f"OBSERVATION\n{observation_text}\n\n"
-        f"CAUSAL BEATS (Preparation -> Commitment -> Named Contact -> Consequence -> Recovery)\n{beats_block}\n\n"
-        f"ANIMATION LICENSE\n{animation_license_text}\n\n"
-        f"CLOSURE\n{closure_text}"
+        f"SHOT & STYLE CONTRACT\n{shot_contract_text}\n\n"
+        f"ENTITY & INITIAL STATE\n{state_text}\n\n"
+        f"CAMERA & OBSERVATION LAYER\n{observation_text}\n\n"
+        f"SYNCHRONIZED CAUSAL BEATS (Preparation -> Commitment -> Named Contact -> Consequence -> Recovery)\n{beats_block}\n\n"
+        f"SAKUGA FX & ANIMATION LICENSE LAYER\n{animation_license_text}\n\n"
+        f"TERMINAL CLOSURE\n{closure_text}"
     )
 
     # Rung 1: 3-Paragraph Worked-Example Directing Prose (§11 — drops section headers & per-beat view/license brackets)
@@ -646,18 +949,18 @@ def compile_to_causal_readability(
     p3_prose = _strip_digits_and_metrics(f"{animation_license_text} {closure_text}")
     rung_1_prose = f"{p1_prose}\n\n{p2_prose}\n\n{p3_prose}"
 
-    # Rung 2: Ultra-Tight HARD-Invariant Prose (§8.4 — drops FREEDOM background decor & compresses SOFT phrasing while preserving 100% HARD invariants)
+    # Rung 2: Ultra-Tight HARD-Invariant Prose (§8.4 — drops FREEDOM background decor & compresses SOFT phrasing while preserving 100% HARD invariants + supporting scene style/FX)
     tight_p1 = _strip_digits_and_metrics(
-        f"Continuous hand-drawn anime fight in a {core_arena} with flat cel shadows and crisp ink lines. "
-        f"A (screen-{fighter_a.screen_side}, facing {fighter_a.facing}, {a_hard_id}) faces "
+        f"Continuous hand-drawn anime fight in a {core_arena} — Baki and Kengan Ashura style muscle striations, flat two-tone cel shadows, heavy ink outlines, broken sketchy ink on active smear limbs, ultra-thick ink on impact holds. "
+        f"Two bare-knuckle fighters: A (screen-{fighter_a.screen_side}, facing {fighter_a.facing}, {a_hard_id}) faces "
         f"B (screen-{fighter_b.screen_side}, facing {fighter_b.facing}, {b_hard_id}) "
         f"at {RANGE_OBSERVABLE_PROSE.get(clip.get('initial_range', 'kick'), 'striking distance')} with both arms distinct in silhouette. "
-        f"Hold a front-hemisphere profile view keeping both fighters head-to-toe in frame with no side swaps and no concealed contacts."
+        f"Use dynamic front-hemisphere whip-pans, tracking dollies, and side-profile impact framing keeping both fighters head-to-toe in frame with no side swaps and no concealed contacts."
     )
     tight_p2 = _strip_digits_and_metrics(" ".join(tight_beat_sentences))
     tight_p3 = _strip_digits_and_metrics(
-        f"Contrast brief holds with fast strikes; restrict smear stretching strictly to the active striking limb, restore solid anatomy at contact, "
-        f"and fire flashes only after impact so recoil stays visible. "
+        f"Contrast brief holds with whip-fast strikes; restrict smear stretching strictly to the active striking limb, restore solid anatomy at contact, "
+        f"and fire hit-stop holds, radial shock rings, and sweat spray only after impact so recoil stays visible (no CGI, no torso merge, no missing limbs, no early flinch). "
         f"Close with A in a balanced guard on screen-{fighter_a.screen_side} and B {final_b_state} on screen-{fighter_b.screen_side}."
     )
     rung_2_tight = f"{tight_p1}\n\n{tight_p2}\n\n{tight_p3}"
@@ -668,29 +971,35 @@ def compile_to_causal_readability(
         ("readability-tight", 2, rung_2_tight),
     ]
 
-    # Select starting rung from requested dialect
-    if dialect == "readability-tight":
-        selected_idx = 2
-    elif dialect == "readability-prose":
-        selected_idx = 1
+    if dialect == "readability-stack":
+        effective_dialect = "readability-stack"
+        active_rung = -1
+        compiled_prompt = rung_stack
+        budget_status = "MULTI_LAYER_SCENE_STACK (Full Supporting Header + Layer 1 Synchronized Timeline + Layer 2 Camera/Anime/FX Scene Graph)"
     else:
-        selected_idx = 0
-
-    budget_status = "UNCONSTRAINED"
-    if budget_words is not None and budget_words > 0:
-        # Step down the compression ladder (Rung 0 -> Rung 1 -> Rung 2) until word count fits budget_words or HARD floor is reached
-        while selected_idx < 2 and len(ladder_candidates[selected_idx][2].split()) > budget_words:
-            selected_idx += 1
-        final_wc = len(ladder_candidates[selected_idx][2].split())
-        if final_wc <= budget_words:
-            budget_status = f"FIT_WITHIN_BUDGET (rung={selected_idx}, words={final_wc}<={budget_words})"
+        # Select starting rung from requested dialect
+        if dialect == "readability-tight":
+            selected_idx = 2
+        elif dialect == "readability-prose":
+            selected_idx = 1
         else:
-            budget_status = (
-                f"HARD_INVARIANT_FLOOR_REACHED (rung=2, words={final_wc}>{budget_words}; "
-                "refused to drop any HARD requirement)"
-            )
+            selected_idx = 0
 
-    effective_dialect, active_rung, compiled_prompt = ladder_candidates[selected_idx]
+        budget_status = "UNCONSTRAINED"
+        if budget_words is not None and budget_words > 0:
+            # Step down the compression ladder (Rung 0 -> Rung 1 -> Rung 2) until word count fits budget_words or HARD floor is reached
+            while selected_idx < 2 and len(ladder_candidates[selected_idx][2].split()) > budget_words:
+                selected_idx += 1
+            final_wc = len(ladder_candidates[selected_idx][2].split())
+            if final_wc <= budget_words:
+                budget_status = f"FIT_WITHIN_BUDGET (rung={selected_idx}, words={final_wc}<={budget_words})"
+            else:
+                budget_status = (
+                    f"HARD_INVARIANT_FLOOR_REACHED (rung=2, words={final_wc}>{budget_words}; "
+                    "refused to drop any HARD requirement)"
+                )
+
+        effective_dialect, active_rung, compiled_prompt = ladder_candidates[selected_idx]
 
     # Populate Priority 4 Requirement Ledger (HARD vs. SOFT vs. FREEDOM dispositions)
     requirement_ledger.extend(
@@ -760,7 +1069,7 @@ def compile_to_causal_readability(
         clip_regime,
         allowed_styles,
         lex,
-        allow_fluid_stack_numbers=(effective_dialect == "readability"),
+        allow_fluid_stack_numbers=(effective_dialect in ("readability", "readability-stack")),
     )
     if v15_errs:
         val_res.errors.extend(v15_errs)
@@ -790,12 +1099,14 @@ def compile_to_causal_readability(
             "hard_intent_coverage": 1.0,
             "leaked_internal_numeric_fields": 0,
             "ladder_word_counts": {
+                "scene_stack_multi_layer": len(rung_stack.split()),
                 "rung_0_contract": len(rung_0_contract.split()),
                 "rung_1_prose": len(rung_1_prose.split()),
                 "rung_2_tight_hard_floor": len(rung_2_tight.split()),
             },
         },
         "requirement_ledger": requirement_ledger,
+        "scene_stack_layer2": stack_layer2_spec,
         "shot_contract": shot_contract_text,
         "initial_state": state_text,
         "observation_contract": observation_text,

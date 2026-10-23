@@ -807,16 +807,31 @@ class TestFightMoveSystem(unittest.TestCase):
         self.assertEqual(ir_c2["compression_rung"], 1)
         self.assertIsNone(re.search(r"\d", p_c2), "readability-prose must contain zero digits")
 
-        # Rung 2: Ultra-tight HARD-invariant floor via budget_words ladder (1787 -> 937 -> 320 <= 350)
+        # Rung 2: Ultra-tight HARD-invariant floor via budget_words ladder (1961 -> 1098 -> 365 <= 380)
         p_c3, ir_c3, res_c3 = compile_to_causal_readability(
-            self.valid_var3, lexicon=self.lexicon, dialect="readability", budget_words=350
+            self.valid_var3, lexicon=self.lexicon, dialect="readability", budget_words=380
         )
         self.assertTrue(res_c3.ok, res_c3.errors)
         self.assertEqual(ir_c3["dialect"], "readability-tight")
         self.assertEqual(ir_c3["compression_rung"], 2)
-        self.assertLessEqual(ir_c3["budget_metrics"]["word_count"], 350)
+        self.assertLessEqual(ir_c3["budget_metrics"]["word_count"], 380)
         self.assertIsNone(re.search(r"\d", p_c3), "readability-tight must contain zero digits")
         self.assertIn("FIT_WITHIN_BUDGET", ir_c3["budget_status"])
+
+        # Arm D: Full Multi-Layer Scene Stack (Supporting Header + Layer 1 Synchronized Timeline + Layer 2 Scene Graph)
+        p_d, ir_d, res_d = compile_to_causal_readability(
+            self.valid_var3, lexicon=self.lexicon, dialect="readability-stack"
+        )
+        self.assertTrue(res_d.ok, res_d.errors)
+        self.assertEqual(ir_d["dialect"], "readability-stack")
+        self.assertIn("=== LAYER 1: SYNCHRONIZED BILATERAL SUPPORT", p_d)
+        self.assertIn("=== LAYER 2: LATENT-SAKUGA-SCENE-STACK", p_d)
+        self.assertIn('"synchronized_exchanges":[', p_d)
+        self.assertIn('"camera":[', p_d)
+        self.assertIn('"anime":{', p_d)
+        self.assertNotIn("weight_split", p_d)
+        self.assertNotIn("impulse_tier", p_d)
+        self.assertNotIn("dutch_roll_deg", p_d)
 
         # Verify HARD invariant floor protection when budget_words is set below the HARD floor (e.g., 100 words)
         p_floor, ir_floor, res_floor = compile_to_causal_readability(

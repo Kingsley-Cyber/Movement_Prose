@@ -1,0 +1,1356 @@
+{
+  "schema": "LATENT-SAKUGA-1.0",
+  "dialect": "readability-stack",
+  "requested_dialect": "readability-stack",
+  "compression_rung": -1,
+  "budget_words_target": null,
+  "budget_status": "MULTI_LAYER_SCENE_STACK (Full Supporting Header + Layer 1 Synchronized Timeline + Layer 2 Camera/Anime/FX Scene Graph)",
+  "name": "latent_sakuga_mma_vs_mma",
+  "active_modules": [
+    "M01_hand_to_hand",
+    "M09_complex_camera",
+    "M04_grappling"
+  ],
+  "budget_metrics": {
+    "character_count": 52717,
+    "utf8_byte_count": 52721,
+    "word_count": 6819,
+    "hard_intent_coverage": 1.0,
+    "leaked_internal_numeric_fields": 0,
+    "ladder_word_counts": {
+      "scene_stack_multi_layer": 6819,
+      "rung_0_contract": 1961,
+      "rung_1_prose": 1098,
+      "rung_2_tight_hard_floor": 365
+    }
+  },
+  "requirement_ledger": [
+    {
+      "id": "REQ_HARD_ACTOR_IDENTITY_AND_SIDES",
+      "class": "HARD",
+      "summary": "A (shirtless Muay Thai striker, white wrist tape, gold ankle wraps, midnight-blue shorts) on screen-left; B (shirtless Dutch kickboxer, urban-camo shorts, untaped wrists and ankles) on screen-right; zero side swaps.",
+      "disposition": "preserved_hard"
+    },
+    {
+      "id": "REQ_HARD_CAMERA_HEMISPHERE_AND_VISIBILITY",
+      "class": "HARD",
+      "summary": "Front-hemisphere profile view; head-to-toe framing; all contacts and both arms visible (observation_state_target=correct_visible).",
+      "disposition": "preserved_hard"
+    },
+    {
+      "id": "REQ_HARD_CAUSAL_BEATS_AND_CONTACTS",
+      "class": "HARD",
+      "summary": "All 10 ordered beats, initiator->target bindings, typed contact operations, and post-contact reactions.",
+      "disposition": "preserved_hard"
+    },
+    {
+      "id": "REQ_HARD_ACCENT_AFTER_CONTACT_AND_LIMB_ISOLATED_SMEAR",
+      "class": "HARD",
+      "summary": "Limb-isolated smear only during swing transfer; solid standing legs/torso/head; impact flashes only at/after contact.",
+      "disposition": "preserved_hard"
+    },
+    {
+      "id": "REQ_HARD_TERMINAL_CLOSURE",
+      "class": "HARD",
+      "summary": "A balanced guard on screen-left; B braced in a crouched recovery posture on screen-right.",
+      "disposition": "preserved_hard"
+    },
+    {
+      "id": "REQ_SOFT_SECTION_HEADERS_AND_PER_BEAT_BRACKETS",
+      "class": "SOFT",
+      "summary": "Section headers and per-beat [View: ...] / [License: ...] bracket wrappers.",
+      "disposition": "compressed_soft"
+    },
+    {
+      "id": "REQ_SOFT_REPEATED_RANGE_AND_SPRAY_EMBELLISHMENTS",
+      "class": "SOFT",
+      "summary": "Repeated unchanged range preambles, secondary sweat/spittle spray clauses, and verbose anatomical adjectives.",
+      "disposition": "included_soft"
+    },
+    {
+      "id": "REQ_FREEDOM_ARENA_LIGHTING_AND_CROWD_DECOR",
+      "class": "FREEDOM",
+      "summary": "harsh magenta-and-cyan floodlights reflecting off wet concrete, octagonal chain-link perimeter fence in deep background shadow",
+      "disposition": "included_freedom"
+    },
+    {
+      "id": "REQ_FREEDOM_MICRO_CLOTH_AND_FLOOR_SCUFF",
+      "class": "FREEDOM",
+      "summary": "Unconstrained micro cloth folds, dust motes, and floor scuff patterns.",
+      "disposition": "omitted_freedom"
+    }
+  ],
+  "scene_stack_layer2": {
+    "name": "latent_sakuga_scene_stack_mma_vs_mma_10s",
+    "schema": "LATENT-SAKUGA-SCENE-STACK-1.0",
+    "fps": 24,
+    "duration": 10.0,
+    "environment_and_lighting": "rain-slicked neon-lit rooftop helipad cage arena overlooking a dark cyberpunk skyline, harsh magenta-and-cyan floodlights reflecting off wet concrete, octagonal chain-link perimeter fence in deep background shadow",
+    "screen_geometry": "180_degree_camera_hemisphere_locked_for_all_10s: Fighter A remains strictly on screen_left facing right and Fighter B remains strictly on screen_right facing left for the entire 10.0s clip (zero side swaps).",
+    "negative": "no 3D CGI, no mocap stiffness, no floaty physics, no static flat camera, no weapons, no swords, no knives, no side swap, no outfit swap, no torso merging, no chest-to-chest clipping, no on-screen text or numbers, no HUD, no coordinate labels, no extra fighters, no missing limbs, no missing arms, no one-armed fighter, no extra legs, no deformed legs, no full-body blur during smears, no reaction before contact, no early flash hiding impact",
+    "conservation_laws": [
+      "CONSERVE_SEMANTICALLY: every strike, evade, block, and counter is chained so the post-coil of Exchange N physically loads the pre-coil of Exchange N+1",
+      "event_local_contact_causality: every exchange binds preparation -> commitment -> visible limb-to-surface contact -> post-contact defender reaction",
+      "accent_after_contact_rule: impact flashes and shock rings trigger strictly at or after visible contact and clear immediately so physical recoil is unobstructed",
+      "strict_screen_side_and_outfit_lock: A stays on screen_left facing right and B stays on screen_right facing left for all 10.0 seconds"
+    ],
+    "laban": {
+      "A": {
+        "fighting_style": "ufc_mma_octagon",
+        "chain": "E01_low_calf_kick_0.00s > E02_burst_step_in_0.88s > E03_slashing_rear_elbow_1.76s > E04_high_shell_guard_2.64s > E05_lead_liver_hook_3.52s > E06_single_collar_tie_4.40s > E07_clinch_rising_knee_5.28s > E08_two_hand_clinch_shove_6.16s > E09_body_elbow_tuck_7.04s > E10_spinning_back_kick_8.85s",
+        "effort": {
+          "weight": "heavy_striker_power",
+          "time": "sudden_explosive",
+          "space": "direct",
+          "flow": "bound_at_contact"
+        }
+      },
+      "B": {
+        "fighting_style": "ufc_mma_octagon",
+        "chain": "E01_lead_leg_buckle_0.00s > E02_slip_inside_0.88s > E03_head_whip_side_1.76s > E04_cross_2.64s > E05_torso_fold_rib_hit_3.52s > E06_clinch_captured_react_4.40s > E07_clinch_rib_fold_5.28s > E08_shoved_back_react_6.16s > E09_rear_body_straight_7.04s > E10_torso_fold_rib_hit_8.85s",
+        "effort": {
+          "weight": "heavy_brawler_power",
+          "time": "sudden",
+          "space": "direct",
+          "flow": "bound_at_contact"
+        }
+      }
+    },
+    "beats": [
+      "exchange_1_low_calf_kick_vs_lead_leg_buckle",
+      "exchange_2_burst_step_in_vs_slip_inside",
+      "exchange_3_slashing_rear_elbow_vs_head_whip_side",
+      "exchange_4_high_shell_guard_vs_cross",
+      "exchange_5_lead_liver_hook_vs_torso_fold_rib_hit",
+      "exchange_6_single_collar_tie_vs_clinch_captured_react",
+      "exchange_7_clinch_rising_knee_vs_clinch_rib_fold",
+      "exchange_8_two_hand_clinch_shove_vs_shoved_back_react",
+      "exchange_9_body_elbow_tuck_vs_rear_body_straight",
+      "exchange_10_spinning_back_kick_vs_torso_fold_rib_hit"
+    ],
+    "synchronized_exchanges": [
+      {
+        "t": "0.00s",
+        "exchange": "exchange_1_low_calf_kick_vs_lead_leg_buckle",
+        "range": "long kicking distance where an extended leg bridges the gap",
+        "causal": "requires initial_grounded_stance -> preserves loaded_rear_momentum -> chain: hips snap through the arc > torso whips low > right shin swings flat > right shin digs into the calf -> causes exchange_1_low_calf_kick_vs_lead_leg_buckle (B responds only after visible contact)",
+        "A_state": {
+          "screen_side": "left",
+          "facing": "right",
+          "support": "standing_grounded_on_screen_left",
+          "balance": "center of mass stacked over lead foot",
+          "limbs": "L_arm:left hand held high at the brow; R_arm:the right arm swings down-back as a counterbalance (both arms separate from the torso in silhouette); L_leg:left foot pivoted outward as the standing post; R_leg:right shin turning over horizontally into the calf",
+          "action": "A steps off-line on his left foot and whips a baseball-bat right shin horizontally into the outside of the lead calf"
+        },
+        "contact": {
+          "operation": "strike",
+          "visibility_target": "correct_visible",
+          "event": "A's horizontal right shin connects cleanly against B's outside lead calf and lower leg (strike contact clearly visible with zero torso overlap and both arms separate in silhouette)",
+          "spacing_rhythm": "a brief loaded pause gives way to a whip-fast transfer, holds briefly at contact, then snaps back to guard"
+        },
+        "B_state": {
+          "screen_side": "right",
+          "facing": "left",
+          "support": "standing_grounded_on_screen_right",
+          "balance": "balanced between both feet",
+          "limbs": "L_arm:left arm flaring slightly wide to keep balance while protecting the jaw; R_arm:right arm flaring slightly wide to keep balance while protecting the jaw (both arms separate from the torso in silhouette); L_leg:left knee dipping sharply inward from the calf shock; R_leg:right foot planted wide to stop the stumble",
+          "reaction_timing": "strictly_after_visible_contact",
+          "action": "B has his left calf chopped sideways out from under him, his knee buckling inward as he catches his balance"
+        }
+      },
+      {
+        "t": "0.88s",
+        "exchange": "exchange_2_burst_step_in_vs_slip_inside",
+        "range": "long kicking distance where an extended leg bridges the gap",
+        "causal": "requires E01_post_state -> preserves loaded_rear_momentum -> chain: left foot plants inside range > hips surge forward > torso locks over the lead knee -> causes exchange_2_burst_step_in_vs_slip_inside (B responds only after visible contact)",
+        "A_state": {
+          "screen_side": "left",
+          "facing": "right",
+          "support": "standing_grounded_on_screen_left",
+          "balance": "center of mass anchored over rear foot",
+          "limbs": "L_arm:left arm held high in a tight guard with elbows tucked; R_arm:right arm held high in a tight guard with elbows tucked (both arms separate from the torso in silhouette); L_leg:left foot stepping briskly forward across the canvas; R_leg:right leg pushing off and sliding up to maintain stance width",
+          "action": "A drives off his right foot in a sharp forward step to close the gap into striking range"
+        },
+        "contact": {
+          "operation": "strike",
+          "visibility_target": "correct_visible",
+          "event": "no strike collision on this footwork transition; both fighters maintain clear space and distinct silhouettes",
+          "spacing_rhythm": "a sudden explosive push-off surges across the floor and locks into a planted base"
+        },
+        "B_state": {
+          "screen_side": "right",
+          "facing": "left",
+          "support": "standing_grounded_on_screen_right",
+          "balance": "center of mass slipped inside the center line",
+          "limbs": "L_arm:left arm tucked high by the jaw in a tight guard; R_arm:right arm tucked high by the jaw in a tight guard (both arms separate from the torso in silhouette); L_leg:left foot planted forward; R_leg:right knee bending to coil the rear hip",
+          "reaction_timing": "initiates_counter_met_at_contact",
+          "action": "B slips his head briskly to the inside while loading weight onto the right hip"
+        }
+      },
+      {
+        "t": "1.76s",
+        "exchange": "exchange_3_slashing_rear_elbow_vs_head_whip_side",
+        "range": "clean arm-length punching distance so neither torso overlaps",
+        "causal": "requires E02_post_state -> preserves loaded_lead_momentum -> chain: hips whip square > torso snaps through the cut > right shoulder drives forward > right elbow lands on the cheekbone -> causes exchange_3_slashing_rear_elbow_vs_head_whip_side (B responds only after visible contact)",
+        "A_state": {
+          "screen_side": "left",
+          "facing": "right",
+          "support": "standing_grounded_on_screen_left",
+          "balance": "center of mass anchored over rear foot",
+          "limbs": "L_arm:left palm checking the opponent's lead shoulder, both arms clearly separate from the torso; R_arm:steps deep into the pocket and whips a razor-sharp horizontal right elbow point across the brow and cheekbone (both arms separate from the torso in silhouette); L_leg:left foot planted deep inside the pocket; R_leg:right heel pivoting hard to drive the elbow point through",
+          "action": "A steps deep into the pocket and whips a razor-sharp horizontal right elbow point across the brow and cheekbone"
+        },
+        "contact": {
+          "operation": "strike",
+          "visibility_target": "correct_visible",
+          "event": "A's right elbow and forearm connects cleanly against B's jawline and temple (strike contact clearly visible with zero torso overlap and both arms separate in silhouette)",
+          "spacing_rhythm": "a brief loaded pause gives way to a whip-fast transfer, holds briefly at contact, then snaps back to guard"
+        },
+        "B_state": {
+          "screen_side": "right",
+          "facing": "left",
+          "support": "standing_grounded_on_screen_right",
+          "balance": "balanced between both feet",
+          "limbs": "L_arm:left arm fighting to stay up near the jaw; R_arm:right arm fighting to stay up near the jaw (both arms separate from the torso in silhouette); L_leg:left foot twisting slightly under the torque; R_leg:right leg bracing wide to keep from falling",
+          "reaction_timing": "strictly_after_visible_contact",
+          "action": "B has his jaw whipped violently sideways in the direction of the hook as sweat sprays from his brow"
+        }
+      },
+      {
+        "t": "2.64s",
+        "exchange": "exchange_4_high_shell_guard_vs_cross",
+        "range": "clean arm-length punching distance so neither torso overlaps",
+        "causal": "requires E03_post_state -> preserves recoiling_back_momentum -> chain: hips sink low > torso braces forward > both forearms lock across the face -> causes exchange_4_high_shell_guard_vs_cross (B responds only after visible contact)",
+        "A_state": {
+          "screen_side": "left",
+          "facing": "right",
+          "support": "standing_grounded_on_screen_left",
+          "balance": "center of mass anchored over rear foot",
+          "limbs": "L_arm:left arm pressed vertically from jawline to forehead, elbows tucked in; R_arm:right arm pressed vertically from jawline to forehead, elbows tucked in (both arms separate from the torso in silhouette); L_leg:left foot braced forward against the impact; R_leg:right heel digging into the canvas to halt the pushback",
+          "action": "A locks both forearms tightly in front of his face in a rigid high shell guard to absorb the blow"
+        },
+        "contact": {
+          "operation": "strike",
+          "visibility_target": "correct_visible",
+          "event": "B's right fist meets A's paired vertical forearm high shell (strike contact clearly visible in profile with both fighters' arms separated from their torsos in silhouette)",
+          "spacing_rhythm": "an abrupt contact jolt rocks the frame before settling into a braced recovery stance"
+        },
+        "B_state": {
+          "screen_side": "right",
+          "facing": "left",
+          "support": "standing_grounded_on_screen_right",
+          "balance": "center of mass stacked over lead foot",
+          "limbs": "L_arm:left fist retracted tight against the left cheekbone in a high guard, both arms clearly separate from the torso; R_arm:drives a heavy straight punch with the right fist down the centerline toward the jaw (both arms separate from the torso in silhouette); L_leg:left leg braced firm at the front of the stance; R_leg:right hip and heel pivoting hard to drive the shoulder through",
+          "reaction_timing": "initiates_counter_met_at_contact",
+          "action": "B drives a heavy straight punch with the right fist down the centerline toward the jaw"
+        }
+      },
+      {
+        "t": "3.52s",
+        "exchange": "exchange_5_lead_liver_hook_vs_torso_fold_rib_hit",
+        "range": "clean arm-length punching distance so neither torso overlaps",
+        "causal": "requires E04_post_state -> preserves loaded_rear_momentum -> chain: hips dip low > torso whips upward > left shoulder drives forward > left fist digs into the ribs -> causes exchange_5_lead_liver_hook_vs_torso_fold_rib_hit (B responds only after visible contact)",
+        "A_state": {
+          "screen_side": "left",
+          "facing": "right",
+          "support": "standing_grounded_on_screen_left",
+          "balance": "center of mass stacked over lead foot",
+          "limbs": "L_arm:digs a tight shovel hook with the left fist underneath the elbow into the floating ribs; R_arm:right fist guarding the right cheek, both arms clearly separate from the torso (both arms separate from the torso in silhouette); L_leg:left knee dipped low to load the upward rib angle; R_leg:right foot braced wide on the canvas",
+          "action": "A slips his head sharply to the outside of the incoming punch while coiling his left shoulder then immediately digs a tight shovel hook with the left fist underneath the elbow into the floating ribs"
+        },
+        "contact": {
+          "operation": "strike",
+          "visibility_target": "correct_visible",
+          "event": "A's left fist connects cleanly against B's floating ribs and solar plexus (strike contact clearly visible with zero torso overlap and both arms separate in silhouette)",
+          "spacing_rhythm": "a brief loaded pause gives way to a whip-fast transfer, holds briefly at contact, then snaps back to guard"
+        },
+        "B_state": {
+          "screen_side": "right",
+          "facing": "left",
+          "support": "crouched_grounded_on_screen_right",
+          "balance": "balanced between both feet",
+          "limbs": "L_arm:left arm dropping instinctively toward the bruised ribs; R_arm:right arm dropping instinctively toward the bruised ribs (both arms separate from the torso in silhouette); L_leg:left knee buckling slightly under the body shot; R_leg:right foot stepping back to stay upright",
+          "reaction_timing": "strictly_after_visible_contact",
+          "action": "B folds forward at the waist with a sharp exhale as the blow sinks into his ribs"
+        }
+      },
+      {
+        "t": "4.40s",
+        "exchange": "exchange_6_single_collar_tie_vs_clinch_captured_react",
+        "range": "clean arm-length punching distance so neither torso overlaps",
+        "causal": "requires E05_post_state -> preserves loaded_rear_momentum -> chain: hips snap forward > torso lunges in > left palm locks behind the neck -> causes exchange_6_single_collar_tie_vs_clinch_captured_react (B responds only after visible contact)",
+        "A_state": {
+          "screen_side": "left",
+          "facing": "right",
+          "support": "clinched_grounded_on_screen_left",
+          "balance": "center of mass anchored over rear foot",
+          "limbs": "L_arm:steps into the pocket and hooks his left palm behind the back of the neck in a tight collar tie; R_arm:right forearm framing across the collarbone, both arms clearly separate from the torso (both arms separate from the torso in silhouette); L_leg:left foot stepped deep inside the stance; R_leg:right leg braced wide for clinch leverage",
+          "action": "A steps into the pocket and hooks his left palm behind the back of the neck in a tight collar tie"
+        },
+        "contact": {
+          "operation": "acquire",
+          "visibility_target": "correct_visible",
+          "event": "A's cupping collar-tie palm connects cleanly against B's back of the neck (acquire contact clearly visible with zero torso overlap and both arms separate in silhouette)",
+          "spacing_rhythm": "a brief loaded pause gives way to a whip-fast transfer, holds briefly at contact, then snaps back to guard"
+        },
+        "B_state": {
+          "screen_side": "right",
+          "facing": "left",
+          "support": "clinched_grounded_on_screen_right",
+          "balance": "center of mass stacked over lead foot",
+          "limbs": "L_arm:left arm gripping the opponent's biceps to fight for inside control; R_arm:right arm gripping the opponent's biceps to fight for inside control (both arms separate from the torso in silhouette); L_leg:left foot widened for base; R_leg:right leg bracing against the pull",
+          "reaction_timing": "strictly_after_visible_contact",
+          "action": "B has his neck pulled forward into the clinch while his hands brace against the shoulders for posture"
+        }
+      },
+      {
+        "t": "5.28s",
+        "exchange": "exchange_7_clinch_rising_knee_vs_clinch_rib_fold",
+        "range": "close collar-and-elbow clinch distance with frames locked",
+        "causal": "requires E06_post_state -> preserves loaded_rear_momentum -> chain: right knee surges up > hips drive upward > both hands pull the posture down > right knee lands in the solar plexus -> causes exchange_7_clinch_rising_knee_vs_clinch_rib_fold (B responds only after visible contact)",
+        "A_state": {
+          "screen_side": "left",
+          "facing": "right",
+          "support": "clinched_grounded_on_screen_left",
+          "balance": "center of mass stacked over lead foot",
+          "limbs": "L_arm:left arm locked behind the neck pulling the posture down; R_arm:right arm locked behind the neck pulling the posture down (both arms separate from the torso in silhouette); L_leg:left pillar leg planted vertical on the canvas; R_leg:right knee folded tightly driving upward into the ribs",
+          "action": "A pulls down hard on the collar tie and spears his bent right kneecap vertically upward into the solar plexus while standing on his left pillar leg"
+        },
+        "contact": {
+          "operation": "maintain",
+          "visibility_target": "correct_visible",
+          "event": "A's rising right knee connects cleanly against B's floating ribs and solar plexus (maintain contact clearly visible with zero torso overlap and both arms separate in silhouette)",
+          "spacing_rhythm": "a brief loaded pause gives way to a whip-fast transfer, holds briefly at contact, then snaps back to guard"
+        },
+        "B_state": {
+          "screen_side": "right",
+          "facing": "left",
+          "support": "clinched_grounded_on_screen_right",
+          "balance": "balanced between both feet",
+          "limbs": "L_arm:left arm gripping outside the opponent's shoulders as his midsection folds; R_arm:right arm gripping outside the opponent's shoulders as his midsection folds (both arms separate from the torso in silhouette); L_leg:left foot rising onto the toes from the upward knee impact; R_leg:right leg bracing back to stay standing",
+          "reaction_timing": "strictly_after_visible_contact",
+          "action": "B jackknifes forward at the waist inside the clinch as the knee buries deep into his solar plexus"
+        }
+      },
+      {
+        "t": "6.16s",
+        "exchange": "exchange_8_two_hand_clinch_shove_vs_shoved_back_react",
+        "range": "close collar-and-elbow clinch distance with frames locked",
+        "causal": "requires E07_post_state -> preserves loaded_rear_momentum -> chain: hips drive forward > torso surges through the push > shoulders snap out > both palms slam into the chest -> causes exchange_8_two_hand_clinch_shove_vs_shoved_back_react (B responds only after visible contact)",
+        "A_state": {
+          "screen_side": "left",
+          "facing": "right",
+          "support": "standing_grounded_on_screen_left",
+          "balance": "center of mass anchored over rear foot",
+          "limbs": "L_arm:left arm fully extended forward pushing off the sternum; R_arm:right arm fully extended forward pushing off the sternum (both arms separate from the torso in silhouette); L_leg:left foot bracing firm against the floor; R_leg:right leg driving forward through the push",
+          "action": "A plants both open palms flat against the chest and shoves violently forward to break the clinch and create striking space"
+        },
+        "contact": {
+          "operation": "release",
+          "visibility_target": "correct_visible",
+          "event": "A's both open palms connects cleanly against B's upper chest (release contact clearly visible with zero torso overlap and both arms separate in silhouette)",
+          "spacing_rhythm": "a brief loaded pause gives way to a whip-fast transfer, holds briefly at contact, then snaps back to guard"
+        },
+        "B_state": {
+          "screen_side": "right",
+          "facing": "left",
+          "support": "standing_grounded_on_screen_right",
+          "balance": "balanced between both feet",
+          "limbs": "L_arm:left arm spreading wide to recover balance before snapping back into guard, separate from the torso; R_arm:right arm spreading wide to recover balance before snapping back into guard, separate from the torso (both arms separate from the torso in silhouette); L_leg:left heel skidding back across the floor; R_leg:right foot planting behind to stop the slide",
+          "reaction_timing": "strictly_after_visible_contact",
+          "action": "B is shoved backward out of the clinch to full arm's length, his heels skidding across the floor as he catches his balance"
+        }
+      },
+      {
+        "t": "7.04s",
+        "exchange": "exchange_9_body_elbow_tuck_vs_rear_body_straight",
+        "range": "clean arm-length punching distance so neither torso overlaps",
+        "causal": "requires E08_post_state -> preserves loaded_lead_momentum -> chain: hips dip square > torso curls over > left elbow drops to the ribs -> causes exchange_9_body_elbow_tuck_vs_rear_body_straight (B responds only after visible contact)",
+        "A_state": {
+          "screen_side": "left",
+          "facing": "right",
+          "support": "standing_grounded_on_screen_left",
+          "balance": "center of mass centered between both feet",
+          "limbs": "L_arm:crunches his left elbow down tight against his hip and ribs to block the body shot; R_arm:right fist protecting the chin, both arms clearly visible (both arms separate from the torso in silhouette); L_leg:left leg absorbing the weight; R_leg:right foot planted firmly behind",
+          "action": "A crunches his left elbow down tight against his hip and ribs to block the body shot"
+        },
+        "contact": {
+          "operation": "strike",
+          "visibility_target": "correct_visible",
+          "event": "B's right fist meets A's tucked left elbow and forearm guard (strike contact clearly visible in profile with both fighters' arms separated from their torsos in silhouette)",
+          "spacing_rhythm": "an abrupt contact jolt rocks the frame before settling into a braced recovery stance"
+        },
+        "B_state": {
+          "screen_side": "right",
+          "facing": "left",
+          "support": "standing_grounded_on_screen_right",
+          "balance": "center of mass stacked over lead foot",
+          "limbs": "L_arm:left fist held high at the temple, both arms separate from the torso; R_arm:sinks his hips and drives a straight right fist deep into the midsection (both arms separate from the torso in silhouette); L_leg:left knee flexed low in a wide base; R_leg:right heel turning outward as the hip drives",
+          "reaction_timing": "initiates_counter_met_at_contact",
+          "action": "B slips his head briskly to the inside while loading weight onto the right hip then immediately sinks his hips and drives a straight right fist deep into the midsection"
+        }
+      },
+      {
+        "t": "8.85s",
+        "exchange": "exchange_10_spinning_back_kick_vs_torso_fold_rib_hit",
+        "range": "clean arm-length punching distance so neither torso overlaps",
+        "causal": "requires E09_post_state -> preserves loaded_lead_momentum -> chain: hips spin the body around > torso whips level through the arc > right heel drives straight back > right heel lands on the ribs -> causes exchange_10_spinning_back_kick_vs_torso_fold_rib_hit (B responds only after visible contact)",
+        "A_state": {
+          "screen_side": "left",
+          "facing": "right",
+          "support": "standing_grounded_on_screen_left",
+          "balance": "center of mass stacked over lead foot",
+          "limbs": "L_arm:left arm tucked tight beside the ribs with fists guarding the chin; R_arm:right arm tucked tight beside the ribs with fists guarding the chin (both arms separate from the torso in silhouette); L_leg:left standing leg planted vertical as the rotation axis; R_leg:right leg pistoning straight out with the heel turned up",
+          "action": "A slips his head briskly to the inside while loading weight onto the right hip then immediately spins in place on his left foot and drives his right heel straight back into the solar plexus"
+        },
+        "contact": {
+          "operation": "strike",
+          "visibility_target": "correct_visible",
+          "event": "A's driving right heel connects cleanly against B's floating ribs and solar plexus (strike contact clearly visible with zero torso overlap and both arms separate in silhouette)",
+          "spacing_rhythm": "a brief loaded pause gives way to a whip-fast transfer, holds briefly at contact, then snaps back to guard"
+        },
+        "B_state": {
+          "screen_side": "right",
+          "facing": "left",
+          "support": "crouched_grounded_on_screen_right",
+          "balance": "balanced between both feet",
+          "limbs": "L_arm:left arm dropping instinctively toward the bruised ribs; R_arm:right arm dropping instinctively toward the bruised ribs (both arms separate from the torso in silhouette); L_leg:left knee buckling slightly under the body shot; R_leg:right foot stepping back to stay upright",
+          "reaction_timing": "strictly_after_visible_contact",
+          "action": "B folds forward at the waist with a sharp exhale as the blow sinks into his ribs"
+        }
+      }
+    ],
+    "camera": [
+      {
+        "t": "0.00s",
+        "shot": "tight_three_quarter_front_hemisphere_whip_pan_exchange_1_low_calf_kick_vs_lead_leg_buckle",
+        "framing": "medium-wide three-quarter lateral view keeping both upper bodies, feet, and contacting limbs unobstructed",
+        "preserve_axis": true,
+        "camera_tilt": "subtle low-angle impact tilt",
+        "accent_timing": "brief hit-stop hold and camera jolt strictly AFTER visible contact; flash clears immediately"
+      },
+      {
+        "t": "0.88s",
+        "shot": "low_three_quarter_tracking_dolly_exchange_2_burst_step_in_vs_slip_inside",
+        "framing": "smooth lateral tracking view following footwork across the floor without camera orbit",
+        "preserve_axis": true,
+        "move": "smooth lateral dolly tracking footwork across the wet concrete floor with zero camera orbit"
+      },
+      {
+        "t": "1.76s",
+        "shot": "tight_three_quarter_front_hemisphere_whip_pan_exchange_3_slashing_rear_elbow_vs_head_whip_side",
+        "framing": "medium-wide three-quarter lateral view keeping both upper bodies, feet, and contacting limbs unobstructed",
+        "preserve_axis": true,
+        "camera_tilt": "subtle low-angle impact tilt",
+        "accent_timing": "brief hit-stop hold and camera jolt strictly AFTER visible contact; flash clears immediately"
+      },
+      {
+        "t": "2.64s",
+        "shot": "tight_three_quarter_front_hemisphere_whip_pan_exchange_4_high_shell_guard_vs_cross",
+        "framing": "medium-wide lateral counter framing keeping B's counter lane and A's guard reaction fully visible",
+        "preserve_axis": true,
+        "camera_tilt": "subtle counter-angle impact tilt",
+        "accent_timing": "brief hit-stop hold and camera jolt strictly AFTER visible contact; flash clears immediately"
+      },
+      {
+        "t": "3.52s",
+        "shot": "tight_three_quarter_front_hemisphere_whip_pan_exchange_5_lead_liver_hook_vs_torso_fold_rib_hit",
+        "framing": "medium-wide three-quarter lateral view keeping both upper bodies, feet, and contacting limbs unobstructed",
+        "preserve_axis": true,
+        "camera_tilt": "subtle low-angle impact tilt",
+        "accent_timing": "brief hit-stop hold and camera jolt strictly AFTER visible contact; flash clears immediately"
+      },
+      {
+        "t": "4.40s",
+        "shot": "tight_three_quarter_front_hemisphere_whip_pan_exchange_6_single_collar_tie_vs_clinch_captured_react",
+        "framing": "medium-wide three-quarter lateral view keeping both upper bodies, feet, and contacting limbs unobstructed",
+        "preserve_axis": true,
+        "camera_tilt": "subtle counter-angle impact tilt",
+        "accent_timing": "brief hit-stop hold and camera jolt strictly AFTER visible contact; flash clears immediately"
+      },
+      {
+        "t": "5.28s",
+        "shot": "medium_wide_side_profile_exchange_7_clinch_rising_knee_vs_clinch_rib_fold",
+        "framing": "unobstructed side-profile framing exposing the vertical knee path between both torsos with zero torso merge",
+        "preserve_axis": true,
+        "accent_timing": "brief hit-stop hold AFTER visible knee contact; shock flash clears immediately for B's fold"
+      },
+      {
+        "t": "6.16s",
+        "shot": "tight_three_quarter_front_hemisphere_whip_pan_exchange_8_two_hand_clinch_shove_vs_shoved_back_react",
+        "framing": "medium-wide three-quarter lateral view keeping both upper bodies, feet, and contacting limbs unobstructed",
+        "preserve_axis": true,
+        "camera_tilt": "subtle counter-angle impact tilt",
+        "accent_timing": "brief hit-stop hold and camera jolt strictly AFTER visible contact; flash clears immediately"
+      },
+      {
+        "t": "7.04s",
+        "shot": "tight_three_quarter_front_hemisphere_whip_pan_exchange_9_body_elbow_tuck_vs_rear_body_straight",
+        "framing": "medium-wide lateral counter framing keeping B's counter lane and A's guard reaction fully visible",
+        "preserve_axis": true,
+        "camera_tilt": "subtle low-angle impact tilt",
+        "accent_timing": "brief hit-stop hold and camera jolt strictly AFTER visible contact; flash clears immediately"
+      },
+      {
+        "t": "8.85s",
+        "shot": "telephoto_snap_zoom_side_profile_exchange_10_spinning_back_kick_vs_torso_fold_rib_hit",
+        "framing": "tight side-profile impact framing exposing the exact limb-to-target collision",
+        "preserve_axis": true,
+        "camera_tilt": "subtle counter-angle impact tilt",
+        "accent_timing": "hero finisher hit-stop hold with brief slow-motion release AFTER visible heel-to-ribs contact"
+      }
+    ],
+    "anime": {
+      "style": "2D cel-shaded hand-drawn anime, Baki, Kengan Ashura, and God of High School style detailed anatomical muscle striations, hard 2-tone high-contrast shadows, heavy ink outlines on A and B, broken sketchy ink on active smear limbs only, clean ultra-thick ink on impact holds",
+      "impact_moments": [
+        "0.00s",
+        "1.76s",
+        "2.64s",
+        "3.52s",
+        "4.40s",
+        "5.28s",
+        "6.16s",
+        "7.04s",
+        "8.85s"
+      ],
+      "smear_frames": [
+        "0.00s-0.00s: A horizontal right shin strike transfer smear only; head, torso, standing legs, and off-hand guard stay solid, restoring exact anatomy at 0.00s contact",
+        "1.64s-1.76s: A right elbow and forearm strike transfer smear only; head, torso, standing legs, and off-hand guard stay solid, restoring exact anatomy at 1.76s contact",
+        "2.52s-2.64s: B right fist strike transfer smear only; head, torso, standing legs, and off-hand guard stay solid, restoring exact anatomy at 2.64s contact",
+        "3.40s-3.52s: A left fist strike transfer smear only; head, torso, standing legs, and off-hand guard stay solid, restoring exact anatomy at 3.52s contact",
+        "4.28s-4.40s: A cupping collar-tie palm strike transfer smear only; head, torso, standing legs, and off-hand guard stay solid, restoring exact anatomy at 4.40s contact",
+        "6.08s-6.16s: A both open palms strike transfer smear only; head, torso, standing legs, and off-hand guard stay solid, restoring exact anatomy at 6.16s contact",
+        "6.92s-7.04s: B right fist strike transfer smear only; head, torso, standing legs, and off-hand guard stay solid, restoring exact anatomy at 7.04s contact",
+        "8.64s-8.85s: A driving right heel strike transfer smear only; head, torso, standing legs, and off-hand guard stay solid, restoring exact anatomy at 8.85s contact"
+      ],
+      "speed_lines": [
+        "0.00s-0.00s",
+        "1.64s-1.76s",
+        "2.52s-2.64s",
+        "3.40s-3.52s",
+        "4.28s-4.40s",
+        "5.11s-5.28s",
+        "6.08s-6.16s",
+        "6.92s-7.04s",
+        "8.64s-8.85s"
+      ],
+      "time_remap": {
+        "8.85s_finisher_window": "brief slow-motion impact release after visible heel-to-ribs contact"
+      },
+      "anticipation_holds": [
+        "0.00s_initial_loaded_coiling_pause"
+      ],
+      "fx": {
+        "0.00s": "white impact shock flash and sweat/rain spray on B's low line (fires strictly AFTER visible contact at 0.00s and clears immediately so B's recoil is unobstructed)",
+        "1.76s": "white impact shock flash and sweat/rain spray on B's high line (fires strictly AFTER visible contact at 1.76s and clears immediately so B's recoil is unobstructed)",
+        "2.64s": "heavy counter shock ring on A's high guard line (fires strictly AFTER visible contact at 2.64s and clears immediately so A's block absorption is unobstructed)",
+        "3.52s": "white impact shock flash and sweat/rain spray on B's mid line (fires strictly AFTER visible contact at 3.52s and clears immediately so B's recoil is unobstructed)",
+        "4.40s": "white impact shock flash and sweat/rain spray on B's high line (fires strictly AFTER visible contact at 4.40s and clears immediately so B's recoil is unobstructed)",
+        "5.28s": "radial white knee shock ring and rain-mist burst on B's mid line (fires strictly AFTER visible knee contact at 5.28s and clears immediately so B's jackknife recoil is unobstructed)",
+        "6.16s": "white impact shock flash and sweat/rain spray on B's mid line (fires strictly AFTER visible contact at 6.16s and clears immediately so B's recoil is unobstructed)",
+        "7.04s": "heavy counter shock ring on A's mid guard line (fires strictly AFTER visible contact at 7.04s and clears immediately so A's block absorption is unobstructed)",
+        "8.85s": "white impact shock flash and sweat/rain spray on B's mid line (fires strictly AFTER visible contact at 8.85s and clears immediately so B's recoil is unobstructed)"
+      },
+      "line_rule": "heavy anatomical ink outlines on A and B, broken/sketchy outlines ONLY on active striking limb during transfer, ultra-thick clean ink on all held impact moments ['0.00s', '1.76s', '2.64s', '3.52s', '4.40s', '5.28s', '6.16s', '7.04s', '8.85s']",
+      "chromatic_aberration": "impact_moments_only ['0.00s', '1.76s', '2.64s', '3.52s', '4.40s', '5.28s', '6.16s', '7.04s', '8.85s'] \u2014 keep all transition and recoil frames razor-sharp with zero chromatic aberration"
+    },
+    "rules": "Render as one continuous 10-second 2D hand-drawn bare-knuckle martial arts fight inside the rain-slicked neon-lit rooftop helipad cage arena overlooking a dark cyberpunk skyline, harsh magenta-and-cyan floodlights reflecting off wet concrete, octagonal chain-link perimeter fence in deep background shadow. OUTFIT & SIDE LOCK: Fighter A stays on screen-left facing right and Fighter B stays on screen-right facing left for all 10.0 seconds (zero side swaps, zero weapons). From long kicking distance where an extended leg bridges the gap, A steps off-line on his left foot and whips a baseball-bat right shin horizontally into the outside of the lead calf (connecting cleanly on B's outside lead calf and lower leg); only after contact, B has his left calf chopped sideways out from under him, his knee buckling inward as he catches his balance. Across long kicking distance where an extended leg bridges the gap, A drives off his right foot in a sharp forward step to close the gap into striking range while B slips his head briskly to the inside while loading weight onto the right hip, resetting their firing line without clipping. From clean arm-length punching distance so neither torso overlaps, A steps deep into the pocket and whips a razor-sharp horizontal right elbow point across the brow and cheekbone (connecting cleanly on B's jawline and temple); only after contact, B has his jaw whipped violently sideways in the direction of the hook as sweat sprays from his brow. At clean arm-length punching distance so neither torso overlaps, B drives a heavy straight punch with the right fist down the centerline toward the jaw (meeting A's paired vertical forearm high shell in clear profile) while A responds at contact as A locks both forearms tightly in front of his face in a rigid high shell guard to absorb the blow. A slips his head sharply to the outside of the incoming punch while coiling his left shoulder and immediately digs a tight shovel hook with the left fist underneath the elbow into the floating ribs (connecting cleanly on B's floating ribs and solar plexus); only after contact, B folds forward at the waist with a sharp exhale as the blow sinks into his ribs. From clean arm-length punching distance so neither torso overlaps, A steps into the pocket and hooks his left palm behind the back of the neck in a tight collar tie (connecting cleanly on B's back of the neck); only after contact, B has his neck pulled forward into the clinch while his hands brace against the shoulders for posture. From close collar-and-elbow clinch distance with frames locked, A pulls down hard on the collar tie and spears his bent right kneecap vertically upward into the solar plexus while standing on his left pillar leg (connecting cleanly on B's floating ribs and solar plexus); only after contact, B jackknifes forward at the waist inside the clinch as the knee buries deep into his solar plexus. From close collar-and-elbow clinch distance with frames locked, A plants both open palms flat against the chest and shoves violently forward to break the clinch and create striking space (connecting cleanly on B's upper chest); only after contact, B is shoved backward out of the clinch to full arm's length, his heels skidding across the floor as he catches his balance. B slips his head briskly to the inside while loading weight onto the right hip then immediately sinks his hips and drives a straight right fist deep into the midsection (meeting A's tucked left elbow and forearm guard in clear profile), causing A to respond as A crunches his left elbow down tight against his hip and ribs to block the body shot. A slips his head briskly to the inside while loading weight onto the right hip and immediately spins in place on his left foot and drives his right heel straight back into the solar plexus (connecting cleanly on B's floating ribs and solar plexus); only after contact, B folds forward at the waist with a sharp exhale as the blow sinks into his ribs. End with Fighter A planted in a wide, balanced guard on screen-left facing right with both arms clearly separate from the torso in silhouette, and Fighter B braced in a crouched recovery posture on screen-right; wardrobe markers, actor identities, and screen sides remain unchanged from start to finish."
+  },
+  "shot_contract": "10s anime fight clip, 24fps, rain-slicked neon-lit rooftop helipad cage arena overlooking a dark cyberpunk skyline, harsh magenta-and-cyan floodlights reflecting off wet concrete, octagonal chain-link perimeter fence in deep background shadow. STYLE: Pure 2D hand-drawn anime, Baki, Kengan Ashura, and God of High School style detailed anatomical muscle striations, flat cel shading with hard two-tone high-contrast shadows, heavy ink outlines on A and B, broken sketchy ink on active smear limbs only, clean ultra-thick ink on impact holds, hyper-fluid bare-knuckle sakuga animation on twos. Not 3D, not CGI, not live action, not photoreal. Keep Fighter A strictly on screen-left facing right and Fighter B strictly on screen-right facing left throughout the entire cut with zero side swaps, zero weapons, and zero on-screen text.",
+  "initial_state": "ENTITY COUNT & OUTFIT LOCK: Exactly TWO shirtless bare-knuckle fighters. Fighter A (always on screen-left, facing right): lean, razor-cut Muay Thai and MMA striker, shirtless bare torso, white cloth tape on both wrists/knuckles and gold ankle wraps, midnight-blue Vale Tudo fight shorts, bare feet. Fighter B (always on screen-right, facing left): heavyweight muscular Dutch kickboxer, shirtless broad scarred torso, urban-camo fight shorts, bare wrists and bare ankles with NO tape, bare feet. Both fighters begin grounded at long kicking distance where an extended leg bridges the gap with both left and right arms visible outside their torso silhouettes.",
+  "observation_contract": "CAMERA & SPACING CONTRACT: Maintain realistic strike spacing at all times \u2014 clean arm-length distance for punches, tight inside-pocket distance for hooks/elbows/clinch, and full extended-leg distance for kicks so the bodies never merge. Execute with dynamic front-hemisphere Sakuga camera work (tight three-quarter whip-pans on exchanges, low lateral tracking dollies on footwork, unobstructed side-profile framing on clinch knees, and telephoto snap-zoom on the finisher) that keeps both fighters head-to-toe in frame and exposes every limb-to-target contact in profile. Never orbit across the center line, and never conceal a required block, parry, or strike behind an early flash or torso overlap.",
+  "event_packets": [
+    {
+      "event_index": 1,
+      "event_id": "E01_low_calf_kick_vs_lead_leg_buckle",
+      "requirement_class": "HARD",
+      "requirements_breakdown": {
+        "HARD_invariant": "In kick range, A whips his right shin into the outside of the lead calf; after contact, B's left calf buckles sideways.",
+        "SOFT_preferences": [
+          "initial_or_shifted_range_cue",
+          "per_beat_camera_and_license_repetition",
+          "secondary_spray_exhale_embellishments"
+        ],
+        "FREEDOM_omissions": [
+          "unconstrained_floor_scuff_and_micro_cloth_folds"
+        ]
+      },
+      "observation_state_target": "correct_visible",
+      "visibility_contract": "medium-wide three-quarter lateral view keeping both upper bodies, feet, and contacting limbs unobstructed",
+      "preparation": {
+        "A": "balanced fighting stance, hips square",
+        "B": "balanced fighting stance, hips square"
+      },
+      "commitment": {
+        "A": "steps off-line on his left foot and whips a baseball-bat right shin horizontally into the outside of the lead calf",
+        "B": "has his left calf chopped sideways out from under him, his knee buckling inward as he catches his balance"
+      },
+      "contact": {
+        "operation": "strike",
+        "description": "A's horizontal right shin connects cleanly against B's outside lead calf and lower leg (strike contact clearly visible with zero torso overlap and both arms separate in silhouette)"
+      },
+      "consequence_and_recovery": "A settles into weight loaded on rear foot, hips coiled back (center of mass stacked over lead foot); B settles into weight loaded on lead foot, lead hip coiled (balanced).",
+      "animation_license": "Allow a brief limb-only smear on A's horizontal right shin during the fast transfer while head, torso, and off-hand stay solid; restore exact proportions on contact, punctuate with a brief hit-stop hold after visible contact, and clear any impact accent immediately so B's reaction remains unobstructed",
+      "internal_only_biomechanics_not_emitted": {
+        "A_weight_split": [
+          85,
+          15
+        ],
+        "B_weight_split": [
+          25,
+          75
+        ],
+        "A_com": "over_lead_foot",
+        "B_com": "staggering_off_balance",
+        "A_kinetic_chain": "hips snap through the arc > torso whips low > right shin swings flat > right shin digs into the calf",
+        "B_kinetic_chain": "left knee buckles inward > hips jolt sideways > torso drops over the stunned leg",
+        "A_chain_frames": [
+          0,
+          2,
+          3,
+          5
+        ],
+        "B_chain_frames": [
+          0,
+          2,
+          4
+        ],
+        "easing_curve": "snap_snap_hold_snap",
+        "impulse_tier": 3,
+        "range_metres": 1.1
+      }
+    },
+    {
+      "event_index": 2,
+      "event_id": "E02_burst_step_in_vs_slip_inside",
+      "requirement_class": "HARD",
+      "requirements_breakdown": {
+        "HARD_invariant": "A drives off his right foot as B slips.",
+        "SOFT_preferences": [
+          "repeated_range_preamble (long kicking distance where an extended leg bridges the gap)",
+          "per_beat_camera_and_license_repetition",
+          "secondary_spray_exhale_embellishments"
+        ],
+        "FREEDOM_omissions": [
+          "unconstrained_floor_scuff_and_micro_cloth_folds"
+        ]
+      },
+      "observation_state_target": "correct_visible",
+      "visibility_contract": "smooth lateral tracking view following footwork across the floor without camera orbit",
+      "preparation": {
+        "A": "weight loaded on rear foot, hips coiled back",
+        "B": "weight loaded on lead foot, lead hip coiled"
+      },
+      "commitment": {
+        "A": "drives off his right foot in a sharp forward step to close the gap into striking range",
+        "B": "slips his head briskly to the inside while loading weight onto the right hip"
+      },
+      "contact": {
+        "operation": "strike",
+        "description": "no strike collision on this footwork transition; both fighters maintain clear space and distinct silhouettes"
+      },
+      "consequence_and_recovery": "A settles into weight loaded on rear foot, hips coiled back (center of mass anchored over rear foot); B settles into weight loaded on rear foot, hips coiled back (center of mass slipped inside the center line).",
+      "animation_license": "crisp solid linework with zero smear blur during footwork repositioning",
+      "internal_only_biomechanics_not_emitted": {
+        "A_weight_split": [
+          35,
+          65
+        ],
+        "B_weight_split": [
+          30,
+          70
+        ],
+        "A_com": "over_rear_foot",
+        "B_com": "shifted_inside",
+        "A_kinetic_chain": "left foot plants inside range > hips surge forward > torso locks over the lead knee",
+        "B_kinetic_chain": "hips snap square > right shoulder coils in > head slips inside the line",
+        "A_chain_frames": [
+          0,
+          2,
+          4
+        ],
+        "B_chain_frames": [
+          0,
+          2,
+          4
+        ],
+        "easing_curve": "burst_launch_snap_lock",
+        "impulse_tier": 0,
+        "range_metres": 1.1
+      }
+    },
+    {
+      "event_index": 3,
+      "event_id": "E03_slashing_rear_elbow_vs_head_whip_side",
+      "requirement_class": "HARD",
+      "requirements_breakdown": {
+        "HARD_invariant": "In punch range, A whips his right elbow across the brow and cheekbone; after contact, B's head snaps sideways.",
+        "SOFT_preferences": [
+          "initial_or_shifted_range_cue",
+          "per_beat_camera_and_license_repetition",
+          "secondary_spray_exhale_embellishments"
+        ],
+        "FREEDOM_omissions": [
+          "unconstrained_floor_scuff_and_micro_cloth_folds"
+        ]
+      },
+      "observation_state_target": "correct_visible",
+      "visibility_contract": "medium-wide three-quarter lateral view keeping both upper bodies, feet, and contacting limbs unobstructed",
+      "preparation": {
+        "A": "weight loaded on rear foot, hips coiled back",
+        "B": "weight loaded on rear foot, hips coiled back"
+      },
+      "commitment": {
+        "A": "steps deep into the pocket and whips a razor-sharp horizontal right elbow point across the brow and cheekbone",
+        "B": "has his jaw whipped violently sideways in the direction of the hook as sweat sprays from his brow"
+      },
+      "contact": {
+        "operation": "strike",
+        "description": "A's right elbow and forearm connects cleanly against B's jawline and temple (strike contact clearly visible with zero torso overlap and both arms separate in silhouette)"
+      },
+      "consequence_and_recovery": "A settles into weight loaded on lead foot, lead hip coiled (center of mass anchored over rear foot); B settles into weight loaded on rear foot, hips coiled back (balanced).",
+      "animation_license": "Allow a brief limb-only smear on A's right elbow and forearm during the fast transfer while head, torso, and off-hand stay solid; restore exact proportions on contact, punctuate with a brief hit-stop hold after visible contact, and clear any impact accent immediately so B's reaction remains unobstructed",
+      "internal_only_biomechanics_not_emitted": {
+        "A_weight_split": [
+          30,
+          70
+        ],
+        "B_weight_split": [
+          30,
+          70
+        ],
+        "A_com": "over_rear_foot",
+        "B_com": "staggering_off_balance",
+        "A_kinetic_chain": "hips whip square > torso snaps through the cut > right shoulder drives forward > right elbow lands on the cheekbone",
+        "B_kinetic_chain": "hips twist with the swing > torso follows the arc > head whips sideways off the line",
+        "A_chain_frames": [
+          0,
+          2,
+          3,
+          5
+        ],
+        "B_chain_frames": [
+          0,
+          2,
+          4
+        ],
+        "easing_curve": "snap_snap_hold_snap",
+        "impulse_tier": 3,
+        "range_metres": 0.8
+      }
+    },
+    {
+      "event_index": 4,
+      "event_id": "E04_high_shell_guard_vs_cross",
+      "requirement_class": "HARD",
+      "requirements_breakdown": {
+        "HARD_invariant": "B drives a straight right punch toward the jaw, met at contact by A who locks both forearms.",
+        "SOFT_preferences": [
+          "repeated_range_preamble (clean arm-length punching distance so neither torso overlaps)",
+          "per_beat_camera_and_license_repetition",
+          "secondary_spray_exhale_embellishments"
+        ],
+        "FREEDOM_omissions": [
+          "unconstrained_floor_scuff_and_micro_cloth_folds"
+        ]
+      },
+      "observation_state_target": "correct_visible",
+      "visibility_contract": "medium-wide lateral counter framing keeping B's counter lane and A's guard reaction fully visible",
+      "preparation": {
+        "A": "weight loaded on lead foot, lead hip coiled",
+        "B": "weight loaded on rear foot, hips coiled back"
+      },
+      "commitment": {
+        "A": "locks both forearms tightly in front of his face in a rigid high shell guard to absorb the blow",
+        "B": "drives a heavy straight punch with the right fist down the centerline toward the jaw"
+      },
+      "contact": {
+        "operation": "strike",
+        "description": "B's right fist meets A's paired vertical forearm high shell (strike contact clearly visible in profile with both fighters' arms separated from their torsos in silhouette)"
+      },
+      "consequence_and_recovery": "A settles into weight rocking onto rear heel (center of mass anchored over rear foot); B settles into weight loaded on rear foot, hips coiled back (center of mass stacked over lead foot).",
+      "animation_license": "Allow a brief limb-only smear on B's right fist during the swing while head, torso, and off-hand stay solid; restore proportions at contact, hold the impact briefly after contact, and let any shock accent clear before A's recovery",
+      "internal_only_biomechanics_not_emitted": {
+        "A_weight_split": [
+          30,
+          70
+        ],
+        "B_weight_split": [
+          80,
+          20
+        ],
+        "A_com": "over_rear_foot",
+        "B_com": "over_lead_foot",
+        "A_kinetic_chain": "hips sink low > torso braces forward > both forearms lock across the face",
+        "B_kinetic_chain": "hips snap square > right shoulder drives forward > right arm extends > right fist lands on the jaw",
+        "A_chain_frames": [
+          0,
+          2,
+          4
+        ],
+        "B_chain_frames": [
+          0,
+          2,
+          3,
+          5
+        ],
+        "easing_curve": "sudden_jolt_settle",
+        "impulse_tier": 2,
+        "range_metres": 0.8
+      }
+    },
+    {
+      "event_index": 5,
+      "event_id": "E05_lead_liver_hook_vs_torso_fold_rib_hit",
+      "requirement_class": "HARD",
+      "requirements_breakdown": {
+        "HARD_invariant": "A slips then digs a left shovel hook into the floating ribs; after contact, B folds.",
+        "SOFT_preferences": [
+          "repeated_range_preamble (clean arm-length punching distance so neither torso overlaps)",
+          "per_beat_camera_and_license_repetition",
+          "secondary_spray_exhale_embellishments"
+        ],
+        "FREEDOM_omissions": [
+          "unconstrained_floor_scuff_and_micro_cloth_folds"
+        ]
+      },
+      "observation_state_target": "correct_visible",
+      "visibility_contract": "medium-wide three-quarter lateral view keeping both upper bodies, feet, and contacting limbs unobstructed",
+      "preparation": {
+        "A": "slips his head sharply to the outside of the incoming punch while coiling his left shoulder",
+        "B": "weight loaded on rear foot, hips coiled back"
+      },
+      "commitment": {
+        "A": "digs a tight shovel hook with the left fist underneath the elbow into the floating ribs",
+        "B": "folds forward at the waist with a sharp exhale as the blow sinks into his ribs"
+      },
+      "contact": {
+        "operation": "strike",
+        "description": "A's left fist connects cleanly against B's floating ribs and solar plexus (strike contact clearly visible with zero torso overlap and both arms separate in silhouette)"
+      },
+      "consequence_and_recovery": "A settles into weight loaded on rear foot, hips coiled back (center of mass stacked over lead foot); B settles into knees bent low in crouched dip (balanced).",
+      "animation_license": "Allow a brief limb-only smear on A's left fist during the fast transfer while head, torso, and off-hand stay solid; restore exact proportions on contact, punctuate with a brief hit-stop hold after visible contact, and clear any impact accent immediately so B's reaction remains unobstructed",
+      "internal_only_biomechanics_not_emitted": {
+        "A_weight_split": [
+          75,
+          25
+        ],
+        "B_weight_split": [
+          65,
+          35
+        ],
+        "A_com": "over_lead_foot",
+        "B_com": "staggering_off_balance",
+        "A_kinetic_chain": "hips dip low > torso whips upward > left shoulder drives forward > left fist digs into the ribs",
+        "B_kinetic_chain": "knees buckle inward > hips fold forward > torso drops over the guarding elbows",
+        "A_chain_frames": [
+          0,
+          2,
+          3,
+          5
+        ],
+        "B_chain_frames": [
+          0,
+          2,
+          4
+        ],
+        "easing_curve": "snap_snap_hold_snap",
+        "impulse_tier": 3,
+        "range_metres": 0.8
+      }
+    },
+    {
+      "event_index": 6,
+      "event_id": "E06_single_collar_tie_vs_clinch_captured_react",
+      "requirement_class": "HARD",
+      "requirements_breakdown": {
+        "HARD_invariant": "A hooks his left palm in a tight collar tie; after contact, B's neck is pulled into the clinch.",
+        "SOFT_preferences": [
+          "repeated_range_preamble (clean arm-length punching distance so neither torso overlaps)",
+          "per_beat_camera_and_license_repetition",
+          "secondary_spray_exhale_embellishments"
+        ],
+        "FREEDOM_omissions": [
+          "unconstrained_floor_scuff_and_micro_cloth_folds"
+        ]
+      },
+      "observation_state_target": "correct_visible",
+      "visibility_contract": "medium-wide three-quarter lateral view keeping both upper bodies, feet, and contacting limbs unobstructed",
+      "preparation": {
+        "A": "weight loaded on rear foot, hips coiled back",
+        "B": "knees bent low in crouched dip"
+      },
+      "commitment": {
+        "A": "steps into the pocket and hooks his left palm behind the back of the neck in a tight collar tie",
+        "B": "has his neck pulled forward into the clinch while his hands brace against the shoulders for posture"
+      },
+      "contact": {
+        "operation": "acquire",
+        "description": "A's cupping collar-tie palm connects cleanly against B's back of the neck (acquire contact clearly visible with zero torso overlap and both arms separate in silhouette)"
+      },
+      "consequence_and_recovery": "A settles into weight loaded on rear foot, hips coiled back (center of mass anchored over rear foot); B settles into weight loaded on lead foot, lead hip coiled (center of mass stacked over lead foot).",
+      "animation_license": "Allow a brief limb-only smear on A's cupping collar-tie palm during the fast transfer while head, torso, and off-hand stay solid; restore exact proportions on contact, punctuate with a brief hit-stop hold after visible contact, and clear any impact accent immediately so B's reaction remains unobstructed",
+      "internal_only_biomechanics_not_emitted": {
+        "A_weight_split": [
+          35,
+          65
+        ],
+        "B_weight_split": [
+          70,
+          30
+        ],
+        "A_com": "over_rear_foot",
+        "B_com": "over_lead_foot",
+        "A_kinetic_chain": "hips snap forward > torso lunges in > left palm locks behind the neck",
+        "B_kinetic_chain": "hips brace low > torso pulls forward > both hands lock on the biceps",
+        "A_chain_frames": [
+          0,
+          2,
+          4
+        ],
+        "B_chain_frames": [
+          0,
+          2,
+          4
+        ],
+        "easing_curve": "snap_snap_hold_snap",
+        "impulse_tier": 2,
+        "range_metres": 0.8
+      }
+    },
+    {
+      "event_index": 7,
+      "event_id": "E07_clinch_rising_knee_vs_clinch_rib_fold",
+      "requirement_class": "HARD",
+      "requirements_breakdown": {
+        "HARD_invariant": "In clinch range, A pulls down hard on the collar tie and spears his bent right kneecap into the solar plexus; after contact, B jackknifes.",
+        "SOFT_preferences": [
+          "initial_or_shifted_range_cue",
+          "per_beat_camera_and_license_repetition",
+          "secondary_spray_exhale_embellishments"
+        ],
+        "FREEDOM_omissions": [
+          "unconstrained_floor_scuff_and_micro_cloth_folds"
+        ]
+      },
+      "observation_state_target": "correct_visible",
+      "visibility_contract": "medium-wide three-quarter lateral view keeping both upper bodies, feet, and contacting limbs unobstructed",
+      "preparation": {
+        "A": "weight loaded on rear foot, hips coiled back",
+        "B": "weight loaded on lead foot, lead hip coiled"
+      },
+      "commitment": {
+        "A": "pulls down hard on the collar tie and spears his bent right kneecap vertically upward into the solar plexus while standing on his left pillar leg",
+        "B": "jackknifes forward at the waist inside the clinch as the knee buries deep into his solar plexus"
+      },
+      "contact": {
+        "operation": "maintain",
+        "description": "A's rising right knee connects cleanly against B's floating ribs and solar plexus (maintain contact clearly visible with zero torso overlap and both arms separate in silhouette)"
+      },
+      "consequence_and_recovery": "A settles into weight loaded on rear foot, hips coiled back (center of mass stacked over lead foot); B settles into knees bent low in crouched dip (balanced).",
+      "animation_license": "Keep the bent striking knee, standing pillar leg, head, and torso razor-sharp with zero smear blur; punctuate with a brief hit-stop hold after visible contact and clear any impact accent immediately so B's reaction remains unobstructed",
+      "internal_only_biomechanics_not_emitted": {
+        "A_weight_split": [
+          90,
+          10
+        ],
+        "B_weight_split": [
+          70,
+          30
+        ],
+        "A_com": "over_lead_foot",
+        "B_com": "staggering_off_balance",
+        "A_kinetic_chain": "right knee surges up > hips drive upward > both hands pull the posture down > right knee lands in the solar plexus",
+        "B_kinetic_chain": "knees buckle inward > hips fold forward > torso drops onto the guarding elbows",
+        "A_chain_frames": [
+          0,
+          2,
+          3,
+          5
+        ],
+        "B_chain_frames": [
+          0,
+          2,
+          4
+        ],
+        "easing_curve": "snap_snap_hold_snap",
+        "impulse_tier": 3,
+        "range_metres": 0.58
+      }
+    },
+    {
+      "event_index": 8,
+      "event_id": "E08_two_hand_clinch_shove_vs_shoved_back_react",
+      "requirement_class": "HARD",
+      "requirements_breakdown": {
+        "HARD_invariant": "A plants both open palms and shoves violently forward to break the clinch; after contact, B is shoved backward.",
+        "SOFT_preferences": [
+          "repeated_range_preamble (close collar-and-elbow clinch distance with frames locked)",
+          "per_beat_camera_and_license_repetition",
+          "secondary_spray_exhale_embellishments"
+        ],
+        "FREEDOM_omissions": [
+          "unconstrained_floor_scuff_and_micro_cloth_folds"
+        ]
+      },
+      "observation_state_target": "correct_visible",
+      "visibility_contract": "medium-wide three-quarter lateral view keeping both upper bodies, feet, and contacting limbs unobstructed",
+      "preparation": {
+        "A": "weight loaded on rear foot, hips coiled back",
+        "B": "knees bent low in crouched dip"
+      },
+      "commitment": {
+        "A": "plants both open palms flat against the chest and shoves violently forward to break the clinch and create striking space",
+        "B": "is shoved backward out of the clinch to full arm's length, his heels skidding across the floor as he catches his balance"
+      },
+      "contact": {
+        "operation": "release",
+        "description": "A's both open palms connects cleanly against B's upper chest (release contact clearly visible with zero torso overlap and both arms separate in silhouette)"
+      },
+      "consequence_and_recovery": "A settles into weight loaded on rear foot, hips coiled back (center of mass anchored over rear foot); B settles into weight rocking onto rear heel (balanced).",
+      "animation_license": "Allow a brief limb-only smear on A's both open palms during the fast transfer while head, torso, and off-hand stay solid; restore exact proportions on contact, punctuate with a brief hit-stop hold after visible contact, and clear any impact accent immediately so B's reaction remains unobstructed",
+      "internal_only_biomechanics_not_emitted": {
+        "A_weight_split": [
+          30,
+          70
+        ],
+        "B_weight_split": [
+          20,
+          80
+        ],
+        "A_com": "over_rear_foot",
+        "B_com": "staggering_off_balance",
+        "A_kinetic_chain": "hips drive forward > torso surges through the push > shoulders snap out > both palms slam into the chest",
+        "B_kinetic_chain": "both heels skid back > hips rock backward > torso snaps upright over the rear foot",
+        "A_chain_frames": [
+          0,
+          2,
+          3,
+          5
+        ],
+        "B_chain_frames": [
+          0,
+          2,
+          4
+        ],
+        "easing_curve": "snap_snap_hold_snap",
+        "impulse_tier": 2,
+        "range_metres": 0.58
+      }
+    },
+    {
+      "event_index": 9,
+      "event_id": "E09_body_elbow_tuck_vs_rear_body_straight",
+      "requirement_class": "HARD",
+      "requirements_breakdown": {
+        "HARD_invariant": "B slips then drives a straight right punch into the midsection, met by A who crunches his left elbow.",
+        "SOFT_preferences": [
+          "initial_or_shifted_range_cue",
+          "per_beat_camera_and_license_repetition",
+          "secondary_spray_exhale_embellishments"
+        ],
+        "FREEDOM_omissions": [
+          "unconstrained_floor_scuff_and_micro_cloth_folds"
+        ]
+      },
+      "observation_state_target": "correct_visible",
+      "visibility_contract": "medium-wide lateral counter framing keeping B's counter lane and A's guard reaction fully visible",
+      "preparation": {
+        "A": "weight loaded on rear foot, hips coiled back",
+        "B": "slips his head briskly to the inside while loading weight onto the right hip"
+      },
+      "commitment": {
+        "A": "crunches his left elbow down tight against his hip and ribs to block the body shot",
+        "B": "sinks his hips and drives a straight right fist deep into the midsection"
+      },
+      "contact": {
+        "operation": "strike",
+        "description": "B's right fist meets A's tucked left elbow and forearm guard (strike contact clearly visible in profile with both fighters' arms separated from their torsos in silhouette)"
+      },
+      "consequence_and_recovery": "A settles into weight loaded on lead foot, lead hip coiled (center of mass centered between both feet); B settles into weight loaded on rear foot, hips coiled back (center of mass stacked over lead foot).",
+      "animation_license": "Allow a brief limb-only smear on B's right fist during the swing while head, torso, and off-hand stay solid; restore proportions at contact, hold the impact briefly after contact, and let any shock accent clear before A's recovery",
+      "internal_only_biomechanics_not_emitted": {
+        "A_weight_split": [
+          55,
+          45
+        ],
+        "B_weight_split": [
+          80,
+          20
+        ],
+        "A_com": "centered",
+        "B_com": "over_lead_foot",
+        "A_kinetic_chain": "hips dip square > torso curls over > left elbow drops to the ribs",
+        "B_kinetic_chain": "hips sink low > right shoulder drives forward > right arm extends > right fist digs into the ribs",
+        "A_chain_frames": [
+          0,
+          2,
+          4
+        ],
+        "B_chain_frames": [
+          0,
+          2,
+          3,
+          5
+        ],
+        "easing_curve": "sudden_jolt_settle",
+        "impulse_tier": 2,
+        "range_metres": 0.8
+      }
+    },
+    {
+      "event_index": 10,
+      "event_id": "E10_spinning_back_kick_vs_torso_fold_rib_hit",
+      "requirement_class": "HARD",
+      "requirements_breakdown": {
+        "HARD_invariant": "A slips then spins and drives his right heel straight back into the solar plexus; after contact, B folds.",
+        "SOFT_preferences": [
+          "repeated_range_preamble (clean arm-length punching distance so neither torso overlaps)",
+          "per_beat_camera_and_license_repetition",
+          "secondary_spray_exhale_embellishments"
+        ],
+        "FREEDOM_omissions": [
+          "unconstrained_floor_scuff_and_micro_cloth_folds"
+        ]
+      },
+      "observation_state_target": "correct_visible",
+      "visibility_contract": "tight side-profile impact framing exposing the exact limb-to-target collision",
+      "preparation": {
+        "A": "slips his head briskly to the inside while loading weight onto the right hip",
+        "B": "weight loaded on rear foot, hips coiled back"
+      },
+      "commitment": {
+        "A": "spins in place on his left foot and drives his right heel straight back into the solar plexus",
+        "B": "folds forward at the waist with a sharp exhale as the blow sinks into his ribs"
+      },
+      "contact": {
+        "operation": "strike",
+        "description": "A's driving right heel connects cleanly against B's floating ribs and solar plexus (strike contact clearly visible with zero torso overlap and both arms separate in silhouette)"
+      },
+      "consequence_and_recovery": "A settles into weight loaded on lead foot, lead hip coiled (center of mass stacked over lead foot); B settles into knees bent low in crouched dip (balanced).",
+      "animation_license": "Allow a brief limb-only smear on A's driving right heel during the fast transfer while head, torso, and off-hand stay solid; restore exact proportions on contact, punctuate with a brief hit-stop hold after visible contact, and clear any impact accent immediately so B's reaction remains unobstructed",
+      "internal_only_biomechanics_not_emitted": {
+        "A_weight_split": [
+          90,
+          10
+        ],
+        "B_weight_split": [
+          65,
+          35
+        ],
+        "A_com": "over_lead_foot",
+        "B_com": "staggering_off_balance",
+        "A_kinetic_chain": "hips spin the body around > torso whips level through the arc > right heel drives straight back > right heel lands on the ribs",
+        "B_kinetic_chain": "knees buckle inward > hips fold forward > torso drops over the guarding elbows",
+        "A_chain_frames": [
+          0,
+          2,
+          3,
+          5
+        ],
+        "B_chain_frames": [
+          0,
+          2,
+          4
+        ],
+        "easing_curve": "snap_snap_hold_snap",
+        "impulse_tier": 3,
+        "range_metres": 0.8
+      }
+    }
+  ],
+  "animation_license": "SAKUGA FX, SMEAR & HIT-STOP LAYER: Contrast short loaded anticipation holds with whip-fast strike transfers and deliberate post-impact recovery. Permit temporary broken-ink limb-isolated smear stretching ONLY on the active striking limb during swing transfer, keeping heads, torsos, standing legs, and non-striking guards razor-sharp and solid; restore full anatomical proportions and ultra-thick ink outlines immediately at contact. Punctuate each clean hit with a brief hit-stop hold, radial white impact shock rings, sweat/rain-mist spray, and subtle impact camera jolt strictly AT or AFTER visible contact, clearing the flash immediately so the physical recoil is unobstructed. NEGATIVE GUARDRAILS: no 3D CGI, no mocap stiffness, no floaty physics, no torso merging, no missing or one-armed limbs, no full-body blur, no reaction before contact.",
+  "closure_contract": "End with Fighter A planted in a wide, balanced guard on screen-left facing right with both arms clearly separate from the torso in silhouette, and Fighter B braced in a crouched recovery posture on screen-right; wardrobe markers, actor identities, and screen sides remain unchanged from start to finish.",
+  "audit_trace": [
+    {
+      "event_id": "E01_low_calf_kick_vs_lead_leg_buckle",
+      "hard_invariant_preserved": true,
+      "hard_clause_sha256": "a8de5e06cc88348e",
+      "full_clause_sha256": "6b185d5807bb31e6",
+      "omitted_internal_fields": [
+        "A_weight_split",
+        "B_weight_split",
+        "A_com",
+        "B_com",
+        "A_kinetic_chain",
+        "B_kinetic_chain",
+        "A_chain_frames",
+        "B_chain_frames",
+        "easing_curve",
+        "impulse_tier",
+        "range_metres"
+      ]
+    },
+    {
+      "event_id": "E02_burst_step_in_vs_slip_inside",
+      "hard_invariant_preserved": true,
+      "hard_clause_sha256": "f749ce9c721130cb",
+      "full_clause_sha256": "7ee42362a10d8eb2",
+      "omitted_internal_fields": [
+        "A_weight_split",
+        "B_weight_split",
+        "A_com",
+        "B_com",
+        "A_kinetic_chain",
+        "B_kinetic_chain",
+        "A_chain_frames",
+        "B_chain_frames",
+        "easing_curve",
+        "impulse_tier",
+        "range_metres"
+      ]
+    },
+    {
+      "event_id": "E03_slashing_rear_elbow_vs_head_whip_side",
+      "hard_invariant_preserved": true,
+      "hard_clause_sha256": "e6aaaad6e3dffeb3",
+      "full_clause_sha256": "add558e4f128170b",
+      "omitted_internal_fields": [
+        "A_weight_split",
+        "B_weight_split",
+        "A_com",
+        "B_com",
+        "A_kinetic_chain",
+        "B_kinetic_chain",
+        "A_chain_frames",
+        "B_chain_frames",
+        "easing_curve",
+        "impulse_tier",
+        "range_metres"
+      ]
+    },
+    {
+      "event_id": "E04_high_shell_guard_vs_cross",
+      "hard_invariant_preserved": true,
+      "hard_clause_sha256": "5ec95c19a60a3298",
+      "full_clause_sha256": "77728d0a130b9c4e",
+      "omitted_internal_fields": [
+        "A_weight_split",
+        "B_weight_split",
+        "A_com",
+        "B_com",
+        "A_kinetic_chain",
+        "B_kinetic_chain",
+        "A_chain_frames",
+        "B_chain_frames",
+        "easing_curve",
+        "impulse_tier",
+        "range_metres"
+      ]
+    },
+    {
+      "event_id": "E05_lead_liver_hook_vs_torso_fold_rib_hit",
+      "hard_invariant_preserved": true,
+      "hard_clause_sha256": "5a5ff4e284dbd05d",
+      "full_clause_sha256": "ae0c6cb81e949e36",
+      "omitted_internal_fields": [
+        "A_weight_split",
+        "B_weight_split",
+        "A_com",
+        "B_com",
+        "A_kinetic_chain",
+        "B_kinetic_chain",
+        "A_chain_frames",
+        "B_chain_frames",
+        "easing_curve",
+        "impulse_tier",
+        "range_metres"
+      ]
+    },
+    {
+      "event_id": "E06_single_collar_tie_vs_clinch_captured_react",
+      "hard_invariant_preserved": true,
+      "hard_clause_sha256": "227cf757ad3c854b",
+      "full_clause_sha256": "bd865e5ce50e589d",
+      "omitted_internal_fields": [
+        "A_weight_split",
+        "B_weight_split",
+        "A_com",
+        "B_com",
+        "A_kinetic_chain",
+        "B_kinetic_chain",
+        "A_chain_frames",
+        "B_chain_frames",
+        "easing_curve",
+        "impulse_tier",
+        "range_metres"
+      ]
+    },
+    {
+      "event_id": "E07_clinch_rising_knee_vs_clinch_rib_fold",
+      "hard_invariant_preserved": true,
+      "hard_clause_sha256": "87aa616eeb9f8089",
+      "full_clause_sha256": "6e0c3be4be75207b",
+      "omitted_internal_fields": [
+        "A_weight_split",
+        "B_weight_split",
+        "A_com",
+        "B_com",
+        "A_kinetic_chain",
+        "B_kinetic_chain",
+        "A_chain_frames",
+        "B_chain_frames",
+        "easing_curve",
+        "impulse_tier",
+        "range_metres"
+      ]
+    },
+    {
+      "event_id": "E08_two_hand_clinch_shove_vs_shoved_back_react",
+      "hard_invariant_preserved": true,
+      "hard_clause_sha256": "efede91438dd0284",
+      "full_clause_sha256": "c98122e28630f696",
+      "omitted_internal_fields": [
+        "A_weight_split",
+        "B_weight_split",
+        "A_com",
+        "B_com",
+        "A_kinetic_chain",
+        "B_kinetic_chain",
+        "A_chain_frames",
+        "B_chain_frames",
+        "easing_curve",
+        "impulse_tier",
+        "range_metres"
+      ]
+    },
+    {
+      "event_id": "E09_body_elbow_tuck_vs_rear_body_straight",
+      "hard_invariant_preserved": true,
+      "hard_clause_sha256": "80e8175468df9636",
+      "full_clause_sha256": "b01016e75cc4e45c",
+      "omitted_internal_fields": [
+        "A_weight_split",
+        "B_weight_split",
+        "A_com",
+        "B_com",
+        "A_kinetic_chain",
+        "B_kinetic_chain",
+        "A_chain_frames",
+        "B_chain_frames",
+        "easing_curve",
+        "impulse_tier",
+        "range_metres"
+      ]
+    },
+    {
+      "event_id": "E10_spinning_back_kick_vs_torso_fold_rib_hit",
+      "hard_invariant_preserved": true,
+      "hard_clause_sha256": "7eb3beb3304c4fdc",
+      "full_clause_sha256": "d7ee31e8a6b7083c",
+      "omitted_internal_fields": [
+        "A_weight_split",
+        "B_weight_split",
+        "A_com",
+        "B_com",
+        "A_kinetic_chain",
+        "B_kinetic_chain",
+        "A_chain_frames",
+        "B_chain_frames",
+        "easing_curve",
+        "impulse_tier",
+        "range_metres"
+      ]
+    }
+  ]
+}

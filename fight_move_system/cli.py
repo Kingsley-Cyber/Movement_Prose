@@ -145,10 +145,11 @@ def main(argv: Optional[List[str]] = None) -> int:
             "readability",
             "readability-prose",
             "readability-tight",
+            "readability-stack",
             "latent_sakuga",
         ],
         default="xperiment",
-        help="Compilation profile: 'xperiment'/'extreme' (full sakuga_Xperiment), 'lean', or 'readability'/'readability-prose'/'readability-tight'/'latent_sakuga' (LATENT SAKUGA Causal-Readability)",
+        help="Compilation profile: 'xperiment'/'extreme' (full sakuga_Xperiment), 'lean', or 'readability'/'readability-prose'/'readability-tight'/'readability-stack'/'latent_sakuga' (LATENT SAKUGA Causal-Readability)",
     )
     p_comp.add_argument(
         "--budget-words",
@@ -300,8 +301,10 @@ def main(argv: Optional[List[str]] = None) -> int:
         prompts: List[str] = []
         specs: List[Dict[str, Any]] = []
         for idx, clip in enumerate(clips):
-            if args.mode in ("readability", "readability-prose", "readability-tight", "latent_sakuga"):
-                if args.mode == "readability-tight":
+            if args.mode in ("readability", "readability-prose", "readability-tight", "readability-stack", "latent_sakuga"):
+                if args.mode == "readability-stack":
+                    dialect = "readability-stack"
+                elif args.mode == "readability-tight":
                     dialect = "readability-tight"
                 elif args.mode == "readability-prose":
                     dialect = "readability-prose"
