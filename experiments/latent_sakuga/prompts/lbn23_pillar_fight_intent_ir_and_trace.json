@@ -118,6 +118,11 @@
     ]
   },
   "arm_metrics": {
+    "arm_C1_clean_verified": {
+      "word_count": 2083,
+      "utf8_byte_count": 12846,
+      "sha256": "efc7e06518e46d7d"
+    },
     "c1_plus_sakuga_mllm_causal": {
       "word_count": 5472,
       "utf8_byte_count": 45569,

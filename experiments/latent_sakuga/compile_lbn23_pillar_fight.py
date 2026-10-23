@@ -389,7 +389,72 @@ def build_lbn23_pillar_fight() -> Dict[str, Any]:
         "Close on a slow dolly-in with A holding a low shinobi crouch on screen-left and B lying prone and motionless on screen-right with the single kunai embedded in his right shoulder."
     )
 
-    # 4. Build Golden Format 1: Original 05:34 (`SAKUGA-MLLM-3.1-CAUSAL` Compact JSON + Top Header)
+    # 3b. Build Clean Claim-Verified Pure-NL Arm C1 (Fixes all 10 issues: SEM-BUG-01..10, Zero Decimal Timestamp Noise, Consistent Left-Pillar Geometry, Pillar-Embedded Kunai Permanence, Clean Hand/Slot Occupancy, Deduplicated Camera/FX)
+    arm_c1_clean_verified_text = (
+        "SHOT & STYLE CONTRACT\n"
+        "Continuous hand-drawn anime ninja fight clip in a moonlit stone courtyard with a tall carved stone pillar rising vertically on the left side of the stage, "
+        "drifting night mist, crisp silver moonlight rim-lighting, and deep indigo courtyard shadows. "
+        "STYLE: Pure 2D cel-shaded hand-drawn anime, high-speed shinobi martial-arts sakuga animation on twos, crisp angular anatomical linework, "
+        "flat two-tone high-contrast cel shadows, heavy ink outlines on Fighter A and Fighter B, broken sketchy ink on active smear limbs and rope-dart whip arcs only, "
+        "clean ultra-thick ink on impact holds. Not 3D, not CGI, not live action, not photoreal. "
+        "SCREEN GEOMETRY LOCK: Maintain strict front-hemisphere camera geometry with zero camera-cut axis flips and zero on-screen text, numbers, or HUD — "
+        " the vertical stone pillar anchors the left side of the courtyard behind Fighter A, while Fighter B anchors the right side of the courtyard.\n\n"
+        "ENTITY, PROP LEDGER & INITIAL STATE\n"
+        "ENTITY COUNT, OUTFIT & PROP CONTINUITY LOCK: Exactly TWO shinobi fighters and SIX tracked props with strict single-instance conservation (never duplicated, never teleported). "
+        "Fighter A (agile shinobi striker): dark high-collar shinobi flak coat trailing behind, white forearm wraps, dark shinobi trousers, strapped sandals; begins coiled upside-down in mid-air directly above the left-side stone pillar with rope dart holstered at left hip, smoke pellet at waist, and wooden substitution log concealed inside coat. "
+        "Fighter B (heavy armored rogue shinobi): sleeveless charcoal combat vest over scarred broad shoulders, reinforced forearm bracers, dark hakama trousers; begins grounded on the right side of the courtyard holding the single iron kunai in reverse grip in his right hand and three steel shuriken holstered in his right thigh pouch. "
+        "PROP LEDGER INVARIANTS (SIX TRACKED PROPS): "
+        "(1) SINGLE IRON KUNAI: Held by B in reverse grip -> hurled upward at diving A -> kicked and deflected by A's right foot so it embeds visibly into the upper stone pillar face -> yanked free from the stone pillar by A's right hand during his wall-plant -> driven by A's right hand deep into B's exposed right shoulder where it stays embedded to the end. "
+        "(2) SINGLE ROPE DART: Kept holstered at A's left hip through the opening exchanges and cartwheel so A's left hand stays free -> drawn and whipped by A's left hand on his pillar rebound to wrap tightly around B's right forearm and upper torso -> pulled taut to drag B forward and slam him prone. "
+        "(3) SINGLE SMOKE PELLET: Carried at A's waist -> detonated on the courtyard floor in a crisp white smoke burst to trigger the Kawarimi substitution. "
+        "(4) WOODEN SUBSTITUTION LOG (KAWARIMI STAND-IN): Concealed in A's coat -> stands upright as a full-body-height wooden stand-in occupying A's exact stance in the smoke so no actor slot is ever missing -> absorbs B's heavy right palm strike and tips onto the flagstones as A materializes behind B. "
+        "(5) THREE STEEL SHURIKEN: Holstered on B's right thigh -> hurled leftward in a downward fan volley by B while airborne -> pass cleanly over A's low ground slide and embed firmly into the lower face of the left-side stone pillar. "
+        "(6) VERTICAL STONE PILLAR: Solid carved stone column rising on the left side of the courtyard; A lands near its top and sprints straight down its vertical face, the deflected kunai embeds high in its stone face, the three shuriken embed lower in its stone face, and B hurls A leftward against its face where A plants both feet, pulls the kunai free, and rebounds.\n\n"
+        "CAMERA & OBSERVATION LAYER\n"
+        "Every beat must keep all nineteen body parts (head, torso, pelvis, upper-arms, forearms, hands, thighs, shins, and feet) accounted for with both left and right arms clearly separate from the torso in silhouette. "
+        "Keep both fighters and active prop trajectories inside an unobstructed front-hemisphere view, exposing every strike, deflection, log substitution, grapple lock, tether wrap, and blade impale in clean side or three-quarter profile with zero torso overlap.\n\n"
+        "SYNCHRONIZED CAUSAL BEATS (Preparation -> Commitment -> Named Contact -> Consequence -> Recovery)\n"
+        "- Beat 1 (INVERTED DROP & VERTICAL PILLAR SPRINT): [View: high-angle crane drop transitioning smoothly into a vertical tilt tracking down the left-side stone pillar face] "
+        "Fighter A drops coiled upside-down from high above the left-side stone pillar while Fighter B braces below on the right in a wide guard with the reverse-grip kunai chambered in his right hand; "
+        "A plants both feet high against the vertical stone pillar face, flips upright with his coat trailing, and sprints straight down the vertical stone column toward B. "
+        "[License: brief vertical descent streak on A's drop only; keep A's sprinting limbs and B's grounded guard crisp and solid with a puff of stone dust as A's feet plant on the pillar]\n"
+        "- Beat 2 (PILLAR LAUNCH, UPWARD KUNAI THROW & MID-AIR FOOT DEFLECTION INTO PILLAR): [View: fast lateral push-in locking into a tight low-angle profile impact frame on the mid-air foot-to-blade collision] "
+        "Kicking off the stone pillar face into a fast diving arc toward B, A draws B's throw as B twists his torso and hurls the single kunai sharply upward along A's dive line; "
+        "before the rising blade can reach A's chest, A twists his hips in mid-air with his left leg tucked and whips his flat right foot across the flat of the kunai — A's right foot strikes the kunai cleanly in profile, deflecting the spinning blade backward where it embeds firmly into the upper face of the stone pillar as A lands in a low balanced crouch on screen-left. "
+        "[License: broken-ink smear on A's kicking right leg during the swing only; restore solid anatomy at contact, punctuate with a brief hit-stop hold and metallic spark ring strictly AFTER foot-to-blade contact, and keep the deflected kunai visibly embedded in the stone pillar face]\n"
+        "- Beat 3 (KAWARIMI WOODEN LOG SUBSTITUTION & PALM STRIKE INTO STAND-IN LOG): [View: wide low front-hemisphere framing keeping the substitution spot, the upright log, and B's flank completely unobstructed] "
+        "As B charges leftward across the courtyard, A detonates his waist smoke pellet and vanishes in a crisp white smoke burst, leaving an upright full-body-height wooden substitution log standing directly in A's place; "
+        "B drives a heavy open-palm strike with his right hand squarely into the chest of the upright wooden log, and only after palm-to-bark contact does the wooden log shudder and tip onto the flagstones while A materializes crouched directly behind B's exposed back. "
+        "[License: crisp expanding smoke ring that clears immediately to reveal the solid wooden log before B's palm strike lands; zero ghost limbs or missing-actor frames]\n"
+        "- Beat 4 (RISING RIGHT KNEE TO SPINE & INVERTED BACKFLIP RESET): [View: medium-close side-profile framing exposing A's rising knee against B's spine, craning upward with A's backflip back toward screen-left] "
+        "From his crouched reappearance behind B, A plants his left pillar leg, coils his torso with his left forearm in high guard, and drives his bent right knee forcefully upward into B's mid-spine; "
+        "only after A's right knee connects cleanly against B's spine does B's spine flex forward, his torso fold, his arms fling forward, and both feet lift off the stones as B is launched airborne, while A rides the rebound into a full backward somersault back toward the left side of the courtyard. "
+        "[License: keep A's bent striking knee, standing left leg, head, and torso razor-sharp with ZERO knee smear blur; punctuate with a brief hit-stop hold and blunt shock ring strictly AFTER knee-to-spine contact, followed by a clean rotational tuck streak along A's backflip arc]\n"
+        "- Beat 5 (AIRBORNE SHURIKEN VOLLEY, LOW GROUND SLIDE & ONE-HANDED LEFT CARTWHEEL): [View: low lateral tracking dolly following A's slide underneath the shuriken trajectories toward the left-side pillar] "
+        "While still suspended mid-air from the knee launch, B twists his torso and hurls a downward fan volley of three steel shuriken toward A; "
+        "landing from his backflip, A drops his pelvis low to the flagstones and slides flat underneath the incoming volley as all three shuriken pass over his back and embed firmly into the lower stone pillar face behind him, then A plants his free left hand on the stones and executes a crisp forward cartwheel onto his feet as B lands in a braced crouch. "
+        "[License: straight metallic glint trails on the three flying shuriken and a low flagstone dust trail behind A's sliding heels; keep all four limbs distinct during A's left-hand cartwheel plant]\n"
+        "- Beat 6 (TWO-HAND ELBOW CATCH, THROW INTO STONE PILLAR & KUNAI RETRIEVAL): [View: tight close-up on the two-hand elbow bind whip-panning left to the stone pillar wall-plant] "
+        "As A lunges back in from his cartwheel, B plants his right foot, coils his heavy torso, and clamps both hands around A's incoming left elbow; "
+        "immediately after B's hands lock the elbow joint, A's torso is wrenched sideways and his feet lift off the floor as B pivots circularly and hurls A leftward into the stone pillar face, where A absorbs the impact by planting both feet flat against the vertical stone column and reaches up with his right hand to yank the embedded kunai free from the pillar. "
+        "[License: brief grapple-lock pause as B clamps A's elbow, fast ballistic streak on A's thrown body while B's throwing stance stays solid, and a hit-stop hold with stone-crack dust burst strictly AFTER A's feet slam onto the pillar face]\n"
+        "- Beat 7 (PILLAR REBOUND, ROPE-DART TORSO WRAP & TAUT TETHER DRAG): [View: medium-close tracking shot keeping the taut rope-dart line between A's left hand and B's upper torso unbroken] "
+        "Kicking off the stone pillar face with the retrieved kunai held ready in his right fist, A draws and whips the rope dart with his left hand across the gap; "
+        "the rope dart wraps tightly around B's right forearm and upper torso with a metallic spark, and A lands grounded on his planted left foot, anchoring the taut rope line in his extended left hand and wrenching backward to drag B's stumbling body forward off-balance into close range. "
+        "[License: brief whip-arc smear on the rope-dart cord during release only; once wrapped, keep the taut tether line crisp and continuous between A's left hand and B's bound upper torso]\n"
+        "- Beat 8 (SLOW-MOTION KUNAI SHOULDER IMPALE & FULL-BODY GROUND SLAM): [View: tight slow-motion side-profile impact frame on the shoulder stab widening to a ground-level shockwave view on the floor slam] "
+        "As B is dragged stumbling into close range, A coils his torso while maintaining left-hand rope tension and drives the single iron kunai in his right hand deep into B's exposed right shoulder; "
+        "only after the blade penetrates B's right shoulder does B's shoulder jerk and his head snap backward with the kunai remaining embedded in the joint, and without resetting his stance, A wrenches the taut rope-dart tether downward with his full body weight to slam B's entire body flat onto the courtyard flagstones, leaving B prone and motionless. "
+        "[License: brief slow-motion window with a hit-stop hold and crimson/white impact spark strictly AFTER the kunai enters B's right shoulder, followed immediately by a heavy ground-slam hit-stop hold and expanding radial stone-dust shockwave ring strictly AFTER B's torso hits the flagstones]\n\n"
+        "SAKUGA FX & ANIMATION LICENSE LAYER\n"
+        "Contrast brief coiled anticipation holds before each major strike with whip-fast transfers and multi-frame hit-stop holds at impact. "
+        "Restrict broken-ink smear stretching strictly to the active kicking leg, thrown body, rope-dart whip cord, or stabbing arm during transfer; keep heads, torsos, standing pillar legs, and non-striking guards razor-sharp and solid, restoring full anatomical proportions immediately at contact. "
+        "Fire all metallic sparks, smoke bursts, and radial floor-dust rings strictly AT or AFTER visible contact and clear them immediately so physical recoil and prop ownership stay unobstructed. "
+        "NEGATIVE GUARDRAILS: no missing limbs, no limb merging or left/right swapping during somersaults or cartwheels, no Kawarimi vanish without the full-body wooden substitution log stand-in, no duplicated or teleporting kunai, no reaction before contact, no stance reset between the kunai shoulder impale and the floor slam, and no B standing up after the final ground-slam knockdown.\n\n"
+        "TERMINAL CLOSURE\n"
+        "End on a slow dolly-in as Fighter A holds a low, balanced shinobi crouch on screen-left with both feet planted flat, left hand holding the slackened rope dart, and both arms clearly separate from his torso in silhouette, "
+        "while Fighter B lies prone and motionless face-down on the flagstones on screen-right with the single kunai still embedded in his right shoulder and the three shuriken embedded in the stone pillar behind A as courtyard dust settles in the moonlight."
+    )
     golden_0534_header = (
         f"{shot_contract} {state_and_props_contract} "
         "Render as one physically continuous combat event where every movement emerges visibly from the force and momentum of the previous state; no on-screen text, no numbers, no HUD, and no coordinate labels."
@@ -601,6 +666,11 @@ def build_lbn23_pillar_fight() -> Dict[str, Any]:
             "force_events_validated": ["FE1_knee_strike_4.55_4.85", "FE2_elbow_catch_throw_6.60_7.05", "FE3_kunai_drive_8.30_8.60", "FE4_drag_slam_8.00_9.05"],
         },
         "arm_metrics": {
+            "arm_C1_clean_verified": {
+                "word_count": len(arm_c1_clean_verified_text.split()),
+                "utf8_byte_count": len(arm_c1_clean_verified_text.encode("utf-8")),
+                "sha256": hashlib.sha256(arm_c1_clean_verified_text.encode("utf-8")).hexdigest()[:16],
+            },
             "c1_plus_sakuga_mllm_causal": {
                 "word_count": len(c1_plus_sakuga_mllm_causal_text.split()),
                 "utf8_byte_count": len(c1_plus_sakuga_mllm_causal_text.encode("utf-8")),
@@ -634,6 +704,9 @@ def build_lbn23_pillar_fight() -> Dict[str, Any]:
         },
     }
 
+    (PROMPT_DIR / "lbn23_pillar_fight_arm_C1_clean_verified.txt").write_text(
+        arm_c1_clean_verified_text + "\n", encoding="utf-8"
+    )
     (PROMPT_DIR / "lbn23_pillar_fight_c1_plus_sakuga_mllm_causal.txt").write_text(
         c1_plus_sakuga_mllm_causal_text + "\n", encoding="utf-8"
     )
