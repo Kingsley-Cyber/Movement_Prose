@@ -296,6 +296,11 @@ def compile_to_sakuga_Fluid_stack(
     if not val_res.ok:
         return "", {}, val_res
 
+    if mode == "extreme":
+        mode = "xperiment"
+    if str(schema_name).lower() == "extreme":
+        schema_name = "sakuga_Xperiment"
+
     fighters_cfg = clip.get("fighters", {})
     a_cfg = fighters_cfg.get("A", {})
     b_cfg = fighters_cfg.get("B", {})

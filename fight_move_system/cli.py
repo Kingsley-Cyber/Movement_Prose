@@ -137,15 +137,15 @@ def main(argv: Optional[List[str]] = None) -> int:
     p_comp.add_argument("-o", "--output", type=Path, default=None, help="Optional output file path")
     p_comp.add_argument(
         "--mode",
-        choices=["xperiment", "lean"],
+        choices=["xperiment", "extreme", "lean"],
         default="xperiment",
-        help="Compilation profile: 'xperiment' (full sakuga_Xperiment) or 'lean'",
+        help="Compilation profile: 'xperiment'/'extreme' (full sakuga_Xperiment) or 'lean'",
     )
     p_comp.add_argument(
         "--schema",
         type=str,
         default="sakuga_Xperiment",
-        help="Layer 2 schema tag (default: sakuga_Xperiment)",
+        help="Layer 2 schema tag (default: sakuga_Xperiment; accepts 'extreme' as alias)",
     )
     p_comp.add_argument(
         "--json-out",
@@ -284,12 +284,14 @@ def main(argv: Optional[List[str]] = None) -> int:
         clips, notes = compose_clips(data)
         prompts: List[str] = []
         specs: List[Dict[str, Any]] = []
+        compile_mode = "xperiment" if args.mode in ("xperiment", "extreme") else args.mode
+        schema_name = "sakuga_Xperiment" if str(args.schema).lower() == "extreme" else args.schema
         for idx, clip in enumerate(clips):
             prompt, spec, res = compile_to_sakuga_Fluid_stack(
                 clip,
-                emit_chain_in_causal=(args.mode != "lean"),
-                schema_name=args.schema,
-                mode=args.mode,
+                emit_chain_in_causal=(compile_mode != "lean"),
+                schema_name=schema_name,
+                mode=compile_mode,
             )
             if not res.ok:
                 for code, msg in res.errors:
