@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+from .causal_readability_compiler import compile_to_causal_readability
 from .closed_loop import (
     apply_localized_repair,
     build_next_clip_handoff,
@@ -137,9 +138,9 @@ def main(argv: Optional[List[str]] = None) -> int:
     p_comp.add_argument("-o", "--output", type=Path, default=None, help="Optional output file path")
     p_comp.add_argument(
         "--mode",
-        choices=["xperiment", "extreme", "lean"],
+        choices=["xperiment", "extreme", "lean", "readability", "readability-prose", "latent_sakuga"],
         default="xperiment",
-        help="Compilation profile: 'xperiment'/'extreme' (full sakuga_Xperiment) or 'lean'",
+        help="Compilation profile: 'xperiment'/'extreme' (full sakuga_Xperiment), 'lean', or 'readability'/'readability-prose'/'latent_sakuga' (LATENT SAKUGA Causal-Readability)",
     )
     p_comp.add_argument(
         "--schema",
@@ -284,15 +285,22 @@ def main(argv: Optional[List[str]] = None) -> int:
         clips, notes = compose_clips(data)
         prompts: List[str] = []
         specs: List[Dict[str, Any]] = []
-        compile_mode = "xperiment" if args.mode in ("xperiment", "extreme") else args.mode
-        schema_name = "sakuga_Xperiment" if str(args.schema).lower() == "extreme" else args.schema
         for idx, clip in enumerate(clips):
-            prompt, spec, res = compile_to_sakuga_Fluid_stack(
-                clip,
-                emit_chain_in_causal=(compile_mode != "lean"),
-                schema_name=schema_name,
-                mode=compile_mode,
-            )
+            if args.mode in ("readability", "readability-prose", "latent_sakuga"):
+                dialect = "readability-prose" if args.mode == "readability-prose" else "readability"
+                prompt, spec, res = compile_to_causal_readability(
+                    clip,
+                    dialect=dialect,
+                )
+            else:
+                compile_mode = "xperiment" if args.mode in ("xperiment", "extreme") else args.mode
+                schema_name = "sakuga_Xperiment" if str(args.schema).lower() == "extreme" else args.schema
+                prompt, spec, res = compile_to_sakuga_Fluid_stack(
+                    clip,
+                    emit_chain_in_causal=(compile_mode != "lean"),
+                    schema_name=schema_name,
+                    mode=compile_mode,
+                )
             if not res.ok:
                 for code, msg in res.errors:
                     print(f"[ERROR] [{code}] {msg}", file=sys.stderr)

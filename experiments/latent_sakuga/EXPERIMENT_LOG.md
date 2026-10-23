@@ -1,0 +1,61 @@
+# LATENT SAKUGA Causal-Readability Experiment Log (`exp/latent-sakuga-causal-readability`)
+
+- **Local Git Branch:** `exp/latent-sakuga-causal-readability` (`main` remains untouched until you approve the winner)
+- **Compiler Module Added:** [`fight_move_system/causal_readability_compiler.py`](../../fight_move_system/causal_readability_compiler.py)
+- **CLI Modes Added:** `--mode readability` (`6-Part Directorial Contract`) and `--mode readability-prose` (`3-Paragraph Directing Prose, Zero Numbers`)
+- **Matched Choreography Input:** [`fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json`](../../fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json) (10-beat Muay Thai vs. Dutch Kickboxer Rooftop Helipad Cage War, 6 weapons: calf kick, step-in, slashing elbow, high shell vs cross, slip + liver hook, collar tie, clinch rising knee, two-hand shove, body elbow block vs body straight, spinning back kick)
+
+---
+
+## 1. What We Changed & How It Works (The 4 High-ROI Performance Upgrades)
+
+| Upgrade Priority | What Was Happening Before (`Original 05:34` & `Extreme sakuga_Xperiment`) | What `causal_readability_compiler.py` Does Now |
+| :--- | :--- | :--- |
+| **1. Zero Internal Math Leak** | Internal validation numbers (`weight_split: [85, 15]`, `com_position`, `impulse_tier: 3`, `pos: [0, 0.84, 3.20]`, `dutch_roll_deg: -10`, `FE1`, `C01`) were printed directly into the prompt sent to Seedance. | Keeps **100% of V01–V22 validation internal** and saves those numbers inside [`prompts/arm_C1_intent_ir_and_trace.json`](prompts/arm_C1_intent_ir_and_trace.json) (`leaked_internal_numeric_fields = 0`). The prompt receives **only inspectable visual consequences**. |
+| **2. Event-Local Packets (Referential Locality)** | A single exchange was split across **5 distant sections** (`A_beats` $\to$ `B_track` 30 lines later $\to$ `camera` $\to$ `anime.smear_frames` $\to$ `rules`). | Binds **View + Preparation + Commitment + Named Limb-to-Surface Contact (`acquire`/`maintain`/`release`/`strike`) + Post-Contact Defender Reaction + Bounded Smear/Hold License** inside one contiguous sentence block per beat. |
+| **3. Visibility & Effect-Timing Contract (`RH1` & `RH3`)** | Impact flashes and camera shakes could fire over top of the collision, hiding whether the parry/strike actually landed. | Explicitly binds lateral/three-quarter silhouette separation to every contact and enforces **Accent-After-Contact** (*impact flash triggers only at/after visible contact and clears immediately so recoil is unobstructed*). |
+| **4. Requirement Classes (`HARD` / `SOFT` / `FREEDOM`) & Information Budget** | Every beat emitted the same full metadata payload (`51,026 bytes` in `sakuga_Xperiment`, `25,759 bytes` in `05:34`). | Preserves **100% of `HARD` invariants** (`hard_intent_coverage = 1.0`) while compressing redundant boilerplate—cutting prompt byte size by **77% (`Arm C1`) to 89% (`Arm C2`)**. |
+
+---
+
+## 2. Side-by-Side Comparison Across All 4 Matched-Intent Arms
+
+All 4 prompt files below were compiled from the **exact same 10-beat input sheet** and validated against the **same V01–V22 biomechanical & Knowledge Base rules**:
+
+| Arm ID | Schema / Dialect | Prompt File | Word Count | UTF-8 Bytes | Byte Reduction vs. Extreme (`Arm B`) | Leaked Internal Math Fields |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: |
+| **`Arm A`** | **Original `05:34` (`SAKUGA-MLLM-3.1-CAUSAL`)** | [`prompts/arm_A_original_0534_causal.txt`](prompts/arm_A_original_0534_causal.txt) | `1,908` | `25,759 B` | `-49.5%` | Coordinates `[x,y,z]`, `vel`, timestamps |
+| **`Arm B`** | **Extreme (`sakuga_Xperiment` 2-Layer Fluid Stack)** | [`prompts/arm_B_extreme_sakuga_Xperiment.txt`](prompts/arm_B_extreme_sakuga_Xperiment.txt) | `5,886` | `51,026 B` | Baseline (`0%`) | `weight_split`, `CoG`, `impulse_tier`, `dutch_roll_deg`, `[x,y,z]`, `FE1..10` |
+| **`Arm C1`** | **Latent Sakuga 6-Part Directorial Contract (`--mode readability`)** | [`prompts/arm_C1_latent_sakuga_contract.txt`](prompts/arm_C1_latent_sakuga_contract.txt) | `1,787` | `11,592 B` | **`-77.3%`** | **`0` (Zero leaked math)** |
+| **`Arm C2`** | **Latent Sakuga 3-Paragraph Directing Prose (`--mode readability-prose`)** | [`prompts/arm_C2_latent_sakuga_prose.txt`](prompts/arm_C2_latent_sakuga_prose.txt) | **`937`** | **`5,779 B`** | **`-88.7%`** | **`0` (Zero digits, zero metrics)** |
+
+---
+
+## 3. Ready-to-Paste Test Prompts (`Arm C2` & `Arm C1`)
+
+### Test Prompt `Arm C2` — Latent Sakuga 3-Paragraph Directing Prose (`937 words`, Zero Numbers, Event-Local)
+*(Copy and paste into Seedance 2.0 Mini / 2.5 to test pure event-local directing prose)*
+
+```text
+One continuous hand-drawn anime martial arts action cut inside a rain-slicked neon-lit rooftop helipad cage arena overlooking a dark cyberpunk skyline, harsh magenta-and-cyan floodlights reflecting off wet concrete, octagonal chain-link perimeter fence in deep background shadow. Expressive hand-drawn character animation with flat two-tone cel shadows, crisp anatomical ink outlines, and clear spacing contrast between brief loaded holds and whip-fast transfers. Keep Fighter A strictly on screen-left facing right and Fighter B strictly on screen-right facing left throughout the entire cut with zero side swaps and zero on-screen text. Fighter A (screen-left, facing right): lean, razor-cut Muay Thai and MMA striker, shirtless bare torso, white cloth tape on both wrists/knuckles and gold ankle wraps, midnight-blue Vale Tudo fight shorts, bare feet. Fighter B (screen-right, facing left): heavyweight muscular Dutch kickboxer, shirtless broad scarred torso, urban-camo fight shorts, bare wrists and bare ankles with NO tape, bare feet. Both fighters begin grounded at long kicking distance where an extended leg bridges the gap with both left and right arms visible outside their torso silhouettes. Maintain a readable front-hemisphere lateral and three-quarter camera view that keeps both fighters head-to-toe in frame and exposes every limb-to-target contact in profile. Never orbit across the center line, and never conceal a required block, parry, or strike behind an early flash or torso overlap.
+
+From long kicking distance where an extended leg bridges the gap, A steps off-line on his left foot and whips a baseball-bat right shin horizontally into the outside of the lead calf (connecting cleanly on B's outside lead calf and lower leg); only after contact, B has his left calf chopped sideways out from under him, his knee buckling inward as he catches his balance. Across long kicking distance where an extended leg bridges the gap, A drives off his right foot in a sharp forward step to close the gap into striking range while B slips his head briskly to the inside while loading weight onto the right hip, resetting their firing line without clipping. From clean arm-length punching distance so neither torso overlaps, A steps deep into the pocket and whips a razor-sharp horizontal right elbow point across the brow and cheekbone (connecting cleanly on B's jawline and temple); only after contact, B has his jaw whipped violently sideways in the direction of the hook as sweat sprays from his brow. At clean arm-length punching distance so neither torso overlaps, B drives a heavy straight punch with the right fist down the centerline toward the jaw (meeting A's paired vertical forearm high shell in clear profile) while A responds at contact as A locks both forearms tightly in front of his face in a rigid high shell guard to absorb the blow. A slips his head sharply to the outside of the incoming punch while coiling his left shoulder and immediately digs a tight shovel hook with the left fist underneath the elbow into the floating ribs (connecting cleanly on B's floating ribs and solar plexus); only after contact, B folds forward at the waist with a sharp exhale as the blow sinks into his ribs. From clean arm-length punching distance so neither torso overlaps, A steps into the pocket and hooks his left palm behind the back of the neck in a tight collar tie (connecting cleanly on B's back of the neck); only after contact, B has his neck pulled forward into the clinch while his hands brace against the shoulders for posture. From close collar-and-elbow clinch distance with frames locked, A pulls down hard on the collar tie and spears his bent right kneecap vertically upward into the solar plexus while standing on his left pillar leg (connecting cleanly on B's floating ribs and solar plexus); only after contact, B jackknifes forward at the waist inside the clinch as the knee buries deep into his solar plexus. From close collar-and-elbow clinch distance with frames locked, A plants both open palms flat against the chest and shoves violently forward to break the clinch and create striking space (connecting cleanly on B's upper chest); only after contact, B is shoved backward out of the clinch to full arm's length, his heels skidding across the floor as he catches his balance. B slips his head briskly to the inside while loading weight onto the right hip then immediately sinks his hips and drives a straight right fist deep into the midsection (meeting A's tucked left elbow and forearm guard in clear profile), causing A to respond as A crunches his left elbow down tight against his hip and ribs to block the body shot. A slips his head briskly to the inside while loading weight onto the right hip and immediately spins in place on his left foot and drives his right heel straight back into the solar plexus (connecting cleanly on B's floating ribs and solar plexus); only after contact, B folds forward at the waist with a sharp exhale as the blow sinks into his ribs.
+
+Contrast short preparation holds with fast strike transfers and deliberate post-impact recovery. Permit temporary limb-isolated smear stretching only on the active striking limb during swing transfer, keeping heads, torsos, standing legs, and non-striking guards solid; restore full anatomical proportions immediately at contact. Trigger impact flashes only at or after visible contact and clear them immediately so the physical recoil is clearly seen. End with Fighter A planted in a wide, balanced guard on screen-left facing right with both arms clearly separate from the torso in silhouette, and Fighter B braced in a crouched recovery posture on screen-right; wardrobe markers, actor identities, and screen sides remain unchanged from start to finish.
+```
+
+*(For the structured 6-Part Directorial Contract with explicit `[View: ...]` and `[License: ...]` tags per beat, open [`prompts/arm_C1_latent_sakuga_contract.txt`](prompts/arm_C1_latent_sakuga_contract.txt).)*
+
+---
+
+## 4. User Reported Outcome Log (7-Dimension Rubric & Visibility States)
+
+> **How to Log Your Results:**  
+> Whenever you run `Arm A`, `Arm B`, `Arm C1`, or `Arm C2` (or any custom fight you ask me to compile on this branch), just tell me in plain English what happened in the video render. I will automatically score and log your reported outcome in the table below using the paper's **7 Dimensions (`0–4`)** and **4-State Contact Visibility (`correct_visible`, `incorrect_visible`, `occluded`, `indeterminate`)**.
+
+| Run ID & Date | Arm Tested (`A` / `B` / `C1` / `C2`) | Model & Settings | Tech Integrity (`0-4`) | Action Readability (`0-4`) | Intent Adherence (`0-4`) | Expressiveness (`0-4`) | Visual Identity (`0-4`) | Cinematic Quality (`0-4`) | Overall Merit (`0-4`) | Contact Visibility State | User Reported Outcome & Notes |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- | :--- |
+| `EXP-001` *(Pending User Render)* | `Arm C2` (`readability-prose`) | Seedance 2.0 Mini / 2.5 | `—` | `—` | `—` | `—` | `—` | `—` | `—` | `PENDING` | Ready for test render |
+| `EXP-002` *(Pending User Render)* | `Arm C1` (`readability` 6-part contract) | Seedance 2.0 Mini / 2.5 | `—` | `—` | `—` | `—` | `—` | `—` | `—` | `PENDING` | Ready for test render |
+| `EXP-003` *(Pending User Render)* | `Arm A` (`Original 05:34`) | Seedance 2.0 Mini / 2.5 | `—` | `—` | `—` | `—` | `—` | `—` | `—` | `PENDING` | Baseline comparator |
+| `EXP-004` *(Pending User Render)* | `Arm B` (`Extreme sakuga_Xperiment`) | Seedance 2.0 Mini / 2.5 | `—` | `—` | `—` | `—` | `—` | `—` | `—` | `PENDING` | Baseline comparator |
