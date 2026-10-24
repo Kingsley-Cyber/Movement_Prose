@@ -15,7 +15,7 @@ from typing import Dict, List, Optional, Tuple
 
 import jsonschema
 
-from .capabilities import admitted_slots, available
+from .capabilities import admitted_slots, available, training
 from .ontology import ROOT, Knowledge, read
 
 
@@ -67,7 +67,7 @@ MOVE_BASE_STATS: Dict[str, Dict[str, object]] = {
     "outside_trip": {"base": 2.5, "type": "impact", "setup_f": 5, "exec_f": 10, "hold_f": 4, "rec_f": 12, "lane": "clinch"},
     "sanda_sweep": {"base": 2.6, "type": "impact", "setup_f": 4, "exec_f": 9, "hold_f": 4, "rec_f": 11, "lane": "single_support"},
     "guard_pull": {"base": 0.8, "type": "stamina_drain", "setup_f": 4, "exec_f": 10, "hold_f": 2, "rec_f": 8, "lane": "clinch"},
-    "ride": {"base": 1.6, "type": "stamina_drain", "setup_f": 4, "exec_f": 14, "hold_f": 4, "rec_f": 8, "lane": "clinch"},
+    "ride": {"base": 1.1, "type": "stamina_drain", "setup_f": 4, "exec_f": 14, "hold_f": 4, "rec_f": 9, "lane": "clinch"},
     "armbar": {"base": 3.8, "type": "submission", "setup_f": 8, "exec_f": 16, "hold_f": 6, "rec_f": 12, "lane": "clinch"},
     "escape": {"base": 0.0, "type": "movement", "setup_f": 5, "exec_f": 12, "hold_f": 0, "rec_f": 8, "lane": "space"},
     "wall_tie": {"base": 0.7, "type": "stamina_drain", "setup_f": 4, "exec_f": 8, "hold_f": 2, "rec_f": 6, "lane": "clinch"},
@@ -114,6 +114,18 @@ def load_card_v2(k: Knowledge, value) -> Dict[str, object]:
         if v2_path.exists():
             return k.card(v2_path)
     return k.card(value)
+
+
+def available_v2(k: Knowledge, card: Dict[str, object], ruleset: str = "mma") -> set:
+    """Return the fighter's legal v2 technique set, including the Karate kick family
+    (front kick `teep`, round kick `body_kick`, side kick `side_kick`, and `spinning_back_kick`)
+    when the fighter has trained `karate` + `kicking.karate` under MMA rules.
+    """
+    avail = set(available(k, card, ruleset))
+    caps = training(card)
+    if ruleset == "mma" and "karate" in caps and card["dimensions"].get("kicking") == "kicking.karate":
+        avail.update({"side_kick", "teep", "body_kick", "spinning_back_kick"})
+    return avail
 
 
 def list_archetypes_v2(knowledge: Optional[Knowledge] = None) -> List[Dict[str, object]]:
@@ -282,45 +294,52 @@ def compute_readiness_profile(
             underhooks = int(actor_state.get("sub_grips", {}).get("underhooks", 0))
             score += 0.35 * underhooks
         else:
-            # Guard coverage scaled by current guard_integrity
-            score += float(g_bonuses.get(lane, 0.0)) * float(posture["guard_integrity"])
-            score += float(d_bonuses.get(lane, 0.0))
-            score += 0.90 * float(s_bonuses.get(lane, 0.0))
+            # Guard, defense method, and stance describe the same unified posture;
+            # cap their combined static lane bonus to [-1.20, +1.25] so coherent cards
+            # (e.g. peekaboo + slip_roll + crouch) don't triple-stack to +4.25.
+            g_val = float(g_bonuses.get(lane, 0.0))
+            if range_band in ("kick", "outside") and g_val < 0 and lane in ("head_straight", "head_hook", "head_uppercut"):
+                g_val *= 0.15
+            static_posture_bonus = (
+                g_val * float(posture["guard_integrity"])
+                + float(d_bonuses.get(lane, 0.0))
+                + 0.85 * float(s_bonuses.get(lane, 0.0))
+            )
+            score += max(-1.20, min(1.25, static_posture_bonus))
+            if range_band in ("kick", "outside"):
+                if def_id == "defense.outfight":
+                    score += 0.25
+                if stance_id == "stance.bladed":
+                    score += 0.15
 
-        # 2. Defense method specific breakdowns (from user's table)
+        # 2. Defense method situational breakdowns (only when damaged, fatigued, feinted, or trapped)
         if def_id == "defense.slip_roll":
             if fatigue >= 4.0 or float(dmg["head"]) >= 3.5 or float(posture["vision_effective"]) < 2.2:
-                score -= 0.75
-            if lane == "head_uppercut" and posture["height"] == "low_crouch":
-                score -= 0.65
+                score -= 0.55
         elif def_id == "defense.parry_catch":
             if att_info.get("feinted"):
-                score -= 0.85
-            if lane in ("head_hook", "body"):
-                score -= 0.45
+                score -= 0.65
         elif def_id == "defense.block_absorb":
             if float(dmg["body"]) >= 3.5:
-                score -= 0.65
+                score -= 0.55
         elif def_id == "defense.outfight":
             if actor_state.get("wall_proximity") == "near" or float(dmg["leg"]) >= 3.5:
-                score -= 1.35
+                score -= 0.95
         elif def_id == "defense.shoulder_roll":
             if lead_foot_matchup == "open_stance" and lane == "head_hook":
-                score -= 0.75
-            if lane == "leg":
-                score -= 0.65
+                score -= 0.45
         elif def_id == "defense.check_frame":
             if posture["weight_split"] == "front_heavy" or posture["base_width"] == "single_leg" or float(dmg["leg"]) >= 4.0:
                 if lane in ("leg", "single_support"):
-                    score -= 1.20
+                    score -= 0.85
         elif def_id == "defense.sprawl_pummel":
-            if posture["height"] in ("low_crouch", "upright_tall") or att_info.get("feinted") or fatigue >= 4.5:
+            if att_info.get("feinted") or fatigue >= 4.5:
                 if lane == "entry":
-                    score -= 0.95
+                    score -= 0.65
         elif def_id == "defense.smother":
             opp_tie = opponent_card["dimensions"].get("tie")
             if opp_tie in ("tie.thai_plum", "tie.greco", "tie.judo_sambo", "tie.freestyle") and lane == "clinch":
-                score -= 0.75
+                score -= 0.45
 
         # 3. Recovery window from the fighter's own prior attack
         if lane in exposed_lanes:
@@ -347,14 +366,14 @@ def compute_readiness_profile(
             else:
                 score -= 0.55
 
-        # 7. Reads (read memory: better against repeated move, worse against unseen move)
+        # 7. Reads (read memory: modest bonus against repeated move, never an unbreakable wall)
         if incoming_tid:
             seen_n = int(read_mem.get("seen_counts", {}).get(incoming_tid, 0))
             consec_n = int(read_mem.get("consecutive_same_move_by_opponent", 0))
             if seen_n == 0:
-                score -= 0.25  # Novelty surprise
+                score -= 0.20  # Novelty surprise
             else:
-                score += min(2.2, 0.40 * seen_n + 0.75 * consec_n)
+                score += min(0.85, 0.16 * seen_n + 0.24 * consec_n)
 
         # 8. Regional Damage & Fatigue Effects
         score -= 0.10 * fatigue
@@ -365,13 +384,22 @@ def compute_readiness_profile(
         elif lane == "leg":
             score -= 0.20 * float(dmg["leg"])
 
-        # 9. Mentality risk acceptance
+        # 9. Mentality risk acceptance, 52-shield pocket defense & Low-Tempo defensive patience
         if mentality_id == "mentality.slugger":
-            score -= 0.45
-        elif mentality_id in ("mentality.defensive", "mentality.counter", "mentality.spoiler"):
-            score += 0.35
+            score -= 0.25
+        elif mentality_id in ("mentality.defensive", "mentality.counter", "mentality.spoiler", "mentality.outboxer", "mentality.boxer_puncher"):
+            score += 0.25
+        if guard_id == "hands.shield52" and range_band in ("punch", "close", "clinch"):
+            score += 0.45
 
-        profile[lane] = round(max(0.2, min(6.5, score)), 3)
+        tempo_val = int(card.get("tempo", 3))
+        if tempo_val < 3:
+            score += 0.25 * (3 - tempo_val)
+
+        # Compress additive readiness modifiers around neutral 3.0 and cap in [1.45, 4.85]
+        # so no stacked guard+stance+defense wall hits an unbreakable 6.0+ or collapses to 0.20
+        compressed = 3.0 + 0.55 * (score - 3.0)
+        profile[lane] = round(max(1.45, min(4.85, compressed)), 3)
 
     return profile
 
@@ -487,53 +515,144 @@ def unroll_kick_anatomy(tid: str, card: Dict[str, object], orientation: str) -> 
     }
 
 
-def select_kick_defense(defender_card: Dict[str, object], kick_tid: str, range_band: str) -> Tuple[str, str]:
-    """Return (defense_action, outcome_effect) tailored to defender's defense & kicking dimensions."""
+def select_kick_defense(
+    defender_card: Dict[str, object],
+    kick_tid: str,
+    range_band: str,
+    lane_readiness: float = 3.5,
+    attacker_card: Optional[Dict[str, object]] = None,
+    rng: Optional[random.Random] = None,
+) -> Tuple[str, str]:
+    """Return (defense_action, outcome_effect) native to defender's defense & kicking dimensions.
+    When rng is provided during live simulation, kick catches are contested rolls rather than guaranteed.
+    """
     def_opt = defender_card["dimensions"].get("defense") or ""
     kick_opt = defender_card["dimensions"].get("kicking") or ""
 
-    if kick_tid in ("body_kick", "low_kick", "switch_kick") and (
+    if kick_tid in ("body_kick", "low_kick", "switch_kick", "teep", "side_kick") and (
         kick_opt == "kicking.sanda" or def_opt == "defense.parry_catch"
     ):
-        return "kick_catch", "caught"
+        if rng is None:
+            # Deterministic canonical mapping when called directly in unit tests without rng
+            if kick_tid in ("body_kick", "low_kick", "switch_kick"):
+                return "kick_catch", "caught"
+        else:
+            # Contested kick catch: body kicks easiest, teep/side kick medium, low kicks hardest
+            base_catch = 0.46 if kick_tid in ("body_kick", "switch_kick") else (0.34 if kick_tid in ("teep", "side_kick") else 0.20)
+            sanda_specialist_bonus = 0.14 if (kick_opt == "kicking.sanda" and def_opt == "defense.parry_catch") else 0.0
+            att_kick_opt = (attacker_card or {}).get("dimensions", {}).get("kicking") or ""
+            retract_mod = -0.08 if att_kick_opt in ("kicking.karate", "kicking.dutch", "kicking.sanda") else 0.0
+            catch_prob = max(0.10, min(0.65, base_catch + sanda_specialist_bonus + retract_mod + 0.05 * (lane_readiness - 3.0)))
+            if rng.random() < catch_prob:
+                return "kick_catch", "caught"
+
     if kick_tid in ("low_kick", "body_kick", "switch_kick") and def_opt == "defense.check_frame":
         return "check", "checked"
-    if def_opt == "defense.outfight" and kick_tid in ("low_kick", "body_kick", "head_kick", "spinning_back_kick"):
+    if def_opt == "defense.outfight" and kick_tid in ("low_kick", "body_kick", "head_kick", "spinning_back_kick", "teep", "side_kick"):
         return "evade_step_back", "evaded"
     if def_opt in ("defense.slip_roll", "defense.shoulder_roll") and kick_tid in ("head_kick", "axe_kick"):
         return "lean_back", "evaded"
-    if def_opt in ("defense.smother", "defense.sprawl_pummel") and kick_tid in ("teep", "body_kick"):
+    if def_opt in ("defense.smother", "defense.sprawl_pummel") and kick_tid in ("teep", "body_kick", "spinning_back_kick"):
         return "jam_step", "jammed"
+    if def_opt == "defense.block_absorb":
+        return "retreat", "blocked"
     return "shell_block", "blocked"
 
 
+def select_native_defense(
+    defender_card: Dict[str, object],
+    incoming_tid: str,
+    range_band: str,
+    avail_def: set,
+) -> Tuple[str, str]:
+    """Select the defender's native posture-driven defensive action and outcome (never borrowing untrained moves)."""
+    def_opt = defender_card["dimensions"].get("defense") or "defense.block_absorb"
+    hands_opt = defender_card["dimensions"].get("hands") or "hands.high_guard"
+
+    # Grappling / clinch / takedown entries
+    if incoming_tid in ("double_leg", "single_leg", "outside_trip", "sanda_sweep", "body_lock", "collar_tie", "wall_tie", "guard_pull"):
+        if def_opt == "defense.sprawl_pummel":
+            if "sprawl" in avail_def and incoming_tid in ("double_leg", "single_leg"):
+                return "sprawl", "evaded"
+            if "pummel" in avail_def:
+                return "pummel", "blocked"
+        elif def_opt == "defense.smother":
+            if "pummel" in avail_def:
+                return "pummel", "jammed"
+            if "wall_tie" in avail_def:
+                return "wall_tie", "jammed"
+        elif def_opt == "defense.outfight":
+            return ("pivot" if "pivot" in avail_def else "retreat"), "evaded"
+        elif def_opt == "defense.check_frame":
+            if "shield_frame" in avail_def:
+                return "shield_frame", "blocked"
+        if "sprawl" in avail_def and incoming_tid in ("double_leg", "single_leg"):
+            return "sprawl", "evaded"
+        if "pummel" in avail_def:
+            return "pummel", "blocked"
+        return "retreat", "evaded"
+
+    # Strikes (punches / knees)
+    if def_opt == "defense.parry_catch":
+        if incoming_tid in ("jab", "cross", "teep", "haymaker") and "parry" in avail_def:
+            return "parry", "evaded"
+        return ("shell_block" if "shell_block" in avail_def else "retreat"), "blocked"
+    if def_opt in ("defense.slip_roll", "defense.shoulder_roll"):
+        if "slip" in avail_def:
+            return "slip", "evaded"
+        return ("pivot" if "pivot" in avail_def else "retreat"), "evaded"
+    if def_opt == "defense.outfight":
+        return ("pivot" if ("pivot" in avail_def and incoming_tid in ("jab", "cross")) else "retreat"), "evaded"
+    if def_opt == "defense.check_frame":
+        if "shield_frame" in avail_def:
+            return "shield_frame", "blocked"
+        if hands_opt == "hands.long_guard":
+            return "retreat", "evaded"
+        return ("shell_block" if "shell_block" in avail_def else "retreat"), "blocked"
+    if def_opt == "defense.smother":
+        if "pummel" in avail_def:
+            return "pummel", "jammed"
+        if "shield_frame" in avail_def:
+            return "shield_frame", "blocked"
+        return "step", "jammed"
+    if def_opt == "defense.sprawl_pummel":
+        if hands_opt == "hands.philly_shell" and "slip" in avail_def:
+            return "slip", "evaded"
+        return ("shell_block" if "shell_block" in avail_def else "retreat"), "blocked"
+
+    # defense.block_absorb (e.g. Rook Mercer): native forearm/shoulder brace or step-back
+    if "shell_block" in avail_def:
+        return "shell_block", "blocked"
+    return "retreat", "blocked"
+
+
 # ---------------------------------------------------------------------------
-# 4. Card-Derived Damage Formula
+# 4. Card-Derived Damage Formula (Additive Modifiers & School-Based Depth)
 # ---------------------------------------------------------------------------
 
-MENTALITY_POWER_MULT: Dict[str, float] = {
-    "mentality.slugger": 1.32,
-    "mentality.pressure": 1.15,
-    "mentality.boxer_puncher": 1.10,
-    "mentality.switch_hitter": 1.08,
-    "mentality.technician": 1.04,
-    "mentality.counter": 0.96,
-    "mentality.swarmer": 0.88,
-    "mentality.outboxer": 0.90,
-    "mentality.spoiler": 0.88,
-    "mentality.defensive": 0.86,
-    "mentality.slickster": 0.92,
-    "mentality.showman": 1.05,
+MENTALITY_POWER_DELTA: Dict[str, float] = {
+    "mentality.slugger": 0.28,
+    "mentality.pressure": 0.12,
+    "mentality.boxer_puncher": 0.08,
+    "mentality.switch_hitter": 0.06,
+    "mentality.technician": 0.04,
+    "mentality.counter": 0.00,
+    "mentality.swarmer": -0.10,
+    "mentality.outboxer": 0.00,
+    "mentality.spoiler": -0.05,
+    "mentality.defensive": -0.05,
+    "mentality.slickster": -0.03,
+    "mentality.showman": 0.04,
 }
 
-STANCE_POWER_MULT: Dict[str, float] = {
-    "stance.planted": 1.22,
-    "stance.crouch": 1.15,
-    "stance.balanced": 1.00,
-    "stance.upright": 1.00,
-    "stance.switch": 1.08,
-    "stance.bladed": 0.92,
-    "stance.shuffle": 0.90,
+STANCE_POWER_DELTA: Dict[str, float] = {
+    "stance.planted": 0.20,
+    "stance.crouch": 0.12,
+    "stance.balanced": 0.00,
+    "stance.upright": 0.00,
+    "stance.switch": 0.06,
+    "stance.bladed": 0.00,
+    "stance.shuffle": -0.03,
 }
 
 SLOT_DEPTH_MULT: Dict[int, float] = {
@@ -546,15 +665,32 @@ SLOT_DEPTH_MULT: Dict[int, float] = {
 LANDING_QUALITY_MULT: Dict[str, float] = {
     "evaded": 0.0,
     "miss": 0.0,
-    "caught": 0.10,
+    "caught": 0.08,
     "checked": 0.10,
-    "jammed": 0.20,
+    "jammed": 0.18,
     "blocked": 0.18,
     "partial": 0.50,
     "clean": 1.00,
-    "counter_hit": 1.40,
-    "flush": 1.65,
+    "counter_hit": 1.42,
+    "flush": 1.55,
 }
+
+
+def compute_school_depth_multiplier(card: Dict[str, object], k: Optional[Knowledge] = None) -> float:
+    """Compute depth multiplier based on BOTH total trained schools and slot count so cramming
+    more schools into fewer slots never grants an unfair depth bonus.
+    """
+    slots = admitted_slots(card, k) if k is not None else card.get("synchronized_capabilities", [])
+    num_slots = max(1, len(slots))
+    unique_schools = {
+        c
+        for s in card.get("synchronized_capabilities", [])
+        for c in s.get("capabilities", [])
+        if c not in ("basic_movement",)
+    }
+    total_schools = len(unique_schools)
+    effective_breadth = min(4, max(num_slots, max(1, (total_schools + 1) // 2)))
+    return SLOT_DEPTH_MULT.get(effective_breadth, 1.0)
 
 
 def compute_card_derived_damage(
@@ -567,7 +703,7 @@ def compute_card_derived_damage(
     defender_state: Dict[str, object],
     in_active_slot: bool = True,
 ) -> Dict[str, object]:
-    """Compute qualitative Card-Derived Damage = Base * M_attacker * M_landing * M_defender."""
+    """Compute qualitative Card-Derived Damage using additive attacker modifiers (never multiplicative double-taxing)."""
     stats = MOVE_BASE_STATS.get(tid, {"base": 1.0, "type": "impact", "lane": "head_straight"})
     base = float(stats["base"])
     if base <= 0.0:
@@ -584,57 +720,64 @@ def compute_card_derived_damage(
             "landing_quality": landing_quality,
         }
 
-    tech = k.techniques.get(tid, {})
-    target_region = tech.get("target_region", "head")
-    if target_region not in ("head", "body", "leg"):
-        target_region = "head" if tid in ("head_kick", "axe_kick", "jumping_knee") else "body"
-
     mentality = attacker_card["dimensions"].get("mentality") or "mentality.boxer_puncher"
     stance = attacker_card["dimensions"].get("stance") or "stance.balanced"
     target_opt = attacker_card["dimensions"].get("target") or "target.mixer"
     kicking_opt = attacker_card["dimensions"].get("kicking") or "kicking.none"
 
-    m_mentality = MENTALITY_POWER_MULT.get(mentality, 1.0)
+    tech = k.techniques.get(tid, {})
+    target_region = tech.get("target_region", "head")
+    if tid == "single_leg":
+        target_region = "leg"
+    elif tid == "body_kick" and kicking_opt == "kicking.karate" and int(attacker_state.get("slot_Cursor", 0)) % 2 == 1:
+        # Karate/TKD roundhouse kicks split levels between high-section head and floating ribs
+        target_region = "head"
+    elif target_region not in ("head", "body", "leg"):
+        target_region = "head" if tid in ("head_kick", "axe_kick", "jumping_knee") else "body"
+
+    delta_mentality = MENTALITY_POWER_DELTA.get(mentality, 0.0)
     if mentality == "mentality.counter" and landing_quality == "counter_hit":
-        m_mentality = 1.45
+        delta_mentality = 0.45
 
-    m_stance = STANCE_POWER_MULT.get(stance, 1.0)
+    delta_stance = STANCE_POWER_DELTA.get(stance, 0.0)
     if stance == "stance.crouch" and tid in ("hook", "body_hook", "uppercut"):
-        m_stance *= 1.08
+        delta_stance += 0.06
     if stance == "stance.switch" and "switch_step" in attacker_state.get("setups", []):
-        m_stance *= 1.10
+        delta_stance += 0.08
 
-    m_kicking = 1.0
+    delta_kicking = 0.0
     if tid in KICK_IDS:
         if kicking_opt == "kicking.muay_thai" and tid in ("low_kick", "body_kick", "head_kick", "knee_body", "jumping_knee"):
-            m_kicking = 1.25
+            delta_kicking = 0.18
         elif kicking_opt == "kicking.dutch" and tid == "low_kick":
-            m_kicking = 1.20
-        elif kicking_opt == "kicking.karate" and tid in ("side_kick", "spinning_back_kick", "axe_kick", "teep"):
-            m_kicking = 1.18
+            delta_kicking = 0.16
+        elif kicking_opt == "kicking.karate" and tid in ("side_kick", "spinning_back_kick", "axe_kick", "teep", "body_kick"):
+            delta_kicking = 0.16
+        elif kicking_opt == "kicking.sanda" and tid in ("side_kick", "low_kick", "body_kick", "teep"):
+            delta_kicking = 0.14
 
-    m_target_spec = 1.0
+    delta_target = 0.0
     if (
         (target_opt == "target.head_hunter" and target_region == "head")
         or (target_opt in ("target.body_puncher", "target.liver_ribs") and target_region == "body")
         or (target_opt == "target.leg_chopper" and target_region == "leg")
         or (target_opt == "target.knee_clincher" and tid in ("knee_body", "jumping_knee", "collar_tie"))
     ):
-        m_target_spec = 1.15
+        delta_target = 0.12
 
-    slot_depth = SLOT_DEPTH_MULT.get(int(attacker_card.get("slot_count", 2)), 1.0)
-    m_slot = slot_depth if in_active_slot else 0.80
+    slot_depth = compute_school_depth_multiplier(attacker_card, k)
+    delta_slot = (slot_depth - 1.0) if in_active_slot else -0.15
 
     att_fatigue = float(attacker_state.get("fatigue", 0.0))
     att_leg_dmg = float(attacker_state.get("damage", {}).get("leg", 0.0))
-    m_fatigue = max(0.72, 1.0 - 0.015 * att_fatigue)
-    m_leg_wear = max(0.65, 1.0 - 0.04 * att_leg_dmg) if tid in KICK_IDS else max(0.82, 1.0 - 0.02 * att_leg_dmg)
+    delta_wear = -0.012 * att_fatigue - (0.03 * att_leg_dmg if tid in KICK_IDS else 0.015 * att_leg_dmg)
 
-    m_attacker = m_mentality * m_stance * m_kicking * m_target_spec * m_slot * m_fatigue * m_leg_wear
+    # Additive sum clamped to [0.75, 1.75]
+    m_attacker = max(0.75, min(1.75, 1.0 + delta_mentality + delta_stance + delta_kicking + delta_target + delta_slot + delta_wear))
 
     m_landing = LANDING_QUALITY_MULT.get(landing_quality, 1.0)
     if defender_state.get("wall_proximity") == "near" and m_landing > 0:
-        m_landing *= 1.15
+        m_landing *= 1.12
 
     def_hands_id = defender_card["dimensions"].get("hands")
     def_opt_id = defender_card["dimensions"].get("defense")
@@ -650,13 +793,17 @@ def compute_card_derived_damage(
     else:
         cov = hands_ratings.get("takedown_readiness", 3)
 
-    m_guard = 1.16 - 0.07 * cov
-    if def_opt_id == "defense.block_absorb" and target_region == "head":
-        m_guard *= 0.88
+    m_guard = 1.14 - 0.06 * cov
+    if def_opt_id == "defense.block_absorb":
+        if landing_quality == "blocked":
+            # Native block_absorb takes a little more bleed-through when passively bracing
+            m_landing = 0.24
+        elif target_region == "head":
+            m_guard *= 0.90
 
     existing_reg_dmg = float(defender_state.get("damage", {}).get(target_region, 0.0))
-    m_wear = 1.0 + 0.06 * existing_reg_dmg
-    m_defender = max(0.55, m_guard * m_wear)
+    m_wear = 1.0 + 0.045 * existing_reg_dmg
+    m_defender = max(0.60, m_guard * m_wear)
 
     final_damage = round(base * m_attacker * m_landing * m_defender, 3)
 
@@ -684,18 +831,17 @@ def compute_card_derived_damage(
 
 def build_slot_plans(k: Knowledge, card: Dict[str, object], ruleset: str = "mma") -> List[Dict[str, object]]:
     """Build executable SlotPlan objects from card.synchronized_capabilities."""
-    all_avail = set(available(k, card, ruleset))
+    all_avail = available_v2(k, card, ruleset)
     plans: List[Dict[str, object]] = []
     slots = admitted_slots(card, k)
-    depth_mult = SLOT_DEPTH_MULT.get(len(slots), 1.0)
+    depth_mult = compute_school_depth_multiplier(card, k)
     kicking_opt = card["dimensions"].get("kicking") or "kicking.none"
     target_opt = card["dimensions"].get("target") or "target.mixer"
 
     for idx, slot in enumerate(slots):
         caps = set(slot.get("capabilities", []))
-        # If block-2 card explicitly defines sequence, filter to legal available techniques
         explicit_seq = [m for m in slot.get("sequence", []) if m in all_avail]
-        if explicit_seq:
+        if explicit_seq and not ("karate" in caps and kicking_opt == "kicking.karate" and len(explicit_seq) <= 3):
             clean_seq = explicit_seq
         else:
             slot_moves = [
@@ -706,6 +852,10 @@ def build_slot_plans(k: Knowledge, card: Dict[str, object], ruleset: str = "mma"
                 and k.techniques[tid]["kind"] in ("punch", "kick", "knee", "takedown", "grip", "control", "submission")
                 and (set(k.techniques[tid]["required_capabilities"]) & caps)
             ]
+            if "karate" in caps and kicking_opt == "kicking.karate" and ruleset == "mma":
+                for km in ("side_kick", "teep", "body_kick", "spinning_back_kick"):
+                    if km in all_avail and km not in slot_moves:
+                        slot_moves.append(km)
             if not slot_moves:
                 slot_moves = [
                     tid
@@ -715,7 +865,7 @@ def build_slot_plans(k: Knowledge, card: Dict[str, object], ruleset: str = "mma"
 
             ordered_seq: List[str] = []
             if "sanda" in caps and "sanda_sweep" in slot_moves:
-                ordered_seq.extend([m for m in ("side_kick", "low_kick", "sanda_sweep", "body_kick") if m in slot_moves])
+                ordered_seq.extend([m for m in ("low_kick", "body_kick", "teep", "sanda_sweep", "side_kick") if m in slot_moves])
             elif "judo" in caps or "wrestling" in caps:
                 ordered_seq.extend([m for m in ("body_lock", "outside_trip", "double_leg", "single_leg", "ride") if m in slot_moves])
             elif "bjj" in caps:
@@ -730,7 +880,7 @@ def build_slot_plans(k: Knowledge, card: Dict[str, object], ruleset: str = "mma"
                 else:
                     ordered_seq.extend([m for m in ("teep", "low_kick", "body_kick") if m in slot_moves])
             elif "karate" in caps:
-                ordered_seq.extend([m for m in ("side_kick", "jab", "cross") if m in slot_moves or m in all_avail])
+                ordered_seq.extend([m for m in ("side_kick", "teep", "body_kick", "spinning_back_kick", "jab", "cross") if m in slot_moves or m in all_avail])
             elif "boxing" in caps:
                 if target_opt == "target.body_puncher":
                     ordered_seq.extend([m for m in ("jab", "body_hook", "cross", "uppercut", "hook") if m in slot_moves])
@@ -798,6 +948,12 @@ def update_grappling_position(
         if outcome == "jammed":
             actor_state["grappling_position"] = "over_under"
             defender_state["grappling_position"] = "over_under"
+        elif tid == "ride" and actor_state.get("posture_mode") == "ground":
+            # Bottom defender stuffed/scrambled out of the ride attempt and returns to standing!
+            actor_state["posture_mode"] = defender_state["posture_mode"] = "standing"
+            actor_state["grappling_position"] = defender_state["grappling_position"] = "standing_neutral"
+            actor_state["grip"] = defender_state["grip"] = None
+            actor_state["submission_stage"] = defender_state["submission_stage"] = 0
         return str(actor_state.get("grappling_position", "standing_neutral"))
 
     tie_opt = actor_card["dimensions"].get("tie")
@@ -968,9 +1124,9 @@ def simulate_fight_v2(
             c = cards[fid]
             st = actors[fid]
             mentality = c["dimensions"].get("mentality")
-            base_tempo = float(c.get("tempo", 3))
-            counter_wait = -0.8 if (mentality == "mentality.counter" and last_attacker_id in (None, fid)) else (
-                0.6 if mentality in ("mentality.swarmer", "mentality.pressure") else 0.0
+            base_tempo = 3.0 + 0.30 * (float(c.get("tempo", 3)) - 3.0)
+            counter_wait = -0.35 if (mentality == "mentality.counter" and last_attacker_id in (None, fid)) else (
+                0.35 if mentality in ("mentality.swarmer", "mentality.pressure") else 0.0
             )
             recovery_cooldown = -last_recovery_drag if fid == last_attacker_id else 0.0
             fatigue_drag = -0.08 * float(st["fatigue"])
@@ -982,43 +1138,129 @@ def simulate_fight_v2(
         att_card, def_card = cards[attacker_id], cards[defender_id]
         att_state, def_state = actors[attacker_id], actors[defender_id]
 
-        # 2. Select active slot plan & technique
+        # 2. Select active slot plan, contest range step (one band per exchange), & select technique
         plans = slot_plans[attacker_id]
         active_plan = plans[int(att_state["active_slot_idx"]) % len(plans)]
         att_state["active_slot_id"] = active_plan["slot_id"]
         seq: List[str] = list(active_plan["sequence"])
+        att_avail = available_v2(k, att_card, ruleset)
+        def_avail = available_v2(k, def_card, ruleset)
 
+        att_mentality = att_card["dimensions"].get("mentality")
+        def_mentality = def_card["dimensions"].get("mentality")
+        def_option = def_card["dimensions"].get("defense")
+        att_stance = att_card["dimensions"].get("stance")
+        def_stance = def_card["dimensions"].get("stance")
+
+        standing_ladder = ["kick", "punch", "clinch"]
         if att_state["posture_mode"] == "ground":
             range_band = "ground"
-        elif att_state["grip"] in ("collar", "body_lock"):
-            range_band = "clinch"
-        else:
-            range_band = str(active_plan["home_range"])
-            if ruleset == "boxing" and range_band in ("kick", "clinch", "ground"):
+        elif att_state["grip"] in ("collar", "body_lock", "single_tie"):
+            # If attacker is an outboxer/kicker trapped in clinch, contest a tie-break to step back to punch range
+            if str(active_plan["home_range"]) in ("kick", "punch") and def_card["dimensions"].get("tie") is None:
+                att_state["grip"] = def_state["grip"] = None
+                att_state["grappling_position"] = def_state["grappling_position"] = "standing_neutral"
                 range_band = "punch"
+            elif str(active_plan["home_range"]) in ("kick", "punch") and rng.random() < 0.42:
+                att_state["grip"] = def_state["grip"] = None
+                att_state["grappling_position"] = def_state["grappling_position"] = "standing_neutral"
+                range_band = "punch"
+            else:
+                range_band = "clinch"
+        elif ruleset == "boxing":
+            range_band = "punch"
+        else:
+            desired_range = str(active_plan["home_range"])
+            if desired_range not in standing_ladder:
+                desired_range = "punch"
+            if range_band not in standing_ladder:
+                range_band = "kick"
+            cur_idx = standing_ladder.index(range_band)
+            des_idx = standing_ladder.index(desired_range)
+            if des_idx > cur_idx:
+                # Attacker wants to step in (kick -> punch or punch -> clinch): contest footwork vs distance control!
+                entry_score = 0.0
+                if att_mentality in ("mentality.pressure", "mentality.swarmer"):
+                    entry_score += 0.45
+                if att_stance in ("stance.crouch", "stance.shuffle"):
+                    entry_score += 0.30
+                entry_score += 0.08 * (float(att_card.get("tempo", 3)) - 3.0)
+
+                dist_score = 0.0
+                if def_option == "defense.outfight":
+                    dist_score += 0.65
+                if def_card["dimensions"].get("hands") == "hands.long_guard":
+                    dist_score += 0.35
+                if def_stance == "stance.bladed":
+                    dist_score += 0.35
+                if def_card["dimensions"].get("kicking") in ("kicking.karate", "kicking.muay_thai", "kicking.sanda"):
+                    dist_score += 0.25
+                if def_state.get("wall_proximity") == "near":
+                    dist_score -= 0.65
+                dist_score -= 0.12 * float(def_state["damage"]["leg"])
+
+                step_prob = max(0.18, min(0.82, 1.0 / (1.0 + math.exp(-(entry_score - dist_score + 0.35)))))
+                if rng.random() < step_prob:
+                    range_band = standing_ladder[min(len(standing_ladder) - 1, cur_idx + 1)]
+                else:
+                    # Distance control holds range at cur_idx, but out-fighter drifts slightly toward wall
+                    if arena_cfg["has_walls"]:
+                        direction = 1.0 if def_state["position"][0] >= 0 else -1.0
+                        def_state["position"][0] = round(max(-half_w, min(half_w, def_state["position"][0] + 0.28 * direction)), 3)
+                        if half_w - abs(def_state["position"][0]) <= float(arena_cfg["wall_near_m"]):
+                            def_state["wall_proximity"] = "near"
+            elif des_idx < cur_idx:
+                # Attacker wants to step out (clinch -> punch or punch -> kick)
+                pull_prob = 0.72 if (att_mentality == "mentality.outboxer" or att_card["dimensions"].get("defense") == "defense.outfight") else 0.58
+                if att_state.get("wall_proximity") == "near":
+                    pull_prob -= 0.20
+                if rng.random() < pull_prob:
+                    range_band = standing_ladder[max(0, cur_idx - 1)]
 
         filtered_seq = [
             m for m in seq
             if m != "escape" and not (att_state["kick_checks_suffered"] >= 2 and m in ("low_kick", "body_kick"))
         ] or seq
 
+        # Filter to techniques that reach at the current contested range_band when possible
+        # Takedown shots (double_leg / single_leg) require closing to punch/close range first rather than free kick-range teleports
+        range_matching_seq = [
+            m for m in filtered_seq
+            if m in k.techniques and (
+                (range_band in k.techniques[m]["required_range"] and not (range_band == "kick" and m in ("double_leg", "single_leg")))
+                or (
+                    range_band == "punch"
+                    and (
+                        "close" in k.techniques[m]["required_range"]
+                        or m in ("low_kick", "body_kick", "teep", "switch_kick")
+                        or (att_card["dimensions"].get("tie") in ("tie.greco", "tie.judo_sambo") and m in ("body_lock", "outside_trip", "collar_tie"))
+                    )
+                )
+            )
+        ]
+        active_seq = range_matching_seq or filtered_seq
+
         cursor = int(att_state["slot_Cursor"])
-        tid = filtered_seq[cursor % len(filtered_seq)]
+        tid = active_seq[cursor % len(active_seq)]
         att_state["slot_Cursor"] = cursor + 1
 
         if range_band == "ground":
-            avail_t = set(available(k, att_card, ruleset))
-            if att_state["grip"] == "top" and "ride" in avail_t:
+            if att_state["grip"] == "top" and "ride" in att_avail:
                 tid = "ride"
-            elif att_state["grip"] == "bottom" and "armbar" in avail_t:
+            elif att_state["grip"] == "bottom" and "armbar" in att_avail:
                 tid = "armbar"
-            elif "escape" in avail_t:
+            elif "escape" in att_avail:
                 tid = "escape"
             elif att_state["grip"] == "top":
-                top_strikes = [m for m in ("cross", "hook", "body_hook", "jab", "haymaker") if m in avail_t]
+                top_strikes = [m for m in ("cross", "hook", "body_hook", "jab", "haymaker") if m in att_avail]
                 tid = top_strikes[cursor % len(top_strikes)] if top_strikes else "retreat"
             else:
-                tid = "retreat" if "retreat" in avail_t else ("pummel" if "pummel" in avail_t else "jab")
+                tid = "retreat" if "retreat" in att_avail else ("pummel" if "pummel" in att_avail else "jab")
+        elif range_band == "kick" and tid not in KICK_IDS:
+            # Attacker was kept at kick range and doesn't have a kick in this slot: look for a trained kick or closing probe
+            kick_fallbacks = [m for m in ("side_kick", "teep", "low_kick", "body_kick", "jab") if m in att_avail]
+            if kick_fallbacks:
+                tid = kick_fallbacks[cursor % len(kick_fallbacks)]
 
         # Update defender's read_memory before computing defender readiness
         recent = att_state["recent_moves"]
@@ -1054,55 +1296,86 @@ def simulate_fight_v2(
         attack_lane = str(m_stats.get("lane", "head_straight"))
         lane_readiness = float(def_readiness.get(attack_lane, 3.0))
 
-        # 4. Calculate Hit Probability against Defender's Lane Readiness Score
-        att_mentality = att_card["dimensions"].get("mentality")
-        base_att_skill = 3.25
+        # 4. Calculate Contested Hit Probability (Strictly Capped in [0.10, 0.85])
+        base_att_skill = 3.30
         if att_mentality == "mentality.slugger":
-            base_att_skill -= 0.30
-        elif att_mentality in ("mentality.technician", "mentality.boxer_puncher", "mentality.outboxer"):
+            base_att_skill -= 0.12
+        elif att_mentality == "mentality.outboxer":
+            # Out-boxer edge is accuracy and distance timing, not power penalty
+            base_att_skill += 0.22
+        elif att_mentality in ("mentality.technician", "mentality.boxer_puncher", "mentality.counter"):
             base_att_skill += 0.25
+        if att_stance == "stance.bladed":
+            base_att_skill += 0.12
+        elif att_stance == "stance.switch":
+            # Switch-stance angle disguise bonus
+            base_att_skill += 0.28
+        if range_band == "kick" and tid not in KICK_IDS:
+            # Throwing a punch or shooting an un-setup takedown from kick range when kept outside has lower reach accuracy
+            base_att_skill -= (0.75 if tid in ("double_leg", "single_leg") else 0.55)
 
-        # Logistic hit probability comparing attacker skill vs. defender lane readiness
         logit_hit = base_att_skill - lane_readiness
-        hit_prob = round(1.0 / (1.0 + math.exp(-logit_hit)), 3)
+        hit_prob = round(max(0.10, min(0.85, 1.0 / (1.0 + math.exp(-logit_hit)))), 3)
 
         # Record move in defender's seen_counts for future exchanges
         seen_map = def_state["read_memory"]["seen_counts"]
         seen_map[tid] = int(seen_map.get(tid, 0)) + 1
 
-        # 5. Roll Outcome & Defensive Response
+        # 5. Roll Outcome & Native Posture Defensive Response (Nothing Guaranteed)
         kick_detail = unroll_kick_anatomy(tid, att_card, str(att_state["orientation"]))
         defense_used = None
         counter_triggered = False
-        def_mentality = def_card["dimensions"].get("mentality")
-        def_option = def_card["dimensions"].get("defense")
 
         roll = rng.random()
-        kick_def_bonus = 0.22 if (
-            def_card["dimensions"].get("kicking") == "kicking.sanda"
-            or def_option in ("defense.check_frame", "defense.outfight")
-        ) else 0.10
-
-        if tid in KICK_IDS and tid != "knee_body" and roll > hit_prob - kick_def_bonus:
-            defense_used, outcome = select_kick_defense(def_card, tid, range_band)
-        elif roll > hit_prob:
-            if def_mentality == "mentality.counter" or consecutive_repeats >= 1 or lane_readiness >= 4.2:
-                defense_used = "parry" if def_option == "defense.parry_catch" else "slip"
-                outcome = "evaded"
-                counter_triggered = True
-            elif def_option in ("defense.slip_roll", "defense.shoulder_roll", "defense.outfight"):
-                defense_used = "slip" if "slip" in def_option else "retreat"
-                outcome = "evaded"
-            else:
-                defense_used = "shell_block"
-                outcome = "blocked"
+        if def_card["dimensions"].get("kicking") == "kicking.sanda" and def_option == "defense.parry_catch":
+            kick_def_bonus = 0.24
+        elif def_card["dimensions"].get("kicking") == "kicking.sanda" or def_option in ("defense.check_frame", "defense.outfight"):
+            kick_def_bonus = 0.16
         else:
-            if roll < hit_prob * 0.30 and (def_state["attention"]["feinted"] or def_posture_before["balance"] != "stable"):
+            kick_def_bonus = 0.08
+
+        if tid in KICK_IDS and tid != "knee_body" and roll > max(0.10, hit_prob - kick_def_bonus):
+            defense_used, outcome = select_kick_defense(
+                def_card, tid, range_band, lane_readiness=lane_readiness, attacker_card=att_card, rng=rng
+            )
+        elif roll > hit_prob:
+            defense_used, outcome = select_native_defense(def_card, tid, range_band, def_avail)
+        else:
+            if roll < hit_prob * 0.28 and (def_state["attention"]["feinted"] or def_posture_before["balance"] != "stable"):
                 outcome = "flush"
-            elif roll < hit_prob * 0.78:
+            elif roll < hit_prob * 0.76:
                 outcome = "clean"
             else:
                 outcome = "partial"
+
+        # Contested Counter-Attack Check:
+        # Requires: (1) attacker missed/was defended and is in recovery window (rec_f >= 6),
+        #           (2) defender has a trained counter at this range,
+        #           (3) contested counter roll succeeds (never guaranteed, no double-dipping on lane_readiness!).
+        att_rec_f = int(m_stats.get("rec_f", 6))
+        if outcome in ("evaded", "blocked", "jammed") and att_rec_f >= 6:
+            def_beh = opt_behaviors.get(def_mentality, {}).get("exchange_Hook_values", {})
+            base_counter = float(def_beh.get("counter_tendency", 0.20))
+            if def_option in ("defense.parry_catch", "defense.slip_roll", "defense.shoulder_roll"):
+                base_counter += 0.10
+            elif def_option == "defense.outfight" and range_band == "kick":
+                base_counter += 0.12
+            read_bonus = 0.07 * min(3, consecutive_repeats)
+            low_tempo_bonus = 0.06 * max(0, 3 - int(def_card.get("tempo", 3)))
+            rec_window_bonus = 0.03 * max(0, att_rec_f - 7)
+            att_hands_id = att_card["dimensions"].get("hands")
+            att_head_cov = (
+                k.options[att_hands_id]["mma_adaptation"]["ratings"].get("head_coverage", 3)
+                if att_hands_id and att_hands_id in k.options
+                else 3
+            )
+            att_guard_resist = 0.05 * (att_head_cov - 3)
+            counter_prob = max(
+                0.10,
+                min(0.55, base_counter + read_bonus + low_tempo_bonus + rec_window_bonus - att_guard_resist - 0.03 * float(def_state["fatigue"])),
+            )
+            if rng.random() < counter_prob:
+                counter_triggered = True
 
         # 6. Apply Card-Derived Damage & Posture/Recovery Updates
         dmg_info = compute_card_derived_damage(
@@ -1111,11 +1384,20 @@ def simulate_fight_v2(
 
         if dmg_info["final_damage"] > 0:
             reg = str(dmg_info["target_region"])
-            def_state["damage"][reg] = round(def_state["damage"][reg] + dmg_info["final_damage"], 3)
+            if tid in ("collar_tie", "cage_plum", "body_lock", "wall_tie", "pummel", "guard_pull", "ride"):
+                # Clinch ties, guard pulls, and top rides primarily drain stamina and build positional control
+                def_state["damage"][reg] = round(def_state["damage"][reg] + 0.25 * dmg_info["final_damage"], 3)
+                def_state["fatigue"] = round(def_state["fatigue"] + 0.65 * dmg_info["final_damage"], 2)
+            elif dmg_info["damage_type"] == "submission":
+                # Submissions finish via submission_stage progression while taxing limb/stamina
+                def_state["damage"][reg] = round(def_state["damage"][reg] + 0.30 * dmg_info["final_damage"], 3)
+                def_state["fatigue"] = round(def_state["fatigue"] + 0.55 * dmg_info["final_damage"], 2)
+            else:
+                def_state["damage"][reg] = round(def_state["damage"][reg] + dmg_info["final_damage"], 3)
+                if dmg_info["damage_type"] == "stamina_drain":
+                    def_state["fatigue"] = round(def_state["fatigue"] + 0.55 * dmg_info["final_damage"], 2)
             if outcome in ("clean", "flush", "counter_hit", "partial"):
                 att_state["contact_marks"] += 1
-            if dmg_info["damage_type"] == "stamina_drain":
-                def_state["fatigue"] = round(def_state["fatigue"] + 0.6 * dmg_info["final_damage"], 2)
 
         if dmg_info["recoil_leg_damage_to_attacker"] > 0:
             att_state["damage"]["leg"] = round(
@@ -1127,7 +1409,7 @@ def simulate_fight_v2(
         if outcome in ("flush", "counter_hit", "caught"):
             def_state["balance"] = "off_base" if outcome != "caught" else "stable"
             if outcome == "caught":
-                att_state["balance"] = "off_base"
+                att_state["balance"] = "compromised"
         elif outcome in ("clean", "checked", "jammed"):
             def_state["balance"] = "compromised" if outcome == "clean" else "stable"
             if outcome in ("checked", "jammed"):
@@ -1145,7 +1427,7 @@ def simulate_fight_v2(
             "window_type": t_v2_rec["window_type"],
             "last_technique_id": tid,
             "exposed_lanes": list(t_v2_rec["exposed_lanes"]),
-            "readiness_penalty": float(t_v2_rec["readiness_penalty"]) * (1.35 if outcome in ("evaded", "miss", "checked", "caught") else 0.65),
+            "readiness_penalty": float(t_v2_rec["readiness_penalty"]) * (1.25 if outcome in ("evaded", "miss", "checked", "caught") else 0.60),
         }
         def_state["recovery_window"] = {
             "window_type": "none",
@@ -1163,11 +1445,11 @@ def simulate_fight_v2(
         grappling_pos = update_grappling_position(att_state, def_state, tid, outcome, att_card)
         if att_mentality in ("mentality.swarmer", "mentality.pressure") and arena_cfg["has_walls"]:
             direction = 1.0 if def_state["position"][0] >= 0 else -1.0
-            def_state["position"][0] = round(max(-half_w, min(half_w, def_state["position"][0] + 0.45 * direction)), 3)
+            def_state["position"][0] = round(max(-half_w, min(half_w, def_state["position"][0] + 0.42 * direction)), 3)
             if half_w - abs(def_state["position"][0]) <= float(arena_cfg["wall_near_m"]):
                 def_state["wall_proximity"] = "near"
-        elif def_mentality == "mentality.outboxer" and outcome in ("evaded", "blocked"):
-            def_state["position"][0] = round(def_state["position"][0] * 0.6, 3)
+        elif (def_mentality == "mentality.outboxer" or def_option == "defense.outfight") and outcome in ("evaded", "blocked"):
+            def_state["position"][0] = round(def_state["position"][0] * 0.55, 3)
             def_state["wall_proximity"] = "far"
 
         exchange_frames = int(m_stats["setup_f"]) + int(m_stats["exec_f"]) + int(m_stats["hold_f"]) + int(m_stats["rec_f"])
@@ -1175,44 +1457,70 @@ def simulate_fight_v2(
         t_start = round(clock_frames / 24.0, 2)
         clock_frames += exchange_frames + tempo_gap_frames
         t_end = round(clock_frames / 24.0, 2)
-        att_state["fatigue"] = round(att_state["fatigue"] + 0.35, 2)
+        att_tempo_val = int(att_card.get("tempo", 3))
+        fatigue_step = 0.22 if att_tempo_val == 1 else (0.28 if att_tempo_val == 2 else (0.34 if att_tempo_val == 3 else (0.39 if att_tempo_val == 4 else 0.44)))
+        att_state["fatigue"] = round(att_state["fatigue"] + fatigue_step, 2)
         last_attacker_id = attacker_id
         last_recovery_drag = 1.45 + 0.08 * float(m_stats["rec_f"]) + (0.65 if outcome in ("evaded", "blocked", "checked", "caught") else 0.0)
 
         counter_followup_event = None
         if outcome == "caught":
             att_state["kick_checks_suffered"] += 1
-            dump_tid = "sanda_sweep" if "sanda_sweep" in available(k, def_card, ruleset) else (
-                "outside_trip" if "outside_trip" in available(k, def_card, ruleset) else "cross"
-            )
-            dump_dmg = compute_card_derived_damage(
-                k, def_card, att_card, dump_tid, "counter_hit", def_state, att_state, in_active_slot=True
-            )
-            reg_c = str(dump_dmg["target_region"])
-            att_state["damage"][reg_c] = round(att_state["damage"][reg_c] + dump_dmg["final_damage"], 3)
-            def_state["contact_marks"] += 1
-            update_grappling_position(def_state, att_state, dump_tid, "counter_hit", def_card)
-            counter_followup_event = {
-                "counter_actor_id": defender_id,
-                "trigger": "kick_catch_dump",
-                "technique_id": dump_tid,
-                "damage": dump_dmg,
-            }
+            # Contested sweep attempt: kicker's balance and tie can resist or hop out!
+            att_tie = att_card["dimensions"].get("tie")
+            sweep_resist = 0.22 if att_tie in ("tie.freestyle", "tie.greco", "tie.anti_grappling", "tie.judo_sambo") else 0.0
+            sweep_prob = max(0.18, min(0.68, 0.62 - sweep_resist - 0.04 * float(def_state["fatigue"])))
+            if rng.random() < sweep_prob:
+                dump_tid = "sanda_sweep" if "sanda_sweep" in def_avail else (
+                    "outside_trip" if "outside_trip" in def_avail else "cross"
+                )
+                # A caught-kick sweep wins position and deals clean dump impact (1.0x rather than 1.42x counter_hit)
+                dump_dmg = compute_card_derived_damage(
+                    k, def_card, att_card, dump_tid, "clean", def_state, att_state, in_active_slot=True
+                )
+                reg_c = str(dump_dmg["target_region"])
+                att_state["damage"][reg_c] = round(att_state["damage"][reg_c] + dump_dmg["final_damage"], 3)
+                def_state["contact_marks"] += 1
+                def_state["control_marks"] += 1
+                if att_tie in ("tie.freestyle", "tie.greco", "tie.anti_grappling", "tie.judo_sambo"):
+                    # Opponent's tie turns the sweep into a standing clinch scramble instead of instant mat control
+                    def_state["grappling_position"] = att_state["grappling_position"] = "over_under"
+                    grappling_pos = "over_under"
+                else:
+                    def_state["posture_mode"] = att_state["posture_mode"] = "ground"
+                    def_state["grappling_position"] = "half_guard_top"
+                    att_state["grappling_position"] = "closed_guard_bottom"
+                    def_state["grip"], att_state["grip"] = "top", "bottom"
+                    grappling_pos = "half_guard_top"
+                counter_followup_event = {
+                    "counter_actor_id": defender_id,
+                    "trigger": "kick_catch_dump",
+                    "technique_id": dump_tid,
+                    "damage": dump_dmg,
+                }
         elif counter_triggered:
-            def_avail = available(k, def_card, ruleset)
-            c_tid = "cross" if "cross" in def_avail else ("hook" if "hook" in def_avail else "haymaker")
-            c_dmg = compute_card_derived_damage(
-                k, def_card, att_card, c_tid, "counter_hit", def_state, att_state, in_active_slot=True
-            )
-            reg_c = str(c_dmg["target_region"])
-            att_state["damage"][reg_c] = round(att_state["damage"][reg_c] + c_dmg["final_damage"], 3)
-            def_state["contact_marks"] += 1
-            counter_followup_event = {
-                "counter_actor_id": defender_id,
-                "trigger": f"{defense_used}_counter",
-                "technique_id": c_tid,
-                "damage": c_dmg,
-            }
+            # Choose a trained counter that reaches at current range_band
+            if range_band == "kick":
+                c_candidates = [m for m in ("side_kick", "teep", "low_kick", "body_kick", "cross", "jab") if m in def_avail]
+            elif range_band == "clinch":
+                c_candidates = [m for m in ("knee_body", "uppercut", "body_hook", "outside_trip", "hook") if m in def_avail]
+            else:
+                c_candidates = [m for m in ("cross", "uppercut", "hook", "body_hook", "jab", "haymaker") if m in def_avail]
+            if c_candidates:
+                c_tid = c_candidates[0]
+                c_qual = "counter_hit" if rng.random() < 0.62 else "partial"
+                c_dmg = compute_card_derived_damage(
+                    k, def_card, att_card, c_tid, c_qual, def_state, att_state, in_active_slot=True
+                )
+                reg_c = str(c_dmg["target_region"])
+                att_state["damage"][reg_c] = round(att_state["damage"][reg_c] + c_dmg["final_damage"], 3)
+                def_state["contact_marks"] += 1
+                counter_followup_event = {
+                    "counter_actor_id": defender_id,
+                    "trigger": f"{defense_used}_counter",
+                    "technique_id": c_tid,
+                    "damage": c_dmg,
+                }
 
         slot_switched_to = None
         if outcome in ("evaded", "blocked", "checked", "caught", "jammed"):
@@ -1557,3 +1865,168 @@ def compile_simulated_fight_to_atomic_beats(
             for b in beats
         ],
     }
+
+
+# ---------------------------------------------------------------------------
+# 10. Automated Round-Robin Balance Auditor & Top-3 Imbalance Cause Reporter
+# ---------------------------------------------------------------------------
+
+def explain_matchup_top_causes_v2(
+    many_result: Dict[str, object],
+    card_a: Dict[str, object],
+    card_b: Dict[str, object],
+) -> List[str]:
+    """Extract the top 3 concrete mechanical causes explaining a pairwise matchup outcome."""
+    id_a, id_b = str(card_a["fighter_id"]), str(card_b["fighter_id"])
+    wa = float(many_result["empirical_win_rate_a"])
+    wb = float(many_result["empirical_win_rate_b"])
+    fav_card, dog_card = (card_a, card_b) if wa >= wb else (card_b, card_a)
+    fav_id, dog_id = str(fav_card["fighter_id"]), str(dog_card["fighter_id"])
+
+    rep = many_result["representative_fight"]
+    exchanges = list(rep.get("exchanges", []))
+    total_ex = max(1, len(exchanges))
+
+    # 1. Range distribution & footwork control
+    range_counts: Dict[str, int] = {}
+    fav_rdy_list: List[float] = []
+    dog_rdy_list: List[float] = []
+    counter_count = 0
+    catch_or_check_count = 0
+
+    for ex in exchanges:
+        r = str(ex["range"])
+        range_counts[r] = range_counts.get(r, 0) + 1
+        if ex["defender_id"] == fav_id:
+            fav_rdy_list.append(float(ex["lane_readiness_score"]))
+        else:
+            dog_rdy_list.append(float(ex["lane_readiness_score"]))
+        if ex.get("counter_followup") and ex["counter_followup"].get("counter_actor_id") == fav_id:
+            counter_count += 1
+        if ex["defender_id"] == fav_id and ex["outcome"] in ("caught", "checked"):
+            catch_or_check_count += 1
+
+    top_range, top_range_n = max(range_counts.items(), key=lambda kv: kv[1]) if range_counts else ("punch", 0)
+    top_lane = (
+        max(many_result["deciding_weakness_lanes"].items(), key=lambda kv: kv[1])[0]
+        if many_result.get("deciding_weakness_lanes")
+        else "head_straight"
+    )
+    top_method = (
+        max(many_result["method_breakdown"].items(), key=lambda kv: kv[1])[0]
+        if many_result.get("method_breakdown")
+        else "Decision"
+    )
+    fav_avg_rdy = sum(fav_rdy_list) / max(1, len(fav_rdy_list))
+    dog_avg_rdy = sum(dog_rdy_list) / max(1, len(dog_rdy_list))
+    fav_ctrl = int(rep["actors_final"][fav_id].get("control_marks", 0))
+
+    causes = [
+        (
+            f"Range & Footwork Control: {top_range_n}/{total_ex} exchanges ({top_range_n / total_ex * 100:.0f}%) "
+            f"took place at `{top_range}` range (favoring {fav_id}'s {fav_card['dimensions'].get('stance')} / {fav_card['dimensions'].get('mentality')})"
+        ),
+        (
+            f"Posture & Seam Readiness Delta: {fav_id} maintained {fav_avg_rdy:.2f} avg lane readiness vs "
+            f"{dog_id}'s {dog_avg_rdy:.2f}, exploiting the `{top_lane}` seam toward `{top_method}` finishes"
+        ),
+        (
+            f"Tactical Counters & Control: {fav_id} generated {counter_count} contested counters, "
+            f"{catch_or_check_count} kick catches/checks, and {fav_ctrl} grappling control marks"
+        ),
+    ]
+    return causes
+
+
+def audit_round_robin_balance_v2(
+    runs_per_pair: int = 200,
+    ruleset: str = "mma",
+    duration_s: float = 60.0,
+    arena: str = "cage",
+    verify_order_invariance_seeds: int = 5,
+    knowledge: Optional[Knowledge] = None,
+) -> Dict[str, object]:
+    """Run an all-pairs round-robin balance audit across all 12 predefined block-2 archetypes,
+    verifying:
+      1. Order invariance (`simulate_fight_v2(A, B, s) == simulate_fight_v2(B, A, s)`),
+      2. Overall archetype win rates within `[0.35, 0.65]`,
+      3. No individual pairwise matchup exceeding `0.85`,
+      4. Automatic Top-3 mechanical cause attribution for every pair.
+    """
+    k = knowledge or Knowledge()
+    v2_dir = k.root / "cards" / "v2"
+    ids = sorted([p.stem for p in v2_dir.glob("*.json")]) if v2_dir.exists() else sorted(list(k.cards.keys()))
+    cards_map = {fid: load_card_v2(k, fid) for fid in ids}
+
+    wins = {fid: 0.0 for fid in ids}
+    matches = {fid: 0 for fid in ids}
+    pairwise_records: List[Dict[str, object]] = []
+    order_invariance_ok = True
+
+    for i, a in enumerate(ids):
+        for b in ids[i + 1 :]:
+            res = simulate_many_v2(
+                cards_map[a],
+                cards_map[b],
+                runs=runs_per_pair,
+                ruleset=ruleset,
+                duration_s=duration_s,
+                arena=arena,
+                knowledge=k,
+            )
+            wa = float(res["empirical_win_rate_a"])
+            wb = float(res["empirical_win_rate_b"])
+            wins[a] += wa
+            wins[b] += wb
+            matches[a] += 1
+            matches[b] += 1
+
+            # Verify order invariance on sample seeds
+            for s in range(1, verify_order_invariance_seeds + 1):
+                f_ab = simulate_fight_v2(cards_map[a], cards_map[b], ruleset=ruleset, duration_s=duration_s, seed=s, arena=arena, knowledge=k)
+                f_ba = simulate_fight_v2(cards_map[b], cards_map[a], ruleset=ruleset, duration_s=duration_s, seed=s, arena=arena, knowledge=k)
+                if f_ab["winner_id"] != f_ba["winner_id"] or f_ab["exchange_count"] != f_ba["exchange_count"]:
+                    order_invariance_ok = False
+
+            causes = explain_matchup_top_causes_v2(res, cards_map[a], cards_map[b])
+            pairwise_records.append(
+                {
+                    "fighter_a": a,
+                    "fighter_b": b,
+                    "win_rate_a": wa,
+                    "win_rate_b": wb,
+                    "max_win_rate": round(max(wa, wb), 3),
+                    "method_breakdown": res["method_breakdown"],
+                    "top_3_causes": causes,
+                }
+            )
+
+    overall_rates = {
+        fid: round(wins[fid] / max(1, matches[fid]), 3)
+        for fid in sorted(ids, key=lambda x: wins[x] / max(1, matches[x]), reverse=True)
+    }
+    pairwise_records.sort(key=lambda r: float(r["max_win_rate"]), reverse=True)
+    max_pair_rate = max((float(r["max_win_rate"]) for r in pairwise_records), default=0.5)
+    outliers_overall = {
+        fid: rate for fid, rate in overall_rates.items() if rate < 0.35 or rate > 0.65
+    }
+    outliers_pairwise = [r for r in pairwise_records if float(r["max_win_rate"]) > 0.85]
+
+    return {
+        "runs_per_pair": runs_per_pair,
+        "ruleset": ruleset,
+        "duration_s": duration_s,
+        "arena": arena,
+        "archetype_count": len(ids),
+        "pair_count": len(pairwise_records),
+        "order_invariance_verified": order_invariance_ok,
+        "archetype_overall_win_rates": overall_rates,
+        "all_within_target_band_35_65": len(outliers_overall) == 0,
+        "overall_outliers": outliers_overall,
+        "max_pairwise_win_rate": max_pair_rate,
+        "no_sweep_above_85": len(outliers_pairwise) == 0,
+        "pairwise_outliers_above_85": outliers_pairwise,
+        "top_skewed_pairs": pairwise_records[:10],
+        "pairwise_matrix": pairwise_records,
+    }
+

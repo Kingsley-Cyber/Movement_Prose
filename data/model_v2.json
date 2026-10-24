@@ -35,14 +35,14 @@
   "landing_multipliers": {
     "evaded": 0.0,
     "miss": 0.0,
-    "caught": 0.1,
+    "caught": 0.08,
     "checked": 0.1,
-    "jammed": 0.2,
+    "jammed": 0.18,
     "blocked": 0.18,
     "partial": 0.5,
     "clean": 1.0,
-    "counter_hit": 1.4,
-    "flush": 1.65
+    "counter_hit": 1.42,
+    "flush": 1.55
   },
   "regional_damage_limits": {
     "head": 11.5,

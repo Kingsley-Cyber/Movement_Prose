@@ -96,6 +96,8 @@ class Knowledge:
                 raise ValueError("duplicate capability within synchronized slot: " + s["id"])
             if any(c not in KNOWN_CAPABILITIES for c in caps):
                 raise ValueError("unknown capability in synchronized slot: " + s["id"])
+            if card.get("version") == "block-2" and len(caps) > 2:
+                raise ValueError("block-2 slot budget exceeded (max 2 schools per slot): " + s["id"])
         if len(admitted_slots(card, self)) != card["slot_count"]:
             raise ValueError("duplicate synchronized capability bundle")
         labels = {1: "Brawler", 2: "Two-piece", 3: "Triad", 4: "Anomaly"}

@@ -369,12 +369,15 @@ def build_techniques_v2(k: Knowledge) -> Dict[str, object]:
             exp_lanes = []
             pen = 0.15
 
+        req_caps = list(t["required_capabilities"])
+        if tid in ("teep", "body_kick") and "karate" not in req_caps:
+            req_caps.append("karate")
         records.append(
             {
                 "id": tid,
                 "name": t["name"],
                 "kind": kind,
-                "required_capabilities": t["required_capabilities"],
+                "required_capabilities": req_caps,
                 "required_range": t["required_range"],
                 "attack_lane": LANE_BY_TID.get(tid, "body"),
                 "target_region": target_reg,
@@ -474,7 +477,7 @@ def build_techniques_v2(k: Knowledge) -> Dict[str, object]:
                 "path": "180-degree dorsal spin into linear heel thrust to solar plexus",
                 "height": "mid",
                 "ending": "step_down_switch",
-                "vertical_mode_required": "athletic",
+                "vertical_mode_required": "grounded",
             },
             "recovery_exposure": {
                 "window_type": "single_leg_recovery",
@@ -726,29 +729,40 @@ def build_mio_card_v2() -> Dict[str, object]:
         },
         "adaptation": "mma",
         "orientation": "orthodox",
-        "slot_count": 2,
-        "slot_label": "Two-piece",
+        "slot_count": 3,
+        "slot_label": "Triad",
         "synchronized_capabilities": [
             {
                 "id": "sanda_judo.slot.1",
-                "capabilities": ["sanda", "kickboxing", "karate"],
-                "description": "Trained synchronized bundle: Sanda kick-catching sweep, side kick, and level-mixing kicks",
+                "capabilities": ["sanda", "boxing"],
+                "description": "Trained synchronized bundle: Sanda kick-catching sweep with counter-boxing crosses and hooks",
                 "trigger": "fight_start",
-                "sequence": ["side_kick", "low_kick", "sanda_sweep", "body_kick", "teep"],
-                "home_range": "kick",
+                "sequence": ["cross", "body_kick", "sanda_sweep", "hook", "low_kick"],
+                "home_range": "punch",
                 "goal": "counter_trap",
                 "abandon_rule": {"max_consecutive_stalls": 2, "condition": "kicks_blocked_or_jammed"},
                 "links": ["sanda_judo.slot.2"],
             },
             {
                 "id": "sanda_judo.slot.2",
-                "capabilities": ["judo", "wrestling", "clinch", "boxing"],
-                "description": "Trained synchronized bundle: Judo body-lock outer reap, clinch tie, sprawl defense, and counter boxing",
+                "capabilities": ["kickboxing", "judo"],
+                "description": "Trained synchronized bundle: Level-mixing kicks into Judo outer reap throw",
                 "trigger": "slot_stalled_or_close_range",
-                "sequence": ["jab", "cross", "body_lock", "outside_trip", "ride"],
-                "home_range": "clinch",
+                "sequence": ["body_kick", "outside_trip", "teep", "low_kick"],
+                "home_range": "kick",
                 "goal": "takedown_top_control",
                 "abandon_rule": {"max_consecutive_stalls": 2, "condition": "clinch_denied_or_escaped"},
+                "links": ["sanda_judo.slot.3"],
+            },
+            {
+                "id": "sanda_judo.slot.3",
+                "capabilities": ["clinch", "wrestling"],
+                "description": "Trained synchronized bundle: Clinch trips, takedown entries, and top ride control",
+                "trigger": "slot_stalled_or_countered",
+                "sequence": ["outside_trip", "double_leg", "single_leg", "ride"],
+                "home_range": "clinch",
+                "goal": "takedown_top_control",
+                "abandon_rule": {"max_consecutive_stalls": 2, "condition": "pocket_stalled"},
                 "links": ["sanda_judo.slot.1"],
             },
         ],
@@ -782,7 +796,6 @@ def build_mio_card_v2() -> Dict[str, object]:
             "hook",
             "body_hook",
             "uppercut",
-            "haymaker",
             "parry",
             "shell_block",
             "slip",
@@ -790,7 +803,6 @@ def build_mio_card_v2() -> Dict[str, object]:
             "low_kick",
             "body_kick",
             "teep",
-            "side_kick",
             "sanda_sweep",
             "sprawl",
             "pummel",
@@ -800,10 +812,10 @@ def build_mio_card_v2() -> Dict[str, object]:
             "ride",
             "escape",
         ],
-        "signature_moves": ["sanda_sweep", "outside_trip", "side_kick"],
+        "signature_moves": ["sanda_sweep", "outside_trip", "body_kick"],
         "airborne_training": {
             "allowed_vertical_modes": ["grounded", "athletic"],
-            "techniques": ["side_kick"],
+            "techniques": ["body_kick"],
         },
         "conditional_abilities": [],
         "combat_limitations": [

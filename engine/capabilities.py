@@ -101,6 +101,8 @@ def option_supported(k, card, opt_id):
     if dim == "kicking":
         if opt_id == "kicking.none":
             return bool(active)
+        if opt_id == "kicking.sanda" and "sanda_sweep" in active:
+            return True
         kick_trefs = [tid for tid in trefs if k.techniques[tid]["kind"] == "kick"]
         return any(tid in active for tid in kick_trefs)
     if opt_id in OPTION_REQUIRED_TECHS:

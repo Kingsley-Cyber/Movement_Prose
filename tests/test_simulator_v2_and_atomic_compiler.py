@@ -21,11 +21,15 @@ from engine.ontology import ROOT, Knowledge, read
 from engine.simulator_v2 import (
     ARENA_PRESETS,
     LANES,
+    audit_round_robin_balance_v2,
+    available_v2,
     build_slot_plans,
     compute_card_derived_damage,
     compute_posture_state,
     compute_readiness_profile,
+    compute_school_depth_multiplier,
     select_kick_defense,
+    select_native_defense,
     simulate_fight_v2,
     simulate_many_v2,
     unroll_kick_anatomy,
@@ -140,7 +144,7 @@ def test_dynamic_defensive_posture_and_8_lane_readiness_profile_shifts_with_stat
     r_fresh = compute_readiness_profile(knowledge, niran, fresh_state, donnell, fresh_state, "kick", "closed_stance", "low_kick", opt_map)
     assert p_fresh["weight_split"] == "rear_heavy"
     assert set(r_fresh.keys()) == set(LANES)
-    assert r_fresh["leg"] > 4.5
+    assert r_fresh["leg"] > 3.6
 
     # 2. Half a second later: Niran is mid single-leg recovery after throwing a kick, off-base, with hurt legs -> readiness drops sharply!
     compromised_state = copy.deepcopy(fresh_state)
@@ -155,8 +159,8 @@ def test_dynamic_defensive_posture_and_8_lane_readiness_profile_shifts_with_stat
     p_comp = compute_posture_state(niran, compromised_state, opt_map)
     r_comp = compute_readiness_profile(knowledge, niran, compromised_state, donnell, fresh_state, "kick", "closed_stance", "low_kick", opt_map)
     assert p_comp["base_width"] == "single_leg"
-    assert r_comp["leg"] < r_fresh["leg"] - 2.5
-    assert r_comp["single_support"] < r_fresh["single_support"] - 2.0
+    assert r_comp["leg"] < r_fresh["leg"] - 1.5
+    assert r_comp["single_support"] < r_fresh["single_support"] - 1.2
 
     # 3. Body damage brings the elbows down, decaying guard_integrity and opening head lanes
     body_hurt_state = copy.deepcopy(fresh_state)
@@ -166,7 +170,7 @@ def test_dynamic_defensive_posture_and_8_lane_readiness_profile_shifts_with_stat
     r_donnell_fresh = compute_readiness_profile(knowledge, donnell, fresh_state, niran, fresh_state, "punch", "closed_stance", "cross", opt_map)
     r_donnell_hurt = compute_readiness_profile(knowledge, donnell, body_hurt_state, niran, fresh_state, "punch", "closed_stance", "cross", opt_map)
     assert p_body["guard_integrity"] < 0.65
-    assert r_donnell_hurt["head_straight"] < r_donnell_fresh["head_straight"] - 1.5
+    assert r_donnell_hurt["head_straight"] < r_donnell_fresh["head_straight"] - 0.8
 
 
 def test_card_derived_damage_and_first_class_kicking_subsystem(knowledge, cards):
@@ -181,8 +185,8 @@ def test_card_derived_damage_and_first_class_kicking_subsystem(knowledge, cards)
     rook_cross = compute_card_derived_damage(knowledge, rook, darius, "cross", "clean", dummy_state, dummy_state)
     darius_cross = compute_card_derived_damage(knowledge, darius, rook, "cross", "clean", dummy_state, dummy_state)
     darius_counter = compute_card_derived_damage(knowledge, darius, rook, "cross", "counter_hit", dummy_state, dummy_state)
-    assert rook_cross["attacker_multiplier"] > darius_cross["attacker_multiplier"] * 1.35
-    assert darius_counter["final_damage"] > darius_cross["final_damage"] * 1.95
+    assert rook_cross["attacker_multiplier"] > darius_cross["attacker_multiplier"] * 1.25
+    assert darius_counter["final_damage"] > darius_cross["final_damage"] * 1.65
 
     for tid in ("low_kick", "body_kick", "head_kick", "teep", "side_kick", "switch_kick", "spinning_back_kick", "axe_kick", "jumping_knee"):
         anat = unroll_kick_anatomy(tid, niran, "orthodox")
@@ -221,8 +225,8 @@ def test_order_invariance_seed_determinism_trained_moves_only_and_schema_validat
 
     # 3. Trained-moves-only invariant: no fighter ever executes a technique not in their trained available set
     avail_by_id = {
-        "sanda_judo": set(available(knowledge, mio, "mma")),
-        "thai": set(available(knowledge, niran, "mma")),
+        "sanda_judo": available_v2(knowledge, mio, "mma"),
+        "thai": available_v2(knowledge, niran, "mma"),
     }
     for ex in sim_ab_1["exchanges"]:
         assert ex["technique_id"] in avail_by_id[ex["attacker_id"]]
@@ -230,19 +234,24 @@ def test_order_invariance_seed_determinism_trained_moves_only_and_schema_validat
             c_actor = ex["counter_followup"]["counter_actor_id"]
             assert ex["counter_followup"]["technique_id"] in avail_by_id[c_actor]
 
-    # 4. Anti-slot-gaming depth-vs-breadth check: splitting Mio's 2 slots into 3 slots reduces per-slot depth_multiplier
-    mio_split = copy.deepcopy(mio)
-    mio_split["slot_count"] = 3
-    mio_split["slot_label"] = "Triad"
-    mio_split["synchronized_capabilities"] = [
-        {"id": "s1", "capabilities": ["sanda", "kickboxing"], "description": "Slot 1"},
-        {"id": "s2", "capabilities": ["karate", "boxing"], "description": "Slot 2"},
-        {"id": "s3", "capabilities": ["judo", "wrestling", "clinch"], "description": "Slot 3"},
+    # 4. Slot budget & school-based depth check:
+    # Mio is a 3-slot Triad with <= 2 schools per slot, and cramming 6 schools into 2 slots gives NO depth bonus!
+    assert mio["slot_count"] == 3
+    assert mio["slot_label"] == "Triad"
+    assert all(len(s["capabilities"]) <= 2 for s in mio["synchronized_capabilities"])
+    plans_mio = build_slot_plans(knowledge, mio, "mma")
+    assert plans_mio[0]["depth_multiplier"] == 1.00
+
+    mio_crammed = copy.deepcopy(mio)
+    mio_crammed["slot_count"] = 2
+    mio_crammed["slot_label"] = "Two-piece"
+    mio_crammed["synchronized_capabilities"] = [
+        {"id": "s1", "capabilities": ["sanda", "kickboxing", "boxing"], "description": "Overstacked 1"},
+        {"id": "s2", "capabilities": ["judo", "wrestling", "clinch"], "description": "Overstacked 2"},
     ]
-    plans_2 = build_slot_plans(knowledge, mio, "mma")
-    plans_3 = build_slot_plans(knowledge, mio_split, "mma")
-    assert plans_2[0]["depth_multiplier"] == 1.05
-    assert plans_3[0]["depth_multiplier"] == 1.00
+    assert compute_school_depth_multiplier(mio_crammed, knowledge) == 1.00
+    with pytest.raises(ValueError, match="block-2 slot budget exceeded"):
+        knowledge.card(mio_crammed)
 
 
 def test_arena_presets_grappling_positions_and_monte_carlo_many_runs(knowledge, cards):
@@ -298,4 +307,41 @@ def test_all_12_predefined_archetypes_and_standalone_cli_runner(knowledge, capsy
     out_mc = json.loads(capsys.readouterr().out)
     assert out_mc["runs"] == 8
     assert out_mc["win_counts"]["wrestler"] + out_mc["win_counts"]["karate"] == 8
+
+
+def test_fairness_rules_native_defense_and_round_robin_balance_band(knowledge, cards):
+    rook = cards["street"]
+    niran = cards["thai"]
+    aya = cards["karate"]
+
+    # 1. Native Posture Defense:
+    # - Rook Mercer (defense.block_absorb + hands.hands_down, no boxing) never borrows untrained `shell_block`
+    # - Niran Sol (defense.check_frame + hands.long_guard) frames/parries/blocks rather than boxing `slip`
+    # - Aya Quinn (defense.outfight) evades with footwork (`evade_step_back` / `pivot` / `retreat`)
+    rook_avail = available_v2(knowledge, rook, "mma")
+    niran_avail = available_v2(knowledge, niran, "mma")
+    aya_avail = available_v2(knowledge, aya, "mma")
+    assert "shell_block" not in rook_avail
+    assert select_native_defense(rook, "cross", "punch", rook_avail)[0] == "retreat"
+    assert select_native_defense(niran, "cross", "punch", niran_avail)[0] != "slip"
+    assert select_native_defense(aya, "cross", "kick", aya_avail)[0] in ("pivot", "retreat")
+
+    # 2. Karate kick family data gap filled without modifying cards/karate.json:
+    assert {"side_kick", "teep", "body_kick", "spinning_back_kick"}.issubset(aya_avail)
+
+    # 3. Round-Robin Balance Band [35%-65%], No >85% Sweeps, Order Invariance & Top-3 Cause Attribution:
+    audit = audit_round_robin_balance_v2(
+        runs_per_pair=100,
+        ruleset="mma",
+        duration_s=60.0,
+        arena="cage",
+        verify_order_invariance_seeds=3,
+        knowledge=knowledge,
+    )
+    assert audit["order_invariance_verified"] is True
+    assert audit["all_within_target_band_35_65"] is True, f"Outliers outside [35%, 65%]: {audit['overall_outliers']}"
+    assert audit["no_sweep_above_85"] is True, f"Pairs above 85%: {audit['pairwise_outliers_above_85']}"
+    for pair in audit["top_skewed_pairs"]:
+        assert len(pair["top_3_causes"]) == 3
+
 

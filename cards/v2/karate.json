@@ -26,6 +26,9 @@
       "trigger": "fight_start",
       "sequence": [
         "side_kick",
+        "teep",
+        "body_kick",
+        "spinning_back_kick",
         "jab",
         "cross"
       ],

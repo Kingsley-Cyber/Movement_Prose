@@ -694,7 +694,8 @@
       "name": "Rear body round kick",
       "kind": "kick",
       "required_capabilities": [
-        "kickboxing"
+        "kickboxing",
+        "karate"
       ],
       "required_range": [
         "kick"
@@ -736,7 +737,8 @@
       "name": "Lead teep",
       "kind": "kick",
       "required_capabilities": [
-        "kickboxing"
+        "kickboxing",
+        "karate"
       ],
       "required_range": [
         "kick"
@@ -1233,13 +1235,13 @@
       ],
       "attack_lane": "ground",
       "target_region": "hips",
-      "base_damage": 1.6,
+      "base_damage": 1.1,
       "damage_type": "stamina_drain",
       "frame_costs": {
         "setup_frames": 4,
         "execution_frames": 14,
         "contact_hold_frames": 4,
-        "recovery_frames": 8
+        "recovery_frames": 9
       },
       "biomechanics": {
         "attacking_limb": "hips and hands",
@@ -1570,7 +1572,7 @@
         "path": "180-degree dorsal spin into linear heel thrust to solar plexus",
         "height": "mid",
         "ending": "step_down_switch",
-        "vertical_mode_required": "athletic"
+        "vertical_mode_required": "grounded"
       },
       "recovery_exposure": {
         "window_type": "single_leg_recovery",

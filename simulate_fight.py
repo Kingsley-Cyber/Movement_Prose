@@ -23,6 +23,7 @@ from typing import Dict
 from engine.ontology import Knowledge
 from engine.simulator_v2 import (
     ARENA_PRESETS,
+    audit_round_robin_balance_v2,
     compile_simulated_fight_to_atomic_beats,
     list_archetypes_v2,
     simulate_fight_v2,
@@ -129,6 +130,28 @@ def _format_many_runs_text(res: Dict[str, object]) -> str:
     return "\n".join(lines)
 
 
+def _format_balance_audit_text(audit: Dict[str, object]) -> str:
+    lines = [
+        f"BLOCK Fight Simulator v2 — Round-Robin Balance Audit ({audit['runs_per_pair']} seeds/pair across {audit['pair_count']} pairs)",
+        f"Ruleset: {audit['ruleset']} | Arena: {audit['arena']} | Duration: {audit['duration_s']}s | Order Invariance: {audit['order_invariance_verified']}",
+        f"Target Band [35%-65%] All Pass: {audit['all_within_target_band_35_65']} | No Pair > 85%: {audit['no_sweep_above_85']} (Max Pairwise: {float(audit['max_pairwise_win_rate'])*100:.1f}%)",
+        "=" * 92,
+        "1. Overall Archetype Win Rates (Target Band: 35.0% - 65.0%):",
+    ]
+    for fid, rate in audit["archetype_overall_win_rates"].items():
+        status = "PASS" if 0.35 <= float(rate) <= 0.65 else "OUTLIER"
+        lines.append(f"  - {fid:<14}: {float(rate)*100:5.1f}%  [{status}]")
+    lines.append("\n2. Top Most Skewed Matchups & Top-3 Mechanical Causes:")
+    for pair in audit["top_skewed_pairs"][:6]:
+        lines.append(
+            f"  * {pair['fighter_a']} vs {pair['fighter_b']}: "
+            f"{float(pair['win_rate_a'])*100:.1f}% - {float(pair['win_rate_b'])*100:.1f}% | Methods: {pair['method_breakdown']}"
+        )
+        for idx, c in enumerate(pair["top_3_causes"], start=1):
+            lines.append(f"      Cause {idx}: {c}")
+    return "\n".join(lines)
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(
         description="Simulate fights between predefined BLOCK v2 fighter archetypes."
@@ -136,12 +159,13 @@ def main(argv=None) -> int:
     parser.add_argument("fighter_a", nargs="?", help="First fighter archetype ID or card path (e.g., sanda_judo, thai, maleek)")
     parser.add_argument("fighter_b", nargs="?", help="Second fighter archetype ID or card path (e.g., wrestler, detroit, karate)")
     parser.add_argument("--list-archetypes", action="store_true", help="List all 12 predefined block-2 fighter archetypes and exit")
+    parser.add_argument("--balance-audit", action="store_true", help="Run round-robin balance audit across all 12 archetypes and report Top-3 causes")
     parser.add_argument("--ruleset", default="mma", choices=["mma", "boxing"], help="Combat ruleset (default: mma)")
     parser.add_argument("--arena", default="cage", choices=sorted(ARENA_PRESETS.keys()), help="2D arena preset (default: cage)")
     parser.add_argument("--vertical-mode", default="grounded", choices=["grounded", "athletic", "wall_assisted"], help="Vertical mode (default: grounded)")
     parser.add_argument("--duration", type=float, default=60.0, help="Fight clock duration in seconds (default: 60.0)")
     parser.add_argument("--seed", type=int, default=42, help="Deterministic RNG seed for single-fight mode (default: 42)")
-    parser.add_argument("--runs", type=int, default=0, help="If > 0, run N Monte Carlo simulations via simulate_many_v2")
+    parser.add_argument("--runs", type=int, default=0, help="If > 0, run N Monte Carlo simulations via simulate_many_v2 (or seeds/pair for --balance-audit)")
     parser.add_argument("--winner", default=None, help="Optional Director Mode winner fighter_id for --runs")
     parser.add_argument("--emit-prompt", action="store_true", help="Compile simulated exchanges into Atomic 1-Contact-Per-Beat Causal IR and prose")
     parser.add_argument("--json", action="store_true", help="Emit structured JSON output for LLM/programmatic consumption")
@@ -155,6 +179,21 @@ def main(argv=None) -> int:
             print(json.dumps({"version": "block-2", "archetypes": archetypes}, indent=2))
         else:
             print(_format_archetypes_text(archetypes))
+        return 0
+
+    if args.balance_audit:
+        audit_runs = args.runs if args.runs > 0 else 200
+        audit = audit_round_robin_balance_v2(
+            runs_per_pair=audit_runs,
+            ruleset=args.ruleset,
+            duration_s=args.duration,
+            arena=args.arena,
+            knowledge=k,
+        )
+        if args.json:
+            print(json.dumps(audit, indent=2))
+        else:
+            print(_format_balance_audit_text(audit))
         return 0
 
     if not args.fighter_a or not args.fighter_b:
