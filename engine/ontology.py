@@ -71,6 +71,8 @@ class Knowledge:
                     p = self.root / p
                 elif (self.root / "cards" / f"{value}.json").exists():
                     p = self.root / "cards" / f"{value}.json"
+                elif (self.root / "cards" / "v2" / f"{value}.json").exists():
+                    p = self.root / "cards" / "v2" / f"{value}.json"
             card = read(p)
         else:
             card = value

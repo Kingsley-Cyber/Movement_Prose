@@ -1,0 +1,115 @@
+{
+  "version": "block-1",
+  "fighter_id": "sanda_judo",
+  "name": "Mio Tsukihara",
+  "combat_identity": "Sanda kick-catcher & Judo trip counter",
+  "dimensions": {
+    "hands": "hands.high_guard",
+    "defense": "defense.parry_catch",
+    "stance": "stance.balanced",
+    "tie": "tie.judo_sambo",
+    "target": "target.mixer",
+    "kicking": "kicking.sanda",
+    "mentality": "mentality.counter"
+  },
+  "adaptation": "mma",
+  "orientation": "orthodox",
+  "slot_count": 2,
+  "slot_label": "Two-piece",
+  "synchronized_capabilities": [
+    {
+      "id": "sanda_judo.slot.1",
+      "capabilities": [
+        "sanda",
+        "kickboxing",
+        "karate"
+      ],
+      "description": "Trained synchronized bundle: Sanda kick-catching sweep, side kick, and level-mixing kicks"
+    },
+    {
+      "id": "sanda_judo.slot.2",
+      "capabilities": [
+        "judo",
+        "wrestling",
+        "clinch",
+        "boxing"
+      ],
+      "description": "Trained synchronized bundle: Judo body-lock outer reap, clinch tie, sprawl defense, and counter boxing"
+    }
+  ],
+  "baseline_capabilities": [
+    "basic_movement",
+    "untrained_striking"
+  ],
+  "tempo": 3,
+  "preferred_ranges": [
+    "kick",
+    "clinch"
+  ],
+  "debt_sentence": "Catch kicks into a standing sweep or body-lock outer reap; high guard vision and committed sweep recovery leave straight-line seams.",
+  "exploitable_seams": [
+    "debt.hands.high_guard.body",
+    "debt.hands.high_guard.vision",
+    "debt.defense.parry_catch.head_hook",
+    "debt.defense.parry_catch.body",
+    "debt.stance.balanced.tempo",
+    "debt.stance.balanced.head_straight",
+    "debt.tie.judo_sambo.tempo",
+    "debt.tie.judo_sambo.ground",
+    "debt.target.mixer.recovery",
+    "debt.target.mixer.tempo",
+    "debt.kicking.sanda.head_straight",
+    "debt.kicking.sanda.recovery",
+    "debt.mentality.counter.tempo",
+    "debt.mentality.counter.wall"
+  ],
+  "active_techniques": [
+    "step",
+    "retreat",
+    "pivot",
+    "feint",
+    "jab",
+    "cross",
+    "hook",
+    "body_hook",
+    "uppercut",
+    "haymaker",
+    "parry",
+    "shell_block",
+    "slip",
+    "check",
+    "low_kick",
+    "body_kick",
+    "teep",
+    "side_kick",
+    "sanda_sweep",
+    "sprawl",
+    "pummel",
+    "collar_tie",
+    "body_lock",
+    "outside_trip",
+    "ride",
+    "escape"
+  ],
+  "conditional_abilities": [],
+  "combat_limitations": [
+    "Listed grappling requires the documented range and connection.",
+    "No technique is guaranteed against an active defense."
+  ],
+  "fighting_description": {
+    "does": "Catch kicks into a Sanda sweep or clinch into an outside trip.",
+    "wins": "Bait committed kicks or entries, catch or tie up, and dump the opponent to top control.",
+    "avoids": "Extended pocket hook exchanges behind a covered high-guard gaze.",
+    "beaten_by": "feinted straight-line entries and sustained ground submission specialists."
+  },
+  "appearance": {
+    "clothing": "crimson Sanda shorts with black sash trim",
+    "identity_anchor": "Mio Tsukihara / Sanda kick-catcher & Judo trip counter",
+    "props": []
+  },
+  "provenance": {
+    "classification": "CANON",
+    "label": "[CANON]",
+    "source": "Authored v2 expansion card demonstrating Sanda kick-catch and Judo outer reap."
+  }
+}
