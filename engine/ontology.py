@@ -76,7 +76,8 @@ class Knowledge:
             card = read(p)
         else:
             card = value
-        self.schema("fighter_card", card)
+        schema_name = "fighter_card_v2" if card.get("version") == "block-2" else "fighter_card"
+        self.schema(schema_name, card)
         from .capabilities import KNOWN_CAPABILITIES, admitted_slots, option_supported, training
         if card.get("provenance", {}).get("classification") != "CANON":
             raise ValueError("fighter card provenance classification must be CANON")

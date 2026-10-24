@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BLOCK Grappling Position & Transition Map Schema",
+  "type": "object",
+  "required": ["version", "positions", "transitions"],
+  "properties": {
+    "version": {"const": "block-2"},
+    "positions": {
+      "type": "array",
+      "minItems": 12,
+      "items": {
+        "type": "object",
+        "required": ["id", "domain", "range", "posture", "dominant_side_role", "allowed_techniques"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "domain": {"enum": ["standing", "clinch", "transition", "ground"]},
+          "range": {"enum": ["outside", "kick", "punch", "close", "clinch", "ground"]},
+          "posture": {"enum": ["standing", "transition", "ground"]},
+          "dominant_side_role": {"enum": ["neutral", "initiator", "top", "bottom_guard", "back_controller"]},
+          "allowed_techniques": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "transitions": {
+      "type": "array",
+      "minItems": 10,
+      "items": {
+        "type": "object",
+        "required": ["from_position", "to_position", "via_technique", "required_grips", "frame_cost", "counters"],
+        "properties": {
+          "from_position": {"type": "string", "minLength": 1},
+          "to_position": {"type": "string", "minLength": 1},
+          "via_technique": {"type": "string", "minLength": 1},
+          "required_grips": {"type": "array", "items": {"type": "string"}},
+          "frame_cost": {"type": "integer", "minimum": 1},
+          "counters": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

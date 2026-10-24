@@ -261,13 +261,39 @@ This repository is engineered to run identically across **macOS (Mac Studio / Ap
 
 ---
 
-## 7. BLOCK Fight Simulator v2 Specification & Backlog (See [`docs/BLOCK_SIMULATOR_V2_DESIGN_SPEC.md`](docs/BLOCK_SIMULATOR_V2_DESIGN_SPEC.md))
+## 7. BLOCK Fight Simulator v2 Architecture & Agent Operating Rules (See [`docs/BLOCK_SIMULATOR_V2_DESIGN_SPEC.md`](docs/BLOCK_SIMULATOR_V2_DESIGN_SPEC.md))
 
-To make the BLOCK Fight Engine (`engine/`) simulate and predict matches that are **100% true to the characters on the cards** (without physical height/weight/speed stats, using only card dimensions, slots, composites, and mentality), the full v2 Simulator specification is captured in **[`docs/BLOCK_SIMULATOR_V2_DESIGN_SPEC.md`](docs/BLOCK_SIMULATOR_V2_DESIGN_SPEC.md)**:
+The BLOCK Fight Simulator v2 (`engine/simulator_v2.py`, `scripts/build_v2_data.py`, `data/option_behaviors.json`, `data/techniques_v2.json`, `data/positions.json`, `data/model_v2.json`, and the 9 v2 JSON schemas in `schemas/`) runs **100% off card and ontology data** without physical height/weight/speed stats:
 
-- [ ] **1. Every Card Dimension Has a Job:** `mentality` (counter waits/counters, swarmer short entries, slugger heavy buildup, outboxer angle exits, spoiler clinch ties), `tempo` (initiative, reset gaps, fatigue rate), `defense` (active `slip`, `parry`, `shell_block`, `shield_frame`, `check`, `sprawl`, `kick_catch`), `hands` (1–5 coverage ratings), `target` (level priority & specialty bonus), `kicking` (kick family), `stance` (force transfer vs. mobility), and `tie` (clinch/ground position hunting).
-- [ ] **2. Fight Clock, 2D Arena Geometry & Verticality Modes:** Real 24fps frame costs (`setup`, `strike`, `contact`, `recovery`), arena presets (`ring`, `cage`, `open_floor`, `narrow_alley`, `rooftop_edge`, `dojo`), dynamic 2D positioning/wall proximity, and card-gated verticality (`grounded`, `athletic`, `aerial` with 3-phase `takeoff -> peak -> landing` counter-risk).
-- [ ] **3. First-Class Kicking Subsystem:** School-based kick families (`muay_thai`, `dutch`, `karate`, `sanda`, `wrestler_teep`, `none`), unrolled kick phases (`leg`, `chamber`, `support_foot`, `path`, `striking_surface`, `ending`, `frames`), school-specific kick defenses (`check` reflecting shin damage to the kicker, `kick_catch` -> sweep/dump, `step_back`, `lean_back`, `jam`), and cumulative leg/body wear.
-- [ ] **4. Grappling Position & Grip Map (`data/positions.json`):** Explicit position graph (`Standing`, `Clinch: collar_tie / thai_plum / over_under / double_underhooks / body_lock / wall_pinned`, `Takedown in progress`, `Ground: closed / open / half guard / side_control / mount / back_control / turtle / front_headlock`), tracked sub-grips (`underhooks`, `wrist`, `head`), scrambles, and 3-stage submissions (`isolate -> set -> finish`).
-- [ ] **5. Slots as Gameplans + Depth-vs-Breadth Scaling:** Each slot defines a full plan (`capabilities`, `sequence`, `trigger`, `home_range`, `goal`, `abandon_rule`, `links`), with `Brawler (1 slot)` getting peak single-plan sharpness (`1.15x` depth) and `Two-Piece / Triad / Anomaly` getting multi-plan adaptability.
-- [ ] **6. Card-Derived Damage Formula & 3-Level Exchange Calculator:** Replaces the flat `+1` contact mark (`fight_state.py:144`) with $\text{Damage} = \text{Move Base} \times \text{Attacker Build} \times \text{Landing Quality} \times \text{Defender Mitigation}$ (so Rook Mercer's planted slugger cross and Darius Reed's counter-hit cross behave completely differently), feeding into the **3-Level Pipeline** (`Level 1: Pre-Fight Read`, `Level 2: Exchange-by-Exchange Resolver`, `Level 3: Many-Runs Monte Carlo Simulator & Director Mode`).
+- [x] **1. Dynamic Defensive Posture & 8-Lane Readiness Calculator (`compute_posture_state`, `compute_readiness_profile`):** Defense is not a static label — it is a live defensive posture built from **Guard (`hands`) + Stance (`weight_split`, `height`, `hip_angle`, `base_width`) + Head Position + Defense Method (`defense`)**, recomputed every exchange across all 8 lanes (`head_straight`, `head_hook`, `head_uppercut`, `body`, `leg`, `entry`, `clinch`, `single_support`) and modified by 11 live fight states:
+  1. Fighter's own prior attack (`recovery_window`: `single_leg_recovery`, `extended_arm_recovery`, `wide_swing_recovery`, `sprawled_shot_recovery`, `airborne_landing_recovery`),
+  2. Balance state (`stable`, `compromised`, `off_base`),
+  3. Range & outside angle (`clinch`/`ground` shifts defense from guard to `tie` + `sub_grips`),
+  4. Lead-foot matchup (`open_stance` vs. `closed_stance`),
+  5. Space (`wall_proximity == "near"` breaks down `defense.outfight`),
+  6. Attention (`feinted` pulls guard/eyes),
+  7. Reads (`read_memory`: bonus against repeated moves, novelty penalty on first sight),
+  8. Fatigue (guard drops, reactions slow),
+  9. Regional damage (`head` slows reactions; `body` drops elbows and decays `guard_integrity`; `leg` disables `check_frame` and mobility),
+  10. Mentality (`risk_appetite`),
+  11. Grips (`underhooks`, `wrist_control`, `head_position`).
+- [x] **2. All 9 v2 Data Contracts (`schemas/`) & Authored Catalogs (`data/`):**
+  - `schemas/fighter_card_v2.schema.json` (accepts both `block-1` and `block-2` cards, validated on all 11 canonical cards + `cards/v2/sanda_judo.json` `Mio Tsukihara`)
+  - `schemas/option_behavior.schema.json` $\to$ `data/option_behaviors.json` (all 57 style options)
+  - `schemas/technique_v2.schema.json` $\to$ `data/techniques_v2.json` (38 techniques with 24fps frame costs, biomechanics, recovery windows, base damage)
+  - `schemas/position_map.schema.json` $\to$ `data/positions.json` (15 positions + 14 transitions)
+  - `schemas/fight_settings.schema.json`, `schemas/model_config_v2.schema.json` ($\to$ `data/model_v2.json`), `schemas/fight_state_v2.schema.json`, `schemas/exchange_event_v2.schema.json`, `schemas/simulation_result_v2.schema.json`.
+- [x] **3. First-Class Kicking Subsystem, Grappling Position Map, Slot Gameplans & Card-Derived Damage:** Implemented and verified in `engine/simulator_v2.py` and `tests/test_simulator_v2_and_atomic_compiler.py`.
+
+### 7.1 Mandatory Agent Rules for Authoring Cards & Running Simulations
+1. **How to Build a `block-2` Card from a Plain-English Character Description:**
+   - Map the fighter's habits onto the 7 dimensions in `data/engine_index.json` (`hands`, `defense`, `stance`, `tie`, `target`, `kicking`, `mentality`) + `tempo (1..5)` + `orientation (orthodox/southpaw/switching)`.
+   - Define `1..4` `synchronized_capabilities` slots (`Brawler=1`, `Two-piece=2`, `Triad=3`, `Anomaly=4`), giving each slot its `capabilities`, `trigger`, `sequence`, `home_range`, `goal`, `abandon_rule`, and `links` (see `cards/v2/sanda_judo.json` as the canonical worked example).
+   - Populate `exploitable_seams` with the union of `exploitable_debt_ids` from all chosen options in `data/engine_index.json` (never omit an option's required debts).
+   - Validate the card with `Knowledge().card(card_dict)` and `schemas/fighter_card_v2.schema.json`.
+2. **When to Run Many-Runs (`simulate_many_v2`) vs. Single-Run (`simulate_fight_v2`) vs. Director Mode (`directed_winner`):**
+   - Use **`simulate_many_v2(a, b, runs=50..200)`** when evaluating a matchup's empirical win rate, method-of-victory distribution (`KO/TKO`, `Submission`, `Decision`), and deciding slots/weakness lanes.
+   - Use **`simulate_many_v2(a, b, runs=50, directed_winner="fighter_id")`** when the user or story requires a specific winner: Director Mode selects a realistic seeded run where that fighter naturally won through their card's trained gameplan, rather than forcing artificial moves.
+   - Use **`simulate_fight_v2(a, b, seed=S)`** for deterministic single-fight inspection and exchange-by-exchange replay.
+3. **Strict Trained-Moves-Only Rule (Zero Untrained Moves):**
+   - Never add or emit any technique in a slot sequence, exchange, or counter that is not in `available(k, card, ruleset)` (gated by the card's `active_techniques` and trained `capabilities`).

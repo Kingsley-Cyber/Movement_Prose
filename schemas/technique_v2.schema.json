@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BLOCK Technique v2 Schema",
+  "type": "object",
+  "required": ["version", "techniques"],
+  "properties": {
+    "version": {"const": "block-2"},
+    "techniques": {
+      "type": "array",
+      "minItems": 29,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "kind",
+          "required_capabilities",
+          "required_range",
+          "attack_lane",
+          "target_region",
+          "base_damage",
+          "damage_type",
+          "frame_costs",
+          "biomechanics",
+          "recovery_exposure",
+          "counters"
+        ],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "name": {"type": "string", "minLength": 1},
+          "kind": {
+            "enum": [
+              "movement",
+              "feint",
+              "defense",
+              "punch",
+              "kick",
+              "knee",
+              "grip",
+              "takedown",
+              "control",
+              "submission"
+            ]
+          },
+          "required_capabilities": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "required_range": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"enum": ["outside", "kick", "punch", "close", "clinch", "ground"]}
+          },
+          "attack_lane": {
+            "enum": [
+              "space",
+              "head_straight",
+              "head_hook",
+              "head_uppercut",
+              "body",
+              "leg",
+              "entry",
+              "clinch",
+              "single_support",
+              "ground"
+            ]
+          },
+          "target_region": {
+            "enum": ["space", "angle", "vision", "head", "body", "leg", "hips", "neck_arm"]
+          },
+          "base_damage": {"type": "number", "minimum": 0.0, "maximum": 5.0},
+          "damage_type": {
+            "enum": ["none", "impact", "buildup", "stamina_drain", "control", "submission"]
+          },
+          "frame_costs": {
+            "type": "object",
+            "required": ["setup_frames", "execution_frames", "contact_hold_frames", "recovery_frames"],
+            "properties": {
+              "setup_frames": {"type": "integer", "minimum": 1},
+              "execution_frames": {"type": "integer", "minimum": 1},
+              "contact_hold_frames": {"type": "integer", "minimum": 0},
+              "recovery_frames": {"type": "integer", "minimum": 1}
+            },
+            "additionalProperties": false
+          },
+          "biomechanics": {
+            "type": "object",
+            "required": ["attacking_limb", "striking_surface", "path", "height", "ending", "vertical_mode_required"],
+            "properties": {
+              "attacking_limb": {"type": "string", "minLength": 1},
+              "striking_surface": {"type": "string", "minLength": 1},
+              "path": {"type": "string", "minLength": 1},
+              "height": {"enum": ["low", "mid", "high", "ground", "none"]},
+              "ending": {"enum": ["snap_back", "carry_through", "step_down_switch", "clinch_tie", "mat_settle"]},
+              "vertical_mode_required": {"enum": ["grounded", "athletic", "aerial"]}
+            },
+            "additionalProperties": true
+          },
+          "recovery_exposure": {
+            "type": "object",
+            "required": ["window_type", "exposed_lanes", "readiness_penalty"],
+            "properties": {
+              "window_type": {
+                "enum": [
+                  "none",
+                  "short_retract",
+                  "extended_arm_recovery",
+                  "single_leg_recovery",
+                  "wide_swing_recovery",
+                  "sprawled_shot_recovery",
+                  "airborne_landing_recovery"
+                ]
+              },
+              "exposed_lanes": {
+                "type": "array",
+                "items": {"type": "string"}
+              },
+              "readiness_penalty": {"type": "number", "minimum": 0.0, "maximum": 3.0}
+            },
+            "additionalProperties": false
+          },
+          "counters": {
+            "type": "array",
+            "items": {"type": "string"}
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

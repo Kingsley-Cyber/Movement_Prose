@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BLOCK Option Behavior Schema (all 57 style options)",
+  "type": "object",
+  "required": ["version", "options"],
+  "properties": {
+    "version": {"const": "block-2"},
+    "options": {
+      "type": "array",
+      "minItems": 57,
+      "maxItems": 57,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "dimension",
+          "lane_readiness_bonus",
+          "damage_dealt_multiplier",
+          "damage_taken_multiplier",
+          "posture_profile",
+          "dependencies",
+          "breakdowns"
+        ],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "dimension": {
+            "enum": ["hands", "defense", "stance", "tie", "target", "kicking", "mentality"]
+          },
+          "lane_readiness_bonus": {
+            "type": "object",
+            "required": [
+              "head_straight",
+              "head_hook",
+              "head_uppercut",
+              "body",
+              "leg",
+              "entry",
+              "clinch",
+              "single_support"
+            ],
+            "properties": {
+              "head_straight": {"type": "number"},
+              "head_hook": {"type": "number"},
+              "head_uppercut": {"type": "number"},
+              "body": {"type": "number"},
+              "leg": {"type": "number"},
+              "entry": {"type": "number"},
+              "clinch": {"type": "number"},
+              "single_support": {"type": "number"}
+            },
+            "additionalProperties": false
+          },
+          "damage_dealt_multiplier": {"type": "number", "minimum": 0.5, "maximum": 2.0},
+          "damage_taken_multiplier": {"type": "number", "minimum": 0.5, "maximum": 2.0},
+          "posture_profile": {
+            "type": "object",
+            "properties": {
+              "weight_split": {"enum": ["front_heavy", "balanced", "rear_heavy", "neutral"]},
+              "height": {"enum": ["low_crouch", "medium", "upright_tall"]},
+              "hip_angle": {"enum": ["squared", "semi_bladed", "bladed", "switching"]},
+              "base_width": {"enum": ["narrow_mobile", "balanced", "wide_rooted"]},
+              "head_position": {"enum": ["centerline_tucked", "off_center", "centerline_high"]},
+              "vision": {"type": "integer", "minimum": 1, "maximum": 5},
+              "guard_decay_rate": {"type": "number", "minimum": 0.0, "maximum": 0.5},
+              "risk_appetite": {"type": "number", "minimum": 0.5, "maximum": 1.5}
+            },
+            "additionalProperties": true
+          },
+          "dependencies": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "breakdowns": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string", "minLength": 1}
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

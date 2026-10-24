@@ -1,0 +1,1846 @@
+{
+  "version": "block-2",
+  "techniques": [
+    {
+      "id": "step",
+      "name": "Measured entry",
+      "kind": "movement",
+      "required_capabilities": [
+        "basic_movement"
+      ],
+      "required_range": [
+        "outside",
+        "kick",
+        "punch",
+        "close",
+        "clinch"
+      ],
+      "attack_lane": "space",
+      "target_region": "space",
+      "base_damage": 0.0,
+      "damage_type": "none",
+      "frame_costs": {
+        "setup_frames": 3,
+        "execution_frames": 6,
+        "contact_hold_frames": 0,
+        "recovery_frames": 4
+      },
+      "biomechanics": {
+        "attacking_limb": "feet",
+        "striking_surface": "feet",
+        "path": "Step toward the opponent without crossing the feet.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.15
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "retreat",
+      "name": "Measured retreat",
+      "kind": "movement",
+      "required_capabilities": [
+        "basic_movement"
+      ],
+      "required_range": [
+        "kick",
+        "punch",
+        "close",
+        "clinch"
+      ],
+      "attack_lane": "space",
+      "target_region": "space",
+      "base_damage": 0.0,
+      "damage_type": "none",
+      "frame_costs": {
+        "setup_frames": 2,
+        "execution_frames": 6,
+        "contact_hold_frames": 0,
+        "recovery_frames": 4
+      },
+      "biomechanics": {
+        "attacking_limb": "feet",
+        "striking_surface": "feet",
+        "path": "Step away while preserving lead and facing.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.15
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "pivot",
+      "name": "Angle pivot",
+      "kind": "movement",
+      "required_capabilities": [
+        "basic_movement"
+      ],
+      "required_range": [
+        "kick",
+        "punch",
+        "close"
+      ],
+      "attack_lane": "space",
+      "target_region": "angle",
+      "base_damage": 0.0,
+      "damage_type": "none",
+      "frame_costs": {
+        "setup_frames": 3,
+        "execution_frames": 7,
+        "contact_hold_frames": 0,
+        "recovery_frames": 4
+      },
+      "biomechanics": {
+        "attacking_limb": "feet",
+        "striking_surface": "feet",
+        "path": "Turn around the lead support foot to a lateral angle, then recover the rear foot.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.15
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "switch_step",
+      "name": "Uno changeover",
+      "kind": "movement",
+      "required_capabilities": [
+        "switch_step"
+      ],
+      "required_range": [
+        "kick",
+        "punch"
+      ],
+      "attack_lane": "space",
+      "target_region": "angle",
+      "base_damage": 0.0,
+      "damage_type": "none",
+      "frame_costs": {
+        "setup_frames": 3,
+        "execution_frames": 8,
+        "contact_hold_frames": 0,
+        "recovery_frames": 5
+      },
+      "biomechanics": {
+        "attacking_limb": "feet",
+        "striking_surface": "feet",
+        "path": "CANON Uno: replace the lead with a short retreating switch, then re-square without crossing.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.15
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "feint",
+      "name": "Hand feint",
+      "kind": "feint",
+      "required_capabilities": [
+        "basic_movement"
+      ],
+      "required_range": [
+        "kick",
+        "punch",
+        "close"
+      ],
+      "attack_lane": "space",
+      "target_region": "vision",
+      "base_damage": 0.0,
+      "damage_type": "none",
+      "frame_costs": {
+        "setup_frames": 2,
+        "execution_frames": 5,
+        "contact_hold_frames": 0,
+        "recovery_frames": 3
+      },
+      "biomechanics": {
+        "attacking_limb": "lead hand",
+        "striking_surface": "lead hand",
+        "path": "Show an incomplete lead extension; withdraw before contact.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.15
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "jab",
+      "name": "Lead jab",
+      "kind": "punch",
+      "required_capabilities": [
+        "boxing"
+      ],
+      "required_range": [
+        "punch",
+        "close"
+      ],
+      "attack_lane": "head_straight",
+      "target_region": "head",
+      "base_damage": 1.0,
+      "damage_type": "buildup",
+      "frame_costs": {
+        "setup_frames": 3,
+        "execution_frames": 5,
+        "contact_hold_frames": 2,
+        "recovery_frames": 5
+      },
+      "biomechanics": {
+        "attacking_limb": "lead fist",
+        "striking_surface": "lead_knuckles",
+        "path": "Extend along the center head line and retract.",
+        "height": "high",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "short_retract",
+        "exposed_lanes": [
+          "head_straight",
+          "head_hook",
+          "body"
+        ],
+        "readiness_penalty": 0.35
+      },
+      "counters": [
+        "retreat",
+        "shell_block"
+      ]
+    },
+    {
+      "id": "cross",
+      "name": "Rear straight",
+      "kind": "punch",
+      "required_capabilities": [
+        "boxing"
+      ],
+      "required_range": [
+        "punch",
+        "close"
+      ],
+      "attack_lane": "head_straight",
+      "target_region": "head",
+      "base_damage": 2.0,
+      "damage_type": "impact",
+      "frame_costs": {
+        "setup_frames": 5,
+        "execution_frames": 7,
+        "contact_hold_frames": 3,
+        "recovery_frames": 8
+      },
+      "biomechanics": {
+        "attacking_limb": "rear fist",
+        "striking_surface": "rear_knuckles",
+        "path": "Rotate rear hip behind the straight fist; return the hand to guard.",
+        "height": "high",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "extended_arm_recovery",
+        "exposed_lanes": [
+          "head_straight",
+          "head_hook",
+          "body"
+        ],
+        "readiness_penalty": 0.7
+      },
+      "counters": [
+        "retreat",
+        "shell_block"
+      ]
+    },
+    {
+      "id": "hook",
+      "name": "Lead hook",
+      "kind": "punch",
+      "required_capabilities": [
+        "boxing"
+      ],
+      "required_range": [
+        "punch",
+        "close"
+      ],
+      "attack_lane": "head_hook",
+      "target_region": "head",
+      "base_damage": 2.5,
+      "damage_type": "impact",
+      "frame_costs": {
+        "setup_frames": 5,
+        "execution_frames": 8,
+        "contact_hold_frames": 3,
+        "recovery_frames": 9
+      },
+      "biomechanics": {
+        "attacking_limb": "lead fist",
+        "striking_surface": "lead_knuckles",
+        "path": "Pivot the torso and carry a bent lead arm around the outside head line.",
+        "height": "high",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "extended_arm_recovery",
+        "exposed_lanes": [
+          "head_straight",
+          "head_hook",
+          "body"
+        ],
+        "readiness_penalty": 0.7
+      },
+      "counters": [
+        "retreat",
+        "shell_block"
+      ]
+    },
+    {
+      "id": "body_hook",
+      "name": "Lead body hook",
+      "kind": "punch",
+      "required_capabilities": [
+        "boxing"
+      ],
+      "required_range": [
+        "punch",
+        "close"
+      ],
+      "attack_lane": "body",
+      "target_region": "body",
+      "base_damage": 2.3,
+      "damage_type": "stamina_drain",
+      "frame_costs": {
+        "setup_frames": 5,
+        "execution_frames": 8,
+        "contact_hold_frames": 3,
+        "recovery_frames": 8
+      },
+      "biomechanics": {
+        "attacking_limb": "lead fist",
+        "striking_surface": "lead_knuckles",
+        "path": "Lower the level with the legs and rotate a bent lead arm toward the lateral ribs.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "extended_arm_recovery",
+        "exposed_lanes": [
+          "head_straight",
+          "head_hook",
+          "body"
+        ],
+        "readiness_penalty": 0.7
+      },
+      "counters": [
+        "retreat",
+        "shell_block"
+      ]
+    },
+    {
+      "id": "uppercut",
+      "name": "Rear uppercut",
+      "kind": "punch",
+      "required_capabilities": [
+        "boxing"
+      ],
+      "required_range": [
+        "punch",
+        "close"
+      ],
+      "attack_lane": "head_uppercut",
+      "target_region": "head",
+      "base_damage": 2.7,
+      "damage_type": "impact",
+      "frame_costs": {
+        "setup_frames": 6,
+        "execution_frames": 8,
+        "contact_hold_frames": 3,
+        "recovery_frames": 10
+      },
+      "biomechanics": {
+        "attacking_limb": "rear fist",
+        "striking_surface": "rear_knuckles",
+        "path": "Drive from bent knees on a short rising center path without dropping the rear hand.",
+        "height": "high",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "extended_arm_recovery",
+        "exposed_lanes": [
+          "head_straight",
+          "head_hook",
+          "body"
+        ],
+        "readiness_penalty": 0.7
+      },
+      "counters": [
+        "retreat",
+        "shell_block"
+      ]
+    },
+    {
+      "id": "haymaker",
+      "name": "Untrained looping swing",
+      "kind": "punch",
+      "required_capabilities": [
+        "untrained_striking"
+      ],
+      "required_range": [
+        "punch",
+        "close"
+      ],
+      "attack_lane": "head_hook",
+      "target_region": "head",
+      "base_damage": 3.2,
+      "damage_type": "impact",
+      "frame_costs": {
+        "setup_frames": 9,
+        "execution_frames": 11,
+        "contact_hold_frames": 4,
+        "recovery_frames": 16
+      },
+      "biomechanics": {
+        "attacking_limb": "rear fist",
+        "striking_surface": "rear_fist_loop",
+        "path": "Telegraph a broad rear-hand arc; the long recovery remains exposed.",
+        "height": "high",
+        "ending": "carry_through",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "wide_swing_recovery",
+        "exposed_lanes": [
+          "head_straight",
+          "head_hook",
+          "entry",
+          "body"
+        ],
+        "readiness_penalty": 1.65
+      },
+      "counters": [
+        "retreat",
+        "shell_block"
+      ]
+    },
+    {
+      "id": "parry",
+      "name": "Short parry",
+      "kind": "defense",
+      "required_capabilities": [
+        "boxing"
+      ],
+      "required_range": [
+        "punch",
+        "close"
+      ],
+      "attack_lane": "head_straight",
+      "target_region": "body",
+      "base_damage": 0.0,
+      "damage_type": "none",
+      "frame_costs": {
+        "setup_frames": 3,
+        "execution_frames": 6,
+        "contact_hold_frames": 0,
+        "recovery_frames": 5
+      },
+      "biomechanics": {
+        "attacking_limb": "rear palm",
+        "striking_surface": "rear palm",
+        "path": "Displace an incoming straight with a small inward hand motion.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.15
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "shell_block",
+      "name": "Sealed forearm block",
+      "kind": "defense",
+      "required_capabilities": [
+        "boxing"
+      ],
+      "required_range": [
+        "punch",
+        "close"
+      ],
+      "attack_lane": "head_hook",
+      "target_region": "head",
+      "base_damage": 0.0,
+      "damage_type": "none",
+      "frame_costs": {
+        "setup_frames": 3,
+        "execution_frames": 6,
+        "contact_hold_frames": 0,
+        "recovery_frames": 5
+      },
+      "biomechanics": {
+        "attacking_limb": "forearms",
+        "striking_surface": "forearms",
+        "path": "Brace both forearms without turning away; recover visual contact.",
+        "height": "high",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.15
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "shield_frame",
+      "name": "CANON 52 forearm wedge",
+      "kind": "defense",
+      "required_capabilities": [
+        "shield"
+      ],
+      "required_range": [
+        "punch",
+        "close",
+        "clinch"
+      ],
+      "attack_lane": "head_straight",
+      "target_region": "body",
+      "base_damage": 0.5,
+      "damage_type": "buildup",
+      "frame_costs": {
+        "setup_frames": 3,
+        "execution_frames": 6,
+        "contact_hold_frames": 2,
+        "recovery_frames": 5
+      },
+      "biomechanics": {
+        "attacking_limb": "forearms",
+        "striking_surface": "forearm_triangle_bone_wedge",
+        "path": "Wedge closed forearms between the shoulders; no finger points toward the eyes.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.15
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "slip",
+      "name": "Shallow slip",
+      "kind": "defense",
+      "required_capabilities": [
+        "boxing"
+      ],
+      "required_range": [
+        "punch",
+        "close"
+      ],
+      "attack_lane": "head_straight",
+      "target_region": "head",
+      "base_damage": 0.0,
+      "damage_type": "none",
+      "frame_costs": {
+        "setup_frames": 3,
+        "execution_frames": 6,
+        "contact_hold_frames": 0,
+        "recovery_frames": 5
+      },
+      "biomechanics": {
+        "attacking_limb": "torso",
+        "striking_surface": "torso",
+        "path": "Bend the knees and translate the head outside the straight line without a deep knee-level dip.",
+        "height": "high",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.15
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "check",
+      "name": "Shin check",
+      "kind": "defense",
+      "required_capabilities": [
+        "kickboxing"
+      ],
+      "required_range": [
+        "kick"
+      ],
+      "attack_lane": "leg",
+      "target_region": "body",
+      "base_damage": 0.0,
+      "damage_type": "none",
+      "frame_costs": {
+        "setup_frames": 3,
+        "execution_frames": 6,
+        "contact_hold_frames": 0,
+        "recovery_frames": 5
+      },
+      "biomechanics": {
+        "attacking_limb": "lead shin",
+        "striking_surface": "lead shin",
+        "path": "Lift and turn the lead knee outward; return the foot before another action.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.15
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "low_kick",
+      "name": "Rear low kick",
+      "kind": "kick",
+      "required_capabilities": [
+        "kickboxing"
+      ],
+      "required_range": [
+        "kick"
+      ],
+      "attack_lane": "leg",
+      "target_region": "leg",
+      "base_damage": 2.2,
+      "damage_type": "buildup",
+      "frame_costs": {
+        "setup_frames": 5,
+        "execution_frames": 8,
+        "contact_hold_frames": 3,
+        "recovery_frames": 10
+      },
+      "biomechanics": {
+        "attacking_limb": "rear shin",
+        "striking_surface": "lower_shin",
+        "path": "Pivot the support foot and arc the rear shin into the outside lead thigh.",
+        "height": "low",
+        "ending": "carry_through",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "single_leg_recovery",
+        "exposed_lanes": [
+          "single_support",
+          "leg",
+          "head_straight",
+          "entry"
+        ],
+        "readiness_penalty": 1.15
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "body_kick",
+      "name": "Rear body round kick",
+      "kind": "kick",
+      "required_capabilities": [
+        "kickboxing"
+      ],
+      "required_range": [
+        "kick"
+      ],
+      "attack_lane": "body",
+      "target_region": "body",
+      "base_damage": 2.6,
+      "damage_type": "stamina_drain",
+      "frame_costs": {
+        "setup_frames": 6,
+        "execution_frames": 9,
+        "contact_hold_frames": 3,
+        "recovery_frames": 12
+      },
+      "biomechanics": {
+        "attacking_limb": "rear shin",
+        "striking_surface": "lower_shin",
+        "path": "Turn the hip and swing the rear shin into the lateral torso; retract on the same arc.",
+        "height": "mid",
+        "ending": "carry_through",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "single_leg_recovery",
+        "exposed_lanes": [
+          "single_support",
+          "leg",
+          "head_straight",
+          "entry"
+        ],
+        "readiness_penalty": 1.15
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "teep",
+      "name": "Lead teep",
+      "kind": "kick",
+      "required_capabilities": [
+        "kickboxing"
+      ],
+      "required_range": [
+        "kick"
+      ],
+      "attack_lane": "body",
+      "target_region": "body",
+      "base_damage": 1.4,
+      "damage_type": "stamina_drain",
+      "frame_costs": {
+        "setup_frames": 4,
+        "execution_frames": 7,
+        "contact_hold_frames": 2,
+        "recovery_frames": 7
+      },
+      "biomechanics": {
+        "attacking_limb": "lead sole",
+        "striking_surface": "ball_of_foot",
+        "path": "Chamber the lead knee and extend the sole toward the torso; retract before landing.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "single_leg_recovery",
+        "exposed_lanes": [
+          "single_support",
+          "leg",
+          "head_straight",
+          "entry"
+        ],
+        "readiness_penalty": 0.75
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "side_kick",
+      "name": "Lead side kick",
+      "kind": "kick",
+      "required_capabilities": [
+        "karate"
+      ],
+      "required_range": [
+        "kick"
+      ],
+      "attack_lane": "body",
+      "target_region": "body",
+      "base_damage": 2.3,
+      "damage_type": "impact",
+      "frame_costs": {
+        "setup_frames": 5,
+        "execution_frames": 8,
+        "contact_hold_frames": 3,
+        "recovery_frames": 10
+      },
+      "biomechanics": {
+        "attacking_limb": "lead heel",
+        "striking_surface": "blade_of_foot",
+        "path": "Chamber across the body and extend the heel on a lateral line; retract and replace.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "single_leg_recovery",
+        "exposed_lanes": [
+          "single_support",
+          "leg",
+          "head_straight",
+          "entry"
+        ],
+        "readiness_penalty": 0.75
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "sprawl",
+      "name": "Hip sprawl",
+      "kind": "defense",
+      "required_capabilities": [
+        "wrestling",
+        "anti_grappling"
+      ],
+      "required_range": [
+        "punch",
+        "clinch"
+      ],
+      "attack_lane": "entry",
+      "target_region": "body",
+      "base_damage": 0.0,
+      "damage_type": "none",
+      "frame_costs": {
+        "setup_frames": 3,
+        "execution_frames": 6,
+        "contact_hold_frames": 0,
+        "recovery_frames": 5
+      },
+      "biomechanics": {
+        "attacking_limb": "hips",
+        "striking_surface": "hips",
+        "path": "Drive hips back from the incoming leg connection; regain stance before striking.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.15
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "pummel",
+      "name": "Inside-arm pummel",
+      "kind": "defense",
+      "required_capabilities": [
+        "clinch",
+        "wrestling",
+        "anti_grappling"
+      ],
+      "required_range": [
+        "clinch"
+      ],
+      "attack_lane": "clinch",
+      "target_region": "body",
+      "base_damage": 0.4,
+      "damage_type": "stamina_drain",
+      "frame_costs": {
+        "setup_frames": 4,
+        "execution_frames": 8,
+        "contact_hold_frames": 2,
+        "recovery_frames": 6
+      },
+      "biomechanics": {
+        "attacking_limb": "forearms",
+        "striking_surface": "inside_forearm_wedge",
+        "path": "Thread an underhook from legal chest contact without gripping the fence.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.15
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "collar_tie",
+      "name": "Inside collar tie",
+      "kind": "grip",
+      "required_capabilities": [
+        "clinch"
+      ],
+      "required_range": [
+        "clinch"
+      ],
+      "attack_lane": "clinch",
+      "target_region": "body",
+      "base_damage": 0.5,
+      "damage_type": "stamina_drain",
+      "frame_costs": {
+        "setup_frames": 4,
+        "execution_frames": 7,
+        "contact_hold_frames": 2,
+        "recovery_frames": 6
+      },
+      "biomechanics": {
+        "attacking_limb": "forearms",
+        "striking_surface": "cupped_palm_behind_neck",
+        "path": "Establish inside forearms before placing closed hands behind the crown.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.15
+      },
+      "counters": [
+        "sprawl",
+        "pummel"
+      ]
+    },
+    {
+      "id": "cage_plum",
+      "name": "Gated cage plum",
+      "kind": "grip",
+      "required_capabilities": [
+        "cage_plum"
+      ],
+      "required_range": [
+        "clinch"
+      ],
+      "attack_lane": "clinch",
+      "target_region": "body",
+      "base_damage": 0.8,
+      "damage_type": "stamina_drain",
+      "frame_costs": {
+        "setup_frames": 5,
+        "execution_frames": 8,
+        "contact_hold_frames": 3,
+        "recovery_frames": 7
+      },
+      "biomechanics": {
+        "attacking_limb": "forearms",
+        "striking_surface": "double_crown_neck_clamp",
+        "path": "From an established frame at the wall, slide both trained inside forearms into a collar tie.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.15
+      },
+      "counters": [
+        "sprawl",
+        "pummel"
+      ]
+    },
+    {
+      "id": "knee_body",
+      "name": "Clinch body knee",
+      "kind": "knee",
+      "required_capabilities": [
+        "clinch",
+        "cage_plum"
+      ],
+      "required_range": [
+        "clinch"
+      ],
+      "attack_lane": "body",
+      "target_region": "body",
+      "base_damage": 2.8,
+      "damage_type": "stamina_drain",
+      "frame_costs": {
+        "setup_frames": 4,
+        "execution_frames": 7,
+        "contact_hold_frames": 3,
+        "recovery_frames": 8
+      },
+      "biomechanics": {
+        "attacking_limb": "rear knee",
+        "striking_surface": "kneecap",
+        "path": "With an established collar tie, draw the torso toward a rising rear knee and replace the foot.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "single_leg_recovery",
+        "exposed_lanes": [
+          "single_support",
+          "leg",
+          "head_straight",
+          "entry"
+        ],
+        "readiness_penalty": 0.75
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "body_lock",
+      "name": "Body-lock attachment",
+      "kind": "grip",
+      "required_capabilities": [
+        "clinch",
+        "wrestling",
+        "judo"
+      ],
+      "required_range": [
+        "clinch"
+      ],
+      "attack_lane": "clinch",
+      "target_region": "hips",
+      "base_damage": 0.6,
+      "damage_type": "stamina_drain",
+      "frame_costs": {
+        "setup_frames": 5,
+        "execution_frames": 8,
+        "contact_hold_frames": 2,
+        "recovery_frames": 7
+      },
+      "biomechanics": {
+        "attacking_limb": "arms",
+        "striking_surface": "clasped_gable_grip",
+        "path": "Pummel inside, connect hands around the trunk and stabilize feet without a fence grip.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.15
+      },
+      "counters": [
+        "sprawl",
+        "pummel"
+      ]
+    },
+    {
+      "id": "double_leg",
+      "name": "Double-leg entry",
+      "kind": "takedown",
+      "required_capabilities": [
+        "wrestling"
+      ],
+      "required_range": [
+        "punch"
+      ],
+      "attack_lane": "entry",
+      "target_region": "hips",
+      "base_damage": 2.4,
+      "damage_type": "impact",
+      "frame_costs": {
+        "setup_frames": 6,
+        "execution_frames": 12,
+        "contact_hold_frames": 4,
+        "recovery_frames": 14
+      },
+      "biomechanics": {
+        "attacking_limb": "arms and shoulder",
+        "striking_surface": "shoulder_drive_and_wrists",
+        "path": "Change elevation before penetration, connect both legs, drive to the side, and settle top hip coverage.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "sprawled_shot_recovery",
+        "exposed_lanes": [
+          "head_uppercut",
+          "clinch",
+          "body"
+        ],
+        "readiness_penalty": 1.25
+      },
+      "counters": [
+        "sprawl",
+        "pummel"
+      ]
+    },
+    {
+      "id": "single_leg",
+      "name": "Single-leg capture",
+      "kind": "takedown",
+      "required_capabilities": [
+        "wrestling"
+      ],
+      "required_range": [
+        "punch"
+      ],
+      "attack_lane": "entry",
+      "target_region": "body",
+      "base_damage": 2.1,
+      "damage_type": "buildup",
+      "frame_costs": {
+        "setup_frames": 5,
+        "execution_frames": 11,
+        "contact_hold_frames": 4,
+        "recovery_frames": 12
+      },
+      "biomechanics": {
+        "attacking_limb": "arms",
+        "striking_surface": "chest_wrap_and_shelf",
+        "path": "Change level and attach the lead leg, turn the corner, and settle above the hips.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "sprawled_shot_recovery",
+        "exposed_lanes": [
+          "head_uppercut",
+          "clinch",
+          "body"
+        ],
+        "readiness_penalty": 1.25
+      },
+      "counters": [
+        "sprawl",
+        "pummel"
+      ]
+    },
+    {
+      "id": "outside_trip",
+      "name": "Small outer reap adaptation",
+      "kind": "takedown",
+      "required_capabilities": [
+        "judo",
+        "wrestling"
+      ],
+      "required_range": [
+        "clinch"
+      ],
+      "attack_lane": "clinch",
+      "target_region": "body",
+      "base_damage": 2.5,
+      "damage_type": "impact",
+      "frame_costs": {
+        "setup_frames": 5,
+        "execution_frames": 10,
+        "contact_hold_frames": 4,
+        "recovery_frames": 12
+      },
+      "biomechanics": {
+        "attacking_limb": "lead sole and arms",
+        "striking_surface": "calf_hook_reap",
+        "path": "From a body lock, unbalance rearward and reap the near ankle with the sole before settling top.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "sprawled_shot_recovery",
+        "exposed_lanes": [
+          "head_uppercut",
+          "clinch",
+          "body"
+        ],
+        "readiness_penalty": 1.25
+      },
+      "counters": [
+        "sprawl",
+        "pummel"
+      ]
+    },
+    {
+      "id": "sanda_sweep",
+      "name": "CANON kick-catch sweep",
+      "kind": "takedown",
+      "required_capabilities": [
+        "sanda"
+      ],
+      "required_range": [
+        "kick"
+      ],
+      "attack_lane": "single_support",
+      "target_region": "body",
+      "base_damage": 2.6,
+      "damage_type": "impact",
+      "frame_costs": {
+        "setup_frames": 4,
+        "execution_frames": 9,
+        "contact_hold_frames": 4,
+        "recovery_frames": 11
+      },
+      "biomechanics": {
+        "attacking_limb": "arms and lead foot",
+        "striking_surface": "instep_and_forearm_reap",
+        "path": "Capture the extended kick, enter to its support, sweep and guide the fall.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "sprawled_shot_recovery",
+        "exposed_lanes": [
+          "head_uppercut",
+          "clinch",
+          "body"
+        ],
+        "readiness_penalty": 1.25
+      },
+      "counters": [
+        "sprawl",
+        "pummel"
+      ]
+    },
+    {
+      "id": "ride",
+      "name": "Hip-and-wrist ride",
+      "kind": "control",
+      "required_capabilities": [
+        "wrestling"
+      ],
+      "required_range": [
+        "ground"
+      ],
+      "attack_lane": "ground",
+      "target_region": "hips",
+      "base_damage": 1.6,
+      "damage_type": "stamina_drain",
+      "frame_costs": {
+        "setup_frames": 4,
+        "execution_frames": 14,
+        "contact_hold_frames": 4,
+        "recovery_frames": 8
+      },
+      "biomechanics": {
+        "attacking_limb": "hips and hands",
+        "striking_surface": "chest_weight_and_wrist_ride",
+        "path": "Maintain top hip coverage and wrist control; follow the bottom actor without neck cranking.",
+        "height": "ground",
+        "ending": "mat_settle",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.15
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "guard_pull",
+      "name": "CANON guard entry",
+      "kind": "takedown",
+      "required_capabilities": [
+        "bjj"
+      ],
+      "required_range": [
+        "clinch"
+      ],
+      "attack_lane": "clinch",
+      "target_region": "hips",
+      "base_damage": 0.8,
+      "damage_type": "stamina_drain",
+      "frame_costs": {
+        "setup_frames": 4,
+        "execution_frames": 10,
+        "contact_hold_frames": 2,
+        "recovery_frames": 8
+      },
+      "biomechanics": {
+        "attacking_limb": "legs and arms",
+        "striking_surface": "collar_and_hip_foot_frame",
+        "path": "From legal attachment sit under control, keep frames and draw the opponent into bottom guard.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "sprawled_shot_recovery",
+        "exposed_lanes": [
+          "head_uppercut",
+          "clinch",
+          "body"
+        ],
+        "readiness_penalty": 1.25
+      },
+      "counters": [
+        "sprawl",
+        "pummel"
+      ]
+    },
+    {
+      "id": "armbar",
+      "name": "CANON controlled armbar",
+      "kind": "submission",
+      "required_capabilities": [
+        "bjj"
+      ],
+      "required_range": [
+        "ground"
+      ],
+      "attack_lane": "ground",
+      "target_region": "body",
+      "base_damage": 3.8,
+      "damage_type": "submission",
+      "frame_costs": {
+        "setup_frames": 8,
+        "execution_frames": 16,
+        "contact_hold_frames": 6,
+        "recovery_frames": 12
+      },
+      "biomechanics": {
+        "attacking_limb": "hips and legs",
+        "striking_surface": "pelvis_fulcrum_on_elbow",
+        "path": "From established bottom guard isolate an arm, turn the hips and place the leg over the shoulder; release on tap.",
+        "height": "ground",
+        "ending": "mat_settle",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.15
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "escape",
+      "name": "Framed ground recovery",
+      "kind": "control",
+      "required_capabilities": [
+        "bjj",
+        "wrestling"
+      ],
+      "required_range": [
+        "ground"
+      ],
+      "attack_lane": "ground",
+      "target_region": "space",
+      "base_damage": 0.0,
+      "damage_type": "none",
+      "frame_costs": {
+        "setup_frames": 5,
+        "execution_frames": 12,
+        "contact_hold_frames": 0,
+        "recovery_frames": 8
+      },
+      "biomechanics": {
+        "attacking_limb": "forearms and hips",
+        "striking_surface": "forearms and hips",
+        "path": "Frame the torso and rotate the hips to recover a defensive base; no automatic standing reset.",
+        "height": "ground",
+        "ending": "mat_settle",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.15
+      },
+      "counters": [
+        "pivot"
+      ]
+    },
+    {
+      "id": "wall_tie",
+      "name": "CANON wall single tie",
+      "kind": "grip",
+      "required_capabilities": [
+        "wall_boxing"
+      ],
+      "required_range": [
+        "clinch"
+      ],
+      "attack_lane": "body",
+      "target_region": "body",
+      "base_damage": 0.0,
+      "damage_type": "none",
+      "frame_costs": {
+        "setup_frames": 3,
+        "execution_frames": 6,
+        "contact_hold_frames": 0,
+        "recovery_frames": 5
+      },
+      "biomechanics": {
+        "attacking_limb": "forearms",
+        "striking_surface": "forearms",
+        "path": "Place one closed forearm inside the shoulder line and pin posture with a single tie; no fence grip.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.15
+      },
+      "counters": [
+        "sprawl",
+        "pummel"
+      ]
+    },
+    {
+      "id": "wall_punch",
+      "name": "CANON wall body punch",
+      "kind": "punch",
+      "required_capabilities": [
+        "wall_boxing"
+      ],
+      "required_range": [
+        "clinch"
+      ],
+      "attack_lane": "body",
+      "target_region": "body",
+      "base_damage": 0.0,
+      "damage_type": "none",
+      "frame_costs": {
+        "setup_frames": 3,
+        "execution_frames": 6,
+        "contact_hold_frames": 0,
+        "recovery_frames": 5
+      },
+      "biomechanics": {
+        "attacking_limb": "lead fist",
+        "striking_surface": "lead fist",
+        "path": "Maintain a single inside tie with one forearm; use the free rear fist on a short torso line.",
+        "height": "mid",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "short_retract",
+        "exposed_lanes": [
+          "head_straight",
+          "head_hook",
+          "body"
+        ],
+        "readiness_penalty": 0.35
+      },
+      "counters": [
+        "retreat",
+        "shell_block"
+      ]
+    },
+    {
+      "id": "head_kick",
+      "name": "High roundhouse kick",
+      "kind": "kick",
+      "required_capabilities": [
+        "kickboxing",
+        "karate"
+      ],
+      "required_range": [
+        "kick"
+      ],
+      "attack_lane": "head_hook",
+      "target_region": "head",
+      "base_damage": 3.5,
+      "damage_type": "impact",
+      "frame_costs": {
+        "setup_frames": 7,
+        "execution_frames": 10,
+        "contact_hold_frames": 4,
+        "recovery_frames": 15
+      },
+      "biomechanics": {
+        "attacking_limb": "rear leg",
+        "striking_surface": "lower_shin_or_instep",
+        "path": "High diagonal round arc to temple/neck",
+        "height": "high",
+        "ending": "carry_through",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "single_leg_recovery",
+        "exposed_lanes": [
+          "single_support",
+          "leg",
+          "head_straight",
+          "entry"
+        ],
+        "readiness_penalty": 1.45
+      },
+      "counters": [
+        "lean_back",
+        "evade_step_back",
+        "shell_block"
+      ]
+    },
+    {
+      "id": "switch_kick",
+      "name": "Switch lead round kick",
+      "kind": "kick",
+      "required_capabilities": [
+        "kickboxing",
+        "switch_step"
+      ],
+      "required_range": [
+        "kick"
+      ],
+      "attack_lane": "body",
+      "target_region": "body",
+      "base_damage": 2.8,
+      "damage_type": "stamina_drain",
+      "frame_costs": {
+        "setup_frames": 6,
+        "execution_frames": 9,
+        "contact_hold_frames": 3,
+        "recovery_frames": 11
+      },
+      "biomechanics": {
+        "attacking_limb": "switched lead leg",
+        "striking_surface": "lower_shin",
+        "path": "Quick hop switch into horizontal rib arc",
+        "height": "mid",
+        "ending": "step_down_switch",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "single_leg_recovery",
+        "exposed_lanes": [
+          "single_support",
+          "head_straight",
+          "leg"
+        ],
+        "readiness_penalty": 1.1
+      },
+      "counters": [
+        "check",
+        "kick_catch",
+        "evade_step_back"
+      ]
+    },
+    {
+      "id": "spinning_back_kick",
+      "name": "Spinning back thrust kick",
+      "kind": "kick",
+      "required_capabilities": [
+        "karate"
+      ],
+      "required_range": [
+        "kick"
+      ],
+      "attack_lane": "body",
+      "target_region": "body",
+      "base_damage": 3.3,
+      "damage_type": "impact",
+      "frame_costs": {
+        "setup_frames": 8,
+        "execution_frames": 10,
+        "contact_hold_frames": 4,
+        "recovery_frames": 16
+      },
+      "biomechanics": {
+        "attacking_limb": "rear leg",
+        "striking_surface": "heel_of_foot",
+        "path": "180-degree dorsal spin into linear heel thrust to solar plexus",
+        "height": "mid",
+        "ending": "step_down_switch",
+        "vertical_mode_required": "athletic"
+      },
+      "recovery_exposure": {
+        "window_type": "single_leg_recovery",
+        "exposed_lanes": [
+          "single_support",
+          "clinch",
+          "entry"
+        ],
+        "readiness_penalty": 1.55
+      },
+      "counters": [
+        "evade_step_back",
+        "pivot",
+        "jam_step"
+      ]
+    },
+    {
+      "id": "axe_kick",
+      "name": "Vertical heel axe kick",
+      "kind": "kick",
+      "required_capabilities": [
+        "karate"
+      ],
+      "required_range": [
+        "kick",
+        "punch"
+      ],
+      "attack_lane": "head_straight",
+      "target_region": "head",
+      "base_damage": 3.1,
+      "damage_type": "impact",
+      "frame_costs": {
+        "setup_frames": 8,
+        "execution_frames": 11,
+        "contact_hold_frames": 3,
+        "recovery_frames": 14
+      },
+      "biomechanics": {
+        "attacking_limb": "rear leg",
+        "striking_surface": "back_of_heel",
+        "path": "High vertical lift dropping straight down onto collarbone/crown",
+        "height": "high",
+        "ending": "snap_back",
+        "vertical_mode_required": "athletic"
+      },
+      "recovery_exposure": {
+        "window_type": "single_leg_recovery",
+        "exposed_lanes": [
+          "single_support",
+          "head_straight",
+          "leg"
+        ],
+        "readiness_penalty": 1.35
+      },
+      "counters": [
+        "evade_step_back",
+        "pivot",
+        "lean_back"
+      ]
+    },
+    {
+      "id": "jumping_knee",
+      "name": "Flying switch knee",
+      "kind": "knee",
+      "required_capabilities": [
+        "kickboxing",
+        "clinch"
+      ],
+      "required_range": [
+        "punch",
+        "close"
+      ],
+      "attack_lane": "head_uppercut",
+      "target_region": "head",
+      "base_damage": 3.6,
+      "damage_type": "impact",
+      "frame_costs": {
+        "setup_frames": 7,
+        "execution_frames": 10,
+        "contact_hold_frames": 4,
+        "recovery_frames": 16
+      },
+      "biomechanics": {
+        "attacking_limb": "rear knee",
+        "striking_surface": "pointed_kneecap",
+        "path": "Explosive upward jump driving knee vertically through centerline",
+        "height": "high",
+        "ending": "snap_back",
+        "vertical_mode_required": "athletic"
+      },
+      "recovery_exposure": {
+        "window_type": "airborne_landing_recovery",
+        "exposed_lanes": [
+          "head_straight",
+          "head_hook",
+          "entry",
+          "single_support"
+        ],
+        "readiness_penalty": 1.75
+      },
+      "counters": [
+        "evade_step_back",
+        "parry",
+        "sprawl"
+      ]
+    },
+    {
+      "id": "kick_catch",
+      "name": "Underhook kick catch trap",
+      "kind": "defense",
+      "required_capabilities": [
+        "sanda",
+        "boxing"
+      ],
+      "required_range": [
+        "kick"
+      ],
+      "attack_lane": "single_support",
+      "target_region": "leg",
+      "base_damage": 0.0,
+      "damage_type": "control",
+      "frame_costs": {
+        "setup_frames": 2,
+        "execution_frames": 5,
+        "contact_hold_frames": 2,
+        "recovery_frames": 4
+      },
+      "biomechanics": {
+        "attacking_limb": "lead arm scoop and rear palm clamp",
+        "striking_surface": "forearm_cradle",
+        "path": "Absorb round kick on rib guard and wrap ankle/achilles",
+        "height": "mid",
+        "ending": "clinch_tie",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [
+          "head_straight"
+        ],
+        "readiness_penalty": 0.25
+      },
+      "counters": [
+        "jab",
+        "cross"
+      ]
+    },
+    {
+      "id": "lean_back",
+      "name": "Pull-back high-kick evasion",
+      "kind": "defense",
+      "required_capabilities": [
+        "boxing",
+        "basic_movement"
+      ],
+      "required_range": [
+        "kick",
+        "punch"
+      ],
+      "attack_lane": "head_hook",
+      "target_region": "space",
+      "base_damage": 0.0,
+      "damage_type": "none",
+      "frame_costs": {
+        "setup_frames": 2,
+        "execution_frames": 5,
+        "contact_hold_frames": 0,
+        "recovery_frames": 4
+      },
+      "biomechanics": {
+        "attacking_limb": "torso and rear hip",
+        "striking_surface": "none",
+        "path": "Sway upper torso and head behind rear hip so high arc whiffs",
+        "height": "high",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [
+          "body",
+          "leg"
+        ],
+        "readiness_penalty": 0.2
+      },
+      "counters": [
+        "low_kick",
+        "body_kick"
+      ]
+    },
+    {
+      "id": "evade_step_back",
+      "name": "Outfighting range pull step",
+      "kind": "defense",
+      "required_capabilities": [
+        "basic_movement",
+        "karate"
+      ],
+      "required_range": [
+        "kick",
+        "punch"
+      ],
+      "attack_lane": "space",
+      "target_region": "space",
+      "base_damage": 0.0,
+      "damage_type": "none",
+      "frame_costs": {
+        "setup_frames": 2,
+        "execution_frames": 5,
+        "contact_hold_frames": 0,
+        "recovery_frames": 3
+      },
+      "biomechanics": {
+        "attacking_limb": "both feet",
+        "striking_surface": "none",
+        "path": "Push off lead ball of foot to clear the outer arc of the kick",
+        "height": "none",
+        "ending": "snap_back",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [],
+        "readiness_penalty": 0.1
+      },
+      "counters": [
+        "step"
+      ]
+    },
+    {
+      "id": "jam_step",
+      "name": "Crowding step inside kick chamber",
+      "kind": "defense",
+      "required_capabilities": [
+        "clinch",
+        "wrestling"
+      ],
+      "required_range": [
+        "kick",
+        "punch"
+      ],
+      "attack_lane": "clinch",
+      "target_region": "body",
+      "base_damage": 0.0,
+      "damage_type": "control",
+      "frame_costs": {
+        "setup_frames": 2,
+        "execution_frames": 6,
+        "contact_hold_frames": 2,
+        "recovery_frames": 4
+      },
+      "biomechanics": {
+        "attacking_limb": "forearms and hips",
+        "striking_surface": "forearm_frame",
+        "path": "Step inside the kicker's knee chamber before extension to smother power",
+        "height": "mid",
+        "ending": "clinch_tie",
+        "vertical_mode_required": "grounded"
+      },
+      "recovery_exposure": {
+        "window_type": "none",
+        "exposed_lanes": [
+          "head_uppercut"
+        ],
+        "readiness_penalty": 0.2
+      },
+      "counters": [
+        "knee_body",
+        "uppercut"
+      ]
+    }
+  ]
+}

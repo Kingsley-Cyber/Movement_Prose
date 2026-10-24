@@ -163,9 +163,65 @@ $$\text{Damage}(e) = \text{Base}(t) \times M_{\text{attacker}}(\text{card}_A, t,
 
 ---
 
-## 8. Implementation Build Order (For Next Simulator Session)
+## 8. Core System 7: Dynamic Defensive Posture & 8-Lane Readiness Profile (`compute_posture_state` & `compute_readiness_profile`)
 
-- [ ] **Phase 1 — Card-Derived Damage & Exchange Resolver (`engine/exchange_resolver.py`, `engine/fight_state.py`, `data/model.json`):** Implement the 4-factor damage formula, real defensive outcomes (`miss`, `blocked`, `partial`, `clean`, `counter_hit`, `caught`, `flush`), read-memory penalty, and regional damage feedback (`Rook Mercer` vs. `Darius Reed` cross test).
-- [ ] **Phase 2 — Slot Gameplans, Mentality Rhythm & Fight Clock (`engine/fight_director_v2.py`):** Implement frame-based fight clock, slot triggers/abandon rules/links, depth-vs-breadth scaling, and mentality-driven initiative.
-- [ ] **Phase 3 — Kicking Subsystem & Grappling Position Map (`data/techniques.json`, `data/positions.json`, `data/debt_registry.json`):** Add unrolled kick phases, new kicks (`head_kick`, `switch_kick`, `spinning_back_kick`, `axe_kick`, `jumping_knee`), kick defenses (`kick_catch`, `lean_back`, `jam_step`), and the grappling position/grip graph.
-- [ ] **Phase 4 — 2D Arena Geometry, Vertical Modes & Many-Runs Simulator (`engine/simulator.py`):** Add arena presets (`ring`, `cage`, `open_floor`, `alley`, `rooftop`, `dojo`), verticality modes (`grounded`, `athletic`, `aerial`), and the Monte Carlo multi-seed runner + Director Mode selector.
+Defense is not a static choice on the card — it is a **live defensive posture** built from `Guard (hands)` + `Stance (weight_split, height, hip_angle, base_width)` + `Head Position` + `Defense Method` (`slip_roll`, `parry_catch`, `block_absorb`, `outfight`, `shoulder_roll`, `check_frame`, `sprawl_pummel`, `smother`), recomputed every exchange across all 8 attack lanes (`head_straight`, `head_hook`, `head_uppercut`, `body`, `leg`, `entry`, `clinch`, `single_support`):
+
+### 8.1 Defense Dependency & Breakdown Table (Authored in `data/option_behaviors.json`)
+| Defense Method | Depends On | Breaks Down When |
+| :--- | :--- | :--- |
+| **`defense.slip_roll`** | Seeing the shot (`vision >= 3`), head off center, flexible base | Tired (`fatigue >= 4`), hurt head (`head >= 3.5`), vision blocked, uppercuts (`head_uppercut`) |
+| **`defense.parry_catch`** | Reading rhythm, hands up & relaxed, kick-catch timing | Feints (`feinted == True`), hooks around guard (`head_hook`), body level changes (`body`) |
+| **`defense.block_absorb`** | Solid guard integrity, rooted feet | Body damage builds (`body >= 3.5`), `guard_integrity` decays |
+| **`defense.outfight`** | Room behind (`wall_proximity == "far"`), mobile feet | Backed onto wall/corner (`wall_proximity == "near"`), hurt legs (`leg >= 3.5`) |
+| **`defense.shoulder_roll`** | Bladed stance, timing, lead shoulder up | Hooks from the open side (`open_stance`), low kicks (`leg`) |
+| **`defense.check_frame`** | Weight on back leg (`rear_heavy` / `balanced`), seeing the kick | Front-loaded (`front_heavy`), mid-switch, single-leg recovery, hurt legs (`leg >= 4.0`) |
+| **`defense.sprawl_pummel`** | Hips high & back, reaction time, unfeinted vision | Too low (`low_crouch`) or too upright (`upright_tall`), fatigued, high-line feint first |
+| **`defense.smother`** | Closing distance first, inside head position | Opponent has superior clinch ties (`thai_plum`, `greco`, `judo_sambo`, `freestyle`) |
+
+### 8.2 The 11 Dynamic Fight Modifiers Shifting Readiness Every Exchange
+1. **The Fighter's Own Prior Attack (`recovery_window`):** `single_leg_recovery` after kicking, `extended_arm_recovery` after punching, `wide_swing_recovery` after a haymaker, `sprawled_shot_recovery` after a takedown attempt, `airborne_landing_recovery` after a jumping knee.
+2. **Balance State (`balance`):** `stable`, `compromised` (`-0.95`), or `off_base` (`-1.65`).
+3. **Range & Angle:** In `clinch` or `ground`, defense shifts from `hands` guard to `tie` + `sub_grips` (`underhooks`, `head_position`, `wrist_control`); `outside_angle_conceded` (`-1.10`) bypasses centered guards.
+4. **Lead-Foot Matchup (`open_stance` vs. `closed_stance`):** `open_stance` opens the rear straight (`head_straight`), liver kick (`body`), and open-side hook.
+5. **Space (`wall_proximity`):** Being near the wall/corner strips `outfight` (`-1.35`) and increases incoming landing damage (`1.15x`).
+6. **Attention (`feinted`):** A high-line feint pulls guard/vision upward, penalizing readiness against `body`, `leg`, and `entry` (`-1.10`).
+7. **Reads (`read_memory`):** Readiness increases against moves seen repeatedly (`+0.40 * seen + 0.75 * consecutive_repeats`) and suffers a novelty penalty (`-0.25`) the first time a move is shown.
+8. **Fatigue:** Lowers readiness (`-0.10 * fatigue`) and decays `guard_integrity`.
+9. **Regional Damage:** Hurt `head` slows reaction; hurt `body` drops elbows and decays `guard_integrity` (opening `head_straight` and `head_hook`); hurt `leg` disables `check_frame` and forces an involuntary stance switch (`orthodox <-> southpaw`).
+10. **Mentality:** `slugger` trades readiness (`-0.45`) for `1.32x` power; `defensive`/`counter`/`spoiler` gain `+0.35` readiness.
+11. **Grips:** Tracked `underhooks (0..2)`, `wrist_control`, and `head_position` govern clinch and ground exchanges.
+
+---
+
+## 9. End-to-End Implementation Status & Assessment
+
+### 9.1 Completed & Verified E2E Components
+- [x] **All 9 JSON Schemas (`schemas/`):**
+  1. [`schemas/fighter_card_v2.schema.json`](file:///Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/fighter_card_v2.schema.json)
+  2. [`schemas/option_behavior.schema.json`](file:///Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/option_behavior.schema.json)
+  3. [`schemas/technique_v2.schema.json`](file:///Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/technique_v2.schema.json)
+  4. [`schemas/position_map.schema.json`](file:///Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/position_map.schema.json)
+  5. [`schemas/fight_settings.schema.json`](file:///Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/fight_settings.schema.json)
+  6. [`schemas/model_config_v2.schema.json`](file:///Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/model_config_v2.schema.json)
+  7. [`schemas/fight_state_v2.schema.json`](file:///Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/fight_state_v2.schema.json)
+  8. [`schemas/exchange_event_v2.schema.json`](file:///Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/exchange_event_v2.schema.json)
+  9. [`schemas/simulation_result_v2.schema.json`](file:///Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/simulation_result_v2.schema.json)
+- [x] **All 4 Authored Data Catalogs (`data/`) + Worked `block-2` Example Card (`cards/v2/`):**
+  - [`data/option_behaviors.json`](file:///Users/king/.gemini/antigravity/scratch/Movement_Prose/data/option_behaviors.json) (all 57 style options)
+  - [`data/techniques_v2.json`](file:///Users/king/.gemini/antigravity/scratch/Movement_Prose/data/techniques_v2.json) (38 techniques with frame costs, biomechanics, recovery windows, base damage)
+  - [`data/positions.json`](file:///Users/king/.gemini/antigravity/scratch/Movement_Prose/data/positions.json) (15 grappling positions + 14 transitions)
+  - [`data/model_v2.json`](file:///Users/king/.gemini/antigravity/scratch/Movement_Prose/data/model_v2.json) (tunable readiness math, state modifiers, damage limits, arena presets)
+  - [`cards/v2/sanda_judo.json`](file:///Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/v2/sanda_judo.json) (`Mio Tsukihara`, `block-2` Sanda kick-catcher & Judo trip counter)
+- [x] **Engine & Test Suite (`engine/simulator_v2.py`, `tests/test_simulator_v2_and_atomic_compiler.py`):**
+  - Verified order-invariance (`simulate_fight_v2(A, B, seed) == simulate_fight_v2(B, A, seed)`), seed determinism, trained-moves-only enforcement, anti-slot-gaming depth-vs-breadth scaling, dynamic posture/readiness shifts, and full compatibility with all 107 existing v1 tests.
+
+### 9.2 Honest Assessment: What Works Now vs. What Can Be Expanded Next
+1. **What Works E2E Right Now:**
+   - Complete data-driven v2 simulation from `block-1` and `block-2` cards (`simulate_fight_v2`, `simulate_many_v2`).
+   - Live defensive posture (`compute_posture_state`) and 8-lane readiness profiles (`compute_readiness_profile`) shifting every exchange based on recovery windows, balance, body/head/leg damage, fatigue, feints, lead-foot alignment, wall proximity, and read memory.
+   - First-class kicking anatomy and school-specific kick defenses (`check` reflecting recoil shin damage to the kicker, `kick_catch` chaining into `sanda_sweep` / `outside_trip`).
+   - Order-invariant, schema-validated exchange events and Monte Carlo multi-run summaries.
+2. **Optional Next Extensions (When Desired):**
+   - **Authoring Explicit `block-2` Slot Sequences on the Original 11 `block-1` Cards:** Right now the 11 `block-1` cards stay untouched in `cards/*.json` (so `resources/recovery.json` and the 107 v1 tests remain 100% pristine) and `build_slot_plans()` synthesizes their v2 slot sequences automatically; we can create `cards/v2/*.json` `block-2` versions for all 11 fighters with hand-tuned `sequence`, `trigger`, `goal`, and `signature_moves`.
+   - **Wiring `simulate_fight_v2` Exchanges into the Atomic 1-Contact-Per-Beat Video Prompt Compiler (`fight_move_system/block_bridge.py`):** Connect the v2 exchange log (`kick_anatomy`, `defender_posture_before`, `outcome`, `counter_followup`) directly into `AtomicCausalBeat` (`Prep -> Commit -> Contact -> Consequence -> Recovery`) so any simulated v2 fight clip compiles straight into a claim-checked Seedance prompt.

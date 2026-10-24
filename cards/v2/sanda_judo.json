@@ -1,5 +1,5 @@
 {
-  "version": "block-1",
+  "version": "block-2",
   "fighter_id": "sanda_judo",
   "name": "Mio Tsukihara",
   "combat_identity": "Sanda kick-catcher & Judo trip counter",
@@ -24,7 +24,24 @@
         "kickboxing",
         "karate"
       ],
-      "description": "Trained synchronized bundle: Sanda kick-catching sweep, side kick, and level-mixing kicks"
+      "description": "Trained synchronized bundle: Sanda kick-catching sweep, side kick, and level-mixing kicks",
+      "trigger": "fight_start",
+      "sequence": [
+        "side_kick",
+        "low_kick",
+        "sanda_sweep",
+        "body_kick",
+        "teep"
+      ],
+      "home_range": "kick",
+      "goal": "counter_trap",
+      "abandon_rule": {
+        "max_consecutive_stalls": 2,
+        "condition": "kicks_blocked_or_jammed"
+      },
+      "links": [
+        "sanda_judo.slot.2"
+      ]
     },
     {
       "id": "sanda_judo.slot.2",
@@ -34,7 +51,24 @@
         "clinch",
         "boxing"
       ],
-      "description": "Trained synchronized bundle: Judo body-lock outer reap, clinch tie, sprawl defense, and counter boxing"
+      "description": "Trained synchronized bundle: Judo body-lock outer reap, clinch tie, sprawl defense, and counter boxing",
+      "trigger": "slot_stalled_or_close_range",
+      "sequence": [
+        "jab",
+        "cross",
+        "body_lock",
+        "outside_trip",
+        "ride"
+      ],
+      "home_range": "clinch",
+      "goal": "takedown_top_control",
+      "abandon_rule": {
+        "max_consecutive_stalls": 2,
+        "condition": "clinch_denied_or_escaped"
+      },
+      "links": [
+        "sanda_judo.slot.1"
+      ]
     }
   ],
   "baseline_capabilities": [
@@ -91,6 +125,20 @@
     "ride",
     "escape"
   ],
+  "signature_moves": [
+    "sanda_sweep",
+    "outside_trip",
+    "side_kick"
+  ],
+  "airborne_training": {
+    "allowed_vertical_modes": [
+      "grounded",
+      "athletic"
+    ],
+    "techniques": [
+      "side_kick"
+    ]
+  },
   "conditional_abilities": [],
   "combat_limitations": [
     "Listed grappling requires the documented range and connection.",
@@ -110,6 +158,6 @@
   "provenance": {
     "classification": "CANON",
     "label": "[CANON]",
-    "source": "Authored v2 expansion card demonstrating Sanda kick-catch and Judo outer reap."
+    "source": "Authored block-2 worked example card demonstrating Sanda kick-catch and Judo outer reap."
   }
 }

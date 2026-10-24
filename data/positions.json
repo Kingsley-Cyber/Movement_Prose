@@ -1,0 +1,387 @@
+{
+  "version": "block-2",
+  "positions": [
+    {
+      "id": "standing_neutral",
+      "domain": "standing",
+      "range": "kick",
+      "posture": "standing",
+      "dominant_side_role": "neutral",
+      "allowed_techniques": [
+        "step",
+        "retreat",
+        "pivot",
+        "switch_step",
+        "feint",
+        "jab",
+        "cross",
+        "hook",
+        "body_hook",
+        "uppercut",
+        "haymaker",
+        "low_kick",
+        "body_kick",
+        "head_kick",
+        "teep",
+        "side_kick",
+        "switch_kick",
+        "spinning_back_kick",
+        "axe_kick",
+        "jumping_knee",
+        "double_leg",
+        "single_leg",
+        "collar_tie",
+        "body_lock"
+      ]
+    },
+    {
+      "id": "caught_single_leg",
+      "domain": "standing",
+      "range": "close",
+      "posture": "standing",
+      "dominant_side_role": "initiator",
+      "allowed_techniques": [
+        "sanda_sweep",
+        "outside_trip",
+        "cross",
+        "single_leg"
+      ]
+    },
+    {
+      "id": "standing_back_take",
+      "domain": "standing",
+      "range": "clinch",
+      "posture": "standing",
+      "dominant_side_role": "back_controller",
+      "allowed_techniques": [
+        "outside_trip",
+        "body_lock",
+        "knee_body"
+      ]
+    },
+    {
+      "id": "collar_tie",
+      "domain": "clinch",
+      "range": "clinch",
+      "posture": "standing",
+      "dominant_side_role": "initiator",
+      "allowed_techniques": [
+        "knee_body",
+        "uppercut",
+        "hook",
+        "pummel",
+        "guard_pull",
+        "outside_trip"
+      ]
+    },
+    {
+      "id": "thai_plum",
+      "domain": "clinch",
+      "range": "clinch",
+      "posture": "standing",
+      "dominant_side_role": "initiator",
+      "allowed_techniques": [
+        "knee_body",
+        "jumping_knee",
+        "outside_trip",
+        "pummel"
+      ]
+    },
+    {
+      "id": "over_under",
+      "domain": "clinch",
+      "range": "clinch",
+      "posture": "standing",
+      "dominant_side_role": "neutral",
+      "allowed_techniques": [
+        "pummel",
+        "knee_body",
+        "body_lock",
+        "outside_trip"
+      ]
+    },
+    {
+      "id": "double_underhooks",
+      "domain": "clinch",
+      "range": "clinch",
+      "posture": "standing",
+      "dominant_side_role": "initiator",
+      "allowed_techniques": [
+        "body_lock",
+        "outside_trip",
+        "double_leg",
+        "knee_body"
+      ]
+    },
+    {
+      "id": "front_body_lock",
+      "domain": "clinch",
+      "range": "clinch",
+      "posture": "standing",
+      "dominant_side_role": "initiator",
+      "allowed_techniques": [
+        "outside_trip",
+        "knee_body",
+        "double_leg"
+      ]
+    },
+    {
+      "id": "wall_pinned",
+      "domain": "clinch",
+      "range": "clinch",
+      "posture": "standing",
+      "dominant_side_role": "initiator",
+      "allowed_techniques": [
+        "cage_plum",
+        "knee_body",
+        "body_hook",
+        "double_leg",
+        "outside_trip"
+      ]
+    },
+    {
+      "id": "shot_in",
+      "domain": "transition",
+      "range": "close",
+      "posture": "transition",
+      "dominant_side_role": "initiator",
+      "allowed_techniques": [
+        "double_leg",
+        "single_leg",
+        "sprawl"
+      ]
+    },
+    {
+      "id": "caught_kick_dump",
+      "domain": "transition",
+      "range": "close",
+      "posture": "transition",
+      "dominant_side_role": "initiator",
+      "allowed_techniques": [
+        "sanda_sweep",
+        "outside_trip"
+      ]
+    },
+    {
+      "id": "closed_guard_bottom",
+      "domain": "ground",
+      "range": "ground",
+      "posture": "ground",
+      "dominant_side_role": "bottom_guard",
+      "allowed_techniques": [
+        "armbar",
+        "escape"
+      ]
+    },
+    {
+      "id": "half_guard_top",
+      "domain": "ground",
+      "range": "ground",
+      "posture": "ground",
+      "dominant_side_role": "top",
+      "allowed_techniques": [
+        "ride",
+        "escape"
+      ]
+    },
+    {
+      "id": "side_control",
+      "domain": "ground",
+      "range": "ground",
+      "posture": "ground",
+      "dominant_side_role": "top",
+      "allowed_techniques": [
+        "ride",
+        "armbar",
+        "escape"
+      ]
+    },
+    {
+      "id": "mount_or_back_ride",
+      "domain": "ground",
+      "range": "ground",
+      "posture": "ground",
+      "dominant_side_role": "top",
+      "allowed_techniques": [
+        "ride",
+        "armbar",
+        "escape"
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "from_position": "standing_neutral",
+      "to_position": "caught_single_leg",
+      "via_technique": "kick_catch",
+      "required_grips": [
+        "caught_leg"
+      ],
+      "frame_cost": 7,
+      "counters": [
+        "cross",
+        "escape"
+      ]
+    },
+    {
+      "from_position": "caught_single_leg",
+      "to_position": "side_control",
+      "via_technique": "sanda_sweep",
+      "required_grips": [
+        "caught_leg"
+      ],
+      "frame_cost": 14,
+      "counters": [
+        "retreat"
+      ]
+    },
+    {
+      "from_position": "standing_neutral",
+      "to_position": "collar_tie",
+      "via_technique": "collar_tie",
+      "required_grips": [
+        "collar"
+      ],
+      "frame_cost": 11,
+      "counters": [
+        "pummel",
+        "retreat"
+      ]
+    },
+    {
+      "from_position": "standing_neutral",
+      "to_position": "thai_plum",
+      "via_technique": "collar_tie",
+      "required_grips": [
+        "collar"
+      ],
+      "frame_cost": 11,
+      "counters": [
+        "pummel",
+        "double_leg"
+      ]
+    },
+    {
+      "from_position": "collar_tie",
+      "to_position": "double_underhooks",
+      "via_technique": "pummel",
+      "required_grips": [
+        "underhooks"
+      ],
+      "frame_cost": 12,
+      "counters": [
+        "pummel",
+        "knee_body"
+      ]
+    },
+    {
+      "from_position": "standing_neutral",
+      "to_position": "front_body_lock",
+      "via_technique": "body_lock",
+      "required_grips": [
+        "body_lock"
+      ],
+      "frame_cost": 13,
+      "counters": [
+        "pummel",
+        "sprawl"
+      ]
+    },
+    {
+      "from_position": "front_body_lock",
+      "to_position": "side_control",
+      "via_technique": "outside_trip",
+      "required_grips": [
+        "body_lock"
+      ],
+      "frame_cost": 16,
+      "counters": [
+        "sprawl",
+        "pummel"
+      ]
+    },
+    {
+      "from_position": "standing_neutral",
+      "to_position": "half_guard_top",
+      "via_technique": "double_leg",
+      "required_grips": [
+        "top"
+      ],
+      "frame_cost": 18,
+      "counters": [
+        "sprawl",
+        "uppercut"
+      ]
+    },
+    {
+      "from_position": "standing_neutral",
+      "to_position": "half_guard_top",
+      "via_technique": "single_leg",
+      "required_grips": [
+        "top"
+      ],
+      "frame_cost": 16,
+      "counters": [
+        "sprawl",
+        "check"
+      ]
+    },
+    {
+      "from_position": "collar_tie",
+      "to_position": "closed_guard_bottom",
+      "via_technique": "guard_pull",
+      "required_grips": [
+        "bottom"
+      ],
+      "frame_cost": 14,
+      "counters": [
+        "ride"
+      ]
+    },
+    {
+      "from_position": "half_guard_top",
+      "to_position": "mount_or_back_ride",
+      "via_technique": "ride",
+      "required_grips": [
+        "top"
+      ],
+      "frame_cost": 18,
+      "counters": [
+        "escape"
+      ]
+    },
+    {
+      "from_position": "closed_guard_bottom",
+      "to_position": "side_control",
+      "via_technique": "armbar",
+      "required_grips": [
+        "bottom"
+      ],
+      "frame_cost": 22,
+      "counters": [
+        "ride",
+        "escape"
+      ]
+    },
+    {
+      "from_position": "half_guard_top",
+      "to_position": "standing_neutral",
+      "via_technique": "escape",
+      "required_grips": [],
+      "frame_cost": 17,
+      "counters": [
+        "ride"
+      ]
+    },
+    {
+      "from_position": "side_control",
+      "to_position": "standing_neutral",
+      "via_technique": "escape",
+      "required_grips": [],
+      "frame_cost": 18,
+      "counters": [
+        "ride"
+      ]
+    }
+  ]
+}

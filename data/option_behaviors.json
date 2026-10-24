@@ -1,0 +1,1914 @@
+{
+  "version": "block-2",
+  "options": [
+    {
+      "id": "defense.block_absorb",
+      "dimension": "defense",
+      "lane_readiness_bonus": {
+        "head_straight": 1.1,
+        "head_hook": 1.2,
+        "head_uppercut": 0.6,
+        "body": -0.6,
+        "leg": -0.2,
+        "entry": -0.1,
+        "clinch": 0.3,
+        "single_support": -0.1
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 0.85,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "solid guard integrity",
+        "rooted feet"
+      ],
+      "breakdowns": [
+        "body damage builds (body >= 4)",
+        "guard integrity wears down",
+        "blinded vision"
+      ]
+    },
+    {
+      "id": "defense.check_frame",
+      "dimension": "defense",
+      "lane_readiness_bonus": {
+        "head_straight": 0.6,
+        "head_hook": 0.4,
+        "head_uppercut": 0.3,
+        "body": -0.5,
+        "leg": 1.9,
+        "entry": 0.3,
+        "clinch": 0.8,
+        "single_support": -0.6
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 0.91,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "weight on back leg or balanced",
+        "seeing the kick",
+        "uncompromised support leg"
+      ],
+      "breakdowns": [
+        "front-loaded weight split",
+        "mid-switch transition",
+        "tired or battered legs",
+        "body punches"
+      ]
+    },
+    {
+      "id": "defense.outfight",
+      "dimension": "defense",
+      "lane_readiness_bonus": {
+        "head_straight": 1.2,
+        "head_hook": 1.1,
+        "head_uppercut": 1.0,
+        "body": 0.9,
+        "leg": 0.8,
+        "entry": 0.9,
+        "clinch": -0.3,
+        "single_support": 0.4
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 0.92,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "room behind (wall_proximity == far)",
+        "mobile feet (leg damage < 4)"
+      ],
+      "breakdowns": [
+        "backed onto the wall or in the corner",
+        "hurt legs (leg damage >= 4)",
+        "high-tempo swarmer pressure"
+      ]
+    },
+    {
+      "id": "defense.parry_catch",
+      "dimension": "defense",
+      "lane_readiness_bonus": {
+        "head_straight": 1.7,
+        "head_hook": -0.6,
+        "head_uppercut": 0.4,
+        "body": -0.5,
+        "leg": 0.5,
+        "entry": 0.2,
+        "clinch": 0.2,
+        "single_support": 1.1
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 0.92,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "reading the rhythm",
+        "hands up and relaxed",
+        "kick_catch timing"
+      ],
+      "breakdowns": [
+        "feints",
+        "hooks around the guard (head_hook)",
+        "body level changes (body)"
+      ]
+    },
+    {
+      "id": "defense.shoulder_roll",
+      "dimension": "defense",
+      "lane_readiness_bonus": {
+        "head_straight": 1.7,
+        "head_hook": -0.5,
+        "head_uppercut": 0.8,
+        "body": 0.7,
+        "leg": -0.8,
+        "entry": -0.4,
+        "clinch": -0.5,
+        "single_support": -0.2
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 0.89,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "off_center",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "bladed stance",
+        "timing",
+        "lead shoulder raised"
+      ],
+      "breakdowns": [
+        "hooks from the open side",
+        "low kicks to the bladed lead leg",
+        "clinch ties"
+      ]
+    },
+    {
+      "id": "defense.slip_roll",
+      "dimension": "defense",
+      "lane_readiness_bonus": {
+        "head_straight": 1.6,
+        "head_hook": 1.3,
+        "head_uppercut": -0.7,
+        "body": 0.2,
+        "leg": -0.3,
+        "entry": 0.0,
+        "clinch": -0.4,
+        "single_support": 0.1
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 0.9,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "off_center",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "seeing the shot (vision >= 3)",
+        "head off centerline",
+        "flexible base"
+      ],
+      "breakdowns": [
+        "tired (fatigue >= 5)",
+        "hurt head (head damage >= 4)",
+        "vision blocked",
+        "uppercuts (head_uppercut)"
+      ]
+    },
+    {
+      "id": "defense.smother",
+      "dimension": "defense",
+      "lane_readiness_bonus": {
+        "head_straight": 0.7,
+        "head_hook": 0.9,
+        "head_uppercut": -0.4,
+        "body": 0.8,
+        "leg": 0.9,
+        "entry": -0.5,
+        "clinch": -0.5,
+        "single_support": 0.2
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 0.9,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "closing distance first",
+        "inside head position"
+      ],
+      "breakdowns": [
+        "opponent has superior clinch grips or ties",
+        "intercepting knees/uppercuts on entry"
+      ]
+    },
+    {
+      "id": "defense.sprawl_pummel",
+      "dimension": "defense",
+      "lane_readiness_bonus": {
+        "head_straight": -0.5,
+        "head_hook": -0.2,
+        "head_uppercut": 0.2,
+        "body": 0.4,
+        "leg": 0.3,
+        "entry": 2.1,
+        "clinch": 1.5,
+        "single_support": 0.6
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 0.94,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "hips high and back",
+        "reaction time",
+        "unfeinted vision"
+      ],
+      "breakdowns": [
+        "stance too low or too upright",
+        "high fatigue",
+        "a high-line feint before the shot"
+      ]
+    },
+    {
+      "id": "hands.cross_arm",
+      "dimension": "hands",
+      "lane_readiness_bonus": {
+        "head_straight": 0.45,
+        "head_hook": 1.25,
+        "head_uppercut": -0.5,
+        "body": 1.75,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 0.96,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 2,
+        "guard_decay_rate": 0.09,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Crossed forearms form a diagonal barrier over ribs and chin."
+      ],
+      "breakdowns": [
+        "Uncrossing delays the return and leaves a rising center channel.",
+        "Uncrossing delays the return and leaves a rising center channel."
+      ]
+    },
+    {
+      "id": "hands.dutch_guard",
+      "dimension": "hands",
+      "lane_readiness_bonus": {
+        "head_straight": 1.75,
+        "head_hook": 1.65,
+        "head_uppercut": 0.5,
+        "body": -0.75,
+        "leg": 0.0,
+        "entry": -0.75,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 0.92,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.09,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "A compact boxing cover returns punches before a low kick."
+      ],
+      "breakdowns": [
+        "A square planted exchange makes level changes and body attacks accessible.",
+        "A square planted exchange makes level changes and body attacks accessible."
+      ]
+    },
+    {
+      "id": "hands.hands_down",
+      "dimension": "hands",
+      "lane_readiness_bonus": {
+        "head_straight": -1.65,
+        "head_hook": -1.55,
+        "head_uppercut": -0.5,
+        "body": 0.0,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 1.08,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_high",
+        "vision": 5,
+        "guard_decay_rate": 0.05,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Low hands leave the eyes clear and shorten low-to-high counters."
+      ],
+      "breakdowns": [
+        "An unprotected head depends on timely footwork rather than a sealed guard.",
+        "An unprotected head depends on timely footwork rather than a sealed guard."
+      ]
+    },
+    {
+      "id": "hands.helmet",
+      "dimension": "hands",
+      "lane_readiness_bonus": {
+        "head_straight": 0.9,
+        "head_hook": 1.65,
+        "head_uppercut": 1.35,
+        "body": -1.2,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 0.92,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 1,
+        "guard_decay_rate": 0.09,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Forearms brace beside the skull to absorb close hooks."
+      ],
+      "breakdowns": [
+        "Sealing both sides sacrifices torso coverage and vision.",
+        "Sealing both sides sacrifices torso coverage and vision."
+      ]
+    },
+    {
+      "id": "hands.high_guard",
+      "dimension": "hands",
+      "lane_readiness_bonus": {
+        "head_straight": 1.75,
+        "head_hook": 1.65,
+        "head_uppercut": 0.5,
+        "body": -0.75,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 0.92,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 2,
+        "guard_decay_rate": 0.09,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Both gloves shelter the temples against straight and looping punches."
+      ],
+      "breakdowns": [
+        "Raised elbows and a covered gaze concede torso access and information.",
+        "Raised elbows and a covered gaze concede torso access and information."
+      ]
+    },
+    {
+      "id": "hands.kronk",
+      "dimension": "hands",
+      "lane_readiness_bonus": {
+        "head_straight": -0.45,
+        "head_hook": -1.15,
+        "head_uppercut": -0.25,
+        "body": 0.0,
+        "leg": 0.0,
+        "entry": -0.75,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 1.04,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "off_center",
+        "vision": 5,
+        "guard_decay_rate": 0.05,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "A relaxed lead arm disrupts rhythm with repeated probing jabs."
+      ],
+      "breakdowns": [
+        "The extended low lead exposes hooks and committed entries.",
+        "The extended low lead exposes hooks and committed entries."
+      ]
+    },
+    {
+      "id": "hands.long_guard",
+      "dimension": "hands",
+      "lane_readiness_bonus": {
+        "head_straight": 1.3,
+        "head_hook": 0.4,
+        "head_uppercut": 0.25,
+        "body": -1.2,
+        "leg": 0.0,
+        "entry": 0.85,
+        "clinch": -0.75,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 0.96,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 5,
+        "guard_decay_rate": 0.09,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "An extended lead arm measures distance and obstructs the incoming line."
+      ],
+      "breakdowns": [
+        "The reaching arm can be redirected into a tie or a body opening.",
+        "The reaching arm can be redirected into a tie or a body opening."
+      ]
+    },
+    {
+      "id": "hands.peekaboo",
+      "dimension": "hands",
+      "lane_readiness_bonus": {
+        "head_straight": 1.75,
+        "head_hook": 1.65,
+        "head_uppercut": 0.5,
+        "body": 0.45,
+        "leg": -0.75,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 0.92,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "off_center",
+        "vision": 2,
+        "guard_decay_rate": 0.09,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Compact gloves and head movement support short hooks during entry."
+      ],
+      "breakdowns": [
+        "Forward loading narrows vision and leaves a low-kick target while closing.",
+        "Forward loading narrows vision and leaves a low-kick target while closing."
+      ]
+    },
+    {
+      "id": "hands.philly_shell",
+      "dimension": "hands",
+      "lane_readiness_bonus": {
+        "head_straight": 0.85,
+        "head_hook": -0.75,
+        "head_uppercut": 0.0,
+        "body": 0.45,
+        "leg": 0.0,
+        "entry": -0.75,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "off_center",
+        "vision": 4,
+        "guard_decay_rate": 0.05,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Lead shoulder and rear glove intercept straight shots while the rear hand stays ready."
+      ],
+      "breakdowns": [
+        "The low lead hand and bladed torso require accurate reads against hooks and level changes.",
+        "The low lead hand and bladed torso require accurate reads against hooks and level changes."
+      ]
+    },
+    {
+      "id": "hands.shield52",
+      "dimension": "hands",
+      "lane_readiness_bonus": {
+        "head_straight": 1.3,
+        "head_hook": 0.4,
+        "head_uppercut": 0.25,
+        "body": -0.75,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": -0.75,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 0.96,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "off_center",
+        "vision": 3,
+        "guard_decay_rate": 0.09,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "CANON forearm wedges redirect a punch into a lateral counter line."
+      ],
+      "breakdowns": [
+        "Crossing forearms can lose the torso lane and inside grip position.",
+        "Crossing forearms can lose the torso lane and inside grip position."
+      ]
+    },
+    {
+      "id": "kicking.dutch",
+      "dimension": "kicking",
+      "lane_readiness_bonus": {
+        "head_straight": 0.0,
+        "head_hook": 0.85,
+        "head_uppercut": 0.0,
+        "body": 0.0,
+        "leg": 0.85,
+        "entry": -0.75,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.14,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Punch cover draws a high guard before the low kick."
+      ],
+      "breakdowns": [
+        "The final kick and square punching reset expose the hips.",
+        "The final kick and square punching reset expose the hips."
+      ]
+    },
+    {
+      "id": "kicking.karate",
+      "dimension": "kicking",
+      "lane_readiness_bonus": {
+        "head_straight": 0.0,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": 0.85,
+        "leg": -0.75,
+        "entry": 0.85,
+        "clinch": 0.0,
+        "single_support": -0.75
+      },
+      "damage_dealt_multiplier": 1.12,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "A chambered linear kick reaches past a punching entry."
+      ],
+      "breakdowns": [
+        "Blading and an extended kick expose support to capture.",
+        "Blading and an extended kick expose support to capture."
+      ]
+    },
+    {
+      "id": "kicking.muay_thai",
+      "dimension": "kicking",
+      "lane_readiness_bonus": {
+        "head_straight": 0.0,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": 0.85,
+        "leg": 0.85,
+        "entry": -0.75,
+        "clinch": 0.0,
+        "single_support": -0.75
+      },
+      "damage_dealt_multiplier": 1.18,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Shin round kicks and teeps control support and torso range."
+      ],
+      "breakdowns": [
+        "Committed hip rotation and one-leg support invite entries.",
+        "Committed hip rotation and one-leg support invite entries."
+      ]
+    },
+    {
+      "id": "kicking.none",
+      "dimension": "kicking",
+      "lane_readiness_bonus": {
+        "head_straight": 0.0,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": -0.75,
+        "leg": -0.75,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": 0.85
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Keeping both feet available favors short hand counters and immediate steps."
+      ],
+      "breakdowns": [
+        "Punch-only reach concedes the lead leg and outside distance.",
+        "Punch-only reach concedes the lead leg and outside distance."
+      ]
+    },
+    {
+      "id": "kicking.sanda",
+      "dimension": "kicking",
+      "lane_readiness_bonus": {
+        "head_straight": -0.75,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": 0.0,
+        "leg": 0.85,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": 0.85
+      },
+      "damage_dealt_multiplier": 1.1,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Kick catches and support sweeps punish a committed single-leg attack."
+      ],
+      "breakdowns": [
+        "Closing for a catch exposes the head and a failed sweep reset.",
+        "Closing for a catch exposes the head and a failed sweep reset."
+      ]
+    },
+    {
+      "id": "kicking.wrestler_teep",
+      "dimension": "kicking",
+      "lane_readiness_bonus": {
+        "head_straight": 0.0,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": 0.85,
+        "leg": -0.75,
+        "entry": 0.85,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.04,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "A short front kick interrupts pursuit while the hips remain ready for a shot."
+      ],
+      "breakdowns": [
+        "A modest kick repertoire concedes lateral and low-line variety.",
+        "A modest kick repertoire concedes lateral and low-line variety."
+      ]
+    },
+    {
+      "id": "mentality.boxer_puncher",
+      "dimension": "mentality",
+      "lane_readiness_bonus": {
+        "head_straight": 0.0,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": 0.85,
+        "leg": 0.0,
+        "entry": -0.75,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.1,
+      "damage_taken_multiplier": 0.98,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.05
+      },
+      "dependencies": [
+        "A probe can become a combination when the opponent commits."
+      ],
+      "breakdowns": [
+        "Switching between patience and pursuit creates a readable reset.",
+        "Switching between patience and pursuit creates a readable reset."
+      ]
+    },
+    {
+      "id": "mentality.counter",
+      "dimension": "mentality",
+      "lane_readiness_bonus": {
+        "head_straight": 0.85,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": 0.0,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.12,
+      "damage_taken_multiplier": 0.9,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 0.8
+      },
+      "dependencies": [
+        "Waiting for commitment exposes the opponent recovery beat."
+      ],
+      "breakdowns": [
+        "Low initiative leaves ground for feints and repeated pressure.",
+        "Low initiative leaves ground for feints and repeated pressure."
+      ]
+    },
+    {
+      "id": "mentality.defensive",
+      "dimension": "mentality",
+      "lane_readiness_bonus": {
+        "head_straight": 0.85,
+        "head_hook": 0.85,
+        "head_uppercut": 0.0,
+        "body": -0.75,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 0.86,
+      "damage_taken_multiplier": 0.84,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 0.7
+      },
+      "dependencies": [
+        "Layered denial frustrates committed direct entries."
+      ],
+      "breakdowns": [
+        "A low-output shell gives the opponent time to change level and target.",
+        "A low-output shell gives the opponent time to change level and target."
+      ]
+    },
+    {
+      "id": "mentality.outboxer",
+      "dimension": "mentality",
+      "lane_readiness_bonus": {
+        "head_straight": 0.0,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": 0.0,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 0.92,
+      "damage_taken_multiplier": 0.9,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 0.78
+      },
+      "dependencies": [
+        "Long lines and angle exits keep planted power outside its range."
+      ],
+      "breakdowns": [
+        "Retreat and a deliberate reset invite pressure at the boundary.",
+        "Retreat and a deliberate reset invite pressure at the boundary."
+      ]
+    },
+    {
+      "id": "mentality.pressure",
+      "dimension": "mentality",
+      "lane_readiness_bonus": {
+        "head_straight": 0.0,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": -0.75,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.15,
+      "damage_taken_multiplier": 1.03,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.2
+      },
+      "dependencies": [
+        "Deliberate forward steps remove retreat space and enforce repeated decisions."
+      ],
+      "breakdowns": [
+        "A tracking entry can lose a new angle and expose the torso.",
+        "A tracking entry can lose a new angle and expose the torso."
+      ]
+    },
+    {
+      "id": "mentality.showman",
+      "dimension": "mentality",
+      "lane_readiness_bonus": {
+        "head_straight": -0.75,
+        "head_hook": -0.75,
+        "head_uppercut": 0.0,
+        "body": 0.0,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.06,
+      "damage_taken_multiplier": 1.04,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.2
+      },
+      "dependencies": [
+        "Visible feints invite emotional pursuit and predictable attacks."
+      ],
+      "breakdowns": [
+        "Performing with a low guard concedes head lines and attention.",
+        "Performing with a low guard concedes head lines and attention."
+      ]
+    },
+    {
+      "id": "mentality.slickster",
+      "dimension": "mentality",
+      "lane_readiness_bonus": {
+        "head_straight": -0.75,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": 0.0,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 0.94,
+      "damage_taken_multiplier": 0.9,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 0.85
+      },
+      "dependencies": [
+        "Unusual timing and evasive lines draw premature commitments."
+      ],
+      "breakdowns": [
+        "Extended evasion can end at the wall with the head unprotected.",
+        "Extended evasion can end at the wall with the head unprotected."
+      ]
+    },
+    {
+      "id": "mentality.slugger",
+      "dimension": "mentality",
+      "lane_readiness_bonus": {
+        "head_straight": 0.0,
+        "head_hook": 0.85,
+        "head_uppercut": 0.0,
+        "body": 0.85,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.32,
+      "damage_taken_multiplier": 1.08,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.35
+      },
+      "dependencies": [
+        "Committed short power interrupts an unprotected swarm."
+      ],
+      "breakdowns": [
+        "Planting and loading power is trackable from an angle.",
+        "Planting and loading power is trackable from an angle."
+      ]
+    },
+    {
+      "id": "mentality.spoiler",
+      "dimension": "mentality",
+      "lane_readiness_bonus": {
+        "head_straight": -0.75,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": 0.0,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": -0.75,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 0.88,
+      "damage_taken_multiplier": 0.88,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 0.75
+      },
+      "dependencies": [
+        "Broken rhythm and close attachment interrupt clean combinations."
+      ],
+      "breakdowns": [
+        "Seeking disruption gives up outside scoring and risks inside ties.",
+        "Seeking disruption gives up outside scoring and risks inside ties."
+      ]
+    },
+    {
+      "id": "mentality.swarmer",
+      "dimension": "mentality",
+      "lane_readiness_bonus": {
+        "head_straight": 0.0,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": -0.75,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 0.9,
+      "damage_taken_multiplier": 1.02,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.25
+      },
+      "dependencies": [
+        "Repeated short entries deny an out-boxer a quiet reset."
+      ],
+      "breakdowns": [
+        "Chasing forward opens body counters and lateral exits.",
+        "Chasing forward opens body counters and lateral exits."
+      ]
+    },
+    {
+      "id": "mentality.switch_hitter",
+      "dimension": "mentality",
+      "lane_readiness_bonus": {
+        "head_straight": 0.0,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": 0.0,
+        "leg": 0.0,
+        "entry": -0.75,
+        "clinch": 0.0,
+        "single_support": -0.75
+      },
+      "damage_dealt_multiplier": 1.08,
+      "damage_taken_multiplier": 0.97,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.05
+      },
+      "dependencies": [
+        "A lead change reorients the opponent preferred counter line."
+      ],
+      "breakdowns": [
+        "The stance transition briefly cedes support and entry protection.",
+        "The stance transition briefly cedes support and entry protection."
+      ]
+    },
+    {
+      "id": "mentality.technician",
+      "dimension": "mentality",
+      "lane_readiness_bonus": {
+        "head_straight": 0.0,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": 0.0,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": -0.75,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.05,
+      "damage_taken_multiplier": 0.92,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 0.88
+      },
+      "dependencies": [
+        "Small angle changes and accurate probes exploit coarse linear entries."
+      ],
+      "breakdowns": [
+        "Deliberate reads can be crowded by short repeated pressure.",
+        "Deliberate reads can be crowded by short repeated pressure."
+      ]
+    },
+    {
+      "id": "stance.balanced",
+      "dimension": "stance",
+      "lane_readiness_bonus": {
+        "head_straight": -0.3,
+        "head_hook": 0.4,
+        "head_uppercut": 0.4,
+        "body": 0.4,
+        "leg": 0.5,
+        "entry": 0.9,
+        "clinch": 0.6,
+        "single_support": 0.5
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 0.98,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "50/50 weight split",
+        "even readiness to strike or sprawl"
+      ],
+      "breakdowns": [
+        "high-tempo specialists overloading one lane",
+        "straight center probes (head_straight)"
+      ]
+    },
+    {
+      "id": "stance.bladed",
+      "dimension": "stance",
+      "lane_readiness_bonus": {
+        "head_straight": 1.1,
+        "head_hook": 0.3,
+        "head_uppercut": 0.5,
+        "body": 0.8,
+        "leg": -0.9,
+        "entry": -0.6,
+        "clinch": -0.3,
+        "single_support": 0.1
+      },
+      "damage_dealt_multiplier": 0.94,
+      "damage_taken_multiplier": 0.94,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "bladed",
+        "base_width": "narrow_mobile",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "narrow target silhouette",
+        "in-and-out linear mobility"
+      ],
+      "breakdowns": [
+        "low kicks to the turned lead leg (leg)",
+        "direct takedown entries (entry)"
+      ]
+    },
+    {
+      "id": "stance.crouch",
+      "dimension": "stance",
+      "lane_readiness_bonus": {
+        "head_straight": 0.9,
+        "head_hook": 0.6,
+        "head_uppercut": -0.9,
+        "body": 0.5,
+        "leg": -0.8,
+        "entry": 0.8,
+        "clinch": 0.4,
+        "single_support": -0.3
+      },
+      "damage_dealt_multiplier": 1.15,
+      "damage_taken_multiplier": 0.96,
+      "posture_profile": {
+        "weight_split": "front_heavy",
+        "height": "low_crouch",
+        "hip_angle": "squared",
+        "base_width": "wide_rooted",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "low center of gravity",
+        "loaded legs for hooks and level changes"
+      ],
+      "breakdowns": [
+        "rising uppercuts and knees (head_uppercut)",
+        "low kicks to the heavy lead leg (leg)"
+      ]
+    },
+    {
+      "id": "stance.planted",
+      "dimension": "stance",
+      "lane_readiness_bonus": {
+        "head_straight": 0.2,
+        "head_hook": 0.4,
+        "head_uppercut": 0.3,
+        "body": 0.4,
+        "leg": -1.0,
+        "entry": 0.4,
+        "clinch": 0.7,
+        "single_support": -0.5
+      },
+      "damage_dealt_multiplier": 1.22,
+      "damage_taken_multiplier": 1.04,
+      "posture_profile": {
+        "weight_split": "front_heavy",
+        "height": "medium",
+        "hip_angle": "squared",
+        "base_width": "wide_rooted",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "rooted two-foot base generating maximum punch torque and push resistance"
+      ],
+      "breakdowns": [
+        "lateral angle pivots (angle)",
+        "calf and thigh kicks to rooted lead leg (leg)"
+      ]
+    },
+    {
+      "id": "stance.shuffle",
+      "dimension": "stance",
+      "lane_readiness_bonus": {
+        "head_straight": 0.9,
+        "head_hook": 0.7,
+        "head_uppercut": 0.6,
+        "body": 0.5,
+        "leg": -0.7,
+        "entry": 0.3,
+        "clinch": -0.3,
+        "single_support": -0.7
+      },
+      "damage_dealt_multiplier": 0.9,
+      "damage_taken_multiplier": 0.95,
+      "posture_profile": {
+        "weight_split": "neutral",
+        "height": "upright_tall",
+        "hip_angle": "bladed",
+        "base_width": "narrow_mobile",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "continuous foot bounce",
+        "open-floor space"
+      ],
+      "breakdowns": [
+        "low kicks timing the bounce (leg)",
+        "single-support sweeps (single_support)"
+      ]
+    },
+    {
+      "id": "stance.switch",
+      "dimension": "stance",
+      "lane_readiness_bonus": {
+        "head_straight": 0.6,
+        "head_hook": 0.6,
+        "head_uppercut": 0.4,
+        "body": 0.4,
+        "leg": 0.3,
+        "entry": -0.6,
+        "clinch": 0.1,
+        "single_support": -0.7
+      },
+      "damage_dealt_multiplier": 1.08,
+      "damage_taken_multiplier": 0.98,
+      "posture_profile": {
+        "weight_split": "neutral",
+        "height": "medium",
+        "hip_angle": "switching",
+        "base_width": "narrow_mobile",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "recovered Uno changeover",
+        "shifting lead-foot alignment"
+      ],
+      "breakdowns": [
+        "timed entries mid-switch (entry)",
+        "sweeps/kicks while on single support (single_support)"
+      ]
+    },
+    {
+      "id": "stance.upright",
+      "dimension": "stance",
+      "lane_readiness_bonus": {
+        "head_straight": 0.3,
+        "head_hook": 0.2,
+        "head_uppercut": 0.4,
+        "body": -0.6,
+        "leg": 1.3,
+        "entry": -0.8,
+        "clinch": 0.9,
+        "single_support": 0.5
+      },
+      "damage_dealt_multiplier": 1.02,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "rear_heavy",
+        "height": "upright_tall",
+        "hip_angle": "squared",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "rear-leg weight distribution for fast shin checks and teeps",
+        "tall posture"
+      ],
+      "breakdowns": [
+        "level-change takedown entries (entry)",
+        "body hooks under high elbows (body)"
+      ]
+    },
+    {
+      "id": "target.body_puncher",
+      "dimension": "target",
+      "lane_readiness_bonus": {
+        "head_straight": -0.75,
+        "head_hook": 0.0,
+        "head_uppercut": -0.75,
+        "body": 0.85,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.1,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Torso attacks draw elbows down and reduce comfortable movement."
+      ],
+      "breakdowns": [
+        "Lower targeting requires entering a rising counter lane.",
+        "Lower targeting requires entering a rising counter lane."
+      ]
+    },
+    {
+      "id": "target.head_hunter",
+      "dimension": "target",
+      "lane_readiness_bonus": {
+        "head_straight": 0.85,
+        "head_hook": 0.85,
+        "head_uppercut": 0.0,
+        "body": -0.75,
+        "leg": 0.0,
+        "entry": -0.75,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.1,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Repeated head threats force high reactions and narrow vision."
+      ],
+      "breakdowns": [
+        "Head fixation leaves torso and level-change defenses late.",
+        "Head fixation leaves torso and level-change defenses late."
+      ]
+    },
+    {
+      "id": "target.knee_clincher",
+      "dimension": "target",
+      "lane_readiness_bonus": {
+        "head_straight": -0.75,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": 0.85,
+        "leg": 0.0,
+        "entry": -0.75,
+        "clinch": 0.85,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.1,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Posture control guides a rising knee into the torso."
+      ],
+      "breakdowns": [
+        "Tying the head leaves the hips available underneath.",
+        "Tying the head leaves the hips available underneath."
+      ]
+    },
+    {
+      "id": "target.leg_chopper",
+      "dimension": "target",
+      "lane_readiness_bonus": {
+        "head_straight": -0.75,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": 0.0,
+        "leg": 0.85,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": -0.75
+      },
+      "damage_dealt_multiplier": 1.1,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Low attacks punish forward-loaded support and reduce pivot options."
+      ],
+      "breakdowns": [
+        "Kicking commits one support leg and delays hand recovery.",
+        "Kicking commits one support leg and delays hand recovery."
+      ]
+    },
+    {
+      "id": "target.liver_ribs",
+      "dimension": "target",
+      "lane_readiness_bonus": {
+        "head_straight": 0.0,
+        "head_hook": -0.75,
+        "head_uppercut": 0.0,
+        "body": 0.85,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.1,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "A lateral torso line bypasses a high sealed shell."
+      ],
+      "breakdowns": [
+        "Seeking a specific side makes the entry and reset readable.",
+        "Seeking a specific side makes the entry and reset readable."
+      ]
+    },
+    {
+      "id": "target.mixer",
+      "dimension": "target",
+      "lane_readiness_bonus": {
+        "head_straight": 0.0,
+        "head_hook": 0.85,
+        "head_uppercut": 0.0,
+        "body": 0.85,
+        "leg": 0.85,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.1,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Alternating head, torso and leg lines overloads one-level coverage."
+      ],
+      "breakdowns": [
+        "Changing targets demands resets that can be timed.",
+        "Changing targets demands resets that can be timed."
+      ]
+    },
+    {
+      "id": "tie.anti_grappling",
+      "dimension": "tie",
+      "lane_readiness_bonus": {
+        "head_straight": -0.75,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": 0.0,
+        "leg": 0.0,
+        "entry": 0.85,
+        "clinch": 0.85,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Trained sprawls, underhooks and exits deny grappling engagement."
+      ],
+      "breakdowns": [
+        "A disengagement priority cedes initiative during the exit reset.",
+        "A disengagement priority cedes initiative during the exit reset."
+      ]
+    },
+    {
+      "id": "tie.bjj",
+      "dimension": "tie",
+      "lane_readiness_bonus": {
+        "head_straight": -0.75,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": 0.0,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": 0.85,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Ground frames and isolated limbs create submissions from inferior positions."
+      ],
+      "breakdowns": [
+        "Accepting the floor concedes standing range and top-strike initiative.",
+        "Accepting the floor concedes standing range and top-strike initiative."
+      ]
+    },
+    {
+      "id": "tie.folk_ride",
+      "dimension": "tie",
+      "lane_readiness_bonus": {
+        "head_straight": -0.75,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": 0.0,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": -0.75,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Hip coverage and wrist control deny a grounded stand-up."
+      ],
+      "breakdowns": [
+        "Chasing a ride can leave the neck and standing entry unprotected.",
+        "Chasing a ride can leave the neck and standing entry unprotected."
+      ]
+    },
+    {
+      "id": "tie.freestyle",
+      "dimension": "tie",
+      "lane_readiness_bonus": {
+        "head_straight": 0.0,
+        "head_hook": 0.0,
+        "head_uppercut": -0.75,
+        "body": 0.0,
+        "leg": 0.0,
+        "entry": 0.85,
+        "clinch": -0.75,
+        "single_support": 0.85
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "An elevation change connects the legs before an upright striker can reset."
+      ],
+      "breakdowns": [
+        "A failed shot leaves a recovering head line and inside-tie exposure.",
+        "A failed shot leaves a recovering head line and inside-tie exposure."
+      ]
+    },
+    {
+      "id": "tie.greco",
+      "dimension": "tie",
+      "lane_readiness_bonus": {
+        "head_straight": 0.0,
+        "head_hook": -0.75,
+        "head_uppercut": 0.0,
+        "body": 0.0,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": 0.85,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Chest contact and locked hands constrain the opponent hips."
+      ],
+      "breakdowns": [
+        "Closing both arms around the trunk gives up head coverage and ground submission awareness.",
+        "Closing both arms around the trunk gives up head coverage and ground submission awareness."
+      ]
+    },
+    {
+      "id": "tie.judo_sambo",
+      "dimension": "tie",
+      "lane_readiness_bonus": {
+        "head_straight": 0.0,
+        "head_hook": 0.0,
+        "head_uppercut": 0.0,
+        "body": 0.0,
+        "leg": 0.0,
+        "entry": 0.0,
+        "clinch": 0.0,
+        "single_support": 0.85
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "A tie redirects loaded weight over a blocked support leg."
+      ],
+      "breakdowns": [
+        "Seeking a throwing connection concedes long-range initiative and the back if the turn fails.",
+        "Seeking a throwing connection concedes long-range initiative and the back if the turn fails."
+      ]
+    },
+    {
+      "id": "tie.thai_plum",
+      "dimension": "tie",
+      "lane_readiness_bonus": {
+        "head_straight": 0.0,
+        "head_hook": 0.0,
+        "head_uppercut": 0.85,
+        "body": -0.75,
+        "leg": 0.0,
+        "entry": -0.75,
+        "clinch": 0.85,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "Inside forearms and head control expose the torso to knees."
+      ],
+      "breakdowns": [
+        "Reaching high leaves hip attachment and level changes underneath.",
+        "Reaching high leaves hip attachment and level changes underneath."
+      ]
+    },
+    {
+      "id": "tie.wall_boxing",
+      "dimension": "tie",
+      "lane_readiness_bonus": {
+        "head_straight": 0.0,
+        "head_hook": 0.85,
+        "head_uppercut": 0.0,
+        "body": -0.75,
+        "leg": 0.0,
+        "entry": -0.75,
+        "clinch": 0.0,
+        "single_support": 0.0
+      },
+      "damage_dealt_multiplier": 1.0,
+      "damage_taken_multiplier": 1.0,
+      "posture_profile": {
+        "weight_split": "balanced",
+        "height": "medium",
+        "hip_angle": "semi_bladed",
+        "base_width": "balanced",
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "guard_decay_rate": 0.06,
+        "risk_appetite": 1.0
+      },
+      "dependencies": [
+        "An inside tie pins posture while the free hand strikes."
+      ],
+      "breakdowns": [
+        "Wall commitment makes hips reachable and ties up the exit hand.",
+        "Wall commitment makes hips reachable and ties up the exit hand."
+      ]
+    }
+  ]
+}
