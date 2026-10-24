@@ -829,27 +829,113 @@ def build_mio_card_v2() -> Dict[str, object]:
     }
 
 
+def build_all_v2_archetype_cards(k: Knowledge) -> Dict[str, Dict[str, object]]:
+    """Build explicit block-2 archetype cards for all 11 canonical fighters + Mio Tsukihara (`sanda_judo`)."""
+    from engine.simulator_v2 import build_slot_plans
+
+    signature_overrides = {
+        "maleek": ["jab", "body_hook", "cross"],
+        "donnell": ["hook", "cross", "body_hook"],
+        "detroit": ["cross", "uppercut", "jab"],
+        "street": ["haymaker", "cross"],
+        "thai": ["teep", "body_kick", "knee_body", "low_kick"],
+        "wrestler": ["double_leg", "single_leg", "ride"],
+        "karate": ["side_kick", "cross", "jab"],
+        "greco": ["body_lock", "outside_trip", "collar_tie"],
+        "jiujitsu": ["guard_pull", "armbar", "collar_tie"],
+        "macklin": ["wall_tie", "wall_punch", "body_hook", "low_kick"],
+        "philly": ["cross", "uppercut", "jab"],
+    }
+    goal_by_cap = {
+        "bjj": "submission_finish",
+        "wrestling": "takedown_top_control",
+        "judo": "takedown_top_control",
+        "sanda": "counter_trap",
+        "karate": "counter_trap",
+        "kickboxing": "leg_attrition",
+        "clinch": "clinch_control",
+        "wall_boxing": "clinch_control",
+        "boxing": "head_damage",
+    }
+
+    cards_v2: Dict[str, Dict[str, object]] = {"sanda_judo": build_mio_card_v2()}
+    for path in sorted((ROOT / "cards").glob("*.json")):
+        base_card = read(path)
+        fid = str(base_card["fighter_id"])
+        c_v2 = dict(base_card)
+        c_v2["version"] = "block-2"
+
+        plans = build_slot_plans(k, base_card, base_card.get("adaptation", "mma"))
+        plan_by_id = {p["slot_id"]: p for p in plans}
+        new_slots = []
+        for idx, slot in enumerate(base_card["synchronized_capabilities"]):
+            sid = slot["id"]
+            p = plan_by_id.get(sid, plans[idx % len(plans)])
+            caps = slot.get("capabilities", [])
+            slot_goal = "head_damage"
+            if base_card["dimensions"].get("target") == "target.body_puncher" and "boxing" in caps:
+                slot_goal = "body_attrition"
+            elif base_card["dimensions"].get("mentality") == "mentality.counter" and "boxing" in caps:
+                slot_goal = "counter_trap"
+            else:
+                for cap_key, g_val in goal_by_cap.items():
+                    if cap_key in caps:
+                        slot_goal = g_val
+                        break
+
+            s_copy = dict(slot)
+            s_copy["trigger"] = p["trigger"]
+            s_copy["sequence"] = list(p["sequence"])
+            s_copy["home_range"] = p["home_range"]
+            s_copy["goal"] = slot_goal
+            s_copy["abandon_rule"] = {
+                "max_consecutive_stalls": 2 if len(base_card["synchronized_capabilities"]) > 1 else 99,
+                "condition": "sequence_denied_or_countered",
+            }
+            s_copy["links"] = [p["next_slot_id"]]
+            new_slots.append(s_copy)
+
+        c_v2["synchronized_capabilities"] = new_slots
+        active_set = set(base_card["active_techniques"])
+        sigs = [m for m in signature_overrides.get(fid, []) if m in active_set]
+        if not sigs:
+            sigs = [m for m in plans[0]["sequence"][:3] if m in active_set]
+        c_v2["signature_moves"] = sigs
+        has_athletic = any(k_id in active_set for k_id in ("side_kick", "body_kick", "low_kick", "knee_body"))
+        c_v2["airborne_training"] = {
+            "allowed_vertical_modes": ["grounded", "athletic"] if has_athletic else ["grounded"],
+            "techniques": [m for m in ("side_kick", "body_kick", "knee_body") if m in active_set],
+        }
+        cards_v2[fid] = c_v2
+
+    return cards_v2
+
+
 def main():
     k = Knowledge()
     opt_beh = build_option_behaviors(k)
     tech_v2 = build_techniques_v2(k)
     pos_map = build_positions_map()
     mod_v2 = build_model_v2()
-    mio_v2 = build_mio_card_v2()
+    all_cards_v2 = build_all_v2_archetype_cards(k)
 
     # Validate against all v2 schemas before writing
     jsonschema.validate(opt_beh, read(ROOT / "schemas/option_behavior.schema.json"))
     jsonschema.validate(tech_v2, read(ROOT / "schemas/technique_v2.schema.json"))
     jsonschema.validate(pos_map, read(ROOT / "schemas/position_map.schema.json"))
     jsonschema.validate(mod_v2, read(ROOT / "schemas/model_config_v2.schema.json"))
-    jsonschema.validate(mio_v2, read(ROOT / "schemas/fighter_card_v2.schema.json"))
+
+    card_v2_schema = read(ROOT / "schemas/fighter_card_v2.schema.json")
+    for fid, card_obj in sorted(all_cards_v2.items()):
+        jsonschema.validate(card_obj, card_v2_schema)
+        k.card(card_obj)
+        write(ROOT / f"cards/v2/{fid}.json", card_obj)
 
     write(ROOT / "data/option_behaviors.json", opt_beh)
     write(ROOT / "data/techniques_v2.json", tech_v2)
     write(ROOT / "data/positions.json", pos_map)
     write(ROOT / "data/model_v2.json", mod_v2)
-    write(ROOT / "cards/v2/sanda_judo.json", mio_v2)
-    print("Successfully built and schema-validated all v2 data files and Mio Tsukihara block-2 card.")
+    print(f"Successfully built and schema-validated all v2 data files and {len(all_cards_v2)} block-2 archetype cards.")
 
 
 if __name__ == "__main__":

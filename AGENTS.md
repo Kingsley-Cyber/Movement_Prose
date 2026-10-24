@@ -284,6 +284,19 @@ The BLOCK Fight Simulator v2 (`engine/simulator_v2.py`, `scripts/build_v2_data.p
   - `schemas/position_map.schema.json` $\to$ `data/positions.json` (15 positions + 14 transitions)
   - `schemas/fight_settings.schema.json`, `schemas/model_config_v2.schema.json` ($\to$ `data/model_v2.json`), `schemas/fight_state_v2.schema.json`, `schemas/exchange_event_v2.schema.json`, `schemas/simulation_result_v2.schema.json`.
 - [x] **3. First-Class Kicking Subsystem, Grappling Position Map, Slot Gameplans & Card-Derived Damage:** Implemented and verified in `engine/simulator_v2.py` and `tests/test_simulator_v2_and_atomic_compiler.py`.
+- [x] **4. Standalone CLI & LLM Runner (`simulate_fight.py`) + All 12 Predefined `block-2` Archetypes (`cards/v2/*.json`):**
+  - Any LLM or user can discover all 12 predefined archetypes (`detroit`, `donnell`, `greco`, `jiujitsu`, `karate`, `macklin`, `maleek`, `philly`, `sanda_judo`, `street`, `thai`, `wrestler`) and run single fights, Monte Carlo series, or 1-Contact-Per-Beat causal prompts directly without manual prompting:
+    ```bash
+    # List all 12 predefined block-2 fighter archetypes (human-readable or --json):
+    python3 simulate_fight.py --list-archetypes
+    python3 simulate_fight.py --list-archetypes --json
+
+    # Simulate a single fight with play-by-play exchange breakdown + 1-Contact-Per-Beat causal prompt:
+    python3 simulate_fight.py sanda_judo thai --seed 7 --arena cage --emit-prompt
+
+    # Run a Monte Carlo multi-run series (with optional Director Mode --winner):
+    python3 simulate_fight.py wrestler thai --runs 50 --winner wrestler --json
+    ```
 
 ### 7.1 Mandatory Agent Rules for Authoring Cards & Running Simulations
 1. **How to Build a `block-2` Card from a Plain-English Character Description:**

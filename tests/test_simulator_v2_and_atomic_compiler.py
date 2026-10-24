@@ -256,3 +256,46 @@ def test_arena_presets_grappling_positions_and_monte_carlo_many_runs(knowledge, 
     bjj_sim = simulate_fight_v2(cards["jiujitsu"], cards["street"], duration_s=60.0, seed=3, knowledge=knowledge)
     positions_seen = {e["grappling_position"] for e in bjj_sim["exchanges"]}
     assert any(p != "standing_neutral" for p in positions_seen)
+
+
+def test_all_12_predefined_archetypes_and_standalone_cli_runner(knowledge, capsys):
+    import json
+    from engine.simulator_v2 import KICK_IDS, compile_simulated_fight_to_atomic_beats, list_archetypes_v2
+    import simulate_fight
+
+    archetypes = list_archetypes_v2(knowledge)
+    assert len(archetypes) == 12
+    expected_ids = {
+        "detroit", "donnell", "greco", "jiujitsu", "karate", "macklin",
+        "maleek", "philly", "sanda_judo", "street", "thai", "wrestler",
+    }
+    assert {a["fighter_id"] for a in archetypes} == expected_ids
+    for a in archetypes:
+        assert a["version"] == "block-2"
+        assert len(a["signature_moves"]) >= 1
+        assert len(a["slots"]) == a["slot_count"]
+
+    # CLI --list-archetypes --json
+    rc = simulate_fight.main(["--list-archetypes", "--json"])
+    assert rc == 0
+    out_arch = json.loads(capsys.readouterr().out)
+    assert len(out_arch["archetypes"]) == 12
+
+    # CLI single fight with --emit-prompt --json and verify no kicks on ground
+    rc = simulate_fight.main(["sanda_judo", "thai", "--seed", "7", "--emit-prompt", "--json"])
+    assert rc == 0
+    out_sim = json.loads(capsys.readouterr().out)
+    assert out_sim["winner_id"] in ("sanda_judo", "thai")
+    assert out_sim["atomic_causal_beats"]["beat_count"] >= 1
+    assert "Prep:" in out_sim["atomic_causal_beats"]["labeled_ir"]
+    for ex in out_sim["exchanges"]:
+        if ex["range"] == "ground":
+            assert ex["technique_id"] not in KICK_IDS
+
+    # CLI Monte Carlo --runs 8 --json
+    rc = simulate_fight.main(["wrestler", "karate", "--runs", "8", "--json"])
+    assert rc == 0
+    out_mc = json.loads(capsys.readouterr().out)
+    assert out_mc["runs"] == 8
+    assert out_mc["win_counts"]["wrestler"] + out_mc["win_counts"]["karate"] == 8
+

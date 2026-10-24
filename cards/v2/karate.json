@@ -1,0 +1,174 @@
+{
+  "version": "block-2",
+  "fighter_id": "karate",
+  "name": "Aya Quinn",
+  "combat_identity": "Karate range triad",
+  "dimensions": {
+    "hands": "hands.hands_down",
+    "defense": "defense.outfight",
+    "stance": "stance.bladed",
+    "tie": "tie.anti_grappling",
+    "target": "target.mixer",
+    "kicking": "kicking.karate",
+    "mentality": "mentality.outboxer"
+  },
+  "adaptation": "mma",
+  "orientation": "switching",
+  "slot_count": 3,
+  "slot_label": "Triad",
+  "synchronized_capabilities": [
+    {
+      "id": "karate.slot.1",
+      "capabilities": [
+        "karate"
+      ],
+      "description": "Trained synchronized bundle: karate",
+      "trigger": "fight_start",
+      "sequence": [
+        "side_kick",
+        "jab",
+        "cross"
+      ],
+      "home_range": "kick",
+      "goal": "counter_trap",
+      "abandon_rule": {
+        "max_consecutive_stalls": 2,
+        "condition": "sequence_denied_or_countered"
+      },
+      "links": [
+        "karate.slot.2"
+      ]
+    },
+    {
+      "id": "karate.slot.2",
+      "capabilities": [
+        "boxing",
+        "switch_step"
+      ],
+      "description": "Trained synchronized bundle: boxing, switch_step",
+      "trigger": "slot_stalled_or_countered",
+      "sequence": [
+        "jab",
+        "cross",
+        "hook",
+        "body_hook",
+        "uppercut"
+      ],
+      "home_range": "punch",
+      "goal": "head_damage",
+      "abandon_rule": {
+        "max_consecutive_stalls": 2,
+        "condition": "sequence_denied_or_countered"
+      },
+      "links": [
+        "karate.slot.3"
+      ]
+    },
+    {
+      "id": "karate.slot.3",
+      "capabilities": [
+        "anti_grappling"
+      ],
+      "description": "Trained synchronized bundle: anti_grappling",
+      "trigger": "slot_stalled_or_countered",
+      "sequence": [
+        "jab",
+        "cross",
+        "hook",
+        "body_hook",
+        "uppercut",
+        "haymaker",
+        "side_kick"
+      ],
+      "home_range": "punch",
+      "goal": "head_damage",
+      "abandon_rule": {
+        "max_consecutive_stalls": 2,
+        "condition": "sequence_denied_or_countered"
+      },
+      "links": [
+        "karate.slot.1"
+      ]
+    }
+  ],
+  "baseline_capabilities": [
+    "basic_movement",
+    "untrained_striking"
+  ],
+  "tempo": 2,
+  "preferred_ranges": [
+    "kick",
+    "punch"
+  ],
+  "debt_sentence": "Use the side kick and angle exit before being crowded; the exposed lead leg must escape pressure.",
+  "exploitable_seams": [
+    "debt.hands.hands_down.head_straight",
+    "debt.hands.hands_down.head_hook",
+    "debt.defense.outfight.wall",
+    "debt.defense.outfight.tempo",
+    "debt.stance.bladed.leg",
+    "debt.stance.bladed.entry",
+    "debt.tie.anti_grappling.tempo",
+    "debt.tie.anti_grappling.head_straight",
+    "debt.target.mixer.recovery",
+    "debt.target.mixer.tempo",
+    "debt.kicking.karate.single_support",
+    "debt.kicking.karate.leg",
+    "debt.mentality.outboxer.wall",
+    "debt.mentality.outboxer.tempo"
+  ],
+  "active_techniques": [
+    "step",
+    "retreat",
+    "pivot",
+    "switch_step",
+    "feint",
+    "jab",
+    "cross",
+    "hook",
+    "body_hook",
+    "uppercut",
+    "haymaker",
+    "parry",
+    "shell_block",
+    "slip",
+    "side_kick",
+    "sprawl",
+    "pummel"
+  ],
+  "conditional_abilities": [],
+  "combat_limitations": [
+    "Listed grappling requires the documented range and connection.",
+    "No technique is guaranteed against an active defense."
+  ],
+  "fighting_description": {
+    "does": "Use the side kick and angle exit before being crowded.",
+    "wins": "Reach kick, punch and use Karate range triad.",
+    "avoids": "Unrecovered support and opponent control of the next range.",
+    "beaten_by": "the exposed lead leg must escape pressure."
+  },
+  "appearance": {
+    "clothing": "silver shorts",
+    "identity_anchor": "Aya Quinn / Karate range triad",
+    "props": []
+  },
+  "provenance": {
+    "classification": "CANON",
+    "label": "[CANON]",
+    "source": "Supplied mandatory identity where specified; all other details authored for this release."
+  },
+  "signature_moves": [
+    "side_kick",
+    "cross",
+    "jab"
+  ],
+  "airborne_training": {
+    "allowed_vertical_modes": [
+      "grounded",
+      "athletic"
+    ],
+    "techniques": [
+      "side_kick"
+    ]
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "version": "block-2",
+  "fighter_id": "wrestler",
+  "name": "Imani Vale",
+  "combat_identity": "Freestyle two-piece",
+  "dimensions": {
+    "hands": "hands.high_guard",
+    "defense": "defense.sprawl_pummel",
+    "stance": "stance.balanced",
+    "tie": "tie.freestyle",
+    "target": "target.mixer",
+    "kicking": "kicking.wrestler_teep",
+    "mentality": "mentality.pressure"
+  },
+  "adaptation": "mma",
+  "orientation": "orthodox",
+  "slot_count": 2,
+  "slot_label": "Two-piece",
+  "synchronized_capabilities": [
+    {
+      "id": "wrestler.slot.1",
+      "capabilities": [
+        "wrestling"
+      ],
+      "description": "Trained synchronized bundle: wrestling",
+      "trigger": "fight_start",
+      "sequence": [
+        "body_lock",
+        "outside_trip",
+        "double_leg",
+        "single_leg",
+        "ride"
+      ],
+      "home_range": "clinch",
+      "goal": "takedown_top_control",
+      "abandon_rule": {
+        "max_consecutive_stalls": 2,
+        "condition": "sequence_denied_or_countered"
+      },
+      "links": [
+        "wrestler.slot.2"
+      ]
+    },
+    {
+      "id": "wrestler.slot.2",
+      "capabilities": [
+        "boxing",
+        "kickboxing"
+      ],
+      "description": "Trained synchronized bundle: boxing, kickboxing",
+      "trigger": "slot_stalled_or_countered",
+      "sequence": [
+        "teep",
+        "low_kick",
+        "body_kick",
+        "jab",
+        "cross",
+        "hook",
+        "body_hook",
+        "uppercut"
+      ],
+      "home_range": "kick",
+      "goal": "leg_attrition",
+      "abandon_rule": {
+        "max_consecutive_stalls": 2,
+        "condition": "sequence_denied_or_countered"
+      },
+      "links": [
+        "wrestler.slot.1"
+      ]
+    }
+  ],
+  "baseline_capabilities": [
+    "basic_movement",
+    "untrained_striking"
+  ],
+  "tempo": 4,
+  "preferred_ranges": [
+    "punch",
+    "clinch",
+    "ground"
+  ],
+  "debt_sentence": "A high probe buys an elevation change into a ride; the reaching head is vulnerable if entry fails.",
+  "exploitable_seams": [
+    "debt.hands.high_guard.body",
+    "debt.hands.high_guard.vision",
+    "debt.defense.sprawl_pummel.head_straight",
+    "debt.defense.sprawl_pummel.tempo",
+    "debt.stance.balanced.tempo",
+    "debt.stance.balanced.head_straight",
+    "debt.tie.freestyle.head_uppercut",
+    "debt.tie.freestyle.clinch",
+    "debt.target.mixer.recovery",
+    "debt.target.mixer.tempo",
+    "debt.kicking.wrestler_teep.angle",
+    "debt.kicking.wrestler_teep.leg",
+    "debt.mentality.pressure.angle",
+    "debt.mentality.pressure.body"
+  ],
+  "active_techniques": [
+    "step",
+    "retreat",
+    "pivot",
+    "feint",
+    "jab",
+    "cross",
+    "hook",
+    "body_hook",
+    "uppercut",
+    "haymaker",
+    "parry",
+    "shell_block",
+    "slip",
+    "check",
+    "low_kick",
+    "body_kick",
+    "teep",
+    "sprawl",
+    "pummel",
+    "body_lock",
+    "double_leg",
+    "single_leg",
+    "outside_trip",
+    "ride",
+    "escape"
+  ],
+  "conditional_abilities": [],
+  "combat_limitations": [
+    "Listed grappling requires the documented range and connection.",
+    "No technique is guaranteed against an active defense."
+  ],
+  "fighting_description": {
+    "does": "A high probe buys an elevation change into a ride.",
+    "wins": "Reach punch, clinch, ground and use Freestyle two-piece.",
+    "avoids": "Unrecovered support and opponent control of the next range.",
+    "beaten_by": "the reaching head is vulnerable if entry fails."
+  },
+  "appearance": {
+    "clothing": "slate shorts",
+    "identity_anchor": "Imani Vale / Freestyle two-piece",
+    "props": []
+  },
+  "provenance": {
+    "classification": "CANON",
+    "label": "[CANON]",
+    "source": "Supplied mandatory identity where specified; all other details authored for this release."
+  },
+  "signature_moves": [
+    "double_leg",
+    "single_leg",
+    "ride"
+  ],
+  "airborne_training": {
+    "allowed_vertical_modes": [
+      "grounded",
+      "athletic"
+    ],
+    "techniques": [
+      "body_kick"
+    ]
+  }
+}

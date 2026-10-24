@@ -1387,13 +1387,13 @@
       ],
       "attack_lane": "body",
       "target_region": "body",
-      "base_damage": 0.0,
-      "damage_type": "none",
+      "base_damage": 0.7,
+      "damage_type": "stamina_drain",
       "frame_costs": {
-        "setup_frames": 3,
-        "execution_frames": 6,
-        "contact_hold_frames": 0,
-        "recovery_frames": 5
+        "setup_frames": 4,
+        "execution_frames": 8,
+        "contact_hold_frames": 2,
+        "recovery_frames": 6
       },
       "biomechanics": {
         "attacking_limb": "forearms",
@@ -1425,13 +1425,13 @@
       ],
       "attack_lane": "body",
       "target_region": "body",
-      "base_damage": 0.0,
-      "damage_type": "none",
+      "base_damage": 2.4,
+      "damage_type": "stamina_drain",
       "frame_costs": {
-        "setup_frames": 3,
-        "execution_frames": 6,
-        "contact_hold_frames": 0,
-        "recovery_frames": 5
+        "setup_frames": 4,
+        "execution_frames": 8,
+        "contact_hold_frames": 3,
+        "recovery_frames": 7
       },
       "biomechanics": {
         "attacking_limb": "lead fist",

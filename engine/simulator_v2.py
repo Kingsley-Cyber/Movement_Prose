@@ -70,6 +70,8 @@ MOVE_BASE_STATS: Dict[str, Dict[str, object]] = {
     "ride": {"base": 1.6, "type": "stamina_drain", "setup_f": 4, "exec_f": 14, "hold_f": 4, "rec_f": 8, "lane": "clinch"},
     "armbar": {"base": 3.8, "type": "submission", "setup_f": 8, "exec_f": 16, "hold_f": 6, "rec_f": 12, "lane": "clinch"},
     "escape": {"base": 0.0, "type": "movement", "setup_f": 5, "exec_f": 12, "hold_f": 0, "rec_f": 8, "lane": "space"},
+    "wall_tie": {"base": 0.7, "type": "stamina_drain", "setup_f": 4, "exec_f": 8, "hold_f": 2, "rec_f": 6, "lane": "clinch"},
+    "wall_punch": {"base": 2.4, "type": "stamina_drain", "setup_f": 4, "exec_f": 8, "hold_f": 3, "rec_f": 7, "lane": "body"},
 }
 
 
@@ -103,6 +105,53 @@ def _load_option_behaviors(root=ROOT) -> Dict[str, Dict[str, object]]:
         data = read(path)
         return {o["id"]: o for o in data["options"]}
     return {}
+
+
+def load_card_v2(k: Knowledge, value) -> Dict[str, object]:
+    """Resolve a predefined archetype ID, file path, or card dict, preferring explicit block-2 cards in cards/v2/."""
+    if isinstance(value, str):
+        v2_path = k.root / "cards" / "v2" / f"{value}.json"
+        if v2_path.exists():
+            return k.card(v2_path)
+    return k.card(value)
+
+
+def list_archetypes_v2(knowledge: Optional[Knowledge] = None) -> List[Dict[str, object]]:
+    """Return a structured catalog of all predefined block-2 fighter archetypes in cards/v2/*.json."""
+    k = knowledge or Knowledge()
+    archetypes: List[Dict[str, object]] = []
+    v2_dir = k.root / "cards" / "v2"
+    paths = sorted(v2_dir.glob("*.json")) if v2_dir.exists() else sorted((k.root / "cards").glob("*.json"))
+    for path in paths:
+        c = k.card(path)
+        archetypes.append(
+            {
+                "fighter_id": c["fighter_id"],
+                "name": c["name"],
+                "version": c.get("version", "block-2"),
+                "combat_identity": c["combat_identity"],
+                "slot_count": c["slot_count"],
+                "slot_label": c["slot_label"],
+                "tempo": c["tempo"],
+                "orientation": c["orientation"],
+                "adaptation": c["adaptation"],
+                "preferred_ranges": c["preferred_ranges"],
+                "dimensions": c["dimensions"],
+                "signature_moves": c.get("signature_moves", []),
+                "slots": [
+                    {
+                        "id": s["id"],
+                        "capabilities": s["capabilities"],
+                        "home_range": s.get("home_range"),
+                        "goal": s.get("goal"),
+                        "sequence": s.get("sequence", []),
+                    }
+                    for s in c["synchronized_capabilities"]
+                ],
+                "fighting_description": c["fighting_description"],
+            }
+        )
+    return archetypes
 
 
 # ---------------------------------------------------------------------------
@@ -653,6 +702,7 @@ def build_slot_plans(k: Knowledge, card: Dict[str, object], ruleset: str = "mma"
                 tid
                 for tid in card["active_techniques"]
                 if tid in all_avail
+                and tid != "escape"
                 and k.techniques[tid]["kind"] in ("punch", "kick", "knee", "takedown", "grip", "control", "submission")
                 and (set(k.techniques[tid]["required_capabilities"]) & caps)
             ]
@@ -762,6 +812,11 @@ def update_grappling_position(
         defender_state["grappling_position"] = "over_under"
         actor_state["sub_grips"]["underhooks"] = 2
         actor_state["grip"], defender_state["grip"] = "body_lock", "controlled"
+    elif tid == "wall_tie":
+        actor_state["grappling_position"] = "wall_pinned"
+        defender_state["grappling_position"] = "wall_pinned"
+        actor_state["sub_grips"]["underhooks"] = 1
+        actor_state["grip"], defender_state["grip"] = "single_tie", "controlled"
     elif tid == "pummel":
         actor_state["grappling_position"] = "double_underhooks"
         defender_state["grappling_position"] = "over_under"
@@ -788,7 +843,7 @@ def update_grappling_position(
         actor_state["sub_grips"]["wrist_control"] = True
         actor_state["grappling_position"] = "side_control"
         actor_state["control_marks"] += 1
-    elif tid == "escape":
+    elif tid in ("escape", "retreat") and actor_state.get("posture_mode") == "ground":
         actor_state["posture_mode"] = defender_state["posture_mode"] = "standing"
         actor_state["grappling_position"] = defender_state["grappling_position"] = "standing_neutral"
         actor_state["grip"] = defender_state["grip"] = None
@@ -816,7 +871,7 @@ def simulate_fight_v2(
     and simulate_fight_v2(B, A, seed) produce the exact same winner and exchanges.
     """
     k = knowledge or Knowledge()
-    card_a, card_b = k.card(a), k.card(b)
+    card_a, card_b = load_card_v2(k, a), load_card_v2(k, b)
     if card_a["fighter_id"] == card_b["fighter_id"]:
         raise ValueError("two distinct fighter IDs are required")
 
@@ -944,7 +999,7 @@ def simulate_fight_v2(
 
         filtered_seq = [
             m for m in seq
-            if not (att_state["kick_checks_suffered"] >= 2 and m in ("low_kick", "body_kick"))
+            if m != "escape" and not (att_state["kick_checks_suffered"] >= 2 and m in ("low_kick", "body_kick"))
         ] or seq
 
         cursor = int(att_state["slot_Cursor"])
@@ -959,6 +1014,11 @@ def simulate_fight_v2(
                 tid = "armbar"
             elif "escape" in avail_t:
                 tid = "escape"
+            elif att_state["grip"] == "top":
+                top_strikes = [m for m in ("cross", "hook", "body_hook", "jab", "haymaker") if m in avail_t]
+                tid = top_strikes[cursor % len(top_strikes)] if top_strikes else "retreat"
+            else:
+                tid = "retreat" if "retreat" in avail_t else ("pummel" if "pummel" in avail_t else "jab")
 
         # Update defender's read_memory before computing defender readiness
         recent = att_state["recent_moves"]
@@ -1297,7 +1357,7 @@ def simulate_many_v2(
     and realistic directed runs validated against simulation_result_v2.schema.json.
     """
     k = knowledge or Knowledge()
-    card_a, card_b = k.card(a), k.card(b)
+    card_a, card_b = load_card_v2(k, a), load_card_v2(k, b)
     id_a, id_b = card_a["fighter_id"], card_b["fighter_id"]
     wins = {id_a: 0, id_b: 0}
     methods: Dict[str, int] = {}
@@ -1354,3 +1414,146 @@ def simulate_many_v2(
     }
     jsonschema.validate(result, read(k.root / "schemas/simulation_result_v2.schema.json"))
     return result
+
+
+# ---------------------------------------------------------------------------
+# 9. Bridge: Simulated v2 Exchanges -> Atomic Causal Beats (`Prep -> Commit -> Contact -> Consequence -> Recovery`)
+# ---------------------------------------------------------------------------
+
+def compile_simulated_fight_to_atomic_beats(
+    sim_result: Dict[str, object],
+    max_beats: int = 6,
+) -> Dict[str, object]:
+    """Translate the key exchanges of a `simulate_fight_v2` result into 1-Contact-Per-Beat
+    `AtomicCausalBeat` blocks (`Prep -> Commit -> Contact -> Consequence -> Recovery`)
+    plus single-sentence unlabeled natural-language prose.
+    """
+    from fight_move_system.atomic_causal_compiler import AtomicCausalBeat
+
+    exchanges = list(sim_result.get("exchanges", []))
+    actors_final = sim_result.get("actors_final", {})
+    names = {fid: str(info.get("name", fid)) for fid, info in actors_final.items()}
+
+    # Select up to `max_beats` high-impact or state-shifting exchanges (always including first and last)
+    if len(exchanges) <= max_beats:
+        selected = exchanges
+    else:
+        scored = sorted(
+            exchanges[1:-1],
+            key=lambda e: (
+                1 if e.get("counter_followup") else 0,
+                1 if e.get("outcome") in ("flush", "clean", "caught", "checked") else 0,
+                float(e.get("damage", {}).get("final_damage", 0.0)),
+            ),
+            reverse=True,
+        )[: max(0, max_beats - 2)]
+        chosen_indices = {exchanges[0]["exchange_index"], exchanges[-1]["exchange_index"]} | {
+            e["exchange_index"] for e in scored
+        }
+        selected = [e for e in exchanges if e["exchange_index"] in chosen_indices][:max_beats]
+
+    beats: List[AtomicCausalBeat] = []
+    for idx, ex in enumerate(selected, start=1):
+        att_id = str(ex["attacker_id"])
+        def_id = str(ex["defender_id"])
+        att_name = names.get(att_id, att_id)
+        def_name = names.get(def_id, def_id)
+        tid = str(ex["technique_id"])
+        outcome = str(ex["outcome"])
+        posture = ex["defender_posture_before"]
+        kick = ex.get("kick_anatomy")
+        dmg = ex["damage"]
+        counter = ex.get("counter_followup")
+        pos_after = str(ex["grappling_position"])
+
+        prep = (
+            f"At {ex['range']} range ({ex['lead_foot_matchup']}), {def_name} holds {posture['guard_id']} "
+            f"with {posture['weight_split']} weight and {posture['head_position']} head alignment "
+            f"(lane {ex['attack_lane']} readiness {ex['lane_readiness_score']:.2f})"
+        )
+        if kick:
+            commit = (
+                f"{att_name} executes `{tid}` from `{ex['active_slot_id']}` using `{kick['kicking_leg']}` "
+                f"({kick['chamber']} chamber, {kick['support_foot']} support pivot, {kick['path']} path)"
+            )
+            surface = kick["striking_surface"]
+        else:
+            commit = f"{att_name} initiates `{tid}` from `{ex['active_slot_id']}` along the `{ex['attack_lane']}` lane"
+            surface = "striking limb"
+
+        if outcome in ("clean", "flush", "partial"):
+            contact = (
+                f"{att_name}'s {surface} lands `{outcome}` on {def_name}'s {dmg['target_region']} "
+                f"(card-derived damage {dmg['final_damage']:.2f})"
+            )
+            consequence = (
+                f"From that impact, {def_name}'s balance shifts to `{ex['state_changes']['defender_balance']}` "
+                f"in `{pos_after}` position"
+            )
+        elif outcome == "checked":
+            contact = (
+                f"{def_name} raises a hard shin block (`{ex['defense_used']}`) that meets {att_name}'s kicking shin on contact"
+            )
+            consequence = (
+                f"From the shin-on-shin collision, {att_name} absorbs {dmg['recoil_leg_damage_to_attacker']:.2f} "
+                f"recoil leg damage and stumbles onto compromised support"
+            )
+        elif outcome == "caught" and counter:
+            contact = (
+                f"{def_name} traps {att_name}'s kicking leg with `{ex['defense_used']}` and immediately sweeps the standing support "
+                f"with `{counter['technique_id']}`"
+            )
+            consequence = (
+                f"From the caught-kick dump, {att_name} crashes to the mat for {counter['damage']['final_damage']:.2f} "
+                f"counter damage into `{pos_after}`"
+            )
+        elif counter:
+            contact = (
+                f"{def_name} uses `{ex['defense_used']}` to clear `{tid}` and fires an immediate counter `{counter['technique_id']}` "
+                f"to {att_name}'s {counter['damage']['target_region']}"
+            )
+            consequence = (
+                f"From the counter strike, {att_name} takes {counter['damage']['final_damage']:.2f} damage "
+                f"while {def_name} takes the angle"
+            )
+        else:
+            contact = f"{def_name} neutralizes `{tid}` with `{ex['defense_used'] or outcome}` across the `{ex['attack_lane']}` lane"
+            consequence = f"With the attack denied, {def_name} preserves `{ex['state_changes']['defender_balance']}` balance"
+
+        rec_win = ex["state_changes"]["attacker_recovery_window"]
+        slot_note = f" and switches gameplan to `{ex['slot_switched_to']}`" if ex.get("slot_switched_to") else ""
+        recovery = (
+            f"{att_name} retracts through `{rec_win}` recovery{slot_note} while {def_name} resets guard in `{pos_after}`"
+        )
+
+        beats.append(
+            AtomicCausalBeat(
+                beat_id=f"BEAT_{idx:02d}",
+                title=f"{ex['t_start']:.2f}s-{ex['t_end']:.2f}s | {att_name} `{tid}` -> {outcome.upper()}",
+                named_contact_id=f"ex_{ex['exchange_index']}_{tid}_{outcome}",
+                view="locked 180-degree full-body profile framing",
+                prep=prep,
+                commit=commit,
+                contact=contact,
+                consequence=consequence,
+                recovery=recovery,
+                license="1-frame contact accent on primary collision only",
+                a_support_after="mat" if pos_after in ("side_control", "half_guard_top", "closed_guard_bottom", "mount_or_back_ride") else "two_feet",
+                b_support_after="mat" if pos_after in ("side_control", "half_guard_top", "closed_guard_bottom", "mount_or_back_ride") else "two_feet",
+            )
+        )
+
+    return {
+        "beat_count": len(beats),
+        "labeled_ir": "\n\n".join(b.render_labeled_block() for b in beats),
+        "unlabeled_prose": "\n\n".join(b.render_unlabeled_seedance_sentence() for b in beats),
+        "beats": [
+            {
+                "beat_id": b.beat_id,
+                "title": b.title,
+                "labeled_ir": b.render_labeled_block(),
+                "unlabeled_prose": b.render_unlabeled_seedance_sentence(),
+            }
+            for b in beats
+        ],
+    }
