@@ -23,6 +23,7 @@ from typing import Dict
 from engine.ontology import Knowledge
 from engine.simulator_v2 import (
     ARENA_PRESETS,
+    audit_option_coverage_v2,
     audit_round_robin_balance_v2,
     compile_simulated_fight_to_atomic_beats,
     list_archetypes_v2,
@@ -152,6 +153,28 @@ def _format_balance_audit_text(audit: Dict[str, object]) -> str:
     return "\n".join(lines)
 
 
+def _format_option_audit_text(rep: Dict[str, object]) -> str:
+    lines = [
+        f"BLOCK Fight Simulator v2 — 57-Option Coverage & Viability Audit ({rep['runs_per_matchup']} seeds/matchup vs 12 archetypes)",
+        f"Total Options Tested: {rep['total_options_tested']} | Used on 12 Canonical Cards: {rep['canonical_used_count']} | Custom-Only Options Exercised: {rep['custom_only_tested_count']}",
+        f"All 57 Viable (No Dominant/Dead): {rep['all_57_viable']} | Dominant: {len(rep['dominant_options'])} | Dead/Weak: {len(rep['dead_options'])}",
+        "=" * 92,
+    ]
+    for dim, dinfo in rep["by_dimension"].items():
+        lines.append(
+            f"[{dim.upper()}] Mean={float(dinfo['dimension_mean_win_rate'])*100:.1f}% | "
+            f"Range=[{float(dinfo['min_win_rate'])*100:.1f}%, {float(dinfo['max_win_rate'])*100:.1f}%] | "
+            f"Spread={float(dinfo['spread'])*100:.1f}%"
+        )
+        for o in dinfo["options"]:
+            tag = "canonical-12" if o["used_on_canonical_12"] else "CUSTOM-TESTED"
+            lines.append(
+                f"  - {o['option_id']:<26} | win_rate={float(o['win_rate'])*100:5.1f}% | "
+                f"delta={float(o['delta_vs_dimension_mean'])*100:+5.1f}% | {tag:<13} | [{o['status']}]"
+            )
+    return "\n".join(lines)
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(
         description="Simulate fights between predefined BLOCK v2 fighter archetypes."
@@ -160,6 +183,7 @@ def main(argv=None) -> int:
     parser.add_argument("fighter_b", nargs="?", help="Second fighter archetype ID or card path (e.g., wrestler, detroit, karate)")
     parser.add_argument("--list-archetypes", action="store_true", help="List all 12 predefined block-2 fighter archetypes and exit")
     parser.add_argument("--balance-audit", action="store_true", help="Run round-robin balance audit across all 12 archetypes and report Top-3 causes")
+    parser.add_argument("--option-audit", action="store_true", help="Swap each of the 57 options into a neutral probe card and audit viability across the roster")
     parser.add_argument("--ruleset", default="mma", choices=["mma", "boxing"], help="Combat ruleset (default: mma)")
     parser.add_argument("--arena", default="cage", choices=sorted(ARENA_PRESETS.keys()), help="2D arena preset (default: cage)")
     parser.add_argument("--vertical-mode", default="grounded", choices=["grounded", "athletic", "wall_assisted"], help="Vertical mode (default: grounded)")
@@ -194,6 +218,21 @@ def main(argv=None) -> int:
             print(json.dumps(audit, indent=2))
         else:
             print(_format_balance_audit_text(audit))
+        return 0
+
+    if args.option_audit:
+        opt_runs = args.runs if args.runs > 0 else 20
+        rep = audit_option_coverage_v2(
+            runs_per_matchup=opt_runs,
+            ruleset=args.ruleset,
+            duration_s=args.duration,
+            arena=args.arena,
+            knowledge=k,
+        )
+        if args.json:
+            print(json.dumps(rep, indent=2))
+        else:
+            print(_format_option_audit_text(rep))
         return 0
 
     if not args.fighter_a or not args.fighter_b:

@@ -80,6 +80,27 @@
       "type": "object",
       "required": ["1", "2", "3", "4"]
     },
+    "diminishing_returns": {
+      "type": "object",
+      "required": [
+        "posture_asymptote",
+        "readiness_compression",
+        "min_readiness",
+        "max_readiness",
+        "tempo_defensive_damping"
+      ]
+    },
+    "tempo_rules": {
+      "type": "object",
+      "required": [
+        "initiative_base",
+        "initiative_per_point",
+        "entry_per_point",
+        "low_tempo_readiness_per_point",
+        "low_tempo_counter_per_point",
+        "fatigue_by_tempo"
+      ]
+    },
     "arena_presets": {"type": "object"}
   },
   "additionalProperties": false

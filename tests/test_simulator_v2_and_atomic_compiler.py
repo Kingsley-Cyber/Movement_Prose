@@ -345,3 +345,76 @@ def test_fairness_rules_native_defense_and_round_robin_balance_band(knowledge, c
         assert len(pair["top_3_causes"]) == 3
 
 
+def test_attack_defense_separation_distinct_options_diminishing_returns_and_57_option_audit(knowledge, cards):
+    from engine.simulator_v2 import LANES, audit_option_coverage_v2
+
+    opt_map = {o["id"]: o for o in read(ROOT / "data/option_behaviors.json")["options"]}
+    assert len(opt_map) == 57
+
+    # 1. Attack options (target, kicking, mentality except defensive) never grant positive defensive lane readiness!
+    for oid, beh in opt_map.items():
+        dim = beh["dimension"]
+        if dim in ("target", "kicking") or (dim == "mentality" and oid != "mentality.defensive"):
+            for lane, val in beh["lane_readiness_bonus"].items():
+                assert float(val) <= 0.0, f"Attack option {oid} has positive defense bonus {val} on lane {lane}"
+
+    # 2. Distinct non-copy-pasted values across guards, ties, and kick schools
+    assert opt_map["hands.dutch_guard"]["lane_readiness_bonus"] != opt_map["hands.high_guard"]["lane_readiness_bonus"]
+    # Peekaboo is no longer strictly >= high_guard on every lane (high_guard is better against leg/entry/uppercut)
+    assert opt_map["hands.high_guard"]["lane_readiness_bonus"]["head_uppercut"] > opt_map["hands.peekaboo"]["lane_readiness_bonus"]["head_uppercut"]
+    assert opt_map["hands.high_guard"]["lane_readiness_bonus"]["entry"] > opt_map["hands.peekaboo"]["lane_readiness_bonus"]["entry"]
+
+    tie_sweeps = [opt_map[oid]["attack_profile"]["sweep_resistance"] for oid in opt_map if oid.startswith("tie.")]
+    assert len(tie_sweeps) == 8 and len(set(tie_sweeps)) == 8, f"Tie sweep resistances not distinct: {tie_sweeps}"
+
+    kick_retracts = [opt_map[oid]["attack_profile"]["kick_retraction_delta"] for oid in opt_map if oid.startswith("kicking.")]
+    assert len(kick_retracts) == 6 and len(set(kick_retracts)) == 6, f"Kick retractions not distinct: {kick_retracts}"
+
+    # 3. Diminishing returns instead of hard cap: Donnell's 3-layer stack beats a 1-layer high_guard on head_straight
+    donnell = cards["donnell"]
+    lone_guard_card = copy.deepcopy(donnell)
+    lone_guard_card["dimensions"]["defense"] = "defense.check_frame"
+    lone_guard_card["dimensions"]["stance"] = "stance.balanced"
+    fresh = {
+        "posture_mode": "standing",
+        "balance": "stable",
+        "grip": None,
+        "sub_grips": {"underhooks": 0},
+        "wall_proximity": "far",
+        "damage": {"head": 0.0, "body": 0.0, "leg": 0.0},
+        "fatigue": 0.0,
+        "recovery_window": {"window_type": "none", "exposed_lanes": [], "readiness_penalty": 0.0},
+        "attention": {"focus_line": "neutral", "feinted": False, "outside_angle_conceded": False},
+        "read_memory": {"seen_counts": {}, "consecutive_same_move_by_opponent": 0},
+    }
+    r_layered = compute_readiness_profile(knowledge, donnell, fresh, lone_guard_card, fresh, "punch", "closed_stance", "jab", opt_map)
+    r_single = compute_readiness_profile(knowledge, lone_guard_card, fresh, donnell, fresh, "punch", "closed_stance", "jab", opt_map)
+    assert r_layered["head_straight"] > r_single["head_straight"]
+
+    # 4. Realism: stance.shuffle is an entry/angle/feint specialist, and defense.outfight collapses on the wall
+    assert opt_map["stance.shuffle"]["lane_readiness_bonus"]["entry"] >= 0.60
+    assert opt_map["stance.shuffle"]["lane_readiness_bonus"]["head_straight"] <= 0.30
+    assert opt_map["stance.shuffle"]["attack_profile"]["entry_delta"] >= 0.35
+
+    aya = cards["karate"]
+    wall_state = copy.deepcopy(fresh)
+    wall_state["wall_proximity"] = "near"
+    r_aya_center = compute_readiness_profile(knowledge, aya, fresh, donnell, fresh, "kick", "open_stance", "cross", opt_map)
+    r_aya_wall = compute_readiness_profile(knowledge, aya, wall_state, donnell, fresh, "kick", "open_stance", "cross", opt_map)
+    assert r_aya_wall["head_straight"] < r_aya_center["head_straight"] - 0.60
+    assert select_kick_defense(aya, "head_kick", "kick", wall_proximity="near") == ("shell_block", "blocked")
+
+    # 5. Mio restored to her 4 custom options + 57-option coverage audit exercises all 57 options
+    mio = knowledge.card("sanda_judo")
+    assert mio["dimensions"]["hands"] == "hands.cross_arm"
+    assert mio["dimensions"]["stance"] == "stance.shuffle"
+    assert mio["dimensions"]["target"] == "target.leg_chopper"
+    assert mio["dimensions"]["mentality"] == "mentality.slickster"
+
+    opt_audit = audit_option_coverage_v2(runs_per_matchup=10, knowledge=knowledge)
+    assert opt_audit["total_options_tested"] == 57
+    assert opt_audit["all_57_viable"] is True, f"Dominant: {opt_audit['dominant_options']}, Dead: {opt_audit['dead_options']}"
+    assert set(opt_audit["by_dimension"].keys()) == {"hands", "defense", "stance", "tie", "target", "kicking", "mentality"}
+
+
+

@@ -4,13 +4,13 @@
   "name": "Mio Tsukihara",
   "combat_identity": "Sanda kick-catcher & Judo trip counter",
   "dimensions": {
-    "hands": "hands.high_guard",
+    "hands": "hands.cross_arm",
     "defense": "defense.parry_catch",
-    "stance": "stance.balanced",
+    "stance": "stance.shuffle",
     "tie": "tie.judo_sambo",
-    "target": "target.mixer",
+    "target": "target.leg_chopper",
     "kicking": "kicking.sanda",
-    "mentality": "mentality.counter"
+    "mentality": "mentality.slickster"
   },
   "adaptation": "mma",
   "orientation": "orthodox",
@@ -100,22 +100,22 @@
     "kick",
     "clinch"
   ],
-  "debt_sentence": "Catch kicks into a standing sweep or body-lock outer reap; high guard vision and committed sweep recovery leave straight-line seams.",
+  "debt_sentence": "Shuffle in behind a cross-arm shield to chop the lead leg or catch kicks into a Sanda sweep; single-support bounce and uppercut seams remain exposed.",
   "exploitable_seams": [
-    "debt.hands.high_guard.body",
-    "debt.hands.high_guard.vision",
+    "debt.hands.cross_arm.head_uppercut",
+    "debt.hands.cross_arm.recovery",
     "debt.defense.parry_catch.head_hook",
     "debt.defense.parry_catch.body",
-    "debt.stance.balanced.tempo",
-    "debt.stance.balanced.head_straight",
+    "debt.stance.shuffle.single_support",
+    "debt.stance.shuffle.tempo",
     "debt.tie.judo_sambo.tempo",
     "debt.tie.judo_sambo.ground",
-    "debt.target.mixer.recovery",
-    "debt.target.mixer.tempo",
+    "debt.target.leg_chopper.single_support",
+    "debt.target.leg_chopper.head_straight",
     "debt.kicking.sanda.head_straight",
     "debt.kicking.sanda.recovery",
-    "debt.mentality.counter.tempo",
-    "debt.mentality.counter.wall"
+    "debt.mentality.slickster.wall",
+    "debt.mentality.slickster.head_straight"
   ],
   "active_techniques": [
     "step",

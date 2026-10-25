@@ -15,6 +15,7 @@
           "id",
           "dimension",
           "lane_readiness_bonus",
+          "attack_profile",
           "damage_dealt_multiplier",
           "damage_taken_multiplier",
           "posture_profile",
@@ -49,6 +50,45 @@
               "single_support": {"type": "number"}
             },
             "additionalProperties": false
+          },
+          "attack_profile": {
+            "type": "object",
+            "required": [
+              "power_delta",
+              "accuracy_delta",
+              "entry_delta",
+              "distance_control_delta",
+              "counter_tendency",
+              "counter_power_delta",
+              "sweep_resistance",
+              "kick_retraction_delta",
+              "kick_catch_bonus",
+              "read_decay_factor",
+              "read_gain_multiplier",
+              "feint_setup_rate",
+              "leg_compromise_threshold_delta",
+              "favored_lanes"
+            ],
+            "properties": {
+              "power_delta": {"type": "number"},
+              "accuracy_delta": {"type": "number"},
+              "entry_delta": {"type": "number"},
+              "distance_control_delta": {"type": "number"},
+              "counter_tendency": {"type": "number"},
+              "counter_power_delta": {"type": "number"},
+              "sweep_resistance": {"type": "number"},
+              "kick_retraction_delta": {"type": "number"},
+              "kick_catch_bonus": {"type": "number"},
+              "read_decay_factor": {"type": "number"},
+              "read_gain_multiplier": {"type": "number"},
+              "feint_setup_rate": {"type": "number"},
+              "leg_compromise_threshold_delta": {"type": "number"},
+              "favored_lanes": {
+                "type": "array",
+                "items": {"type": "string"}
+              }
+            },
+            "additionalProperties": true
           },
           "damage_dealt_multiplier": {"type": "number", "minimum": 0.5, "maximum": 2.0},
           "damage_taken_multiplier": {"type": "number", "minimum": 0.5, "maximum": 2.0},

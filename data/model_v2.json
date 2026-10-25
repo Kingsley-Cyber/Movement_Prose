@@ -15,22 +15,22 @@
     "base_readiness": 3.0,
     "guard_weight": 1.0,
     "method_weight": 1.0,
-    "stance_weight": 0.9
+    "stance_weight": 0.85
   },
   "state_modifiers": {
     "recovery_window_penalty_scale": 1.0,
-    "compromised_balance_penalty": -1.1,
-    "off_base_balance_penalty": -1.85,
-    "outside_angle_penalty": -1.25,
-    "open_stance_rear_lane_penalty": -0.55,
-    "wall_near_outfight_penalty": -1.4,
-    "feint_attention_penalty": -1.15,
+    "compromised_balance_penalty": -0.95,
+    "off_base_balance_penalty": -1.65,
+    "outside_angle_penalty": -1.1,
+    "open_stance_rear_lane_penalty": -0.35,
+    "wall_near_outfight_penalty": -1.25,
+    "feint_attention_penalty": -1.1,
     "repeated_move_read_bonus": 0.85,
-    "novel_move_surprise_penalty": -0.3,
-    "fatigue_per_point_penalty": -0.14,
-    "head_damage_reaction_penalty": -0.22,
-    "body_damage_high_guard_drop": -0.25,
-    "leg_damage_check_and_mobility_penalty": -0.32
+    "novel_move_surprise_penalty": -0.2,
+    "fatigue_per_point_penalty": -0.1,
+    "head_damage_reaction_penalty": -0.1,
+    "body_damage_high_guard_drop": -0.14,
+    "leg_damage_check_and_mobility_penalty": -0.2
   },
   "landing_multipliers": {
     "evaded": 0.0,
@@ -54,6 +54,27 @@
     "2": 1.05,
     "3": 1.0,
     "4": 0.95
+  },
+  "diminishing_returns": {
+    "posture_asymptote": 2.4,
+    "readiness_compression": 0.62,
+    "min_readiness": 1.45,
+    "max_readiness": 4.85,
+    "tempo_defensive_damping": 0.65
+  },
+  "tempo_rules": {
+    "initiative_base": 3.0,
+    "initiative_per_point": 0.3,
+    "entry_per_point": 0.08,
+    "low_tempo_readiness_per_point": 0.22,
+    "low_tempo_counter_per_point": 0.05,
+    "fatigue_by_tempo": {
+      "1": 0.22,
+      "2": 0.28,
+      "3": 0.34,
+      "4": 0.39,
+      "5": 0.44
+    }
   },
   "arena_presets": {
     "ring": {

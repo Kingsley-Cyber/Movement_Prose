@@ -29,54 +29,162 @@ LANES = [
 ]
 
 
+DEFAULT_ATTACK_PROFILE = {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [],
+}
+
+HANDS_TABLE = {
+    "hands.high_guard": {
+        "head_position": "centerline_tucked",
+        "vision": 2,
+        "decay": 0.09,
+        "dmg_taken": 0.92,
+        "bonuses": {"head_straight": 1.55, "head_hook": 1.45, "head_uppercut": 0.45, "body": -0.70, "leg": 0.0, "entry": -0.25, "clinch": 0.0, "single_support": 0.0},
+        "attack": {},
+    },
+    "hands.dutch_guard": {
+        "head_position": "centerline_tucked",
+        "vision": 3,
+        "decay": 0.08,
+        "dmg_taken": 0.93,
+        "bonuses": {"head_straight": 1.25, "head_hook": 1.50, "head_uppercut": 0.35, "body": -0.50, "leg": 0.30, "entry": -0.55, "clinch": 0.0, "single_support": 0.15},
+        "attack": {"accuracy_delta": 0.08, "power_delta": 0.04, "favored_lanes": ["head_hook", "leg"]},
+    },
+    "hands.peekaboo": {
+        "head_position": "off_center",
+        "vision": 2,
+        "decay": 0.09,
+        "dmg_taken": 0.94,
+        "bonuses": {"head_straight": 1.35, "head_hook": 1.25, "head_uppercut": 0.25, "body": 0.15, "leg": -0.75, "entry": -0.35, "clinch": 0.0, "single_support": 0.0},
+        "attack": {"power_delta": 0.06, "entry_delta": 0.12, "favored_lanes": ["head_hook", "head_uppercut"]},
+    },
+    "hands.philly_shell": {
+        "head_position": "off_center",
+        "vision": 4,
+        "decay": 0.05,
+        "dmg_taken": 0.94,
+        "bonuses": {"head_straight": 1.25, "head_hook": 0.65, "head_uppercut": 0.40, "body": 0.70, "leg": -0.25, "entry": -0.45, "clinch": 0.0, "single_support": 0.0},
+        "attack": {"counter_tendency": 0.12, "counter_power_delta": 0.10, "accuracy_delta": 0.08, "favored_lanes": ["head_straight", "head_uppercut"]},
+    },
+    "hands.cross_arm": {
+        "head_position": "centerline_tucked",
+        "vision": 2,
+        "decay": 0.07,
+        "dmg_taken": 0.91,
+        "bonuses": {"head_straight": 0.65, "head_hook": 1.20, "head_uppercut": -0.55, "body": 1.35, "leg": -0.40, "entry": -0.30, "clinch": 0.15, "single_support": 0.0},
+        "attack": {"power_delta": 0.05, "favored_lanes": ["head_hook", "body"]},
+    },
+    "hands.long_guard": {
+        "head_position": "centerline_tucked",
+        "vision": 5,
+        "decay": 0.07,
+        "dmg_taken": 0.95,
+        "bonuses": {"head_straight": 1.25, "head_hook": 0.45, "head_uppercut": 0.25, "body": -0.75, "leg": 0.20, "entry": 0.75, "clinch": -0.45, "single_support": 0.0},
+        "attack": {"accuracy_delta": 0.06, "distance_control_delta": 0.35, "favored_lanes": ["head_straight", "body"]},
+    },
+    "hands.helmet": {
+        "head_position": "centerline_tucked",
+        "vision": 1,
+        "decay": 0.09,
+        "dmg_taken": 0.90,
+        "bonuses": {"head_straight": 0.85, "head_hook": 1.55, "head_uppercut": 1.25, "body": -1.05, "leg": -0.30, "entry": 0.20, "clinch": 0.25, "single_support": 0.0},
+        "attack": {"entry_delta": 0.15, "favored_lanes": ["clinch", "body"]},
+    },
+    "hands.shield52": {
+        "head_position": "off_center",
+        "vision": 3,
+        "decay": 0.07,
+        "dmg_taken": 0.93,
+        "bonuses": {"head_straight": 1.20, "head_hook": 0.55, "head_uppercut": 0.40, "body": -0.60, "leg": 0.0, "entry": 0.0, "clinch": -0.50, "single_support": 0.0},
+        "attack": {"counter_tendency": 0.06, "accuracy_delta": 0.06, "favored_lanes": ["head_uppercut", "head_hook"]},
+    },
+    "hands.hands_down": {
+        "head_position": "centerline_high",
+        "vision": 5,
+        "decay": 0.04,
+        "dmg_taken": 1.02,
+        "bonuses": {"head_straight": -0.65, "head_hook": -0.60, "head_uppercut": -0.25, "body": 0.35, "leg": 0.30, "entry": 0.65, "clinch": 0.15, "single_support": 0.10},
+        "attack": {"power_delta": 0.08, "accuracy_delta": 0.14, "counter_tendency": 0.08, "feint_setup_rate": 0.16, "favored_lanes": ["head_straight", "body"]},
+    },
+    "hands.kronk": {
+        "head_position": "off_center",
+        "vision": 5,
+        "decay": 0.05,
+        "dmg_taken": 1.00,
+        "bonuses": {"head_straight": -0.35, "head_hook": -0.95, "head_uppercut": -0.20, "body": 0.20, "leg": 0.0, "entry": -0.55, "clinch": 0.0, "single_support": 0.0},
+        "attack": {"power_delta": 0.12, "accuracy_delta": 0.12, "favored_lanes": ["head_straight"]},
+    },
+}
+
 DEFENSE_TABLE = {
     "defense.slip_roll": {
         "deps": ["seeing the shot (vision >= 3)", "head off centerline", "flexible base"],
         "breaks": ["tired (fatigue >= 5)", "hurt head (head damage >= 4)", "vision blocked", "uppercuts (head_uppercut)"],
-        "bonuses": {"head_straight": 1.6, "head_hook": 1.3, "head_uppercut": -0.7, "body": 0.2, "leg": -0.3, "entry": 0.0, "clinch": -0.4, "single_support": 0.1},
+        "bonuses": {"head_straight": 1.45, "head_hook": 1.20, "head_uppercut": -0.65, "body": 0.20, "leg": -0.30, "entry": 0.0, "clinch": -0.40, "single_support": 0.10},
         "dmg_taken": 0.90,
+        "attack": {"counter_tendency": 0.10, "favored_lanes": ["head_hook", "body"]},
     },
     "defense.parry_catch": {
         "deps": ["reading the rhythm", "hands up and relaxed", "kick_catch timing"],
         "breaks": ["feints", "hooks around the guard (head_hook)", "body level changes (body)"],
-        "bonuses": {"head_straight": 1.7, "head_hook": -0.6, "head_uppercut": 0.4, "body": -0.5, "leg": 0.5, "entry": 0.2, "clinch": 0.2, "single_support": 1.1},
+        "bonuses": {"head_straight": 1.50, "head_hook": -0.55, "head_uppercut": 0.35, "body": -0.45, "leg": 0.45, "entry": 0.20, "clinch": 0.20, "single_support": 0.95},
         "dmg_taken": 0.92,
+        "attack": {"counter_tendency": 0.10, "kick_catch_bonus": 0.12, "favored_lanes": ["head_straight", "single_support"]},
     },
     "defense.block_absorb": {
         "deps": ["solid guard integrity", "rooted feet"],
         "breaks": ["body damage builds (body >= 4)", "guard integrity wears down", "blinded vision"],
-        "bonuses": {"head_straight": 1.1, "head_hook": 1.2, "head_uppercut": 0.6, "body": -0.6, "leg": -0.2, "entry": -0.1, "clinch": 0.3, "single_support": -0.1},
+        "bonuses": {"head_straight": 1.05, "head_hook": 1.15, "head_uppercut": 0.55, "body": -0.55, "leg": -0.25, "entry": -0.10, "clinch": 0.30, "single_support": -0.10},
         "dmg_taken": 0.85,
+        "attack": {"power_delta": 0.04, "favored_lanes": ["head_hook"]},
     },
     "defense.outfight": {
         "deps": ["room behind (wall_proximity == far)", "mobile feet (leg damage < 4)"],
         "breaks": ["backed onto the wall or in the corner", "hurt legs (leg damage >= 4)", "high-tempo swarmer pressure"],
-        "bonuses": {"head_straight": 1.2, "head_hook": 1.1, "head_uppercut": 1.0, "body": 0.9, "leg": 0.8, "entry": 0.9, "clinch": -0.3, "single_support": 0.4},
+        "bonuses": {"head_straight": 0.75, "head_hook": 0.65, "head_uppercut": 0.55, "body": 0.50, "leg": 0.45, "entry": 0.55, "clinch": -0.45, "single_support": 0.20},
         "dmg_taken": 0.92,
+        "attack": {"distance_control_delta": 0.55, "counter_tendency": 0.08, "favored_lanes": ["head_straight", "body"]},
     },
     "defense.shoulder_roll": {
         "deps": ["bladed stance", "timing", "lead shoulder raised"],
         "breaks": ["hooks from the open side", "low kicks to the bladed lead leg", "clinch ties"],
-        "bonuses": {"head_straight": 1.7, "head_hook": -0.5, "head_uppercut": 0.8, "body": 0.7, "leg": -0.8, "entry": -0.4, "clinch": -0.5, "single_support": -0.2},
+        "bonuses": {"head_straight": 1.55, "head_hook": -0.50, "head_uppercut": 0.75, "body": 0.65, "leg": -0.75, "entry": -0.40, "clinch": -0.45, "single_support": -0.20},
         "dmg_taken": 0.89,
+        "attack": {"counter_tendency": 0.12, "counter_power_delta": 0.12, "favored_lanes": ["head_straight", "head_uppercut"]},
     },
     "defense.check_frame": {
         "deps": ["weight on back leg or balanced", "seeing the kick", "uncompromised support leg"],
         "breaks": ["front-loaded weight split", "mid-switch transition", "tired or battered legs", "body punches"],
-        "bonuses": {"head_straight": 0.6, "head_hook": 0.4, "head_uppercut": 0.3, "body": -0.5, "leg": 1.9, "entry": 0.3, "clinch": 0.8, "single_support": -0.6},
+        "bonuses": {"head_straight": 0.55, "head_hook": 0.35, "head_uppercut": 0.25, "body": -0.45, "leg": 1.65, "entry": 0.25, "clinch": 0.70, "single_support": -0.50},
         "dmg_taken": 0.91,
+        "attack": {"distance_control_delta": 0.15, "favored_lanes": ["leg", "body"]},
     },
     "defense.sprawl_pummel": {
         "deps": ["hips high and back", "reaction time", "unfeinted vision"],
         "breaks": ["stance too low or too upright", "high fatigue", "a high-line feint before the shot"],
-        "bonuses": {"head_straight": -0.5, "head_hook": -0.2, "head_uppercut": 0.2, "body": 0.4, "leg": 0.3, "entry": 2.1, "clinch": 1.5, "single_support": 0.6},
+        "bonuses": {"head_straight": 0.25, "head_hook": 0.20, "head_uppercut": 0.25, "body": 0.35, "leg": 0.25, "entry": 1.85, "clinch": 1.35, "single_support": 0.55},
         "dmg_taken": 0.94,
+        "attack": {"entry_delta": 0.10, "favored_lanes": ["entry", "clinch"]},
     },
     "defense.smother": {
         "deps": ["closing distance first", "inside head position"],
         "breaks": ["opponent has superior clinch grips or ties", "intercepting knees/uppercuts on entry"],
-        "bonuses": {"head_straight": 0.7, "head_hook": 0.9, "head_uppercut": -0.4, "body": 0.8, "leg": 0.9, "entry": -0.5, "clinch": -0.5, "single_support": 0.2},
+        "bonuses": {"head_straight": 0.65, "head_hook": 0.85, "head_uppercut": -0.40, "body": 0.70, "leg": 0.75, "entry": -0.45, "clinch": -0.45, "single_support": 0.20},
         "dmg_taken": 0.90,
+        "attack": {"entry_delta": 0.22, "favored_lanes": ["clinch", "body"]},
     },
 }
 
@@ -91,29 +199,32 @@ STANCE_PROFILES = {
         "dmg_taken": 1.00,
         "deps": ["rear-leg weight distribution for fast shin checks and teeps", "tall posture"],
         "breaks": ["level-change takedown entries (entry)", "body hooks under high elbows (body)"],
-        "bonuses": {"head_straight": 0.3, "head_hook": 0.2, "head_uppercut": 0.4, "body": -0.6, "leg": 1.3, "entry": -0.8, "clinch": 0.9, "single_support": 0.5},
+        "bonuses": {"head_straight": 0.30, "head_hook": 0.20, "head_uppercut": 0.40, "body": -0.55, "leg": 1.25, "entry": -0.75, "clinch": 0.85, "single_support": 0.85},
+        "attack": {"power_delta": 0.00, "distance_control_delta": 0.10, "favored_lanes": ["leg", "clinch"]},
     },
     "stance.bladed": {
         "weight_split": "balanced",
         "height": "medium",
         "hip_angle": "bladed",
         "base_width": "narrow_mobile",
-        "dmg_dealt": 0.94,
+        "dmg_dealt": 1.00,
         "dmg_taken": 0.94,
         "deps": ["narrow target silhouette", "in-and-out linear mobility"],
         "breaks": ["low kicks to the turned lead leg (leg)", "direct takedown entries (entry)"],
-        "bonuses": {"head_straight": 1.1, "head_hook": 0.3, "head_uppercut": 0.5, "body": 0.8, "leg": -0.9, "entry": -0.6, "clinch": -0.3, "single_support": 0.1},
+        "bonuses": {"head_straight": 0.95, "head_hook": 0.25, "head_uppercut": 0.45, "body": 0.70, "leg": -0.85, "entry": -0.55, "clinch": -0.30, "single_support": 0.10},
+        "attack": {"accuracy_delta": 0.12, "distance_control_delta": 0.35, "favored_lanes": ["head_straight", "body"]},
     },
     "stance.crouch": {
         "weight_split": "front_heavy",
         "height": "low_crouch",
         "hip_angle": "squared",
         "base_width": "wide_rooted",
-        "dmg_dealt": 1.15,
+        "dmg_dealt": 1.12,
         "dmg_taken": 0.96,
         "deps": ["low center of gravity", "loaded legs for hooks and level changes"],
         "breaks": ["rising uppercuts and knees (head_uppercut)", "low kicks to the heavy lead leg (leg)"],
-        "bonuses": {"head_straight": 0.9, "head_hook": 0.6, "head_uppercut": -0.9, "body": 0.5, "leg": -0.8, "entry": 0.8, "clinch": 0.4, "single_support": -0.3},
+        "bonuses": {"head_straight": 0.80, "head_hook": 0.55, "head_uppercut": -0.85, "body": 0.45, "leg": -0.75, "entry": 0.75, "clinch": 0.35, "single_support": -0.30},
+        "attack": {"power_delta": 0.12, "entry_delta": 0.30, "favored_lanes": ["head_hook", "body", "entry"]},
     },
     "stance.balanced": {
         "weight_split": "balanced",
@@ -124,40 +235,235 @@ STANCE_PROFILES = {
         "dmg_taken": 0.98,
         "deps": ["50/50 weight split", "even readiness to strike or sprawl"],
         "breaks": ["high-tempo specialists overloading one lane", "straight center probes (head_straight)"],
-        "bonuses": {"head_straight": -0.3, "head_hook": 0.4, "head_uppercut": 0.4, "body": 0.4, "leg": 0.5, "entry": 0.9, "clinch": 0.6, "single_support": 0.5},
+        "bonuses": {"head_straight": -0.25, "head_hook": 0.35, "head_uppercut": 0.35, "body": 0.35, "leg": 0.45, "entry": 0.80, "clinch": 0.55, "single_support": 0.45},
+        "attack": {"accuracy_delta": 0.05, "favored_lanes": ["head_straight", "entry"]},
     },
     "stance.planted": {
         "weight_split": "front_heavy",
         "height": "medium",
         "hip_angle": "squared",
         "base_width": "wide_rooted",
-        "dmg_dealt": 1.22,
+        "dmg_dealt": 1.20,
         "dmg_taken": 1.04,
         "deps": ["rooted two-foot base generating maximum punch torque and push resistance"],
         "breaks": ["lateral angle pivots (angle)", "calf and thigh kicks to rooted lead leg (leg)"],
-        "bonuses": {"head_straight": 0.2, "head_hook": 0.4, "head_uppercut": 0.3, "body": 0.4, "leg": -1.0, "entry": 0.4, "clinch": 0.7, "single_support": -0.5},
+        "bonuses": {"head_straight": 0.20, "head_hook": 0.40, "head_uppercut": 0.30, "body": 0.40, "leg": -0.95, "entry": 0.40, "clinch": 0.65, "single_support": -0.50},
+        "attack": {"power_delta": 0.20, "favored_lanes": ["head_hook", "head_straight"]},
     },
     "stance.switch": {
         "weight_split": "neutral",
         "height": "medium",
         "hip_angle": "switching",
         "base_width": "narrow_mobile",
-        "dmg_dealt": 1.08,
+        "dmg_dealt": 1.06,
         "dmg_taken": 0.98,
         "deps": ["recovered Uno changeover", "shifting lead-foot alignment"],
         "breaks": ["timed entries mid-switch (entry)", "sweeps/kicks while on single support (single_support)"],
-        "bonuses": {"head_straight": 0.6, "head_hook": 0.6, "head_uppercut": 0.4, "body": 0.4, "leg": 0.3, "entry": -0.6, "clinch": 0.1, "single_support": -0.7},
+        "bonuses": {"head_straight": 0.45, "head_hook": 0.45, "head_uppercut": 0.30, "body": 0.30, "leg": 0.25, "entry": -0.55, "clinch": 0.10, "single_support": -0.65},
+        "attack": {"accuracy_delta": 0.26, "power_delta": 0.06, "read_decay_factor": 0.75, "favored_lanes": ["head_straight", "body", "leg"]},
     },
     "stance.shuffle": {
         "weight_split": "neutral",
         "height": "upright_tall",
         "hip_angle": "bladed",
         "base_width": "narrow_mobile",
-        "dmg_dealt": 0.90,
-        "dmg_taken": 0.95,
-        "deps": ["continuous foot bounce", "open-floor space"],
+        "dmg_dealt": 0.97,
+        "dmg_taken": 0.97,
+        "deps": ["continuous foot bounce", "open-floor space to disguise entries and create angles"],
         "breaks": ["low kicks timing the bounce (leg)", "single-support sweeps (single_support)"],
-        "bonuses": {"head_straight": 0.9, "head_hook": 0.7, "head_uppercut": 0.6, "body": 0.5, "leg": -0.7, "entry": 0.3, "clinch": -0.3, "single_support": -0.7},
+        "bonuses": {"head_straight": 0.25, "head_hook": 0.15, "head_uppercut": 0.10, "body": 0.15, "leg": -0.70, "entry": 0.65, "clinch": -0.25, "single_support": -0.75},
+        "attack": {"entry_delta": 0.42, "accuracy_delta": 0.18, "feint_setup_rate": 0.22, "power_delta": -0.03, "favored_lanes": ["entry", "head_straight", "leg"]},
+    },
+}
+
+TIE_TABLE = {
+    "tie.thai_plum": {
+        "bonuses": {"head_straight": 0.0, "head_hook": 0.15, "head_uppercut": 0.90, "body": -0.50, "leg": 0.0, "entry": -0.70, "clinch": 1.15, "single_support": 0.10},
+        "attack": {"power_delta": 0.08, "sweep_resistance": 0.15, "favored_lanes": ["clinch", "body", "head_uppercut"]},
+    },
+    "tie.greco": {
+        "bonuses": {"head_straight": 0.0, "head_hook": -0.65, "head_uppercut": 0.25, "body": 0.45, "leg": -0.40, "entry": 0.35, "clinch": 1.25, "single_support": 0.20},
+        "attack": {"entry_delta": 0.18, "sweep_resistance": 0.12, "favored_lanes": ["clinch", "body"]},
+    },
+    "tie.folk_ride": {
+        "bonuses": {"head_straight": -0.55, "head_hook": 0.0, "head_uppercut": 0.0, "body": 0.25, "leg": 0.15, "entry": 0.70, "clinch": 0.85, "single_support": 0.45},
+        "attack": {"entry_delta": 0.15, "sweep_resistance": 0.20, "power_delta": 0.06, "favored_lanes": ["entry", "clinch"]},
+    },
+    "tie.freestyle": {
+        "bonuses": {"head_straight": 0.0, "head_hook": 0.0, "head_uppercut": -0.65, "body": 0.15, "leg": 0.25, "entry": 1.15, "clinch": -0.45, "single_support": 0.85},
+        "attack": {"entry_delta": 0.28, "sweep_resistance": 0.24, "favored_lanes": ["entry", "single_support"]},
+    },
+    "tie.judo_sambo": {
+        "bonuses": {"head_straight": -0.25, "head_hook": 0.10, "head_uppercut": 0.15, "body": 0.20, "leg": 0.35, "entry": 0.40, "clinch": 0.95, "single_support": 1.20},
+        "attack": {"power_delta": 0.08, "sweep_resistance": 0.32, "counter_tendency": 0.06, "favored_lanes": ["clinch", "single_support"]},
+    },
+    "tie.bjj": {
+        "bonuses": {"head_straight": -0.60, "head_hook": -0.20, "head_uppercut": 0.10, "body": 0.20, "leg": 0.0, "entry": 0.35, "clinch": 0.95, "single_support": 0.25},
+        "attack": {"sweep_resistance": 0.08, "accuracy_delta": 0.08, "favored_lanes": ["clinch"]},
+    },
+    "tie.wall_boxing": {
+        "bonuses": {"head_straight": 0.15, "head_hook": 0.75, "head_uppercut": 0.35, "body": -0.55, "leg": -0.25, "entry": -0.55, "clinch": 0.90, "single_support": 0.0},
+        "attack": {"power_delta": 0.08, "sweep_resistance": 0.10, "favored_lanes": ["head_hook", "body", "clinch"]},
+    },
+    "tie.anti_grappling": {
+        "bonuses": {"head_straight": -0.50, "head_hook": 0.0, "head_uppercut": 0.25, "body": 0.15, "leg": 0.15, "entry": 1.10, "clinch": 0.80, "single_support": 0.50},
+        "attack": {"distance_control_delta": 0.18, "sweep_resistance": 0.18, "favored_lanes": ["head_straight", "head_uppercut"]},
+    },
+}
+
+# Target, Kicking, and Mentality ONLY expose negative defensive seams in lane_readiness_bonus;
+# all of their positive strengths live in `attack_profile`!
+TARGET_TABLE = {
+    "target.head_hunter": {
+        "seams": {"body": -0.55, "entry": -0.55},
+        "dmg_dealt": 1.14,
+        "attack": {"power_delta": 0.14, "accuracy_delta": 0.06, "favored_lanes": ["head_straight", "head_hook", "head_uppercut"]},
+    },
+    "target.body_puncher": {
+        "seams": {"head_straight": -0.50, "head_uppercut": -0.55},
+        "dmg_dealt": 1.14,
+        "attack": {"power_delta": 0.14, "accuracy_delta": 0.05, "favored_lanes": ["body"]},
+    },
+    "target.leg_chopper": {
+        "seams": {"head_straight": -0.50, "single_support": -0.45},
+        "dmg_dealt": 1.16,
+        "attack": {"power_delta": 0.16, "accuracy_delta": 0.08, "leg_compromise_threshold_delta": -1.3, "favored_lanes": ["leg", "single_support"]},
+    },
+    "target.liver_ribs": {
+        "seams": {"head_hook": -0.55, "head_straight": -0.35},
+        "dmg_dealt": 1.18,
+        "attack": {"power_delta": 0.18, "accuracy_delta": 0.06, "favored_lanes": ["body", "head_hook"]},
+    },
+    "target.knee_clincher": {
+        "seams": {"head_straight": -0.50, "entry": -0.45},
+        "dmg_dealt": 1.16,
+        "attack": {"power_delta": 0.16, "entry_delta": 0.18, "favored_lanes": ["body", "clinch", "head_uppercut"]},
+    },
+    "target.mixer": {
+        "seams": {"clinch": -0.30, "single_support": -0.25},
+        "dmg_dealt": 1.08,
+        "attack": {"power_delta": 0.08, "accuracy_delta": 0.10, "read_decay_factor": 0.45, "favored_lanes": ["head_straight", "head_hook", "body", "leg"]},
+    },
+}
+
+KICKING_TABLE = {
+    "kicking.none": {
+        "seams": {"body": -0.35, "leg": -0.50},
+        "dmg_dealt": 1.00,
+        "attack": {"power_delta": 0.0, "kick_retraction_delta": 0.0, "favored_lanes": ["head_straight", "head_hook"]},
+    },
+    "kicking.muay_thai": {
+        "seams": {"entry": -0.50, "single_support": -0.35},
+        "dmg_dealt": 1.20,
+        "attack": {"power_delta": 0.20, "distance_control_delta": 0.20, "kick_retraction_delta": 0.06, "favored_lanes": ["leg", "body", "clinch"]},
+    },
+    "kicking.dutch": {
+        "seams": {"entry": -0.55, "single_support": -0.30},
+        "dmg_dealt": 1.16,
+        "attack": {"power_delta": 0.16, "accuracy_delta": 0.10, "kick_retraction_delta": -0.09, "favored_lanes": ["leg", "head_hook", "body"]},
+    },
+    "kicking.karate": {
+        "seams": {"leg": -0.55, "single_support": -0.45},
+        "dmg_dealt": 1.15,
+        "attack": {"power_delta": 0.15, "accuracy_delta": 0.10, "distance_control_delta": 0.28, "kick_retraction_delta": -0.14, "favored_lanes": ["body", "head_straight"]},
+    },
+    "kicking.sanda": {
+        "seams": {"head_straight": -0.45, "body": -0.25},
+        "dmg_dealt": 1.14,
+        "attack": {"power_delta": 0.14, "distance_control_delta": 0.18, "kick_retraction_delta": -0.06, "kick_catch_bonus": 0.18, "favored_lanes": ["single_support", "leg", "body"]},
+    },
+    "kicking.wrestler_teep": {
+        "seams": {"leg": -0.40, "head_hook": -0.20},
+        "dmg_dealt": 1.14,
+        "attack": {"power_delta": 0.14, "accuracy_delta": 0.08, "entry_delta": 0.24, "distance_control_delta": 0.14, "kick_retraction_delta": -0.03, "favored_lanes": ["body", "entry"]},
+    },
+}
+
+MENTALITY_TABLE = {
+    "mentality.outboxer": {
+        "seams": {"clinch": -0.35, "entry": -0.25},
+        "dmg_dealt": 1.00,
+        "dmg_taken": 0.92,
+        "risk": 0.78,
+        "attack": {"power_delta": 0.00, "accuracy_delta": 0.20, "distance_control_delta": 0.25, "counter_tendency": 0.12, "favored_lanes": ["head_straight", "body"]},
+    },
+    "mentality.swarmer": {
+        "seams": {"body": -0.40, "head_uppercut": -0.30},
+        "dmg_dealt": 0.97,
+        "dmg_taken": 1.02,
+        "risk": 1.25,
+        "attack": {"power_delta": -0.03, "entry_delta": 0.45, "accuracy_delta": 0.10, "favored_lanes": ["body", "clinch", "head_hook"]},
+    },
+    "mentality.counter": {
+        "seams": {"leg": -0.30, "entry": -0.25},
+        "dmg_dealt": 1.12,
+        "dmg_taken": 0.90,
+        "risk": 0.80,
+        "attack": {"power_delta": 0.00, "accuracy_delta": 0.22, "counter_tendency": 0.18, "counter_power_delta": 0.42, "favored_lanes": ["head_straight", "head_uppercut"]},
+    },
+    "mentality.slugger": {
+        "seams": {"head_straight": -0.45, "leg": -0.45},
+        "dmg_dealt": 1.26,
+        "dmg_taken": 1.06,
+        "risk": 1.35,
+        "attack": {"power_delta": 0.26, "accuracy_delta": -0.22, "counter_tendency": 0.05, "favored_lanes": ["head_hook", "head_straight"]},
+    },
+    "mentality.boxer_puncher": {
+        "seams": {"entry": -0.35, "single_support": -0.25},
+        "dmg_dealt": 1.10,
+        "dmg_taken": 0.96,
+        "risk": 1.05,
+        "attack": {"power_delta": 0.10, "accuracy_delta": 0.18, "counter_tendency": 0.08, "favored_lanes": ["head_straight", "head_hook", "body"]},
+    },
+    "mentality.switch_hitter": {
+        "seams": {"entry": -0.45, "single_support": -0.45},
+        "dmg_dealt": 1.10,
+        "dmg_taken": 0.97,
+        "risk": 1.05,
+        "attack": {"power_delta": 0.10, "accuracy_delta": 0.22, "read_decay_factor": 0.60, "feint_setup_rate": 0.18, "favored_lanes": ["head_hook", "body", "leg"]},
+    },
+    "mentality.defensive": {
+        "seams": {"body": -0.35, "leg": -0.25},
+        "dmg_dealt": 1.00,
+        "dmg_taken": 0.85,
+        "risk": 0.70,
+        "bonuses_override": {"head_straight": 0.34, "head_hook": 0.34, "head_uppercut": 0.25, "body": -0.25, "leg": -0.20, "entry": 0.25, "clinch": 0.20, "single_support": 0.15},
+        "attack": {"power_delta": 0.00, "accuracy_delta": 0.14, "counter_tendency": 0.16, "favored_lanes": ["head_straight", "body"]},
+    },
+    "mentality.pressure": {
+        "seams": {"head_straight": -0.30, "body": -0.35},
+        "dmg_dealt": 1.12,
+        "dmg_taken": 1.02,
+        "risk": 1.20,
+        "attack": {"power_delta": 0.12, "entry_delta": 0.42, "accuracy_delta": 0.05, "favored_lanes": ["head_hook", "body", "entry"]},
+    },
+    "mentality.spoiler": {
+        "seams": {"leg": -0.30, "head_straight": -0.20},
+        "dmg_dealt": 1.00,
+        "dmg_taken": 0.90,
+        "risk": 0.75,
+        "attack": {"power_delta": 0.00, "accuracy_delta": 0.08, "entry_delta": 0.30, "counter_tendency": 0.10, "favored_lanes": ["clinch", "body"]},
+    },
+    "mentality.slickster": {
+        "seams": {"body": -0.40, "leg": -0.35},
+        "dmg_dealt": 1.04,
+        "dmg_taken": 0.91,
+        "risk": 0.85,
+        "attack": {"power_delta": 0.04, "accuracy_delta": 0.20, "counter_tendency": 0.14, "feint_setup_rate": 0.35, "read_decay_factor": 0.65, "favored_lanes": ["head_straight", "head_hook", "single_support"]},
+    },
+    "mentality.showman": {
+        "seams": {"head_straight": -0.45, "head_hook": -0.40},
+        "dmg_dealt": 1.16,
+        "dmg_taken": 1.03,
+        "risk": 1.20,
+        "attack": {"power_delta": 0.16, "accuracy_delta": 0.14, "counter_tendency": 0.12, "counter_power_delta": 0.22, "feint_setup_rate": 0.40, "favored_lanes": ["head_hook", "head_uppercut"]},
+    },
+    "mentality.technician": {
+        "seams": {"clinch": -0.45, "entry": -0.25},
+        "dmg_dealt": 1.06,
+        "dmg_taken": 0.92,
+        "risk": 0.88,
+        "attack": {"power_delta": 0.06, "accuracy_delta": 0.28, "counter_tendency": 0.12, "read_gain_multiplier": 1.35, "favored_lanes": ["head_straight", "body", "leg"]},
     },
 }
 
@@ -167,15 +473,8 @@ def build_option_behaviors(k: Knowledge) -> Dict[str, object]:
     for opt_id, opt in sorted(k.options.items()):
         dim = opt["dimension"]
         ratings = opt["mma_adaptation"]["ratings"]
-        exposes = set(opt["tactical_conditions"]["exposes"])
-        answers = set(opt["tactical_conditions"]["answers"])
-
         bonuses = {lane: 0.0 for lane in LANES}
-        for lane in LANES:
-            if lane in answers:
-                bonuses[lane] += 0.85
-            if lane in exposes:
-                bonuses[lane] -= 0.75
+        attack_prof = dict(DEFAULT_ATTACK_PROFILE)
 
         posture_prof = {
             "weight_split": "balanced",
@@ -193,74 +492,70 @@ def build_option_behaviors(k: Knowledge) -> Dict[str, object]:
         breaks = [d["tradeoff"] for d in opt["derived_liabilities"]] or ["unrecovered commitment"]
 
         if dim == "hands":
-            hc = ratings.get("head_coverage", 3)
-            bc = ratings.get("body_coverage", 3)
-            vis = ratings.get("vision", 3)
-            bonuses["head_straight"] += (hc - 3) * 0.45
-            bonuses["head_hook"] += (hc - 3) * 0.40
-            bonuses["head_uppercut"] += (hc - 3) * 0.25
-            bonuses["body"] += (bc - 3) * 0.45
-            posture_prof["vision"] = vis
-            posture_prof["head_position"] = (
-                "off_center" if opt_id in ("hands.philly_shell", "hands.peekaboo", "hands.shield52", "hands.kronk")
-                else ("centerline_high" if opt_id == "hands.hands_down" else "centerline_tucked")
-            )
-            posture_prof["guard_decay_rate"] = 0.09 if hc >= 4 else 0.05
-            dmg_taken = round(1.12 - 0.04 * hc, 3)
+            h_info = HANDS_TABLE[opt_id]
+            bonuses = {k_l: round(float(h_info["bonuses"].get(k_l, 0.0)), 2) for k_l in LANES}
+            attack_prof.update(h_info.get("attack", {}))
+            posture_prof["vision"] = int(h_info["vision"])
+            posture_prof["head_position"] = h_info["head_position"]
+            posture_prof["guard_decay_rate"] = float(h_info["decay"])
+            dmg_taken = float(h_info["dmg_taken"])
+            dmg_dealt = round(1.0 + float(attack_prof["power_delta"]), 2)
         elif dim == "defense":
             d_info = DEFENSE_TABLE[opt_id]
-            bonuses = {k_l: round(v_l, 2) for k_l, v_l in d_info["bonuses"].items()}
+            bonuses = {k_l: round(float(d_info["bonuses"].get(k_l, 0.0)), 2) for k_l in LANES}
+            attack_prof.update(d_info.get("attack", {}))
             deps = d_info["deps"]
             breaks = d_info["breaks"]
-            dmg_taken = d_info["dmg_taken"]
+            dmg_taken = float(d_info["dmg_taken"])
             if opt_id in ("defense.slip_roll", "defense.shoulder_roll"):
                 posture_prof["head_position"] = "off_center"
         elif dim == "stance":
             s_info = STANCE_PROFILES[opt_id]
-            bonuses = {k_l: round(v_l, 2) for k_l, v_l in s_info["bonuses"].items()}
+            bonuses = {k_l: round(float(s_info["bonuses"].get(k_l, 0.0)), 2) for k_l in LANES}
+            attack_prof.update(s_info.get("attack", {}))
             posture_prof["weight_split"] = s_info["weight_split"]
             posture_prof["height"] = s_info["height"]
             posture_prof["hip_angle"] = s_info["hip_angle"]
             posture_prof["base_width"] = s_info["base_width"]
-            dmg_dealt = s_info["dmg_dealt"]
-            dmg_taken = s_info["dmg_taken"]
+            dmg_dealt = float(s_info["dmg_dealt"])
+            dmg_taken = float(s_info["dmg_taken"])
             deps = s_info["deps"]
             breaks = s_info["breaks"]
-        elif dim == "mentality":
-            m_map = {
-                "mentality.slugger": (1.32, 1.08, 1.35),
-                "mentality.pressure": (1.15, 1.03, 1.20),
-                "mentality.swarmer": (0.90, 1.02, 1.25),
-                "mentality.boxer_puncher": (1.10, 0.98, 1.05),
-                "mentality.counter": (1.12, 0.90, 0.80),
-                "mentality.outboxer": (0.92, 0.90, 0.78),
-                "mentality.spoiler": (0.88, 0.88, 0.75),
-                "mentality.defensive": (0.86, 0.84, 0.70),
-                "mentality.switch_hitter": (1.08, 0.97, 1.05),
-                "mentality.slickster": (0.94, 0.90, 0.85),
-                "mentality.showman": (1.06, 1.04, 1.20),
-                "mentality.technician": (1.05, 0.92, 0.88),
-            }
-            dmg_dealt, dmg_taken, risk = m_map.get(opt_id, (1.0, 1.0, 1.0))
-            posture_prof["risk_appetite"] = risk
-        elif dim == "kicking":
-            k_mult = {
-                "kicking.muay_thai": 1.18,
-                "kicking.dutch": 1.14,
-                "kicking.karate": 1.12,
-                "kicking.sanda": 1.10,
-                "kicking.wrestler_teep": 1.04,
-                "kicking.none": 1.00,
-            }
-            dmg_dealt = k_mult.get(opt_id, 1.0)
+        elif dim == "tie":
+            t_info = TIE_TABLE[opt_id]
+            bonuses = {k_l: round(float(t_info["bonuses"].get(k_l, 0.0)), 2) for k_l in LANES}
+            attack_prof.update(t_info.get("attack", {}))
+            dmg_dealt = round(1.0 + float(attack_prof["power_delta"]), 2)
         elif dim == "target":
-            dmg_dealt = 1.10
+            tg_info = TARGET_TABLE[opt_id]
+            for k_l, v_l in tg_info["seams"].items():
+                bonuses[k_l] = round(float(v_l), 2)
+            attack_prof.update(tg_info.get("attack", {}))
+            dmg_dealt = float(tg_info["dmg_dealt"])
+        elif dim == "kicking":
+            k_info = KICKING_TABLE[opt_id]
+            for k_l, v_l in k_info["seams"].items():
+                bonuses[k_l] = round(float(v_l), 2)
+            attack_prof.update(k_info.get("attack", {}))
+            dmg_dealt = float(k_info["dmg_dealt"])
+        elif dim == "mentality":
+            m_info = MENTALITY_TABLE[opt_id]
+            if "bonuses_override" in m_info:
+                bonuses = {k_l: round(float(m_info["bonuses_override"].get(k_l, 0.0)), 2) for k_l in LANES}
+            else:
+                for k_l, v_l in m_info["seams"].items():
+                    bonuses[k_l] = round(float(v_l), 2)
+            attack_prof.update(m_info.get("attack", {}))
+            dmg_dealt = float(m_info["dmg_dealt"])
+            dmg_taken = float(m_info["dmg_taken"])
+            posture_prof["risk_appetite"] = float(m_info["risk"])
 
         records.append(
             {
                 "id": opt_id,
                 "dimension": dim,
                 "lane_readiness_bonus": {k_l: round(bonuses[k_l], 2) for k_l in LANES},
+                "attack_profile": attack_prof,
                 "damage_dealt_multiplier": dmg_dealt,
                 "damage_taken_multiplier": dmg_taken,
                 "posture_profile": posture_prof,
@@ -679,22 +974,22 @@ def build_model_v2() -> Dict[str, object]:
             "base_readiness": 3.0,
             "guard_weight": 1.0,
             "method_weight": 1.0,
-            "stance_weight": 0.9,
+            "stance_weight": 0.85,
         },
         "state_modifiers": {
             "recovery_window_penalty_scale": 1.0,
-            "compromised_balance_penalty": -1.1,
-            "off_base_balance_penalty": -1.85,
-            "outside_angle_penalty": -1.25,
-            "open_stance_rear_lane_penalty": -0.55,
-            "wall_near_outfight_penalty": -1.40,
-            "feint_attention_penalty": -1.15,
+            "compromised_balance_penalty": -0.95,
+            "off_base_balance_penalty": -1.65,
+            "outside_angle_penalty": -1.10,
+            "open_stance_rear_lane_penalty": -0.35,
+            "wall_near_outfight_penalty": -1.25,
+            "feint_attention_penalty": -1.10,
             "repeated_move_read_bonus": 0.85,
-            "novel_move_surprise_penalty": -0.30,
-            "fatigue_per_point_penalty": -0.14,
-            "head_damage_reaction_penalty": -0.22,
-            "body_damage_high_guard_drop": -0.25,
-            "leg_damage_check_and_mobility_penalty": -0.32,
+            "novel_move_surprise_penalty": -0.20,
+            "fatigue_per_point_penalty": -0.10,
+            "head_damage_reaction_penalty": -0.10,
+            "body_damage_high_guard_drop": -0.14,
+            "leg_damage_check_and_mobility_penalty": -0.20,
         },
         "landing_multipliers": LANDING_QUALITY_MULT,
         "regional_damage_limits": {
@@ -708,25 +1003,54 @@ def build_model_v2() -> Dict[str, object]:
             "3": 1.00,
             "4": 0.95,
         },
+        "diminishing_returns": {
+            "posture_asymptote": 2.40,
+            "readiness_compression": 0.62,
+            "min_readiness": 1.45,
+            "max_readiness": 4.85,
+            "tempo_defensive_damping": 0.65,
+        },
+        "tempo_rules": {
+            "initiative_base": 3.0,
+            "initiative_per_point": 0.30,
+            "entry_per_point": 0.08,
+            "low_tempo_readiness_per_point": 0.22,
+            "low_tempo_counter_per_point": 0.05,
+            "fatigue_by_tempo": {
+                "1": 0.22,
+                "2": 0.28,
+                "3": 0.34,
+                "4": 0.39,
+                "5": 0.44,
+            },
+        },
         "arena_presets": ARENA_PRESETS,
     }
 
 
-def build_mio_card_v2() -> Dict[str, object]:
+def build_mio_card_v2(k: Knowledge | None = None) -> Dict[str, object]:
+    know = k or Knowledge()
+    dims = {
+        "hands": "hands.cross_arm",
+        "defense": "defense.parry_catch",
+        "stance": "stance.shuffle",
+        "tie": "tie.judo_sambo",
+        "target": "target.leg_chopper",
+        "kicking": "kicking.sanda",
+        "mentality": "mentality.slickster",
+    }
+    seams: list[str] = []
+    for opt_id in dims.values():
+        if opt_id:
+            for d_id in know.options[opt_id]["exploitable_debt_ids"]:
+                if d_id not in seams:
+                    seams.append(d_id)
     return {
         "version": "block-2",
         "fighter_id": "sanda_judo",
         "name": "Mio Tsukihara",
         "combat_identity": "Sanda kick-catcher & Judo trip counter",
-        "dimensions": {
-            "hands": "hands.high_guard",
-            "defense": "defense.parry_catch",
-            "stance": "stance.balanced",
-            "tie": "tie.judo_sambo",
-            "target": "target.mixer",
-            "kicking": "kicking.sanda",
-            "mentality": "mentality.counter",
-        },
+        "dimensions": dims,
         "adaptation": "mma",
         "orientation": "orthodox",
         "slot_count": 3,
@@ -769,23 +1093,8 @@ def build_mio_card_v2() -> Dict[str, object]:
         "baseline_capabilities": ["basic_movement", "untrained_striking"],
         "tempo": 3,
         "preferred_ranges": ["kick", "clinch"],
-        "debt_sentence": "Catch kicks into a standing sweep or body-lock outer reap; high guard vision and committed sweep recovery leave straight-line seams.",
-        "exploitable_seams": [
-            "debt.hands.high_guard.body",
-            "debt.hands.high_guard.vision",
-            "debt.defense.parry_catch.head_hook",
-            "debt.defense.parry_catch.body",
-            "debt.stance.balanced.tempo",
-            "debt.stance.balanced.head_straight",
-            "debt.tie.judo_sambo.tempo",
-            "debt.tie.judo_sambo.ground",
-            "debt.target.mixer.recovery",
-            "debt.target.mixer.tempo",
-            "debt.kicking.sanda.head_straight",
-            "debt.kicking.sanda.recovery",
-            "debt.mentality.counter.tempo",
-            "debt.mentality.counter.wall",
-        ],
+        "debt_sentence": "Shuffle in behind a cross-arm shield to chop the lead leg or catch kicks into a Sanda sweep; single-support bounce and uppercut seams remain exposed.",
+        "exploitable_seams": seams,
         "active_techniques": [
             "step",
             "retreat",
