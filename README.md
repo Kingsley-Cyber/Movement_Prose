@@ -16,23 +16,32 @@ Before your agent writes any choreography, it automatically searches a built-in 
 - **64 Verified Sakuga Physics Directives** (`ai_video_compiler.db`) that prevent common AI video glitches (like floating jumps, missing arms, or early flinches).
 - **Growing Agent Memory** (`agent_memory.db`) that remembers which prompt fixes solved video glitches in earlier renders so the system gets smarter over time.
 
-### 2. 🥋 The Fighting Simulator & Matchup Engine (`BLOCK Fight Engine` — `predict.py`, `plan_fight.py`, `cards/`, `data/`, `engine/`)
-Want to know how two fighters match up—or want a realistic fight story generated automatically?
-- **Tactical Matchup Predictor:** Compares **11 built-in fighter cards** (or custom fighters your agent builds for you) across **7 combat dimensions** (`hands`, `defense`, `stance`, `clinch/tie`, `target`, `kicking`, `mentality`) and **511 style-vs-style interactions**. It calculates uncalibrated win probabilities, exposes tactical weaknesses (such as a missing clinch game or a multi-hit combo edge), and supports Boxing, Muay Thai, Kickboxing, MMA, and Street rulesets.
-- **10-Phase Fight Simulator & Director Mode:** Simulates a complete 30-to-60-second bout beat-by-beat (`Read -> Setup -> Exchange -> Clinch/Counter -> Finish/Decision`). You can let the simulation decide the winner **or** tell the agent who must win (`Director Mode`), producing a causal event graph, limb-by-limb choreography, and camera shot list.
+### 2. 🥋 The Fighting Simulator & Matchup Engine (`BLOCK Fight Engine v1 & v2` — `simulate_fight.py`, `predict.py`, `plan_fight.py`, `cards/`, `cards/v2/`, `data/`, `engine/`)
+Want to know how two fighters match up—or want a realistic, exchange-by-exchange fight simulation generated automatically?
+- **BLOCK Fight Simulator v2 (`simulate_fight.py` & `engine/simulator_v2.py`):** Order-invariant, card-driven exchange simulator across **12 pre-built `block-2` fighter archetypes** (`cards/v2/*.json`: `detroit`, `donnell`, `greco`, `jiujitsu`, `karate`, `macklin`, `maleek`, `philly`, `sanda_judo`, `street`, `thai`, `wrestler`) and **all 57 style options**:
+  - **Strict Attack vs. Defense Option Split:** Defensive dimensions (`hands`, `defense`, `stance`, `tie`) set `lane_readiness_bonus` across 8 defensive lanes (`head_straight`, `head_hook`, `head_uppercut`, `body`, `leg`, `entry`, `clinch`, `single_support`), while offensive dimensions (`target`, `kicking`, `mentality`) set `attack_profile` (`lane_accuracy_bonus`, `lane_damage_mult`, `preferred_lanes`) and only contribute defensive vulnerabilities (`lane_vulnerability`).
+  - **Smooth Diminishing-Returns Posture Readiness (`asymptote = 2.40`):** Replaces hard caps so stacking complementary guard + defense + stance layers always matters without creating an unhittable wall.
+  - **Contested Rolls & Dynamic Breakdown:** Every range change, strike, kick catch, caught-kick sweep, and counter is a contested roll (`[10%, 85%]`) modified by 11 live fight states (recovery windows, balance, stance alignment, wall proximity, feints, read memory, fatigue, regional head/body/leg damage, and clinch grips).
+  - **200-Seed Round-Robin Balance Audit (`--balance-audit`) & 57-Option Viability Audit (`--option-audit`):** Verifies order invariance, confirms all 12 archetypes sit within the `[35%, 65%]` fair competitive band (`39.4%`–`61.1%`, zero `>85%` matchups), and validates all `57/57` options via single-option perturbation testing.
+- **Tactical Matchup Predictor & 10-Phase Planner (`predict.py` & `plan_fight.py`):** Compares **11 canonical `block-1` fighter cards** across **7 combat dimensions** and **511 style-vs-style interactions**, calculating uncalibrated win probabilities or simulating a 10-phase bout with optional `Director Mode` (`--winner`).
 
-### 3. 🎬 The Dual-Path Sakuga Video Prompt Compiler & Glitch Repair Loop (`Movement_Prose` — `fight_move_system/`, `scripts/`)
-Takes either a **simulated BLOCK fight** or your **custom fight concept** and compiles it into ready-to-paste AI video prompts (for Seedance 2.0 Mini, Seedance 2.5, Kling, Wan, etc.) using **TWO OFFICIAL CO-EQUAL PROMPT SCHEMAS**:
+### 3. 🎬 The Dual-Path Sakuga Video Prompt Compiler, Atomic 1-Contact-Per-Beat Compiler & Glitch Repair Loop (`Movement_Prose` — `fight_move_system/`, `scripts/`)
+Takes either a **simulated BLOCK fight** or your **custom fight concept** and compiles it into ready-to-paste AI video prompts (for Seedance 2.0 Mini, Seedance 2.5, Kling, Wan, etc.) using **TWO OFFICIAL CO-EQUAL PROMPT SCHEMAS** plus the **Atomic 1-Contact-Per-Beat Causal Compiler**:
 1. **Schema 1: The Original Baseline Schema (`SAKUGA-MLLM-3.1-CAUSAL`):**
    - **Schema & Template:** [`schemas/sakuga_mllm_3_1_causal.schema.json`](schemas/sakuga_mllm_3_1_causal.schema.json) | [`templates/sakuga_mllm_3_1_causal_0534_template.json`](templates/sakuga_mllm_3_1_causal_0534_template.json)
    - **Format:** Single-Layer causal JSON structure (header + 1-line-per-beat causal JSON with 11-key `A_beats`, 8-key `B_track`, explicit `C01..C16` causal graph, and 17-Rule physics linter). Cryptographically locked (`SHA256`) to the `05:34` (`e91c686`) baseline.
 2. **Schema 2: The Extreme / Advanced 2-Layer Schema (`sakuga_Xperiment`):**
    - **Schema & Templates:** [`schemas/sakuga_xperiment.schema.json`](schemas/sakuga_xperiment.schema.json) | [`templates/sakuga_xperiment_template.json`](templates/sakuga_xperiment_template.json) | [`templates/sakuga_xperiment_2layer_template.txt`](templates/sakuga_xperiment_2layer_template.txt)
    - **Format:** The extreme 2-Layer Unrolled Fluid Stack format: pairs Layer 1 (*Labanotation-as-Words* continuous support, force-event & prop timeline with weight split `%`, Center of Gravity `CoG`, and easing curves) directly above Layer 2 (Kinematic Scene Graph with V01–V22 biomechanical attributes: bilateral two-arm silhouette lock, standing-pillar leg separation, realistic reach spacing, 180° camera hemisphere lock, and fighting-style archetype gating).
-3. **BLOCK Shot-by-Shot Cinematic Prose (`video_prompts.jsonl`):** Clean, model-agnostic shot-by-shot camera and movement descriptions.
+3. **Atomic 1-Contact-Per-Beat Causal Compiler (`fight_move_system/atomic_causal_compiler.py` & `simulate_fight.py --emit-prompt`):**
+   - Unrolls simulated v2 exchanges into strict 1-Contact-Per-Beat (`Prep -> Commit -> Contact -> Consequence -> Recovery`) natural-language Seedance prompts verified by a 5-part claim-checked semantic verifier (`SEM-BUG-01..10`).
+4. **BLOCK Shot-by-Shot Cinematic Prose (`video_prompts.jsonl`):** Clean, model-agnostic shot-by-shot camera and movement descriptions.
 - **Instant Video Glitch Repair:** If a rendered video has a flaw (e.g., *"his arm vanished at 3 seconds"* or *"they stood too far apart"*), just tell your agent. The agent automatically repairs only that specific beat and saves the lesson into Agent Memory.
 
 ### 💬 What You Can Ask Your Agent Right Now (Zero Terminal Required)
+- *"Simulate a fight between Mio Takahashi (`sanda_judo`) and Niran Sol (`thai`) in the cage and emit the 1-contact-per-beat video prompt."*
+- *"Run a 200-seed series between Rook Mercer (`street`) and Niran Sol (`thai`) and break down why each wins."*
+- *"Run the 200-seed Round-Robin balance audit and the 57-option viability audit."*
 - *"Give me the BLUF on this repo, explain both the Original and Extreme prompt schemas, and show me the fighters available."*
 - *"Who wins between Maleek and Donnell under MMA rules, and what is Donnell's biggest opening?"*
 - *"Simulate a 60-second fight between Imani Vale (wrestler) and Donnell where Imani exploits his missing clinch game, and generate the video prompts in both Original and Extreme formats."*
@@ -45,10 +54,11 @@ Takes either a **simulated BLOCK fight** or your **custom fight concept** and co
 ## Technical Overview (For Agents & Developers)
 
 **Movement_Prose** (`movement-prose-e2e` / `sakuga-fight-director`) is an integrated, offline-first combat reasoning, semantic fight direction, and biomechanical Sakuga prompt compilation system combining:
-1. **BLOCK Fight Engine (`engine/`, `cards/`, `data/`, `schemas/`, `predict.py`, `plan_fight.py`):** Loads fictional fighter cards, calculates deterministic uncalibrated matchup probabilities across 7 dimensions and 511 canonical cells, constructs seeded or director-controlled causal fight event graphs, and compiles traceable model-agnostic cinematic shotlists and prompts (`shotlist.json`, `video_prompts.jsonl`).
-2. **Fight Move System v2 (`fight_move_system/`):** Deterministic 2-Layer Unrolled Fluid Stack (`sakuga_Xperiment` & `lean`) compiler, V01–V22 biomechanical & kinetic-chain validator, closed-loop render verdict ingestion, RFC 6902 localized beat repair, and `block_bridge.py` (which compiles planned BLOCK fights into both Movement_Prose prompt pipelines).
-3. **Protected Original `05:34` (`e91c686`) Single-Layer Path (`scripts/sakuga_compiler.py`, `scripts/sakuga_original_kb.py`, `templates/sakuga_mllm_3_1_causal_0534_template.json`):** Cryptographically SHA256-locked (`fdf54e55...`) original `SAKUGA-MLLM-3.1-CAUSAL` single-layer compiler and 17-Rule physics linter with its own dedicated pre-intent Knowledge Base path.
-4. **In-Repository Knowledge Base (`knowledge_base/`):** Frozen 64-row `ai_video_compiler.db` (`semantic_directives`), growing `agent_memory.db` (tags, judged labels, causal triples, module relations, usage events), and FTS5 `handbook_index.db` (auto-extracted from `handbook_index.db.gz`) queried prior to semantic intent decomposition.
+1. **BLOCK Fight Simulator v2 (`simulate_fight.py`, `engine/simulator_v2.py`, `scripts/build_v2_data.py`, `cards/v2/`, `data/option_behaviors.json`, `data/model_v2.json`, `data/techniques_v2.json`, `data/positions.json`, `schemas/*_v2.schema.json`):** Order-invariant, card-driven exchange simulator across 12 predefined `block-2` fighter archetypes and 57 mechanical style options (`attack_profile` vs. `lane_readiness_bonus`), featuring dynamic posture state, smooth diminishing-returns 8-lane readiness (`asymptote = 2.40`), first-class kicking anatomy, 15-node grappling position map, 24fps fight clock, 6 arena presets, 200-seed Round-Robin balance auditing (`--balance-audit`), and 57-option viability auditing (`--option-audit`).
+2. **BLOCK Fight Engine v1 (`engine/`, `cards/`, `data/`, `schemas/`, `predict.py`, `plan_fight.py`):** Loads fictional fighter cards, calculates deterministic uncalibrated matchup probabilities across 7 dimensions and 511 canonical cells, constructs seeded or director-controlled causal fight event graphs, and compiles traceable model-agnostic cinematic shotlists and prompts (`shotlist.json`, `video_prompts.jsonl`).
+3. **Fight Move System v2 & Atomic Causal Compiler (`fight_move_system/`):** Deterministic 2-Layer Unrolled Fluid Stack (`sakuga_Xperiment` & `lean`) compiler, Atomic 1-Contact-Per-Beat Causal Compiler (`atomic_causal_compiler.py`) with 5-part claim-checked semantic verification, V01–V22 biomechanical & kinetic-chain validator, closed-loop render verdict ingestion, RFC 6902 localized beat repair, and `block_bridge.py` (which compiles planned BLOCK v1 and simulated BLOCK v2 fights into Movement_Prose prompt pipelines).
+4. **Protected Original `05:34` (`e91c686`) Single-Layer Path (`scripts/sakuga_compiler.py`, `scripts/sakuga_original_kb.py`, `templates/sakuga_mllm_3_1_causal_0534_template.json`):** Cryptographically SHA256-locked (`fdf54e55...`) original `SAKUGA-MLLM-3.1-CAUSAL` single-layer compiler and 17-Rule physics linter with its own dedicated pre-intent Knowledge Base path.
+5. **In-Repository Knowledge Base & Graphify Knowledge Graph (`knowledge_base/`, `graphify-out/`):** Frozen 64-row `ai_video_compiler.db` (`semantic_directives`), growing `agent_memory.db` (tags, judged labels, causal triples, module relations, usage events), FTS5 `handbook_index.db` (auto-extracted from `handbook_index.db.gz`), and persistent `graphify-out/` AST + semantic knowledge graph (`graph.json`, `GRAPH_REPORT.md`, `graph.html`).
 
 ---
 
@@ -69,7 +79,7 @@ Or invoke directly via `.venv/bin/python` without activating the virtual environ
 .venv/bin/python scripts/regress.py
 ```
 
-The single acceptance command (`python scripts/regress.py`) runs from the destination root, audits all BLOCK knowledge and schemas (`scripts/audit_coverage.py`), verifies backfill dry-run/apply/verify idempotence (`scripts/backfill.py`), executes all 98 tests (`58` original BLOCK tests + `40` Movement_Prose unit and integration tests via `pytest -q`), runs the 25-check Knowledge Base verification (`kb-verify`) and `05:34` (`e91c686`) SHA256 lock check, and generates both 60-second `seed=42` fight demonstrations (`maleek` vs `donnell` and `wrestler` vs `donnell`) across both BLOCK and Movement_Prose outputs. Actual stdout, stderr, and exit codes are written to [`reports/execution_evidence.json`](reports/execution_evidence.json).
+The single acceptance command (`python scripts/regress.py`) runs from the destination root, audits all BLOCK knowledge and schemas (`scripts/audit_coverage.py`), verifies backfill dry-run/apply/verify idempotence (`scripts/backfill.py`), executes all **117 automated tests** (`58` original BLOCK tests + `59` Movement_Prose, Simulator v2, and Atomic Compiler unit and integration tests via `pytest -q`), runs the 25-check Knowledge Base verification (`kb-verify`) and `05:34` (`e91c686`) SHA256 lock check, and generates both 60-second `seed=42` fight demonstrations (`maleek` vs `donnell` and `wrestler` vs `donnell`) across both BLOCK and Movement_Prose outputs. Actual stdout, stderr, and exit codes are written to [`reports/execution_evidence.json`](reports/execution_evidence.json).
 
 ---
 
@@ -78,22 +88,25 @@ The single acceptance command (`python scripts/regress.py`) runs from the destin
 ```text
 Movement_Prose/
 ├── AGENTS.md                                                   # 👈 Deterministic Agent Onboarding, Directory Map, BLOCK & 25-Decision Index
-├── README.md                                                   # Unified Setup, Architecture, BLOCK Model & CLI Reference
+├── README.md                                                   # Unified Setup, Architecture, BLOCK v1/v2 Model & CLI Reference
 ├── SKILL.md                                                    # Antigravity Skill instructions & YouTube Episode workflow
 ├── pyproject.toml / requirements.txt                           # Python package metadata (`engine`, `fight_move_system`, `scripts`) & pinned deps
-├── predict.py                                                  # BLOCK CLI: Deterministic, uncalibrated matchup probability prediction
-├── plan_fight.py                                               # BLOCK CLI: Seeded/director-controlled fight planning, shotlist, prompts & `--movement-prose` bridge
-├── cards/                                                      # 🥋 11 BLOCK Fighter Identity Cards (`maleek`, `donnell`, `wrestler`, `macklin`, `detroit`, `philly`, `thai`, `karate`, `greco`, `jiujitsu`, `street`)
-├── data/                                                       # 📊 Authoritative BLOCK Canon & Provenance Registries
+├── simulate_fight.py                                           # 🥋 BLOCK v2 CLI: Standalone archetype fight simulator, Monte Carlo, prompts & audits
+├── predict.py                                                  # 🥋 BLOCK v1 CLI: Deterministic, uncalibrated matchup probability prediction
+├── plan_fight.py                                               # 🥋 BLOCK v1 CLI: Seeded/director-controlled fight planning, shotlist, prompts & `--movement-prose` bridge
+├── cards/                                                      # 🥋 11 Canonical `block-1` Fighter Cards + `cards/v2/` (12 `block-2` Archetypes incl. `sanda_judo`)
+├── data/                                                       # 📊 Authoritative BLOCK v1 & v2 Canon & Provenance Registries
 │   ├── engine_index.json                                       # All 7 dimensions and 57 authored option interpretations
-│   ├── matchups.json                                           # All 511 canonical matchup cells and derivations
-│   ├── model.json                                              # Weights, adaptation policy, rulesets, staging distances, and logistic formula
+│   ├── option_behaviors.json / model_v2.json                   # v2 57-option attack/defense mechanical profiles, diminishing returns & posture math
+│   ├── techniques_v2.json / positions.json                     # v2 38 frame-costed techniques (with kick anatomy) & 15-node grappling position map
+│   ├── matchups.json / model.json                              # All 511 canonical matchup cells, weights, rulesets, staging distances & logistic formula
 │   ├── counter_graph.json / debt_registry.json                 # Conditional counter mechanisms (168 edges) and operational debts (114 debts)
-│   ├── techniques.json / combinations.json                     # 44 defined motions, prerequisites, and possible transitions
+│   ├── techniques.json / combinations.json                     # 44 defined v1 motions, prerequisites, and possible transitions
 │   ├── pipeline.json                                           # Event-type state, choreography, and prompt handler registry
 │   └── sources.json / claims.json                              # 15 accessed primary sources and 15 narrowly scoped verified claims
-├── schemas/                                                    # 📐 Versioned JSON Schemas (`fighter_card`, `fight_plan`, `fight_state`, `event`, `event_graph`, `shot`)
-├── engine/                                                     # ⚙️ BLOCK Fight Engine Core Modules
+├── schemas/                                                    # 📐 Versioned JSON Schemas (6 v1 schemas + 9 `*_v2.schema.json` contracts + Sakuga schemas)
+├── engine/                                                     # ⚙️ BLOCK Fight Engine Core Modules (v1 & v2)
+│   ├── simulator_v2.py                                         # v2 Exchange Simulator: posture, 8-lane diminishing-returns readiness, kicking, grappling & audits
 │   ├── ontology.py / audit.py                                  # Knowledge loader, JSON Schema validator, SHA256 fingerprinting & 511-cell coverage audit
 │   ├── capabilities.py / matchups.py / probability.py          # Gated capabilities, directional cell evaluation, slots, reachable NULLs & logistic probability
 │   ├── fight_director.py / fight_state.py / event_graph.py     # 10-phase tactical planner, semantic state reducer & causal replay validator
@@ -103,12 +116,15 @@ Movement_Prose/
 ├── reports/                                                    # BLOCK audit, backfill, provenance, implementation decisions & `execution_evidence.json`
 ├── outputs/example_fights/                                     # Generated BLOCK + Movement_Prose fight packages (`maleek_vs_donnell`, `two_slot_upset`, `prediction.json`)
 ├── docs/
+│   ├── BLOCK_SIMULATOR_V2_DESIGN_SPEC.md                       # Complete BLOCK Fight Simulator v2 Architecture, Math, 57-Option Split & Audit Spec
+│   ├── ADR_CLAIM_CHECKED_RENDERER_AND_SEMANTIC_VERIFIER.md     # Claim-Checked Renderer & 10-Rule Semantic Verifier (`SEM-BUG-01..10`)
 │   ├── model.md                                                # Exact BLOCK matchup calculation, logistic formula, state contract & research boundary
 │   ├── llm_reasoning_guide.md                                  # Manual LLM retrieval/calculation sequence & worked trace tables
 │   ├── FIGHT_MOVE_SYSTEM_PLAN.md                               # v2 Fight Move System Architecture (Move Lexicon, State Machine, Dyad Coupling, Wording Compiler)
 │   ├── TWO_LAYER_FLUID_STACK_ARCHITECTURE.md                   # Mode 1 (Single-Layer) vs Mode 2 (2-Layer Fluid Stack) Architecture
 │   └── VARIATIONS_AND_FIGHTING_STYLES.md                       # Decisions 21-25, Entity Fighting Styles & Variations vs Golden Baseline
 ├── scripts/
+│   ├── build_v2_data.py                                        # Deterministic generator for `data/option_behaviors.json`, `model_v2.json`, `techniques_v2.json`, `cards/v2/`
 │   ├── audit_coverage.py / validate_data.py                    # Independent BLOCK ontology, matrix, card, handler & provenance coverage audit
 │   ├── backfill.py                                             # Deterministic, idempotent BLOCK missing-record recovery & conflict reporter
 │   ├── regress.py                                              # Single end-to-end acceptance workflow runner (`reports/execution_evidence.json`)
@@ -118,15 +134,17 @@ Movement_Prose/
 ├── templates/
 │   └── sakuga_mllm_3_1_causal_0534_template.json               # 🔒 Canonical Protected 05:34 (e91c686) Single-Layer SAKUGA-MLLM-3.1-CAUSAL Template
 ├── knowledge_base/                                             # 📚 In-Repo Knowledge Base (`ai_video_compiler.db`, `agent_memory.db`, `agent/`, `runs/`)
-├── fight_move_system/                                          # 🚀 v2 Fight Move System + KB Bridge + BLOCK Bridge + Closed-Loop Repair
+├── fight_move_system/                                          # 🚀 v2 Fight Move System + Atomic Compiler + KB Bridge + BLOCK Bridge + Closed-Loop Repair
 │   ├── cli.py                                                  # Unified CLI (`validate`, `compile`, `compile-original`, `block-predict`, `block-plan`, `kb-*`, `repair`, `next-clip`)
-│   ├── block_bridge.py                                         # Bridges BLOCK `fight_plan.json` into both Movement_Prose 2-Layer Fluid Stack & 05:34 Causal prompts
+│   ├── atomic_causal_compiler.py                               # 1-Contact-Per-Beat (`Prep -> Commit -> Contact -> Consequence -> Recovery`) Compiler & Semantic Verifier
+│   ├── block_bridge.py                                         # Bridges BLOCK v1 `fight_plan.json` & v2 `simulation_result_v2` into Movement_Prose & Atomic prompts
 │   ├── original_causal_compiler.py                             # 🔒 Protected 05:34 `SAKUGA-MLLM-3.1-CAUSAL` Single-Layer Compiler + Pre-Intent KB Bridge
 │   ├── compiler.py                                             # 2-Layer Fluid Stack (`sakuga_Xperiment` / `lean`) Compiler (queries KB prior to semantic intent)
 │   ├── kb_bridge.py / closed_loop.py                           # Pre-intent KB query engine, verdict ingestion & RFC 6902 localized beat repair
 │   └── scene_graph_linter.py / validator.py                    # 25-Decision Scene Graph Linter & V01-V22 Biomechanical Validator
+├── graphify-out/                                               # 🕸️ Graphify Persistent Knowledge Graph (`graph.json`, `GRAPH_REPORT.md`, `graph.html`)
 ├── examples/                                                   # ✅ Canonical Golden Baseline Prompts (`gold_master_1..4`) & `variations/variation_1..3`
-└── tests/                                                      # 🧪 98 Automated Tests (`test_ontology`, `test_matchups`, `test_slots`, `test_prediction`, `test_fight_plan`, `test_event_graph`, `test_end_to_end`, `test_backfill`, `test_fight_move_system`)
+└── tests/                                                      # 🧪 117 Automated Tests (58 original BLOCK tests + 59 Movement_Prose, Simulator v2 & Atomic Compiler tests)
 ```
 
 | Location | Ownership & Purpose |
@@ -141,9 +159,10 @@ Movement_Prose/
 | `engine/probability.py`, `engine/matchups.py`, `engine/capabilities.py` | Probability calculation, directional cells, slots, NULL penalties, and reachability |
 | `engine/fight_director.py`, `engine/fight_state.py`, `engine/event_graph.py` | Tactical phases, semantic reducer, and causal replay validation |
 | `engine/choreography.py`, `engine/prompt_compiler.py` | Six-phase movement expansion, camera shots, and model-agnostic prose compilation |
-| `fight_move_system/block_bridge.py` | Executable bridge translating BLOCK fight plans into `sakuga_Xperiment` 2-Layer Fluid Stack and protected `05:34` `SAKUGA-MLLM-3.1-CAUSAL` prompts |
+| `fight_move_system/block_bridge.py`, `fight_move_system/atomic_causal_compiler.py` | Executable bridge translating BLOCK v1 fight plans & v2 exchange logs into `sakuga_Xperiment` 2-Layer Fluid Stack, protected `05:34` `SAKUGA-MLLM-3.1-CAUSAL`, and Atomic 1-Contact-Per-Beat prompts |
+| `simulate_fight.py`, `engine/simulator_v2.py`, `scripts/build_v2_data.py` | BLOCK Fight Simulator v2: 12 `block-2` archetypes (`cards/v2/*.json`), 57 mechanical option behaviors (`data/option_behaviors.json`), smooth diminishing-returns readiness (`data/model_v2.json`), 200-seed Round-Robin balance audit, and 57-option viability audit |
 | `scripts/backfill.py`, `engine/audit.py`, `resources/recovery.json` | BLOCK-scoped missing-record recovery, conflict reporting, and independent coverage checks |
-| `docs/model.md`, `docs/llm_reasoning_guide.md` | Exact BLOCK model semantics and step-by-step LLM calculation/retrieval instructions |
+| `docs/BLOCK_SIMULATOR_V2_DESIGN_SPEC.md`, `docs/model.md`, `docs/llm_reasoning_guide.md` | Complete BLOCK v2 & v1 model semantics, option math, and step-by-step LLM calculation/retrieval instructions |
 
 JSON under `data/` and `cards/` is authoritative for BLOCK. Generated fights embed their original cards, model version, and knowledge SHA256 digest. The frozen recovery release (`resources/recovery.json`) targets only BLOCK-owned content: it restores missing known BLOCK fields/files, preserves competing live values and reports them as conflicts, never converts an unverifiable claim into verified research, and never touches or overwrites unrelated repository files.
 
@@ -169,7 +188,28 @@ JSON under `data/` and `cards/` is authoritative for BLOCK. Generated fights emb
   - `F-003` (Conditional Narrative vs. Empirical Ranking Boundary): `capabilities.admit_ranked_result` rejects narrative fight plans, sampled seed draws, director-controlled outcomes, and contact/control mark tallies from being ingested as empirical ranked results.
   - Run `.venv/bin/python scripts/verify_findings.py --root . --output-dir reports/fairness_after_repair` (and `tests/test_fairness_plan.py`) to verify all admission, NULL truth-table ($2^4=16$), 220-pair symmetry, state-sequence, and mutation-probe checks.
 
-### BLOCK CLI Commands & Seed-42 Demonstrations
+### BLOCK Simulator v2 CLI (`simulate_fight.py`) — Archetype Simulations, Prompts & Audits
+
+```sh
+# 1. List all 12 predefined block-2 fighter archetypes (human-readable or --json)
+.venv/bin/python simulate_fight.py --list-archetypes
+.venv/bin/python simulate_fight.py --list-archetypes --json
+
+# 2. Simulate a single deterministic fight with play-by-play exchange breakdown + 1-Contact-Per-Beat causal prompt
+.venv/bin/python simulate_fight.py sanda_judo thai --seed 7 --arena cage --emit-prompt
+
+# 3. Run a Monte Carlo multi-run series (with optional Director Mode --winner)
+.venv/bin/python simulate_fight.py street thai --runs 200
+.venv/bin/python simulate_fight.py wrestler thai --runs 50 --winner wrestler --json
+
+# 4. Run the 12-Archetype 200-Seed Round-Robin Balance Audit (verifies order invariance & [35%, 65%] target band)
+.venv/bin/python simulate_fight.py --balance-audit --runs 200
+
+# 5. Run the 57-Option Coverage & Single-Option Perturbation Viability Audit
+.venv/bin/python simulate_fight.py --option-audit --runs 20
+```
+
+### BLOCK v1 CLI Commands & Seed-42 Demonstrations (`predict.py` & `plan_fight.py`)
 
 ```sh
 # 1. Coverage Audit & Deterministic Backfill

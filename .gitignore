@@ -5,3 +5,4 @@ knowledge_base/handbook_index.db
 __pycache__/
 *.pyc
 .DS_Store
+graphify-out/cache/

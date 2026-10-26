@@ -1,0 +1,1718 @@
+{
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/detroit.json": {
+    "mtime": 1792680508.579286,
+    "seen": 1793015586.025889,
+    "ast_hash": "c5a49991cd690062047b4ae2cf793ccf",
+    "semantic_hash": "c5a49991cd690062047b4ae2cf793ccf"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/donnell.json": {
+    "mtime": 1792681638.7251387,
+    "seen": 1793015586.025897,
+    "ast_hash": "cf5f9f7bd507764b2d3a92082ddc2a00",
+    "semantic_hash": "cf5f9f7bd507764b2d3a92082ddc2a00"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/greco.json": {
+    "mtime": 1792680508.5802002,
+    "seen": 1793015586.025899,
+    "ast_hash": "24da4710ae7e6baf1b31f1beea6348cc",
+    "semantic_hash": "24da4710ae7e6baf1b31f1beea6348cc"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/jiujitsu.json": {
+    "mtime": 1792680508.5800323,
+    "seen": 1793015586.025899,
+    "ast_hash": "a6e01f5335144b9503cc15b88945ab56",
+    "semantic_hash": "a6e01f5335144b9503cc15b88945ab56"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/karate.json": {
+    "mtime": 1792680508.5803905,
+    "seen": 1793015586.0259001,
+    "ast_hash": "6b24eadc28a16190c4385bc7a7183218",
+    "semantic_hash": "6b24eadc28a16190c4385bc7a7183218"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/macklin.json": {
+    "mtime": 1792681638.7245984,
+    "seen": 1793015586.0259001,
+    "ast_hash": "4b03a5ab7497b644880c7738bb10b9ce",
+    "semantic_hash": "4b03a5ab7497b644880c7738bb10b9ce"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/maleek.json": {
+    "mtime": 1792680508.5787096,
+    "seen": 1793015586.025901,
+    "ast_hash": "b2b5e349ae16791f3de75b7139dd2c12",
+    "semantic_hash": "b2b5e349ae16791f3de75b7139dd2c12"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/philly.json": {
+    "mtime": 1792680508.5794756,
+    "seen": 1793015586.025902,
+    "ast_hash": "0f13234ec73f869ef4a9ea705738d6d2",
+    "semantic_hash": "0f13234ec73f869ef4a9ea705738d6d2"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/street.json": {
+    "mtime": 1792680508.5805585,
+    "seen": 1793015586.025902,
+    "ast_hash": "d451533e3c94800a5b0c32891430989b",
+    "semantic_hash": "d451533e3c94800a5b0c32891430989b"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/thai.json": {
+    "mtime": 1792680508.579827,
+    "seen": 1793015586.025903,
+    "ast_hash": "6f264576f5f39f58c4c45a124196aa13",
+    "semantic_hash": "6f264576f5f39f58c4c45a124196aa13"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/v2/detroit.json": {
+    "mtime": 1792863063.3432775,
+    "seen": 1793015586.025903,
+    "ast_hash": "ee1811030dca16581e9728365c29699b",
+    "semantic_hash": "ee1811030dca16581e9728365c29699b"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/v2/donnell.json": {
+    "mtime": 1792863063.3629436,
+    "seen": 1793015586.0259042,
+    "ast_hash": "ff1106b2e0441334c6d4da2beda00ea4",
+    "semantic_hash": "ff1106b2e0441334c6d4da2beda00ea4"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/v2/greco.json": {
+    "mtime": 1792863388.2804601,
+    "seen": 1793015586.0259042,
+    "ast_hash": "88ff391130dc880986815c5ed714e30b",
+    "semantic_hash": "88ff391130dc880986815c5ed714e30b"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/v2/jiujitsu.json": {
+    "mtime": 1792863388.3026738,
+    "seen": 1793015586.025905,
+    "ast_hash": "8a4f4cbf7502ded93007de7bd28a3715",
+    "semantic_hash": "8a4f4cbf7502ded93007de7bd28a3715"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/v2/karate.json": {
+    "mtime": 1792867516.3466268,
+    "seen": 1793015586.025905,
+    "ast_hash": "01415d9e9a2f659223d84cf28c43fe56",
+    "semantic_hash": "01415d9e9a2f659223d84cf28c43fe56"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/v2/macklin.json": {
+    "mtime": 1792863096.5371716,
+    "seen": 1793015586.0259058,
+    "ast_hash": "65dd63073efc0625f63e5a0157e1b21a",
+    "semantic_hash": "65dd63073efc0625f63e5a0157e1b21a"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/v2/maleek.json": {
+    "mtime": 1792863096.555771,
+    "seen": 1793015586.0259058,
+    "ast_hash": "31081f505c7d3e30024a4030dd4a8375",
+    "semantic_hash": "31081f505c7d3e30024a4030dd4a8375"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/v2/philly.json": {
+    "mtime": 1792863388.38042,
+    "seen": 1793015586.025907,
+    "ast_hash": "d08c0af07df7be456ff4ab5caac7d9d5",
+    "semantic_hash": "d08c0af07df7be456ff4ab5caac7d9d5"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/v2/sanda_judo.json": {
+    "mtime": 1792890352.8570254,
+    "seen": 1793015586.025907,
+    "ast_hash": "df61b61102eaf0e2cc9c45c007bc4e66",
+    "semantic_hash": "df61b61102eaf0e2cc9c45c007bc4e66"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/v2/street.json": {
+    "mtime": 1792863096.610919,
+    "seen": 1793015586.025908,
+    "ast_hash": "607de20d4cd7537b5f9ea95ec384d449",
+    "semantic_hash": "607de20d4cd7537b5f9ea95ec384d449"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/v2/thai.json": {
+    "mtime": 1792863096.6293352,
+    "seen": 1793015586.025908,
+    "ast_hash": "b43bfce9ccd1b4d457ebfef8fc581f5b",
+    "semantic_hash": "b43bfce9ccd1b4d457ebfef8fc581f5b"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/v2/wrestler.json": {
+    "mtime": 1792863388.45697,
+    "seen": 1793015586.025909,
+    "ast_hash": "0d817672a41c9745ef59ef186a546bf2",
+    "semantic_hash": "0d817672a41c9745ef59ef186a546bf2"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/cards/wrestler.json": {
+    "mtime": 1792680508.5796561,
+    "seen": 1793015586.025909,
+    "ast_hash": "4de58b7aabcc631d3a89b87f8b6a6c6f",
+    "semantic_hash": "4de58b7aabcc631d3a89b87f8b6a6c6f"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/data/claims.json": {
+    "mtime": 1792680508.4777758,
+    "seen": 1793015586.02591,
+    "ast_hash": "9fc15825e86a88dec3d977d5b707e63c",
+    "semantic_hash": "9fc15825e86a88dec3d977d5b707e63c"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/data/combinations.json": {
+    "mtime": 1792681638.723986,
+    "seen": 1793015586.02591,
+    "ast_hash": "5fbdc8c3b64f4e78f39c465b05a08d47",
+    "semantic_hash": "5fbdc8c3b64f4e78f39c465b05a08d47"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/data/counter_graph.json": {
+    "mtime": 1792682148.427884,
+    "seen": 1793015586.025911,
+    "ast_hash": "8e0f8276feba211bb50364ef064c1e9a",
+    "semantic_hash": "8e0f8276feba211bb50364ef064c1e9a"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/data/debt_registry.json": {
+    "mtime": 1792680508.4957411,
+    "seen": 1793015586.025911,
+    "ast_hash": "c425c93e1ccc7c250228fbc634cba548",
+    "semantic_hash": "c425c93e1ccc7c250228fbc634cba548"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/data/engine_index.json": {
+    "mtime": 1792681638.647624,
+    "seen": 1793015586.025912,
+    "ast_hash": "61065e8c5a53bafc968a11de85866cf1",
+    "semantic_hash": "61065e8c5a53bafc968a11de85866cf1"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/data/matchups.json": {
+    "mtime": 1792680508.5777771,
+    "seen": 1793015586.025912,
+    "ast_hash": "88d71fc8284d7f7cfa62021e1ac761fd",
+    "semantic_hash": "88d71fc8284d7f7cfa62021e1ac761fd"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/data/model.json": {
+    "mtime": 1792681638.72543,
+    "seen": 1793015586.025913,
+    "ast_hash": "7177ff14b1ea418d1f0e41c4ac00bcf9",
+    "semantic_hash": "7177ff14b1ea418d1f0e41c4ac00bcf9"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/data/model_v2.json": {
+    "mtime": 1792890352.919399,
+    "seen": 1793015586.025913,
+    "ast_hash": "a496023bc9bbfdfd66b233745bf43031",
+    "semantic_hash": "a496023bc9bbfdfd66b233745bf43031"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/data/option_behaviors.json": {
+    "mtime": 1792895983.2032897,
+    "seen": 1793015586.0259142,
+    "ast_hash": "e3ac651ca7e565aa3f7b5a11029b6a32",
+    "semantic_hash": "e3ac651ca7e565aa3f7b5a11029b6a32"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/data/pipeline.json": {
+    "mtime": 1792680508.5807915,
+    "seen": 1793015586.0259142,
+    "ast_hash": "f636f933ea50503e40d2b3f1cf9b18fd",
+    "semantic_hash": "f636f933ea50503e40d2b3f1cf9b18fd"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/data/positions.json": {
+    "mtime": 1792861936.5090983,
+    "seen": 1793015586.0259142,
+    "ast_hash": "a7d0ac1700032f75679aee1132f9e433",
+    "semantic_hash": "a7d0ac1700032f75679aee1132f9e433"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/data/sources.json": {
+    "mtime": 1792680508.477445,
+    "seen": 1793015586.025915,
+    "ast_hash": "d4506c9c1e740e54f2d8269f713842ef",
+    "semantic_hash": "d4506c9c1e740e54f2d8269f713842ef"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/data/techniques.json": {
+    "mtime": 1792681638.6503806,
+    "seen": 1793015586.025915,
+    "ast_hash": "a9dfe2d3f2c349c1fcdb5a27a41d2751",
+    "semantic_hash": "a9dfe2d3f2c349c1fcdb5a27a41d2751"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/data/techniques_v2.json": {
+    "mtime": 1792868660.3412614,
+    "seen": 1793015586.0259159,
+    "ast_hash": "5b0f878e3f4e67564103605f10d6adf0",
+    "semantic_hash": "5b0f878e3f4e67564103605f10d6adf0"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/engine/__init__.py": {
+    "mtime": 1792680734.2111266,
+    "seen": 1793015586.0259159,
+    "ast_hash": "a5a711572d3c37d885cbe22a048d4906",
+    "semantic_hash": "a5a711572d3c37d885cbe22a048d4906"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/engine/audit.py": {
+    "mtime": 1792682122.853485,
+    "seen": 1793015586.0259168,
+    "ast_hash": "96ee883e93ce57a9116561458ac45c4d",
+    "semantic_hash": "96ee883e93ce57a9116561458ac45c4d"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/engine/capabilities.py": {
+    "mtime": 1792867527.3998866,
+    "seen": 1793015586.0259168,
+    "ast_hash": "5eb92c55dcdecdcb68a1d07cf88a940e",
+    "semantic_hash": "5eb92c55dcdecdcb68a1d07cf88a940e"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/engine/choreography.py": {
+    "mtime": 1792681312.7554235,
+    "seen": 1793015586.025918,
+    "ast_hash": "18d6bf45d8fbb335087b628f170d62ad",
+    "semantic_hash": "18d6bf45d8fbb335087b628f170d62ad"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/engine/event_graph.py": {
+    "mtime": 1792681162.1152477,
+    "seen": 1793015586.025918,
+    "ast_hash": "a7520397f81946929195cda298438645",
+    "semantic_hash": "a7520397f81946929195cda298438645"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/engine/fight_director.py": {
+    "mtime": 1792682267.7587314,
+    "seen": 1793015586.025919,
+    "ast_hash": "1859881c4f8c4fa998ed757411f6f8f8",
+    "semantic_hash": "1859881c4f8c4fa998ed757411f6f8f8"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/engine/fight_state.py": {
+    "mtime": 1792681638.7398424,
+    "seen": 1793015586.02592,
+    "ast_hash": "07cdf4063526665c061f7e8bad477f15",
+    "semantic_hash": "07cdf4063526665c061f7e8bad477f15"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/engine/matchups.py": {
+    "mtime": 1792692511.8621354,
+    "seen": 1793015586.02592,
+    "ast_hash": "58622c32ee7c02c3ade2d89f4ed3db2c",
+    "semantic_hash": "58622c32ee7c02c3ade2d89f4ed3db2c"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/engine/ontology.py": {
+    "mtime": 1792867168.899536,
+    "seen": 1793015586.025921,
+    "ast_hash": "dab2473160bacc1dfd9e67dd96e0c611",
+    "semantic_hash": "dab2473160bacc1dfd9e67dd96e0c611"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/engine/probability.py": {
+    "mtime": 1792692513.247584,
+    "seen": 1793015586.025921,
+    "ast_hash": "8cd309aefbdc172fdbf620980b42188a",
+    "semantic_hash": "8cd309aefbdc172fdbf620980b42188a"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/engine/prompt_compiler.py": {
+    "mtime": 1792681312.755702,
+    "seen": 1793015586.025921,
+    "ast_hash": "24eb89fdba47c4d0b531e35aecba457c",
+    "semantic_hash": "24eb89fdba47c4d0b531e35aecba457c"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/engine/simulator_v2.py": {
+    "mtime": 1792895448.9113543,
+    "seen": 1793015586.025922,
+    "ast_hash": "bfe18ff471f63ea1d0ee50fe23964ca1",
+    "semantic_hash": "bfe18ff471f63ea1d0ee50fe23964ca1"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/examples/gold_master_1_blade_exchange.json": {
+    "mtime": 1792677710.732621,
+    "seen": 1793015586.025922,
+    "ast_hash": "de483caf53e43f5ef388aa29f479f6df",
+    "semantic_hash": "de483caf53e43f5ef388aa29f479f6df"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/examples/gold_master_2_disarm_dual_blade.json": {
+    "mtime": 1792677710.7329206,
+    "seen": 1793015586.025923,
+    "ast_hash": "b71a3f8108788a5c167aa152475fb48a",
+    "semantic_hash": "b71a3f8108788a5c167aa152475fb48a"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/examples/gold_master_3_courtyard_sky_cartwheel.json": {
+    "mtime": 1792562061.4400759,
+    "seen": 1793015586.025923,
+    "ast_hash": "6f97cc3f1d5bfae401c510bebf592dd1",
+    "semantic_hash": "6f97cc3f1d5bfae401c510bebf592dd1"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/examples/gold_master_4_shrine_bo_staff_determinism_test.json": {
+    "mtime": 1792562060.1615798,
+    "seen": 1793015586.0259242,
+    "ast_hash": "63de28902b8c3257fb60059484197870",
+    "semantic_hash": "63de28902b8c3257fb60059484197870"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/examples/variations/variation_1_baki_grounded_standup_war.json": {
+    "mtime": 1792570931.1051311,
+    "seen": 1793015586.0259242,
+    "ast_hash": "f37d5ee56de906fbf9fd388b842c1c15",
+    "semantic_hash": "f37d5ee56de906fbf9fd388b842c1c15"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/examples/variations/variation_2_multidomain_combative_showcase.json": {
+    "mtime": 1792570932.593619,
+    "seen": 1793015586.0259252,
+    "ast_hash": "092803b6622a692e818b3d3565a11ad7",
+    "semantic_hash": "092803b6622a692e818b3d3565a11ad7"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/examples/variations/variation_3_eight_limbs_muay_thai_mma_war.json": {
+    "mtime": 1792678390.9360483,
+    "seen": 1793015586.0259252,
+    "ast_hash": "fe38a605722e471ab409d663640a3e03",
+    "semantic_hash": "fe38a605722e471ab409d663640a3e03"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/compile_lbn23_pillar_fight.py": {
+    "mtime": 1792755984.8582652,
+    "seen": 1793015586.0259259,
+    "ast_hash": "436a666a428d2b2dec5bf0e1c5f64177",
+    "semantic_hash": "436a666a428d2b2dec5bf0e1c5f64177"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/prompts/arm_C1_intent_ir_and_trace.json": {
+    "mtime": 1792751092.583455,
+    "seen": 1793015586.0259259,
+    "ast_hash": "3fd0794318dfbf6eb7bd606548bfc5dd",
+    "semantic_hash": "3fd0794318dfbf6eb7bd606548bfc5dd"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/prompts/arm_C2_intent_ir_and_trace.json": {
+    "mtime": 1792748982.5078921,
+    "seen": 1793015586.0259268,
+    "ast_hash": "136e872ee9d4dcee3f340579e46cc156",
+    "semantic_hash": "136e872ee9d4dcee3f340579e46cc156"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/prompts/arm_C3_intent_ir_and_trace.json": {
+    "mtime": 1792751092.9236474,
+    "seen": 1793015586.0259268,
+    "ast_hash": "fe9b93dada02a9eaa2b2a6d97cd5e82d",
+    "semantic_hash": "fe9b93dada02a9eaa2b2a6d97cd5e82d"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/prompts/arm_D_intent_ir_and_trace.json": {
+    "mtime": 1792751093.095324,
+    "seen": 1793015586.025928,
+    "ast_hash": "ecac8c720d80596af1eec0d5527ec880",
+    "semantic_hash": "ecac8c720d80596af1eec0d5527ec880"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/prompts/lbn23_pillar_fight_intent_ir_and_trace.json": {
+    "mtime": 1792756012.6682367,
+    "seen": 1793015586.025928,
+    "ast_hash": "07765a0267bab1543a9d72117096caa9",
+    "semantic_hash": "07765a0267bab1543a9d72117096caa9"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/__init__.py": {
+    "mtime": 1792581342.1112547,
+    "seen": 1793015586.025929,
+    "ast_hash": "5957eae63db1bc55cd9035f907cf97c5",
+    "semantic_hash": "5957eae63db1bc55cd9035f907cf97c5"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/atomic_causal_compiler.py": {
+    "mtime": 1792861048.95102,
+    "seen": 1793015586.025929,
+    "ast_hash": "aa52adabdfaf36988fd88ad0383162b2",
+    "semantic_hash": "aa52adabdfaf36988fd88ad0383162b2"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/block_bridge.py": {
+    "mtime": 1792689432.5676022,
+    "seen": 1793015586.02593,
+    "ast_hash": "2db4cbc204e9b86a09cb5f90acd24b2f",
+    "semantic_hash": "2db4cbc204e9b86a09cb5f90acd24b2f"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/causal_readability_compiler.py": {
+    "mtime": 1792751083.007351,
+    "seen": 1793015586.02593,
+    "ast_hash": "65b9f6f32ac3354354b17b54d12338a6",
+    "semantic_hash": "65b9f6f32ac3354354b17b54d12338a6"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/chain.py": {
+    "mtime": 1792622515.8521857,
+    "seen": 1793015586.02593,
+    "ast_hash": "cf0560705ef41c400981c61d10f31601",
+    "semantic_hash": "cf0560705ef41c400981c61d10f31601"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/cli.py": {
+    "mtime": 1792751016.2998939,
+    "seen": 1793015586.0259311,
+    "ast_hash": "250cc1bece6db60102cfb2763c01b1a5",
+    "semantic_hash": "250cc1bece6db60102cfb2763c01b1a5"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/closed_loop.py": {
+    "mtime": 1792677931.3272605,
+    "seen": 1793015586.0259311,
+    "ast_hash": "d3e5e43395ebf8a5aac2c8210f5935ca",
+    "semantic_hash": "d3e5e43395ebf8a5aac2c8210f5935ca"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/compiler.py": {
+    "mtime": 1792715150.3542132,
+    "seen": 1793015586.025932,
+    "ast_hash": "5c3edaafb93b351757bddea9a0e58ec5",
+    "semantic_hash": "5c3edaafb93b351757bddea9a0e58ec5"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/composer.py": {
+    "mtime": 1792581654.7770476,
+    "seen": 1793015586.025932,
+    "ast_hash": "df648379ebb9acb48b494891dd937aab",
+    "semantic_hash": "df648379ebb9acb48b494891dd937aab"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/config/thresholds.json": {
+    "mtime": 1792581344.461644,
+    "seen": 1793015586.025933,
+    "ast_hash": "0dce6597627e8eb017d8a7e52f3b9ec1",
+    "semantic_hash": "0dce6597627e8eb017d8a7e52f3b9ec1"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/dyad.py": {
+    "mtime": 1792621925.4284368,
+    "seen": 1793015586.025933,
+    "ast_hash": "2a80555978c5121241789573aa0c8a53",
+    "semantic_hash": "2a80555978c5121241789573aa0c8a53"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/enums.py": {
+    "mtime": 1792637082.8827035,
+    "seen": 1793015586.025934,
+    "ast_hash": "247ef78bd469a2e8203173ae4511e199",
+    "semantic_hash": "247ef78bd469a2e8203173ae4511e199"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/fixtures/pass/10_beat_boxing_exchange.json": {
+    "mtime": 1792581851.2585907,
+    "seen": 1793015586.025934,
+    "ast_hash": "b15b13aa2f8bbab60cec75f2e4862f37",
+    "semantic_hash": "b15b13aa2f8bbab60cec75f2e4862f37"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/fixtures/pass/variation_3_eight_limbs_muay_thai_mma_war_sheet.json": {
+    "mtime": 1792638397.806519,
+    "seen": 1793015586.0259352,
+    "ast_hash": "b35c76ca246bfedf69f7bce1fa6004cc",
+    "semantic_hash": "b35c76ca246bfedf69f7bce1fa6004cc"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/kb_bridge.py": {
+    "mtime": 1792694029.2576585,
+    "seen": 1793015586.0259352,
+    "ast_hash": "e8c520723acb97bad6b260beddfb3b34",
+    "semantic_hash": "e8c520723acb97bad6b260beddfb3b34"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/ledgers/quarantined_pairs.json": {
+    "mtime": 1792581379.1628568,
+    "seen": 1793015586.025936,
+    "ast_hash": "9cd7ba780e2d5bd9eb13437addb060d6",
+    "semantic_hash": "9cd7ba780e2d5bd9eb13437addb060d6"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/ledgers/word_probes.json": {
+    "mtime": 1792581378.1419625,
+    "seen": 1793015586.025936,
+    "ast_hash": "d3ece27a614495c6cea9d781b1337075",
+    "semantic_hash": "d3ece27a614495c6cea9d781b1337075"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/lexicon.py": {
+    "mtime": 1792593423.2505908,
+    "seen": 1793015586.0259368,
+    "ast_hash": "7065a573948c7fed81003d9faeb05830",
+    "semantic_hash": "7065a573948c7fed81003d9faeb05830"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/lexicon_data/boxing_v1.json": {
+    "mtime": 1792638391.794338,
+    "seen": 1793015586.0259368,
+    "ast_hash": "8dac8882f5d8a139021f1953056ffb39",
+    "semantic_hash": "8dac8882f5d8a139021f1953056ffb39"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/lexicon_data/muay_thai_mma_v1.json": {
+    "mtime": 1792638395.938232,
+    "seen": 1793015586.025938,
+    "ast_hash": "693186a1953f2e13e57755da19691a3f",
+    "semantic_hash": "693186a1953f2e13e57755da19691a3f"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/lexicon_data/strikes_extra_v1.json": {
+    "mtime": 1792637208.2442513,
+    "seen": 1793015586.025938,
+    "ast_hash": "94b63bf699c946ff57eebc88e573bdb1",
+    "semantic_hash": "94b63bf699c946ff57eebc88e573bdb1"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/original_causal_compiler.py": {
+    "mtime": 1792687211.6254427,
+    "seen": 1793015586.025939,
+    "ast_hash": "6551c5e28ac410eefe7a1077cae4f4af",
+    "semantic_hash": "6551c5e28ac410eefe7a1077cae4f4af"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/packets/m4_render_packet.json": {
+    "mtime": 1792591104.7259777,
+    "seen": 1793015586.025939,
+    "ast_hash": "8b2df2020eda1ccd416a17091344832d",
+    "semantic_hash": "8b2df2020eda1ccd416a17091344832d"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/scene_graph_linter.py": {
+    "mtime": 1792677710.698868,
+    "seen": 1793015586.02594,
+    "ast_hash": "886e4f317d74470f22a353aad679040f",
+    "semantic_hash": "886e4f317d74470f22a353aad679040f"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/state.py": {
+    "mtime": 1792581548.1863139,
+    "seen": 1793015586.025941,
+    "ast_hash": "ad98d74bf17d33450b27e03e9b52abf5",
+    "semantic_hash": "ad98d74bf17d33450b27e03e9b52abf5"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/validator.py": {
+    "mtime": 1792593483.0162673,
+    "seen": 1793015586.025941,
+    "ast_hash": "d4d5f53f18554ad6558c15d6c829344d",
+    "semantic_hash": "d4d5f53f18554ad6558c15d6c829344d"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/__init__.py": {
+    "mtime": 1792694027.3142183,
+    "seen": 1793015586.025942,
+    "ast_hash": "9fec3f55458f90eacff5d7c2ecfeed10",
+    "semantic_hash": "9fec3f55458f90eacff5d7c2ecfeed10"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/__main__.py": {
+    "mtime": 1792661001.0,
+    "seen": 1793015586.025942,
+    "ast_hash": "4c655caaa031bffe00108e10457001f6",
+    "semantic_hash": "4c655caaa031bffe00108e10457001f6"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/bench.py": {
+    "mtime": 1792648885.0,
+    "seen": 1793015586.025943,
+    "ast_hash": "c92dbb8127b5f53b3d81dd9291674760",
+    "semantic_hash": "c92dbb8127b5f53b3d81dd9291674760"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/budget.py": {
+    "mtime": 1792543669.0,
+    "seen": 1793015586.025943,
+    "ast_hash": "bbd7cf96dd620b37b1ea0f9fca742060",
+    "semantic_hash": "bbd7cf96dd620b37b1ea0f9fca742060"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/catalog.py": {
+    "mtime": 1792543398.0,
+    "seen": 1793015586.025944,
+    "ast_hash": "38a4d43143b65125b06baebc54b65fce",
+    "semantic_hash": "38a4d43143b65125b06baebc54b65fce"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/causal.py": {
+    "mtime": 1792652699.0,
+    "seen": 1793015586.025944,
+    "ast_hash": "e0c02f0c2a5fb01940228a0f9c1b6e3e",
+    "semantic_hash": "e0c02f0c2a5fb01940228a0f9c1b6e3e"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/check.py": {
+    "mtime": 1792646970.0,
+    "seen": 1793015586.0259452,
+    "ast_hash": "1aa5f8b1069f88772127d33a4079fb12",
+    "semantic_hash": "1aa5f8b1069f88772127d33a4079fb12"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/data/budget_classes.json": {
+    "mtime": 1792543280.0,
+    "seen": 1793015586.0259452,
+    "ast_hash": "8cba79e4338685f3a8ec7a3e28b7ff30",
+    "semantic_hash": "8cba79e4338685f3a8ec7a3e28b7ff30"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/data/engine_profiles_extra.json": {
+    "mtime": 1792543280.0,
+    "seen": 1793015586.0259452,
+    "ast_hash": "a492197ce4e10790da689604a259146a",
+    "semantic_hash": "a492197ce4e10790da689604a259146a"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/data/knobs.json": {
+    "mtime": 1792661001.0,
+    "seen": 1793015586.0259461,
+    "ast_hash": "39f496cff875b2fd665531b9df1bba34",
+    "semantic_hash": "39f496cff875b2fd665531b9df1bba34"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/data/mechanism_marks.json": {
+    "mtime": 1792651814.0,
+    "seen": 1793015586.0259461,
+    "ast_hash": "5db02736bb1adeaef651cc5323ec7e39",
+    "semantic_hash": "5db02736bb1adeaef651cc5323ec7e39"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/data/prerequisites.json": {
+    "mtime": 1792543280.0,
+    "seen": 1793015586.0259469,
+    "ast_hash": "4f4aeedd0d59e336840b164791a32fca",
+    "semantic_hash": "4f4aeedd0d59e336840b164791a32fca"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/data/priority_defaults.json": {
+    "mtime": 1792543280.0,
+    "seen": 1793015586.0259469,
+    "ast_hash": "72e220eb9fe216cd6197e599c686c970",
+    "semantic_hash": "72e220eb9fe216cd6197e599c686c970"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/data/rerank.json": {
+    "mtime": 1792652469.0,
+    "seen": 1793015586.0259478,
+    "ast_hash": "88b75e1f69f3264d0865a0693d423d95",
+    "semantic_hash": "88b75e1f69f3264d0865a0693d423d95"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/data/taste_profiles.json": {
+    "mtime": 1792543398.0,
+    "seen": 1793015586.0259478,
+    "ast_hash": "d1eb5a17dc5957513a97144ee2d30555",
+    "semantic_hash": "d1eb5a17dc5957513a97144ee2d30555"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/discover.py": {
+    "mtime": 1792652387.0,
+    "seen": 1793015586.025949,
+    "ast_hash": "df9b08440777bf6c3c3d461f3baf3934",
+    "semantic_hash": "df9b08440777bf6c3c3d461f3baf3934"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/emit.py": {
+    "mtime": 1792646970.0,
+    "seen": 1793015586.025949,
+    "ast_hash": "ee1066b0e2c7942e57da4f210abaa37f",
+    "semantic_hash": "ee1066b0e2c7942e57da4f210abaa37f"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/engines.py": {
+    "mtime": 1792543398.0,
+    "seen": 1793015586.02595,
+    "ast_hash": "8259079c781671046965a5521098b8c3",
+    "semantic_hash": "8259079c781671046965a5521098b8c3"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/fixtures.py": {
+    "mtime": 1792543814.0,
+    "seen": 1793015586.02595,
+    "ast_hash": "719d4f000d8356fbeca8fd4c2d695e67",
+    "semantic_hash": "719d4f000d8356fbeca8fd4c2d695e67"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/handbook.py": {
+    "mtime": 1792660817.0,
+    "seen": 1793015586.025951,
+    "ast_hash": "c8734cd6ecb5efff31d61a50ea12449d",
+    "semantic_hash": "c8734cd6ecb5efff31d61a50ea12449d"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/ir.py": {
+    "mtime": 1792590435.0,
+    "seen": 1793015586.025951,
+    "ast_hash": "af60403bf295ece00cee92d7cea5c393",
+    "semantic_hash": "af60403bf295ece00cee92d7cea5c393"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/knobs.py": {
+    "mtime": 1792661001.0,
+    "seen": 1793015586.025952,
+    "ast_hash": "1006f8630ed01131c8512ccced2cf51f",
+    "semantic_hash": "1006f8630ed01131c8512ccced2cf51f"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/knowledge.py": {
+    "mtime": 1792661001.0,
+    "seen": 1793015586.025952,
+    "ast_hash": "98ccb3e7cf4d7e70e90041ef64f0d0d6",
+    "semantic_hash": "98ccb3e7cf4d7e70e90041ef64f0d0d6"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/mechanism.py": {
+    "mtime": 1792651887.0,
+    "seen": 1793015586.025952,
+    "ast_hash": "37178f324cbc9e6116dc0c46b249a55b",
+    "semantic_hash": "37178f324cbc9e6116dc0c46b249a55b"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/policy.py": {
+    "mtime": 1792543398.0,
+    "seen": 1793015586.025953,
+    "ast_hash": "7987374849943d93f49ab2d569d2a882",
+    "semantic_hash": "7987374849943d93f49ab2d569d2a882"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/propose.py": {
+    "mtime": 1792661001.0,
+    "seen": 1793015586.025953,
+    "ast_hash": "7bfc81f1a944a3c413fab94e787d5774",
+    "semantic_hash": "7bfc81f1a944a3c413fab94e787d5774"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/query.py": {
+    "mtime": 1792655429.0,
+    "seen": 1793015586.025954,
+    "ast_hash": "bc18039b2a3e130101571713f4815c51",
+    "semantic_hash": "bc18039b2a3e130101571713f4815c51"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/relations.py": {
+    "mtime": 1792661001.0,
+    "seen": 1793015586.025954,
+    "ast_hash": "3765d57781a2648194d732c71dda5eb3",
+    "semantic_hash": "3765d57781a2648194d732c71dda5eb3"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/taste.py": {
+    "mtime": 1792543398.0,
+    "seen": 1793015586.025955,
+    "ast_hash": "b3c96d365472483020559e34493226b3",
+    "semantic_hash": "b3c96d365472483020559e34493226b3"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/tests/__init__.py": {
+    "mtime": 1792543814.0,
+    "seen": 1793015586.025955,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/tests/test_agent.py": {
+    "mtime": 1792543929.0,
+    "seen": 1793015586.0259562,
+    "ast_hash": "3492622a5ed913177fcf4f21eca46343",
+    "semantic_hash": "3492622a5ed913177fcf4f21eca46343"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/tests/test_allocator.py": {
+    "mtime": 1792652522.0,
+    "seen": 1793015586.025957,
+    "ast_hash": "45a2a307371ad646c25ecce68d179770",
+    "semantic_hash": "45a2a307371ad646c25ecce68d179770"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/tests/test_bench.py": {
+    "mtime": 1792648617.0,
+    "seen": 1793015586.025957,
+    "ast_hash": "70a0c92c45e66c2c4fb02c9bd129be53",
+    "semantic_hash": "70a0c92c45e66c2c4fb02c9bd129be53"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/tests/test_causal.py": {
+    "mtime": 1792652598.0,
+    "seen": 1793015586.0259578,
+    "ast_hash": "90b23cdd35233062702212c01e9e8859",
+    "semantic_hash": "90b23cdd35233062702212c01e9e8859"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/tests/test_discover.py": {
+    "mtime": 1792652328.0,
+    "seen": 1793015586.0259578,
+    "ast_hash": "c4ae51a732e3980306e3531d70e29723",
+    "semantic_hash": "c4ae51a732e3980306e3531d70e29723"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/tests/test_handbook.py": {
+    "mtime": 1792651928.0,
+    "seen": 1793015586.025959,
+    "ast_hash": "6b5f4d0c9b66d708ead35bf3f2e6b1d0",
+    "semantic_hash": "6b5f4d0c9b66d708ead35bf3f2e6b1d0"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/tests/test_judged_labels.py": {
+    "mtime": 1792649255.0,
+    "seen": 1793015586.025959,
+    "ast_hash": "f5cf6a5133c063d7eec832ec186d52f6",
+    "semantic_hash": "f5cf6a5133c063d7eec832ec186d52f6"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/tests/test_knobs_relations.py": {
+    "mtime": 1792661001.0,
+    "seen": 1793015586.02596,
+    "ast_hash": "b037be700f0e1714cbf73764c6d35153",
+    "semantic_hash": "b037be700f0e1714cbf73764c6d35153"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/tests/test_mechanism.py": {
+    "mtime": 1792651928.0,
+    "seen": 1793015586.02596,
+    "ast_hash": "d2fbfeae9f95cf52c4f35439d446726a",
+    "semantic_hash": "d2fbfeae9f95cf52c4f35439d446726a"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/tests/test_slice1.py": {
+    "mtime": 1792655414.0,
+    "seen": 1793015586.025961,
+    "ast_hash": "7b34a46ecfca8e88afbdd80e1a5e4f26",
+    "semantic_hash": "7b34a46ecfca8e88afbdd80e1a5e4f26"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/tests/test_slice3c.py": {
+    "mtime": 1792651954.0,
+    "seen": 1793015586.025961,
+    "ast_hash": "2061e323cff79146fbc3ae4ddf5ff29c",
+    "semantic_hash": "2061e323cff79146fbc3ae4ddf5ff29c"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/tests/test_verify.py": {
+    "mtime": 1792653719.0,
+    "seen": 1793015586.0259619,
+    "ast_hash": "56e2f3ca30fdcfac72dc016a4b03aff8",
+    "semantic_hash": "56e2f3ca30fdcfac72dc016a4b03aff8"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/verify.py": {
+    "mtime": 1792687638.2735803,
+    "seen": 1793015586.0259619,
+    "ast_hash": "8a01309504509411c8b28943361a8cfa",
+    "semantic_hash": "8a01309504509411c8b28943361a8cfa"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/anime_directives.json": {
+    "mtime": 1792514906.0,
+    "seen": 1793015586.025963,
+    "ast_hash": "46e9ad264a7ccbcdea2da075871afc81",
+    "semantic_hash": "46e9ad264a7ccbcdea2da075871afc81"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/compile_examples.sql": {
+    "mtime": 1792514974.0,
+    "seen": 1793015586.025963,
+    "ast_hash": "0489ce69a5e1c945a97a04229d84a9f3",
+    "semantic_hash": "0489ce69a5e1c945a97a04229d84a9f3"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/bench/2026-10-21-baseline.json": {
+    "mtime": 1792648775.0,
+    "seen": 1793015586.025963,
+    "ast_hash": "24f327c86f5e72ad0bc57904bb586bd5",
+    "semantic_hash": "24f327c86f5e72ad0bc57904bb586bd5"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/bench/2026-10-21-no-diversify.json": {
+    "mtime": 1792648775.0,
+    "seen": 1793015586.025964,
+    "ast_hash": "4f59a98c73bbc8436b2b4e0efdf384c4",
+    "semantic_hash": "4f59a98c73bbc8436b2b4e0efdf384c4"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/bench/2026-10-21-no-expand.json": {
+    "mtime": 1792648775.0,
+    "seen": 1793015586.025965,
+    "ast_hash": "b832dc01320400efbcb8cb348cee1947",
+    "semantic_hash": "b832dc01320400efbcb8cb348cee1947"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/bench/2026-10-22-after-3c.json": {
+    "mtime": 1792648946.0,
+    "seen": 1793015586.025965,
+    "ast_hash": "0b317aa403ab2411ab01317d6857f0fb",
+    "semantic_hash": "0b317aa403ab2411ab01317d6857f0fb"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/bench/2026-10-22-after-accepted.json": {
+    "mtime": 1792651999.0,
+    "seen": 1793015586.025965,
+    "ast_hash": "5f88e13e3e5500a257a9b55271a5067c",
+    "semantic_hash": "5f88e13e3e5500a257a9b55271a5067c"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/bench/2026-10-22-after-allocator.json": {
+    "mtime": 1792652470.0,
+    "seen": 1793015586.0259662,
+    "ast_hash": "d5cae42ae987642cc1ba7794a6ba31ad",
+    "semantic_hash": "d5cae42ae987642cc1ba7794a6ba31ad"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/bench/2026-10-22-after-judged.json": {
+    "mtime": 1792649259.0,
+    "seen": 1793015586.0259662,
+    "ast_hash": "e10a6a30b0de7dfb95b73ac5aaf52a92",
+    "semantic_hash": "e10a6a30b0de7dfb95b73ac5aaf52a92"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/bench/2026-10-22-after-mechanism-rebuild.json": {
+    "mtime": 1792651888.0,
+    "seen": 1793015586.0259671,
+    "ast_hash": "cd8ff2e354a058ed27f60e07c48bd203",
+    "semantic_hash": "cd8ff2e354a058ed27f60e07c48bd203"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/bench/2026-10-22-baseline-v2.json": {
+    "mtime": 1792651997.0,
+    "seen": 1793015586.0259671,
+    "ast_hash": "99d124adf89222a9ca5915e47722e99c",
+    "semantic_hash": "99d124adf89222a9ca5915e47722e99c"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/bench/2026-10-22-tune.json": {
+    "mtime": 1792652469.0,
+    "seen": 1793015586.025968,
+    "ast_hash": "88b75e1f69f3264d0865a0693d423d95",
+    "semantic_hash": "88b75e1f69f3264d0865a0693d423d95"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/bench/2026-10-22-verify-default.json": {
+    "mtime": 1792653758.0,
+    "seen": 1793015586.025968,
+    "ast_hash": "8a7ff9c3ee1596fccd775d2cf09798c4",
+    "semantic_hash": "8a7ff9c3ee1596fccd775d2cf09798c4"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/engine_profiles.json": {
+    "mtime": 1792514702.0,
+    "seen": 1793015586.0259688,
+    "ast_hash": "dbdaf7fe537245169b810403a9932817",
+    "semantic_hash": "dbdaf7fe537245169b810403a9932817"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/example_payloads.json": {
+    "mtime": 1792514974.0,
+    "seen": 1793015586.0259688,
+    "ast_hash": "6c7ab5e0834d537983b61d39729a2206",
+    "semantic_hash": "6c7ab5e0834d537983b61d39729a2206"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/seed_anime_directives.sql": {
+    "mtime": 1792514974.0,
+    "seen": 1793015586.02597,
+    "ast_hash": "ab0064600a8f3fd76c85b81501cdc2c8",
+    "semantic_hash": "ab0064600a8f3fd76c85b81501cdc2c8"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/sources.json": {
+    "mtime": 1792515206.0,
+    "seen": 1793015586.02597,
+    "ast_hash": "915dc188d27993c022d9132e1ad1885d",
+    "semantic_hash": "915dc188d27993c022d9132e1ad1885d"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/validate_anime_seed.py": {
+    "mtime": 1792514940.0,
+    "seen": 1793015586.025971,
+    "ast_hash": "a1abf292133a71d475b08cffe846c61f",
+    "semantic_hash": "a1abf292133a71d475b08cffe846c61f"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/validation_report.json": {
+    "mtime": 1792514994.0,
+    "seen": 1793015586.025971,
+    "ast_hash": "80b3d6fcc5e118d8519bbab8e9c427ff",
+    "semantic_hash": "80b3d6fcc5e118d8519bbab8e9c427ff"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/verify_anime_directives.sql": {
+    "mtime": 1792514974.0,
+    "seen": 1793015586.025972,
+    "ast_hash": "6532c88bffe71c92e15ee94e77031dfd",
+    "semantic_hash": "6532c88bffe71c92e15ee94e77031dfd"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/plan_fight.py": {
+    "mtime": 1792689522.2124858,
+    "seen": 1793015586.025972,
+    "ast_hash": "4ac0678bdda83d1b28ee5a5dca283971",
+    "semantic_hash": "4ac0678bdda83d1b28ee5a5dca283971"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/predict.py": {
+    "mtime": 1792689520.3988352,
+    "seen": 1793015586.025973,
+    "ast_hash": "a27ff89cc4b243f7fde4be6677097d30",
+    "semantic_hash": "a27ff89cc4b243f7fde4be6677097d30"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/pyproject.toml": {
+    "mtime": 1792689637.3567054,
+    "seen": 1793015586.025973,
+    "ast_hash": "81b4aee6e0aae76f200a1ef8b766446e",
+    "semantic_hash": "81b4aee6e0aae76f200a1ef8b766446e"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/backfill_changes.json": {
+    "mtime": 1792682272.1484375,
+    "seen": 1793015586.025974,
+    "ast_hash": "3c951cb0855bb9e3cc0df27445d0cc6b",
+    "semantic_hash": "3c951cb0855bb9e3cc0df27445d0cc6b"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/backfill_coverage.json": {
+    "mtime": 1792682272.1490715,
+    "seen": 1793015586.025974,
+    "ast_hash": "43f2fd953c864009be1e37f5cecaa766",
+    "semantic_hash": "43f2fd953c864009be1e37f5cecaa766"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/baseline_inventory.json": {
+    "mtime": 1792679979.6156979,
+    "seen": 1793015586.025975,
+    "ast_hash": "bc1aecd3fb7a27b514836f1ad48ab4d4",
+    "semantic_hash": "bc1aecd3fb7a27b514836f1ad48ab4d4"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/contract.json": {
+    "mtime": 1792679979.6158977,
+    "seen": 1793015586.025975,
+    "ast_hash": "cc177ccee99346cd45a795b16bc1fc28",
+    "semantic_hash": "cc177ccee99346cd45a795b16bc1fc28"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/coverage_summary.json": {
+    "mtime": 1792682460.5281794,
+    "seen": 1793015586.0259762,
+    "ast_hash": "3c5e7c81bb9e13fc170f5c9c4f92a898",
+    "semantic_hash": "3c5e7c81bb9e13fc170f5c9c4f92a898"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/evaluation_round_1.json": {
+    "mtime": 1792682267.8038998,
+    "seen": 1793015586.0259762,
+    "ast_hash": "353c3923e0e3cf9033886a73541eaa39",
+    "semantic_hash": "353c3923e0e3cf9033886a73541eaa39"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/evaluation_round_2.json": {
+    "mtime": 1792682460.5287452,
+    "seen": 1793015586.0259771,
+    "ast_hash": "220da2f320f323506015434870795a65",
+    "semantic_hash": "220da2f320f323506015434870795a65"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/execution_evidence.json": {
+    "mtime": 1792695284.1405373,
+    "seen": 1793015586.0259771,
+    "ast_hash": "cea2075c6c429a8c184eb2d3f68b13a8",
+    "semantic_hash": "cea2075c6c429a8c184eb2d3f68b13a8"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_baseline_before_repair/cli_executions.json": {
+    "mtime": 1792692198.6925092,
+    "seen": 1793015586.025978,
+    "ast_hash": "737b84aff47e538bc486411fa1f062bb",
+    "semantic_hash": "737b84aff47e538bc486411fa1f062bb"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_baseline_before_repair/duplicate_slot_prediction.json": {
+    "mtime": 1792692194.8272676,
+    "seen": 1793015586.025978,
+    "ast_hash": "13bd096f74093c85533e3381368b48c4",
+    "semantic_hash": "13bd096f74093c85533e3381368b48c4"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_baseline_before_repair/inputs/duplicate_slot_a.json": {
+    "mtime": 1792692194.6831713,
+    "seen": 1793015586.0259788,
+    "ast_hash": "980c63e6612a75b3bea98ed7203c8526",
+    "semantic_hash": "980c63e6612a75b3bea98ed7203c8526"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_baseline_before_repair/inputs/duplicate_slot_b.json": {
+    "mtime": 1792692194.683395,
+    "seen": 1793015586.0259788,
+    "ast_hash": "cf5f9f7bd507764b2d3a92082ddc2a00",
+    "semantic_hash": "cf5f9f7bd507764b2d3a92082ddc2a00"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_baseline_before_repair/inputs/invalid_id_control_a.json": {
+    "mtime": 1792692195.0259387,
+    "seen": 1793015586.02598,
+    "ast_hash": "6bcd6b7afb9f36e63cc76f1b66e3ddf6",
+    "semantic_hash": "6bcd6b7afb9f36e63cc76f1b66e3ddf6"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_baseline_before_repair/inputs/invalid_id_control_b.json": {
+    "mtime": 1792692195.0261528,
+    "seen": 1793015586.02598,
+    "ast_hash": "b2b5e349ae16791f3de75b7139dd2c12",
+    "semantic_hash": "b2b5e349ae16791f3de75b7139dd2c12"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_baseline_before_repair/inputs/unearned_tie_label_a.json": {
+    "mtime": 1792692194.872218,
+    "seen": 1793015586.025981,
+    "ast_hash": "00d1611c3c3014e326d93ea67ccae49f",
+    "semantic_hash": "00d1611c3c3014e326d93ea67ccae49f"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_baseline_before_repair/inputs/unearned_tie_label_b.json": {
+    "mtime": 1792692194.872404,
+    "seen": 1793015586.025981,
+    "ast_hash": "4de58b7aabcc631d3a89b87f8b6a6c6f",
+    "semantic_hash": "4de58b7aabcc631d3a89b87f8b6a6c6f"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_baseline_before_repair/protected_manifest_after.json": {
+    "mtime": 1792692198.6928613,
+    "seen": 1793015586.025981,
+    "ast_hash": "da70edb207c76889336971c10b60983c",
+    "semantic_hash": "da70edb207c76889336971c10b60983c"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_baseline_before_repair/protected_manifest_before.json": {
+    "mtime": 1792692198.6927037,
+    "seen": 1793015586.025983,
+    "ast_hash": "da70edb207c76889336971c10b60983c",
+    "semantic_hash": "da70edb207c76889336971c10b60983c"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_baseline_before_repair/reproduction_results.json": {
+    "mtime": 1792692198.6920345,
+    "seen": 1793015586.025984,
+    "ast_hash": "29a959203ec17350111f68b194bcdf23",
+    "semantic_hash": "29a959203ec17350111f68b194bcdf23"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_baseline_before_repair/unearned_tie_label_prediction.json": {
+    "mtime": 1792692195.0147934,
+    "seen": 1793015586.025984,
+    "ast_hash": "1cf8d04715b53aa5a56d4770dd4d1a16",
+    "semantic_hash": "1cf8d04715b53aa5a56d4770dd4d1a16"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/final_gap_analysis.json": {
+    "mtime": 1792682460.527801,
+    "seen": 1793015586.025984,
+    "ast_hash": "34ff55afa614bc594e94b8e6198ff0e0",
+    "semantic_hash": "34ff55afa614bc594e94b8e6198ff0e0"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/final_integrity_report.json": {
+    "mtime": 1792682269.453882,
+    "seen": 1793015586.025985,
+    "ast_hash": "43f2fd953c864009be1e37f5cecaa766",
+    "semantic_hash": "43f2fd953c864009be1e37f5cecaa766"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/initial_gap_analysis.json": {
+    "mtime": 1792679979.6161108,
+    "seen": 1793015586.025985,
+    "ast_hash": "bd86dad244ebbcdf16574cfc3095f588",
+    "semantic_hash": "bd86dad244ebbcdf16574cfc3095f588"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/provenance_audit.json": {
+    "mtime": 1792682272.1493955,
+    "seen": 1793015586.025986,
+    "ast_hash": "a4234284c9f7756c6a2815ce009493dc",
+    "semantic_hash": "a4234284c9f7756c6a2815ce009493dc"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/research_log.json": {
+    "mtime": 1792682122.8314605,
+    "seen": 1793015586.025986,
+    "ast_hash": "62f10b8d1ddbca09909683704f28a44c",
+    "semantic_hash": "62f10b8d1ddbca09909683704f28a44c"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/unresolved_conflicts.json": {
+    "mtime": 1792682272.1487353,
+    "seen": 1793015586.0259871,
+    "ast_hash": "c432ed2151de47c2333851bb267dc1f3",
+    "semantic_hash": "c432ed2151de47c2333851bb267dc1f3"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/event.schema.json": {
+    "mtime": 1792680953.912846,
+    "seen": 1793015586.0259871,
+    "ast_hash": "03db69c10d6cd4f22f7475b446b9ed59",
+    "semantic_hash": "03db69c10d6cd4f22f7475b446b9ed59"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/event_graph.schema.json": {
+    "mtime": 1792680953.9133723,
+    "seen": 1793015586.025988,
+    "ast_hash": "b5bf459a64aa44e38e7634a2f238e170",
+    "semantic_hash": "b5bf459a64aa44e38e7634a2f238e170"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/exchange_event_v2.schema.json": {
+    "mtime": 1792861784.9868648,
+    "seen": 1793015586.025988,
+    "ast_hash": "28a1bfcb8ee74073886893b1a468ae5d",
+    "semantic_hash": "28a1bfcb8ee74073886893b1a468ae5d"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/fight_plan.schema.json": {
+    "mtime": 1792680953.9131505,
+    "seen": 1793015586.025989,
+    "ast_hash": "0506556de565fd1860d504b2aa45f6a5",
+    "semantic_hash": "0506556de565fd1860d504b2aa45f6a5"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/fight_settings.schema.json": {
+    "mtime": 1792861781.3280156,
+    "seen": 1793015586.025989,
+    "ast_hash": "50131ada6a228d58fa098d37d9e641e6",
+    "semantic_hash": "50131ada6a228d58fa098d37d9e641e6"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/fight_state.schema.json": {
+    "mtime": 1792680953.912581,
+    "seen": 1793015586.0259898,
+    "ast_hash": "beb6dd5db50da07ef57380ba716be538",
+    "semantic_hash": "beb6dd5db50da07ef57380ba716be538"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/fight_state_v2.schema.json": {
+    "mtime": 1792861783.4022393,
+    "seen": 1793015586.0259898,
+    "ast_hash": "14bb80a015114f63772f1488ea2eb24e",
+    "semantic_hash": "14bb80a015114f63772f1488ea2eb24e"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/fighter_card.schema.json": {
+    "mtime": 1792680953.9118721,
+    "seen": 1793015586.025991,
+    "ast_hash": "44af10fd08fe78bc9afa0397a60460ae",
+    "semantic_hash": "44af10fd08fe78bc9afa0397a60460ae"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/fighter_card_v2.schema.json": {
+    "mtime": 1792861728.164085,
+    "seen": 1793015586.025991,
+    "ast_hash": "bccfb2f782a0b662a82e9c6b1b12c07c",
+    "semantic_hash": "bccfb2f782a0b662a82e9c6b1b12c07c"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/model_config_v2.schema.json": {
+    "mtime": 1792889859.8237367,
+    "seen": 1793015586.025991,
+    "ast_hash": "bf142f5358b49b9a19abcb47c9a0ee1e",
+    "semantic_hash": "bf142f5358b49b9a19abcb47c9a0ee1e"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/option_behavior.schema.json": {
+    "mtime": 1792889815.6792085,
+    "seen": 1793015586.025992,
+    "ast_hash": "88737be9d1d5b18d34aabf8b5814bb82",
+    "semantic_hash": "88737be9d1d5b18d34aabf8b5814bb82"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/position_map.schema.json": {
+    "mtime": 1792861731.9473362,
+    "seen": 1793015586.025992,
+    "ast_hash": "63f58fcc2afb30a9c451e4995350f513",
+    "semantic_hash": "63f58fcc2afb30a9c451e4995350f513"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/sakuga_mllm_3_1_causal.schema.json": {
+    "mtime": 1792715049.4425623,
+    "seen": 1793015586.0259929,
+    "ast_hash": "760994070d684debbae29c20eb4c1927",
+    "semantic_hash": "760994070d684debbae29c20eb4c1927"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/sakuga_xperiment.schema.json": {
+    "mtime": 1792715064.090047,
+    "seen": 1793015586.025994,
+    "ast_hash": "bd24b5f6667b9e15120b0e99c4408c0c",
+    "semantic_hash": "bd24b5f6667b9e15120b0e99c4408c0c"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/shot.schema.json": {
+    "mtime": 1792680953.9135447,
+    "seen": 1793015586.025994,
+    "ast_hash": "45744fd18f596eb573878138014b3363",
+    "semantic_hash": "45744fd18f596eb573878138014b3363"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/simulation_result_v2.schema.json": {
+    "mtime": 1792861786.054414,
+    "seen": 1793015586.025994,
+    "ast_hash": "3c4ff13189695b70a6df99e9b075f451",
+    "semantic_hash": "3c4ff13189695b70a6df99e9b075f451"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/schemas/technique_v2.schema.json": {
+    "mtime": 1792861730.625712,
+    "seen": 1793015586.025995,
+    "ast_hash": "ba90b2accaca3308f52523bfb4fbb72d",
+    "semantic_hash": "ba90b2accaca3308f52523bfb4fbb72d"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/scripts/__init__.py": {
+    "mtime": 1792682028.313052,
+    "seen": 1793015586.025995,
+    "ast_hash": "7854075cae358ce67f916037a79e714a",
+    "semantic_hash": "7854075cae358ce67f916037a79e714a"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/scripts/audit_coverage.py": {
+    "mtime": 1792681510.0190456,
+    "seen": 1793015586.025996,
+    "ast_hash": "24d2034e1ea98e4738e68ca438c3f434",
+    "semantic_hash": "24d2034e1ea98e4738e68ca438c3f434"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/scripts/backfill.py": {
+    "mtime": 1792689673.651299,
+    "seen": 1793015586.025996,
+    "ast_hash": "f6026dd2c2b7691ee52aab4c271e5b7b",
+    "semantic_hash": "f6026dd2c2b7691ee52aab4c271e5b7b"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/scripts/build_v2_data.py": {
+    "mtime": 1792895973.0526018,
+    "seen": 1793015586.0259972,
+    "ast_hash": "f2161fb423d9e8bfba6b4ee30b210c29",
+    "semantic_hash": "f2161fb423d9e8bfba6b4ee30b210c29"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/scripts/regress.py": {
+    "mtime": 1792692791.489652,
+    "seen": 1793015586.0259972,
+    "ast_hash": "b27e4a12a27f05afaaa36def24cef5a2",
+    "semantic_hash": "b27e4a12a27f05afaaa36def24cef5a2"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/scripts/sakuga_compiler.py": {
+    "mtime": 1792677710.7338846,
+    "seen": 1793015586.025998,
+    "ast_hash": "6872a569cc3df617bb24baa1740d61a8",
+    "semantic_hash": "6872a569cc3df617bb24baa1740d61a8"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/scripts/sakuga_original_kb.py": {
+    "mtime": 1792687194.043748,
+    "seen": 1793015586.025998,
+    "ast_hash": "2991fe66025ae4fa8ffe466ced4a2d36",
+    "semantic_hash": "2991fe66025ae4fa8ffe466ced4a2d36"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/scripts/twelvelabs_bridge.py": {
+    "mtime": 1792561459.2765968,
+    "seen": 1793015586.025999,
+    "ast_hash": "dd8c3af481c6fb5148eb17855aa96cc6",
+    "semantic_hash": "dd8c3af481c6fb5148eb17855aa96cc6"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/scripts/validate_data.py": {
+    "mtime": 1792689639.6722922,
+    "seen": 1793015586.025999,
+    "ast_hash": "4b1c144b4fbba5d2f82e6602888ce555",
+    "semantic_hash": "4b1c144b4fbba5d2f82e6602888ce555"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/scripts/verify_findings.py": {
+    "mtime": 1792692194.4378526,
+    "seen": 1793015586.0259998,
+    "ast_hash": "511b432413700881e68d19dd557a97c6",
+    "semantic_hash": "511b432413700881e68d19dd557a97c6"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/simulate_fight.py": {
+    "mtime": 1792891001.413878,
+    "seen": 1793015586.0259998,
+    "ast_hash": "0ed61b04a3b6783bf045fecf3b8d38ba",
+    "semantic_hash": "0ed61b04a3b6783bf045fecf3b8d38ba"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/templates/sakuga_mllm_3_1_causal_0534_template.json": {
+    "mtime": 1792686961.3205364,
+    "seen": 1793015586.0259998,
+    "ast_hash": "0a724dcfff94fe982648a3c61958985f",
+    "semantic_hash": "0a724dcfff94fe982648a3c61958985f"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/templates/sakuga_xperiment_template.json": {
+    "mtime": 1792714918.4482472,
+    "seen": 1793015586.026001,
+    "ast_hash": "fe38a605722e471ab409d663640a3e03",
+    "semantic_hash": "fe38a605722e471ab409d663640a3e03"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/tests/conftest.py": {
+    "mtime": 1792681858.5504348,
+    "seen": 1793015586.026001,
+    "ast_hash": "d04f38e19bf6680cc9f9ba6878cb1332",
+    "semantic_hash": "d04f38e19bf6680cc9f9ba6878cb1332"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/tests/test_backfill.py": {
+    "mtime": 1792681858.552027,
+    "seen": 1793015586.026002,
+    "ast_hash": "897f9cbe56b413152fb072f383386be4",
+    "semantic_hash": "897f9cbe56b413152fb072f383386be4"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/tests/test_end_to_end.py": {
+    "mtime": 1792681858.5527482,
+    "seen": 1793015586.026002,
+    "ast_hash": "fe5e1f4dd055c68021e76fb5b4f5e611",
+    "semantic_hash": "fe5e1f4dd055c68021e76fb5b4f5e611"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/tests/test_event_graph.py": {
+    "mtime": 1792681858.5524979,
+    "seen": 1793015586.026003,
+    "ast_hash": "a04dc73c2261747e8a58bd7f81325992",
+    "semantic_hash": "a04dc73c2261747e8a58bd7f81325992"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/tests/test_fairness_plan.py": {
+    "mtime": 1792692747.8840673,
+    "seen": 1793015586.026003,
+    "ast_hash": "44e96bd43f69304dda5b7f79ea3bef5d",
+    "semantic_hash": "44e96bd43f69304dda5b7f79ea3bef5d"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/tests/test_fight_move_system.py": {
+    "mtime": 1792751124.2945907,
+    "seen": 1793015586.026004,
+    "ast_hash": "84669118655592ba6e5c76fd676e484a",
+    "semantic_hash": "84669118655592ba6e5c76fd676e484a"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/tests/test_fight_plan.py": {
+    "mtime": 1792681858.5522676,
+    "seen": 1793015586.026004,
+    "ast_hash": "3eeccafa5b7835796415113170de8b19",
+    "semantic_hash": "3eeccafa5b7835796415113170de8b19"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/tests/test_matchups.py": {
+    "mtime": 1792681858.5510917,
+    "seen": 1793015586.026005,
+    "ast_hash": "fffef3416a49d83badcdfe1e1dd3d529",
+    "semantic_hash": "fffef3416a49d83badcdfe1e1dd3d529"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/tests/test_ontology.py": {
+    "mtime": 1792681858.5507128,
+    "seen": 1793015586.026005,
+    "ast_hash": "0cd916c9108cf0b177bf82f65f150687",
+    "semantic_hash": "0cd916c9108cf0b177bf82f65f150687"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/tests/test_prediction.py": {
+    "mtime": 1792681858.551504,
+    "seen": 1793015586.026006,
+    "ast_hash": "f15de8546efdea261d850dfafca58182",
+    "semantic_hash": "f15de8546efdea261d850dfafca58182"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/tests/test_simulator_v2_and_atomic_compiler.py": {
+    "mtime": 1792894314.5947418,
+    "seen": 1793015586.026006,
+    "ast_hash": "e279f7ed4bc3df04f4ba58abbed05d9d",
+    "semantic_hash": "e279f7ed4bc3df04f4ba58abbed05d9d"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/tests/test_slots.py": {
+    "mtime": 1792681858.551818,
+    "seen": 1793015586.026007,
+    "ast_hash": "4c5b9127f579b6c0791798a6c3f5f15a",
+    "semantic_hash": "4c5b9127f579b6c0791798a6c3f5f15a"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/AGENTS.md": {
+    "mtime": 1793015352.346728,
+    "seen": 1793015586.026007,
+    "ast_hash": "e1c502f00434c4b4eaeddcf5011c219d",
+    "semantic_hash": "e1c502f00434c4b4eaeddcf5011c219d"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/README.md": {
+    "mtime": 1793015326.8310475,
+    "seen": 1793015586.0260081,
+    "ast_hash": "323b6b2947cc57161eb14070628eecb6",
+    "semantic_hash": "323b6b2947cc57161eb14070628eecb6"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/SKILL.md": {
+    "mtime": 1793015434.3082538,
+    "seen": 1793015586.0260081,
+    "ast_hash": "5ea1e7de0bd3e7a197d2f023d32145b6",
+    "semantic_hash": "5ea1e7de0bd3e7a197d2f023d32145b6"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/docs/ADR_CLAIM_CHECKED_RENDERER_AND_SEMANTIC_VERIFIER.md": {
+    "mtime": 1792770412.4993675,
+    "seen": 1793015586.026009,
+    "ast_hash": "3c496666abd6e748b0442d6438652acf",
+    "semantic_hash": "3c496666abd6e748b0442d6438652acf"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/docs/BLOCK_SIMULATOR_V2_DESIGN_SPEC.md": {
+    "mtime": 1793015409.2468085,
+    "seen": 1793015586.026009,
+    "ast_hash": "27646ba95fa71aafe18f673b59a062cf",
+    "semantic_hash": "27646ba95fa71aafe18f673b59a062cf"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/docs/FIGHT_MOVE_SYSTEM_PLAN.md": {
+    "mtime": 1792687641.7081034,
+    "seen": 1793015586.02601,
+    "ast_hash": "dc850187264e083fee6f3daac0df03c1",
+    "semantic_hash": "dc850187264e083fee6f3daac0df03c1"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/docs/TWO_LAYER_FLUID_STACK_ARCHITECTURE.md": {
+    "mtime": 1792571148.0710025,
+    "seen": 1793015586.02601,
+    "ast_hash": "3af9852bb5dd7e0dfafd6922d24dec39",
+    "semantic_hash": "3af9852bb5dd7e0dfafd6922d24dec39"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/docs/VARIATIONS_AND_FIGHTING_STYLES.md": {
+    "mtime": 1792570988.3260467,
+    "seen": 1793015586.026011,
+    "ast_hash": "d06b2eaf78161e7747f5981e9702dad1",
+    "semantic_hash": "d06b2eaf78161e7747f5981e9702dad1"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/docs/fairness_test_plan.md": {
+    "mtime": 1792692194.4444935,
+    "seen": 1793015586.026011,
+    "ast_hash": "6e855fc31ab914b739b42f43c1469f71",
+    "semantic_hash": "6e855fc31ab914b739b42f43c1469f71"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/docs/llm_reasoning_guide.md": {
+    "mtime": 1792682122.830957,
+    "seen": 1793015586.026012,
+    "ast_hash": "3bb654148c59e123ed5e459bfd05d699",
+    "semantic_hash": "3bb654148c59e123ed5e459bfd05d699"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/docs/model.md": {
+    "mtime": 1792682028.314983,
+    "seen": 1793015586.026012,
+    "ast_hash": "634e4038c9febeb646e43b50a4d6a618",
+    "semantic_hash": "634e4038c9febeb646e43b50a4d6a618"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/examples/gold_master_3_courtyard_fluid_stack.txt": {
+    "mtime": 1792562105.0308857,
+    "seen": 1793015586.026013,
+    "ast_hash": "dce612fc1bb27f5d811626b22b783fae",
+    "semantic_hash": "dce612fc1bb27f5d811626b22b783fae"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/examples/gold_master_4_shrine_bo_staff_fluid_stack.txt": {
+    "mtime": 1792562105.080039,
+    "seen": 1793015586.026013,
+    "ast_hash": "c6468d591901365456a5167ca20a0d63",
+    "semantic_hash": "c6468d591901365456a5167ca20a0d63"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/examples/variations/variation_1_baki_grounded_standup_war_fluid_stack.txt": {
+    "mtime": 1792570948.5681393,
+    "seen": 1793015586.026013,
+    "ast_hash": "2730fa5e9a82590db27ff30e4e5de409",
+    "semantic_hash": "2730fa5e9a82590db27ff30e4e5de409"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/examples/variations/variation_2_multidomain_combative_showcase_fluid_stack.txt": {
+    "mtime": 1792570948.6218255,
+    "seen": 1793015586.0260139,
+    "ast_hash": "bcc60f41c9359130a9d47ca9500809f6",
+    "semantic_hash": "bcc60f41c9359130a9d47ca9500809f6"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/examples/variations/variation_3_eight_limbs_muay_thai_mma_war_fluid_stack.txt": {
+    "mtime": 1792678390.8442657,
+    "seen": 1793015586.0260139,
+    "ast_hash": "b160545bf3663ffdfc612aba0797bf9e",
+    "semantic_hash": "b160545bf3663ffdfc612aba0797bf9e"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/examples/variations/variation_3_eight_limbs_muay_thai_mma_war_sakuga_Xperiment.txt": {
+    "mtime": 1792678390.758109,
+    "seen": 1793015586.026015,
+    "ast_hash": "5ac3d4d362659105aa5c68fe00c15c17",
+    "semantic_hash": "5ac3d4d362659105aa5c68fe00c15c17"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/examples/variations/variation_3_eight_limbs_muay_thai_mma_war_single_layer.txt": {
+    "mtime": 1792591458.3247895,
+    "seen": 1793015586.026015,
+    "ast_hash": "ec27d2da6dd9079960e7bab9a993425e",
+    "semantic_hash": "ec27d2da6dd9079960e7bab9a993425e"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/EXPERIMENT_LOG.md": {
+    "mtime": 1792755438.693745,
+    "seen": 1793015586.026016,
+    "ast_hash": "f545ad2f5154d6dd7ddf143e70fab3a2",
+    "semantic_hash": "f545ad2f5154d6dd7ddf143e70fab3a2"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/prompts/arm_A_original_0534_causal.txt": {
+    "mtime": 1792748864.7078226,
+    "seen": 1793015586.026016,
+    "ast_hash": "8348f76f68641271bc60cd1cecef2227",
+    "semantic_hash": "8348f76f68641271bc60cd1cecef2227"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/prompts/arm_B_extreme_sakuga_Xperiment.txt": {
+    "mtime": 1792748864.8739283,
+    "seen": 1793015586.026017,
+    "ast_hash": "5ac3d4d362659105aa5c68fe00c15c17",
+    "semantic_hash": "5ac3d4d362659105aa5c68fe00c15c17"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/prompts/arm_C1_latent_sakuga_contract.txt": {
+    "mtime": 1792751092.5823267,
+    "seen": 1793015586.02602,
+    "ast_hash": "6681d2e4e8b84ff310766291e39cc95d",
+    "semantic_hash": "6681d2e4e8b84ff310766291e39cc95d"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/prompts/arm_C2_latent_sakuga_prose.txt": {
+    "mtime": 1792751092.7538419,
+    "seen": 1793015586.02602,
+    "ast_hash": "aa6b69ed992aebd31b4ba45740331f0e",
+    "semantic_hash": "aa6b69ed992aebd31b4ba45740331f0e"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/prompts/arm_C3_latent_sakuga_tight.txt": {
+    "mtime": 1792751092.9226685,
+    "seen": 1793015586.026021,
+    "ast_hash": "b788fd4e01b0bd1e12e99ea6098ad1ac",
+    "semantic_hash": "b788fd4e01b0bd1e12e99ea6098ad1ac"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/prompts/arm_D_latent_sakuga_scene_stack.txt": {
+    "mtime": 1792751093.0943613,
+    "seen": 1793015586.026021,
+    "ast_hash": "d8e45a84746f3e5f46dd6bc298210467",
+    "semantic_hash": "d8e45a84746f3e5f46dd6bc298210467"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/prompts/lbn23_pillar_fight_arm_C1_clean_verified.txt": {
+    "mtime": 1792896688.190083,
+    "seen": 1793015586.026022,
+    "ast_hash": "1521488059135e9cd476787c2a259547",
+    "semantic_hash": "1521488059135e9cd476787c2a259547"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/prompts/lbn23_pillar_fight_arm_C1_contract.txt": {
+    "mtime": 1792756012.6673977,
+    "seen": 1793015586.026022,
+    "ast_hash": "0cd91c75f449cbb885242070de3a121f",
+    "semantic_hash": "0cd91c75f449cbb885242070de3a121f"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/prompts/lbn23_pillar_fight_arm_C3_tight.txt": {
+    "mtime": 1792756012.6680112,
+    "seen": 1793015586.026023,
+    "ast_hash": "0b7915e79e65facdc1629194f0e73950",
+    "semantic_hash": "0b7915e79e65facdc1629194f0e73950"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/prompts/lbn23_pillar_fight_arm_D_scene_stack.txt": {
+    "mtime": 1792756012.6677048,
+    "seen": 1793015586.026023,
+    "ast_hash": "208ce500a761bd3c235248edd5cff7eb",
+    "semantic_hash": "208ce500a761bd3c235248edd5cff7eb"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/prompts/lbn23_pillar_fight_atomic_labeled_ir.txt": {
+    "mtime": 1792896688.1899045,
+    "seen": 1793015586.0260239,
+    "ast_hash": "0b6b51dad626f902887e641551a88d26",
+    "semantic_hash": "0b6b51dad626f902887e641551a88d26"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/prompts/lbn23_pillar_fight_c1_plus_sakuga_mllm_causal.txt": {
+    "mtime": 1792756012.6667829,
+    "seen": 1793015586.0260239,
+    "ast_hash": "c291b1a3cb63f81b2462890d7d56b5f1",
+    "semantic_hash": "c291b1a3cb63f81b2462890d7d56b5f1"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/prompts/lbn23_pillar_fight_golden_0534_causal.txt": {
+    "mtime": 1792756012.6669424,
+    "seen": 1793015586.026025,
+    "ast_hash": "e785fb90ea9af9f3522177c976f65084",
+    "semantic_hash": "e785fb90ea9af9f3522177c976f65084"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/experiments/latent_sakuga/prompts/lbn23_pillar_fight_golden_extreme_xperiment.txt": {
+    "mtime": 1792756012.6670635,
+    "seen": 1793015586.026025,
+    "ast_hash": "e97f3bcd286a60d856bd7f9faf98f737",
+    "semantic_hash": "e97f3bcd286a60d856bd7f9faf98f737"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/fight_move_system/fixtures/pass/10_beat_boxing_exchange_compiled.txt": {
+    "mtime": 1792678320.9222147,
+    "seen": 1793015586.026026,
+    "ast_hash": "8dfe198c1e24e2259d4934e9b46dc973",
+    "semantic_hash": "8dfe198c1e24e2259d4934e9b46dc973"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/AGENTS.md": {
+    "mtime": 1792687775.0814831,
+    "seen": 1793015586.026026,
+    "ast_hash": "003abeca2cc528f925a774fb4b4635ba",
+    "semantic_hash": "003abeca2cc528f925a774fb4b4635ba"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/agent/README.md": {
+    "mtime": 1792661063.0,
+    "seen": 1793015586.026027,
+    "ast_hash": "ff9a44adc086277e890160ad51902204",
+    "semantic_hash": "ff9a44adc086277e890160ad51902204"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/anime_action_lexicon.md": {
+    "mtime": 1792515260.0,
+    "seen": 1793015586.026027,
+    "ast_hash": "01e97f804597c5633c1c8e9513295aca",
+    "semantic_hash": "01e97f804597c5633c1c8e9513295aca"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/DECISIONS.md": {
+    "mtime": 1792651665.0,
+    "seen": 1793015586.026028,
+    "ast_hash": "155232305aa2095169cd42be49cf23b3",
+    "semantic_hash": "155232305aa2095169cd42be49cf23b3"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/RETRIEVAL.md": {
+    "mtime": 1792661063.0,
+    "seen": 1793015586.026028,
+    "ast_hash": "d17a381f591ff6d539499715215b7972",
+    "semantic_hash": "d17a381f591ff6d539499715215b7972"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/ROADMAP.md": {
+    "mtime": 1792661063.0,
+    "seen": 1793015586.026029,
+    "ast_hash": "e0006ac03e8f41ddae198e369746e75b",
+    "semantic_hash": "e0006ac03e8f41ddae198e369746e75b"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/SCHEMA.md": {
+    "mtime": 1792661063.0,
+    "seen": 1793015586.026029,
+    "ast_hash": "80c901d9d185f7a997a09b58e7812755",
+    "semantic_hash": "80c901d9d185f7a997a09b58e7812755"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/TIMELINE.md": {
+    "mtime": 1792661063.0,
+    "seen": 1793015586.02603,
+    "ast_hash": "b43afc32e9e61af00542262c01759748",
+    "semantic_hash": "b43afc32e9e61af00542262c01759748"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/mechanism_candidates.md": {
+    "mtime": 1792651887.0,
+    "seen": 1793015586.02603,
+    "ast_hash": "940e8a3aff6f62844a2fa489ef097f5e",
+    "semantic_hash": "940e8a3aff6f62844a2fa489ef097f5e"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/slices/2026-10-21-slice3a.md": {
+    "mtime": 1792648657.0,
+    "seen": 1793015586.026031,
+    "ast_hash": "f8311519d08d1ec01fb5b826b642281d",
+    "semantic_hash": "f8311519d08d1ec01fb5b826b642281d"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/slices/2026-10-21-slice3b.md": {
+    "mtime": 1792648775.0,
+    "seen": 1793015586.026031,
+    "ast_hash": "21079dd384cbf8de7f24672a480d508d",
+    "semantic_hash": "21079dd384cbf8de7f24672a480d508d"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/slices/2026-10-21-slice3c.md": {
+    "mtime": 1792648994.0,
+    "seen": 1793015586.0260322,
+    "ast_hash": "da242e0868189cb8ba2cfdce748b5f43",
+    "semantic_hash": "da242e0868189cb8ba2cfdce748b5f43"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/slices/2026-10-22-allocator.md": {
+    "mtime": 1792652523.0,
+    "seen": 1793015586.0260322,
+    "ast_hash": "2a99a16e3d778e5f875de4320ce6f7d2",
+    "semantic_hash": "2a99a16e3d778e5f875de4320ce6f7d2"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/slices/2026-10-22-benchmark-accepted.md": {
+    "mtime": 1792651999.0,
+    "seen": 1793015586.026033,
+    "ast_hash": "fd100e55113d7c8a1a2a069b12391bd2",
+    "semantic_hash": "fd100e55113d7c8a1a2a069b12391bd2"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/slices/2026-10-22-causal-triples.md": {
+    "mtime": 1792652701.0,
+    "seen": 1793015586.026033,
+    "ast_hash": "cdd36bea8a194e2e864c781d592609da",
+    "semantic_hash": "cdd36bea8a194e2e864c781d592609da"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/slices/2026-10-22-judged-labels.md": {
+    "mtime": 1792649312.0,
+    "seen": 1793015586.0260339,
+    "ast_hash": "3b9517529c4bca86cf5db10bc8ea4916",
+    "semantic_hash": "3b9517529c4bca86cf5db10bc8ea4916"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/slices/2026-10-22-knobs-specimens-relations.md": {
+    "mtime": 1792661063.0,
+    "seen": 1793015586.0260339,
+    "ast_hash": "de98f689aad3df6ba883f1ff54122b63",
+    "semantic_hash": "de98f689aad3df6ba883f1ff54122b63"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/slices/2026-10-22-mechanism-candidates.md": {
+    "mtime": 1792649119.0,
+    "seen": 1793015586.0260348,
+    "ast_hash": "9f5c013d3e49f7bb0978d8d2ebcafa5b",
+    "semantic_hash": "9f5c013d3e49f7bb0978d8d2ebcafa5b"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/slices/2026-10-22-mechanism-review.md": {
+    "mtime": 1792651888.0,
+    "seen": 1793015586.0260348,
+    "ast_hash": "b2c1c4526dc549853bd96c699361e84c",
+    "semantic_hash": "b2c1c4526dc549853bd96c699361e84c"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/slices/2026-10-22-retrieval-verification.md": {
+    "mtime": 1792653781.0,
+    "seen": 1793015586.026036,
+    "ast_hash": "05a5c19e4c69c8885b74a6473a1fc47b",
+    "semantic_hash": "05a5c19e4c69c8885b74a6473a1fc47b"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/slices/2026-10-22-run2-audit.md": {
+    "mtime": 1792652735.0,
+    "seen": 1793015586.026036,
+    "ast_hash": "c69e8e52645318375f0b7131c040875f",
+    "semantic_hash": "c69e8e52645318375f0b7131c040875f"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/slices/2026-10-22-step5-parked-check.md": {
+    "mtime": 1792649373.0,
+    "seen": 1793015586.026037,
+    "ast_hash": "0e64633d0a2f6830a74c7c8ed48def2e",
+    "semantic_hash": "0e64633d0a2f6830a74c7c8ed48def2e"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/knowledge_base/docs/slices/2026-10-22-swanson-sweep.md": {
+    "mtime": 1792652330.0,
+    "seen": 1793015586.026037,
+    "ast_hash": "e3b76950fd1fa65c6eb81c7f5f1f307b",
+    "semantic_hash": "e3b76950fd1fa65c6eb81c7f5f1f307b"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/references/sakuga_prompt_schema_sop.md": {
+    "mtime": 1792677710.733484,
+    "seen": 1793015586.026038,
+    "ast_hash": "f2760bb4d3f445d6d356ba89bc5d9cba",
+    "semantic_hash": "f2760bb4d3f445d6d356ba89bc5d9cba"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/fairness_audit_report.md": {
+    "mtime": 1792692194.4413416,
+    "seen": 1793015586.026038,
+    "ast_hash": "86b4026bc6e2c032a0c585b8f8bc5018",
+    "semantic_hash": "86b4026bc6e2c032a0c585b8f8bc5018"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/gap_analysis.md": {
+    "mtime": 1792682460.5279925,
+    "seen": 1793015586.0260391,
+    "ast_hash": "a841bee0a1281bef1a280e41cfdbbe9e",
+    "semantic_hash": "a841bee0a1281bef1a280e41cfdbbe9e"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/implementation_decisions.md": {
+    "mtime": 1792682460.528577,
+    "seen": 1793015586.0260391,
+    "ast_hash": "57e1e783e5a83b65d17cf1e60260d00d",
+    "semantic_hash": "57e1e783e5a83b65d17cf1e60260d00d"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/reports/requested_specification.txt": {
+    "mtime": 1792679979.6166108,
+    "seen": 1793015586.02604,
+    "ast_hash": "a4d1f3c6607bfe5e1a98dc434aa90d0b",
+    "semantic_hash": "a4d1f3c6607bfe5e1a98dc434aa90d0b"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/requirements.txt": {
+    "mtime": 1792682028.3127553,
+    "seen": 1793015586.02604,
+    "ast_hash": "e6792da7211e52dc849d02417aafed08",
+    "semantic_hash": "e6792da7211e52dc849d02417aafed08"
+  },
+  "/Users/king/.gemini/antigravity/scratch/Movement_Prose/templates/sakuga_xperiment_2layer_template.txt": {
+    "mtime": 1792714918.4519937,
+    "seen": 1793015586.026041,
+    "ast_hash": "5ac3d4d362659105aa5c68fe00c15c17",
+    "semantic_hash": "5ac3d4d362659105aa5c68fe00c15c17"
+  }
+}

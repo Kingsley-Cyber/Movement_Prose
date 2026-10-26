@@ -18,8 +18,10 @@ description: >-
 > - **Execute all commands yourself in the background** based on the user's natural-language intent—never ask a non-technical user to run CLI commands manually.
 > - **Clearly explain the 3 Core Flows** when onboarding the user:
 >   1. **The Knowledge Base Flow (`knowledge_base/`):** Automatically queries the 30,275-passage Action & Biomechanics Handbook (`handbook_index.db`), 64 Sakuga directives (`ai_video_compiler.db`), and Growing Agent Memory (`agent_memory.db`) *prior* to writing any fight beat.
->   2. **The Fighting Simulator (`BLOCK Fight Engine` — `predict.py`, `plan_fight.py`, `cards/`, `engine/`):** Evaluates fighter cards across 7 combat dimensions and 511 matchup cells, predicts win probabilities and tactical openings, and simulates 10-phase fights (either seeded or with a user-selected winner).
->   3. **The Dual-Path Prompt Compiler & Glitch Repair (`fight_move_system/`, `scripts/sakuga_compiler.py`, `scripts/sakuga_original_kb.py`):** Compiles fights into either the **Protected Original `05:34` Single-Layer `SAKUGA-MLLM-3.1-CAUSAL` format**, the **2-Layer Unrolled Fluid Stack (`--stack`)**, or **Shot-by-Shot Cinematic Prose**, and repairs specific video glitches upon user feedback.
+>   2. **The Fighting Simulator (`BLOCK Fight Engine v1 & v2` — `simulate_fight.py`, `predict.py`, `plan_fight.py`, `cards/`, `cards/v2/`, `engine/`):**
+>      - **BLOCK Simulator v2 (`simulate_fight.py` & `engine/simulator_v2.py`):** Order-invariant, card-driven exchange simulator across **12 predefined `block-2` fighter archetypes** (`cards/v2/*.json`: `detroit`, `donnell`, `greco`, `jiujitsu`, `karate`, `macklin`, `maleek`, `philly`, `sanda_judo`, `street`, `thai`, `wrestler`) and **57 mechanical style options** (`attack_profile` vs. `lane_readiness_bonus` with smooth diminishing returns `asymptote = 2.40`), emitting play-by-play exchange logs, Monte Carlo win rates, 1-Contact-Per-Beat causal prompts (`--emit-prompt`), 200-seed Round-Robin balance audits (`--balance-audit`), and 57-option viability audits (`--option-audit`).
+>      - **BLOCK v1 Predictor & 10-Phase Planner (`predict.py` & `plan_fight.py`):** Evaluates fighter cards across 7 combat dimensions and 511 matchup cells, predicts win probabilities and tactical openings, and simulates 10-phase fights (either seeded or with a user-selected winner).
+>   3. **The Dual-Path Prompt Compiler, Atomic 1-Contact-Per-Beat Compiler & Glitch Repair (`fight_move_system/`, `scripts/sakuga_compiler.py`, `scripts/sakuga_original_kb.py`):** Compiles fights into the **Protected Original `05:34` Single-Layer `SAKUGA-MLLM-3.1-CAUSAL` format**, the **2-Layer Unrolled Fluid Stack (`--stack`)**, the **Atomic 1-Contact-Per-Beat Causal Prompt (`atomic_causal_compiler.py` / `simulate_fight.py --emit-prompt`)**, or **Shot-by-Shot Cinematic Prose**, and repairs specific video glitches upon user feedback.
 
 This skill turns creative fight ideas, tactical style matchups, or multi-clip YouTube episode concepts into empirically verified, non-regressing video prompts using **TWO CO-EQUAL PROMPT SCHEMAS**:
 1. **The Original Baseline Schema (`SAKUGA-MLLM-3.1-CAUSAL`):** Single-Layer Causal JSON format (header + 1-line-per-beat causal JSON). Locked to `05:34` (`e91c686`).
@@ -44,10 +46,13 @@ This skill turns creative fight ideas, tactical style matchups, or multi-clip Yo
   * **Variation #1 (`grounded_striker_boxer_baki` — 100% Grounded Baki / Kengan Stand-Up War):** [variation_1_baki_grounded_standup_war.json](./examples/variations/variation_1_baki_grounded_standup_war.json) & [variation_1_baki_grounded_standup_war_fluid_stack.txt](./examples/variations/variation_1_baki_grounded_standup_war_fluid_stack.txt)
   * **Variation #2 (`acrobatic_multidomain_freestyle` — 4-Domain Multi-Limb Martial Arts Showcase):** [variation_2_multidomain_combative_showcase.json](./examples/variations/variation_2_multidomain_combative_showcase.json) & [variation_2_multidomain_combative_showcase_fluid_stack.txt](./examples/variations/variation_2_multidomain_combative_showcase_fluid_stack.txt)
   * **Variation #3 (`ufc_mma_octagon` — 6-Weapon Bare-Knuckle / Cage War via `sakuga_Xperiment`):** [variation_3_eight_limbs_muay_thai_mma_war.json](./examples/variations/variation_3_eight_limbs_muay_thai_mma_war.json) & [variation_3_eight_limbs_muay_thai_mma_war_sakuga_Xperiment.txt](./examples/variations/variation_3_eight_limbs_muay_thai_mma_war_sakuga_Xperiment.txt)
-* **Architecture & Fighting-Style Documentation:**
+  * **Architecture & Fighting-Style Documentation:**
+  * [BLOCK_SIMULATOR_V2_DESIGN_SPEC.md](./docs/BLOCK_SIMULATOR_V2_DESIGN_SPEC.md)
   * [TWO_LAYER_FLUID_STACK_ARCHITECTURE.md](./docs/TWO_LAYER_FLUID_STACK_ARCHITECTURE.md)
   * [VARIATIONS_AND_FIGHTING_STYLES.md](./docs/VARIATIONS_AND_FIGHTING_STYLES.md)
-* **Compilers & Bridge Scripts:**
+* **Simulators, Compilers & Bridge Scripts:**
+  * BLOCK Fight Simulator v2 CLI & Engine: [simulate_fight.py](./simulate_fight.py) & [simulator_v2.py](./engine/simulator_v2.py)
+  * Atomic 1-Contact-Per-Beat Causal Compiler: [atomic_causal_compiler.py](./fight_move_system/atomic_causal_compiler.py)
   * Original Protected 05:34 Compiler: [sakuga_compiler.py](./scripts/sakuga_compiler.py) & [sakuga_original_kb.py](./scripts/sakuga_original_kb.py)
   * v2 2-Layer `sakuga_Xperiment` Compiler: [compiler.py](./fight_move_system/compiler.py) & [scene_graph_linter.py](./fight_move_system/scene_graph_linter.py)
   * BLOCK-to-Movement_Prose Bridge: [block_bridge.py](./fight_move_system/block_bridge.py)

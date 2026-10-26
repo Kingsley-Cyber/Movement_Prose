@@ -55,7 +55,8 @@ When introducing this system to a user, explain it using this **BLUF Summary**:
 | *"Write me a 10-second anime fight prompt (grounded Baki brawl / ninja blade duel / Muay Thai rooftop war)"* | Queries KB (`kb-query`) $\to$ builds/selects spec $\to$ compiles via `fight_move_system.cli compile` (`--mode sakuga_Xperiment`) **or** `compile-original` (`05:34` path) $\to$ runs 25-rule linter | The verified, copy-paste-ready prompt file + a short explanation of the choreography beats and camera cuts. |
 | *"Use the original 05:34 prompt format with the knowledge base"* | `.venv/bin/python scripts/sakuga_original_kb.py compile-spec <spec.json> --out <out.txt>` | The protected `05:34` (`e91c686`) Single-Layer `SAKUGA-MLLM-3.1-CAUSAL` prompt enriched by the Knowledge Base, plus verification that all 17 physics rules passed. |
 | *"In my rendered video, the fighter lost an arm / merged bodies / floated at 3.5 seconds—fix it"* | `.venv/bin/python -m fight_move_system.cli repair --spec <spec.json> ...` (and logs verdict in `agent_memory.db`) | The updated, repaired prompt with only the broken beat fixed, explaining what changed and confirming the lesson was saved to Agent Memory. |
-| *"Make sure everything in the repo is working / installed"* | Creates `.venv` if missing, installs `requirements.txt`, and runs `.venv/bin/python scripts/regress.py` | A simple green-light confirmation that all databases, 105 automated tests, and example pipelines passed. |
+| *"Make sure everything in the repo is working / installed"* | Creates `.venv` if missing, installs `requirements.txt`, and runs `.venv/bin/python scripts/regress.py` | A simple green-light confirmation that all databases, 117 automated tests, and example pipelines passed. |
+| *"Run the balance audit / option viability audit"* | `.venv/bin/python simulate_fight.py --balance-audit --runs 200` and `.venv/bin/python simulate_fight.py --option-audit --runs 20` | The 12-archetype Round-Robin leaderboard (`[35%, 65%]` target band, order invariance) and 57-option perturbation viability report (`57/57 [VIABLE]`). |
 
 ---
 
@@ -67,12 +68,14 @@ Movement_Prose/
 ├── README.md                                                  # Unified setup, architecture, BLOCK model & CLI quick-start
 ├── SKILL.md                                                   # Antigravity / Claude Skill instructions (mirrored to ~/.gemini/config/skills/sakuga-fight-director)
 ├── pyproject.toml / requirements.txt                          # Package definition (`engine`, `fight_move_system`, `scripts`) & pinned deps
-├── predict.py                                                 # 🥋 BLOCK CLI: Deterministic, uncalibrated matchup probability prediction
-├── plan_fight.py                                              # 🥋 BLOCK CLI: Seeded/director-controlled fight planning, shotlist, prompts & `--movement-prose`
-├── cards/                                                     # 🥋 11 BLOCK Fighter Identity Cards (`maleek`, `donnell`, `wrestler`, `macklin`, `detroit`, `philly`, etc.)
-├── data/                                                      # 📊 Authoritative BLOCK Canon (`engine_index`, `matchups`, `model`, `counter_graph`, `debt_registry`, `techniques`, `combinations`, `pipeline`, `sources`, `claims`)
-├── schemas/                                                   # 📐 Versioned BLOCK JSON Schemas (`fighter_card`, `fight_plan`, `fight_state`, `event`, `event_graph`, `shot`)
-├── engine/                                                    # ⚙️ BLOCK Fight Engine Core (`ontology`, `audit`, `capabilities`, `matchups`, `probability`, `fight_director`, `fight_state`, `event_graph`, `choreography`, `prompt_compiler`)
+├── simulate_fight.py                                          # 🥋 BLOCK v2 CLI: Standalone archetype fight simulator, Monte Carlo, prompts & audits
+├── predict.py                                                 # 🥋 BLOCK v1 CLI: Deterministic, uncalibrated matchup probability prediction
+├── plan_fight.py                                              # 🥋 BLOCK v1 CLI: Seeded/director-controlled fight planning, shotlist, prompts & `--movement-prose`
+├── cards/                                                     # 🥋 11 Canonical `block-1` Fighter Cards + `cards/v2/` (12 `block-2` Archetypes incl. `sanda_judo`)
+├── data/                                                      # 📊 Authoritative BLOCK Canon (`engine_index`, `option_behaviors`, `model_v2`, `techniques_v2`, `positions`, `matchups`, `model`, `counter_graph`, `debt_registry`, `techniques`, `combinations`, `pipeline`, `sources`, `claims`)
+├── schemas/                                                   # 📐 Versioned JSON Schemas (6 v1 schemas + 9 `*_v2.schema.json` contracts + Sakuga schemas)
+├── engine/                                                    # ⚙️ BLOCK Fight Engine Core (`simulator_v2`, `ontology`, `audit`, `capabilities`, `matchups`, `probability`, `fight_director`, `fight_state`, `event_graph`, `choreography`, `prompt_compiler`)
+├── graphify-out/                                              # 🕸️ Graphify Persistent Knowledge Graph (`graph.json`, `GRAPH_REPORT.md`, `graph.html`)
 ├── resources/recovery.json                                    # Frozen BLOCK recovery bundle (restores only BLOCK-owned content; preserves authored values)
 ├── reports/                                                   # BLOCK audit, backfill, provenance, implementation decisions & `execution_evidence.json`
 ├── outputs/example_fights/                                    # Generated BLOCK + Movement_Prose fight packages (`maleek_vs_donnell`, `two_slot_upset`, `prediction.json`)
@@ -109,7 +112,7 @@ Movement_Prose/
 │       └── variation_3_eight_limbs_muay_thai_mma_war_fluid_stack.txt
 ├── references/
 │   └── sakuga_prompt_schema_sop.md                            # Complete Master SOP (Decisions 01-25)
-├── tests/                                                     # 🧪 98 Automated Tests (58 original BLOCK pytest tests + 40 Movement_Prose tests)
+├── tests/                                                     # 🧪 117 Automated Tests (58 original BLOCK pytest tests + 59 Movement_Prose, Simulator v2 & Atomic Compiler tests)
 └── _archive_rd_history_do_not_copy/                           # ⛔ DEPRECATED R&D ARCHIVE (Euler/Quaternion/Bloat tests — NEVER COPY FROM HERE)
 ```
 
@@ -296,7 +299,22 @@ The BLOCK Fight Simulator v2 (`engine/simulator_v2.py`, `scripts/build_v2_data.p
 
     # Run a Monte Carlo multi-run series (with optional Director Mode --winner):
     python3 simulate_fight.py wrestler thai --runs 50 --winner wrestler --json
+
+    # Run the 12-Archetype 200-Seed Round-Robin Balance Audit (verifies order invariance & [35%, 65%] target band):
+    python3 simulate_fight.py --balance-audit --runs 200
+
+    # Run the 57-Option Coverage & Single-Option Perturbation Viability Audit:
+    python3 simulate_fight.py --option-audit --runs 20
     ```
+- [x] **5. 57-Option Attack/Defense Split, Smooth Diminishing Returns (`asymptote = 2.40`) & Perturbation Viability Audit (`audit_option_coverage_v2`):**
+  - **Attack vs. Defense Option Separation (`data/option_behaviors.json` & `engine/simulator_v2.py`):**
+    - Defensive dimensions (`hands`, `defense`, `stance`, `tie`) set `lane_readiness_bonus` across the 8 defensive lanes and have `attack_profile = null`.
+    - Offensive dimensions (`target`, `kicking`, `mentality`) set `attack_profile` (`lane_accuracy_bonus`, `lane_damage_mult`, `preferred_lanes`) and have `lane_readiness_bonus = 0.0` across all 8 lanes (while retaining `lane_vulnerability` for openings their style exposes).
+  - **Smooth Diminishing Returns (`asymptote = 2.40`) & Low-Tempo + Defensive Sub-Linear Damping (`0.65`):**
+    - Replaces hard posture caps (`+1.25`) with $f(x) = \frac{2.40 \cdot x}{2.40 + |x|}$ so stacking complementary guard + defense + stance choices always adds value with diminishing returns, and damps `low_tempo` (`tempo <= 2`) defensive stacking when paired with `mentality.defensive`.
+  - **Verified Balance & Option Viability:**
+    - `python3 simulate_fight.py --balance-audit --runs 200`: `Order Invariance: True`, all 12 archetypes inside `[35%, 65%]` (`39.4%`–`61.1%`), `No Pair > 85%: True` (`Max Pairwise: 84.0%`).
+    - `python3 simulate_fight.py --option-audit --runs 20`: `Total Options Tested: 57`, `All 57 Viable: True` (`0` Dominant, `0` Dead/Weak).
 
 ### 7.1 Mandatory Agent Rules for Authoring Cards & Running Simulations
 1. **How to Build a `block-2` Card from a Plain-English Character Description:**
