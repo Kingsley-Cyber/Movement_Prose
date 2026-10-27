@@ -65,9 +65,11 @@ def update_grappling_position(
         actor_state["grappling_position"] = "double_underhooks"
         defender_state["grappling_position"] = "over_under"
         actor_state["sub_grips"]["underhooks"] = min(2, actor_state["sub_grips"].get("underhooks", 0) + 1)
-    elif tid in takedown_ids:
+    elif tid in takedown_ids or tk in ("takedown", "sweep"):
         actor_state["posture_mode"] = defender_state["posture_mode"] = "ground"
-        actor_state["grappling_position"] = "side_control" if tid in side_control_td_ids else "half_guard_top"
+        actor_state["grappling_position"] = (
+            "side_control" if (tid in side_control_td_ids or tk == "sweep") else "half_guard_top"
+        )
         defender_state["grappling_position"] = "closed_guard_bottom"
         actor_state["grip"], defender_state["grip"] = "top", "bottom"
         actor_state["control_marks"] += 1

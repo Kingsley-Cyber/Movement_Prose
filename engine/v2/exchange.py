@@ -28,6 +28,7 @@ from .data import (
     TECH_FEINT,
     TECH_RETREAT,
     TECH_STEP,
+    TECH_SWITCH_STEP,
     get_attack_profile,
     load_capabilities_v2,
     load_model_v2,
@@ -45,6 +46,16 @@ from .defense import (
 from .finishes import check_finish_conditions, evaluate_decision_winner
 from .grappling import update_grappling_position
 from .kicking import unroll_kick_anatomy
+from .laterality import (
+    apply_side_damage_and_cuts,
+    compute_dominance_deltas,
+    compute_lead_foot_matchup,
+    compute_line_accuracy_modifier,
+    get_anatomical_sides,
+    resolve_actor_laterality,
+    resolve_lead_foot_outside_contest,
+    resolve_target_anatomical_side,
+)
 from .readiness import compute_readiness_profile
 from .selection import (
     build_slot_plans,
@@ -103,10 +114,11 @@ def compute_card_derived_damage(
     tie_opt = dims.get("tie")
 
     tech = k.techniques.get(tid)
+    t_v2_entry = getattr(k, "techniques_v2", {}).get(tid) or load_techniques_v2(k.root).get(tid, {})
     if tech is None:
-        t_v2 = getattr(k, "techniques_v2", {}).get(tid, {})
-        tech = t_v2 if t_v2.get("status") != "existing" else {}
-    target_region = str(tech.get("target_region", "head"))
+        tech = t_v2_entry if t_v2_entry.get("status") != "existing" else {}
+    tech_kind = str(t_v2_entry.get("kind") or tech.get("kind") or "")
+    target_region = str(tech.get("target_region") or t_v2_entry.get("target_region") or "head")
     split_kick = dc.get("karate_split_kick", {})
     if tid == dc.get("single_leg_id"):
         target_region = "leg"
@@ -148,7 +160,7 @@ def compute_card_derived_damage(
     delta_kicking = 0.0
     if tid in KICK_IDS:
         kick_fav_lanes = set(kick_prof.get("favored_lanes", []))
-        if attack_lane in kick_fav_lanes or tid in dc.get("kick_power_techniques", []):
+        if attack_lane in kick_fav_lanes or tid in dc.get("kick_power_techniques", []) or tech_kind in ("kick", "knee"):
             delta_kicking = float(kick_prof.get("power_delta", 0.0))
 
     delta_target = 0.0
@@ -157,7 +169,11 @@ def compute_card_derived_damage(
     if not matched_target:
         for rule in dc.get("target_power_matches", []):
             if target_opt in rule.get("options", []):
-                if target_region in rule.get("regions", []) or tid in rule.get("techniques", []):
+                if (
+                    target_region in rule.get("regions", [])
+                    or tid in rule.get("techniques", [])
+                    or (rule.get("techniques") and tech_kind in ("knee", "grip"))
+                ):
                     matched_target = True
                     break
     if matched_target:
@@ -179,12 +195,22 @@ def compute_card_derived_damage(
     leg_wear_other = abs(float(d_cfg.get("leg_wear_other_per_point", -0.015)))
     delta_wear = -fat_wear * att_fatigue - (leg_wear_kick * att_leg_dmg if tid in KICK_IDS else leg_wear_other * att_leg_dmg)
 
+    delta_laterality, _ = compute_dominance_deltas(attacker_card, attacker_state, t_v2_entry, model_cfg)
+
     att_lo, att_hi = d_cfg.get("attacker_multiplier_clamp", [0.75, 1.75])
     m_attacker = max(
         float(att_lo),
         min(
             float(att_hi),
-            1.0 + delta_mentality + delta_stance + delta_kicking + delta_target + delta_other + delta_slot + delta_wear,
+            1.0
+            + delta_mentality
+            + delta_stance
+            + delta_kicking
+            + delta_target
+            + delta_other
+            + delta_slot
+            + delta_wear
+            + delta_laterality,
         ),
     )
 
@@ -324,6 +350,18 @@ def simulate_fight_v2(
             "submission_stage": 0,
             "wall_proximity": "far",
             "damage": {"head": 0.0, "body": 0.0, "leg": 0.0},
+            "damage_by_side": {
+                "head_left": 0.0,
+                "head_right": 0.0,
+                "body_left": 0.0,
+                "body_right": 0.0,
+                "leg_left": 0.0,
+                "leg_right": 0.0,
+                "arm_left": 0.0,
+                "arm_right": 0.0,
+            },
+            "cuts": {"left": 0, "right": 0},
+            "laterality": resolve_actor_laterality(c, orient),
             "fatigue": 0.0,
             "momentum": [0.0, 0.0],
             "fight_momentum": 0.0,
@@ -595,6 +633,18 @@ def simulate_fight_v2(
 
         ex_range = range_band
 
+        # Lead-foot-outside contest in open stance (§7.4.5)
+        lfo_winner_id = resolve_lead_foot_outside_contest(
+            canonical_ids,
+            cards,
+            actors,
+            lead_matchup,
+            range_band,
+            rng,
+            opt_behaviors=opt_behaviors,
+            model_cfg=model_cfg,
+        )
+
         # Feint setup contest before readiness & selection
         feint_prob = min(
             feint_cap,
@@ -672,12 +722,14 @@ def simulate_fight_v2(
         attack_lane = str(m_stats.get("lane", "head_straight"))
         lane_readiness = float(def_readiness.get(attack_lane, nonlane_default))
 
-        # 4. Calculate Contested Hit Probability (§7.8)
+        # 4. Calculate Contested Hit Probability (§7.8 & §7.4)
         t_v2_entry = tech_v2_map.get(tid, {})
         t_kind = str(t_v2_entry.get("kind", "punch"))
         acc_base = float(t_v2_entry.get("accuracy_base_recommended", t_v2_entry.get("accuracy_base", 0.0)))
         combo_acc_bonus = float(matched_combo.get("follow_up_accuracy_bonus", 0.0)) if matched_combo else 0.0
         mom_acc_bonus = acc_mom_weight * float(att_state.get("fight_momentum", 0.0))
+        _, lat_acc_delta = compute_dominance_deltas(att_card, att_state, t_v2_entry, model_cfg)
+        line_acc_mod = compute_line_accuracy_modifier(lead_matchup, t_v2_entry, lfo_winner_id, attacker_id, model_cfg)
 
         base_att_skill = (
             base_att_skill_const
@@ -686,6 +738,8 @@ def simulate_fight_v2(
                 for d in ("mentality", "stance", "hands", "target", "kicking", "tie")
             )
             + acc_base
+            + lat_acc_delta
+            + line_acc_mod
             + combo_acc_bonus
             + mom_acc_bonus
         )
@@ -737,6 +791,12 @@ def simulate_fight_v2(
             if tid == TECH_FEINT:
                 def_state["attention"]["feinted"] = True
                 feinted_this_exchange = False
+            elif tid == TECH_SWITCH_STEP:
+                att_state["orientation"] = "southpaw" if att_state["orientation"] == "orthodox" else "orthodox"
+                att_state["laterality"] = resolve_actor_laterality(att_card, att_state["orientation"])
+                lead_matchup = compute_lead_foot_matchup(
+                    actors[canonical_ids[0]]["orientation"], actors[canonical_ids[1]]["orientation"]
+                )
         elif tid in KICK_IDS and tid not in kick_excluded and roll > max(kick_min_roll, hit_p_eff - kick_def_bonus):
             defense_used, outcome, def_p_succ, def_roll, def_grant_cap, inc_cls = resolve_contested_defense(
                 def_card,
@@ -825,10 +885,21 @@ def simulate_fight_v2(
             if contest_roll(counter_prob, band_name="counter", rng=rng, model_cfg=model_cfg)[0]:
                 counter_triggered = True
 
-        # 6. Apply Card-Derived Damage & Posture/Recovery Updates
+        # 6. Apply Card-Derived Damage, Side Damage (§7.4.7–7.4.8), & Posture/Recovery Updates
         dmg_info = compute_card_derived_damage(
             k, att_card, def_card, tid, outcome, att_state, def_state, in_active_slot=True, opt_behaviors=opt_behaviors
         )
+
+        att_orient_now = str(att_state["orientation"])
+        def_orient_now = str(def_state["orientation"])
+        limb_side, target_side = resolve_target_anatomical_side(att_orient_now, def_orient_now, t_v2_entry)
+        laterality_rec = {
+            "attacker_side": str(t_v2_entry.get("side") or "none"),
+            "limb_side": limb_side,
+            "target_side": target_side,
+            "stance_relation": lead_matchup,
+            "lead_foot_outside_winner": lfo_winner_id,
+        }
 
         if dmg_info["final_damage"] > 0:
             reg = str(dmg_info["target_region"])
@@ -836,25 +907,42 @@ def simulate_fight_v2(
             if tid in control_ids or t_routing == "control":
                 def_state["damage"][reg] = round(def_state["damage"][reg] + tie_dmg_frac * dmg_info["final_damage"], 3)
                 def_state["fatigue"] = round(def_state["fatigue"] + tie_fat_frac * dmg_info["final_damage"], 2)
+                apply_side_damage_and_cuts(
+                    def_state, reg, target_side, dmg_info["final_damage"], outcome, t_v2_entry, rng=rng, model_cfg=model_cfg, damage_share=tie_dmg_frac
+                )
             elif dmg_info["damage_type"] == "submission" or t_routing == "submission":
                 def_state["damage"][reg] = round(def_state["damage"][reg] + sub_dmg_frac * dmg_info["final_damage"], 3)
                 def_state["fatigue"] = round(def_state["fatigue"] + sub_fat_frac * dmg_info["final_damage"], 2)
+                apply_side_damage_and_cuts(
+                    def_state, reg, target_side, dmg_info["final_damage"], outcome, t_v2_entry, rng=rng, model_cfg=model_cfg, damage_share=sub_dmg_frac
+                )
             else:
                 def_state["damage"][reg] = round(def_state["damage"][reg] + dmg_info["final_damage"], 3)
+                side_res = apply_side_damage_and_cuts(
+                    def_state, reg, target_side, dmg_info["final_damage"], outcome, t_v2_entry, rng=rng, model_cfg=model_cfg, damage_share=1.0
+                )
+                body_stam_mult = float(side_res["body_stamina_mult"]) if reg == "body" else 1.0
                 if dmg_info["damage_type"] == "stamina_drain":
-                    def_state["fatigue"] = round(def_state["fatigue"] + stam_fat_frac * dmg_info["final_damage"], 2)
+                    def_state["fatigue"] = round(
+                        def_state["fatigue"] + stam_fat_frac * body_stam_mult * dmg_info["final_damage"], 2
+                    )
                 att_target_opt = att_dims.get("target")
                 extra_body_fat = float(
                     opt_behaviors.get(att_target_opt, {}).get("on_body_damage_extra_fatigue_fraction", 0.0)
                 ) if att_target_opt else 0.0
                 if reg == "body" and extra_body_fat > 0.0:
-                    def_state["fatigue"] = round(def_state["fatigue"] + extra_body_fat * dmg_info["final_damage"], 2)
+                    def_state["fatigue"] = round(
+                        def_state["fatigue"] + extra_body_fat * body_stam_mult * dmg_info["final_damage"], 2
+                    )
             if outcome in ("clean", "flush", "counter_hit", "partial"):
                 att_state["contact_marks"] += 1
 
         if dmg_info["recoil_leg_damage_to_attacker"] > 0:
-            att_state["damage"]["leg"] = round(
-                att_state["damage"]["leg"] + dmg_info["recoil_leg_damage_to_attacker"], 3
+            recoil_val = dmg_info["recoil_leg_damage_to_attacker"]
+            att_state["damage"]["leg"] = round(att_state["damage"]["leg"] + recoil_val, 3)
+            recoil_leg_side = limb_side if limb_side in ("left", "right") else get_anatomical_sides(att_orient_now)[1]
+            att_state["damage_by_side"][f"leg_{recoil_leg_side}"] = round(
+                float(att_state["damage_by_side"].get(f"leg_{recoil_leg_side}", 0.0)) + recoil_val, 3
             )
             att_state["kick_checks_suffered"] += 1
 
@@ -893,13 +981,19 @@ def simulate_fight_v2(
             "readiness_penalty": 0.0,
         }
 
-        leg_comp_thresh = leg_comp_base + float(
+        per_leg_base = float(model_cfg.get("laterality", {}).get("limb_effects", {}).get("leg_compromise_per_leg", leg_comp_base))
+        leg_comp_thresh = per_leg_base + float(
             get_attack_profile(att_dims.get("target"), opt_behaviors).get("leg_compromise_threshold_delta", 0.0)
         )
+        def_lead_leg_side, _ = get_anatomical_sides(str(def_state["orientation"]))
+        def_lead_leg_dmg = float(def_state.get("damage_by_side", {}).get(f"leg_{def_lead_leg_side}", 0.0))
         forced_stance_switch = False
-        if def_state["damage"]["leg"] >= leg_comp_thresh and not def_state.get("leg_compromised"):
+        if (
+            def_lead_leg_dmg >= leg_comp_thresh or def_state["damage"]["leg"] >= leg_comp_thresh
+        ) and not def_state.get("leg_compromised"):
             def_state["leg_compromised"] = True
             def_state["orientation"] = "southpaw" if def_state["orientation"] == "orthodox" else "orthodox"
+            def_state["laterality"] = resolve_actor_laterality(def_card, def_state["orientation"])
             forced_stance_switch = True
 
         grappling_pos = update_grappling_position(att_state, def_state, tid, outcome, att_card)
@@ -954,6 +1048,13 @@ def simulate_fight_v2(
                 )
                 reg_c = str(dump_dmg["target_region"])
                 att_state["damage"][reg_c] = round(att_state["damage"][reg_c] + dump_dmg["final_damage"], 3)
+                dump_t_v2 = tech_v2_map.get(dump_tid, {})
+                _, dump_target_side = resolve_target_anatomical_side(
+                    str(def_state["orientation"]), str(att_state["orientation"]), dump_t_v2
+                )
+                apply_side_damage_and_cuts(
+                    att_state, reg_c, dump_target_side, dump_dmg["final_damage"], "clean", dump_t_v2, rng=rng, model_cfg=model_cfg
+                )
                 def_state["contact_marks"] += 1
                 def_state["control_marks"] += 1
                 if sweep_resist >= ck_scram_gte:
@@ -1008,6 +1109,13 @@ def simulate_fight_v2(
                 )
                 reg_c = str(c_dmg["target_region"])
                 att_state["damage"][reg_c] = round(att_state["damage"][reg_c] + c_dmg["final_damage"], 3)
+                c_t_v2 = tech_v2_map.get(c_tid, {})
+                _, c_target_side = resolve_target_anatomical_side(
+                    str(def_state["orientation"]), str(att_state["orientation"]), c_t_v2
+                )
+                apply_side_damage_and_cuts(
+                    att_state, reg_c, c_target_side, c_dmg["final_damage"], c_qual, c_t_v2, rng=rng, model_cfg=model_cfg
+                )
                 def_state["contact_marks"] += 1
                 counter_followup_event = {
                     "counter_actor_id": defender_id,
@@ -1099,6 +1207,7 @@ def simulate_fight_v2(
             "attack_lane": attack_lane,
             "initiative_scores": initiative_scores,
             "selection": selection_rec,
+            "laterality": laterality_rec,
             "combo_id": str(matched_combo["id"]) if matched_combo else None,
             "defender_posture_before": def_posture_before,
             "defender_readiness_profile": def_readiness,

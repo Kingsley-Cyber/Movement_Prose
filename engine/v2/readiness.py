@@ -6,6 +6,7 @@ from typing import Any
 
 from ..ontology import Knowledge
 from .data import LANES, get_attack_profile, load_model_v2, load_option_behaviors
+from .laterality import compute_familiarity_multipliers
 from .state import compute_posture_state
 
 
@@ -227,9 +228,9 @@ def compute_readiness_profile(
             score -= off_bal_pen
 
         # 5. Outside angle & Lead-foot matchup (open vs. closed stance)
-        if att_info.get("outside_angle_conceded"):
+        if att_info.get("outside_angle_conceded") and lane in ("head_straight", "body", "leg"):
             score -= out_ang_pen
-        if lead_foot_matchup == "open_stance" and lane in ("head_straight", "body"):
+        elif lead_foot_matchup == "open_stance" and lane in ("head_straight", "body") and not att_info.get("outside_angle_conceded"):
             score -= open_rear_pen
 
         # 6. Attention (feints pull the guard/eyes)
@@ -239,23 +240,33 @@ def compute_readiness_profile(
             else:
                 score += feint_pen
 
-        # 7. Reads (read memory: scaled by defender's read_gain_multiplier and attacker's read_decay_factor)
+        # 7. Reads (read memory: scaled by defender's read_gain_multiplier, attacker's read_decay_factor, and opposite-stance familiarity §7.4.6)
         if incoming_tid:
             seen_n = int(read_mem.get("seen_counts", {}).get(incoming_tid, 0))
             consec_n = int(read_mem.get("consecutive_same_move_by_opponent", 0))
+            def_orient = str(actor_state.get("orientation") or ("orthodox" if card.get("orientation") == "switching" else card.get("orientation", "orthodox")))
+            att_orient = str(opponent_state.get("orientation") or ("orthodox" if opponent_card.get("orientation") == "switching" else opponent_card.get("orientation", "orthodox")))
+            fam_rg, fam_np = compute_familiarity_multipliers(card, def_orient, att_orient, m_cfg)
             if seen_n == 0:
-                score -= novel_pen
+                score -= novel_pen * fam_np
             else:
                 raw_read = min(rep_read_cap, read_per_seen * seen_n + read_per_consec * consec_n)
-                score += raw_read * def_read_gain * att_read_decay
+                score += raw_read * def_read_gain * att_read_decay * fam_rg
 
-        # 8. Regional Damage & Fatigue Effects
+        # 8. Regional Damage, Cuts (§7.4.8), & Fatigue Effects
         score -= fat_pen_per_pt * fatigue
         if lane in ("head_straight", "head_hook"):
             score -= body_dmg_pen * float(dmg["body"])
             score -= head_dmg_pen * float(dmg["head"])
         elif lane == "leg":
             score -= leg_dmg_pen * float(dmg["leg"])
+
+        if lane == "head_hook":
+            cuts = actor_state.get("cuts", {})
+            max_cut_lvl = max(int(cuts.get("left", 0)), int(cuts.get("right", 0))) if cuts else 0
+            if max_cut_lvl > 0:
+                cut_pen_pt = float(m_cfg.get("laterality", {}).get("cuts", {}).get("vision_penalty_per_cut_level_same_side", 0.4))
+                score -= cut_pen_pt * max_cut_lvl
 
         # 9. Guard range-lane bonus (e.g. 52-shield pocket defense) & Low-Tempo defensive patience
         score += _apply_range_lane_bonus(g_opt, range_band, lane, wall_near)

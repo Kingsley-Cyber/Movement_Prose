@@ -626,6 +626,7 @@ def build_candidate_pool_v2(
             return sorted(set(reset_cands))
 
     cands: list[str] = []
+    punch_kicks = set(load_model_v2().get("legacy", {}).get("simulation_config", {}).get("punch_range_kicks", []))
     for tid in full_pool:
         t = tech_v2_map.get(tid, {})
         kind = str(t.get("kind", ""))
@@ -654,6 +655,12 @@ def build_candidate_pool_v2(
             if (
                 "punch" in req_rng
                 or "close" in req_rng
+                or (
+                    "kick" in req_rng
+                    and kind in ("kick", "knee")
+                    and tid in punch_kicks
+                    and (goal == "leg_attrition" or str(active_plan.get("home_range")) == "kick")
+                )
                 or (att_dims.get("tie") is not None and "clinch" in req_rng and kind in ("grip", "takedown", "submission"))
             ):
                 cands.append(tid)
@@ -905,6 +912,7 @@ def select_counter_v2(
             range_band in req_rng
             or (range_band == "punch" and "close" in req_rng)
             or (range_band == "clinch" and ("close" in req_rng or "punch" in req_rng))
+            or (range_band == "kick" and "punch" in req_rng and kind not in ("takedown", "sweep", "submission", KIND_GROUND_STRIKE, "control"))
         ):
             cands.append(tid)
 
@@ -933,7 +941,9 @@ def select_counter_v2(
         mapped_lane = nonlane_map.get(raw_lane, raw_lane) if raw_lane in nonlane_map else raw_lane
         lane_rdy = float(att_readiness.get(mapped_lane, nonlane_def)) if mapped_lane else nonlane_def
 
-        f_seq = 1.0 if tid in seq_set else 0.0
+        # Counter-only techniques get seq_next weight when available as a counter
+        f_seq = 1.0 if usage == "counter" else (1.0 if tid in seq_set else 0.0)
+        w_seq_cnt = float(weights.get("seq_next", 1.0)) if usage == "counter" else float(weights.get("seq_other", 0.35))
         fav_set = (target_fav | kick_fav) if kind in ("kick", "knee") else target_fav
         f_target = 1.0 if raw_lane in fav_set else 0.0
         req_rng = t.get("required_range", [])
@@ -945,7 +955,7 @@ def select_counter_v2(
         f_goal = 1.0 if (usage == "counter" or "recovery" in t.get("exploits_openings", [])) else 0.0
 
         sc = (
-            float(weights.get("seq_other", 0.35)) * f_seq
+            w_seq_cnt * f_seq
             + float(weights.get("target_pref", 0.6)) * f_target
             + float(weights.get("range_fit", 0.8)) * f_rng
             + float(weights.get("open_seam", 0.9)) * f_seam
