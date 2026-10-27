@@ -21,6 +21,7 @@ from .data import (
     KICK_IDS,
     KIND_ESCAPE,
     KIND_FEINT,
+    KIND_GROUND_STRIKE,
     KIND_MOVEMENT,
     LANDING_QUALITY_MULT,
     MOVE_BASE_STATS,
@@ -51,7 +52,9 @@ from .defense import (
     select_native_defense,
 )
 from .finishes import (
+    check_and_resolve_flash_knockdown,
     check_finish_conditions,
+    compute_decision_scores,
     evaluate_decision_winner,
     resolve_standing_count_or_knockdown,
 )
@@ -231,6 +234,12 @@ def compute_card_derived_damage(
         if dims.get(d)
     )
 
+    kd_fu_bonus = (
+        float(defender_state.get("knockdown_followup_bonus", 0.0))
+        if tech_kind == KIND_GROUND_STRIKE
+        else 0.0
+    )
+
     att_lo, att_hi = d_cfg.get("attacker_multiplier_clamp", [0.75, 1.75])
     m_attacker = max(
         float(att_lo),
@@ -245,7 +254,8 @@ def compute_card_derived_damage(
             + delta_slot
             + delta_wear
             + delta_laterality
-            + delta_dealt,
+            + delta_dealt
+            + kd_fu_bonus,
         ),
     )
 
@@ -287,7 +297,10 @@ def compute_card_derived_damage(
         if def_dims.get(d)
     )
 
-    existing_reg_dmg = float(defender_state.get("damage", {}).get(target_region, 0.0))
+    existing_reg_dmg = min(
+        float(d_cfg.get("compounding_damage_cap", 15.0)),
+        float(defender_state.get("damage", {}).get(target_region, 0.0)),
+    )
     comp_per_pt = float(d_cfg.get("compounding_per_damage_point", 0.045))
     def_min = float(d_cfg.get("defender_multiplier_min", 0.60))
     m_wear = 1.0 + comp_per_pt * existing_reg_dmg
@@ -399,6 +412,7 @@ def simulate_fight_v2(
     cards = {card_a["fighter_id"]: card_a, card_b["fighter_id"]: card_b}
     canonical_ids = sorted(cards.keys())
     rng = random.Random(seed)
+    kd_rng = random.Random(int(seed) * 1000003 + 17)
     pair_position: dict[str, Any] = {
         "position_id": "standing_neutral",
         "roles": {fid: "neutral" for fid in canonical_ids},
@@ -492,8 +506,10 @@ def simulate_fight_v2(
                 "consecutive_same_move_by_opponent": 0,
             },
             "active_effects": [],
+            "knockdowns": 0,
             "knockdowns_round": 0,
             "knockdowns_total": 0,
+            "stun_exchanges": 0,
         }
 
     ruleset_cfg = load_rulesets_v2(k.root).get("rulesets", {}).get(ruleset, {})
@@ -509,6 +525,12 @@ def simulate_fight_v2(
     current_round = 1
     rounds_cfg = model_cfg.get("rounds", {})
     rest_fat_rec = float(rounds_cfg.get("rest_fatigue_recovery_fraction", 0.35))
+    dmg_lim_scale = 1.0
+    if full_fight or num_rounds > 1 or eff_duration_s > 60.0:
+        per_round_scale = float(rounds_cfg.get("per_extra_round_damage_limit_scale", 3.05))
+        dmg_lim_scale = 1.0 + per_round_scale * max(0, num_rounds - 1)
+        if num_rounds == 1 and eff_duration_s > 60.0:
+            dmg_lim_scale = 1.0 + 0.5 * ((eff_duration_s / 60.0) - 1.0)
     range_band = "punch" if punch_only_ruleset else "kick"
     clinch_exchanges = 0
     exchanges: list[dict[str, Any]] = []
@@ -633,7 +655,11 @@ def simulate_fight_v2(
                 + rng.uniform(-init_noise, init_noise)
             )
 
-        attacker_id = max(canonical_ids, key=lambda i: (scores_init[i], i))
+        id0, id1 = canonical_ids[0], canonical_ids[1]
+        if abs(scores_init[id0] - scores_init[id1]) <= 1e-12:
+            attacker_id = id0 if rng.random() < 0.5 else id1
+        else:
+            attacker_id = id0 if scores_init[id0] > scores_init[id1] else id1
         defender_id = next(i for i in canonical_ids if i != attacker_id)
         att_card, def_card = cards[attacker_id], cards[defender_id]
         att_state, def_state = actors[attacker_id], actors[defender_id]
@@ -1203,6 +1229,23 @@ def simulate_fight_v2(
             def_state["laterality"] = resolve_actor_laterality(def_card, def_state["orientation"])
             forced_stance_switch = True
 
+        # 6b. Flash Knockdown & Stun Check (§7.14)
+        newly_stunned_ids: set[str] = set()
+        knockdown_occurred, standing_count_rec, stun_applied = check_and_resolve_flash_knockdown(
+            dmg_info,
+            outcome,
+            att_state,
+            def_state,
+            ruleset_cfg=ruleset_cfg,
+            model_cfg=model_cfg,
+            rng=kd_rng,
+            damage_limit_scale=dmg_lim_scale,
+        )
+        if stun_applied:
+            newly_stunned_ids.add(defender_id)
+        if t_kind == KIND_GROUND_STRIKE and def_state.get("knockdown_followup_bonus"):
+            def_state["knockdown_followup_bonus"] = 0.0
+
         grappling_pos, grappling_rec, sub_rec = resolve_grappling_exchange_v2(
             pair_position,
             attacker_id,
@@ -1306,7 +1349,9 @@ def simulate_fight_v2(
             opt_behaviors.get(att_mentality or "", {}).get("selection_profile", {}).get("patience", 1.0)
         )
         raw_gap = max(p_min, p_base - p_per_pt * att_tempo_val) * att_patience * (1.0 + p_fat_scale * float(att_state["fatigue"]))
-        tempo_gap_frames = max(p_min, int(round(raw_gap)))
+        base_tempo_gap = max(p_min, int(round(raw_gap)))
+        round_pace_scale = max(1.0, r_len_s / 60.0) if (full_fight or r_len_s > 60.0) else 1.0
+        tempo_gap_frames = int(round(base_tempo_gap * round_pace_scale))
 
         t_start = round(clock_frames / float(FPS), 2)
         clock_frames += exchange_frames + tempo_gap_frames
@@ -1490,6 +1535,23 @@ def simulate_fight_v2(
                     "technique_id": c_tid,
                     "damage": c_dmg,
                 }
+                if not knockdown_occurred:
+                    c_kd, c_sc, c_stun = check_and_resolve_flash_knockdown(
+                        c_dmg,
+                        c_qual,
+                        def_state,
+                        att_state,
+                        ruleset_cfg=ruleset_cfg,
+                        model_cfg=model_cfg,
+                        rng=kd_rng,
+                        damage_limit_scale=dmg_lim_scale,
+                    )
+                    if c_kd:
+                        knockdown_occurred = True
+                        standing_count_rec = c_sc
+                        stun_applied = stun_applied or c_stun
+                        if c_stun:
+                            newly_stunned_ids.add(attacker_id)
 
         # Apply technique on_success_effects (§7.17) and per-ruleset clinch/ground/edge rules (§8.5)
         effects_applied: list[dict[str, Any]] = []
@@ -1608,7 +1670,8 @@ def simulate_fight_v2(
         else:
             clinch_exchanges = 0
 
-        accrue_control_time(pair_position, actors, exchange_frames / float(FPS), positions_data)
+        ctrl_frames = exchange_frames + (tempo_gap_frames - base_tempo_gap if grappling_pos != "standing_neutral" else 0)
+        accrue_control_time(pair_position, actors, ctrl_frames / float(FPS), positions_data)
 
         # Update fight_momentum and combo_state (§7.1, §7.5)
         for fid in canonical_ids:
@@ -1623,6 +1686,8 @@ def simulate_fight_v2(
             actors[fid]["fight_momentum"] = round(
                 max(float(fm_lo), min(float(fm_hi), float(actors[fid]["fight_momentum"]))), 4
             )
+            if fid not in newly_stunned_ids and int(actors[fid].get("stun_exchanges", 0)) > 0:
+                actors[fid]["stun_exchanges"] = max(0, int(actors[fid]["stun_exchanges"]) - 1)
 
         prev_chain = int(att_state["combo_state"].get("chain_len", 0)) if matched_combo else 0
         att_state["combo_state"] = {
@@ -1710,6 +1775,9 @@ def simulate_fight_v2(
             "counter_followup": counter_followup_event,
             "grappling_position": grappling_pos,
             "grappling": grappling_rec,
+            "knockdown": knockdown_occurred,
+            "standing_count": standing_count_rec,
+            "stun_applied": stun_applied,
             "forced_stance_switch": forced_stance_switch,
             "slot_switched_to": slot_switched_to,
             "slot_switch_reason": slot_switch_reason,
@@ -1725,7 +1793,7 @@ def simulate_fight_v2(
 
         # 7. Check Finish Conditions
         winner_id, finish_reason = check_finish_conditions(
-            canonical_ids, actors, model_cfg, ruleset_cfg=ruleset_cfg
+            canonical_ids, actors, model_cfg, ruleset_cfg=ruleset_cfg, damage_limit_scale=dmg_lim_scale
         )
         if winner_id:
             break
@@ -1761,8 +1829,42 @@ def simulate_fight_v2(
             last_attacker_id = None
             last_recovery_drag = 0.0
 
+    decision_tiebreak = False
     if not winner_id:
-        winner_id, finish_reason = evaluate_decision_winner(canonical_ids, actors, model_cfg)
+        winner_id, finish_reason = evaluate_decision_winner(
+            canonical_ids,
+            actors,
+            model_cfg,
+            exchanges=exchanges,
+            ruleset_cfg=ruleset_cfg,
+            rng=rng,
+            tech_v2_map=tech_v2_map,
+        )
+        last_dec = actors[canonical_ids[0]].pop("_last_decision_info", None)
+        if isinstance(last_dec, dict):
+            decision_scores = last_dec
+            decision_tiebreak = bool(last_dec.get("tiebreak", False))
+        else:
+            decision_scores = compute_decision_scores(
+                canonical_ids,
+                actors,
+                exchanges=exchanges,
+                ruleset_cfg=ruleset_cfg,
+                model_cfg=model_cfg,
+                tech_v2_map=tech_v2_map,
+            )
+    else:
+        decision_scores = compute_decision_scores(
+            canonical_ids,
+            actors,
+            exchanges=exchanges,
+            ruleset_cfg=ruleset_cfg,
+            model_cfg=model_cfg,
+            tech_v2_map=tech_v2_map,
+        )
+    for fid in canonical_ids:
+        actors[fid].pop("_last_decision_info", None)
+        actors[fid].pop("decision_score_total", None)
 
     final_lead = (
         "closed_stance"
@@ -1788,10 +1890,11 @@ def simulate_fight_v2(
         "lead_foot_matchup": final_lead,
         "pair_position": copy.deepcopy(pair_position),
         "submission": last_sub_rec,
+        "decision_scores": decision_scores,
         "actors": actors,
     }
 
-    return {
+    sim_res: dict[str, Any] = {
         "version": "block-v2",
         "ruleset": ruleset,
         "arena": arena,
@@ -1810,3 +1913,6 @@ def simulate_fight_v2(
         "slot_plans": slot_plans,
         "exchanges": exchanges,
     }
+    if decision_tiebreak:
+        sim_res["decision_tiebreak"] = True
+    return sim_res

@@ -1,0 +1,201 @@
+{
+  "mma_full_fight_1320": {
+    "total_fights": 1320,
+    "counts": {
+      "KO/TKO": 872,
+      "Submission": 163,
+      "Decision": 285
+    },
+    "percentages": {
+      "KO/TKO": 66.06,
+      "Submission": 12.35,
+      "Decision": 21.59
+    },
+    "detailed_reasons": {
+      "KO/TKO (head damage accumulation)": 492,
+      "TKO (body/liver attrition)": 374,
+      "Submission (stage 3 lock completion)": 163,
+      "Decision (clock expired; card-derived damage + control)": 285,
+      "TKO (leg kicks / compromised support)": 6
+    },
+    "finish_round_distribution": {
+      "2": 450,
+      "1": 272,
+      "3": 598
+    },
+    "knockdowns_total": 1275,
+    "stuns_total": 1275
+  },
+  "style_win_method_identities_mma": {
+    "detroit": {
+      "wins": 41,
+      "ko_tko_pct_of_wins": 100.0,
+      "submission_pct_of_wins": 0.0,
+      "decision_pct_of_wins": 0.0,
+      "avg_control_time_s": 11.99
+    },
+    "donnell": {
+      "wins": 139,
+      "ko_tko_pct_of_wins": 100.0,
+      "submission_pct_of_wins": 0.0,
+      "decision_pct_of_wins": 0.0,
+      "avg_control_time_s": 2.19
+    },
+    "greco": {
+      "wins": 142,
+      "ko_tko_pct_of_wins": 86.62,
+      "submission_pct_of_wins": 0.0,
+      "decision_pct_of_wins": 13.38,
+      "avg_control_time_s": 105.05
+    },
+    "jiujitsu": {
+      "wins": 175,
+      "ko_tko_pct_of_wins": 0.0,
+      "submission_pct_of_wins": 93.14,
+      "decision_pct_of_wins": 6.86,
+      "avg_control_time_s": 41.87
+    },
+    "karate": {
+      "wins": 29,
+      "ko_tko_pct_of_wins": 37.93,
+      "submission_pct_of_wins": 0.0,
+      "decision_pct_of_wins": 62.07,
+      "avg_control_time_s": 8.38
+    },
+    "macklin": {
+      "wins": 91,
+      "ko_tko_pct_of_wins": 61.54,
+      "submission_pct_of_wins": 0.0,
+      "decision_pct_of_wins": 38.46,
+      "avg_control_time_s": 43.02
+    },
+    "maleek": {
+      "wins": 82,
+      "ko_tko_pct_of_wins": 96.34,
+      "submission_pct_of_wins": 0.0,
+      "decision_pct_of_wins": 3.66,
+      "avg_control_time_s": 3.28
+    },
+    "philly": {
+      "wins": 121,
+      "ko_tko_pct_of_wins": 16.53,
+      "submission_pct_of_wins": 0.0,
+      "decision_pct_of_wins": 83.47,
+      "avg_control_time_s": 84.66
+    },
+    "sanda_judo": {
+      "wins": 93,
+      "ko_tko_pct_of_wins": 54.84,
+      "submission_pct_of_wins": 0.0,
+      "decision_pct_of_wins": 45.16,
+      "avg_control_time_s": 60.8
+    },
+    "street": {
+      "wins": 130,
+      "ko_tko_pct_of_wins": 100.0,
+      "submission_pct_of_wins": 0.0,
+      "decision_pct_of_wins": 0.0,
+      "avg_control_time_s": 2.61
+    },
+    "thai": {
+      "wins": 106,
+      "ko_tko_pct_of_wins": 86.79,
+      "submission_pct_of_wins": 0.0,
+      "decision_pct_of_wins": 13.21,
+      "avg_control_time_s": 27.66
+    },
+    "wrestler": {
+      "wins": 171,
+      "ko_tko_pct_of_wins": 76.02,
+      "submission_pct_of_wins": 0.0,
+      "decision_pct_of_wins": 23.98,
+      "avg_control_time_s": 158.69
+    }
+  },
+  "per_ruleset_full_fight_330": {
+    "mma": {
+      "total_fights": 330,
+      "counts": {
+        "KO/TKO": 222,
+        "Submission": 42,
+        "Decision": 66
+      },
+      "percentages": {
+        "KO/TKO": 67.27,
+        "Submission": 12.73,
+        "Decision": 20.0
+      },
+      "standing_counts_triggered": 0
+    },
+    "boxing": {
+      "total_fights": 330,
+      "counts": {
+        "KO/TKO": 323,
+        "Submission": 0,
+        "Decision": 7
+      },
+      "percentages": {
+        "KO/TKO": 97.88,
+        "Submission": 0.0,
+        "Decision": 2.12
+      },
+      "standing_counts_triggered": 341
+    },
+    "kickboxing": {
+      "total_fights": 330,
+      "counts": {
+        "KO/TKO": 285,
+        "Submission": 0,
+        "Decision": 45
+      },
+      "percentages": {
+        "KO/TKO": 86.36,
+        "Submission": 0.0,
+        "Decision": 13.64
+      },
+      "standing_counts_triggered": 216
+    },
+    "muay_thai": {
+      "total_fights": 330,
+      "counts": {
+        "KO/TKO": 272,
+        "Submission": 0,
+        "Decision": 58
+      },
+      "percentages": {
+        "KO/TKO": 82.42,
+        "Submission": 0.0,
+        "Decision": 17.58
+      },
+      "standing_counts_triggered": 246
+    },
+    "lethwei": {
+      "total_fights": 330,
+      "counts": {
+        "KO/TKO": 283,
+        "Submission": 0,
+        "Decision": 47
+      },
+      "percentages": {
+        "KO/TKO": 85.76,
+        "Submission": 0.0,
+        "Decision": 14.24
+      },
+      "standing_counts_triggered": 268
+    },
+    "street": {
+      "total_fights": 330,
+      "counts": {
+        "KO/TKO": 283,
+        "Submission": 23,
+        "Decision": 24
+      },
+      "percentages": {
+        "KO/TKO": 85.76,
+        "Submission": 6.97,
+        "Decision": 7.27
+      },
+      "standing_counts_triggered": 0
+    }
+  }
+}

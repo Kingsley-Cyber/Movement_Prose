@@ -274,7 +274,10 @@ def compute_readiness_profile(
                 cut_pen_pt = float(m_cfg.get("laterality", {}).get("cuts", {}).get("vision_penalty_per_cut_level_same_side", 0.4))
                 score -= cut_pen_pt * max_cut_lvl
 
-        # 8b. Active Technique Effects (§7.17: lane_penalty & vision)
+        # 8b. Stun readiness penalty (§7.14) & Active Technique Effects (§7.17: lane_penalty & vision)
+        if int(actor_state.get("stun_exchanges", 0)) > 0:
+            stun_pen = abs(float(m_cfg.get("knockdowns", {}).get("stun", {}).get("readiness_penalty", -0.8)))
+            score -= stun_pen
         for e in active_effs:
             eff_type = e.get("effect")
             if eff_type == "lane_penalty" and lane in e.get("lanes", []):
