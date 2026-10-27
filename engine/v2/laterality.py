@@ -293,6 +293,7 @@ def apply_side_damage_and_cuts(
     rng: random.Random | None = None,
     model_cfg: dict[str, Any] | None = None,
     damage_share: float = 1.0,
+    equipment: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Update defender's damage_by_side, cuts, and compute body-side stamina multiplier (§7.4.7–7.4.8)."""
     m_cfg = model_cfg if model_cfg is not None else load_model_v2()
@@ -358,9 +359,18 @@ def apply_side_damage_and_cuts(
         else:
             body_stamina_mult = 0.5 * (liver_mult + spleen_mult)
 
-    # Cut chance on head impacts (§7.4.8)
+    # Cut chance on head impacts (§7.4.8 & ruleset equipment cut_chance_bonus)
     cut_added = False
-    cut_chance = float(tech_v2_entry.get("cut_chance") or 0.0)
+    base_cut = float(tech_v2_entry.get("cut_chance") or 0.0)
+    eq = equipment or {}
+    cut_bonus = float(eq.get("cut_chance_bonus", 0.0))
+    gloves = bool(eq.get("gloves", True))
+    if base_cut > 0.0:
+        cut_chance = min(1.0, base_cut + cut_bonus)
+    elif not gloves and kind == "punch" and outcome in ("clean", "flush", "counter_hit"):
+        cut_chance = min(1.0, cut_bonus)
+    else:
+        cut_chance = 0.0
     max_cut = int(cuts_cfg.get("max_cut_level", 3))
     if (
         rng is not None

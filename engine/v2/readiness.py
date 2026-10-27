@@ -121,7 +121,13 @@ def compute_readiness_profile(
     rec_win = actor_state.get("recovery_window", {})
     exposed_lanes = set(rec_win.get("exposed_lanes", []))
     rec_penalty = float(rec_win.get("readiness_penalty", 0.0))
-    att_info = actor_state.get("attention", {})
+    att_info = dict(actor_state.get("attention", {}))
+    active_effs = actor_state.get("active_effects", [])
+    for e in active_effs:
+        if e.get("effect") == "attention":
+            att_info["feinted"] = True
+        elif e.get("effect") == "outside_angle":
+            att_info["outside_angle_conceded"] = True
     read_mem = actor_state.get("read_memory", {"seen_counts": {}, "consecutive_same_move_by_opponent": 0})
     wall_near = actor_state.get("wall_proximity") == "near"
 
@@ -267,6 +273,14 @@ def compute_readiness_profile(
             if max_cut_lvl > 0:
                 cut_pen_pt = float(m_cfg.get("laterality", {}).get("cuts", {}).get("vision_penalty_per_cut_level_same_side", 0.4))
                 score -= cut_pen_pt * max_cut_lvl
+
+        # 8b. Active Technique Effects (§7.17: lane_penalty & vision)
+        for e in active_effs:
+            eff_type = e.get("effect")
+            if eff_type == "lane_penalty" and lane in e.get("lanes", []):
+                score -= float(e.get("value", 0.0))
+            elif eff_type == "vision" and lane in ("head_straight", "head_hook", "head_uppercut"):
+                score += float(e.get("value", 0.0))
 
         # 9. Guard range-lane bonus (e.g. 52-shield pocket defense) & Low-Tempo defensive patience
         score += _apply_range_lane_bonus(g_opt, range_band, lane, wall_near)

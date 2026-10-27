@@ -1,0 +1,104 @@
+{
+  "boxing": {
+    "overall_win_rates": {
+      "donnell": 0.786,
+      "street": 0.759,
+      "maleek": 0.65,
+      "detroit": 0.568,
+      "sanda_judo": 0.564,
+      "wrestler": 0.536,
+      "macklin": 0.495,
+      "greco": 0.473,
+      "philly": 0.391,
+      "thai": 0.359,
+      "karate": 0.264,
+      "jiujitsu": 0.155
+    },
+    "max_pairwise_win_rate": 1.0
+  },
+  "kickboxing": {
+    "overall_win_rates": {
+      "donnell": 0.745,
+      "street": 0.705,
+      "karate": 0.586,
+      "thai": 0.545,
+      "maleek": 0.523,
+      "macklin": 0.509,
+      "sanda_judo": 0.509,
+      "detroit": 0.5,
+      "philly": 0.436,
+      "wrestler": 0.391,
+      "greco": 0.382,
+      "jiujitsu": 0.168
+    },
+    "max_pairwise_win_rate": 1.0
+  },
+  "muay_thai": {
+    "overall_win_rates": {
+      "donnell": 0.714,
+      "street": 0.668,
+      "maleek": 0.541,
+      "thai": 0.523,
+      "karate": 0.518,
+      "sanda_judo": 0.505,
+      "philly": 0.495,
+      "macklin": 0.491,
+      "detroit": 0.468,
+      "greco": 0.432,
+      "wrestler": 0.364,
+      "jiujitsu": 0.282
+    },
+    "max_pairwise_win_rate": 1.0
+  },
+  "mma": {
+    "overall_win_rates": {
+      "street": 0.627,
+      "donnell": 0.595,
+      "wrestler": 0.591,
+      "greco": 0.545,
+      "karate": 0.514,
+      "philly": 0.491,
+      "thai": 0.477,
+      "macklin": 0.468,
+      "maleek": 0.445,
+      "sanda_judo": 0.445,
+      "jiujitsu": 0.405,
+      "detroit": 0.395
+    },
+    "max_pairwise_win_rate": 0.85
+  },
+  "street": {
+    "overall_win_rates": {
+      "donnell": 0.664,
+      "street": 0.632,
+      "wrestler": 0.55,
+      "maleek": 0.532,
+      "philly": 0.514,
+      "macklin": 0.505,
+      "greco": 0.495,
+      "sanda_judo": 0.473,
+      "detroit": 0.464,
+      "karate": 0.432,
+      "thai": 0.386,
+      "jiujitsu": 0.355
+    },
+    "max_pairwise_win_rate": 0.9
+  },
+  "lethwei": {
+    "overall_win_rates": {
+      "street": 0.714,
+      "donnell": 0.686,
+      "maleek": 0.568,
+      "sanda_judo": 0.532,
+      "macklin": 0.527,
+      "detroit": 0.509,
+      "philly": 0.491,
+      "greco": 0.459,
+      "karate": 0.432,
+      "thai": 0.432,
+      "wrestler": 0.373,
+      "jiujitsu": 0.277
+    },
+    "max_pairwise_win_rate": 1.0
+  }
+}

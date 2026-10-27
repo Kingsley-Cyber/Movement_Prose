@@ -207,6 +207,12 @@
     "object",
     "null"
    ]
+  },
+  "effects_applied": {
+   "type": "array",
+   "items": {
+    "type": "object"
+   }
   }
  }
 }

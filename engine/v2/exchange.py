@@ -27,12 +27,14 @@ from .data import (
     TECH_CLINCH_BREAK,
     TECH_FEINT,
     TECH_RETREAT,
+    TECH_SHOVE,
     TECH_STEP,
     TECH_SWITCH_STEP,
     get_attack_profile,
     load_capabilities_v2,
     load_model_v2,
     load_option_behaviors,
+    load_rulesets_v2,
     load_techniques_v2,
     validate_schema_cached,
 )
@@ -43,7 +45,11 @@ from .defense import (
     select_kick_defense,
     select_native_defense,
 )
-from .finishes import check_finish_conditions, evaluate_decision_winner
+from .finishes import (
+    check_finish_conditions,
+    evaluate_decision_winner,
+    resolve_standing_count_or_knockdown,
+)
 from .grappling import update_grappling_position
 from .kicking import unroll_kick_anatomy
 from .laterality import (
@@ -65,7 +71,7 @@ from .selection import (
     select_counter_v2,
     update_slot_stalls,
 )
-from .state import compute_posture_state
+from .state import apply_technique_effects, compute_posture_state, tick_active_effects
 from .vertical import normalize_vertical_mode
 
 
@@ -79,6 +85,7 @@ def compute_card_derived_damage(
     defender_state: dict[str, Any],
     in_active_slot: bool = True,
     opt_behaviors: dict[str, dict[str, Any]] | None = None,
+    equipment: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Compute qualitative Card-Derived Damage using additive attacker modifiers from data/option_behaviors.json."""
     model_cfg = load_model_v2(k.root)
@@ -250,7 +257,8 @@ def compute_card_derived_damage(
     m_wear = 1.0 + comp_per_pt * existing_reg_dmg
     m_defender = max(def_min, m_guard * m_wear)
 
-    final_damage = round(base * m_attacker * m_landing * m_defender, 3)
+    eq_mult = float((equipment or {}).get("punch_damage_multiplier", 1.0)) if tech_kind == "punch" else 1.0
+    final_damage = round(base * m_attacker * m_landing * m_defender * eq_mult, 3)
 
     recoil_leg_damage = 0.0
     if landing_quality == "checked" and tid in dc.get("check_recoil_techniques", []):
@@ -399,11 +407,22 @@ def simulate_fight_v2(
                 "seen_counts": {},
                 "consecutive_same_move_by_opponent": 0,
             },
+            "active_effects": [],
+            "knockdowns_round": 0,
+            "knockdowns_total": 0,
         }
+
+    ruleset_cfg = load_rulesets_v2(k.root).get("rulesets", {}).get(ruleset, {})
+    clinch_rules = ruleset_cfg.get("clinch", {})
+    ground_rules = ruleset_cfg.get("ground", {})
+    equipment_rules = ruleset_cfg.get("equipment", {})
+    legal_kinds_set = set(ruleset_cfg.get("legal_kinds", []))
+    punch_only_ruleset = bool(legal_kinds_set and "kick" not in legal_kinds_set) or not clinch_rules.get("allowed", True)
 
     clock_frames = 0
     max_frames = int(duration_s * FPS)
-    range_band = "kick" if ruleset == "mma" else "punch"
+    range_band = "punch" if punch_only_ruleset else "kick"
+    clinch_exchanges = 0
     exchanges: list[dict[str, Any]] = []
     finish_reason: str | None = None
     winner_id: str | None = None
@@ -487,6 +506,7 @@ def simulate_fight_v2(
     clinch_grips = set(sc.get("clinch_grips", []))
 
     while clock_frames < max_frames:
+        tick_active_effects(actors)
         lead_matchup = (
             "closed_stance"
             if actors[canonical_ids[0]]["orientation"] == actors[canonical_ids[1]]["orientation"]
@@ -554,22 +574,39 @@ def simulate_fight_v2(
         att_stance = att_dims.get("stance")
 
         standing_ladder = ["kick", "punch", "clinch"]
+        ref_break_after = clinch_rules.get("referee_break_after_exchanges")
         if att_state["posture_mode"] == "ground":
-            range_band = "ground"
-        elif att_state["grip"] in clinch_grips:
-            if str(active_plan["home_range"]) in ("kick", "punch") and def_dims.get("tie") is None:
+            if not ground_rules.get("allowed", True):
+                att_state["posture_mode"] = def_state["posture_mode"] = "standing"
+                att_state["grappling_position"] = def_state["grappling_position"] = "standing_neutral"
+                att_state["grip"] = def_state["grip"] = None
+                att_state["submission_stage"] = def_state["submission_stage"] = 0
+                range_band = "punch" if punch_only_ruleset else "kick"
+            else:
+                range_band = "ground"
+        elif att_state["grip"] in clinch_grips or range_band == "clinch":
+            if not clinch_rules.get("allowed", True) or (
+                ref_break_after is not None and clinch_exchanges >= int(ref_break_after)
+            ):
                 att_state["grip"] = def_state["grip"] = None
                 att_state["grappling_position"] = def_state["grappling_position"] = "standing_neutral"
                 range_band = "punch"
+                clinch_exchanges = 0
+            elif str(active_plan["home_range"]) in ("kick", "punch") and def_dims.get("tie") is None:
+                att_state["grip"] = def_state["grip"] = None
+                att_state["grappling_position"] = def_state["grappling_position"] = "standing_neutral"
+                range_band = "punch"
+                clinch_exchanges = 0
             elif str(active_plan["home_range"]) in ("kick", "punch") and contest_roll(
                 clinch_exit_prob, band_name=TECH_CLINCH_BREAK, rng=rng, model_cfg=model_cfg
             )[0]:
                 att_state["grip"] = def_state["grip"] = None
                 att_state["grappling_position"] = def_state["grappling_position"] = "standing_neutral"
                 range_band = "punch"
+                clinch_exchanges = 0
             else:
                 range_band = "clinch"
-        elif ruleset == "boxing":
+        elif punch_only_ruleset:
             range_band = "punch"
         else:
             desired_range = str(active_plan["home_range"])
@@ -607,7 +644,7 @@ def simulate_fight_v2(
                 if contest_roll(step_prob, band_name="range_step_in", rng=rng, model_cfg=model_cfg)[0]:
                     range_band = standing_ladder[min(len(standing_ladder) - 1, cur_idx + 1)]
                 else:
-                    if arena_cfg["has_walls"]:
+                    if arena_cfg["has_walls"] or arena_cfg.get("has_drop_hazard"):
                         direction = 1.0 if def_state["position"][0] >= 0 else -1.0
                         def_state["position"][0] = round(
                             max(-half_w, min(half_w, def_state["position"][0] + failed_entry_drift * direction)), 3
@@ -731,6 +768,11 @@ def simulate_fight_v2(
         _, lat_acc_delta = compute_dominance_deltas(att_card, att_state, t_v2_entry, model_cfg)
         line_acc_mod = compute_line_accuracy_modifier(lead_matchup, t_v2_entry, lfo_winner_id, attacker_id, model_cfg)
 
+        stop_hit_acc_bonus = (
+            0.08
+            if t_v2_entry.get("stop_hit") and def_mentality in pressure_ments
+            else 0.0
+        )
         base_att_skill = (
             base_att_skill_const
             + sum(
@@ -742,6 +784,7 @@ def simulate_fight_v2(
             + line_acc_mod
             + combo_acc_bonus
             + mom_acc_bonus
+            + stop_hit_acc_bonus
         )
         if range_band == "kick" and tid not in KICK_IDS and t_kind not in ("kick", "knee", KIND_MOVEMENT, KIND_FEINT):
             base_att_skill -= (
@@ -887,7 +930,16 @@ def simulate_fight_v2(
 
         # 6. Apply Card-Derived Damage, Side Damage (§7.4.7–7.4.8), & Posture/Recovery Updates
         dmg_info = compute_card_derived_damage(
-            k, att_card, def_card, tid, outcome, att_state, def_state, in_active_slot=True, opt_behaviors=opt_behaviors
+            k,
+            att_card,
+            def_card,
+            tid,
+            outcome,
+            att_state,
+            def_state,
+            in_active_slot=True,
+            opt_behaviors=opt_behaviors,
+            equipment=equipment_rules,
         )
 
         att_orient_now = str(att_state["orientation"])
@@ -908,18 +960,45 @@ def simulate_fight_v2(
                 def_state["damage"][reg] = round(def_state["damage"][reg] + tie_dmg_frac * dmg_info["final_damage"], 3)
                 def_state["fatigue"] = round(def_state["fatigue"] + tie_fat_frac * dmg_info["final_damage"], 2)
                 apply_side_damage_and_cuts(
-                    def_state, reg, target_side, dmg_info["final_damage"], outcome, t_v2_entry, rng=rng, model_cfg=model_cfg, damage_share=tie_dmg_frac
+                    def_state,
+                    reg,
+                    target_side,
+                    dmg_info["final_damage"],
+                    outcome,
+                    t_v2_entry,
+                    rng=rng,
+                    model_cfg=model_cfg,
+                    damage_share=tie_dmg_frac,
+                    equipment=equipment_rules,
                 )
             elif dmg_info["damage_type"] == "submission" or t_routing == "submission":
                 def_state["damage"][reg] = round(def_state["damage"][reg] + sub_dmg_frac * dmg_info["final_damage"], 3)
                 def_state["fatigue"] = round(def_state["fatigue"] + sub_fat_frac * dmg_info["final_damage"], 2)
                 apply_side_damage_and_cuts(
-                    def_state, reg, target_side, dmg_info["final_damage"], outcome, t_v2_entry, rng=rng, model_cfg=model_cfg, damage_share=sub_dmg_frac
+                    def_state,
+                    reg,
+                    target_side,
+                    dmg_info["final_damage"],
+                    outcome,
+                    t_v2_entry,
+                    rng=rng,
+                    model_cfg=model_cfg,
+                    damage_share=sub_dmg_frac,
+                    equipment=equipment_rules,
                 )
             else:
                 def_state["damage"][reg] = round(def_state["damage"][reg] + dmg_info["final_damage"], 3)
                 side_res = apply_side_damage_and_cuts(
-                    def_state, reg, target_side, dmg_info["final_damage"], outcome, t_v2_entry, rng=rng, model_cfg=model_cfg, damage_share=1.0
+                    def_state,
+                    reg,
+                    target_side,
+                    dmg_info["final_damage"],
+                    outcome,
+                    t_v2_entry,
+                    rng=rng,
+                    model_cfg=model_cfg,
+                    damage_share=1.0,
+                    equipment=equipment_rules,
                 )
                 body_stam_mult = float(side_res["body_stamina_mult"]) if reg == "body" else 1.0
                 if dmg_info["damage_type"] == "stamina_drain":
@@ -1005,13 +1084,28 @@ def simulate_fight_v2(
             att_state["grappling_position"] = def_state["grappling_position"] = "standing_neutral"
             att_state["grip"] = def_state["grip"] = None
             grappling_pos = "standing_neutral"
-        if att_mentality in pressure_ments and arena_cfg["has_walls"]:
+        if (def_mentality == outboxer_ment or def_option == outfight_def) and outcome == "evaded":
+            def_state["position"][0] = round(def_state["position"][0] * outfighter_reset, 3)
+            def_state["wall_proximity"] = "far"
+        elif att_mentality in pressure_ments and (arena_cfg["has_walls"] or arena_cfg.get("has_drop_hazard")):
             direction = 1.0 if def_state["position"][0] >= 0 else -1.0
-            def_state["position"][0] = round(
-                max(-half_w, min(half_w, def_state["position"][0] + pressure_drift * direction)), 3
-            )
-            if half_w - abs(def_state["position"][0]) <= float(arena_cfg["wall_near_m"]):
-                def_state["wall_proximity"] = "near"
+            raw_drift_x = float(def_state["position"][0]) + pressure_drift * direction
+            if arena_cfg.get("has_drop_hazard") and abs(raw_drift_x) > half_w:
+                ef_cfg = model_cfg.get("geometry", {}).get("edge_fall", {})
+                p_fall = float(ef_cfg.get("probability", 0.35))
+                if def_state.get("balance") in ("off_base", "compromised"):
+                    p_fall = min(0.95, p_fall * float(ef_cfg.get("off_base_multiplier", 1.5)))
+                if contest_roll(p_fall, band_name="edge_fall", rng=rng, model_cfg=model_cfg)[0]:
+                    def_state["fell_from_edge"] = True
+                    def_state["position"][0] = round(raw_drift_x, 3)
+                else:
+                    def_state["position"][0] = round(max(-half_w, min(half_w, raw_drift_x)), 3)
+                    def_state["balance"] = "off_base"
+                    def_state["wall_proximity"] = "near"
+            else:
+                def_state["position"][0] = round(max(-half_w, min(half_w, raw_drift_x)), 3)
+                if half_w - abs(def_state["position"][0]) <= float(arena_cfg["wall_near_m"]):
+                    def_state["wall_proximity"] = "near"
         elif (def_mentality == outboxer_ment or def_option == outfight_def) and outcome in ("evaded", "blocked"):
             def_state["position"][0] = round(def_state["position"][0] * outfighter_reset, 3)
             def_state["wall_proximity"] = "far"
@@ -1044,7 +1138,16 @@ def simulate_fight_v2(
                         dump_tid = cand_dump
                         break
                 dump_dmg = compute_card_derived_damage(
-                    k, def_card, att_card, dump_tid, "clean", def_state, att_state, in_active_slot=True, opt_behaviors=opt_behaviors
+                    k,
+                    def_card,
+                    att_card,
+                    dump_tid,
+                    "clean",
+                    def_state,
+                    att_state,
+                    in_active_slot=True,
+                    opt_behaviors=opt_behaviors,
+                    equipment=equipment_rules,
                 )
                 reg_c = str(dump_dmg["target_region"])
                 att_state["damage"][reg_c] = round(att_state["damage"][reg_c] + dump_dmg["final_damage"], 3)
@@ -1053,7 +1156,15 @@ def simulate_fight_v2(
                     str(def_state["orientation"]), str(att_state["orientation"]), dump_t_v2
                 )
                 apply_side_damage_and_cuts(
-                    att_state, reg_c, dump_target_side, dump_dmg["final_damage"], "clean", dump_t_v2, rng=rng, model_cfg=model_cfg
+                    att_state,
+                    reg_c,
+                    dump_target_side,
+                    dump_dmg["final_damage"],
+                    "clean",
+                    dump_t_v2,
+                    rng=rng,
+                    model_cfg=model_cfg,
+                    equipment=equipment_rules,
                 )
                 def_state["contact_marks"] += 1
                 def_state["control_marks"] += 1
@@ -1105,7 +1216,16 @@ def simulate_fight_v2(
             if c_tid:
                 c_qual = "counter_hit" if rng.random() < cnt_hit_share else "partial"
                 c_dmg = compute_card_derived_damage(
-                    k, def_card, att_card, c_tid, c_qual, def_state, att_state, in_active_slot=True, opt_behaviors=opt_behaviors
+                    k,
+                    def_card,
+                    att_card,
+                    c_tid,
+                    c_qual,
+                    def_state,
+                    att_state,
+                    in_active_slot=True,
+                    opt_behaviors=opt_behaviors,
+                    equipment=equipment_rules,
                 )
                 reg_c = str(c_dmg["target_region"])
                 att_state["damage"][reg_c] = round(att_state["damage"][reg_c] + c_dmg["final_damage"], 3)
@@ -1114,7 +1234,15 @@ def simulate_fight_v2(
                     str(def_state["orientation"]), str(att_state["orientation"]), c_t_v2
                 )
                 apply_side_damage_and_cuts(
-                    att_state, reg_c, c_target_side, c_dmg["final_damage"], c_qual, c_t_v2, rng=rng, model_cfg=model_cfg
+                    att_state,
+                    reg_c,
+                    c_target_side,
+                    c_dmg["final_damage"],
+                    c_qual,
+                    c_t_v2,
+                    rng=rng,
+                    model_cfg=model_cfg,
+                    equipment=equipment_rules,
                 )
                 def_state["contact_marks"] += 1
                 counter_followup_event = {
@@ -1123,6 +1251,125 @@ def simulate_fight_v2(
                     "technique_id": c_tid,
                     "damage": c_dmg,
                 }
+
+        # Apply technique on_success_effects (§7.17) and per-ruleset clinch/ground/edge rules (§8.5)
+        effects_applied: list[dict[str, Any]] = []
+        att_succeeded = t_kind in (KIND_MOVEMENT, KIND_FEINT) or outcome in ("clean", "flush", "counter_hit", "partial")
+        if att_succeeded and t_v2_entry.get("on_success_effects"):
+            att_effs, range_band = apply_technique_effects(
+                tid,
+                t_v2_entry.get("on_success_effects"),
+                attacker_id,
+                defender_id,
+                actors,
+                cards,
+                range_band,
+                standing_ladder,
+                rng=rng,
+            )
+            effects_applied.extend(att_effs)
+
+        if defense_used and outcome in ("evaded", "checked", "caught", "jammed"):
+            def_t_v2 = tech_v2_map.get(defense_used, {})
+            if def_t_v2.get("on_success_effects"):
+                def_effs, range_band = apply_technique_effects(
+                    defense_used,
+                    def_t_v2.get("on_success_effects"),
+                    defender_id,
+                    attacker_id,
+                    actors,
+                    cards,
+                    range_band,
+                    standing_ladder,
+                    rng=rng,
+                )
+                effects_applied.extend(def_effs)
+
+        if counter_followup_event:
+            cf_tid = str(counter_followup_event["technique_id"])
+            cf_t_v2 = tech_v2_map.get(cf_tid, {})
+            if cf_t_v2.get("on_success_effects"):
+                cf_effs, range_band = apply_technique_effects(
+                    cf_tid,
+                    cf_t_v2.get("on_success_effects"),
+                    defender_id,
+                    attacker_id,
+                    actors,
+                    cards,
+                    range_band,
+                    standing_ladder,
+                    rng=rng,
+                )
+                effects_applied.extend(cf_effs)
+
+        # Push-back position displacement & rooftop_edge drop hazard (§7.3)
+        push_steps = sum(
+            int(e.get("value", 1) or 1)
+            for e in effects_applied
+            if e.get("effect") == "push_back" and e.get("target_id") == defender_id
+        )
+        if push_steps > 0:
+            shove_m = float(model_cfg.get("geometry", {}).get("moves_m", {}).get(TECH_SHOVE, 0.6))
+            direction = 1.0 if def_state["position"][0] >= 0 else -1.0
+            raw_x = float(def_state["position"][0]) + shove_m * push_steps * direction
+            if arena_cfg.get("has_drop_hazard") and abs(raw_x) > half_w:
+                ef_cfg = model_cfg.get("geometry", {}).get("edge_fall", {})
+                p_fall = float(ef_cfg.get("probability", 0.35))
+                if def_state.get("balance") in ("off_base", "compromised"):
+                    p_fall = min(0.95, p_fall * float(ef_cfg.get("off_base_multiplier", 1.5)))
+                if contest_roll(p_fall, band_name="edge_fall", rng=rng, model_cfg=model_cfg)[0]:
+                    def_state["fell_from_edge"] = True
+                    def_state["position"][0] = round(raw_x, 3)
+                else:
+                    def_state["position"][0] = round(max(-half_w, min(half_w, raw_x)), 3)
+                    def_state["balance"] = "off_base"
+                    def_state["wall_proximity"] = "near"
+            elif arena_cfg["has_walls"]:
+                def_state["position"][0] = round(max(-half_w, min(half_w, raw_x)), 3)
+                if half_w - abs(def_state["position"][0]) <= float(arena_cfg["wall_near_m"]):
+                    def_state["wall_proximity"] = "near"
+            else:
+                def_state["position"][0] = round(raw_x, 3)
+
+        # Enforce ruleset ground & clinch rules post-exchange (§8.5)
+        if not ground_rules.get("allowed", True):
+            is_ground_now = (
+                att_state.get("posture_mode") == "ground"
+                or def_state.get("posture_mode") == "ground"
+                or t_v2_entry.get("result_position") == "standing_knockdown"
+            )
+            if is_ground_now:
+                if (
+                    ground_rules.get("on_sweep") == "reset_standing_with_score"
+                    and outcome in ("clean", "flush", "counter_hit", "partial")
+                    and t_v2_entry.get("result_position") == "standing_knockdown"
+                ):
+                    att_state["control_marks"] += 1
+                att_state["posture_mode"] = def_state["posture_mode"] = "standing"
+                att_state["grappling_position"] = def_state["grappling_position"] = "standing_neutral"
+                att_state["grip"] = def_state["grip"] = None
+                att_state["submission_stage"] = def_state["submission_stage"] = 0
+                grappling_pos = "standing_neutral"
+                range_band = "punch" if punch_only_ruleset else "kick"
+
+        allowed_grips_cfg = clinch_rules.get("allowed_grips", "all")
+        if not clinch_rules.get("allowed", True) or (
+            isinstance(allowed_grips_cfg, list)
+            and t_kind == "grip"
+            and tid not in allowed_grips_cfg
+        ):
+            if att_state.get("posture_mode") == "standing" and (
+                att_state.get("grip") is not None or def_state.get("grip") is not None or grappling_pos != "standing_neutral"
+            ):
+                att_state["grappling_position"] = def_state["grappling_position"] = "standing_neutral"
+                att_state["grip"] = def_state["grip"] = None
+                grappling_pos = "standing_neutral"
+                range_band = "punch"
+                clinch_exchanges = 0
+        elif grappling_pos != "standing_neutral" and att_state.get("posture_mode") == "standing":
+            clinch_exchanges += 1
+        else:
+            clinch_exchanges = 0
 
         # Update fight_momentum and combo_state (§7.1, §7.5)
         for fid in canonical_ids:
@@ -1224,6 +1471,7 @@ def simulate_fight_v2(
             "forced_stance_switch": forced_stance_switch,
             "slot_switched_to": slot_switched_to,
             "slot_switch_reason": slot_switch_reason,
+            "effects_applied": effects_applied,
             "state_changes": {
                 "defender_damage": copy.deepcopy(def_state["damage"]),
                 "attacker_damage": copy.deepcopy(att_state["damage"]),
@@ -1234,7 +1482,9 @@ def simulate_fight_v2(
         exchanges.append(ex_event)
 
         # 7. Check Finish Conditions
-        winner_id, finish_reason = check_finish_conditions(canonical_ids, actors, model_cfg)
+        winner_id, finish_reason = check_finish_conditions(
+            canonical_ids, actors, model_cfg, ruleset_cfg=ruleset_cfg
+        )
         if winner_id:
             break
 
