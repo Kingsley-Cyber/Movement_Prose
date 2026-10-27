@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from .data import KICK_IDS, load_model_v2
+from .data import KICK_IDS, load_model_v2, load_techniques_v2
 
 
 def unroll_kick_anatomy(
@@ -64,6 +64,28 @@ def unroll_kick_anatomy(
             "striking_surface": "lower_shin_bone",
             "ending": "step_down_into_stance" if is_switch else "full_hip_turn_recovery",
             "single_leg_exposure_window": "high_catchable_window",
+        }
+
+    t_v2 = load_techniques_v2().get(tid, {})
+    if t_v2.get("kind") == "kick":
+        side = str(t_v2.get("side") or "rear")
+        kicking_leg = f"lead_{lead_side}" if side == "lead" else f"rear_{rear_side}"
+        support_foot = f"rear_{rear_side}_planted" if side == "lead" else f"lead_{lead_side}_ball_pivot"
+        if t_v2.get("vertical_min") in ("athletic", "aerial"):
+            support_foot = "airborne_none"
+        line = str(t_v2.get("line") or "rear_round_kick")
+        surface = str(t_v2.get("striking_surface") or "shin")
+        reg = str(t_v2.get("target_region") or "body")
+        return {
+            "kick_family": school,
+            "kicking_leg": kicking_leg,
+            "chamber": f"{line}_chamber",
+            "support_foot": support_foot,
+            "path": f"{line}_trajectory",
+            "target_region": reg,
+            "striking_surface": surface,
+            "ending": "retract_to_stance",
+            "single_leg_exposure_window": "moderate",
         }
 
     is_jumping_knee = tid == ka_cfg.get("jumping_knee_id")

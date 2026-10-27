@@ -19,8 +19,15 @@ from .data import (
     ARENA_PRESETS,
     FPS,
     KICK_IDS,
+    KIND_ESCAPE,
+    KIND_FEINT,
+    KIND_MOVEMENT,
     LANDING_QUALITY_MULT,
     MOVE_BASE_STATS,
+    TECH_CLINCH_BREAK,
+    TECH_FEINT,
+    TECH_RETREAT,
+    TECH_STEP,
     get_attack_profile,
     load_capabilities_v2,
     load_model_v2,
@@ -28,7 +35,13 @@ from .data import (
     load_techniques_v2,
     validate_schema_cached,
 )
-from .defense import select_kick_defense, select_native_defense
+from .defense import (
+    compute_kick_defense_window,
+    contest_roll,
+    resolve_contested_defense,
+    select_kick_defense,
+    select_native_defense,
+)
 from .finishes import check_finish_conditions, evaluate_decision_winner
 from .grappling import update_grappling_position
 from .kicking import unroll_kick_anatomy
@@ -37,6 +50,8 @@ from .selection import (
     build_slot_plans,
     evaluate_slot_switch,
     get_initial_slot_index,
+    score_and_select_technique_v2,
+    select_counter_v2,
     update_slot_stalls,
 )
 from .state import compute_posture_state
@@ -230,38 +245,6 @@ def compute_card_derived_damage(
     }
 
 
-def _eval_kick_defense_bonus(
-    def_kicking: str | None,
-    def_option: str | None,
-    wall_near: bool,
-    tiers: list[dict[str, Any]],
-) -> float:
-    for tier in tiers:
-        if tier.get("default"):
-            return float(tier["bonus"])
-        if "when_all" in tier:
-            ok = True
-            for clause in tier["when_all"]:
-                if "kicking" in clause and def_kicking != clause["kicking"]:
-                    ok = False
-                if "defense" in clause and def_option != clause["defense"]:
-                    ok = False
-            if ok:
-                return float(tier["bonus"])
-        if "when_any" in tier:
-            for clause in tier["when_any"]:
-                ok = True
-                if "kicking" in clause and def_kicking != clause["kicking"]:
-                    ok = False
-                if "defense" in clause and def_option != clause["defense"]:
-                    ok = False
-                if "wall_near" in clause and wall_near != bool(clause["wall_near"]):
-                    ok = False
-                if ok:
-                    return float(tier["bonus"])
-    return 0.08
-
-
 def simulate_fight_v2(
     a: Any,
     b: Any,
@@ -300,10 +283,10 @@ def simulate_fight_v2(
     sim_cfg = model_cfg.get("simulation", {})
     dmg_cfg = model_cfg.get("damage", {})
     kd_cfg = model_cfg.get("kick_defense", {})
+    fm_cfg = model_cfg.get("fight_momentum", {})
     leg = model_cfg.get("legacy", {})
     sc = leg.get("simulation_config", {})
     init_mentality_map = leg.get("initiative", {}).get("mentality_term", {})
-    kd_tiers = leg.get("kick_defense_bonus_tiers", {}).get("tiers", [])
     control_ids = set(leg.get("damage_routing", {}).get("control_ids", []))
     move_fallback = {"base": 1.0, "type": "impact", "setup_f": 4, "exec_f": 8, "hold_f": 2, "rec_f": 8, "lane": "head_straight"}
     nonlane_default = float(model_cfg.get("readiness", {}).get("nonlane_readiness_default", 3.0))
@@ -343,6 +326,7 @@ def simulate_fight_v2(
             "damage": {"head": 0.0, "body": 0.0, "leg": 0.0},
             "fatigue": 0.0,
             "momentum": [0.0, 0.0],
+            "fight_momentum": 0.0,
             "contact_marks": 0,
             "control_marks": 0,
             "active_slot_idx": init_idx,
@@ -351,6 +335,13 @@ def simulate_fight_v2(
             "slot_stalls": 0,
             "slot_exchanges": 0,
             "slot_switches": 0,
+            "combo_state": {
+                "last_tid": None,
+                "last_outcome": None,
+                "last_def_tid": None,
+                "last_def_outcome": None,
+                "chain_len": 0,
+            },
             "unlocked_abilities": [],
             "kick_checks_suffered": 0,
             "recent_moves": [],
@@ -386,6 +377,13 @@ def simulate_fight_v2(
     init_fat_drag = float(sim_cfg.get("initiative_fatigue_drag", -0.08))
     init_leg_drag = float(sim_cfg.get("initiative_leg_drag", -0.10))
     init_noise = float(sim_cfg.get("initiative_noise", 0.85))
+    init_mom_weight = float(fm_cfg.get("initiative_weight", 0.5))
+    acc_mom_weight = float(fm_cfg.get("accuracy_weight", 0.05))
+    fm_landed = float(fm_cfg.get("per_clean_or_flush_landed", 0.15))
+    fm_taken = float(fm_cfg.get("per_clean_or_flush_taken", -0.15))
+    fm_decay = float(fm_cfg.get("decay_per_exchange", 0.2))
+    fm_lo, fm_hi = fm_cfg.get("clamp", [-0.6, 0.6])
+
     clinch_exit_prob = float(sim_cfg.get("clinch_exit_probability", 0.42))
     entry_wall_pen = abs(float(sim_cfg.get("entry_wall_distance_penalty", -0.65)))
     entry_leg_pen = abs(float(sim_cfg.get("entry_leg_distance_penalty", -0.12)))
@@ -443,28 +441,12 @@ def simulate_fight_v2(
     sub_fat_frac = float(dmg_cfg.get("submission_fatigue_fraction", 0.55))
     stam_fat_frac = float(dmg_cfg.get("stamina_drain_fatigue_fraction", 0.55))
 
-    excl_from_seq = sc.get("excluded_from_sequence")
-    checked_kicks_filter = set(sc.get("checked_kicks_filter", []))
     kick_blocked_shots = set(sc.get("kick_range_blocked_shots", []))
-    punch_range_kicks = set(sc.get("punch_range_kicks", []))
-    punch_clinch_ties = set(sc.get("punch_range_clinch_ties", []))
-    punch_clinch_moves = set(sc.get("punch_range_clinch_moves", []))
-    ground_top_ctrl = str(sc.get("ground_top_control", ""))
-    ground_bot_sub = str(sc.get("ground_bottom_sub", ""))
-    ground_esc = str(sc.get("ground_escape", ""))
-    ground_top_strikes = list(sc.get("ground_top_strikes", []))
-    ground_fb_chain = list(sc.get("ground_fallback_chain", []))
-    kick_fallbacks_list = list(sc.get("kick_range_fallbacks", []))
-    haymaker_pen = sc.get("haymaker_penalty", {})
     pressure_ments = set(sc.get("pressure_mentalities", []))
     outboxer_ment = sc.get("outboxer_mentality")
     outfight_def = sc.get("outfight_defense")
     caught_dump_prio = list(sc.get("caught_kick_dump_priority", []))
-    counter_cands_map = sc.get("counter_candidates_by_range", {})
     clinch_grips = set(sc.get("clinch_grips", []))
-    basic_core = load_capabilities_v2(k.root).get("capabilities", {}).get("basic_movement", {}).get("core", [])
-    step_id = str(basic_core[0]) if basic_core else ""
-    stand_up_id = str(basic_core[5]) if len(basic_core) > 5 else step_id
 
     while clock_frames < max_frames:
         lead_matchup = (
@@ -473,29 +455,43 @@ def simulate_fight_v2(
             else "open_stance"
         )
 
-        # 1. Decide who initiates this exchange in canonical fighter-ID order
+        # 1. Decide who initiates this exchange in canonical fighter-ID order (§7.2)
         scores_init: dict[str, float] = {}
         for fid in canonical_ids:
             c = cards[fid]
             st = actors[fid]
             mentality = c["dimensions"].get("mentality")
             base_tempo = init_base + init_per_pt * (float(c.get("tempo", 3)) - 3.0)
-            m_entry = init_mentality_map.get(mentality, init_mentality_map.get("all_other_mentalities", {}))
-            if "only_when" in m_entry:
-                counter_wait = float(m_entry.get("delta", 0.0)) if last_attacker_id in (None, fid) else 0.0
+            sel_prof = opt_behaviors.get(mentality or "", {}).get("selection_profile")
+            if sel_prof is not None:
+                counter_wait = float(sel_prof.get("initiative_delta", 0.0))
+                if "initiative_delta_when_waiting" in sel_prof and last_attacker_id in (None, fid):
+                    counter_wait += float(sel_prof.get("initiative_delta_when_waiting", 0.0))
             else:
-                counter_wait = float(m_entry.get("delta", 0.0))
+                m_entry = init_mentality_map.get(mentality, init_mentality_map.get("all_other_mentalities", {}))
+                if "only_when" in m_entry:
+                    counter_wait = float(m_entry.get("delta", 0.0)) if last_attacker_id in (None, fid) else 0.0
+                else:
+                    counter_wait = float(m_entry.get("delta", 0.0))
+            mom_term = init_mom_weight * float(st.get("fight_momentum", 0.0))
             recovery_cooldown = -last_recovery_drag if fid == last_attacker_id else 0.0
             fatigue_drag = init_fat_drag * float(st["fatigue"])
             leg_drag = init_leg_drag * float(st["damage"]["leg"])
             scores_init[fid] = (
-                base_tempo + counter_wait + recovery_cooldown + fatigue_drag + leg_drag + rng.uniform(-init_noise, init_noise)
+                base_tempo
+                + counter_wait
+                + mom_term
+                + recovery_cooldown
+                + fatigue_drag
+                + leg_drag
+                + rng.uniform(-init_noise, init_noise)
             )
 
         attacker_id = max(canonical_ids, key=lambda i: (scores_init[i], i))
         defender_id = next(i for i in canonical_ids if i != attacker_id)
         att_card, def_card = cards[attacker_id], cards[defender_id]
         att_state, def_state = actors[attacker_id], actors[defender_id]
+        initiative_scores = {fid: round(scores_init[fid], 4) for fid in canonical_ids}
 
         # Unlock conditional abilities from real state before slot evaluation (§7.5)
         for fid in canonical_ids:
@@ -506,13 +502,10 @@ def simulate_fight_v2(
                 slot_plans[fid] = build_slot_plans(k, cards[fid], ruleset, un_list)
                 avail_map[fid] = available_v2(k, cards[fid], ruleset, un_list)
 
-        # 2. Select active slot plan, contest range step (one band per exchange), & select technique
+        # 2. Select active slot plan, contest range step (one band per exchange)
         plans = slot_plans[attacker_id]
         active_plan = plans[int(att_state["active_slot_idx"]) % len(plans)]
         att_state["active_slot_id"] = active_plan["slot_id"]
-        att_non_counter_pool = set(active_plan["full_pool"])
-        seq: list[str] = list(active_plan["sequence"])
-        att_avail = avail_map[attacker_id]
         def_avail = avail_map[defender_id]
 
         att_dims = att_card["dimensions"]
@@ -530,7 +523,9 @@ def simulate_fight_v2(
                 att_state["grip"] = def_state["grip"] = None
                 att_state["grappling_position"] = def_state["grappling_position"] = "standing_neutral"
                 range_band = "punch"
-            elif str(active_plan["home_range"]) in ("kick", "punch") and rng.random() < clinch_exit_prob:
+            elif str(active_plan["home_range"]) in ("kick", "punch") and contest_roll(
+                clinch_exit_prob, band_name=TECH_CLINCH_BREAK, rng=rng, model_cfg=model_cfg
+            )[0]:
                 att_state["grip"] = def_state["grip"] = None
                 att_state["grappling_position"] = def_state["grappling_position"] = "standing_neutral"
                 range_band = "punch"
@@ -571,7 +566,7 @@ def simulate_fight_v2(
                     float(entry_lo),
                     min(float(entry_hi), 1.0 / (1.0 + math.exp(-(entry_score - dist_score + entry_log_off)))),
                 )
-                if rng.random() < step_prob:
+                if contest_roll(step_prob, band_name="range_step_in", rng=rng, model_cfg=model_cfg)[0]:
                     range_band = standing_ladder[min(len(standing_ladder) - 1, cur_idx + 1)]
                 else:
                     if arena_cfg["has_walls"]:
@@ -595,67 +590,57 @@ def simulate_fight_v2(
                 )
                 if att_state.get("wall_proximity") == "near":
                     pull_prob -= pull_out_wall_pen
-                if rng.random() < pull_prob:
+                if contest_roll(pull_prob, band_name="range_step_out", rng=rng, model_cfg=model_cfg)[0]:
                     range_band = standing_ladder[max(0, cur_idx - 1)]
 
-        filtered_seq = [
-            m
-            for m in seq
-            if m != excl_from_seq and not (att_state["kick_checks_suffered"] >= 2 and m in checked_kicks_filter)
-        ] or seq
+        ex_range = range_band
 
-        range_matching_seq = []
-        for m in filtered_seq:
-            m_info = k.techniques.get(m)
-            if m_info is None:
-                t_v2 = tech_v2_map.get(m)
-                if t_v2 and t_v2.get("status") != "existing":
-                    m_info = t_v2
-            if m_info is None:
-                continue
-            req_rng = m_info["required_range"]
-            if (range_band in req_rng and not (range_band == "kick" and m in kick_blocked_shots)) or (
-                range_band == "punch"
-                and (
-                    "close" in req_rng
-                    or m in punch_range_kicks
-                    or (att_dims.get("tie") in punch_clinch_ties and m in punch_clinch_moves)
-                )
-            ):
-                range_matching_seq.append(m)
-        active_seq = range_matching_seq or filtered_seq
+        # Feint setup contest before readiness & selection
+        feint_prob = min(
+            feint_cap,
+            sum(
+                float(get_attack_profile(att_dims.get(d), opt_behaviors).get("feint_setup_rate", 0.0))
+                for d in ("mentality", "stance", "hands", "target")
+            ),
+        )
+        feinted_this_exchange = (
+            feint_prob > 0.0 and contest_roll(feint_prob, band_name=TECH_FEINT, rng=rng, model_cfg=model_cfg)[0]
+        )
+        if feinted_this_exchange:
+            def_state["attention"]["feinted"] = True
 
-        cursor = int(att_state["slot_Cursor"])
-        tid = active_seq[cursor % len(active_seq)]
-        att_state["slot_Cursor"] = cursor + 1
+        # 3. Compute Defender's Pre-Attack Posture & Readiness, then Select Technique via §7.5 Scorer
+        def_posture_before = compute_posture_state(def_card, def_state, opt_behaviors)
+        def_state["posture"] = def_posture_before
+        pre_readiness = compute_readiness_profile(
+            k,
+            def_card,
+            def_state,
+            att_card,
+            att_state,
+            range_band,
+            lead_matchup,
+            incoming_tid=None,
+            opt_behaviors=opt_behaviors,
+            model_cfg=model_cfg,
+        )
 
-        if range_band == "ground":
-            if att_state["grip"] == "top" and ground_top_ctrl in att_non_counter_pool:
-                tid = ground_top_ctrl
-            elif att_state["grip"] == "bottom" and ground_bot_sub in att_non_counter_pool:
-                tid = ground_bot_sub
-            elif ground_esc in att_non_counter_pool:
-                tid = ground_esc
-            elif att_state["grip"] == "top":
-                top_strikes = [m for m in ground_top_strikes if m in att_non_counter_pool]
-                tid = top_strikes[cursor % len(top_strikes)] if top_strikes else stand_up_id
-            else:
-                tid = stand_up_id
-                for fb_m in ground_fb_chain[:-1]:
-                    if fb_m in att_non_counter_pool:
-                        tid = fb_m
-                        break
-        elif range_band == "kick" and tid not in KICK_IDS:
-            kick_fallbacks = [m for m in kick_fallbacks_list if m in att_non_counter_pool]
-            if kick_fallbacks:
-                tid = kick_fallbacks[cursor % len(kick_fallbacks)]
-            elif tid not in att_non_counter_pool:
-                tid = step_id
+        tid, selection_rec, matched_combo = score_and_select_technique_v2(
+            k,
+            att_card,
+            def_card,
+            active_plan,
+            att_state,
+            pre_readiness,
+            range_band,
+            ruleset,
+            rng,
+            model_cfg,
+            opt_behaviors,
+            tech_v2_map,
+        )
 
-        if tid not in att_non_counter_pool:
-            tid = seq[0] if seq else step_id
-
-        # Update defender's read_memory before computing defender readiness
+        # Update defender's read_memory before computing incoming_tid readiness
         recent = att_state["recent_moves"]
         consecutive_repeats = 0
         for prev_m in reversed(recent):
@@ -669,19 +654,6 @@ def simulate_fight_v2(
 
         def_state["read_memory"]["consecutive_same_move_by_opponent"] = consecutive_repeats
 
-        feint_prob = min(
-            feint_cap,
-            sum(
-                float(get_attack_profile(att_dims.get(d), opt_behaviors).get("feint_setup_rate", 0.0))
-                for d in ("mentality", "stance", "hands", "target")
-            ),
-        )
-        feinted_this_exchange = feint_prob > 0.0 and rng.random() < feint_prob
-        if feinted_this_exchange:
-            def_state["attention"]["feinted"] = True
-
-        # 3. Compute Defender's Dynamic Posture & 8-Lane Readiness Profile
-        def_posture_before = compute_posture_state(def_card, def_state, opt_behaviors)
         def_readiness = compute_readiness_profile(
             k,
             def_card,
@@ -694,22 +666,35 @@ def simulate_fight_v2(
             opt_behaviors=opt_behaviors,
             model_cfg=model_cfg,
         )
-        def_state["posture"] = def_posture_before
         def_state["readiness_profile"] = def_readiness
 
         m_stats = MOVE_BASE_STATS.get(tid, move_fallback)
         attack_lane = str(m_stats.get("lane", "head_straight"))
         lane_readiness = float(def_readiness.get(attack_lane, nonlane_default))
 
-        # 4. Calculate Contested Hit Probability
-        base_att_skill = base_att_skill_const + sum(
-            float(get_attack_profile(att_dims.get(d), opt_behaviors).get("accuracy_delta", 0.0))
-            for d in ("mentality", "stance", "hands", "target", "kicking", "tie")
+        # 4. Calculate Contested Hit Probability (§7.8)
+        t_v2_entry = tech_v2_map.get(tid, {})
+        t_kind = str(t_v2_entry.get("kind", "punch"))
+        acc_base = float(t_v2_entry.get("accuracy_base_recommended", t_v2_entry.get("accuracy_base", 0.0)))
+        combo_acc_bonus = float(matched_combo.get("follow_up_accuracy_bonus", 0.0)) if matched_combo else 0.0
+        mom_acc_bonus = acc_mom_weight * float(att_state.get("fight_momentum", 0.0))
+
+        base_att_skill = (
+            base_att_skill_const
+            + sum(
+                float(get_attack_profile(att_dims.get(d), opt_behaviors).get("accuracy_delta", 0.0))
+                for d in ("mentality", "stance", "hands", "target", "kicking", "tie")
+            )
+            + acc_base
+            + combo_acc_bonus
+            + mom_acc_bonus
         )
-        if tid == haymaker_pen.get("technique"):
-            base_att_skill += float(haymaker_pen.get("delta", -0.22))
-        if range_band == "kick" and tid not in KICK_IDS:
-            base_att_skill -= kr_shot_pen if tid in kick_blocked_shots else kr_punch_pen
+        if range_band == "kick" and tid not in KICK_IDS and t_kind not in ("kick", "knee", KIND_MOVEMENT, KIND_FEINT):
+            base_att_skill -= (
+                kr_shot_pen
+                if (tid in kick_blocked_shots or t_kind in ("takedown", "sweep"))
+                else kr_punch_pen
+            )
 
         logit_hit = base_att_skill - lane_readiness
         hit_prob = round(max(float(hit_lo), min(float(hit_hi), 1.0 / (1.0 + math.exp(-logit_hit)))), 3)
@@ -717,15 +702,25 @@ def simulate_fight_v2(
         seen_map = def_state["read_memory"]["seen_counts"]
         seen_map[tid] = int(seen_map.get(tid, 0)) + 1
 
-        # 5. Roll Outcome & Native Posture Defensive Response
+        # 5. Roll Outcome & Contested Defensive Response (§7.6)
         kick_detail = unroll_kick_anatomy(tid, att_card, str(att_state["orientation"]))
-        defense_used = None
+        defense_used: str | None = None
+        defense_rec: dict[str, Any] | None = None
         counter_triggered = False
 
-        roll = rng.random()
+        _, roll, hit_p_eff = contest_roll(hit_prob, band_name="hit", rng=rng, model_cfg=model_cfg)
+        hit_rec = {
+            "offense": round(base_att_skill, 4),
+            "defense": round(lane_readiness, 4),
+            "p_land": round(hit_p_eff, 4),
+            "roll": round(roll, 4),
+        }
+
         def_wall = str(def_state.get("wall_proximity", "far"))
         def_wall_near = def_wall == "near"
-        kick_def_bonus = _eval_kick_defense_bonus(def_dims.get("kicking"), def_option, def_wall_near, kd_tiers)
+        kick_def_bonus = compute_kick_defense_window(
+            def_card, wall_proximity=def_wall, opt_behaviors=opt_behaviors, model_cfg=model_cfg
+        )
 
         def_plans = slot_plans[defender_id]
         def_active_plan = def_plans[int(def_state["active_slot_idx"]) % len(def_plans)]
@@ -734,32 +729,60 @@ def simulate_fight_v2(
             if def_active_plan.get("goal") == "reset_to_home_range"
             else None
         )
+        def_unlocked = tuple(def_state.get("unlocked_abilities", ()))
+        inc_cls = str(t_v2_entry.get("incoming_class") or "straight")
 
-        if tid in KICK_IDS and tid not in kick_excluded and roll > max(kick_min_roll, hit_prob - kick_def_bonus):
-            defense_used, outcome = select_kick_defense(
+        if t_kind in (KIND_MOVEMENT, KIND_FEINT) and inc_cls == "none":
+            outcome = "clean"
+            if tid == TECH_FEINT:
+                def_state["attention"]["feinted"] = True
+                feinted_this_exchange = False
+        elif tid in KICK_IDS and tid not in kick_excluded and roll > max(kick_min_roll, hit_p_eff - kick_def_bonus):
+            defense_used, outcome, def_p_succ, def_roll, def_grant_cap, inc_cls = resolve_contested_defense(
                 def_card,
+                att_card,
                 tid,
-                range_band,
+                offense_score=base_att_skill,
                 lane_readiness=lane_readiness,
-                attacker_card=att_card,
-                rng=rng,
-                opt_behaviors=opt_behaviors,
-                wall_proximity=def_wall,
                 avail_def=def_avail,
-            )
-        elif roll > hit_prob:
-            defense_used, outcome = select_native_defense(
-                def_card,
-                tid,
-                range_band,
-                def_avail,
                 wall_proximity=def_wall,
                 reset_slot_defenses=def_reset_defenses,
+                rng=rng,
+                opt_behaviors=opt_behaviors,
+                model_cfg=model_cfg,
+                unlocked_abilities=def_unlocked,
             )
+            defense_rec = {
+                "technique": defense_used,
+                "granting_capability": def_grant_cap,
+                "p_success": round(def_p_succ, 4),
+                "roll": round(def_roll, 4),
+            }
+        elif roll > hit_p_eff:
+            defense_used, outcome, def_p_succ, def_roll, def_grant_cap, inc_cls = resolve_contested_defense(
+                def_card,
+                att_card,
+                tid,
+                offense_score=base_att_skill,
+                lane_readiness=lane_readiness,
+                avail_def=def_avail,
+                wall_proximity=def_wall,
+                reset_slot_defenses=def_reset_defenses,
+                rng=rng,
+                opt_behaviors=opt_behaviors,
+                model_cfg=model_cfg,
+                unlocked_abilities=def_unlocked,
+            )
+            defense_rec = {
+                "technique": defense_used,
+                "granting_capability": def_grant_cap,
+                "p_success": round(def_p_succ, 4),
+                "roll": round(def_roll, 4),
+            }
         else:
-            if roll < hit_prob * flush_frac and (def_state["attention"]["feinted"] or def_posture_before["balance"] != "stable"):
+            if roll < hit_p_eff * flush_frac and (def_state["attention"]["feinted"] or def_posture_before["balance"] != "stable"):
                 outcome = "flush"
-            elif roll < hit_prob * clean_frac:
+            elif roll < hit_p_eff * clean_frac:
                 outcome = "clean"
             else:
                 outcome = "partial"
@@ -767,7 +790,7 @@ def simulate_fight_v2(
         if feinted_this_exchange:
             def_state["attention"]["feinted"] = False
 
-        # Contested Counter-Attack Check
+        # Contested Counter-Attack Check (§7.9)
         att_rec_f = int(m_stats.get("rec_f", 6))
         if outcome in ("evaded", "blocked", "jammed") and att_rec_f >= cnt_min_rec:
             base_counter = 0.0
@@ -799,7 +822,7 @@ def simulate_fight_v2(
                     base_counter + read_bonus + low_tempo_bonus + rec_window_bonus - att_guard_resist - cnt_fat_pen * float(def_state["fatigue"]),
                 ),
             )
-            if rng.random() < counter_prob:
+            if contest_roll(counter_prob, band_name="counter", rng=rng, model_cfg=model_cfg)[0]:
                 counter_triggered = True
 
         # 6. Apply Card-Derived Damage & Posture/Recovery Updates
@@ -809,10 +832,11 @@ def simulate_fight_v2(
 
         if dmg_info["final_damage"] > 0:
             reg = str(dmg_info["target_region"])
-            if tid in control_ids:
+            t_routing = t_v2_entry.get("damage_routing")
+            if tid in control_ids or t_routing == "control":
                 def_state["damage"][reg] = round(def_state["damage"][reg] + tie_dmg_frac * dmg_info["final_damage"], 3)
                 def_state["fatigue"] = round(def_state["fatigue"] + tie_fat_frac * dmg_info["final_damage"], 2)
-            elif dmg_info["damage_type"] == "submission":
+            elif dmg_info["damage_type"] == "submission" or t_routing == "submission":
                 def_state["damage"][reg] = round(def_state["damage"][reg] + sub_dmg_frac * dmg_info["final_damage"], 3)
                 def_state["fatigue"] = round(def_state["fatigue"] + sub_fat_frac * dmg_info["final_damage"], 2)
             else:
@@ -847,7 +871,7 @@ def simulate_fight_v2(
             def_state["balance"] = "stable"
             att_state["balance"] = "stable"
 
-        t_v2_rec = tech_v2_map.get(tid, {}).get(
+        t_v2_rec = t_v2_entry.get(
             "recovery_exposure",
             {
                 "window_type": "short_retract",
@@ -898,7 +922,9 @@ def simulate_fight_v2(
             def_state["position"][0] = round(def_state["position"][0] * outfighter_reset, 3)
             def_state["wall_proximity"] = "far"
 
-        exchange_frames = int(m_stats["setup_f"]) + int(m_stats["exec_f"]) + int(m_stats["hold_f"]) + int(m_stats["rec_f"])
+        setup_saved = int(matched_combo.get("setup_frames_saved", 0)) if matched_combo else 0
+        eff_setup_f = max(1, int(m_stats["setup_f"]) - setup_saved)
+        exchange_frames = eff_setup_f + int(m_stats["exec_f"]) + int(m_stats["hold_f"]) + int(m_stats["rec_f"])
         tempo_gap_frames = max(tg_min, int(tg_base - tg_per_pt * max(att_card.get("tempo", 3), def_card.get("tempo", 3))))
         t_start = round(clock_frames / float(FPS), 2)
         clock_frames += exchange_frames + tempo_gap_frames
@@ -917,7 +943,7 @@ def simulate_fight_v2(
                 get_attack_profile(att_stance, opt_behaviors).get("sweep_resistance", 0.0)
             )
             sweep_prob = max(float(ck_lo), min(float(ck_hi), ck_base - sweep_resist - ck_fat_pt * float(def_state["fatigue"])))
-            if rng.random() < sweep_prob:
+            if contest_roll(sweep_prob, band_name="catch_sweep", rng=rng, model_cfg=model_cfg)[0]:
                 dump_tid = caught_dump_prio[-1]
                 for cand_dump in caught_dump_prio[:-1]:
                     if cand_dump in def_avail:
@@ -946,19 +972,36 @@ def simulate_fight_v2(
                     "damage": dump_dmg,
                 }
         elif counter_triggered:
-            counter_only_cands = [
-                m
-                for m in def_card.get("active_techniques", [])
-                if m in def_avail
-                and tech_v2_map.get(m, {}).get("usage") == "counter"
-                and range_band in tech_v2_map.get(m, {}).get("required_range", [])
-            ]
-            c_list = counter_only_cands + list(
-                counter_cands_map.get(range_band, counter_cands_map.get("default", []))
+            att_readiness = compute_readiness_profile(
+                k,
+                att_card,
+                att_state,
+                def_card,
+                def_state,
+                range_band,
+                lead_matchup,
+                incoming_tid=None,
+                opt_behaviors=opt_behaviors,
+                model_cfg=model_cfg,
             )
-            c_candidates = [m for m in c_list if m in def_avail]
-            if c_candidates:
-                c_tid = c_candidates[0]
+            # Update defender slot plan so counter selection reflects any slot switch and card-wide counter repertoire
+            def_active_plan = def_plans[int(def_state["active_slot_idx"]) % len(def_plans)]
+            c_tid = select_counter_v2(
+                k,
+                def_card,
+                att_card,
+                def_active_plan,
+                def_state,
+                att_readiness,
+                def_avail,
+                range_band,
+                ruleset,
+                rng,
+                model_cfg,
+                opt_behaviors,
+                tech_v2_map,
+            )
+            if c_tid:
                 c_qual = "counter_hit" if rng.random() < cnt_hit_share else "partial"
                 c_dmg = compute_card_derived_damage(
                     k, def_card, att_card, c_tid, c_qual, def_state, att_state, in_active_slot=True, opt_behaviors=opt_behaviors
@@ -972,6 +1015,44 @@ def simulate_fight_v2(
                     "technique_id": c_tid,
                     "damage": c_dmg,
                 }
+
+        # Update fight_momentum and combo_state (§7.1, §7.5)
+        for fid in canonical_ids:
+            actors[fid]["fight_momentum"] = float(actors[fid].get("fight_momentum", 0.0)) * (1.0 - fm_decay)
+        if outcome in ("clean", "flush") and dmg_info["final_damage"] > 0:
+            att_state["fight_momentum"] += fm_landed
+            def_state["fight_momentum"] += fm_taken
+        if counter_followup_event and counter_followup_event["damage"]["landing_quality"] in ("counter_hit", "clean", "flush"):
+            def_state["fight_momentum"] += fm_landed
+            att_state["fight_momentum"] += fm_taken
+        for fid in canonical_ids:
+            actors[fid]["fight_momentum"] = round(
+                max(float(fm_lo), min(float(fm_hi), float(actors[fid]["fight_momentum"]))), 4
+            )
+
+        prev_chain = int(att_state["combo_state"].get("chain_len", 0)) if matched_combo else 0
+        att_state["combo_state"] = {
+            "last_tid": tid,
+            "last_outcome": outcome,
+            "last_def_tid": None,
+            "last_def_outcome": None,
+            "chain_len": (prev_chain + 1) if outcome not in ("miss", "evaded", "checked", "caught") else 0,
+        }
+        def_state["combo_state"] = {
+            "last_tid": (
+                counter_followup_event["technique_id"]
+                if counter_followup_event
+                else def_state["combo_state"].get("last_tid")
+            ),
+            "last_outcome": (
+                counter_followup_event["damage"]["landing_quality"]
+                if counter_followup_event
+                else def_state["combo_state"].get("last_outcome")
+            ),
+            "last_def_tid": defense_used,
+            "last_def_outcome": outcome if defense_used else None,
+            "chain_len": 1 if (defense_used and outcome in ("evaded", "blocked", "checked", "caught", "jammed")) else 0,
+        }
 
         if tid not in att_state["setups"]:
             att_state["setups"].append(tid)
@@ -987,6 +1068,7 @@ def simulate_fight_v2(
             range_band,
             att_state,
             tech_v2_map,
+            slot_goal=str(active_plan.get("goal", "head_damage")),
         )
         slot_switched_to, slot_switch_reason = evaluate_slot_switch(
             attacker_id,
@@ -1007,19 +1089,25 @@ def simulate_fight_v2(
             "t_start": t_start,
             "t_end": t_end,
             "frames": exchange_frames,
-            "range": range_band,
+            "range": ex_range,
             "lead_foot_matchup": lead_matchup,
             "attacker_id": attacker_id,
             "defender_id": defender_id,
             "active_slot_id": active_plan["slot_id"],
             "technique_id": tid,
+            "incoming_class": inc_cls,
             "attack_lane": attack_lane,
+            "initiative_scores": initiative_scores,
+            "selection": selection_rec,
+            "combo_id": str(matched_combo["id"]) if matched_combo else None,
             "defender_posture_before": def_posture_before,
             "defender_readiness_profile": def_readiness,
             "lane_readiness_score": lane_readiness,
             "hit_probability": hit_prob,
+            "hit": hit_rec,
             "outcome": outcome,
             "defense_used": defense_used,
+            "defense": defense_rec,
             "kick_anatomy": kick_detail,
             "damage": dmg_info,
             "counter_followup": counter_followup_event,

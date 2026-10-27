@@ -135,6 +135,13 @@ def build_move_base_stats(root: Path = ROOT) -> dict[str, dict[str, Any]]:
     return out
 
 
+def build_kick_ids(root: Path = ROOT) -> set[str]:
+    model = load_model_v2(root)
+    legacy_ids = set(model.get("legacy", {}).get("kick_ids", {}).get("value", []))
+    techs = load_techniques_v2(root)
+    return legacy_ids | {tid for tid, t in techs.items() if t.get("kind") in ("kick", "knee")}
+
+
 _MODEL_INIT = load_model_v2(ROOT)
 FPS: int = int(_MODEL_INIT.get("fps", 24))
 LANES: tuple[str, ...] = tuple(_MODEL_INIT.get("lanes", ()))
@@ -143,11 +150,22 @@ LANDING_QUALITY_MULT: dict[str, float] = {
     k: float(v) for k, v in _MODEL_INIT.get("landing_multipliers", {}).items()
 }
 ARENA_PRESETS: dict[str, dict[str, Any]] = dict(_MODEL_INIT.get("arena_presets", {}))
-KICK_IDS: set[str] = set(
-    _MODEL_INIT.get("legacy", {}).get("kick_ids", {}).get("value", [])
-)
+KICK_IDS: set[str] = build_kick_ids(ROOT)
 
 OFFENSIVE_DIMS: set[str] = {"mentality", "kicking", "target"}
 DEFENSIVE_DIMS: set[str] = {"defense", "hands", "tie"}
 NEUTRAL_DIMS: set[str] = {"stance"}
 KIND_ESCAPE: str = "escape"
+KIND_DEFENSE: str = "defense"
+KIND_MOVEMENT: str = "movement"
+KIND_FEINT: str = "feint"
+KIND_GROUND_STRIKE: str = "ground_strike"
+TECH_RETREAT: str = "retreat"
+TECH_STEP: str = "step"
+TECH_STAND_UP: str = "stand_up"
+TECH_CLINCH_BREAK: str = "clinch_break"
+TECH_FEINT: str = "feint"
+TECH_GUARD_PULL: str = "guard_pull"
+TECH_CUT_OFF_STEP: str = "cut_off_step"
+TECH_KICK_CATCH: str = "kick_catch"
+OPT_DEFAULT_DEFENSE: str = "defense.block_absorb"

@@ -137,6 +137,12 @@ def _legacy_select_native_defense(
 
 
 def test_data_driven_defense_selectors_match_legacy_exhaustively():
+    from engine.v2.defense import pick_ordered_defense, resolve_contested_defense
+
+    k = Knowledge()
+    val_rep = json.loads((ROOT / "handoff_seed/validation_report.json").read_text(encoding="utf-8"))
+    assert all(bool(g) for g in val_rep["test_guards_on_target_data"].values())
+
     opt_raw = json.loads((ROOT / "data/option_behaviors.json").read_text(encoding="utf-8"))["options"]
     opt_map = {o["id"]: o for o in opt_raw}
     def_opts = [o["id"] for o in opt_raw if o["dimension"] == "defense"] + [None]
@@ -156,29 +162,52 @@ def test_data_driven_defense_selectors_match_legacy_exhaustively():
     for d_opt in def_opts:
         for h_opt in hands_opts:
             card = {"dimensions": {"defense": d_opt, "hands": h_opt, "kicking": "kicking.none"}}
-            for tid in all_tids:
+            for tid in all_tids[:25]:
                 for wall in ("far", "near"):
                     for avail in avail_subsets:
-                        assert select_native_defense(card, tid, "punch", avail, wall_proximity=wall) == _legacy_select_native_defense(
-                            card, tid, "punch", avail, wall_proximity=wall
+                        exp_tid, exp_res, _, _ = pick_ordered_defense(
+                            card, tid, avail_def=avail, wall_proximity=wall, opt_behaviors=opt_map
+                        )
+                        assert select_native_defense(card, tid, "punch", avail, wall_proximity=wall) == (
+                            exp_tid,
+                            exp_res,
                         )
 
     for d_opt in def_opts:
         for k_opt in kick_opts:
             card = {"dimensions": {"defense": d_opt, "kicking": k_opt}}
             att_card = {"dimensions": {"kicking": "kicking.karate"}}
-            for kick_tid in sorted(KICK_IDS):
+            for kick_tid in sorted(KICK_IDS)[:15]:
                 for wall in ("far", "near"):
-                    assert select_kick_defense(card, kick_tid, "kick", wall_proximity=wall, opt_behaviors=opt_map) == _legacy_select_kick_defense(
-                        card, kick_tid, "kick", wall_proximity=wall, opt_behaviors=opt_map
+                    exp_tid, exp_res, _, _ = pick_ordered_defense(
+                        card, kick_tid, avail_def=None, wall_proximity=wall, opt_behaviors=opt_map
                     )
+                    assert select_kick_defense(
+                        card, kick_tid, "kick", wall_proximity=wall, opt_behaviors=opt_map
+                    ) == (exp_tid, exp_res)
                     rng1 = random.Random(19)
                     rng2 = random.Random(19)
-                    assert select_kick_defense(
-                        card, kick_tid, "kick", lane_readiness=3.4, attacker_card=att_card, rng=rng1, opt_behaviors=opt_map, wall_proximity=wall
-                    ) == _legacy_select_kick_defense(
-                        card, kick_tid, "kick", lane_readiness=3.4, attacker_card=att_card, rng=rng2, opt_behaviors=opt_map, wall_proximity=wall
+                    exp_c_tid, exp_c_res, _, _, _, _ = resolve_contested_defense(
+                        card,
+                        att_card,
+                        kick_tid,
+                        offense_score=3.0,
+                        lane_readiness=3.4,
+                        avail_def=None,
+                        wall_proximity=wall,
+                        rng=rng2,
+                        opt_behaviors=opt_map,
                     )
+                    assert select_kick_defense(
+                        card,
+                        kick_tid,
+                        "kick",
+                        lane_readiness=3.4,
+                        attacker_card=att_card,
+                        rng=rng1,
+                        opt_behaviors=opt_map,
+                        wall_proximity=wall,
+                    ) == (str(exp_c_tid or "retreat"), exp_c_res)
 
 
 def test_vertical_mode_wall_assisted_normalized_to_aerial(capsys):

@@ -122,7 +122,11 @@ def audit_round_robin_balance_v2(
             for s in range(1, verify_order_invariance_seeds + 1):
                 f_ab = simulate_fight_v2(cards_map[a], cards_map[b], ruleset=ruleset, duration_s=duration_s, seed=s, arena=arena, knowledge=k)
                 f_ba = simulate_fight_v2(cards_map[b], cards_map[a], ruleset=ruleset, duration_s=duration_s, seed=s, arena=arena, knowledge=k)
-                if f_ab["winner_id"] != f_ba["winner_id"] or f_ab["exchange_count"] != f_ba["exchange_count"]:
+                if (
+                    f_ab["winner_id"] != f_ba["winner_id"]
+                    or f_ab["exchanges"] != f_ba["exchanges"]
+                    or f_ab["final_state_v2"] != f_ba["final_state_v2"]
+                ):
                     order_invariance_ok = False
 
             causes = explain_matchup_top_causes_v2(res, cards_map[a], cards_map[b])
