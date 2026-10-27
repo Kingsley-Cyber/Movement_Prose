@@ -185,7 +185,12 @@ def main(argv=None) -> int:
     parser.add_argument("--list-archetypes", action="store_true", help="List all 12 predefined block-2 fighter archetypes and exit")
     parser.add_argument("--balance-audit", action="store_true", help="Run round-robin balance audit across all 12 archetypes and report Top-3 causes")
     parser.add_argument("--option-audit", action="store_true", help="Swap each of the 57 options into a neutral probe card and audit viability across the roster")
-    parser.add_argument("--ruleset", default="mma", choices=["mma", "boxing"], help="Combat ruleset (default: mma)")
+    parser.add_argument(
+        "--ruleset",
+        default="mma",
+        choices=["mma", "boxing", "kickboxing", "muay_thai", "street", "lethwei"],
+        help="Combat ruleset (default: mma)",
+    )
     parser.add_argument("--arena", default="cage", choices=sorted(ARENA_PRESETS.keys()), help="2D arena preset (default: cage)")
     parser.add_argument(
         "--vertical-mode",
@@ -194,6 +199,10 @@ def main(argv=None) -> int:
         help="Vertical mode (default: grounded; wall_assisted is normalized to aerial)",
     )
     parser.add_argument("--duration", type=float, default=60.0, help="Fight clock duration in seconds (default: 60.0)")
+    parser.add_argument("--full-fight", action="store_true", help="Use ruleset default multi-round fight length and rest (D2)")
+    parser.add_argument("--rounds", type=int, default=None, help="Explicit number of rounds (overrides --duration when set)")
+    parser.add_argument("--round-length", type=float, default=None, help="Length of each round in seconds")
+    parser.add_argument("--rest", type=float, default=None, help="Rest interval between rounds in seconds")
     parser.add_argument("--seed", type=int, default=42, help="Deterministic RNG seed for single-fight mode (default: 42)")
     parser.add_argument("--runs", type=int, default=0, help="If > 0, run N Monte Carlo simulations via simulate_many_v2 (or seeds/pair for --balance-audit)")
     parser.add_argument("--winner", default=None, help="Optional Director Mode winner fighter_id for --runs")
@@ -256,6 +265,10 @@ def main(argv=None) -> int:
             vertical_mode=args.vertical_mode,
             directed_winner=args.winner,
             knowledge=k,
+            rounds=args.rounds,
+            round_length_s=args.round_length,
+            rest_s=args.rest,
+            full_fight=args.full_fight,
         )
         if args.json:
             print(json.dumps(res, indent=2))
@@ -272,6 +285,10 @@ def main(argv=None) -> int:
         arena=args.arena,
         vertical_mode=args.vertical_mode,
         knowledge=k,
+        rounds=args.rounds,
+        round_length_s=args.round_length,
+        rest_s=args.rest,
+        full_fight=args.full_fight,
     )
     if args.emit_prompt:
         sim["atomic_causal_beats"] = compile_simulated_fight_to_atomic_beats(sim)

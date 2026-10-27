@@ -21,6 +21,10 @@ def simulate_many_v2(
     vertical_mode: str = "grounded",
     directed_winner: str | None = None,
     knowledge: Knowledge | None = None,
+    rounds: int | None = None,
+    round_length_s: float | None = None,
+    rest_s: float | None = None,
+    full_fight: bool = False,
 ) -> dict[str, Any]:
     """Run N seeded v2 fights to compute empirical win rates, method breakdown, deciding slots/lanes,
     and realistic directed runs validated against simulation_result_v2.schema.json.
@@ -48,6 +52,10 @@ def simulate_many_v2(
             arena=arena,
             vertical_mode=vertical_mode,
             knowledge=k,
+            rounds=rounds,
+            round_length_s=round_length_s,
+            rest_s=rest_s,
+            full_fight=full_fight,
         )
         w = str(sim["winner_id"])
         wins[w] += 1

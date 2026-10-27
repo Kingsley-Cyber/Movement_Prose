@@ -55,6 +55,15 @@ from .finishes import (
     evaluate_decision_winner,
     resolve_standing_count_or_knockdown,
 )
+from .geometry import (
+    apply_movement_displacement,
+    band_from_distance,
+    clamp_or_fall_at_boundary,
+    compute_distance_m,
+    compute_wall_and_corner,
+    get_arena_preset,
+    update_facing,
+)
 from .grappling import (
     accrue_control_time,
     get_positions_map,
@@ -215,6 +224,13 @@ def compute_card_derived_damage(
 
     delta_laterality, _ = compute_dominance_deltas(attacker_card, attacker_state, t_v2_entry, model_cfg)
 
+    dealt_scale = float(d_cfg.get("option_damage_dealt_scale", 0.05))
+    delta_dealt = dealt_scale * sum(
+        float(beh.get(dims.get(d) or "", {}).get("damage_dealt_multiplier", 1.0)) - 1.0
+        for d in ("mentality", "stance", "hands", "target", "kicking", "tie", "defense")
+        if dims.get(d)
+    )
+
     att_lo, att_hi = d_cfg.get("attacker_multiplier_clamp", [0.75, 1.75])
     m_attacker = max(
         float(att_lo),
@@ -228,7 +244,8 @@ def compute_card_derived_damage(
             + delta_other
             + delta_slot
             + delta_wear
-            + delta_laterality,
+            + delta_laterality
+            + delta_dealt,
         ),
     )
 
@@ -237,8 +254,9 @@ def compute_card_derived_damage(
     if defender_state.get("wall_proximity") == "near" and m_landing > 0:
         m_landing *= wall_mult
 
-    def_hands_id = defender_card["dimensions"].get("hands")
-    def_opt_id = defender_card["dimensions"].get("defense")
+    def_dims = defender_card["dimensions"]
+    def_hands_id = def_dims.get("hands")
+    def_opt_id = def_dims.get("defense")
     hands_ratings = (
         k.options[def_hands_id]["mma_adaptation"]["ratings"]
         if def_hands_id and def_hands_id in k.options
@@ -262,14 +280,26 @@ def compute_card_derived_damage(
         elif target_region == "head" and "head_guard_factor" in def_opt_dmg_rules:
             m_guard *= float(def_opt_dmg_rules["head_guard_factor"])
 
+    taken_scale = float(d_cfg.get("option_damage_taken_scale", 0.15))
+    delta_taken = taken_scale * sum(
+        float(beh.get(def_dims.get(d) or "", {}).get("damage_taken_multiplier", 1.0)) - 1.0
+        for d in ("defense", "hands", "stance", "mentality")
+        if def_dims.get(d)
+    )
+
     existing_reg_dmg = float(defender_state.get("damage", {}).get(target_region, 0.0))
     comp_per_pt = float(d_cfg.get("compounding_per_damage_point", 0.045))
     def_min = float(d_cfg.get("defender_multiplier_min", 0.60))
     m_wear = 1.0 + comp_per_pt * existing_reg_dmg
-    m_defender = max(def_min, m_guard * m_wear)
+    m_defender = max(def_min, (m_guard + delta_taken) * m_wear)
 
     eq_mult = float((equipment or {}).get("punch_damage_multiplier", 1.0)) if tech_kind == "punch" else 1.0
-    final_damage = round(base * m_attacker * m_landing * m_defender * eq_mult, 3)
+    throw_mult = (
+        float(attacker_state.get("arena_hard_floor_throw_bonus", 1.0))
+        if tech_kind in ("takedown", "sweep")
+        else 1.0
+    )
+    final_damage = round(base * m_attacker * m_landing * m_defender * eq_mult * throw_mult, 3)
 
     recoil_leg_damage = 0.0
     if landing_quality == "checked" and tid in dc.get("check_recoil_techniques", []):
@@ -299,6 +329,10 @@ def simulate_fight_v2(
     arena: str = "cage",
     vertical_mode: str = "grounded",
     knowledge: Knowledge | None = None,
+    rounds: int | None = None,
+    round_length_s: float | None = None,
+    rest_s: float | None = None,
+    full_fight: bool = False,
 ) -> dict[str, Any]:
     """Run a clock-driven, card-authentic v2 fight simulation between fighter A and fighter B.
     Canonical fighter-ID sorting guarantees order invariance: simulate_fight_v2(A, B, seed)
@@ -310,9 +344,26 @@ def simulate_fight_v2(
         raise ValueError("two distinct fighter IDs are required")
 
     vertical_mode = normalize_vertical_mode(vertical_mode)
+    ruleset_cfg = load_rulesets_v2(k.root).get("rulesets", {}).get(ruleset, {})
 
-    settings = {
-        "duration_s": float(duration_s),
+    if full_fight:
+        num_rounds = int(rounds if rounds is not None else ruleset_cfg.get("default_rounds", 3))
+        r_len_s = float(round_length_s if round_length_s is not None else ruleset_cfg.get("default_round_s", 300.0))
+        r_rest_s = float(rest_s if rest_s is not None else ruleset_cfg.get("default_rest_s", 60.0))
+        eff_duration_s = min(900.0, num_rounds * r_len_s)
+    elif rounds is not None or round_length_s is not None:
+        num_rounds = int(rounds if rounds is not None else 1)
+        r_len_s = float(round_length_s if round_length_s is not None else (float(duration_s) / max(1, num_rounds)))
+        r_rest_s = float(rest_s if rest_s is not None else ruleset_cfg.get("default_rest_s", 60.0))
+        eff_duration_s = min(900.0, num_rounds * r_len_s)
+    else:
+        num_rounds = 1
+        r_len_s = float(duration_s)
+        r_rest_s = float(rest_s if rest_s is not None else 0.0)
+        eff_duration_s = float(duration_s)
+
+    settings: dict[str, Any] = {
+        "duration_s": float(eff_duration_s),
         "arena": arena,
         "vertical_mode": vertical_mode,
         "ruleset": ruleset,
@@ -320,6 +371,10 @@ def simulate_fight_v2(
         "director_winner": None,
         "initiative_override": None,
     }
+    if full_fight or rounds is not None or round_length_s is not None:
+        settings["rounds"] = num_rounds
+        settings["round_length_s"] = r_len_s
+        settings["rest_s"] = r_rest_s
     validate_schema_cached(settings, k.root / "schemas" / "fight_settings.schema.json")
 
     opt_behaviors = load_option_behaviors(k.root)
@@ -350,8 +405,12 @@ def simulate_fight_v2(
     }
     last_sub_rec: dict[str, Any] | None = None
 
-    arena_cfg = ARENA_PRESETS.get(arena, ARENA_PRESETS["cage"])
+    arena_cfg = get_arena_preset(arena, model_cfg)
     half_w = float(arena_cfg["half_width_m"])
+    arena_wall_pin_bonus = float(arena_cfg.get("wall_pin_bonus", 1.0))
+    arena_corner_trap_bonus = float(arena_cfg.get("corner_trap_bonus", 1.0))
+    arena_hard_floor_throw_bonus = float(arena_cfg.get("hard_floor_throw_bonus", 1.0))
+    arena_restricts_wide_kicks = bool(arena_cfg.get("restricts_wide_kicks", False))
 
     slot_plans = {fid: build_slot_plans(k, cards[fid], ruleset) for fid in canonical_ids}
     avail_map = {fid: available_v2(k, cards[fid], ruleset) for fid in canonical_ids}
@@ -362,6 +421,7 @@ def simulate_fight_v2(
         c = cards[fid]
         orient = "orthodox" if c["orientation"] == "switching" else c["orientation"]
         init_idx = get_initial_slot_index(slot_plans[fid])
+        prox0, corner0, _ = compute_wall_and_corner([float(x0), 0.0], arena, model_cfg)
         actors[fid] = {
             "fighter_id": fid,
             "name": c["name"],
@@ -376,7 +436,10 @@ def simulate_fight_v2(
             "grip": None,
             "sub_grips": {"underhooks": 0, "wrist_control": False, "head_position": "neutral"},
             "submission_stage": 0,
-            "wall_proximity": "far",
+            "wall_proximity": prox0,
+            "in_corner": corner0,
+            "arena_wall_pin_bonus": arena_wall_pin_bonus,
+            "arena_hard_floor_throw_bonus": arena_hard_floor_throw_bonus,
             "damage": {"head": 0.0, "body": 0.0, "leg": 0.0},
             "damage_by_side": {
                 "head_left": 0.0,
@@ -440,7 +503,11 @@ def simulate_fight_v2(
     punch_only_ruleset = bool(legal_kinds_set and "kick" not in legal_kinds_set) or not clinch_rules.get("allowed", True)
 
     clock_frames = 0
-    max_frames = int(duration_s * FPS)
+    max_frames = int(eff_duration_s * FPS)
+    round_frames = max(1, int(r_len_s * FPS))
+    current_round = 1
+    rounds_cfg = model_cfg.get("rounds", {})
+    rest_fat_rec = float(rounds_cfg.get("rest_fatigue_recovery_fraction", 0.35))
     range_band = "punch" if punch_only_ruleset else "kick"
     clinch_exchanges = 0
     exchanges: list[dict[str, Any]] = []
@@ -659,6 +726,8 @@ def simulate_fight_v2(
 
                 if def_wall_near:
                     dist_score -= entry_wall_pen
+                    if def_state.get("in_corner") and arena_corner_trap_bonus > 1.0:
+                        entry_score += (arena_corner_trap_bonus - 1.0)
                 dist_score -= entry_leg_pen * float(def_state["damage"]["leg"])
 
                 step_prob = max(
@@ -670,11 +739,9 @@ def simulate_fight_v2(
                 else:
                     if arena_cfg["has_walls"] or arena_cfg.get("has_drop_hazard"):
                         direction = 1.0 if def_state["position"][0] >= 0 else -1.0
-                        def_state["position"][0] = round(
-                            max(-half_w, min(half_w, def_state["position"][0] + failed_entry_drift * direction)), 3
-                        )
-                        if half_w - abs(def_state["position"][0]) <= float(arena_cfg["wall_near_m"]):
-                            def_state["wall_proximity"] = "near"
+                        raw_fx = float(def_state["position"][0]) + failed_entry_drift * direction
+                        raw_fy = float(def_state["position"][1]) + (0.5 * failed_entry_drift * direction if arena_cfg.get("has_corners") else 0.0)
+                        clamp_or_fall_at_boundary(def_state, raw_fx, raw_fy, arena, model_cfg, rng=rng)
             elif des_idx < cur_idx:
                 att_men_meta = opt_behaviors.get(att_mentality, {}) if att_mentality else {}
                 att_def_meta = opt_behaviors.get(att_dims.get("defense"), {}) if att_dims.get("defense") else {}
@@ -797,6 +864,11 @@ def simulate_fight_v2(
             if t_v2_entry.get("stop_hit") and def_mentality in pressure_ments
             else 0.0
         )
+        wide_kick_pen = (
+            0.12
+            if arena_restricts_wide_kicks and t_v2_entry.get("line") in ("lead_round_kick", "rear_round_kick", "spinning")
+            else 0.0
+        )
         base_att_skill = (
             base_att_skill_const
             + sum(
@@ -809,6 +881,7 @@ def simulate_fight_v2(
             + combo_acc_bonus
             + mom_acc_bonus
             + stop_hit_acc_bonus
+            - wide_kick_pen
         )
         if range_band == "kick" and tid not in KICK_IDS and t_kind not in ("kick", "knee", KIND_MOVEMENT, KIND_FEINT):
             base_att_skill -= (
@@ -1147,42 +1220,65 @@ def simulate_fight_v2(
                 "via_technique": TECH_CLINCH_BREAK,
                 "transitions": step_list,
             }
+        if t_kind in (KIND_MOVEMENT, KIND_FEINT) and outcome in ("clean", "flush", "counter_hit", "partial"):
+            apply_movement_displacement(tid, att_state, def_state, arena, model_cfg, rng=rng)
+        if defense_used and outcome == "evaded":
+            apply_movement_displacement(defense_used, def_state, att_state, arena, model_cfg, rng=rng)
+
         if (def_mentality == outboxer_ment or def_option == outfight_def) and outcome == "evaded":
             def_state["position"][0] = round(def_state["position"][0] * outfighter_reset, 3)
+            def_state["position"][1] = round(def_state["position"][1] * outfighter_reset, 3)
             def_state["wall_proximity"] = "far"
+            def_state["in_corner"] = False
         elif att_mentality in pressure_ments and (arena_cfg["has_walls"] or arena_cfg.get("has_drop_hazard")):
             direction = 1.0 if def_state["position"][0] >= 0 else -1.0
             raw_drift_x = float(def_state["position"][0]) + pressure_drift * direction
-            if arena_cfg.get("has_drop_hazard") and abs(raw_drift_x) > half_w:
-                ef_cfg = model_cfg.get("geometry", {}).get("edge_fall", {})
-                p_fall = float(ef_cfg.get("probability", 0.35))
-                if def_state.get("balance") in ("off_base", "compromised"):
-                    p_fall = min(0.95, p_fall * float(ef_cfg.get("off_base_multiplier", 1.5)))
-                if contest_roll(p_fall, band_name="edge_fall", rng=rng, model_cfg=model_cfg)[0]:
-                    def_state["fell_from_edge"] = True
-                    def_state["position"][0] = round(raw_drift_x, 3)
-                else:
-                    def_state["position"][0] = round(max(-half_w, min(half_w, raw_drift_x)), 3)
-                    def_state["balance"] = "off_base"
-                    def_state["wall_proximity"] = "near"
-            else:
-                def_state["position"][0] = round(max(-half_w, min(half_w, raw_drift_x)), 3)
-                if half_w - abs(def_state["position"][0]) <= float(arena_cfg["wall_near_m"]):
-                    def_state["wall_proximity"] = "near"
+            raw_drift_y = float(def_state["position"][1]) + (
+                0.5 * pressure_drift * direction if arena_cfg.get("has_corners") else 0.0
+            )
+            clamp_or_fall_at_boundary(def_state, raw_drift_x, raw_drift_y, arena, model_cfg, rng=rng)
         elif (def_mentality == outboxer_ment or def_option == outfight_def) and outcome in ("evaded", "blocked"):
             def_state["position"][0] = round(def_state["position"][0] * outfighter_reset, 3)
+            def_state["position"][1] = round(def_state["position"][1] * outfighter_reset, 3)
             def_state["wall_proximity"] = "far"
+            def_state["in_corner"] = False
 
         setup_saved = int(matched_combo.get("setup_frames_saved", 0)) if matched_combo else 0
         eff_setup_f = max(1, int(m_stats["setup_f"]) - setup_saved)
-        exchange_frames = eff_setup_f + int(m_stats["exec_f"]) + int(m_stats["hold_f"]) + int(m_stats["rec_f"])
-        tempo_gap_frames = max(tg_min, int(tg_base - tg_per_pt * max(att_card.get("tempo", 3), def_card.get("tempo", 3))))
+        def_frames = 0
+        if defense_used:
+            def_fc = tech_v2_map.get(defense_used, {}).get("frame_costs", {})
+            def_frames = int(def_fc.get("execution_frames", 0))
+        exchange_frames = eff_setup_f + int(m_stats["exec_f"]) + int(m_stats["hold_f"]) + int(m_stats["rec_f"]) + def_frames
+
+        pace_cfg = model_cfg.get("pace", {})
+        p_base = int(pace_cfg.get("base_gap_frames", tg_base))
+        p_per_pt = int(pace_cfg.get("per_tempo_point", tg_per_pt))
+        p_min = int(pace_cfg.get("min_gap_frames", tg_min))
+        p_fat_scale = float(pace_cfg.get("fatigue_gap_scale", 0.03))
+        att_tempo_val = int(att_card.get("tempo", 3))
+        att_patience = float(
+            opt_behaviors.get(att_mentality or "", {}).get("selection_profile", {}).get("patience", 1.0)
+        )
+        raw_gap = max(p_min, p_base - p_per_pt * att_tempo_val) * att_patience * (1.0 + p_fat_scale * float(att_state["fatigue"]))
+        tempo_gap_frames = max(p_min, int(round(raw_gap)))
+
         t_start = round(clock_frames / float(FPS), 2)
         clock_frames += exchange_frames + tempo_gap_frames
         t_end = round(clock_frames / float(FPS), 2)
-        att_tempo_val = int(att_card.get("tempo", 3))
-        fatigue_step = float(fatigue_by_tempo.get(str(att_tempo_val), 0.34))
+
+        energy_cfg = model_cfg.get("energy", {})
+        use_e_mult = bool(energy_cfg.get("use_technique_energy_mult", True))
+        def_cost_frac = float(energy_cfg.get("defender_cost_fraction", 0.35))
+        att_e_mult = float(t_v2_entry.get("energy_mult", 1.0)) if use_e_mult else 1.0
+        fatigue_step = float(fatigue_by_tempo.get(str(att_tempo_val), 0.34)) * att_e_mult
         att_state["fatigue"] = round(att_state["fatigue"] + fatigue_step, 2)
+
+        if defense_used:
+            def_tempo_val = int(def_card.get("tempo", 3))
+            def_e_mult = float(tech_v2_map.get(defense_used, {}).get("energy_mult", 0.35)) if use_e_mult else 1.0
+            def_fat_step = def_cost_frac * float(fatigue_by_tempo.get(str(def_tempo_val), 0.34)) * def_e_mult
+            def_state["fatigue"] = round(def_state["fatigue"] + def_fat_step, 2)
         last_attacker_id = attacker_id
         last_recovery_drag = rd_base + rd_per_f * float(m_stats["rec_f"]) + (rd_fail_extra if outcome in rd_fail_outcomes else 0.0)
 
@@ -1539,6 +1635,7 @@ def simulate_fight_v2(
 
         ex_event = {
             "exchange_index": len(exchanges) + 1,
+            "round": current_round,
             "t_start": t_start,
             "t_end": t_end,
             "frames": exchange_frames,
@@ -1587,6 +1684,36 @@ def simulate_fight_v2(
         if winner_id:
             break
 
+        # 8. Check Round Break & Rest (§7.1, D2)
+        if current_round < num_rounds and clock_frames >= current_round * round_frames:
+            current_round += 1
+            for fid, x0 in zip(canonical_ids, start_xs):
+                st = actors[fid]
+                st["fatigue"] = round(float(st["fatigue"]) * (1.0 - rest_fat_rec), 2)
+                st["attention"]["feinted"] = False
+                st["attention"]["outside_angle_conceded"] = False
+                st["stun_exchanges"] = 0
+                st["knockdowns_round"] = 0
+                st["submission_stage"] = 0
+                st["position"] = [float(x0), 0.0]
+                st["facing"] = [1.0 if x0 < 0 else -1.0, 0.0]
+                prox_r, corner_r, _ = compute_wall_and_corner(st["position"], arena, model_cfg)
+                st["wall_proximity"] = prox_r
+                st["in_corner"] = corner_r
+            grappling_pos = set_pair_position(
+                pair_position,
+                str(rounds_cfg.get("reset_position_to", "standing_neutral")),
+                canonical_ids[0],
+                "neutral",
+                canonical_ids[1],
+                actors,
+                positions_map,
+            )
+            range_band = "punch" if punch_only_ruleset else str(rounds_cfg.get("reset_range_to", "kick"))
+            clinch_exchanges = 0
+            last_attacker_id = None
+            last_recovery_drag = 0.0
+
     if not winner_id:
         winner_id, finish_reason = evaluate_decision_winner(canonical_ids, actors, model_cfg)
 
@@ -1606,6 +1733,8 @@ def simulate_fight_v2(
         "version": "block-2",
         "clock_frames": clock_frames,
         "time_s": round(clock_frames / float(FPS), 2),
+        "round": current_round,
+        "ruleset": ruleset,
         "arena": arena,
         "vertical_mode": vertical_mode,
         "range": range_band,
@@ -1623,7 +1752,7 @@ def simulate_fight_v2(
         "seed": seed,
         "fighter_a": card_a["fighter_id"],
         "fighter_b": card_b["fighter_id"],
-        "duration_requested_s": duration_s,
+        "duration_requested_s": eff_duration_s,
         "duration_actual_s": round(clock_frames / float(FPS), 2),
         "winner_id": winner_id,
         "winner_name": cards[winner_id]["name"],

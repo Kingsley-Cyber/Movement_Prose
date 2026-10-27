@@ -511,8 +511,11 @@ def resolve_grappling_exchange_v2(
         modifiers += float(pos_bonus.get("dominant_clinch", 0.25))
 
     wall_bonus = g_cfg.get("wall_bonus", {})
+    wp_mult = float(att_st.get("arena_wall_pin_bonus", 1.0))
     if contest_type == "takedown" and opp_st.get("wall_proximity") == "near":
-        modifiers += float(wall_bonus.get("pinner_takedown", 0.4))
+        modifiers += float(wall_bonus.get("pinner_takedown", 0.4)) * wp_mult
+    elif contest_type == "clinch_control" and opp_st.get("wall_proximity") == "near" and wp_mult > 1.0:
+        modifiers += (wp_mult - 1.0)
     elif contest_type == TECH_STAND_UP and att_st.get("wall_proximity") == "near":
         modifiers += float(wall_bonus.get("pinned_wall_walk", 0.3))
 

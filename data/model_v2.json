@@ -1984,8 +1984,8 @@
     "normal": null,
     "high": 0.9
    },
-   "read_gain_at_zero_exposure": 0.8,
-   "novelty_penalty_multiplier_at_zero_exposure": 1.5,
+   "read_gain_at_zero_exposure": 0.65,
+   "novelty_penalty_multiplier_at_zero_exposure": 1.85,
    "formula": "read_gain *= lerp(read_gain_at_zero_exposure, 1.0, exposure); novelty_penalty *= lerp(novelty_penalty_multiplier_at_zero_exposure, 1.0, exposure)"
   },
   "body_sides": {
