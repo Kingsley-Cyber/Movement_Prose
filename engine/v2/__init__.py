@@ -7,7 +7,7 @@ from .audits import (
     audit_round_robin_balance_v2,
     explain_matchup_top_causes_v2,
 )
-from .availability import available_v2
+from .availability import available_v2, slot_defense_pool_v2, slot_pool_v2
 from .cards import (
     compute_school_depth_multiplier,
     list_archetypes_v2,
@@ -59,6 +59,8 @@ __all__ = [
     "audit_option_coverage_v2",
     "audit_round_robin_balance_v2",
     "available_v2",
+    "slot_defense_pool_v2",
+    "slot_pool_v2",
     "build_slot_plans",
     "check_finish_conditions",
     "compile_simulated_fight_to_atomic_beats",

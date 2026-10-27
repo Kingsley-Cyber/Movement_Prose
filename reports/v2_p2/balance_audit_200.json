@@ -1,0 +1,1296 @@
+{
+  "runs_per_pair": 200,
+  "ruleset": "mma",
+  "duration_s": 60.0,
+  "arena": "cage",
+  "archetype_count": 12,
+  "pair_count": 66,
+  "order_invariance_verified": true,
+  "archetype_overall_win_rates": {
+    "greco": 0.637,
+    "wrestler": 0.618,
+    "philly": 0.581,
+    "street": 0.522,
+    "karate": 0.508,
+    "donnell": 0.497,
+    "macklin": 0.486,
+    "jiujitsu": 0.45,
+    "thai": 0.45,
+    "maleek": 0.432,
+    "detroit": 0.426,
+    "sanda_judo": 0.392
+  },
+  "all_within_target_band_35_65": true,
+  "overall_outliers": {},
+  "max_pairwise_win_rate": 0.85,
+  "no_sweep_above_85": true,
+  "pairwise_outliers_above_85": [],
+  "top_skewed_pairs": [
+    {
+      "fighter_a": "sanda_judo",
+      "fighter_b": "street",
+      "win_rate_a": 0.15,
+      "win_rate_b": 0.85,
+      "max_win_rate": 0.85,
+      "method_breakdown": {
+        "KO/TKO": 198,
+        "TKO": 2
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 12/13 exchanges (92%) took place at `punch` range (favoring street's stance.planted / mentality.slugger)",
+        "Posture & Seam Readiness Delta: street maintained 1.95 avg lane readiness vs sanda_judo's 2.92, exploiting the `head_hook` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: street generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "maleek",
+      "fighter_b": "wrestler",
+      "win_rate_a": 0.16,
+      "win_rate_b": 0.84,
+      "max_win_rate": 0.84,
+      "method_breakdown": {
+        "TKO": 170,
+        "KO/TKO": 30
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 6/11 exchanges (55%) took place at `punch` range (favoring wrestler's stance.balanced / mentality.pressure)",
+        "Posture & Seam Readiness Delta: wrestler maintained 2.50 avg lane readiness vs maleek's 2.43, exploiting the `entry` seam toward `TKO` finishes",
+        "Tactical Counters & Control: wrestler generated 0 contested counters, 0 kick catches/checks, and 1 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "jiujitsu",
+      "fighter_b": "philly",
+      "win_rate_a": 0.205,
+      "win_rate_b": 0.795,
+      "max_win_rate": 0.795,
+      "method_breakdown": {
+        "Decision": 24,
+        "KO/TKO": 126,
+        "Submission": 29,
+        "TKO": 21
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 20/29 exchanges (69%) took place at `punch` range (favoring philly's stance.crouch / mentality.defensive)",
+        "Posture & Seam Readiness Delta: philly maintained 2.95 avg lane readiness vs jiujitsu's 2.88, exploiting the `clinch` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: philly generated 1 contested counters, 0 kick catches/checks, and 3 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "thai",
+      "fighter_b": "wrestler",
+      "win_rate_a": 0.205,
+      "win_rate_b": 0.795,
+      "max_win_rate": 0.795,
+      "method_breakdown": {
+        "TKO": 190,
+        "KO/TKO": 9,
+        "Decision": 1
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 6/17 exchanges (35%) took place at `punch` range (favoring wrestler's stance.balanced / mentality.pressure)",
+        "Posture & Seam Readiness Delta: wrestler maintained 2.86 avg lane readiness vs thai's 2.55, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: wrestler generated 0 contested counters, 0 kick catches/checks, and 5 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "greco",
+      "fighter_b": "maleek",
+      "win_rate_a": 0.78,
+      "win_rate_b": 0.22,
+      "max_win_rate": 0.78,
+      "method_breakdown": {
+        "KO/TKO": 60,
+        "TKO": 140
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 4/5 exchanges (80%) took place at `punch` range (favoring greco's stance.planted / mentality.swarmer)",
+        "Posture & Seam Readiness Delta: greco maintained 3.10 avg lane readiness vs maleek's 2.83, exploiting the `clinch` seam toward `TKO` finishes",
+        "Tactical Counters & Control: greco generated 1 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "donnell",
+      "fighter_b": "sanda_judo",
+      "win_rate_a": 0.775,
+      "win_rate_b": 0.225,
+      "max_win_rate": 0.775,
+      "method_breakdown": {
+        "KO/TKO": 187,
+        "TKO": 13
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 8/10 exchanges (80%) took place at `punch` range (favoring donnell's stance.crouch / mentality.pressure)",
+        "Posture & Seam Readiness Delta: donnell maintained 1.76 avg lane readiness vs sanda_judo's 2.24, exploiting the `head_straight` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: donnell generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "jiujitsu",
+      "fighter_b": "macklin",
+      "win_rate_a": 0.255,
+      "win_rate_b": 0.745,
+      "max_win_rate": 0.745,
+      "method_breakdown": {
+        "KO/TKO": 115,
+        "TKO": 39,
+        "Submission": 38,
+        "Decision": 8
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 4/7 exchanges (57%) took place at `punch` range (favoring macklin's stance.planted / mentality.spoiler)",
+        "Posture & Seam Readiness Delta: macklin maintained 2.98 avg lane readiness vs jiujitsu's 2.77, exploiting the `head_straight` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: macklin generated 1 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "karate",
+      "fighter_b": "thai",
+      "win_rate_a": 0.745,
+      "win_rate_b": 0.255,
+      "max_win_rate": 0.745,
+      "method_breakdown": {
+        "TKO": 157,
+        "KO/TKO": 42,
+        "Decision": 1
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 11/12 exchanges (92%) took place at `kick` range (favoring karate's stance.bladed / mentality.outboxer)",
+        "Posture & Seam Readiness Delta: karate maintained 3.41 avg lane readiness vs thai's 1.89, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: karate generated 1 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "detroit",
+      "fighter_b": "sanda_judo",
+      "win_rate_a": 0.735,
+      "win_rate_b": 0.265,
+      "max_win_rate": 0.735,
+      "method_breakdown": {
+        "KO/TKO": 183,
+        "TKO": 17
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 6/8 exchanges (75%) took place at `punch` range (favoring detroit's stance.bladed / mentality.counter)",
+        "Posture & Seam Readiness Delta: detroit maintained 1.77 avg lane readiness vs sanda_judo's 2.03, exploiting the `head_straight` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: detroit generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "donnell",
+      "fighter_b": "wrestler",
+      "win_rate_a": 0.265,
+      "win_rate_b": 0.735,
+      "max_win_rate": 0.735,
+      "method_breakdown": {
+        "TKO": 145,
+        "KO/TKO": 53,
+        "Decision": 2
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 11/19 exchanges (58%) took place at `ground` range (favoring wrestler's stance.balanced / mentality.pressure)",
+        "Posture & Seam Readiness Delta: wrestler maintained 2.85 avg lane readiness vs donnell's 2.26, exploiting the `entry` seam toward `TKO` finishes",
+        "Tactical Counters & Control: wrestler generated 0 contested counters, 0 kick catches/checks, and 8 grappling control marks"
+      ]
+    }
+  ],
+  "pairwise_matrix": [
+    {
+      "fighter_a": "sanda_judo",
+      "fighter_b": "street",
+      "win_rate_a": 0.15,
+      "win_rate_b": 0.85,
+      "max_win_rate": 0.85,
+      "method_breakdown": {
+        "KO/TKO": 198,
+        "TKO": 2
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 12/13 exchanges (92%) took place at `punch` range (favoring street's stance.planted / mentality.slugger)",
+        "Posture & Seam Readiness Delta: street maintained 1.95 avg lane readiness vs sanda_judo's 2.92, exploiting the `head_hook` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: street generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "maleek",
+      "fighter_b": "wrestler",
+      "win_rate_a": 0.16,
+      "win_rate_b": 0.84,
+      "max_win_rate": 0.84,
+      "method_breakdown": {
+        "TKO": 170,
+        "KO/TKO": 30
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 6/11 exchanges (55%) took place at `punch` range (favoring wrestler's stance.balanced / mentality.pressure)",
+        "Posture & Seam Readiness Delta: wrestler maintained 2.50 avg lane readiness vs maleek's 2.43, exploiting the `entry` seam toward `TKO` finishes",
+        "Tactical Counters & Control: wrestler generated 0 contested counters, 0 kick catches/checks, and 1 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "jiujitsu",
+      "fighter_b": "philly",
+      "win_rate_a": 0.205,
+      "win_rate_b": 0.795,
+      "max_win_rate": 0.795,
+      "method_breakdown": {
+        "Decision": 24,
+        "KO/TKO": 126,
+        "Submission": 29,
+        "TKO": 21
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 20/29 exchanges (69%) took place at `punch` range (favoring philly's stance.crouch / mentality.defensive)",
+        "Posture & Seam Readiness Delta: philly maintained 2.95 avg lane readiness vs jiujitsu's 2.88, exploiting the `clinch` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: philly generated 1 contested counters, 0 kick catches/checks, and 3 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "thai",
+      "fighter_b": "wrestler",
+      "win_rate_a": 0.205,
+      "win_rate_b": 0.795,
+      "max_win_rate": 0.795,
+      "method_breakdown": {
+        "TKO": 190,
+        "KO/TKO": 9,
+        "Decision": 1
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 6/17 exchanges (35%) took place at `punch` range (favoring wrestler's stance.balanced / mentality.pressure)",
+        "Posture & Seam Readiness Delta: wrestler maintained 2.86 avg lane readiness vs thai's 2.55, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: wrestler generated 0 contested counters, 0 kick catches/checks, and 5 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "greco",
+      "fighter_b": "maleek",
+      "win_rate_a": 0.78,
+      "win_rate_b": 0.22,
+      "max_win_rate": 0.78,
+      "method_breakdown": {
+        "KO/TKO": 60,
+        "TKO": 140
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 4/5 exchanges (80%) took place at `punch` range (favoring greco's stance.planted / mentality.swarmer)",
+        "Posture & Seam Readiness Delta: greco maintained 3.10 avg lane readiness vs maleek's 2.83, exploiting the `clinch` seam toward `TKO` finishes",
+        "Tactical Counters & Control: greco generated 1 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "donnell",
+      "fighter_b": "sanda_judo",
+      "win_rate_a": 0.775,
+      "win_rate_b": 0.225,
+      "max_win_rate": 0.775,
+      "method_breakdown": {
+        "KO/TKO": 187,
+        "TKO": 13
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 8/10 exchanges (80%) took place at `punch` range (favoring donnell's stance.crouch / mentality.pressure)",
+        "Posture & Seam Readiness Delta: donnell maintained 1.76 avg lane readiness vs sanda_judo's 2.24, exploiting the `head_straight` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: donnell generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "jiujitsu",
+      "fighter_b": "macklin",
+      "win_rate_a": 0.255,
+      "win_rate_b": 0.745,
+      "max_win_rate": 0.745,
+      "method_breakdown": {
+        "KO/TKO": 115,
+        "TKO": 39,
+        "Submission": 38,
+        "Decision": 8
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 4/7 exchanges (57%) took place at `punch` range (favoring macklin's stance.planted / mentality.spoiler)",
+        "Posture & Seam Readiness Delta: macklin maintained 2.98 avg lane readiness vs jiujitsu's 2.77, exploiting the `head_straight` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: macklin generated 1 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "karate",
+      "fighter_b": "thai",
+      "win_rate_a": 0.745,
+      "win_rate_b": 0.255,
+      "max_win_rate": 0.745,
+      "method_breakdown": {
+        "TKO": 157,
+        "KO/TKO": 42,
+        "Decision": 1
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 11/12 exchanges (92%) took place at `kick` range (favoring karate's stance.bladed / mentality.outboxer)",
+        "Posture & Seam Readiness Delta: karate maintained 3.41 avg lane readiness vs thai's 1.89, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: karate generated 1 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "detroit",
+      "fighter_b": "sanda_judo",
+      "win_rate_a": 0.735,
+      "win_rate_b": 0.265,
+      "max_win_rate": 0.735,
+      "method_breakdown": {
+        "KO/TKO": 183,
+        "TKO": 17
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 6/8 exchanges (75%) took place at `punch` range (favoring detroit's stance.bladed / mentality.counter)",
+        "Posture & Seam Readiness Delta: detroit maintained 1.77 avg lane readiness vs sanda_judo's 2.03, exploiting the `head_straight` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: detroit generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "donnell",
+      "fighter_b": "wrestler",
+      "win_rate_a": 0.265,
+      "win_rate_b": 0.735,
+      "max_win_rate": 0.735,
+      "method_breakdown": {
+        "TKO": 145,
+        "KO/TKO": 53,
+        "Decision": 2
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 11/19 exchanges (58%) took place at `ground` range (favoring wrestler's stance.balanced / mentality.pressure)",
+        "Posture & Seam Readiness Delta: wrestler maintained 2.85 avg lane readiness vs donnell's 2.26, exploiting the `entry` seam toward `TKO` finishes",
+        "Tactical Counters & Control: wrestler generated 0 contested counters, 0 kick catches/checks, and 8 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "greco",
+      "fighter_b": "street",
+      "win_rate_a": 0.73,
+      "win_rate_b": 0.27,
+      "max_win_rate": 0.73,
+      "method_breakdown": {
+        "TKO": 136,
+        "KO/TKO": 64
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 4/10 exchanges (40%) took place at `punch` range (favoring greco's stance.planted / mentality.swarmer)",
+        "Posture & Seam Readiness Delta: greco maintained 3.18 avg lane readiness vs street's 1.92, exploiting the `clinch` seam toward `TKO` finishes",
+        "Tactical Counters & Control: greco generated 0 contested counters, 0 kick catches/checks, and 4 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "detroit",
+      "fighter_b": "greco",
+      "win_rate_a": 0.285,
+      "win_rate_b": 0.715,
+      "max_win_rate": 0.715,
+      "method_breakdown": {
+        "KO/TKO": 73,
+        "TKO": 127
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 8/12 exchanges (67%) took place at `punch` range (favoring greco's stance.planted / mentality.swarmer)",
+        "Posture & Seam Readiness Delta: greco maintained 2.47 avg lane readiness vs detroit's 2.55, exploiting the `clinch` seam toward `TKO` finishes",
+        "Tactical Counters & Control: greco generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "greco",
+      "fighter_b": "jiujitsu",
+      "win_rate_a": 0.715,
+      "win_rate_b": 0.285,
+      "max_win_rate": 0.715,
+      "method_breakdown": {
+        "KO/TKO": 64,
+        "TKO": 108,
+        "Submission": 27,
+        "Decision": 1
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 15/23 exchanges (65%) took place at `clinch` range (favoring greco's stance.planted / mentality.swarmer)",
+        "Posture & Seam Readiness Delta: greco maintained 2.11 avg lane readiness vs jiujitsu's 2.45, exploiting the `clinch` seam toward `TKO` finishes",
+        "Tactical Counters & Control: greco generated 1 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "detroit",
+      "fighter_b": "wrestler",
+      "win_rate_a": 0.295,
+      "win_rate_b": 0.705,
+      "max_win_rate": 0.705,
+      "method_breakdown": {
+        "KO/TKO": 60,
+        "TKO": 138,
+        "Decision": 2
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 9/15 exchanges (60%) took place at `kick` range (favoring wrestler's stance.balanced / mentality.pressure)",
+        "Posture & Seam Readiness Delta: wrestler maintained 2.50 avg lane readiness vs detroit's 2.42, exploiting the `entry` seam toward `TKO` finishes",
+        "Tactical Counters & Control: wrestler generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "detroit",
+      "fighter_b": "street",
+      "win_rate_a": 0.3,
+      "win_rate_b": 0.7,
+      "max_win_rate": 0.7,
+      "method_breakdown": {
+        "KO/TKO": 200
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 9/10 exchanges (90%) took place at `punch` range (favoring street's stance.planted / mentality.slugger)",
+        "Posture & Seam Readiness Delta: street maintained 2.21 avg lane readiness vs detroit's 2.38, exploiting the `head_hook` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: street generated 1 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "donnell",
+      "fighter_b": "greco",
+      "win_rate_a": 0.305,
+      "win_rate_b": 0.695,
+      "max_win_rate": 0.695,
+      "method_breakdown": {
+        "TKO": 132,
+        "KO/TKO": 68
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 6/15 exchanges (40%) took place at `ground` range (favoring greco's stance.planted / mentality.swarmer)",
+        "Posture & Seam Readiness Delta: greco maintained 2.93 avg lane readiness vs donnell's 1.93, exploiting the `clinch` seam toward `TKO` finishes",
+        "Tactical Counters & Control: greco generated 0 contested counters, 0 kick catches/checks, and 4 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "maleek",
+      "fighter_b": "sanda_judo",
+      "win_rate_a": 0.695,
+      "win_rate_b": 0.305,
+      "max_win_rate": 0.695,
+      "method_breakdown": {
+        "KO/TKO": 156,
+        "TKO": 43,
+        "Decision": 1
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 10/12 exchanges (83%) took place at `punch` range (favoring maleek's stance.switch / mentality.boxer_puncher)",
+        "Posture & Seam Readiness Delta: maleek maintained 1.84 avg lane readiness vs sanda_judo's 1.95, exploiting the `head_straight` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: maleek generated 0 contested counters, 1 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "donnell",
+      "fighter_b": "jiujitsu",
+      "win_rate_a": 0.315,
+      "win_rate_b": 0.685,
+      "max_win_rate": 0.685,
+      "method_breakdown": {
+        "KO/TKO": 63,
+        "Submission": 131,
+        "TKO": 6
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 13/25 exchanges (52%) took place at `clinch` range (favoring jiujitsu's stance.balanced / mentality.spoiler)",
+        "Posture & Seam Readiness Delta: jiujitsu maintained 2.57 avg lane readiness vs donnell's 1.70, exploiting the `clinch` seam toward `Submission` finishes",
+        "Tactical Counters & Control: jiujitsu generated 0 contested counters, 0 kick catches/checks, and 3 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "karate",
+      "fighter_b": "macklin",
+      "win_rate_a": 0.675,
+      "win_rate_b": 0.325,
+      "max_win_rate": 0.675,
+      "method_breakdown": {
+        "KO/TKO": 94,
+        "TKO": 105,
+        "Decision": 1
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 5/9 exchanges (56%) took place at `kick` range (favoring karate's stance.bladed / mentality.outboxer)",
+        "Posture & Seam Readiness Delta: karate maintained 3.08 avg lane readiness vs macklin's 2.91, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: karate generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "jiujitsu",
+      "fighter_b": "maleek",
+      "win_rate_a": 0.67,
+      "win_rate_b": 0.33,
+      "max_win_rate": 0.67,
+      "method_breakdown": {
+        "KO/TKO": 65,
+        "Submission": 124,
+        "TKO": 11
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 12/15 exchanges (80%) took place at `punch` range (favoring jiujitsu's stance.balanced / mentality.spoiler)",
+        "Posture & Seam Readiness Delta: jiujitsu maintained 2.22 avg lane readiness vs maleek's 2.60, exploiting the `clinch` seam toward `Submission` finishes",
+        "Tactical Counters & Control: jiujitsu generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "karate",
+      "fighter_b": "wrestler",
+      "win_rate_a": 0.33,
+      "win_rate_b": 0.67,
+      "max_win_rate": 0.67,
+      "method_breakdown": {
+        "TKO": 186,
+        "KO/TKO": 14
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 12/25 exchanges (48%) took place at `kick` range (favoring wrestler's stance.balanced / mentality.pressure)",
+        "Posture & Seam Readiness Delta: wrestler maintained 2.39 avg lane readiness vs karate's 2.37, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: wrestler generated 1 contested counters, 0 kick catches/checks, and 2 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "donnell",
+      "fighter_b": "karate",
+      "win_rate_a": 0.665,
+      "win_rate_b": 0.335,
+      "max_win_rate": 0.665,
+      "method_breakdown": {
+        "TKO": 63,
+        "KO/TKO": 137
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 13/19 exchanges (68%) took place at `kick` range (favoring donnell's stance.crouch / mentality.pressure)",
+        "Posture & Seam Readiness Delta: donnell maintained 2.14 avg lane readiness vs karate's 3.02, exploiting the `body` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: donnell generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "jiujitsu",
+      "fighter_b": "wrestler",
+      "win_rate_a": 0.665,
+      "win_rate_b": 0.335,
+      "max_win_rate": 0.665,
+      "method_breakdown": {
+        "TKO": 86,
+        "Submission": 104,
+        "Decision": 8,
+        "KO/TKO": 2
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 6/13 exchanges (46%) took place at `ground` range (favoring jiujitsu's stance.balanced / mentality.spoiler)",
+        "Posture & Seam Readiness Delta: jiujitsu maintained 3.38 avg lane readiness vs wrestler's 2.87, exploiting the `clinch` seam toward `Submission` finishes",
+        "Tactical Counters & Control: jiujitsu generated 0 contested counters, 0 kick catches/checks, and 1 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "detroit",
+      "fighter_b": "donnell",
+      "win_rate_a": 0.34,
+      "win_rate_b": 0.66,
+      "max_win_rate": 0.66,
+      "method_breakdown": {
+        "KO/TKO": 199,
+        "TKO": 1
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 8/11 exchanges (73%) took place at `punch` range (favoring donnell's stance.crouch / mentality.pressure)",
+        "Posture & Seam Readiness Delta: donnell maintained 3.02 avg lane readiness vs detroit's 2.69, exploiting the `head_straight` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: donnell generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "jiujitsu",
+      "fighter_b": "street",
+      "win_rate_a": 0.34,
+      "win_rate_b": 0.66,
+      "max_win_rate": 0.66,
+      "method_breakdown": {
+        "KO/TKO": 143,
+        "Submission": 57
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 2/5 exchanges (40%) took place at `punch` range (favoring street's stance.planted / mentality.slugger)",
+        "Posture & Seam Readiness Delta: street maintained 2.42 avg lane readiness vs jiujitsu's 2.76, exploiting the `head_hook` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: street generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "jiujitsu",
+      "fighter_b": "thai",
+      "win_rate_a": 0.35,
+      "win_rate_b": 0.65,
+      "max_win_rate": 0.65,
+      "method_breakdown": {
+        "Submission": 57,
+        "TKO": 103,
+        "Decision": 6,
+        "KO/TKO": 34
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 6/10 exchanges (60%) took place at `ground` range (favoring thai's stance.upright / mentality.boxer_puncher)",
+        "Posture & Seam Readiness Delta: thai maintained 3.00 avg lane readiness vs jiujitsu's 1.87, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: thai generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "macklin",
+      "fighter_b": "wrestler",
+      "win_rate_a": 0.35,
+      "win_rate_b": 0.65,
+      "max_win_rate": 0.65,
+      "method_breakdown": {
+        "TKO": 145,
+        "Decision": 1,
+        "KO/TKO": 54
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 7/21 exchanges (33%) took place at `ground` range (favoring wrestler's stance.balanced / mentality.pressure)",
+        "Posture & Seam Readiness Delta: wrestler maintained 2.57 avg lane readiness vs macklin's 2.91, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: wrestler generated 0 contested counters, 0 kick catches/checks, and 4 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "philly",
+      "fighter_b": "sanda_judo",
+      "win_rate_a": 0.65,
+      "win_rate_b": 0.35,
+      "max_win_rate": 0.65,
+      "method_breakdown": {
+        "KO/TKO": 148,
+        "Decision": 9,
+        "TKO": 43
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 13/15 exchanges (87%) took place at `punch` range (favoring philly's stance.crouch / mentality.defensive)",
+        "Posture & Seam Readiness Delta: philly maintained 2.34 avg lane readiness vs sanda_judo's 2.16, exploiting the `head_straight` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: philly generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "donnell",
+      "fighter_b": "street",
+      "win_rate_a": 0.64,
+      "win_rate_b": 0.36,
+      "max_win_rate": 0.64,
+      "method_breakdown": {
+        "KO/TKO": 200
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 4/5 exchanges (80%) took place at `punch` range (favoring donnell's stance.crouch / mentality.pressure)",
+        "Posture & Seam Readiness Delta: donnell maintained 3.02 avg lane readiness vs street's 2.07, exploiting the `head_hook` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: donnell generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "detroit",
+      "fighter_b": "jiujitsu",
+      "win_rate_a": 0.365,
+      "win_rate_b": 0.635,
+      "max_win_rate": 0.635,
+      "method_breakdown": {
+        "TKO": 3,
+        "Submission": 116,
+        "KO/TKO": 81
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 12/25 exchanges (48%) took place at `clinch` range (favoring jiujitsu's stance.balanced / mentality.spoiler)",
+        "Posture & Seam Readiness Delta: jiujitsu maintained 2.99 avg lane readiness vs detroit's 2.00, exploiting the `clinch` seam toward `Submission` finishes",
+        "Tactical Counters & Control: jiujitsu generated 1 contested counters, 0 kick catches/checks, and 3 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "greco",
+      "fighter_b": "karate",
+      "win_rate_a": 0.63,
+      "win_rate_b": 0.37,
+      "max_win_rate": 0.63,
+      "method_breakdown": {
+        "KO/TKO": 39,
+        "TKO": 161
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 11/25 exchanges (44%) took place at `punch` range (favoring greco's stance.planted / mentality.swarmer)",
+        "Posture & Seam Readiness Delta: greco maintained 2.34 avg lane readiness vs karate's 2.32, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: greco generated 2 contested counters, 0 kick catches/checks, and 1 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "greco",
+      "fighter_b": "macklin",
+      "win_rate_a": 0.62,
+      "win_rate_b": 0.38,
+      "max_win_rate": 0.62,
+      "method_breakdown": {
+        "TKO": 116,
+        "KO/TKO": 84
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 10/20 exchanges (50%) took place at `clinch` range (favoring greco's stance.planted / mentality.swarmer)",
+        "Posture & Seam Readiness Delta: greco maintained 2.98 avg lane readiness vs macklin's 2.89, exploiting the `clinch` seam toward `TKO` finishes",
+        "Tactical Counters & Control: greco generated 1 contested counters, 0 kick catches/checks, and 2 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "greco",
+      "fighter_b": "thai",
+      "win_rate_a": 0.615,
+      "win_rate_b": 0.385,
+      "max_win_rate": 0.615,
+      "method_breakdown": {
+        "TKO": 162,
+        "KO/TKO": 37,
+        "Decision": 1
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 8/15 exchanges (53%) took place at `punch` range (favoring greco's stance.planted / mentality.swarmer)",
+        "Posture & Seam Readiness Delta: greco maintained 2.35 avg lane readiness vs thai's 2.47, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: greco generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "macklin",
+      "fighter_b": "sanda_judo",
+      "win_rate_a": 0.615,
+      "win_rate_b": 0.385,
+      "max_win_rate": 0.615,
+      "method_breakdown": {
+        "KO/TKO": 133,
+        "TKO": 65,
+        "Decision": 2
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 10/12 exchanges (83%) took place at `punch` range (favoring macklin's stance.planted / mentality.spoiler)",
+        "Posture & Seam Readiness Delta: macklin maintained 2.08 avg lane readiness vs sanda_judo's 2.27, exploiting the `head_straight` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: macklin generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "sanda_judo",
+      "fighter_b": "thai",
+      "win_rate_a": 0.61,
+      "win_rate_b": 0.39,
+      "max_win_rate": 0.61,
+      "method_breakdown": {
+        "TKO": 142,
+        "KO/TKO": 56,
+        "Decision": 2
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 11/16 exchanges (69%) took place at `punch` range (favoring sanda_judo's stance.shuffle / mentality.slickster)",
+        "Posture & Seam Readiness Delta: sanda_judo maintained 2.55 avg lane readiness vs thai's 1.52, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: sanda_judo generated 1 contested counters, 2 kick catches/checks, and 1 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "maleek",
+      "fighter_b": "philly",
+      "win_rate_a": 0.395,
+      "win_rate_b": 0.605,
+      "max_win_rate": 0.605,
+      "method_breakdown": {
+        "KO/TKO": 140,
+        "TKO": 54,
+        "Decision": 6
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 5/10 exchanges (50%) took place at `kick` range (favoring philly's stance.crouch / mentality.defensive)",
+        "Posture & Seam Readiness Delta: philly maintained 3.11 avg lane readiness vs maleek's 3.09, exploiting the `head_straight` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: philly generated 2 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "street",
+      "fighter_b": "wrestler",
+      "win_rate_a": 0.4,
+      "win_rate_b": 0.6,
+      "max_win_rate": 0.6,
+      "method_breakdown": {
+        "TKO": 116,
+        "KO/TKO": 80,
+        "Decision": 4
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 13/23 exchanges (57%) took place at `ground` range (favoring wrestler's stance.balanced / mentality.pressure)",
+        "Posture & Seam Readiness Delta: wrestler maintained 2.93 avg lane readiness vs street's 2.28, exploiting the `entry` seam toward `TKO` finishes",
+        "Tactical Counters & Control: wrestler generated 1 contested counters, 0 kick catches/checks, and 9 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "jiujitsu",
+      "fighter_b": "sanda_judo",
+      "win_rate_a": 0.405,
+      "win_rate_b": 0.595,
+      "max_win_rate": 0.595,
+      "method_breakdown": {
+        "TKO": 72,
+        "KO/TKO": 60,
+        "Submission": 64,
+        "Decision": 4
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 2/5 exchanges (40%) took place at `kick` range (favoring sanda_judo's stance.shuffle / mentality.slickster)",
+        "Posture & Seam Readiness Delta: sanda_judo maintained 2.79 avg lane readiness vs jiujitsu's 1.64, exploiting the `clinch` seam toward `TKO` finishes",
+        "Tactical Counters & Control: sanda_judo generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "karate",
+      "fighter_b": "maleek",
+      "win_rate_a": 0.59,
+      "win_rate_b": 0.41,
+      "max_win_rate": 0.59,
+      "method_breakdown": {
+        "KO/TKO": 85,
+        "TKO": 114,
+        "Decision": 1
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 8/13 exchanges (62%) took place at `punch` range (favoring karate's stance.bladed / mentality.outboxer)",
+        "Posture & Seam Readiness Delta: karate maintained 2.91 avg lane readiness vs maleek's 2.56, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: karate generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "donnell",
+      "fighter_b": "thai",
+      "win_rate_a": 0.415,
+      "win_rate_b": 0.585,
+      "max_win_rate": 0.585,
+      "method_breakdown": {
+        "KO/TKO": 95,
+        "TKO": 105
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 19/22 exchanges (86%) took place at `punch` range (favoring thai's stance.upright / mentality.boxer_puncher)",
+        "Posture & Seam Readiness Delta: thai maintained 2.32 avg lane readiness vs donnell's 2.34, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: thai generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "macklin",
+      "fighter_b": "maleek",
+      "win_rate_a": 0.415,
+      "win_rate_b": 0.585,
+      "max_win_rate": 0.585,
+      "method_breakdown": {
+        "KO/TKO": 183,
+        "TKO": 17
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 16/19 exchanges (84%) took place at `punch` range (favoring maleek's stance.switch / mentality.boxer_puncher)",
+        "Posture & Seam Readiness Delta: maleek maintained 2.50 avg lane readiness vs macklin's 2.99, exploiting the `head_straight` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: maleek generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "philly",
+      "fighter_b": "thai",
+      "win_rate_a": 0.57,
+      "win_rate_b": 0.43,
+      "max_win_rate": 0.57,
+      "method_breakdown": {
+        "TKO": 115,
+        "Decision": 5,
+        "KO/TKO": 80
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 10/14 exchanges (71%) took place at `kick` range (favoring philly's stance.crouch / mentality.defensive)",
+        "Posture & Seam Readiness Delta: philly maintained 2.70 avg lane readiness vs thai's 2.27, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: philly generated 1 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "street",
+      "fighter_b": "thai",
+      "win_rate_a": 0.57,
+      "win_rate_b": 0.43,
+      "max_win_rate": 0.57,
+      "method_breakdown": {
+        "KO/TKO": 122,
+        "TKO": 78
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 6/6 exchanges (100%) took place at `kick` range (favoring street's stance.planted / mentality.slugger)",
+        "Posture & Seam Readiness Delta: street maintained 2.15 avg lane readiness vs thai's 2.47, exploiting the `head_hook` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: street generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "maleek",
+      "fighter_b": "street",
+      "win_rate_a": 0.435,
+      "win_rate_b": 0.565,
+      "max_win_rate": 0.565,
+      "method_breakdown": {
+        "KO/TKO": 199,
+        "TKO": 1
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 4/5 exchanges (80%) took place at `punch` range (favoring street's stance.planted / mentality.slugger)",
+        "Posture & Seam Readiness Delta: street maintained 2.25 avg lane readiness vs maleek's 3.07, exploiting the `head_hook` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: street generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "donnell",
+      "fighter_b": "philly",
+      "win_rate_a": 0.44,
+      "win_rate_b": 0.56,
+      "max_win_rate": 0.56,
+      "method_breakdown": {
+        "TKO": 18,
+        "KO/TKO": 180,
+        "Decision": 2
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 17/21 exchanges (81%) took place at `punch` range (favoring philly's stance.crouch / mentality.defensive)",
+        "Posture & Seam Readiness Delta: philly maintained 3.11 avg lane readiness vs donnell's 2.18, exploiting the `head_hook` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: philly generated 0 contested counters, 0 kick catches/checks, and 3 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "greco",
+      "fighter_b": "philly",
+      "win_rate_a": 0.44,
+      "win_rate_b": 0.56,
+      "max_win_rate": 0.56,
+      "method_breakdown": {
+        "TKO": 77,
+        "KO/TKO": 120,
+        "Decision": 3
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 8/19 exchanges (42%) took place at `punch` range (favoring philly's stance.crouch / mentality.defensive)",
+        "Posture & Seam Readiness Delta: philly maintained 2.79 avg lane readiness vs greco's 3.15, exploiting the `head_hook` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: philly generated 1 contested counters, 0 kick catches/checks, and 2 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "philly",
+      "fighter_b": "street",
+      "win_rate_a": 0.56,
+      "win_rate_b": 0.44,
+      "max_win_rate": 0.56,
+      "method_breakdown": {
+        "TKO": 13,
+        "KO/TKO": 187
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 12/30 exchanges (40%) took place at `punch` range (favoring philly's stance.crouch / mentality.defensive)",
+        "Posture & Seam Readiness Delta: philly maintained 3.48 avg lane readiness vs street's 2.22, exploiting the `head_hook` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: philly generated 3 contested counters, 0 kick catches/checks, and 7 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "detroit",
+      "fighter_b": "thai",
+      "win_rate_a": 0.445,
+      "win_rate_b": 0.555,
+      "max_win_rate": 0.555,
+      "method_breakdown": {
+        "TKO": 98,
+        "KO/TKO": 102
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 10/11 exchanges (91%) took place at `kick` range (favoring thai's stance.upright / mentality.boxer_puncher)",
+        "Posture & Seam Readiness Delta: thai maintained 2.22 avg lane readiness vs detroit's 2.47, exploiting the `body` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: thai generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "macklin",
+      "fighter_b": "street",
+      "win_rate_a": 0.55,
+      "win_rate_b": 0.45,
+      "max_win_rate": 0.55,
+      "method_breakdown": {
+        "KO/TKO": 195,
+        "TKO": 5
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 4/5 exchanges (80%) took place at `punch` range (favoring macklin's stance.planted / mentality.spoiler)",
+        "Posture & Seam Readiness Delta: macklin maintained 3.20 avg lane readiness vs street's 1.77, exploiting the `head_hook` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: macklin generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "sanda_judo",
+      "fighter_b": "wrestler",
+      "win_rate_a": 0.45,
+      "win_rate_b": 0.55,
+      "max_win_rate": 0.55,
+      "method_breakdown": {
+        "TKO": 177,
+        "KO/TKO": 11,
+        "Decision": 12
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 9/17 exchanges (53%) took place at `punch` range (favoring wrestler's stance.balanced / mentality.pressure)",
+        "Posture & Seam Readiness Delta: wrestler maintained 2.46 avg lane readiness vs sanda_judo's 2.77, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: wrestler generated 0 contested counters, 0 kick catches/checks, and 2 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "macklin",
+      "fighter_b": "thai",
+      "win_rate_a": 0.455,
+      "win_rate_b": 0.545,
+      "max_win_rate": 0.545,
+      "method_breakdown": {
+        "KO/TKO": 84,
+        "TKO": 114,
+        "Decision": 2
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 14/17 exchanges (82%) took place at `punch` range (favoring thai's stance.upright / mentality.boxer_puncher)",
+        "Posture & Seam Readiness Delta: thai maintained 2.20 avg lane readiness vs macklin's 2.93, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: thai generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "philly",
+      "fighter_b": "wrestler",
+      "win_rate_a": 0.545,
+      "win_rate_b": 0.455,
+      "max_win_rate": 0.545,
+      "method_breakdown": {
+        "KO/TKO": 79,
+        "TKO": 108,
+        "Decision": 13
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 6/10 exchanges (60%) took place at `punch` range (favoring philly's stance.crouch / mentality.defensive)",
+        "Posture & Seam Readiness Delta: philly maintained 3.24 avg lane readiness vs wrestler's 2.52, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: philly generated 1 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "detroit",
+      "fighter_b": "maleek",
+      "win_rate_a": 0.46,
+      "win_rate_b": 0.54,
+      "max_win_rate": 0.54,
+      "method_breakdown": {
+        "KO/TKO": 187,
+        "TKO": 13
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 10/13 exchanges (77%) took place at `punch` range (favoring maleek's stance.switch / mentality.boxer_puncher)",
+        "Posture & Seam Readiness Delta: maleek maintained 3.04 avg lane readiness vs detroit's 2.63, exploiting the `head_straight` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: maleek generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "greco",
+      "fighter_b": "wrestler",
+      "win_rate_a": 0.54,
+      "win_rate_b": 0.46,
+      "max_win_rate": 0.54,
+      "method_breakdown": {
+        "TKO": 184,
+        "KO/TKO": 12,
+        "Decision": 4
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 8/19 exchanges (42%) took place at `ground` range (favoring greco's stance.planted / mentality.swarmer)",
+        "Posture & Seam Readiness Delta: greco maintained 2.89 avg lane readiness vs wrestler's 2.60, exploiting the `clinch` seam toward `TKO` finishes",
+        "Tactical Counters & Control: greco generated 1 contested counters, 0 kick catches/checks, and 4 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "jiujitsu",
+      "fighter_b": "karate",
+      "win_rate_a": 0.46,
+      "win_rate_b": 0.54,
+      "max_win_rate": 0.54,
+      "method_breakdown": {
+        "TKO": 51,
+        "KO/TKO": 66,
+        "Submission": 81,
+        "Decision": 2
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 5/9 exchanges (56%) took place at `kick` range (favoring karate's stance.bladed / mentality.outboxer)",
+        "Posture & Seam Readiness Delta: karate maintained 2.59 avg lane readiness vs jiujitsu's 1.88, exploiting the `clinch` seam toward `Submission` finishes",
+        "Tactical Counters & Control: karate generated 1 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "detroit",
+      "fighter_b": "macklin",
+      "win_rate_a": 0.465,
+      "win_rate_b": 0.535,
+      "max_win_rate": 0.535,
+      "method_breakdown": {
+        "KO/TKO": 188,
+        "TKO": 12
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 4/7 exchanges (57%) took place at `punch` range (favoring macklin's stance.planted / mentality.spoiler)",
+        "Posture & Seam Readiness Delta: macklin maintained 3.15 avg lane readiness vs detroit's 2.83, exploiting the `head_straight` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: macklin generated 1 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "greco",
+      "fighter_b": "sanda_judo",
+      "win_rate_a": 0.53,
+      "win_rate_b": 0.47,
+      "max_win_rate": 0.53,
+      "method_breakdown": {
+        "TKO": 161,
+        "KO/TKO": 38,
+        "Decision": 1
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 7/17 exchanges (41%) took place at `punch` range (favoring greco's stance.planted / mentality.swarmer)",
+        "Posture & Seam Readiness Delta: greco maintained 2.07 avg lane readiness vs sanda_judo's 2.65, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: greco generated 0 contested counters, 0 kick catches/checks, and 1 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "macklin",
+      "fighter_b": "philly",
+      "win_rate_a": 0.47,
+      "win_rate_b": 0.53,
+      "max_win_rate": 0.53,
+      "method_breakdown": {
+        "KO/TKO": 146,
+        "Decision": 10,
+        "TKO": 44
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 4/9 exchanges (44%) took place at `punch` range (favoring philly's stance.crouch / mentality.defensive)",
+        "Posture & Seam Readiness Delta: philly maintained 3.09 avg lane readiness vs macklin's 3.05, exploiting the `head_straight` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: philly generated 1 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "karate",
+      "fighter_b": "street",
+      "win_rate_a": 0.525,
+      "win_rate_b": 0.475,
+      "max_win_rate": 0.525,
+      "method_breakdown": {
+        "KO/TKO": 106,
+        "TKO": 94
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 11/13 exchanges (85%) took place at `kick` range (favoring karate's stance.bladed / mentality.outboxer)",
+        "Posture & Seam Readiness Delta: karate maintained 2.99 avg lane readiness vs street's 1.62, exploiting the `head_hook` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: karate generated 1 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "maleek",
+      "fighter_b": "thai",
+      "win_rate_a": 0.48,
+      "win_rate_b": 0.52,
+      "max_win_rate": 0.52,
+      "method_breakdown": {
+        "KO/TKO": 87,
+        "TKO": 112,
+        "Decision": 1
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 9/12 exchanges (75%) took place at `punch` range (favoring thai's stance.upright / mentality.boxer_puncher)",
+        "Posture & Seam Readiness Delta: thai maintained 2.12 avg lane readiness vs maleek's 2.65, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: thai generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "detroit",
+      "fighter_b": "karate",
+      "win_rate_a": 0.515,
+      "win_rate_b": 0.485,
+      "max_win_rate": 0.515,
+      "method_breakdown": {
+        "TKO": 62,
+        "KO/TKO": 138
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 11/11 exchanges (100%) took place at `kick` range (favoring detroit's stance.bladed / mentality.counter)",
+        "Posture & Seam Readiness Delta: detroit maintained 2.09 avg lane readiness vs karate's 3.58, exploiting the `body` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: detroit generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "detroit",
+      "fighter_b": "philly",
+      "win_rate_a": 0.485,
+      "win_rate_b": 0.515,
+      "max_win_rate": 0.515,
+      "method_breakdown": {
+        "KO/TKO": 178,
+        "TKO": 20,
+        "Decision": 2
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 6/9 exchanges (67%) took place at `punch` range (favoring philly's stance.crouch / mentality.defensive)",
+        "Posture & Seam Readiness Delta: philly maintained 3.17 avg lane readiness vs detroit's 2.81, exploiting the `head_straight` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: philly generated 1 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "donnell",
+      "fighter_b": "macklin",
+      "win_rate_a": 0.49,
+      "win_rate_b": 0.51,
+      "max_win_rate": 0.51,
+      "method_breakdown": {
+        "TKO": 11,
+        "KO/TKO": 189
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 11/21 exchanges (52%) took place at `clinch` range (favoring macklin's stance.planted / mentality.spoiler)",
+        "Posture & Seam Readiness Delta: macklin maintained 3.10 avg lane readiness vs donnell's 1.98, exploiting the `head_straight` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: macklin generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "donnell",
+      "fighter_b": "maleek",
+      "win_rate_a": 0.495,
+      "win_rate_b": 0.505,
+      "max_win_rate": 0.505,
+      "method_breakdown": {
+        "KO/TKO": 187,
+        "TKO": 13
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 14/22 exchanges (64%) took place at `punch` range (favoring maleek's stance.switch / mentality.boxer_puncher)",
+        "Posture & Seam Readiness Delta: maleek maintained 2.76 avg lane readiness vs donnell's 2.48, exploiting the `head_straight` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: maleek generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "karate",
+      "fighter_b": "sanda_judo",
+      "win_rate_a": 0.495,
+      "win_rate_b": 0.505,
+      "max_win_rate": 0.505,
+      "method_breakdown": {
+        "TKO": 118,
+        "KO/TKO": 82
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 8/12 exchanges (67%) took place at `kick` range (favoring sanda_judo's stance.shuffle / mentality.slickster)",
+        "Posture & Seam Readiness Delta: sanda_judo maintained 2.02 avg lane readiness vs karate's 2.05, exploiting the `body` seam toward `TKO` finishes",
+        "Tactical Counters & Control: sanda_judo generated 2 contested counters, 2 kick catches/checks, and 2 grappling control marks"
+      ]
+    },
+    {
+      "fighter_a": "karate",
+      "fighter_b": "philly",
+      "win_rate_a": 0.5,
+      "win_rate_b": 0.5,
+      "max_win_rate": 0.5,
+      "method_breakdown": {
+        "KO/TKO": 97,
+        "TKO": 92,
+        "Decision": 11
+      },
+      "top_3_causes": [
+        "Range & Footwork Control: 5/10 exchanges (50%) took place at `kick` range (favoring karate's stance.bladed / mentality.outboxer)",
+        "Posture & Seam Readiness Delta: karate maintained 3.11 avg lane readiness vs philly's 3.02, exploiting the `body` seam toward `KO/TKO` finishes",
+        "Tactical Counters & Control: karate generated 0 contested counters, 0 kick catches/checks, and 0 grappling control marks"
+      ]
+    }
+  ]
+}

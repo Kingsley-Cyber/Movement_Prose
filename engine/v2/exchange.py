@@ -8,7 +8,12 @@ import random
 from typing import Any
 
 from ..ontology import Knowledge
-from .availability import available_v2
+from .availability import (
+    available_v2,
+    evaluate_conditional_abilities,
+    slot_defense_pool_v2,
+    slot_pool_v2,
+)
 from .cards import compute_school_depth_multiplier, load_card_v2
 from .data import (
     ARENA_PRESETS,
@@ -17,6 +22,7 @@ from .data import (
     LANDING_QUALITY_MULT,
     MOVE_BASE_STATS,
     get_attack_profile,
+    load_capabilities_v2,
     load_model_v2,
     load_option_behaviors,
     load_techniques_v2,
@@ -27,7 +33,12 @@ from .finishes import check_finish_conditions, evaluate_decision_winner
 from .grappling import update_grappling_position
 from .kicking import unroll_kick_anatomy
 from .readiness import compute_readiness_profile
-from .selection import build_slot_plans
+from .selection import (
+    build_slot_plans,
+    evaluate_slot_switch,
+    get_initial_slot_index,
+    update_slot_stalls,
+)
 from .state import compute_posture_state
 from .vertical import normalize_vertical_mode
 
@@ -308,12 +319,14 @@ def simulate_fight_v2(
     half_w = float(arena_cfg["half_width_m"])
 
     slot_plans = {fid: build_slot_plans(k, cards[fid], ruleset) for fid in canonical_ids}
+    avail_map = {fid: available_v2(k, cards[fid], ruleset) for fid in canonical_ids}
     start_xs = sim_cfg.get("start_x_positions", [-0.8, 0.8])
 
     actors: dict[str, dict[str, Any]] = {}
     for fid, x0 in zip(canonical_ids, start_xs):
         c = cards[fid]
         orient = "orthodox" if c["orientation"] == "switching" else c["orientation"]
+        init_idx = get_initial_slot_index(slot_plans[fid])
         actors[fid] = {
             "fighter_id": fid,
             "name": c["name"],
@@ -332,11 +345,13 @@ def simulate_fight_v2(
             "momentum": [0.0, 0.0],
             "contact_marks": 0,
             "control_marks": 0,
-            "active_slot_idx": 0,
-            "active_slot_id": slot_plans[fid][0]["slot_id"],
+            "active_slot_idx": init_idx,
+            "active_slot_id": slot_plans[fid][init_idx]["slot_id"],
             "slot_Cursor": 0,
             "slot_stalls": 0,
+            "slot_exchanges": 0,
             "slot_switches": 0,
+            "unlocked_abilities": [],
             "kick_checks_suffered": 0,
             "recent_moves": [],
             "setups": [],
@@ -447,6 +462,9 @@ def simulate_fight_v2(
     caught_dump_prio = list(sc.get("caught_kick_dump_priority", []))
     counter_cands_map = sc.get("counter_candidates_by_range", {})
     clinch_grips = set(sc.get("clinch_grips", []))
+    basic_core = load_capabilities_v2(k.root).get("capabilities", {}).get("basic_movement", {}).get("core", [])
+    step_id = str(basic_core[0]) if basic_core else ""
+    stand_up_id = str(basic_core[5]) if len(basic_core) > 5 else step_id
 
     while clock_frames < max_frames:
         lead_matchup = (
@@ -479,13 +497,23 @@ def simulate_fight_v2(
         att_card, def_card = cards[attacker_id], cards[defender_id]
         att_state, def_state = actors[attacker_id], actors[defender_id]
 
+        # Unlock conditional abilities from real state before slot evaluation (§7.5)
+        for fid in canonical_ids:
+            opp_fid = next(i for i in canonical_ids if i != fid)
+            newly_unlocked = evaluate_conditional_abilities(cards[fid], actors[fid], actors[opp_fid], range_band)
+            if newly_unlocked:
+                un_list = tuple(actors[fid].get("unlocked_abilities", ()))
+                slot_plans[fid] = build_slot_plans(k, cards[fid], ruleset, un_list)
+                avail_map[fid] = available_v2(k, cards[fid], ruleset, un_list)
+
         # 2. Select active slot plan, contest range step (one band per exchange), & select technique
         plans = slot_plans[attacker_id]
         active_plan = plans[int(att_state["active_slot_idx"]) % len(plans)]
         att_state["active_slot_id"] = active_plan["slot_id"]
+        att_non_counter_pool = set(active_plan["full_pool"])
         seq: list[str] = list(active_plan["sequence"])
-        att_avail = available_v2(k, att_card, ruleset)
-        def_avail = available_v2(k, def_card, ruleset)
+        att_avail = avail_map[attacker_id]
+        def_avail = avail_map[defender_id]
 
         att_dims = att_card["dimensions"]
         def_dims = def_card["dimensions"]
@@ -602,25 +630,30 @@ def simulate_fight_v2(
         att_state["slot_Cursor"] = cursor + 1
 
         if range_band == "ground":
-            if att_state["grip"] == "top" and ground_top_ctrl in att_avail:
+            if att_state["grip"] == "top" and ground_top_ctrl in att_non_counter_pool:
                 tid = ground_top_ctrl
-            elif att_state["grip"] == "bottom" and ground_bot_sub in att_avail:
+            elif att_state["grip"] == "bottom" and ground_bot_sub in att_non_counter_pool:
                 tid = ground_bot_sub
-            elif ground_esc in att_avail:
+            elif ground_esc in att_non_counter_pool:
                 tid = ground_esc
             elif att_state["grip"] == "top":
-                top_strikes = [m for m in ground_top_strikes if m in att_avail]
-                tid = top_strikes[cursor % len(top_strikes)] if top_strikes else ground_fb_chain[0]
+                top_strikes = [m for m in ground_top_strikes if m in att_non_counter_pool]
+                tid = top_strikes[cursor % len(top_strikes)] if top_strikes else stand_up_id
             else:
-                tid = ground_fb_chain[-1]
+                tid = stand_up_id
                 for fb_m in ground_fb_chain[:-1]:
-                    if fb_m in att_avail:
+                    if fb_m in att_non_counter_pool:
                         tid = fb_m
                         break
         elif range_band == "kick" and tid not in KICK_IDS:
-            kick_fallbacks = [m for m in kick_fallbacks_list if m in att_avail]
+            kick_fallbacks = [m for m in kick_fallbacks_list if m in att_non_counter_pool]
             if kick_fallbacks:
                 tid = kick_fallbacks[cursor % len(kick_fallbacks)]
+            elif tid not in att_non_counter_pool:
+                tid = step_id
+
+        if tid not in att_non_counter_pool:
+            tid = seq[0] if seq else step_id
 
         # Update defender's read_memory before computing defender readiness
         recent = att_state["recent_moves"]
@@ -694,6 +727,14 @@ def simulate_fight_v2(
         def_wall_near = def_wall == "near"
         kick_def_bonus = _eval_kick_defense_bonus(def_dims.get("kicking"), def_option, def_wall_near, kd_tiers)
 
+        def_plans = slot_plans[defender_id]
+        def_active_plan = def_plans[int(def_state["active_slot_idx"]) % len(def_plans)]
+        def_reset_defenses = (
+            set(def_active_plan["reset_defenses"])
+            if def_active_plan.get("goal") == "reset_to_home_range"
+            else None
+        )
+
         if tid in KICK_IDS and tid not in kick_excluded and roll > max(kick_min_roll, hit_prob - kick_def_bonus):
             defense_used, outcome = select_kick_defense(
                 def_card,
@@ -704,9 +745,17 @@ def simulate_fight_v2(
                 rng=rng,
                 opt_behaviors=opt_behaviors,
                 wall_proximity=def_wall,
+                avail_def=def_avail,
             )
         elif roll > hit_prob:
-            defense_used, outcome = select_native_defense(def_card, tid, range_band, def_avail, wall_proximity=def_wall)
+            defense_used, outcome = select_native_defense(
+                def_card,
+                tid,
+                range_band,
+                def_avail,
+                wall_proximity=def_wall,
+                reset_slot_defenses=def_reset_defenses,
+            )
         else:
             if roll < hit_prob * flush_frac and (def_state["attention"]["feinted"] or def_posture_before["balance"] != "stable"):
                 outcome = "flush"
@@ -830,6 +879,14 @@ def simulate_fight_v2(
             forced_stance_switch = True
 
         grappling_pos = update_grappling_position(att_state, def_state, tid, outcome, att_card)
+        if (
+            active_plan.get("goal") == "reset_to_home_range"
+            and att_state.get("posture_mode") == "standing"
+            and outcome in ("clean", "flush", "counter_hit", "partial")
+        ):
+            att_state["grappling_position"] = def_state["grappling_position"] = "standing_neutral"
+            att_state["grip"] = def_state["grip"] = None
+            grappling_pos = "standing_neutral"
         if att_mentality in pressure_ments and arena_cfg["has_walls"]:
             direction = 1.0 if def_state["position"][0] >= 0 else -1.0
             def_state["position"][0] = round(
@@ -889,7 +946,16 @@ def simulate_fight_v2(
                     "damage": dump_dmg,
                 }
         elif counter_triggered:
-            c_list = counter_cands_map.get(range_band, counter_cands_map.get("default", []))
+            counter_only_cands = [
+                m
+                for m in def_card.get("active_techniques", [])
+                if m in def_avail
+                and tech_v2_map.get(m, {}).get("usage") == "counter"
+                and range_band in tech_v2_map.get(m, {}).get("required_range", [])
+            ]
+            c_list = counter_only_cands + list(
+                counter_cands_map.get(range_band, counter_cands_map.get("default", []))
+            )
             c_candidates = [m for m in c_list if m in def_avail]
             if c_candidates:
                 c_tid = c_candidates[0]
@@ -907,18 +973,34 @@ def simulate_fight_v2(
                     "damage": c_dmg,
                 }
 
-        slot_switched_to = None
-        if outcome in ("evaded", "blocked", "checked", "caught", "jammed"):
-            att_state["slot_stalls"] += 1
-            if att_state["slot_stalls"] >= int(active_plan["abandon_threshold"]) and len(plans) > 1:
-                att_state["active_slot_idx"] = (int(att_state["active_slot_idx"]) + 1) % len(plans)
-                att_state["slot_Cursor"] = 0
-                att_state["slot_stalls"] = 0
-                att_state["slot_switches"] += 1
-                slot_switched_to = plans[int(att_state["active_slot_idx"])]["slot_id"]
-                att_state["active_slot_id"] = slot_switched_to
-        else:
-            att_state["slot_stalls"] = 0
+        if tid not in att_state["setups"]:
+            att_state["setups"].append(tid)
+        if defense_used and defense_used not in def_state["setups"]:
+            def_state["setups"].append(defense_used)
+
+        att_state["slot_exchanges"] = int(att_state.get("slot_exchanges", 0)) + 1
+        update_slot_stalls(
+            str(active_plan.get("abandon_condition", "sequence_denied_or_countered")),
+            tid,
+            outcome,
+            counter_triggered,
+            range_band,
+            att_state,
+            tech_v2_map,
+        )
+        slot_switched_to, slot_switch_reason = evaluate_slot_switch(
+            attacker_id,
+            defender_id,
+            actors,
+            att_card,
+            plans,
+            range_band,
+            exchanges,
+            clock_frames,
+            max_frames,
+            model_cfg,
+            tech_v2_map,
+        )
 
         ex_event = {
             "exchange_index": len(exchanges) + 1,
@@ -944,6 +1026,7 @@ def simulate_fight_v2(
             "grappling_position": grappling_pos,
             "forced_stance_switch": forced_stance_switch,
             "slot_switched_to": slot_switched_to,
+            "slot_switch_reason": slot_switch_reason,
             "state_changes": {
                 "defender_damage": copy.deepcopy(def_state["damage"]),
                 "attacker_damage": copy.deepcopy(att_state["damage"]),

@@ -1,153 +1,154 @@
 {
-  "version": "block-2",
-  "fighter_id": "jiujitsu",
-  "name": "Jo Costa",
-  "combat_identity": "Guard submission two-piece",
-  "dimensions": {
-    "hands": "hands.high_guard",
-    "defense": "defense.parry_catch",
-    "stance": "stance.balanced",
-    "tie": "tie.bjj",
-    "target": "target.body_puncher",
-    "kicking": "kicking.none",
-    "mentality": "mentality.spoiler"
-  },
-  "adaptation": "mma",
-  "orientation": "southpaw",
-  "slot_count": 2,
-  "slot_label": "Two-piece",
-  "synchronized_capabilities": [
-    {
-      "id": "jiujitsu.slot.1",
-      "capabilities": [
-        "bjj",
-        "clinch"
-      ],
-      "description": "Trained synchronized bundle: bjj, clinch",
-      "trigger": "fight_start",
-      "sequence": [
-        "collar_tie",
-        "guard_pull",
-        "armbar",
-        "knee_body",
-        "body_lock"
-      ],
-      "home_range": "clinch",
-      "goal": "submission_finish",
-      "abandon_rule": {
-        "max_consecutive_stalls": 2,
-        "condition": "sequence_denied_or_countered"
-      },
-      "links": [
-        "jiujitsu.slot.2"
-      ]
-    },
-    {
-      "id": "jiujitsu.slot.2",
-      "capabilities": [
-        "boxing"
-      ],
-      "description": "Trained synchronized bundle: boxing",
-      "trigger": "slot_stalled_or_countered",
-      "sequence": [
-        "jab",
-        "body_hook",
-        "cross",
-        "uppercut",
-        "hook"
-      ],
-      "home_range": "punch",
-      "goal": "body_attrition",
-      "abandon_rule": {
-        "max_consecutive_stalls": 2,
-        "condition": "sequence_denied_or_countered"
-      },
-      "links": [
-        "jiujitsu.slot.1"
-      ]
-    }
-  ],
-  "baseline_capabilities": [
-    "basic_movement",
-    "untrained_striking"
-  ],
-  "tempo": 2,
-  "preferred_ranges": [
-    "clinch",
-    "ground"
-  ],
-  "debt_sentence": "Attach, sit into a defined guard and isolate an arm; conceding top position permits sustained striking.",
-  "exploitable_seams": [
-    "debt.hands.high_guard.body",
-    "debt.hands.high_guard.vision",
-    "debt.defense.parry_catch.head_hook",
-    "debt.defense.parry_catch.body",
-    "debt.stance.balanced.tempo",
-    "debt.stance.balanced.head_straight",
-    "debt.tie.bjj.head_straight",
-    "debt.tie.bjj.wall",
-    "debt.target.body_puncher.head_uppercut",
-    "debt.target.body_puncher.head_straight",
-    "debt.kicking.none.leg",
-    "debt.kicking.none.body",
-    "debt.mentality.spoiler.head_straight",
-    "debt.mentality.spoiler.clinch"
-  ],
-  "active_techniques": [
-    "step",
-    "retreat",
-    "pivot",
-    "feint",
-    "jab",
-    "cross",
-    "hook",
-    "body_hook",
-    "uppercut",
-    "haymaker",
-    "parry",
-    "shell_block",
-    "slip",
-    "pummel",
+ "version": "block-2",
+ "fighter_id": "jiujitsu",
+ "name": "Jo Costa",
+ "combat_identity": "Guard submission two-piece",
+ "dimensions": {
+  "hands": "hands.high_guard",
+  "defense": "defense.parry_catch",
+  "stance": "stance.balanced",
+  "tie": "tie.bjj",
+  "target": "target.body_puncher",
+  "kicking": "kicking.none",
+  "mentality": "mentality.spoiler"
+ },
+ "adaptation": "mma",
+ "orientation": "southpaw",
+ "slot_count": 2,
+ "slot_label": "Two-piece",
+ "synchronized_capabilities": [
+  {
+   "id": "jiujitsu.slot.1",
+   "capabilities": [
+    "bjj",
+    "clinch"
+   ],
+   "description": "Trained synchronized bundle: bjj, clinch",
+   "trigger": "fight_start",
+   "sequence": [
     "collar_tie",
+    "guard_pull",
+    "armbar",
     "knee_body",
-    "body_lock",
-    "guard_pull",
-    "armbar",
-    "escape"
-  ],
-  "conditional_abilities": [],
-  "combat_limitations": [
-    "Listed grappling requires the documented range and connection.",
-    "No technique is guaranteed against an active defense."
-  ],
-  "fighting_description": {
-    "does": "Attach, sit into a defined guard and isolate an arm.",
-    "wins": "Reach clinch, ground and use Guard submission two-piece.",
-    "avoids": "Unrecovered support and opponent control of the next range.",
-    "beaten_by": "conceding top position permits sustained striking."
+    "body_lock"
+   ],
+   "home_range": "clinch",
+   "goal": "submission_finish",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "sequence_denied_or_countered"
+   },
+   "links": [
+    "jiujitsu.slot.2"
+   ]
   },
-  "appearance": {
-    "clothing": "violet shorts",
-    "identity_anchor": "Jo Costa / Guard submission two-piece",
-    "props": []
-  },
-  "provenance": {
-    "classification": "CANON",
-    "label": "[CANON]",
-    "source": "Supplied mandatory identity where specified; all other details authored for this release."
-  },
-  "signature_moves": [
-    "guard_pull",
-    "armbar",
-    "collar_tie"
-  ],
-  "airborne_training": {
-    "allowed_vertical_modes": [
-      "grounded",
-      "athletic"
-    ],
-    "techniques": [
-      "knee_body"
-    ]
+  {
+   "id": "jiujitsu.slot.2",
+   "capabilities": [
+    "boxing"
+   ],
+   "description": "Trained synchronized bundle: boxing",
+   "trigger": "slot_stalled_or_countered",
+   "sequence": [
+    "jab",
+    "body_hook",
+    "cross",
+    "uppercut",
+    "hook"
+   ],
+   "home_range": "punch",
+   "goal": "body_attrition",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "sequence_denied_or_countered"
+   },
+   "links": [
+    "jiujitsu.slot.1"
+   ]
   }
+ ],
+ "baseline_capabilities": [
+  "basic_movement",
+  "untrained_striking"
+ ],
+ "tempo": 2,
+ "preferred_ranges": [
+  "clinch",
+  "ground"
+ ],
+ "debt_sentence": "Attach, sit into a defined guard and isolate an arm; conceding top position permits sustained striking.",
+ "exploitable_seams": [
+  "debt.hands.high_guard.body",
+  "debt.hands.high_guard.vision",
+  "debt.defense.parry_catch.head_hook",
+  "debt.defense.parry_catch.body",
+  "debt.stance.balanced.tempo",
+  "debt.stance.balanced.head_straight",
+  "debt.tie.bjj.head_straight",
+  "debt.tie.bjj.wall",
+  "debt.target.body_puncher.head_uppercut",
+  "debt.target.body_puncher.head_straight",
+  "debt.kicking.none.leg",
+  "debt.kicking.none.body",
+  "debt.mentality.spoiler.head_straight",
+  "debt.mentality.spoiler.clinch"
+ ],
+ "active_techniques": [
+  "step",
+  "retreat",
+  "pivot",
+  "feint",
+  "jab",
+  "cross",
+  "hook",
+  "body_hook",
+  "uppercut",
+  "haymaker",
+  "parry",
+  "shell_block",
+  "slip",
+  "pummel",
+  "collar_tie",
+  "knee_body",
+  "body_lock",
+  "guard_pull",
+  "armbar",
+  "escape"
+ ],
+ "conditional_abilities": [],
+ "combat_limitations": [
+  "Listed grappling requires the documented range and connection.",
+  "No technique is guaranteed against an active defense."
+ ],
+ "fighting_description": {
+  "does": "Attach, sit into a defined guard and isolate an arm.",
+  "wins": "Reach clinch, ground and use Guard submission two-piece.",
+  "avoids": "Unrecovered support and opponent control of the next range.",
+  "beaten_by": "conceding top position permits sustained striking."
+ },
+ "appearance": {
+  "clothing": "violet shorts",
+  "identity_anchor": "Jo Costa / Guard submission two-piece",
+  "props": []
+ },
+ "provenance": {
+  "classification": "CANON",
+  "label": "[CANON]",
+  "source": "Supplied mandatory identity where specified; all other details authored for this release."
+ },
+ "signature_moves": [
+  "guard_pull",
+  "armbar",
+  "collar_tie"
+ ],
+ "airborne_training": {
+  "allowed_vertical_modes": [
+   "grounded",
+   "athletic"
+  ],
+  "techniques": [
+   "knee_body"
+  ]
+ },
+ "revision": 1
 }

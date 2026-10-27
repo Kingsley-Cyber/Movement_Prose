@@ -1,140 +1,143 @@
 {
-  "version": "block-2",
-  "fighter_id": "detroit",
-  "name": "Darius Reed",
-  "combat_identity": "Detroit flicker counter boxer",
-  "dimensions": {
-    "hands": "hands.kronk",
-    "defense": "defense.parry_catch",
-    "stance": "stance.bladed",
-    "tie": null,
-    "target": "target.head_hunter",
-    "kicking": "kicking.none",
-    "mentality": "mentality.counter"
-  },
-  "adaptation": "mma",
-  "orientation": "southpaw",
-  "slot_count": 2,
-  "slot_label": "Two-piece",
-  "synchronized_capabilities": [
-    {
-      "id": "detroit.slot.1",
-      "capabilities": [
-        "boxing"
-      ],
-      "description": "Trained synchronized bundle: boxing",
-      "trigger": "fight_start",
-      "sequence": [
-        "jab",
-        "cross",
-        "uppercut",
-        "hook",
-        "body_hook"
-      ],
-      "home_range": "punch",
-      "goal": "counter_trap",
-      "abandon_rule": {
-        "max_consecutive_stalls": 2,
-        "condition": "sequence_denied_or_countered"
-      },
-      "links": [
-        "detroit.slot.2"
-      ]
-    },
-    {
-      "id": "detroit.slot.2",
-      "capabilities": [
-        "basic_movement"
-      ],
-      "description": "Trained synchronized bundle: basic_movement",
-      "trigger": "slot_stalled_or_countered",
-      "sequence": [
-        "jab",
-        "cross",
-        "hook",
-        "body_hook",
-        "uppercut",
-        "haymaker"
-      ],
-      "home_range": "punch",
-      "goal": "head_damage",
-      "abandon_rule": {
-        "max_consecutive_stalls": 2,
-        "condition": "sequence_denied_or_countered"
-      },
-      "links": [
-        "detroit.slot.1"
-      ]
-    }
-  ],
-  "baseline_capabilities": [
-    "basic_movement",
-    "untrained_striking"
-  ],
-  "tempo": 2,
-  "preferred_ranges": [
-    "punch"
-  ],
-  "debt_sentence": "Probe with the flicker and counter the reach; a committed low-line entry can cross the extended lead.",
-  "exploitable_seams": [
-    "debt.hands.kronk.head_hook",
-    "debt.hands.kronk.entry",
-    "debt.defense.parry_catch.head_hook",
-    "debt.defense.parry_catch.body",
-    "debt.stance.bladed.leg",
-    "debt.stance.bladed.entry",
-    "debt.target.head_hunter.body",
-    "debt.target.head_hunter.entry",
-    "debt.kicking.none.leg",
-    "debt.kicking.none.body",
-    "debt.mentality.counter.tempo",
-    "debt.mentality.counter.wall"
-  ],
-  "active_techniques": [
-    "step",
-    "retreat",
-    "pivot",
-    "feint",
+ "version": "block-2",
+ "fighter_id": "detroit",
+ "name": "Darius Reed",
+ "combat_identity": "Detroit flicker counter boxer",
+ "dimensions": {
+  "hands": "hands.kronk",
+  "defense": "defense.parry_catch",
+  "stance": "stance.bladed",
+  "tie": null,
+  "target": "target.head_hunter",
+  "kicking": "kicking.none",
+  "mentality": "mentality.counter"
+ },
+ "adaptation": "mma",
+ "orientation": "southpaw",
+ "slot_count": 2,
+ "slot_label": "Two-piece",
+ "synchronized_capabilities": [
+  {
+   "id": "detroit.slot.1",
+   "capabilities": [
+    "boxing"
+   ],
+   "description": "Trained synchronized bundle: boxing",
+   "trigger": "fight_start",
+   "sequence": [
     "jab",
     "cross",
+    "uppercut",
     "hook",
-    "body_hook",
-    "uppercut",
-    "haymaker",
-    "parry",
-    "shell_block",
-    "slip"
-  ],
-  "conditional_abilities": [],
-  "combat_limitations": [
-    "Only listed trained capabilities are available.",
-    "A NULL tie is untrained attachment, not intentional anti-grappling."
-  ],
-  "fighting_description": {
-    "does": "Probe with the flicker and counter the reach.",
-    "wins": "Reach punch and use Detroit flicker counter boxer.",
-    "avoids": "Unrecovered support and opponent control of the next range.",
-    "beaten_by": "a committed low-line entry can cross the extended lead."
+    "body_hook"
+   ],
+   "home_range": "punch",
+   "goal": "counter_trap",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "sequence_denied_or_countered"
+   },
+   "links": [
+    "detroit.slot.2"
+   ]
   },
-  "appearance": {
-    "clothing": "ivory shorts",
-    "identity_anchor": "Darius Reed / Detroit flicker counter boxer",
-    "props": []
-  },
-  "provenance": {
-    "classification": "CANON",
-    "label": "[CANON]",
-    "source": "Supplied mandatory identity where specified; all other details authored for this release."
-  },
-  "signature_moves": [
-    "cross",
-    "uppercut",
-    "jab"
-  ],
-  "airborne_training": {
-    "allowed_vertical_modes": [
-      "grounded"
-    ],
-    "techniques": []
+  {
+   "id": "detroit.slot.2",
+   "capabilities": [
+    "boxing",
+    "counter_boxing"
+   ],
+   "description": "Trained synchronized bundle: basic_movement",
+   "trigger": "opponent_commits",
+   "sequence": [
+    "feint",
+    "jab",
+    "pull_counter",
+    "check_hook",
+    "cross"
+   ],
+   "home_range": "punch",
+   "goal": "counter_trap",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "sequence_denied_or_countered"
+   },
+   "links": [
+    "detroit.slot.1"
+   ]
   }
+ ],
+ "baseline_capabilities": [
+  "basic_movement",
+  "untrained_striking"
+ ],
+ "tempo": 2,
+ "preferred_ranges": [
+  "punch"
+ ],
+ "debt_sentence": "Probe with the flicker and counter the reach; a committed low-line entry can cross the extended lead.",
+ "exploitable_seams": [
+  "debt.hands.kronk.head_hook",
+  "debt.hands.kronk.entry",
+  "debt.defense.parry_catch.head_hook",
+  "debt.defense.parry_catch.body",
+  "debt.stance.bladed.leg",
+  "debt.stance.bladed.entry",
+  "debt.target.head_hunter.body",
+  "debt.target.head_hunter.entry",
+  "debt.kicking.none.leg",
+  "debt.kicking.none.body",
+  "debt.mentality.counter.tempo",
+  "debt.mentality.counter.wall"
+ ],
+ "active_techniques": [
+  "step",
+  "retreat",
+  "pivot",
+  "feint",
+  "jab",
+  "cross",
+  "hook",
+  "body_hook",
+  "uppercut",
+  "haymaker",
+  "parry",
+  "shell_block",
+  "slip",
+  "pull_counter",
+  "check_hook"
+ ],
+ "conditional_abilities": [],
+ "combat_limitations": [
+  "Only listed trained capabilities are available.",
+  "A NULL tie is untrained attachment, not intentional anti-grappling."
+ ],
+ "fighting_description": {
+  "does": "Probe with the flicker and counter the reach.",
+  "wins": "Reach punch and use Detroit flicker counter boxer.",
+  "avoids": "Unrecovered support and opponent control of the next range.",
+  "beaten_by": "a committed low-line entry can cross the extended lead."
+ },
+ "appearance": {
+  "clothing": "ivory shorts",
+  "identity_anchor": "Darius Reed / Detroit flicker counter boxer",
+  "props": []
+ },
+ "provenance": {
+  "classification": "CANON",
+  "label": "[CANON]",
+  "source": "Supplied mandatory identity where specified; all other details authored for this release."
+ },
+ "signature_moves": [
+  "cross",
+  "uppercut",
+  "jab"
+ ],
+ "airborne_training": {
+  "allowed_vertical_modes": [
+   "grounded"
+  ],
+  "techniques": []
+ },
+ "revision": 1
 }

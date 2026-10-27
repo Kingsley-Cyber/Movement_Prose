@@ -1,102 +1,109 @@
 {
-  "version": "block-2",
-  "fighter_id": "street",
-  "name": "Rook Mercer",
-  "combat_identity": "Street brawler, no formal grappling",
-  "dimensions": {
-    "hands": "hands.hands_down",
-    "defense": "defense.block_absorb",
-    "stance": "stance.planted",
-    "tie": null,
-    "target": "target.head_hunter",
-    "kicking": "kicking.none",
-    "mentality": "mentality.slugger"
-  },
-  "adaptation": "mma",
-  "orientation": "orthodox",
-  "slot_count": 1,
-  "slot_label": "Brawler",
-  "synchronized_capabilities": [
-    {
-      "id": "street.slot.1",
-      "capabilities": [
-        "untrained_striking"
-      ],
-      "description": "Trained synchronized bundle: untrained_striking",
-      "trigger": "fight_start",
-      "sequence": [
-        "haymaker"
-      ],
-      "home_range": "punch",
-      "goal": "head_damage",
-      "abandon_rule": {
-        "max_consecutive_stalls": 99,
-        "condition": "sequence_denied_or_countered"
-      },
-      "links": [
-        "street.slot.1"
-      ]
-    }
-  ],
-  "baseline_capabilities": [
-    "basic_movement",
+ "version": "block-2",
+ "fighter_id": "street",
+ "name": "Rook Mercer",
+ "combat_identity": "Street brawler, no formal grappling",
+ "dimensions": {
+  "hands": "hands.hands_down",
+  "defense": "defense.block_absorb",
+  "stance": "stance.planted",
+  "tie": null,
+  "target": "target.head_hunter",
+  "kicking": "kicking.none",
+  "mentality": "mentality.slugger"
+ },
+ "adaptation": "mma",
+ "orientation": "orthodox",
+ "slot_count": 1,
+ "slot_label": "Brawler",
+ "synchronized_capabilities": [
+  {
+   "id": "street.slot.1",
+   "capabilities": [
     "untrained_striking"
-  ],
-  "tempo": 3,
-  "preferred_ranges": [
-    "close",
-    "punch"
-  ],
-  "debt_sentence": "Swing hard at close range; telegraphed recovery and an untrained tie are reachable liabilities.",
-  "exploitable_seams": [
-    "debt.hands.hands_down.head_straight",
-    "debt.hands.hands_down.head_hook",
-    "debt.defense.block_absorb.body",
-    "debt.defense.block_absorb.vision",
-    "debt.stance.planted.angle",
-    "debt.stance.planted.leg",
-    "debt.target.head_hunter.body",
-    "debt.target.head_hunter.entry",
-    "debt.kicking.none.leg",
-    "debt.kicking.none.body",
-    "debt.mentality.slugger.angle",
-    "debt.mentality.slugger.recovery"
-  ],
-  "active_techniques": [
-    "step",
-    "retreat",
-    "pivot",
-    "feint",
-    "haymaker"
-  ],
-  "conditional_abilities": [],
-  "combat_limitations": [
-    "Only listed trained capabilities are available.",
-    "A NULL tie is untrained attachment, not intentional anti-grappling."
-  ],
-  "fighting_description": {
-    "does": "Swing hard at close range.",
-    "wins": "Reach close, punch and use Street brawler, no formal grappling.",
-    "avoids": "Unrecovered support and opponent control of the next range.",
-    "beaten_by": "telegraphed recovery and an untrained tie are reachable liabilities."
-  },
-  "appearance": {
-    "clothing": "rust shorts",
-    "identity_anchor": "Rook Mercer / Street brawler, no formal grappling",
-    "props": []
-  },
-  "provenance": {
-    "classification": "CANON",
-    "label": "[CANON]",
-    "source": "Supplied mandatory identity where specified; all other details authored for this release."
-  },
-  "signature_moves": [
-    "haymaker"
-  ],
-  "airborne_training": {
-    "allowed_vertical_modes": [
-      "grounded"
-    ],
-    "techniques": []
+   ],
+   "description": "Trained synchronized bundle: untrained_striking",
+   "trigger": "fight_start",
+   "sequence": [
+    "brawler_straight",
+    "wild_hook",
+    "haymaker",
+    "shove"
+   ],
+   "home_range": "punch",
+   "goal": "head_damage",
+   "abandon_rule": {
+    "max_consecutive_stalls": 99,
+    "condition": "sequence_denied_or_countered"
+   },
+   "links": [
+    "street.slot.1"
+   ]
   }
+ ],
+ "baseline_capabilities": [
+  "basic_movement",
+  "untrained_striking"
+ ],
+ "tempo": 3,
+ "preferred_ranges": [
+  "close",
+  "punch"
+ ],
+ "debt_sentence": "Swing hard at close range; telegraphed recovery and an untrained tie are reachable liabilities.",
+ "exploitable_seams": [
+  "debt.hands.hands_down.head_straight",
+  "debt.hands.hands_down.head_hook",
+  "debt.defense.block_absorb.body",
+  "debt.defense.block_absorb.vision",
+  "debt.stance.planted.angle",
+  "debt.stance.planted.leg",
+  "debt.target.head_hunter.body",
+  "debt.target.head_hunter.entry",
+  "debt.kicking.none.leg",
+  "debt.kicking.none.body",
+  "debt.mentality.slugger.angle",
+  "debt.mentality.slugger.recovery"
+ ],
+ "active_techniques": [
+  "step",
+  "retreat",
+  "pivot",
+  "feint",
+  "haymaker",
+  "brawler_straight",
+  "wild_hook",
+  "shove"
+ ],
+ "conditional_abilities": [],
+ "combat_limitations": [
+  "Only listed trained capabilities are available.",
+  "A NULL tie is untrained attachment, not intentional anti-grappling."
+ ],
+ "fighting_description": {
+  "does": "Swing hard at close range.",
+  "wins": "Reach close, punch and use Street brawler, no formal grappling.",
+  "avoids": "Unrecovered support and opponent control of the next range.",
+  "beaten_by": "telegraphed recovery and an untrained tie are reachable liabilities."
+ },
+ "appearance": {
+  "clothing": "rust shorts",
+  "identity_anchor": "Rook Mercer / Street brawler, no formal grappling",
+  "props": []
+ },
+ "provenance": {
+  "classification": "CANON",
+  "label": "[CANON]",
+  "source": "Supplied mandatory identity where specified; all other details authored for this release."
+ },
+ "signature_moves": [
+  "haymaker"
+ ],
+ "airborne_training": {
+  "allowed_vertical_modes": [
+   "grounded"
+  ],
+  "techniques": []
+ },
+ "revision": 1
 }

@@ -2,19 +2,42 @@
 
 from __future__ import annotations
 
+import json
+from pathlib import Path
 from typing import Any
 
 from ..capabilities import admitted_slots
 from ..ontology import ROOT, Knowledge
 from .data import load_model_v2
 
+_CARD_CACHE: dict[tuple[str, str], dict[str, Any]] = {}
+
 
 def load_card_v2(k: Knowledge, value: Any) -> dict[str, Any]:
     """Resolve a predefined archetype ID, file path, or card dict, preferring explicit block-2 cards in cards/v2/."""
-    if isinstance(value, str):
-        v2_path = k.root / "cards" / "v2" / f"{value}.json"
-        if v2_path.exists():
-            return k.card(v2_path)
+    root_key = str(k.root)
+    if isinstance(value, (str, Path)):
+        cache_key = (root_key, str(value))
+        cached = _CARD_CACHE.get(cache_key)
+        if cached is not None:
+            return cached
+        if isinstance(value, str):
+            v2_path = k.root / "cards" / "v2" / f"{value}.json"
+            if v2_path.exists():
+                card = k.card(v2_path)
+                _CARD_CACHE[cache_key] = card
+                return card
+        card = k.card(value)
+        _CARD_CACHE[cache_key] = card
+        return card
+    if isinstance(value, dict):
+        cache_key = (root_key, json.dumps(value, sort_keys=True, separators=(",", ":")))
+        cached = _CARD_CACHE.get(cache_key)
+        if cached is not None:
+            return cached
+        card = k.card(value)
+        _CARD_CACHE[cache_key] = card
+        return card
     return k.card(value)
 
 

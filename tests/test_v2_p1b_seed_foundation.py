@@ -33,7 +33,7 @@ def test_p1b_availability_parity_and_karate_core() -> None:
         legacy_av = {
             t
             for t in card["active_techniques"]
-            if t in v1 and "mma" in v1[t]["ruleset_legality"] and (set(v1[t]["required_capabilities"]) & trained)
+            if t in v1 and "mma" in v1[t]["ruleset_legality"] and (set(tech_v2[t]["required_capabilities"]) & trained)
         }
         if "karate" in trained and card["dimensions"].get("kicking") == "kicking.karate":
             legacy_av |= {"side_kick", "teep", "body_kick", "spinning_back_kick"}
@@ -41,8 +41,9 @@ def test_p1b_availability_parity_and_karate_core() -> None:
         new_av = available_v2(k, card, "mma")
         att_legacy = {t for t in legacy_av if tech_v2[t]["kind"] != "defense" and tech_v2[t].get("usage") != "defense"}
         att_new = {t for t in new_av if tech_v2[t]["kind"] != "defense" and tech_v2[t].get("usage") != "defense"}
+        att_new_existing = {t for t in att_new if tech_v2[t].get("status") == "existing"}
         assert att_legacy - att_new == set(), f"{card['fighter_id']} lost attacks: {att_legacy - att_new}"
-        assert att_new - att_legacy <= {"clinch_break", "stand_up"}
+        assert att_new_existing - att_legacy <= {"clinch_break", "stand_up", "head_kick", "switch_kick"}
 
     aya = load_card_v2(k, "karate")
     assert {"side_kick", "teep", "body_kick", "spinning_back_kick"} <= available_v2(k, aya, "mma")

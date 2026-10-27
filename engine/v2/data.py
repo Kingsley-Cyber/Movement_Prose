@@ -10,31 +10,31 @@ import jsonschema
 
 from ..ontology import ROOT
 
-_JSON_CACHE: dict[tuple[str, int], dict[str, Any]] = {}
-_VALIDATOR_CACHE: dict[tuple[str, int], Any] = {}
+_JSON_CACHE: dict[str, dict[str, Any]] = {}
+_VALIDATOR_CACHE: dict[str, Any] = {}
 
 
 def load_json_cached(path: Path) -> dict[str, Any]:
-    resolved = path.resolve()
-    mtime = resolved.stat().st_mtime_ns
-    key = (str(resolved), mtime)
+    key = str(path)
     cached = _JSON_CACHE.get(key)
     if cached is None:
+        resolved = path.resolve()
         cached = json.loads(resolved.read_text(encoding="utf-8"))
         _JSON_CACHE[key] = cached
+        _JSON_CACHE[str(resolved)] = cached
     return cached
 
 
 def validate_schema_cached(instance: dict[str, Any], schema_path: Path) -> None:
-    resolved = schema_path.resolve()
-    mtime = resolved.stat().st_mtime_ns
-    key = (str(resolved), mtime)
+    key = str(schema_path)
     validator = _VALIDATOR_CACHE.get(key)
     if validator is None:
+        resolved = schema_path.resolve()
         schema = load_json_cached(resolved)
         cls = jsonschema.validators.validator_for(schema)
         validator = cls(schema)
         _VALIDATOR_CACHE[key] = validator
+        _VALIDATOR_CACHE[str(resolved)] = validator
     validator.validate(instance)
 
 
@@ -150,3 +150,4 @@ KICK_IDS: set[str] = set(
 OFFENSIVE_DIMS: set[str] = {"mentality", "kicking", "target"}
 DEFENSIVE_DIMS: set[str] = {"defense", "hands", "tie"}
 NEUTRAL_DIMS: set[str] = {"stance"}
+KIND_ESCAPE: str = "escape"

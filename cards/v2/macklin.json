@@ -1,154 +1,155 @@
 {
-  "version": "block-2",
-  "fighter_id": "macklin",
-  "name": "Macklin",
-  "combat_identity": "52 shield wall spoiler",
-  "dimensions": {
-    "hands": "hands.shield52",
-    "defense": "defense.smother",
-    "stance": "stance.planted",
-    "tie": "tie.wall_boxing",
-    "target": "target.body_puncher",
-    "kicking": "kicking.none",
-    "mentality": "mentality.spoiler"
-  },
-  "adaptation": "mma",
-  "orientation": "orthodox",
-  "slot_count": 2,
-  "slot_label": "Two-piece",
-  "synchronized_capabilities": [
-    {
-      "id": "macklin.slot.1",
-      "capabilities": [
-        "boxing",
-        "shield"
-      ],
-      "description": "Trained synchronized bundle: boxing, shield",
-      "trigger": "fight_start",
-      "sequence": [
-        "jab",
-        "body_hook",
-        "cross",
-        "uppercut",
-        "hook"
-      ],
-      "home_range": "punch",
-      "goal": "body_attrition",
-      "abandon_rule": {
-        "max_consecutive_stalls": 2,
-        "condition": "sequence_denied_or_countered"
-      },
-      "links": [
-        "macklin.slot.2"
-      ]
-    },
-    {
-      "id": "macklin.slot.2",
-      "capabilities": [
-        "clinch",
-        "wall_boxing"
-      ],
-      "description": "Trained synchronized bundle: clinch",
-      "trigger": "slot_stalled_or_countered",
-      "sequence": [
-        "collar_tie",
-        "knee_body",
-        "body_lock",
-        "wall_tie",
-        "wall_punch"
-      ],
-      "home_range": "clinch",
-      "goal": "clinch_control",
-      "abandon_rule": {
-        "max_consecutive_stalls": 2,
-        "condition": "sequence_denied_or_countered"
-      },
-      "links": [
-        "macklin.slot.1"
-      ]
-    }
-  ],
-  "baseline_capabilities": [
-    "basic_movement",
-    "untrained_striking"
-  ],
-  "tempo": 2,
-  "preferred_ranges": [
-    "close",
-    "clinch"
-  ],
-  "debt_sentence": "Break rhythm behind a wedge and pin the wall; being rooted concedes low kicks and angles.",
-  "exploitable_seams": [
-    "debt.hands.shield52.body",
-    "debt.hands.shield52.clinch",
-    "debt.defense.smother.clinch",
-    "debt.defense.smother.entry",
-    "debt.stance.planted.angle",
-    "debt.stance.planted.leg",
-    "debt.tie.wall_boxing.entry",
-    "debt.tie.wall_boxing.body",
-    "debt.target.body_puncher.head_uppercut",
-    "debt.target.body_puncher.head_straight",
-    "debt.kicking.none.leg",
-    "debt.kicking.none.body",
-    "debt.mentality.spoiler.head_straight",
-    "debt.mentality.spoiler.clinch"
-  ],
-  "active_techniques": [
-    "step",
-    "retreat",
-    "pivot",
-    "feint",
+ "version": "block-2",
+ "fighter_id": "macklin",
+ "name": "Macklin",
+ "combat_identity": "52 shield wall spoiler",
+ "dimensions": {
+  "hands": "hands.shield52",
+  "defense": "defense.smother",
+  "stance": "stance.planted",
+  "tie": "tie.wall_boxing",
+  "target": "target.body_puncher",
+  "kicking": "kicking.none",
+  "mentality": "mentality.spoiler"
+ },
+ "adaptation": "mma",
+ "orientation": "orthodox",
+ "slot_count": 2,
+ "slot_label": "Two-piece",
+ "synchronized_capabilities": [
+  {
+   "id": "macklin.slot.1",
+   "capabilities": [
+    "boxing",
+    "shield"
+   ],
+   "description": "Trained synchronized bundle: boxing, shield",
+   "trigger": "fight_start",
+   "sequence": [
     "jab",
-    "cross",
-    "hook",
     "body_hook",
+    "cross",
     "uppercut",
-    "haymaker",
-    "parry",
-    "shell_block",
-    "shield_frame",
-    "slip",
-    "pummel",
+    "hook"
+   ],
+   "home_range": "punch",
+   "goal": "body_attrition",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "sequence_denied_or_countered"
+   },
+   "links": [
+    "macklin.slot.2"
+   ]
+  },
+  {
+   "id": "macklin.slot.2",
+   "capabilities": [
+    "clinch",
+    "wall_boxing"
+   ],
+   "description": "Trained synchronized bundle: clinch",
+   "trigger": "slot_stalled_or_countered",
+   "sequence": [
     "collar_tie",
     "knee_body",
     "body_lock",
     "wall_tie",
     "wall_punch"
-  ],
-  "conditional_abilities": [],
-  "combat_limitations": [
-    "Listed grappling requires the documented range and connection.",
-    "No technique is guaranteed against an active defense."
-  ],
-  "fighting_description": {
-    "does": "Break rhythm behind a wedge and pin the wall.",
-    "wins": "Reach close, clinch and use 52 shield wall spoiler.",
-    "avoids": "Unrecovered support and opponent control of the next range.",
-    "beaten_by": "being rooted concedes low kicks and angles."
-  },
-  "appearance": {
-    "clothing": "burgundy shorts",
-    "identity_anchor": "Macklin / 52 shield wall spoiler",
-    "props": []
-  },
-  "provenance": {
-    "classification": "CANON",
-    "label": "[CANON]",
-    "source": "Supplied mandatory identity where specified; all other details authored for this release."
-  },
-  "signature_moves": [
-    "wall_tie",
-    "wall_punch",
-    "body_hook"
-  ],
-  "airborne_training": {
-    "allowed_vertical_modes": [
-      "grounded",
-      "athletic"
-    ],
-    "techniques": [
-      "knee_body"
-    ]
+   ],
+   "home_range": "clinch",
+   "goal": "clinch_control",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "sequence_denied_or_countered"
+   },
+   "links": [
+    "macklin.slot.1"
+   ]
   }
+ ],
+ "baseline_capabilities": [
+  "basic_movement",
+  "untrained_striking"
+ ],
+ "tempo": 2,
+ "preferred_ranges": [
+  "close",
+  "clinch"
+ ],
+ "debt_sentence": "Break rhythm behind a wedge and pin the wall; being rooted concedes low kicks and angles.",
+ "exploitable_seams": [
+  "debt.hands.shield52.body",
+  "debt.hands.shield52.clinch",
+  "debt.defense.smother.clinch",
+  "debt.defense.smother.entry",
+  "debt.stance.planted.angle",
+  "debt.stance.planted.leg",
+  "debt.tie.wall_boxing.entry",
+  "debt.tie.wall_boxing.body",
+  "debt.target.body_puncher.head_uppercut",
+  "debt.target.body_puncher.head_straight",
+  "debt.kicking.none.leg",
+  "debt.kicking.none.body",
+  "debt.mentality.spoiler.head_straight",
+  "debt.mentality.spoiler.clinch"
+ ],
+ "active_techniques": [
+  "step",
+  "retreat",
+  "pivot",
+  "feint",
+  "jab",
+  "cross",
+  "hook",
+  "body_hook",
+  "uppercut",
+  "haymaker",
+  "parry",
+  "shell_block",
+  "shield_frame",
+  "slip",
+  "pummel",
+  "collar_tie",
+  "knee_body",
+  "body_lock",
+  "wall_tie",
+  "wall_punch"
+ ],
+ "conditional_abilities": [],
+ "combat_limitations": [
+  "Listed grappling requires the documented range and connection.",
+  "No technique is guaranteed against an active defense."
+ ],
+ "fighting_description": {
+  "does": "Break rhythm behind a wedge and pin the wall.",
+  "wins": "Reach close, clinch and use 52 shield wall spoiler.",
+  "avoids": "Unrecovered support and opponent control of the next range.",
+  "beaten_by": "being rooted concedes low kicks and angles."
+ },
+ "appearance": {
+  "clothing": "burgundy shorts",
+  "identity_anchor": "Macklin / 52 shield wall spoiler",
+  "props": []
+ },
+ "provenance": {
+  "classification": "CANON",
+  "label": "[CANON]",
+  "source": "Supplied mandatory identity where specified; all other details authored for this release."
+ },
+ "signature_moves": [
+  "wall_tie",
+  "wall_punch",
+  "body_hook"
+ ],
+ "airborne_training": {
+  "allowed_vertical_modes": [
+   "grounded",
+   "athletic"
+  ],
+  "techniques": [
+   "knee_body"
+  ]
+ },
+ "revision": 1
 }

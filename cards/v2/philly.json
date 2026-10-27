@@ -1,180 +1,181 @@
 {
-  "version": "block-2",
-  "fighter_id": "philly",
-  "name": "Silas Bell",
-  "combat_identity": "Philly shell smotherer with wrestler base",
-  "dimensions": {
-    "hands": "hands.philly_shell",
-    "defense": "defense.sprawl_pummel",
-    "stance": "stance.crouch",
-    "tie": "tie.anti_grappling",
-    "target": "target.body_puncher",
-    "kicking": "kicking.wrestler_teep",
-    "mentality": "mentality.defensive"
-  },
-  "adaptation": "mma",
-  "orientation": "orthodox",
-  "slot_count": 3,
-  "slot_label": "Triad",
-  "synchronized_capabilities": [
-    {
-      "id": "philly.slot.1",
-      "capabilities": [
-        "boxing"
-      ],
-      "description": "Trained synchronized bundle: boxing",
-      "trigger": "fight_start",
-      "sequence": [
-        "jab",
-        "body_hook",
-        "cross",
-        "uppercut",
-        "hook"
-      ],
-      "home_range": "punch",
-      "goal": "body_attrition",
-      "abandon_rule": {
-        "max_consecutive_stalls": 2,
-        "condition": "sequence_denied_or_countered"
-      },
-      "links": [
-        "philly.slot.2"
-      ]
-    },
-    {
-      "id": "philly.slot.2",
-      "capabilities": [
-        "anti_grappling",
-        "wrestling"
-      ],
-      "description": "Trained synchronized bundle: anti_grappling, wrestling",
-      "trigger": "slot_stalled_or_countered",
-      "sequence": [
-        "body_lock",
-        "outside_trip",
-        "double_leg",
-        "single_leg",
-        "ride"
-      ],
-      "home_range": "clinch",
-      "goal": "takedown_top_control",
-      "abandon_rule": {
-        "max_consecutive_stalls": 2,
-        "condition": "sequence_denied_or_countered"
-      },
-      "links": [
-        "philly.slot.3"
-      ]
-    },
-    {
-      "id": "philly.slot.3",
-      "capabilities": [
-        "kickboxing"
-      ],
-      "description": "Trained synchronized bundle: kickboxing",
-      "trigger": "slot_stalled_or_countered",
-      "sequence": [
-        "teep",
-        "low_kick",
-        "body_kick"
-      ],
-      "home_range": "kick",
-      "goal": "leg_attrition",
-      "abandon_rule": {
-        "max_consecutive_stalls": 2,
-        "condition": "sequence_denied_or_countered"
-      },
-      "links": [
-        "philly.slot.1"
-      ]
-    }
-  ],
-  "baseline_capabilities": [
-    "basic_movement",
-    "untrained_striking"
-  ],
-  "tempo": 1,
-  "preferred_ranges": [
-    "punch",
-    "clinch"
-  ],
-  "debt_sentence": "Roll the straight then smother and deny hips; body fixation and a loaded lead leave kicking lanes.",
-  "exploitable_seams": [
-    "debt.hands.philly_shell.head_hook",
-    "debt.hands.philly_shell.entry",
-    "debt.defense.sprawl_pummel.head_straight",
-    "debt.defense.sprawl_pummel.tempo",
-    "debt.stance.crouch.leg",
-    "debt.stance.crouch.head_uppercut",
-    "debt.tie.anti_grappling.tempo",
-    "debt.tie.anti_grappling.head_straight",
-    "debt.target.body_puncher.head_uppercut",
-    "debt.target.body_puncher.head_straight",
-    "debt.kicking.wrestler_teep.angle",
-    "debt.kicking.wrestler_teep.leg",
-    "debt.mentality.defensive.tempo",
-    "debt.mentality.defensive.body"
-  ],
-  "active_techniques": [
-    "step",
-    "retreat",
-    "pivot",
-    "feint",
+ "version": "block-2",
+ "fighter_id": "philly",
+ "name": "Silas Bell",
+ "combat_identity": "Philly shell smotherer with wrestler base",
+ "dimensions": {
+  "hands": "hands.philly_shell",
+  "defense": "defense.sprawl_pummel",
+  "stance": "stance.crouch",
+  "tie": "tie.anti_grappling",
+  "target": "target.body_puncher",
+  "kicking": "kicking.wrestler_teep",
+  "mentality": "mentality.defensive"
+ },
+ "adaptation": "mma",
+ "orientation": "orthodox",
+ "slot_count": 3,
+ "slot_label": "Triad",
+ "synchronized_capabilities": [
+  {
+   "id": "philly.slot.1",
+   "capabilities": [
+    "boxing"
+   ],
+   "description": "Trained synchronized bundle: boxing",
+   "trigger": "fight_start",
+   "sequence": [
     "jab",
-    "cross",
-    "hook",
     "body_hook",
+    "cross",
     "uppercut",
-    "haymaker",
-    "parry",
-    "shell_block",
-    "slip",
-    "check",
-    "low_kick",
-    "body_kick",
-    "teep",
-    "sprawl",
-    "pummel",
+    "hook"
+   ],
+   "home_range": "punch",
+   "goal": "body_attrition",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "sequence_denied_or_countered"
+   },
+   "links": [
+    "philly.slot.2"
+   ]
+  },
+  {
+   "id": "philly.slot.2",
+   "capabilities": [
+    "anti_grappling",
+    "wrestling"
+   ],
+   "description": "Trained synchronized bundle: anti_grappling, wrestling",
+   "trigger": "slot_stalled_or_countered",
+   "sequence": [
     "body_lock",
+    "outside_trip",
     "double_leg",
     "single_leg",
-    "outside_trip",
-    "ride",
-    "escape"
-  ],
-  "conditional_abilities": [],
-  "combat_limitations": [
-    "Listed grappling requires the documented range and connection.",
-    "No technique is guaranteed against an active defense."
-  ],
-  "fighting_description": {
-    "does": "Roll the straight then smother and deny hips.",
-    "wins": "Reach punch, clinch and use Philly shell smotherer with wrestler base.",
-    "avoids": "Unrecovered support and opponent control of the next range.",
-    "beaten_by": "body fixation and a loaded lead leave kicking lanes."
+    "ride"
+   ],
+   "home_range": "clinch",
+   "goal": "takedown_top_control",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "sequence_denied_or_countered"
+   },
+   "links": [
+    "philly.slot.3"
+   ]
   },
-  "appearance": {
-    "clothing": "forest shorts",
-    "identity_anchor": "Silas Bell / Philly shell smotherer with wrestler base",
-    "props": []
-  },
-  "provenance": {
-    "classification": "CANON",
-    "label": "[CANON]",
-    "source": "Supplied mandatory identity where specified; all other details authored for this release."
-  },
-  "signature_moves": [
-    "cross",
-    "uppercut",
-    "jab"
-  ],
-  "airborne_training": {
-    "allowed_vertical_modes": [
-      "grounded",
-      "athletic"
-    ],
-    "techniques": [
-      "body_kick"
-    ]
+  {
+   "id": "philly.slot.3",
+   "capabilities": [
+    "kickboxing"
+   ],
+   "description": "Trained synchronized bundle: kickboxing",
+   "trigger": "slot_stalled_or_countered",
+   "sequence": [
+    "teep",
+    "low_kick",
+    "body_kick"
+   ],
+   "home_range": "kick",
+   "goal": "leg_attrition",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "sequence_denied_or_countered"
+   },
+   "links": [
+    "philly.slot.1"
+   ]
   }
+ ],
+ "baseline_capabilities": [
+  "basic_movement",
+  "untrained_striking"
+ ],
+ "tempo": 1,
+ "preferred_ranges": [
+  "punch",
+  "clinch"
+ ],
+ "debt_sentence": "Roll the straight then smother and deny hips; body fixation and a loaded lead leave kicking lanes.",
+ "exploitable_seams": [
+  "debt.hands.philly_shell.head_hook",
+  "debt.hands.philly_shell.entry",
+  "debt.defense.sprawl_pummel.head_straight",
+  "debt.defense.sprawl_pummel.tempo",
+  "debt.stance.crouch.leg",
+  "debt.stance.crouch.head_uppercut",
+  "debt.tie.anti_grappling.tempo",
+  "debt.tie.anti_grappling.head_straight",
+  "debt.target.body_puncher.head_uppercut",
+  "debt.target.body_puncher.head_straight",
+  "debt.kicking.wrestler_teep.angle",
+  "debt.kicking.wrestler_teep.leg",
+  "debt.mentality.defensive.tempo",
+  "debt.mentality.defensive.body"
+ ],
+ "active_techniques": [
+  "step",
+  "retreat",
+  "pivot",
+  "feint",
+  "jab",
+  "cross",
+  "hook",
+  "body_hook",
+  "uppercut",
+  "haymaker",
+  "parry",
+  "shell_block",
+  "slip",
+  "check",
+  "low_kick",
+  "body_kick",
+  "teep",
+  "sprawl",
+  "pummel",
+  "body_lock",
+  "double_leg",
+  "single_leg",
+  "outside_trip",
+  "ride",
+  "escape"
+ ],
+ "conditional_abilities": [],
+ "combat_limitations": [
+  "Listed grappling requires the documented range and connection.",
+  "No technique is guaranteed against an active defense."
+ ],
+ "fighting_description": {
+  "does": "Roll the straight then smother and deny hips.",
+  "wins": "Reach punch, clinch and use Philly shell smotherer with wrestler base.",
+  "avoids": "Unrecovered support and opponent control of the next range.",
+  "beaten_by": "body fixation and a loaded lead leave kicking lanes."
+ },
+ "appearance": {
+  "clothing": "forest shorts",
+  "identity_anchor": "Silas Bell / Philly shell smotherer with wrestler base",
+  "props": []
+ },
+ "provenance": {
+  "classification": "CANON",
+  "label": "[CANON]",
+  "source": "Supplied mandatory identity where specified; all other details authored for this release."
+ },
+ "signature_moves": [
+  "cross",
+  "uppercut",
+  "jab"
+ ],
+ "airborne_training": {
+  "allowed_vertical_modes": [
+   "grounded",
+   "athletic"
+  ],
+  "techniques": [
+   "body_kick"
+  ]
+ },
+ "revision": 1
 }

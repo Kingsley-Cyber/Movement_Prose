@@ -123,7 +123,7 @@ def validate_card_slots(card: dict[str, Any], root: Path = ROOT) -> list[str]:
     return problems
 
 
-def validate_all(root: Path = ROOT, verbose: bool = True, strict_slots: bool = False) -> dict[str, Any]:
+def validate_all(root: Path = ROOT, verbose: bool = True, strict_slots: bool = True) -> dict[str, Any]:
     errors: list[str] = []
     warnings: list[str] = []
 
@@ -328,9 +328,10 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Validate BLOCK Simulator v2 data and schemas.")
     parser.add_argument("--quiet", action="store_true", help="Suppress summary line on success")
     parser.add_argument("--show-warnings", action="store_true", help="Print card/slot warnings")
-    parser.add_argument("--strict-slots", action="store_true", help="Treat slot warnings on cards/v2 as errors")
+    parser.add_argument("--strict-slots", action="store_true", default=True, help="Treat slot warnings on cards/v2 as errors")
+    parser.add_argument("--allow-slot-warnings", action="store_true", help="Downgrade slot problems on cards/v2 to warnings")
     args = parser.parse_args(argv)
-    res = validate_all(ROOT, verbose=not args.quiet, strict_slots=args.strict_slots)
+    res = validate_all(ROOT, verbose=not args.quiet, strict_slots=not args.allow_slot_warnings)
     if args.show_warnings:
         for w in res["warnings"]:
             print(f"WARN: {w}")

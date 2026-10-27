@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from .data import load_model_v2
+from .data import KIND_ESCAPE, load_capabilities_v2, load_model_v2, load_techniques_v2
 
 
 def update_grappling_position(
@@ -28,6 +28,10 @@ def update_grappling_position(
     guard_pull_id = gt_cfg.get("guard_pull_id")
     armbar_id = gt_cfg.get("armbar_id")
     ground_escape_ids = set(gt_cfg.get("ground_escape_ids", []))
+    tech_v2 = load_techniques_v2()
+    tk = tech_v2.get(tid, {}).get("kind", "")
+    basic_core = load_capabilities_v2().get("capabilities", {}).get("basic_movement", {}).get("core", [])
+    clinch_break_id = str(basic_core[4]) if len(basic_core) > 4 else ""
 
     if outcome not in ("clean", "flush", "counter_hit", "partial"):
         if outcome == "jammed":
@@ -83,10 +87,13 @@ def update_grappling_position(
         actor_state["sub_grips"]["wrist_control"] = True
         actor_state["grappling_position"] = "side_control"
         actor_state["control_marks"] += 1
-    elif tid in ground_escape_ids and actor_state.get("posture_mode") == "ground":
+    elif (tid in ground_escape_ids or tk == KIND_ESCAPE) and actor_state.get("posture_mode") == "ground":
         actor_state["posture_mode"] = defender_state["posture_mode"] = "standing"
         actor_state["grappling_position"] = defender_state["grappling_position"] = "standing_neutral"
         actor_state["grip"] = defender_state["grip"] = None
         actor_state["submission_stage"] = defender_state["submission_stage"] = 0
+    elif (tid == clinch_break_id or tk == KIND_ESCAPE) and actor_state.get("posture_mode") == "standing":
+        actor_state["grappling_position"] = defender_state["grappling_position"] = "standing_neutral"
+        actor_state["grip"] = defender_state["grip"] = None
 
     return str(actor_state["grappling_position"])

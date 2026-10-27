@@ -1,218 +1,216 @@
 {
-  "version": "block-2",
-  "fighter_id": "maleek",
-  "name": "Maleek",
-  "combat_identity": "52-Dutch / Uno",
-  "dimensions": {
-    "hands": "hands.shield52",
-    "defense": "defense.check_frame",
-    "stance": "stance.switch",
-    "tie": null,
-    "target": "target.mixer",
-    "kicking": "kicking.dutch",
-    "mentality": "mentality.boxer_puncher"
-  },
-  "adaptation": "mma",
-  "orientation": "switching",
-  "slot_count": 3,
-  "slot_label": "Triad",
-  "synchronized_capabilities": [
-    {
-      "id": "maleek.slot.1",
-      "capabilities": [
-        "boxing",
-        "shield"
-      ],
-      "description": "Trained synchronized bundle: boxing, shield",
-      "trigger": "fight_start",
-      "sequence": [
-        "jab",
-        "cross",
-        "hook",
-        "body_hook",
-        "uppercut"
-      ],
-      "home_range": "punch",
-      "goal": "head_damage",
-      "abandon_rule": {
-        "max_consecutive_stalls": 2,
-        "condition": "sequence_denied_or_countered"
-      },
-      "links": [
-        "maleek.slot.3"
-      ]
-    },
-    {
-      "id": "maleek.slot.2",
-      "capabilities": [
-        "kickboxing",
-        "switch_step"
-      ],
-      "description": "Trained synchronized bundle: kickboxing, switch_step",
-      "trigger": "slot_stalled_or_countered",
-      "sequence": [
-        "jab",
-        "cross",
-        "body_hook",
-        "low_kick",
-        "body_kick",
-        "teep"
-      ],
-      "home_range": "kick",
-      "goal": "leg_attrition",
-      "abandon_rule": {
-        "max_consecutive_stalls": 2,
-        "condition": "sequence_denied_or_countered"
-      },
-      "links": [
-        "maleek.slot.1"
-      ]
-    },
-    {
-      "id": "maleek.slot.3",
-      "capabilities": [
-        "anti_grappling"
-      ],
-      "description": "Trained synchronized bundle: anti_grappling",
-      "trigger": "slot_stalled_or_countered",
-      "sequence": [
-        "jab",
-        "cross",
-        "hook",
-        "body_hook",
-        "uppercut",
-        "haymaker",
-        "low_kick",
-        "body_kick",
-        "teep"
-      ],
-      "home_range": "punch",
-      "goal": "head_damage",
-      "abandon_rule": {
-        "max_consecutive_stalls": 2,
-        "condition": "sequence_denied_or_countered"
-      },
-      "links": [
-        "maleek.slot.2"
-      ]
-    }
-  ],
-  "baseline_capabilities": [
-    "basic_movement",
-    "untrained_striking"
-  ],
-  "tempo": 3,
-  "preferred_ranges": [
-    "punch",
-    "kick"
-  ],
-  "debt_sentence": "Draw a high reaction, change the lead, and kick the loaded support; an unattached clinch remains a seam.",
-  "exploitable_seams": [
-    "debt.hands.shield52.body",
-    "debt.hands.shield52.clinch",
-    "debt.defense.check_frame.single_support",
-    "debt.defense.check_frame.body",
-    "debt.stance.switch.entry",
-    "debt.stance.switch.single_support",
-    "debt.target.mixer.recovery",
-    "debt.target.mixer.tempo",
-    "debt.kicking.dutch.entry",
-    "debt.kicking.dutch.recovery",
-    "debt.mentality.boxer_puncher.tempo",
-    "debt.mentality.boxer_puncher.entry"
-  ],
-  "active_techniques": [
-    "step",
-    "retreat",
-    "pivot",
-    "switch_step",
-    "feint",
+ "version": "block-2",
+ "fighter_id": "maleek",
+ "name": "Maleek",
+ "combat_identity": "52-Dutch / Uno",
+ "dimensions": {
+  "hands": "hands.shield52",
+  "defense": "defense.check_frame",
+  "stance": "stance.switch",
+  "tie": null,
+  "target": "target.mixer",
+  "kicking": "kicking.dutch",
+  "mentality": "mentality.boxer_puncher"
+ },
+ "adaptation": "mma",
+ "orientation": "switching",
+ "slot_count": 3,
+ "slot_label": "Triad",
+ "synchronized_capabilities": [
+  {
+   "id": "maleek.slot.1",
+   "capabilities": [
+    "boxing",
+    "shield"
+   ],
+   "description": "Trained synchronized bundle: boxing, shield",
+   "trigger": "fight_start",
+   "sequence": [
     "jab",
     "cross",
     "hook",
     "body_hook",
-    "uppercut",
-    "haymaker",
-    "parry",
-    "shell_block",
-    "shield_frame",
-    "slip",
-    "check",
-    "low_kick",
-    "body_kick",
-    "teep",
-    "sprawl",
-    "pummel"
-  ],
-  "conditional_abilities": [
-    {
-      "id": "maleek.cage_plum",
-      "trained": true,
-      "grants_capability": "cage_plum",
-      "techniques": [
-        "cage_plum",
-        "knee_body"
-      ],
-      "gates": {
-        "range": "clinch",
-        "wall": "near",
-        "previous_setup": "shield_frame"
-      },
-      "provenance": "[CANON] Pretrained wall drill, not a spontaneous new skill."
-    }
-  ],
-  "combat_limitations": [
-    "Only listed trained capabilities are available.",
-    "A NULL tie is untrained attachment, not intentional anti-grappling."
-  ],
-  "fighting_description": {
-    "does": "Draw a high reaction, change the lead, and kick the loaded support.",
-    "wins": "Reach punch, kick and use 52-Dutch / Uno.",
-    "avoids": "Unrecovered support and opponent control of the next range.",
-    "beaten_by": "an unattached clinch remains a seam."
+    "uppercut"
+   ],
+   "home_range": "punch",
+   "goal": "head_damage",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "sequence_denied_or_countered"
+   },
+   "links": [
+    "maleek.slot.3"
+   ]
   },
-  "appearance": {
-    "clothing": "charcoal shorts",
-    "identity_anchor": "Maleek / 52-Dutch / Uno",
-    "props": []
-  },
-  "provenance": {
-    "classification": "CANON",
-    "label": "[CANON]",
-    "source": "Supplied mandatory identity where specified; all other details authored for this release."
-  },
-  "composites": [
-    {
-      "id": "canon.52_dutch",
-      "components": [
-        "hands.shield52",
-        "hands.dutch_guard"
-      ],
-      "transition": "Shield wedge recovers into Dutch cover before kicking.",
-      "classification": "CANON"
-    },
-    {
-      "id": "canon.uno",
-      "components": [
-        "stance.switch",
-        "stance.balanced"
-      ],
-      "transition": "Short retreating lead replacement into a recovered base.",
-      "classification": "CANON"
-    }
-  ],
-  "signature_moves": [
+  {
+   "id": "maleek.slot.2",
+   "capabilities": [
+    "kickboxing",
+    "switch_step"
+   ],
+   "description": "Trained synchronized bundle: kickboxing, switch_step",
+   "trigger": "slot_stalled_or_countered",
+   "sequence": [
+    "switch_step",
     "jab",
+    "cross",
     "body_hook",
-    "cross"
-  ],
-  "airborne_training": {
-    "allowed_vertical_modes": [
-      "grounded",
-      "athletic"
-    ],
-    "techniques": [
-      "body_kick"
-    ]
+    "low_kick",
+    "calf_kick",
+    "body_kick"
+   ],
+   "home_range": "kick",
+   "goal": "leg_attrition",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "sequence_denied_or_countered"
+   },
+   "links": [
+    "maleek.slot.1"
+   ]
+  },
+  {
+   "id": "maleek.slot.3",
+   "capabilities": [
+    "anti_grappling"
+   ],
+   "description": "Trained synchronized bundle: anti_grappling",
+   "trigger": "opponent_clinches_or_shoots",
+   "sequence": [
+    "clinch_break",
+    "pivot",
+    "retreat"
+   ],
+   "home_range": "punch",
+   "goal": "reset_to_home_range",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "clinch_denied_or_escaped"
+   },
+   "links": [
+    "maleek.slot.1"
+   ]
   }
+ ],
+ "baseline_capabilities": [
+  "basic_movement",
+  "untrained_striking"
+ ],
+ "tempo": 3,
+ "preferred_ranges": [
+  "punch",
+  "kick"
+ ],
+ "debt_sentence": "Draw a high reaction, change the lead, and kick the loaded support; an unattached clinch remains a seam.",
+ "exploitable_seams": [
+  "debt.hands.shield52.body",
+  "debt.hands.shield52.clinch",
+  "debt.defense.check_frame.single_support",
+  "debt.defense.check_frame.body",
+  "debt.stance.switch.entry",
+  "debt.stance.switch.single_support",
+  "debt.target.mixer.recovery",
+  "debt.target.mixer.tempo",
+  "debt.kicking.dutch.entry",
+  "debt.kicking.dutch.recovery",
+  "debt.mentality.boxer_puncher.tempo",
+  "debt.mentality.boxer_puncher.entry"
+ ],
+ "active_techniques": [
+  "step",
+  "retreat",
+  "pivot",
+  "switch_step",
+  "feint",
+  "jab",
+  "cross",
+  "hook",
+  "body_hook",
+  "uppercut",
+  "haymaker",
+  "parry",
+  "shell_block",
+  "shield_frame",
+  "slip",
+  "check",
+  "low_kick",
+  "body_kick",
+  "teep",
+  "sprawl",
+  "pummel",
+  "calf_kick",
+  "clinch_break"
+ ],
+ "conditional_abilities": [
+  {
+   "id": "maleek.cage_plum",
+   "trained": true,
+   "grants_capability": "cage_plum",
+   "techniques": [
+    "cage_plum",
+    "knee_body"
+   ],
+   "gates": {
+    "range": "clinch",
+    "wall": "near",
+    "previous_setup": "shield_frame"
+   },
+   "provenance": "[CANON] Pretrained wall drill, not a spontaneous new skill."
+  }
+ ],
+ "combat_limitations": [
+  "Only listed trained capabilities are available.",
+  "A NULL tie is untrained attachment, not intentional anti-grappling."
+ ],
+ "fighting_description": {
+  "does": "Draw a high reaction, change the lead, and kick the loaded support.",
+  "wins": "Reach punch, kick and use 52-Dutch / Uno.",
+  "avoids": "Unrecovered support and opponent control of the next range.",
+  "beaten_by": "an unattached clinch remains a seam."
+ },
+ "appearance": {
+  "clothing": "charcoal shorts",
+  "identity_anchor": "Maleek / 52-Dutch / Uno",
+  "props": []
+ },
+ "provenance": {
+  "classification": "CANON",
+  "label": "[CANON]",
+  "source": "Supplied mandatory identity where specified; all other details authored for this release."
+ },
+ "composites": [
+  {
+   "id": "canon.52_dutch",
+   "components": [
+    "hands.shield52",
+    "hands.dutch_guard"
+   ],
+   "transition": "Shield wedge recovers into Dutch cover before kicking.",
+   "classification": "CANON"
+  },
+  {
+   "id": "canon.uno",
+   "components": [
+    "stance.switch",
+    "stance.balanced"
+   ],
+   "transition": "Short retreating lead replacement into a recovered base.",
+   "classification": "CANON"
+  }
+ ],
+ "signature_moves": [
+  "jab",
+  "body_hook",
+  "cross"
+ ],
+ "airborne_training": {
+  "allowed_vertical_modes": [
+   "grounded",
+   "athletic"
+  ],
+  "techniques": [
+   "body_kick"
+  ]
+ },
+ "revision": 1
 }
