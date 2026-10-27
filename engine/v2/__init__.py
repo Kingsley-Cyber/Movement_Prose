@@ -44,7 +44,7 @@ from .montecarlo import compile_simulated_fight_to_atomic_beats, simulate_many_v
 from .readiness import compute_readiness_profile
 from .selection import build_slot_plans
 from .state import compute_posture_state
-from .vertical import normalize_vertical_mode
+from .vertical import is_technique_vertically_allowed, normalize_vertical_mode
 
 __all__ = [
     "ARENA_PRESETS",
@@ -83,6 +83,7 @@ __all__ = [
     "load_positions_v2",
     "load_rulesets_v2",
     "load_techniques_v2",
+    "is_technique_vertically_allowed",
     "normalize_vertical_mode",
     "select_kick_defense",
     "select_native_defense",

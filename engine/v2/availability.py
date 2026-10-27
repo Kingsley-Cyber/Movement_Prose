@@ -7,7 +7,8 @@ from typing import Any, Iterable
 
 from ..capabilities import training
 from ..ontology import Knowledge
-from .data import KIND_ESCAPE, load_capabilities_v2, load_rulesets_v2, load_techniques_v2
+from .data import KIND_ESCAPE, load_capabilities_v2, load_model_v2, load_rulesets_v2, load_techniques_v2
+from .vertical import is_technique_vertically_allowed
 
 _CAP_INDEX_CACHE: dict[str, tuple[dict[str, set[str]], dict[str, set[str]], dict[str, set[str]]]] = {}
 
@@ -43,10 +44,12 @@ def available_v2(
     card: dict[str, Any],
     ruleset: str = "mma",
     activated: Iterable[str] = (),
+    vertical_mode: str = "grounded",
 ) -> set[str]:
-    """Return the fighter's legal v2 technique set under §6.0 (cores + trained active attacks + trained defenses)."""
+    """Return the fighter's legal v2 technique set under §6.0 (cores + trained active attacks + trained defenses) & §7.13 vertical gating."""
     techs = load_techniques_v2(k.root)
     rulesets_v2 = load_rulesets_v2(k.root).get("rulesets", {})
+    model_cfg = load_model_v2(k.root)
     grants_by_cap, def_grants_by_cap, core_by_cap = _get_cap_indexes(k.root)
 
     activated_set = set(activated)
@@ -77,8 +80,15 @@ def available_v2(
             and tid not in banned_tids
             and (techs[tid]["kind"] in legal_kinds or tid in allowed_tids)
             and ruleset in techs[tid].get("legal_in", [])
+            and is_technique_vertically_allowed(techs[tid], card, vertical_mode, model_cfg)
         }
-    return {tid for tid in out if tid in techs and ruleset in techs[tid].get("legal_in", [])}
+    return {
+        tid
+        for tid in out
+        if tid in techs
+        and ruleset in techs[tid].get("legal_in", [])
+        and is_technique_vertically_allowed(techs[tid], card, vertical_mode, model_cfg)
+    }
 
 
 def slot_pool_v2(
@@ -87,11 +97,12 @@ def slot_pool_v2(
     slot_caps: Iterable[str],
     ruleset: str = "mma",
     activated: Iterable[str] = (),
+    vertical_mode: str = "grounded",
 ) -> set[str]:
-    """Return the active slot's legal attacking/movement pool (§6.0.3, D19)."""
+    """Return the active slot's legal attacking/movement pool (§6.0.3, §7.13, D19)."""
     techs = load_techniques_v2(k.root)
     grants_by_cap, _, core_by_cap = _get_cap_indexes(k.root)
-    avail = available_v2(k, card, ruleset, activated)
+    avail = available_v2(k, card, ruleset, activated, vertical_mode=vertical_mode)
 
     activated_set = set(activated)
     active = set(card.get("active_techniques", []))
@@ -122,11 +133,12 @@ def slot_defense_pool_v2(
     slot_caps: Iterable[str],
     ruleset: str = "mma",
     activated: Iterable[str] = (),
+    vertical_mode: str = "grounded",
 ) -> set[str]:
     """Return the legal defense/escape techniques granted by slot_caps (used by reset_to_home_range slots)."""
     techs = load_techniques_v2(k.root)
     grants_by_cap, _, _ = _get_cap_indexes(k.root)
-    avail = available_v2(k, card, ruleset, activated)
+    avail = available_v2(k, card, ruleset, activated, vertical_mode=vertical_mode)
     out: set[str] = set()
     for cap in set(slot_caps):
         for tid in grants_by_cap.get(cap, set()) & avail:

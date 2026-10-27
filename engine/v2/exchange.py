@@ -412,8 +412,8 @@ def simulate_fight_v2(
     arena_hard_floor_throw_bonus = float(arena_cfg.get("hard_floor_throw_bonus", 1.0))
     arena_restricts_wide_kicks = bool(arena_cfg.get("restricts_wide_kicks", False))
 
-    slot_plans = {fid: build_slot_plans(k, cards[fid], ruleset) for fid in canonical_ids}
-    avail_map = {fid: available_v2(k, cards[fid], ruleset) for fid in canonical_ids}
+    slot_plans = {fid: build_slot_plans(k, cards[fid], ruleset, vertical_mode=vertical_mode) for fid in canonical_ids}
+    avail_map = {fid: available_v2(k, cards[fid], ruleset, vertical_mode=vertical_mode) for fid in canonical_ids}
     start_xs = sim_cfg.get("start_x_positions", [-0.8, 0.8])
 
     actors: dict[str, dict[str, Any]] = {}
@@ -430,6 +430,7 @@ def simulate_fight_v2(
             "orientation": orient,
             "posture_mode": "standing",
             "balance": "stable",
+            "airborne_phase": "none",
             "grappling_position": "standing_neutral",
             "role": "neutral",
             "control_time_s": 0.0,
@@ -644,8 +645,8 @@ def simulate_fight_v2(
             newly_unlocked = evaluate_conditional_abilities(cards[fid], actors[fid], actors[opp_fid], range_band)
             if newly_unlocked:
                 un_list = tuple(actors[fid].get("unlocked_abilities", ()))
-                slot_plans[fid] = build_slot_plans(k, cards[fid], ruleset, un_list)
-                avail_map[fid] = available_v2(k, cards[fid], ruleset, un_list)
+                slot_plans[fid] = build_slot_plans(k, cards[fid], ruleset, un_list, vertical_mode=vertical_mode)
+                avail_map[fid] = available_v2(k, cards[fid], ruleset, un_list, vertical_mode=vertical_mode)
 
         # 2. Select active slot plan, contest range step (one band per exchange)
         plans = slot_plans[attacker_id]
@@ -816,6 +817,7 @@ def simulate_fight_v2(
             model_cfg,
             opt_behaviors,
             tech_v2_map,
+            vertical_mode=vertical_mode,
         )
 
         # Update defender's read_memory before computing incoming_tid readiness
@@ -980,7 +982,12 @@ def simulate_fight_v2(
                 "roll": round(def_roll, 4),
             }
         else:
-            if roll < hit_p_eff * flush_frac and (def_state["attention"]["feinted"] or def_posture_before["balance"] != "stable"):
+            if roll < hit_p_eff * flush_frac and (
+                def_state["attention"]["feinted"]
+                or def_posture_before["balance"] != "stable"
+                or int(def_state.get("stun_exchanges", 0)) > 0
+                or def_state.get("airborne_phase") == "landing"
+            ):
                 outcome = "flush"
             elif roll < hit_p_eff * clean_frac:
                 outcome = "clean"
@@ -990,9 +997,12 @@ def simulate_fight_v2(
         if feinted_this_exchange:
             def_state["attention"]["feinted"] = False
 
-        # Contested Counter-Attack Check (§7.9)
+        # Contested Counter-Attack Check (§7.9 & §7.13 airborne landing counter bonus)
+        airborne_cfg = t_v2_entry.get("airborne") if isinstance(t_v2_entry.get("airborne"), dict) else None
+        v_cfg = model_cfg.get("vertical", {})
+        landing_cnt_bonus = float(v_cfg.get("landing_counter_bonus", 0.10)) if airborne_cfg is not None else 0.0
         att_rec_f = int(m_stats.get("rec_f", 6))
-        if outcome in ("evaded", "blocked", "jammed") and att_rec_f >= cnt_min_rec:
+        if outcome in ("evaded", "blocked", "jammed") and (att_rec_f >= cnt_min_rec or airborne_cfg is not None):
             base_counter = 0.0
             for d in ("mentality", "defense", "hands", "stance"):
                 oid = def_dims.get(d)
@@ -1018,8 +1028,14 @@ def simulate_fight_v2(
             counter_prob = max(
                 float(cnt_lo),
                 min(
-                    float(cnt_hi),
-                    base_counter + read_bonus + low_tempo_bonus + rec_window_bonus - att_guard_resist - cnt_fat_pen * float(def_state["fatigue"]),
+                    float(cnt_hi) + landing_cnt_bonus,
+                    base_counter
+                    + read_bonus
+                    + low_tempo_bonus
+                    + rec_window_bonus
+                    + landing_cnt_bonus
+                    - att_guard_resist
+                    - cnt_fat_pen * float(def_state["fatigue"]),
                 ),
             )
             if contest_roll(counter_prob, band_name="counter", rng=rng, model_cfg=model_cfg)[0]:
@@ -1143,13 +1159,28 @@ def simulate_fight_v2(
                 "readiness_penalty": rec_pen_default,
             },
         )
-        att_state["recovery_window"] = {
-            "window_type": t_v2_rec["window_type"],
-            "last_technique_id": tid,
-            "exposed_lanes": list(t_v2_rec["exposed_lanes"]),
-            "readiness_penalty": float(t_v2_rec["readiness_penalty"])
-            * (rec_pen_fail_mult if outcome in ("evaded", "miss", "checked", "caught") else rec_pen_land_mult),
-        }
+        if airborne_cfg is not None:
+            air_miss_mult = float(v_cfg.get("airborne_miss_exposure_multiplier", 1.2))
+            air_lanes = list(airborne_cfg.get("landing_exposed_lanes") or t_v2_rec.get("exposed_lanes", []))
+            air_pen_base = float(airborne_cfg.get("landing_penalty", t_v2_rec.get("readiness_penalty", rec_pen_default)))
+            is_air_fail = outcome in ("evaded", "miss", "checked", "caught")
+            att_state["airborne_phase"] = "landing" if (is_air_fail or outcome == "blocked") else "none"
+            att_state["recovery_window"] = {
+                "window_type": "airborne_landing_recovery",
+                "last_technique_id": tid,
+                "exposed_lanes": air_lanes,
+                "readiness_penalty": round(air_pen_base * (air_miss_mult if is_air_fail else rec_pen_land_mult), 4),
+            }
+        else:
+            att_state["airborne_phase"] = "none"
+            att_state["recovery_window"] = {
+                "window_type": t_v2_rec["window_type"],
+                "last_technique_id": tid,
+                "exposed_lanes": list(t_v2_rec["exposed_lanes"]),
+                "readiness_penalty": float(t_v2_rec["readiness_penalty"])
+                * (rec_pen_fail_mult if outcome in ("evaded", "miss", "checked", "caught") else rec_pen_land_mult),
+            }
+        def_state["airborne_phase"] = "none"
         def_state["recovery_window"] = {
             "window_type": "none",
             "last_technique_id": defense_used,
@@ -1249,7 +1280,21 @@ def simulate_fight_v2(
         if defense_used:
             def_fc = tech_v2_map.get(defense_used, {}).get("frame_costs", {})
             def_frames = int(def_fc.get("execution_frames", 0))
-        exchange_frames = eff_setup_f + int(m_stats["exec_f"]) + int(m_stats["hold_f"]) + int(m_stats["rec_f"]) + def_frames
+        airborne_frames = (
+            int(airborne_cfg.get("takeoff_frames", 0))
+            + int(airborne_cfg.get("apex_frames", 0))
+            + int(airborne_cfg.get("landing_frames", 0))
+            if airborne_cfg is not None
+            else 0
+        )
+        exchange_frames = (
+            eff_setup_f
+            + int(m_stats["exec_f"])
+            + int(m_stats["hold_f"])
+            + int(m_stats["rec_f"])
+            + def_frames
+            + airborne_frames
+        )
 
         pace_cfg = model_cfg.get("pace", {})
         p_base = int(pace_cfg.get("base_gap_frames", tg_base))
@@ -1405,6 +1450,7 @@ def simulate_fight_v2(
                 model_cfg,
                 opt_behaviors,
                 tech_v2_map,
+                vertical_mode=vertical_mode,
             )
             if c_tid:
                 c_qual = "counter_hit" if rng.random() < cnt_hit_share else "partial"
@@ -1695,6 +1741,7 @@ def simulate_fight_v2(
                 st["stun_exchanges"] = 0
                 st["knockdowns_round"] = 0
                 st["submission_stage"] = 0
+                st["airborne_phase"] = "none"
                 st["position"] = [float(x0), 0.0]
                 st["facing"] = [1.0 if x0 < 0 else -1.0, 0.0]
                 prox_r, corner_r, _ = compute_wall_and_corner(st["position"], arena, model_cfg)

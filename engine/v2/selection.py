@@ -11,6 +11,7 @@ from ..capabilities import admitted_slots
 from ..ontology import Knowledge
 from .availability import slot_defense_pool_v2, slot_pool_v2
 from .cards import compute_school_depth_multiplier
+from .vertical import is_technique_vertically_allowed
 from .data import (
     KIND_DEFENSE,
     KIND_ESCAPE,
@@ -80,6 +81,7 @@ def build_slot_plans(
     card: dict[str, Any],
     ruleset: str = "mma",
     activated: Iterable[str] = (),
+    vertical_mode: str = "grounded",
 ) -> list[dict[str, Any]]:
     """Build executable SlotPlan objects honoring card triggers, links, abandon rules, and per-slot pools (§6.0.3, §7.5)."""
     tech_v2 = load_techniques_v2(k.root)
@@ -95,7 +97,7 @@ def build_slot_plans(
 
     for idx, slot in enumerate(slots):
         caps = set(slot.get("capabilities", []))
-        s_pool = slot_pool_v2(k, card, caps, ruleset, activated)
+        s_pool = slot_pool_v2(k, card, caps, ruleset, activated, vertical_mode=vertical_mode)
         non_counter_pool = {tid for tid in s_pool if tech_v2.get(tid, {}).get("usage") != "counter"}
 
         explicit_seq = [m for m in slot.get("sequence", []) if m in s_pool]
@@ -120,7 +122,7 @@ def build_slot_plans(
 
         reset_defs: set[str] = set()
         if goal == "reset_to_home_range":
-            reset_defs = slot_defense_pool_v2(k, card, caps, ruleset, activated)
+            reset_defs = slot_defense_pool_v2(k, card, caps, ruleset, activated, vertical_mode=vertical_mode)
 
         plans.append(
             {
@@ -605,10 +607,17 @@ def build_candidate_pool_v2(
     att_state: dict[str, Any],
     range_band: str,
     tech_v2_map: dict[str, dict[str, Any]],
+    vertical_mode: str = "grounded",
+    model_cfg: dict[str, Any] | None = None,
 ) -> list[str]:
     """Build the §7.5 candidate pool for the active slot at the current range and position."""
-    full_pool = list(active_plan.get("full_pool", active_plan.get("pool", [])))
-    seq = list(active_plan.get("sequence", []))
+    raw_pool = list(active_plan.get("full_pool", active_plan.get("pool", [])))
+    full_pool = [
+        tid
+        for tid in raw_pool
+        if is_technique_vertically_allowed(tech_v2_map.get(tid, {}), card, vertical_mode, model_cfg)
+    ]
+    seq = [tid for tid in active_plan.get("sequence", []) if tid in full_pool]
     seq_set = set(seq)
     sig_set = set(card.get("signature_moves", []))
     goal = str(active_plan.get("goal", "head_damage"))
@@ -806,6 +815,7 @@ def score_and_select_technique_v2(
     model_cfg: dict[str, Any],
     opt_behaviors: dict[str, dict[str, Any]],
     tech_v2_map: dict[str, dict[str, Any]],
+    vertical_mode: str = "grounded",
 ) -> tuple[str, dict[str, Any], dict[str, Any] | None]:
     """Score candidate techniques using §7.5 model.selection features and sample via softmax(score / temperature)."""
     sel_cfg = model_cfg.get("selection", {})
@@ -826,7 +836,9 @@ def score_and_select_technique_v2(
     nonlane_map = model_cfg.get("readiness", {}).get("nonlane_lane_map", {"ground": "clinch", "space": None})
     nonlane_def = float(model_cfg.get("readiness", {}).get("nonlane_readiness_default", 3.0))
 
-    candidates = build_candidate_pool_v2(att_card, active_plan, att_state, range_band, tech_v2_map)
+    candidates = build_candidate_pool_v2(
+        att_card, active_plan, att_state, range_band, tech_v2_map, vertical_mode=vertical_mode, model_cfg=model_cfg
+    )
     seq = list(active_plan.get("sequence", []))
     cursor = int(att_state.get("slot_Cursor", 0))
     pointed_idx = cursor % len(seq) if seq else 0
@@ -959,6 +971,7 @@ def select_counter_v2(
     model_cfg: dict[str, Any],
     opt_behaviors: dict[str, dict[str, Any]],
     tech_v2_map: dict[str, dict[str, Any]],
+    vertical_mode: str = "grounded",
 ) -> str | None:
     """Select a counter-attack technique using the §7.5 scorer over trained techniques with usage in (counter, both, attack)."""
     sel_cfg = model_cfg.get("selection", {})
@@ -973,6 +986,8 @@ def select_counter_v2(
     cands: list[str] = []
     for tid in sorted(def_avail):
         t = tech_v2_map.get(tid, {})
+        if not is_technique_vertically_allowed(t, def_card, vertical_mode, model_cfg):
+            continue
         kind = str(t.get("kind", ""))
         usage = str(t.get("usage", ""))
         if tid not in slot_pool and usage != "counter":
