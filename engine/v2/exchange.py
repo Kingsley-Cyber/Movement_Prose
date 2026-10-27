@@ -24,9 +24,13 @@ from .data import (
     KIND_MOVEMENT,
     LANDING_QUALITY_MULT,
     MOVE_BASE_STATS,
+    TECH_CAUGHT_KICK_DUMP,
     TECH_CLINCH_BREAK,
     TECH_FEINT,
+    TECH_KICK_CATCH,
+    TECH_PUMMEL,
     TECH_RETREAT,
+    TECH_SANDA_SWEEP,
     TECH_SHOVE,
     TECH_STEP,
     TECH_SWITCH_STEP,
@@ -34,6 +38,7 @@ from .data import (
     load_capabilities_v2,
     load_model_v2,
     load_option_behaviors,
+    load_positions_v2,
     load_rulesets_v2,
     load_techniques_v2,
     validate_schema_cached,
@@ -50,7 +55,13 @@ from .finishes import (
     evaluate_decision_winner,
     resolve_standing_count_or_knockdown,
 )
-from .grappling import update_grappling_position
+from .grappling import (
+    accrue_control_time,
+    get_positions_map,
+    resolve_grappling_exchange_v2,
+    set_pair_position,
+    update_grappling_position,
+)
 from .kicking import unroll_kick_anatomy
 from .laterality import (
     apply_side_damage_and_cuts,
@@ -327,10 +338,17 @@ def simulate_fight_v2(
 
     fatigue_by_tempo = tempo_cfg.get("fatigue_by_tempo", {"1": 0.22, "2": 0.28, "3": 0.34, "4": 0.39, "5": 0.44})
     tech_v2_map = load_techniques_v2(k.root)
+    positions_data = load_positions_v2(k.root)
+    positions_map = get_positions_map(positions_data)
 
     cards = {card_a["fighter_id"]: card_a, card_b["fighter_id"]: card_b}
     canonical_ids = sorted(cards.keys())
     rng = random.Random(seed)
+    pair_position: dict[str, Any] = {
+        "position_id": "standing_neutral",
+        "roles": {fid: "neutral" for fid in canonical_ids},
+    }
+    last_sub_rec: dict[str, Any] | None = None
 
     arena_cfg = ARENA_PRESETS.get(arena, ARENA_PRESETS["cage"])
     half_w = float(arena_cfg["half_width_m"])
@@ -353,6 +371,8 @@ def simulate_fight_v2(
             "posture_mode": "standing",
             "balance": "stable",
             "grappling_position": "standing_neutral",
+            "role": "neutral",
+            "control_time_s": 0.0,
             "grip": None,
             "sub_grips": {"underhooks": 0, "wrist_control": False, "head_position": "neutral"},
             "submission_stage": 0,
@@ -575,33 +595,37 @@ def simulate_fight_v2(
 
         standing_ladder = ["kick", "punch", "clinch"]
         ref_break_after = clinch_rules.get("referee_break_after_exchanges")
+        pre_clinch_break_steps: list[dict[str, str]] = []
         if att_state["posture_mode"] == "ground":
             if not ground_rules.get("allowed", True):
-                att_state["posture_mode"] = def_state["posture_mode"] = "standing"
-                att_state["grappling_position"] = def_state["grappling_position"] = "standing_neutral"
-                att_state["grip"] = def_state["grip"] = None
-                att_state["submission_stage"] = def_state["submission_stage"] = 0
+                set_pair_position(pair_position, "standing_neutral", attacker_id, "neutral", defender_id, actors, positions_map)
                 range_band = "punch" if punch_only_ruleset else "kick"
             else:
                 range_band = "ground"
         elif att_state["grip"] in clinch_grips or range_band == "clinch":
+            should_break = False
             if not clinch_rules.get("allowed", True) or (
                 ref_break_after is not None and clinch_exchanges >= int(ref_break_after)
             ):
-                att_state["grip"] = def_state["grip"] = None
-                att_state["grappling_position"] = def_state["grappling_position"] = "standing_neutral"
-                range_band = "punch"
-                clinch_exchanges = 0
+                should_break = True
             elif str(active_plan["home_range"]) in ("kick", "punch") and def_dims.get("tie") is None:
-                att_state["grip"] = def_state["grip"] = None
-                att_state["grappling_position"] = def_state["grappling_position"] = "standing_neutral"
-                range_band = "punch"
-                clinch_exchanges = 0
+                should_break = True
             elif str(active_plan["home_range"]) in ("kick", "punch") and contest_roll(
                 clinch_exit_prob, band_name=TECH_CLINCH_BREAK, rng=rng, model_cfg=model_cfg
             )[0]:
-                att_state["grip"] = def_state["grip"] = None
-                att_state["grappling_position"] = def_state["grappling_position"] = "standing_neutral"
+                should_break = True
+            if should_break:
+                prev_p = str(pair_position.get("position_id", "standing_neutral"))
+                if prev_p != "standing_neutral":
+                    if prev_p == "double_underhooks":
+                        pre_clinch_break_steps.append(
+                            {"from_position": "double_underhooks", "to_position": "over_under", "via_technique": TECH_PUMMEL}
+                        )
+                        prev_p = "over_under"
+                    pre_clinch_break_steps.append(
+                        {"from_position": prev_p, "to_position": "standing_neutral", "via_technique": TECH_CLINCH_BREAK}
+                    )
+                set_pair_position(pair_position, "standing_neutral", attacker_id, "neutral", defender_id, actors, positions_map)
                 range_band = "punch"
                 clinch_exchanges = 0
             else:
@@ -1075,15 +1099,54 @@ def simulate_fight_v2(
             def_state["laterality"] = resolve_actor_laterality(def_card, def_state["orientation"])
             forced_stance_switch = True
 
-        grappling_pos = update_grappling_position(att_state, def_state, tid, outcome, att_card)
+        grappling_pos, grappling_rec, sub_rec = resolve_grappling_exchange_v2(
+            pair_position,
+            attacker_id,
+            defender_id,
+            actors,
+            cards,
+            tid,
+            outcome,
+            defense_used=defense_used,
+            rng=rng,
+            opt_behaviors=opt_behaviors,
+            model_cfg=model_cfg,
+            positions_data=positions_data,
+            tech_v2_map=tech_v2_map,
+        )
+        if sub_rec is not None:
+            last_sub_rec = sub_rec
+        if pre_clinch_break_steps:
+            if grappling_rec is None:
+                grappling_rec = {
+                    "from_position": pre_clinch_break_steps[0]["from_position"],
+                    "to_position": grappling_pos,
+                    "via_technique": TECH_CLINCH_BREAK,
+                    "transitions": list(pre_clinch_break_steps),
+                }
+            else:
+                grappling_rec["transitions"] = list(pre_clinch_break_steps) + list(grappling_rec.get("transitions", []))
         if (
             active_plan.get("goal") == "reset_to_home_range"
             and att_state.get("posture_mode") == "standing"
             and outcome in ("clean", "flush", "counter_hit", "partial")
+            and grappling_pos != "standing_neutral"
         ):
-            att_state["grappling_position"] = def_state["grappling_position"] = "standing_neutral"
-            att_state["grip"] = def_state["grip"] = None
-            grappling_pos = "standing_neutral"
+            prev_p = grappling_pos
+            grappling_pos = set_pair_position(
+                pair_position, "standing_neutral", attacker_id, "neutral", defender_id, actors, positions_map
+            )
+            step_list = list((grappling_rec or {}).get("transitions", []))
+            if prev_p == "double_underhooks":
+                step_list.append({"from_position": "double_underhooks", "to_position": "over_under", "via_technique": TECH_PUMMEL})
+                prev_p = "over_under"
+            step_list.append({"from_position": prev_p, "to_position": "standing_neutral", "via_technique": TECH_CLINCH_BREAK})
+            grappling_rec = {
+                "from_position": step_list[0]["from_position"],
+                "to_position": "standing_neutral",
+                "via_technique": TECH_CLINCH_BREAK,
+                "transitions": step_list,
+            }
         if (def_mentality == outboxer_ment or def_option == outfight_def) and outcome == "evaded":
             def_state["position"][0] = round(def_state["position"][0] * outfighter_reset, 3)
             def_state["wall_proximity"] = "far"
@@ -1131,6 +1194,7 @@ def simulate_fight_v2(
                 get_attack_profile(att_stance, opt_behaviors).get("sweep_resistance", 0.0)
             )
             sweep_prob = max(float(ck_lo), min(float(ck_hi), ck_base - sweep_resist - ck_fat_pt * float(def_state["fatigue"])))
+            prev_catch_pos = grappling_pos
             if contest_roll(sweep_prob, band_name="catch_sweep", rng=rng, model_cfg=model_cfg)[0]:
                 dump_tid = caught_dump_prio[-1]
                 for cand_dump in caught_dump_prio[:-1]:
@@ -1168,20 +1232,53 @@ def simulate_fight_v2(
                 )
                 def_state["contact_marks"] += 1
                 def_state["control_marks"] += 1
+                catch_steps = list((grappling_rec or {}).get("transitions", []))
+                if prev_catch_pos == "standing_neutral":
+                    catch_steps.append(
+                        {"from_position": "standing_neutral", "to_position": "caught_single_leg", "via_technique": TECH_KICK_CATCH}
+                    )
                 if sweep_resist >= ck_scram_gte:
-                    def_state["grappling_position"] = att_state["grappling_position"] = "over_under"
-                    grappling_pos = "over_under"
+                    grappling_pos = set_pair_position(
+                        pair_position, "standing_neutral", defender_id, "neutral", attacker_id, actors, positions_map
+                    )
+                    catch_steps.append(
+                        {"from_position": "caught_single_leg", "to_position": "standing_neutral", "via_technique": TECH_CLINCH_BREAK}
+                    )
                 else:
-                    def_state["posture_mode"] = att_state["posture_mode"] = "ground"
-                    def_state["grappling_position"] = "half_guard_top"
-                    att_state["grappling_position"] = "closed_guard_bottom"
-                    def_state["grip"], att_state["grip"] = "top", "bottom"
-                    grappling_pos = "half_guard_top"
+                    via_dump = dump_tid if dump_tid in (TECH_SANDA_SWEEP, TECH_CAUGHT_KICK_DUMP) else TECH_CAUGHT_KICK_DUMP
+                    grappling_pos = set_pair_position(
+                        pair_position, "half_guard", defender_id, "top", attacker_id, actors, positions_map
+                    )
+                    catch_steps.append(
+                        {"from_position": "caught_single_leg", "to_position": "half_guard", "via_technique": via_dump}
+                    )
+                grappling_rec = {
+                    "from_position": catch_steps[0]["from_position"] if catch_steps else prev_catch_pos,
+                    "to_position": grappling_pos,
+                    "via_technique": dump_tid,
+                    "contest": "sweep",
+                    "transitions": catch_steps,
+                }
                 counter_followup_event = {
                     "counter_actor_id": defender_id,
                     "trigger": "kick_catch_dump",
                     "technique_id": dump_tid,
                     "damage": dump_dmg,
+                }
+            elif prev_catch_pos == "standing_neutral":
+                grappling_pos = set_pair_position(
+                    pair_position, "caught_single_leg", defender_id, "holder", attacker_id, actors, positions_map
+                )
+                catch_steps = list((grappling_rec or {}).get("transitions", []))
+                catch_steps.append(
+                    {"from_position": "standing_neutral", "to_position": "caught_single_leg", "via_technique": TECH_KICK_CATCH}
+                )
+                grappling_rec = {
+                    "from_position": "standing_neutral",
+                    "to_position": "caught_single_leg",
+                    "via_technique": TECH_KICK_CATCH,
+                    "contest": TECH_KICK_CATCH,
+                    "transitions": catch_steps,
                 }
         elif counter_triggered:
             att_readiness = compute_readiness_profile(
@@ -1345,11 +1442,9 @@ def simulate_fight_v2(
                     and t_v2_entry.get("result_position") == "standing_knockdown"
                 ):
                     att_state["control_marks"] += 1
-                att_state["posture_mode"] = def_state["posture_mode"] = "standing"
-                att_state["grappling_position"] = def_state["grappling_position"] = "standing_neutral"
-                att_state["grip"] = def_state["grip"] = None
-                att_state["submission_stage"] = def_state["submission_stage"] = 0
-                grappling_pos = "standing_neutral"
+                grappling_pos = set_pair_position(
+                    pair_position, "standing_neutral", attacker_id, "neutral", defender_id, actors, positions_map
+                )
                 range_band = "punch" if punch_only_ruleset else "kick"
 
         allowed_grips_cfg = clinch_rules.get("allowed_grips", "all")
@@ -1361,15 +1456,17 @@ def simulate_fight_v2(
             if att_state.get("posture_mode") == "standing" and (
                 att_state.get("grip") is not None or def_state.get("grip") is not None or grappling_pos != "standing_neutral"
             ):
-                att_state["grappling_position"] = def_state["grappling_position"] = "standing_neutral"
-                att_state["grip"] = def_state["grip"] = None
-                grappling_pos = "standing_neutral"
+                grappling_pos = set_pair_position(
+                    pair_position, "standing_neutral", attacker_id, "neutral", defender_id, actors, positions_map
+                )
                 range_band = "punch"
                 clinch_exchanges = 0
         elif grappling_pos != "standing_neutral" and att_state.get("posture_mode") == "standing":
             clinch_exchanges += 1
         else:
             clinch_exchanges = 0
+
+        accrue_control_time(pair_position, actors, exchange_frames / float(FPS), positions_data)
 
         # Update fight_momentum and combo_state (§7.1, §7.5)
         for fid in canonical_ids:
@@ -1424,6 +1521,7 @@ def simulate_fight_v2(
             att_state,
             tech_v2_map,
             slot_goal=str(active_plan.get("goal", "head_damage")),
+            home_range=str(active_plan.get("home_range", "punch")),
         )
         slot_switched_to, slot_switch_reason = evaluate_slot_switch(
             attacker_id,
@@ -1468,6 +1566,7 @@ def simulate_fight_v2(
             "damage": dmg_info,
             "counter_followup": counter_followup_event,
             "grappling_position": grappling_pos,
+            "grappling": grappling_rec,
             "forced_stance_switch": forced_stance_switch,
             "slot_switched_to": slot_switched_to,
             "slot_switch_reason": slot_switch_reason,
@@ -1511,6 +1610,8 @@ def simulate_fight_v2(
         "vertical_mode": vertical_mode,
         "range": range_band,
         "lead_foot_matchup": final_lead,
+        "pair_position": copy.deepcopy(pair_position),
+        "submission": last_sub_rec,
         "actors": actors,
     }
 

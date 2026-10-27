@@ -267,14 +267,25 @@ def update_slot_stalls(
     att_state: dict[str, Any],
     tech_v2_map: dict[str, dict[str, Any]],
     slot_goal: str = "head_damage",
+    home_range: str = "punch",
 ) -> None:
     """Update att_state['slot_stalls'] after an exchange according to the active slot's abandon_condition (§7.16)."""
     tk = tech_v2_map.get(tid, {}).get("kind", "punch")
-    is_non_reset_move = tk in (KIND_MOVEMENT, KIND_FEINT) and slot_goal != "reset_to_home_range"
+    is_closing_to_clinch = (
+        tid in (TECH_STEP, TECH_CUT_OFF_STEP)
+        and home_range in ("clinch", "ground")
+        and range_band not in ("clinch", "ground")
+    )
+    is_non_reset_move = (
+        tk in (KIND_MOVEMENT, KIND_FEINT)
+        and slot_goal != "reset_to_home_range"
+        and not is_closing_to_clinch
+    )
     landed = (
         outcome in ("partial", "clean", "flush", "counter_hit")
         and not counter_triggered
         and not is_non_reset_move
+        and not is_closing_to_clinch
     )
     failed = (
         outcome in ("miss", "evaded", "blocked", "checked", "caught", "jammed")
@@ -311,6 +322,15 @@ def update_slot_stalls(
             att_state["slot_stalls"] = 0
 
 
+def _plan_has_ground_kit(plan: dict[str, Any], tech_v2_map: dict[str, dict[str, Any]]) -> bool:
+    if plan.get("goal") in ("submission_finish", "takedown_top_control"):
+        return True
+    return any(
+        "ground" in tech_v2_map.get(tid, {}).get("required_range", []) and tid != TECH_STAND_UP
+        for tid in plan.get("full_pool", plan.get("pool", []))
+    )
+
+
 def evaluate_slot_switch(
     actor_id: str,
     opp_id: str,
@@ -332,6 +352,22 @@ def evaluate_slot_switch(
     cur_idx = int(actor_st.get("active_slot_idx", 0)) % len(plans)
     cur_plan = plans[cur_idx]
     plan_by_id = {p["slot_id"]: (i, p) for i, p in enumerate(plans)}
+
+    # When on the ground, prefer slots that actually contain a trained ground kit
+    if range_band == "ground" or actor_st.get("posture_mode") == "ground":
+        if not _plan_has_ground_kit(cur_plan, tech_v2_map):
+            for idx, p in enumerate(plans):
+                if _plan_has_ground_kit(p, tech_v2_map):
+                    actor_st["active_slot_idx"] = idx
+                    actor_st["active_slot_id"] = p["slot_id"]
+                    actor_st["slot_stalls"] = 0
+                    actor_st["slot_exchanges"] = 0
+                    actor_st["slot_switches"] = int(actor_st.get("slot_switches", 0)) + 1
+                    return str(p["slot_id"]), "ground_entered"
+        elif not any(
+            _plan_has_ground_kit(p, tech_v2_map) and p["slot_id"] != cur_plan["slot_id"] for p in plans
+        ):
+            return None, None
 
     thresh = model_cfg.get("slot_triggers", {}).get("thresholds", {})
     min_preempt = int(thresh.get("min_exchanges_before_preempt", 2))
@@ -582,9 +618,25 @@ def build_candidate_pool_v2(
     cur_grip = att_state.get("grip")
     checked_kicks = int(att_state.get("kick_checks_suffered", 0)) >= 2
 
+    if att_state.get("grappling_position") == "standing_knockdown" and TECH_STAND_UP in full_pool:
+        return [TECH_STAND_UP]
+
     if range_band == "ground":
-        is_top = cur_grip == "top"
-        ground_cands: list[str] = []
+        cur_pos = str(att_state.get("grappling_position", "closed_guard"))
+        if cur_pos == "closed_guard_bottom":
+            cur_pos = "closed_guard"
+        elif cur_pos == "half_guard_top":
+            cur_pos = "half_guard"
+        elif cur_pos == "mount_or_back_ride":
+            cur_pos = "mount"
+        cur_role = str(
+            att_state.get("role")
+            or ("top" if cur_grip == "top" else ("bottom" if cur_grip == "bottom" else "neutral"))
+        )
+        is_top = cur_role == "top" or cur_grip == "top"
+
+        exact_cands: list[str] = []
+        role_cands: list[str] = []
         for tid in full_pool:
             t = tech_v2_map.get(tid, {})
             if t.get("usage") not in ("attack", "both", "movement") or t.get("kind") == KIND_DEFENSE:
@@ -598,19 +650,41 @@ def build_candidate_pool_v2(
                 role_tag = ":top" if is_top else ":bottom"
                 if not any(role_tag in str(p) or ":" not in str(p) for p in req_pos):
                     continue
-            if not is_top and goal != "submission_finish" and t.get("kind") not in (KIND_ESCAPE, "control"):
-                continue
-            ground_cands.append(tid)
+                matched_exact = False
+                for p in req_pos:
+                    p_clean = str(p).split(" ")[0]
+                    req_p, req_r = p_clean.split(":", 1) if ":" in p_clean else (p_clean, None)
+                    if (req_p in (cur_pos, "any_ground")) and (req_r in (None, cur_role) or cur_role == "neutral"):
+                        matched_exact = True
+                        break
+                if matched_exact:
+                    exact_cands.append(tid)
+                role_cands.append(tid)
+            else:
+                exact_cands.append(tid)
+                role_cands.append(tid)
+
+        ground_cands = exact_cands if exact_cands else role_cands
         if not is_top and goal == "submission_finish":
             sub_cands = [
                 tid
                 for tid in ground_cands
                 if tech_v2_map.get(tid, {}).get("kind") == "submission"
-                or (tech_v2_map.get(tid, {}).get("kind") == "control" and tid not in basic_core and float(tech_v2_map.get(tid, {}).get("base_damage", 0.0)) > 0.0)
+                or (
+                    tech_v2_map.get(tid, {}).get("kind") == "control"
+                    and tid not in basic_core
+                    and float(tech_v2_map.get(tid, {}).get("base_damage", 0.0)) > 0.0
+                )
             ]
             if sub_cands:
                 return sorted(set(sub_cands))
+            non_basic_esc = [tid for tid in ground_cands if tid not in basic_core]
+            if non_basic_esc:
+                return sorted(set(non_basic_esc))
         elif not is_top:
+            ground_cands = [
+                tid for tid in ground_cands if tech_v2_map.get(tid, {}).get("kind") in (KIND_ESCAPE, "control")
+            ] or ground_cands
             non_basic_esc = [tid for tid in ground_cands if tid not in basic_core]
             if non_basic_esc:
                 return sorted(set(non_basic_esc))
