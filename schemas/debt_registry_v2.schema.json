@@ -1,0 +1,73 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "BLOCK debt registry v2 overlay",
+ "type": "object",
+ "required": [
+  "version",
+  "base_registry",
+  "merge_rule",
+  "debts"
+ ],
+ "additionalProperties": false,
+ "properties": {
+  "version": {
+   "const": "block-2"
+  },
+  "base_registry": {
+   "const": "data/debt_registry.json"
+  },
+  "merge_rule": {
+   "type": "string",
+   "minLength": 1
+  },
+  "opening_to_techniques": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "minLength": 1
+    }
+   }
+  },
+  "debts": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "debt_id",
+     "add_technique_ids"
+    ],
+    "properties": {
+     "debt_id": {
+      "type": "string",
+      "minLength": 1
+     },
+     "opening": {
+      "type": "string",
+      "minLength": 1
+     },
+     "required_range": {
+      "type": "string",
+      "minLength": 1
+     },
+     "current_technique_ids": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "minLength": 1
+      }
+     },
+     "add_technique_ids": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "minLength": 1
+      }
+     }
+    },
+    "additionalProperties": false
+   }
+  }
+ }
+}

@@ -47,9 +47,7 @@ def compute_card_derived_damage(
     model_cfg = load_model_v2(k.root)
     d_cfg = model_cfg.get("damage", {})
     dc = model_cfg.get("legacy", {}).get("damage_config", {})
-    move_fallback = model_cfg.get("legacy", {}).get("move_stats", {}).get(
-        "fallback", {"base": 1.0, "type": "impact", "lane": "head_straight"}
-    )
+    move_fallback = {"base": 1.0, "type": "impact", "lane": "head_straight"}
 
     stats = MOVE_BASE_STATS.get(tid, move_fallback)
     base = float(stats["base"])
@@ -78,7 +76,10 @@ def compute_card_derived_damage(
     def_opt = dims.get("defense")
     tie_opt = dims.get("tie")
 
-    tech = k.techniques.get(tid, {})
+    tech = k.techniques.get(tid)
+    if tech is None:
+        t_v2 = getattr(k, "techniques_v2", {}).get(tid, {})
+        tech = t_v2 if t_v2.get("status") != "existing" else {}
     target_region = str(tech.get("target_region", "head"))
     split_kick = dc.get("karate_split_kick", {})
     if tid == dc.get("single_leg_id"):
@@ -293,10 +294,8 @@ def simulate_fight_v2(
     init_mentality_map = leg.get("initiative", {}).get("mentality_term", {})
     kd_tiers = leg.get("kick_defense_bonus_tiers", {}).get("tiers", [])
     control_ids = set(leg.get("damage_routing", {}).get("control_ids", []))
-    move_fallback = leg.get("move_stats", {}).get(
-        "fallback",
-        {"base": 1.0, "type": "impact", "setup_f": 4, "exec_f": 8, "hold_f": 2, "rec_f": 8, "lane": "head_straight"},
-    )
+    move_fallback = {"base": 1.0, "type": "impact", "setup_f": 4, "exec_f": 8, "hold_f": 2, "rec_f": 8, "lane": "head_straight"}
+    nonlane_default = float(model_cfg.get("readiness", {}).get("nonlane_readiness_default", 3.0))
 
     fatigue_by_tempo = tempo_cfg.get("fatigue_by_tempo", {"1": 0.22, "2": 0.28, "3": 0.34, "4": 0.39, "5": 0.44})
     tech_v2_map = load_techniques_v2(k.root)
@@ -577,22 +576,25 @@ def simulate_fight_v2(
             if m != excl_from_seq and not (att_state["kick_checks_suffered"] >= 2 and m in checked_kicks_filter)
         ] or seq
 
-        range_matching_seq = [
-            m
-            for m in filtered_seq
-            if m in k.techniques
-            and (
-                (range_band in k.techniques[m]["required_range"] and not (range_band == "kick" and m in kick_blocked_shots))
-                or (
-                    range_band == "punch"
-                    and (
-                        "close" in k.techniques[m]["required_range"]
-                        or m in punch_range_kicks
-                        or (att_dims.get("tie") in punch_clinch_ties and m in punch_clinch_moves)
-                    )
+        range_matching_seq = []
+        for m in filtered_seq:
+            m_info = k.techniques.get(m)
+            if m_info is None:
+                t_v2 = tech_v2_map.get(m)
+                if t_v2 and t_v2.get("status") != "existing":
+                    m_info = t_v2
+            if m_info is None:
+                continue
+            req_rng = m_info["required_range"]
+            if (range_band in req_rng and not (range_band == "kick" and m in kick_blocked_shots)) or (
+                range_band == "punch"
+                and (
+                    "close" in req_rng
+                    or m in punch_range_kicks
+                    or (att_dims.get("tie") in punch_clinch_ties and m in punch_clinch_moves)
                 )
-            )
-        ]
+            ):
+                range_matching_seq.append(m)
         active_seq = range_matching_seq or filtered_seq
 
         cursor = int(att_state["slot_Cursor"])
@@ -664,7 +666,7 @@ def simulate_fight_v2(
 
         m_stats = MOVE_BASE_STATS.get(tid, move_fallback)
         attack_lane = str(m_stats.get("lane", "head_straight"))
-        lane_readiness = float(def_readiness.get(attack_lane, 3.0))
+        lane_readiness = float(def_readiness.get(attack_lane, nonlane_default))
 
         # 4. Calculate Contested Hit Probability
         base_att_skill = base_att_skill_const + sum(

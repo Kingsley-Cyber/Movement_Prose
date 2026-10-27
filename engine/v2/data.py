@@ -105,12 +105,40 @@ def get_attack_profile(
     return opt_behaviors[option_id].get("attack_profile", {})
 
 
+def build_move_base_stats(root: Path = ROOT) -> dict[str, dict[str, Any]]:
+    """Build MOVE_BASE_STATS from data/techniques_v2.json and model.readiness.nonlane_lane_map."""
+    model = load_model_v2(root)
+    nonlane = model.get("readiness", {}).get("nonlane_lane_map", {})
+    techs = load_techniques_v2(root)
+    out: dict[str, dict[str, Any]] = {}
+    for tid, t in techs.items():
+        fc = t.get("frame_costs", {})
+        raw_lane = str(t.get("attack_lane", "head_straight"))
+        if raw_lane in nonlane:
+            mapped = nonlane[raw_lane]
+            lane = str(mapped) if mapped is not None else raw_lane
+        else:
+            lane = raw_lane
+        entry: dict[str, Any] = {
+            "base": float(t.get("base_damage", 0.0)),
+            "type": str(t.get("damage_type", "impact")),
+            "setup_f": int(fc.get("setup_frames", 4)),
+            "exec_f": int(fc.get("execution_frames", 8)),
+            "hold_f": int(fc.get("contact_hold_frames", 2)),
+            "rec_f": int(fc.get("recovery_frames", 8)),
+            "lane": lane,
+        }
+        vert_min = t.get("vertical_min", "grounded")
+        if vert_min and vert_min != "grounded":
+            entry["vertical"] = str(vert_min)
+        out[tid] = entry
+    return out
+
+
 _MODEL_INIT = load_model_v2(ROOT)
 FPS: int = int(_MODEL_INIT.get("fps", 24))
 LANES: tuple[str, ...] = tuple(_MODEL_INIT.get("lanes", ()))
-MOVE_BASE_STATS: dict[str, dict[str, Any]] = dict(
-    _MODEL_INIT.get("legacy", {}).get("move_stats", {}).get("table", {})
-)
+MOVE_BASE_STATS: dict[str, dict[str, Any]] = build_move_base_stats(ROOT)
 LANDING_QUALITY_MULT: dict[str, float] = {
     k: float(v) for k, v in _MODEL_INIT.get("landing_multipliers", {}).items()
 }

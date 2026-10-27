@@ -45,6 +45,16 @@ class Knowledge:
         self.sources = self.keyed(read(self.root / "data/sources.json")["sources"])
         self.claims = self.keyed(read(self.root / "data/claims.json")["claims"])
         self.pipeline = read(self.root / "data/pipeline.json")
+        t_v2_path = self.root / "data/techniques_v2.json"
+        self.techniques_v2 = self.keyed(read(t_v2_path)["techniques"]) if t_v2_path.exists() else {}
+        c_v2_path = self.root / "data/capabilities_v2.json"
+        self.capabilities_v2 = read(c_v2_path).get("capabilities", {}) if c_v2_path.exists() else {}
+        ob_path = self.root / "data/option_behaviors.json"
+        self.option_supported_by_v2 = (
+            {o["id"]: set(o.get("supported_by_v2", [])) for o in read(ob_path).get("options", [])}
+            if ob_path.exists()
+            else {}
+        )
 
     @staticmethod
     def keyed(records):
@@ -90,13 +100,16 @@ class Knowledge:
             raise ValueError("slot count differs from synchronized bundles")
         if len({s["id"] for s in card["synchronized_capabilities"]}) != card["slot_count"]:
             raise ValueError("duplicate synchronized slot")
+        is_v2 = card.get("version") == "block-2"
+        tech_table = self.techniques_v2 if (is_v2 and self.techniques_v2) else self.techniques
+        known_caps = set(self.capabilities_v2) if (is_v2 and self.capabilities_v2) else KNOWN_CAPABILITIES
         for s in card["synchronized_capabilities"]:
             caps = s.get("capabilities") or []
             if len(caps) != len(set(caps)):
                 raise ValueError("duplicate capability within synchronized slot: " + s["id"])
-            if any(c not in KNOWN_CAPABILITIES for c in caps):
+            if any(c not in known_caps for c in caps):
                 raise ValueError("unknown capability in synchronized slot: " + s["id"])
-            if card.get("version") == "block-2" and len(caps) > 2:
+            if is_v2 and len(caps) > 2:
                 raise ValueError("block-2 slot budget exceeded (max 2 schools per slot): " + s["id"])
         if len(admitted_slots(card, self)) != card["slot_count"]:
             raise ValueError("duplicate synchronized capability bundle")
@@ -104,9 +117,9 @@ class Knowledge:
         if card["slot_label"] != labels[card["slot_count"]]:
             raise ValueError("invalid slot label")
         for tid in card["active_techniques"]:
-            if tid not in self.techniques:
+            if tid not in tech_table:
                 raise ValueError("unknown technique: " + tid)
-            if not set(self.techniques[tid]["required_capabilities"]) & training(card):
+            if not set(tech_table[tid]["required_capabilities"]) & training(card):
                 raise ValueError("technique without training: " + tid)
         for debt in card["exploitable_seams"]:
             if debt not in self.debts or self.debts[debt]["option_id"] not in card["dimensions"].values():
@@ -122,6 +135,6 @@ class Knowledge:
             if not ability["gates"]:
                 raise ValueError("conditional ability requires gates")
             for tid in ability["techniques"]:
-                if tid not in self.techniques:
+                if tid not in tech_table:
                     raise ValueError("unknown conditional technique: " + tid)
         return card

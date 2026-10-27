@@ -1,0 +1,245 @@
+{
+ "version": "block-2",
+ "core_rule": "attack/movement availability = core(cap) + (grants(cap) & active_techniques) over trained capabilities; defenses = every defense granted by a trained capability; core ids not yet in data/techniques_v2.json are ignored",
+ "capabilities": {
+  "acrobatics": {
+   "description": "Anime/acrobatic movement school: cartwheel and wall-assisted kicks. Requires airborne_training and an aerial vertical mode.",
+   "core": [],
+   "modifier": false,
+   "status": "new"
+  },
+  "anti_grappling": {
+   "description": "Takedown and clinch defense: sprawl, whizzer, jam step, pummel, wall walk and get-ups.",
+   "core": [],
+   "modifier": false,
+   "status": "existing"
+  },
+  "baguazhang": {
+   "description": "Baguazhang: circle walking for angles, palm changes, piercing palms, turning throws and leg sweeps.",
+   "core": [],
+   "modifier": false,
+   "status": "new"
+  },
+  "bajiquan": {
+   "description": "Bajiquan: explosive close-range stomping punches, top elbow, iron-mountain shoulder lean.",
+   "core": [],
+   "modifier": false,
+   "status": "new"
+  },
+  "basic_movement": {
+   "description": "Everyone: footwork, feints, lean-back and step-back evasions, clinch break, stand-up.",
+   "core": [
+    "step",
+    "retreat",
+    "pivot",
+    "feint",
+    "clinch_break",
+    "stand_up",
+    "submission_escape"
+   ],
+   "modifier": false,
+   "status": "existing"
+  },
+  "bjj": {
+   "description": "Guard pulls, sweeps, passes, back takes and submissions.",
+   "core": [],
+   "modifier": false,
+   "status": "existing"
+  },
+  "boxing": {
+   "description": "Punches (jab, cross, hooks, uppercuts, body shots) and boxing defense (parry, shell, slip, roll).",
+   "core": [],
+   "modifier": false,
+   "status": "existing"
+  },
+  "cage_plum": {
+   "description": "Conditional: plum and knees against the cage/wall.",
+   "core": [],
+   "modifier": false,
+   "status": "existing"
+  },
+  "capoeira": {
+   "description": "Capoeira: ginga footwork, low evasions (esquiva, negativa), spinning and crescent kicks, sweeps (rasteira), cartwheels, headbutts.",
+   "core": [],
+   "modifier": false,
+   "status": "new",
+   "defense_prepend": {
+    "kick_high": [
+     "esquiva",
+     "negativa"
+    ],
+    "hook": [
+     "esquiva"
+    ],
+    "straight": [
+     "esquiva"
+    ],
+    "kick_body": [
+     "negativa"
+    ]
+   }
+  },
+  "catch_wrestling": {
+   "description": "Catch wrestling: shots and snap-downs, rides, cross-faces and cradles, neck cranks, double wristlocks and leg locks.",
+   "core": [],
+   "modifier": false,
+   "status": "new"
+  },
+  "clinch": {
+   "description": "Collar ties, body locks, pummeling and clinch knees.",
+   "core": [],
+   "modifier": false,
+   "status": "existing"
+  },
+  "counter_boxing": {
+   "description": "PROPOSAL (owner decision D7): counter-punching school for Darius Reed's hollow second slot: pull counter and check hook.",
+   "core": [],
+   "modifier": false,
+   "status": "proposal_owner_decision"
+  },
+  "hung_gar": {
+   "description": "Hung Gar: rooted horse stance, tiger claws, bridge-arm smashes, no-shadow kick, heavy straight and hooking punches.",
+   "core": [],
+   "modifier": false,
+   "status": "new"
+  },
+  "inside_combinations": {
+   "description": "Short inside punches: shovel hook, short uppercut.",
+   "core": [],
+   "modifier": false,
+   "status": "existing"
+  },
+  "jeet_kune_do": {
+   "description": "Jeet Kune Do: intercepting lead straight, stop kicks, finger jab, trapping into the straight blast; strong side forward.",
+   "core": [],
+   "modifier": false,
+   "status": "new"
+  },
+  "judo": {
+   "description": "Grips, trips and throws.",
+   "core": [],
+   "modifier": false,
+   "status": "existing"
+  },
+  "karate": {
+   "description": "Distance kicking (side, front, round, spinning) with straight punches.",
+   "core": [
+    "side_kick",
+    "teep",
+    "body_kick",
+    "spinning_back_kick"
+   ],
+   "modifier": false,
+   "status": "existing"
+  },
+  "kickboxing": {
+   "description": "Punches plus round kicks, teeps, checks and knees.",
+   "core": [],
+   "modifier": false,
+   "status": "existing"
+  },
+  "lethwei": {
+   "description": "Lethwei (Burmese boxing): the full Muay Thai arsenal bare-knuckle, plus headbutts and clinch throws.",
+   "core": [],
+   "modifier": false,
+   "status": "new"
+  },
+  "muay_thai": {
+   "description": "Full Muay Thai school: shin kicks, teeps, straight and clinch knees, elbows, plum, check, catch-and-dump.",
+   "core": [],
+   "modifier": false,
+   "status": "new"
+  },
+  "pressure_footwork": {
+   "description": "Modifier: cut-off steps that trap an opponent against the wall. Only alongside a striking school.",
+   "core": [],
+   "modifier": true,
+   "status": "existing"
+  },
+  "sanda": {
+   "description": "Kicks, kick catches and catch-sweeps, foot sweeps.",
+   "core": [],
+   "modifier": false,
+   "status": "existing"
+  },
+  "shield": {
+   "description": "Shield frame defense and the counter hook off it.",
+   "core": [],
+   "modifier": false,
+   "status": "existing"
+  },
+  "shuai_jiao": {
+   "description": "Shuai Jiao (Chinese wrestling): quick-grip throws, kick-trips, leg catches; throws and stays standing.",
+   "core": [],
+   "modifier": false,
+   "status": "new"
+  },
+  "switch_step": {
+   "description": "Modifier: switching stance mid-exchange. Only alongside a school.",
+   "core": [],
+   "modifier": true,
+   "status": "existing"
+  },
+  "taekwondo": {
+   "description": "Taekwondo: fast instep round kicks, cut kicks, spinning and jumping kicks, bouncing footwork; hands low, body punches.",
+   "core": [],
+   "modifier": false,
+   "status": "new"
+  },
+  "tai_chi": {
+   "description": "Tai Chi (push hands): redirect and neutralize, then issue power (fa jin) to uproot; palm strikes and deflect-parry-punch.",
+   "core": [],
+   "modifier": false,
+   "status": "new",
+   "defense_prepend": {
+    "straight": [
+     "push_hands_redirect"
+    ],
+    "hook": [
+     "push_hands_redirect"
+    ],
+    "body_punch": [
+     "push_hands_redirect"
+    ],
+    "clinch_entry": [
+     "push_hands_redirect"
+    ]
+   }
+  },
+  "untrained_striking": {
+   "description": "Untrained power: wild hooks, haymakers, straights, shoves, headbutts (street).",
+   "core": [],
+   "modifier": false,
+   "status": "existing"
+  },
+  "wall_boxing": {
+   "description": "Wall ties and punches while pinning an opponent to the wall.",
+   "core": [],
+   "modifier": false,
+   "status": "existing"
+  },
+  "wing_chun": {
+   "description": "Wing Chun: centerline chain punches, hand traps (pak sao, lap sao), deflections (tan sao, bong sao), low stop kicks, elbows.",
+   "core": [],
+   "modifier": false,
+   "status": "new",
+   "defense_prepend": {
+    "straight": [
+     "tan_sao"
+    ],
+    "hook": [
+     "bong_sao"
+    ],
+    "body_punch": [
+     "bong_sao"
+    ]
+   }
+  },
+  "wrestling": {
+   "description": "Shots, trips, rides, ground control and escapes.",
+   "core": [],
+   "modifier": false,
+   "status": "existing"
+  }
+ }
+}

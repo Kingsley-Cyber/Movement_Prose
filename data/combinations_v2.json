@@ -1,0 +1,1024 @@
+{
+ "version": "block-2",
+ "combinations": [
+  {
+   "id": "boxing_1_2",
+   "chain": [
+    "jab",
+    "cross"
+   ],
+   "school": "boxing",
+   "follow_up_accuracy_bonus": 0.06,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "boxing_1_2_3",
+   "chain": [
+    "jab",
+    "cross",
+    "hook"
+   ],
+   "school": "boxing",
+   "follow_up_accuracy_bonus": 0.06,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "boxing_body_head",
+   "chain": [
+    "body_jab",
+    "overhand"
+   ],
+   "school": "boxing",
+   "follow_up_accuracy_bonus": 0.08,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "boxing_hook_body_head",
+   "chain": [
+    "body_hook",
+    "hook"
+   ],
+   "school": "boxing",
+   "follow_up_accuracy_bonus": 0.07,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "boxing_uppercut_hook",
+   "chain": [
+    "uppercut",
+    "hook"
+   ],
+   "school": "boxing",
+   "follow_up_accuracy_bonus": 0.06,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "boxing_double_jab_cross",
+   "chain": [
+    "jab",
+    "jab",
+    "cross"
+   ],
+   "school": "boxing",
+   "follow_up_accuracy_bonus": 0.05,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "inside_shovel_upper",
+   "chain": [
+    "shovel_hook",
+    "short_uppercut"
+   ],
+   "school": "inside_combinations",
+   "follow_up_accuracy_bonus": 0.08,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "pressure_cut_body",
+   "chain": [
+    "cut_off_step",
+    "rear_body_hook"
+   ],
+   "school": "pressure_footwork",
+   "follow_up_accuracy_bonus": 0.06,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "dutch_finish_low",
+   "chain": [
+    "jab",
+    "cross",
+    "hook",
+    "low_kick"
+   ],
+   "school": "kickboxing",
+   "follow_up_accuracy_bonus": 0.08,
+   "setup_frames_saved": 3,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "dutch_body_low",
+   "chain": [
+    "body_hook",
+    "low_kick"
+   ],
+   "school": "kickboxing",
+   "follow_up_accuracy_bonus": 0.07,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "kickboxing_cross_head_kick",
+   "chain": [
+    "cross",
+    "head_kick"
+   ],
+   "school": "kickboxing",
+   "follow_up_accuracy_bonus": 0.06,
+   "setup_frames_saved": 3,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "kb_calf_cross",
+   "chain": [
+    "calf_kick",
+    "cross"
+   ],
+   "school": "kickboxing",
+   "follow_up_accuracy_bonus": 0.05,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "thai_teep_body_kick",
+   "chain": [
+    "teep",
+    "body_kick"
+   ],
+   "school": "muay_thai",
+   "follow_up_accuracy_bonus": 0.06,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "thai_check_return",
+   "chain": [
+    "check",
+    "body_kick"
+   ],
+   "school": "muay_thai",
+   "follow_up_accuracy_bonus": 0.1,
+   "setup_frames_saved": 2,
+   "trigger_on": "defended",
+   "requires_previous_outcome": [
+    "evaded",
+    "blocked",
+    "checked",
+    "caught",
+    "jammed"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "thai_plum_knees",
+   "chain": [
+    "double_collar_tie",
+    "knee_head_clinch"
+   ],
+   "school": "muay_thai",
+   "follow_up_accuracy_bonus": 0.08,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "thai_elbow_knee",
+   "chain": [
+    "horizontal_elbow",
+    "knee_body"
+   ],
+   "school": "muay_thai",
+   "follow_up_accuracy_bonus": 0.07,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "thai_cross_switch_kick",
+   "chain": [
+    "cross",
+    "switch_kick"
+   ],
+   "school": "muay_thai",
+   "follow_up_accuracy_bonus": 0.06,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "karate_feint_side_kick",
+   "chain": [
+    "feint",
+    "side_kick"
+   ],
+   "school": "karate",
+   "follow_up_accuracy_bonus": 0.08,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "karate_body_then_head",
+   "chain": [
+    "body_kick",
+    "question_mark_kick"
+   ],
+   "school": "karate",
+   "follow_up_accuracy_bonus": 0.08,
+   "setup_frames_saved": 3,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "karate_front_kick_cross",
+   "chain": [
+    "front_kick",
+    "cross"
+   ],
+   "school": "karate",
+   "follow_up_accuracy_bonus": 0.05,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "sanda_catch_sweep",
+   "chain": [
+    "kick_catch",
+    "sanda_sweep"
+   ],
+   "school": "sanda",
+   "follow_up_accuracy_bonus": 0.1,
+   "setup_frames_saved": 2,
+   "trigger_on": "defended",
+   "requires_previous_outcome": [
+    "evaded",
+    "blocked",
+    "checked",
+    "caught",
+    "jammed"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "sanda_side_kick_cross",
+   "chain": [
+    "side_kick",
+    "cross"
+   ],
+   "school": "sanda",
+   "follow_up_accuracy_bonus": 0.05,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "wrestling_jab_level_change",
+   "chain": [
+    "jab",
+    "double_leg"
+   ],
+   "school": "wrestling",
+   "follow_up_accuracy_bonus": 0.08,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "wrestling_snap_go_behind",
+   "chain": [
+    "snap_down",
+    "take_back"
+   ],
+   "school": "wrestling",
+   "follow_up_accuracy_bonus": 0.08,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "wrestling_single_to_pick",
+   "chain": [
+    "single_leg",
+    "ankle_pick"
+   ],
+   "school": "wrestling",
+   "follow_up_accuracy_bonus": 0.06,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "judo_lock_trip",
+   "chain": [
+    "body_lock",
+    "outside_trip"
+   ],
+   "school": "judo",
+   "follow_up_accuracy_bonus": 0.08,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "judo_underhook_throw",
+   "chain": [
+    "underhook",
+    "hip_throw"
+   ],
+   "school": "judo",
+   "follow_up_accuracy_bonus": 0.08,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "bjj_tie_pull",
+   "chain": [
+    "collar_tie",
+    "guard_pull"
+   ],
+   "school": "bjj",
+   "follow_up_accuracy_bonus": 0.06,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "bjj_sweep_mount_armbar",
+   "chain": [
+    "guard_sweep",
+    "armbar"
+   ],
+   "school": "bjj",
+   "follow_up_accuracy_bonus": 0.08,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "bjj_pass_mount_choke",
+   "chain": [
+    "pass_guard",
+    "advance_to_mount"
+   ],
+   "school": "bjj",
+   "follow_up_accuracy_bonus": 0.06,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "wall_tie_punch",
+   "chain": [
+    "wall_tie",
+    "wall_punch"
+   ],
+   "school": "wall_boxing",
+   "follow_up_accuracy_bonus": 0.07,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "shield_redirect_counter",
+   "chain": [
+    "shield_frame",
+    "shield_counter_hook"
+   ],
+   "school": "shield",
+   "follow_up_accuracy_bonus": 0.1,
+   "setup_frames_saved": 2,
+   "trigger_on": "defended",
+   "requires_previous_outcome": [
+    "evaded",
+    "blocked",
+    "checked",
+    "caught",
+    "jammed"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "counter_parry_shoot",
+   "chain": [
+    "parry",
+    "cross"
+   ],
+   "school": "boxing",
+   "follow_up_accuracy_bonus": 0.08,
+   "setup_frames_saved": 2,
+   "trigger_on": "defended",
+   "requires_previous_outcome": [
+    "evaded",
+    "blocked",
+    "checked",
+    "caught",
+    "jammed"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "brawler_straight_hook",
+   "chain": [
+    "brawler_straight",
+    "wild_hook"
+   ],
+   "school": "untrained_striking",
+   "follow_up_accuracy_bonus": 0.03,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "brawler_shove_haymaker",
+   "chain": [
+    "shove",
+    "haymaker"
+   ],
+   "school": "untrained_striking",
+   "follow_up_accuracy_bonus": 0.05,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "tkd_cut_round",
+   "chain": [
+    "cut_kick",
+    "fast_roundhouse"
+   ],
+   "school": "taekwondo",
+   "follow_up_accuracy_bonus": 0.07,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "tkd_round_to_head",
+   "chain": [
+    "fast_roundhouse",
+    "instep_head_kick"
+   ],
+   "school": "taekwondo",
+   "follow_up_accuracy_bonus": 0.06,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "tkd_bounce_double",
+   "chain": [
+    "bounce_step",
+    "double_roundhouse"
+   ],
+   "school": "taekwondo",
+   "follow_up_accuracy_bonus": 0.05,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "capoeira_esquiva_rasteira",
+   "chain": [
+    "esquiva",
+    "rasteira"
+   ],
+   "school": "capoeira",
+   "follow_up_accuracy_bonus": 0.1,
+   "setup_frames_saved": 2,
+   "trigger_on": "defended",
+   "requires_previous_outcome": [
+    "evaded",
+    "blocked",
+    "checked",
+    "caught",
+    "jammed"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "capoeira_negativa_rasteira",
+   "chain": [
+    "negativa",
+    "rasteira"
+   ],
+   "school": "capoeira",
+   "follow_up_accuracy_bonus": 0.1,
+   "setup_frames_saved": 2,
+   "trigger_on": "defended",
+   "requires_previous_outcome": [
+    "evaded",
+    "blocked",
+    "checked",
+    "caught",
+    "jammed"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "capoeira_ginga_armada",
+   "chain": [
+    "ginga",
+    "armada"
+   ],
+   "school": "capoeira",
+   "follow_up_accuracy_bonus": 0.06,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "capoeira_queixada_compasso",
+   "chain": [
+    "queixada",
+    "meia_lua_de_compasso"
+   ],
+   "school": "capoeira",
+   "follow_up_accuracy_bonus": 0.06,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "catch_crossface_crank",
+   "chain": [
+    "cross_face",
+    "neck_crank"
+   ],
+   "school": "catch_wrestling",
+   "follow_up_accuracy_bonus": 0.08,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "catch_entry_heel_hook",
+   "chain": [
+    "leg_entry",
+    "heel_hook"
+   ],
+   "school": "catch_wrestling",
+   "follow_up_accuracy_bonus": 0.08,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "catch_snap_crank",
+   "chain": [
+    "snap_down",
+    "neck_crank"
+   ],
+   "school": "catch_wrestling",
+   "follow_up_accuracy_bonus": 0.07,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "lethwei_cross_headbutt",
+   "chain": [
+    "cross",
+    "lunging_headbutt"
+   ],
+   "school": "lethwei",
+   "follow_up_accuracy_bonus": 0.06,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "lethwei_headbutt_knee",
+   "chain": [
+    "clinch_headbutt",
+    "knee_head_clinch"
+   ],
+   "school": "lethwei",
+   "follow_up_accuracy_bonus": 0.07,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "wing_chun_pak_chain",
+   "chain": [
+    "pak_sao",
+    "chain_punch"
+   ],
+   "school": "wing_chun",
+   "follow_up_accuracy_bonus": 0.1,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "wing_chun_lap_chain",
+   "chain": [
+    "lap_sao",
+    "chain_punch"
+   ],
+   "school": "wing_chun",
+   "follow_up_accuracy_bonus": 0.1,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "hung_gar_bridge_claw",
+   "chain": [
+    "bridge_smash",
+    "tiger_claw"
+   ],
+   "school": "hung_gar",
+   "follow_up_accuracy_bonus": 0.08,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "baji_stomp_elbow",
+   "chain": [
+    "stomp_thrust_punch",
+    "top_elbow"
+   ],
+   "school": "bajiquan",
+   "follow_up_accuracy_bonus": 0.07,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "baji_elbow_lean",
+   "chain": [
+    "top_elbow",
+    "iron_mountain_lean"
+   ],
+   "school": "bajiquan",
+   "follow_up_accuracy_bonus": 0.08,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "bagua_circle_palm",
+   "chain": [
+    "circle_walk",
+    "single_palm_change"
+   ],
+   "school": "baguazhang",
+   "follow_up_accuracy_bonus": 0.07,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "bagua_palm_throw",
+   "chain": [
+    "single_palm_change",
+    "turning_throw"
+   ],
+   "school": "baguazhang",
+   "follow_up_accuracy_bonus": 0.07,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "tai_chi_redirect_palm",
+   "chain": [
+    "push_hands_redirect",
+    "brush_knee_palm"
+   ],
+   "school": "tai_chi",
+   "follow_up_accuracy_bonus": 0.1,
+   "setup_frames_saved": 2,
+   "trigger_on": "defended",
+   "requires_previous_outcome": [
+    "evaded",
+    "blocked",
+    "checked",
+    "caught",
+    "jammed"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "tai_chi_redirect_push",
+   "chain": [
+    "push_hands_redirect",
+    "fa_jin_push"
+   ],
+   "school": "tai_chi",
+   "follow_up_accuracy_bonus": 0.1,
+   "setup_frames_saved": 2,
+   "trigger_on": "defended",
+   "requires_previous_outcome": [
+    "evaded",
+    "blocked",
+    "checked",
+    "caught",
+    "jammed"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "shuai_catch_dump",
+   "chain": [
+    "kick_catch",
+    "caught_kick_dump"
+   ],
+   "school": "shuai_jiao",
+   "follow_up_accuracy_bonus": 0.1,
+   "setup_frames_saved": 2,
+   "trigger_on": "defended",
+   "requires_previous_outcome": [
+    "evaded",
+    "blocked",
+    "checked",
+    "caught",
+    "jammed"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "shuai_trip_throw",
+   "chain": [
+    "kick_into_throw",
+    "quick_grip_throw"
+   ],
+   "school": "shuai_jiao",
+   "follow_up_accuracy_bonus": 0.07,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "jkd_intercept_stop_kick",
+   "chain": [
+    "lead_straight_intercept",
+    "oblique_kick"
+   ],
+   "school": "jeet_kune_do",
+   "follow_up_accuracy_bonus": 0.07,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "jkd_trap_blast",
+   "chain": [
+    "pak_sao",
+    "chain_punch"
+   ],
+   "school": "jeet_kune_do",
+   "follow_up_accuracy_bonus": 0.1,
+   "setup_frames_saved": 2,
+   "trigger_on": "executed",
+   "requires_previous_outcome": [
+    "any_non_failure"
+   ],
+   "same_slot_required": true
+  },
+  {
+   "id": "jkd_finger_jab_cross",
+   "chain": [
+    "finger_jab",
+    "cross"
+   ],
+   "school": "jeet_kune_do",
+   "follow_up_accuracy_bonus": 0.08,
+   "setup_frames_saved": 2,
+   "trigger_on": "landed",
+   "requires_previous_outcome": [
+    "clean",
+    "partial",
+    "blocked"
+   ],
+   "same_slot_required": true
+  }
+ ]
+}

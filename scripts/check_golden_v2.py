@@ -72,6 +72,9 @@ def _normalize_p1b(fight: dict) -> dict:
         if ex.get("technique_id") in ("step", "retreat", "pivot", "switch_step", "escape", "feint"):
             if ex.get("damage_type") in ("movement", "feint"):
                 ex["damage_type"] = "none"
+            dmg = ex.get("damage")
+            if isinstance(dmg, dict) and dmg.get("damage_type") in ("movement", "feint"):
+                dmg["damage_type"] = "none"
     return out
 
 
@@ -218,14 +221,14 @@ def check_golden(normalize_p1b: bool = False) -> int:
     return 0
 
 
-def write_baseline() -> None:
-    BASELINE_DIR.mkdir(parents=True, exist_ok=True)
+def write_baseline(out_dir: Path = BASELINE_DIR, title_tag: str = "P0 Baseline Report (`0d0734d`)") -> None:
+    out_dir.mkdir(parents=True, exist_ok=True)
     k = Knowledge()
     arch_ids = sorted(a["fighter_id"] for a in list_archetypes_v2(k))
     cards = {fid: load_card_v2(k, fid) for fid in arch_ids}
 
     t0 = time.time()
-    print("Running 200-seed round-robin balance audit and win-method count across all 66 pairs...")
+    print(f"Running 200-seed round-robin balance audit and win-method count across all 66 pairs -> {out_dir} ...")
     audit = audit_round_robin_balance_v2(
         runs_per_pair=200,
         ruleset="mma",
@@ -299,15 +302,15 @@ def write_baseline() -> None:
         "donnell_vs_karate_win_pct_by_arena_60_seeds": arena_donnell_rates,
     }
 
-    (BASELINE_DIR / "balance_audit_200.json").write_text(json.dumps(audit, indent=2) + "\n", encoding="utf-8")
-    (BASELINE_DIR / "diagnostics.json").write_text(json.dumps(diagnostics, indent=2) + "\n", encoding="utf-8")
+    (out_dir / "balance_audit_200.json").write_text(json.dumps(audit, indent=2) + "\n", encoding="utf-8")
+    (out_dir / "diagnostics.json").write_text(json.dumps(diagnostics, indent=2) + "\n", encoding="utf-8")
 
     # Write a concise markdown summary
     rates_md = "\n".join(
         f"| `{fid}` | {rate * 100:.1f}% | {openings_by_fighter[fid]} / 60 |"
         for fid, rate in sorted(audit["archetype_overall_win_rates"].items(), key=lambda kv: -kv[1])
     )
-    summary_md = f"""# BLOCK Simulator v2 — P0 Baseline Report (`0d0734d`)
+    summary_md = f"""# BLOCK Simulator v2 — {title_tag}
 
 - **Total Round-Robin Fights (200 seeds × 66 pairs):** `{total_fights}`
 - **Order Invariance Verified:** `{audit["order_invariance_verified"]}`
@@ -323,8 +326,8 @@ def write_baseline() -> None:
 |---|---|---|
 {rates_md}
 """
-    (BASELINE_DIR / "summary.md").write_text(summary_md, encoding="utf-8")
-    print(f"Wrote baseline audit & diagnostics to {BASELINE_DIR} in {diagnostics['elapsed_s']}s.")
+    (out_dir / "summary.md").write_text(summary_md, encoding="utf-8")
+    print(f"Wrote balance audit & diagnostics to {out_dir} in {diagnostics['elapsed_s']}s.")
 
 
 def main() -> int:
@@ -333,12 +336,16 @@ def main() -> int:
     parser.add_argument("--check-golden", action="store_true")
     parser.add_argument("--normalize-p1b-labels", action="store_true")
     parser.add_argument("--write-baseline", action="store_true")
+    parser.add_argument("--write-audit-dir", type=str, default=None, help="Directory to write 200-seed audit report")
+    parser.add_argument("--audit-title", type=str, default="Phase Audit Report", help="Title tag for summary.md")
     args = parser.parse_args()
 
     if args.write_golden:
         write_golden()
     if args.write_baseline:
         write_baseline()
+    if args.write_audit_dir:
+        write_baseline(out_dir=ROOT / args.write_audit_dir, title_tag=args.audit_title)
     if args.check_golden:
         return check_golden(normalize_p1b=args.normalize_p1b_labels)
     return 0

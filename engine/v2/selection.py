@@ -64,13 +64,15 @@ def build_slot_plans(
         if explicit_seq and not ("karate" in caps and kicking_opt == karate_opt_id and len(explicit_seq) <= 3):
             clean_seq = explicit_seq
         else:
+            t_lookup = {**getattr(k, "techniques_v2", {}), **k.techniques}
             slot_moves = [
                 tid
                 for tid in card["active_techniques"]
                 if tid in all_avail
                 and tid != excluded_tid
-                and k.techniques[tid]["kind"] in ("punch", "kick", "knee", "takedown", "grip", "control", "submission")
-                and (set(k.techniques[tid]["required_capabilities"]) & caps)
+                and tid in t_lookup
+                and t_lookup[tid]["kind"] in ("punch", "kick", "knee", "takedown", "grip", "control", "submission")
+                and (set(t_lookup[tid]["required_capabilities"]) & caps)
             ]
             if "karate" in caps and kicking_opt == karate_opt_id and ruleset == "mma":
                 for km in karate_mma_append:
@@ -80,7 +82,7 @@ def build_slot_plans(
                 slot_moves = [
                     tid
                     for tid in card["active_techniques"]
-                    if tid in all_avail and k.techniques[tid]["kind"] in ("punch", "kick", "takedown", "grip")
+                    if tid in all_avail and tid in t_lookup and t_lookup[tid]["kind"] in ("punch", "kick", "takedown", "grip")
                 ]
 
             ordered_seq: list[str] = []

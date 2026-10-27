@@ -1,20 +1,34 @@
 KNOWN_CAPABILITIES = {
+    "acrobatics",
     "anti_grappling",
+    "baguazhang",
+    "bajiquan",
     "basic_movement",
     "bjj",
     "boxing",
     "cage_plum",
+    "capoeira",
+    "catch_wrestling",
     "clinch",
+    "counter_boxing",
+    "hung_gar",
     "inside_combinations",
+    "jeet_kune_do",
     "judo",
     "karate",
     "kickboxing",
+    "lethwei",
+    "muay_thai",
     "pressure_footwork",
     "sanda",
     "shield",
+    "shuai_jiao",
     "switch_step",
+    "taekwondo",
+    "tai_chi",
     "untrained_striking",
     "wall_boxing",
+    "wing_chun",
     "wrestling",
 }
 
@@ -89,28 +103,37 @@ def option_supported(k, card, opt_id):
     opt = k.options[opt_id]
     dim = opt["dimension"]
     tr = training(card)
+    is_v2 = card.get("version") == "block-2"
+    tech_table = (getattr(k, "techniques_v2", None) or k.techniques) if is_v2 else k.techniques
     active = {
         tid
         for tid in card.get("active_techniques", [])
-        if tid in k.techniques and (set(k.techniques[tid]["required_capabilities"]) & tr)
+        if tid in tech_table and (set(tech_table[tid]["required_capabilities"]) & tr)
     }
     trefs = opt["technique_refs"]
+    v1_ok = False
     if dim == "tie":
         tie_trefs = [tid for tid in trefs if tid != "body_hook"]
-        return any(tid in active for tid in tie_trefs)
-    if dim == "kicking":
+        v1_ok = any(tid in active for tid in tie_trefs)
+    elif dim == "kicking":
         if opt_id == "kicking.none":
-            return bool(active)
-        if opt_id == "kicking.sanda" and "sanda_sweep" in active:
-            return True
-        kick_trefs = [tid for tid in trefs if k.techniques[tid]["kind"] == "kick"]
-        return any(tid in active for tid in kick_trefs)
-    if opt_id in OPTION_REQUIRED_TECHS:
-        return bool(OPTION_REQUIRED_TECHS[opt_id] & active)
-    if any(tid in active for tid in trefs):
+            v1_ok = bool(active)
+        elif opt_id == "kicking.sanda" and "sanda_sweep" in active:
+            v1_ok = True
+        else:
+            kick_trefs = [tid for tid in trefs if tid in tech_table and tech_table[tid]["kind"] == "kick"]
+            v1_ok = any(tid in active for tid in kick_trefs)
+    elif opt_id in OPTION_REQUIRED_TECHS:
+        v1_ok = bool(OPTION_REQUIRED_TECHS[opt_id] & active)
+    elif any(tid in active for tid in trefs):
+        v1_ok = True
+    elif opt_id in UNTRAINED_PUNCH_OPTIONS and "untrained_striking" in tr and "haymaker" in active:
+        v1_ok = True
+    if v1_ok:
         return True
-    if opt_id in UNTRAINED_PUNCH_OPTIONS and "untrained_striking" in tr and "haymaker" in active:
-        return True
+    if is_v2:
+        sup = getattr(k, "option_supported_by_v2", {}).get(opt_id, set())
+        return bool(sup & active)
     return False
 
 

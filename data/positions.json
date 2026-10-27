@@ -1,387 +1,2444 @@
 {
-  "version": "block-2",
-  "positions": [
-    {
-      "id": "standing_neutral",
-      "domain": "standing",
-      "range": "kick",
-      "posture": "standing",
-      "dominant_side_role": "neutral",
-      "allowed_techniques": [
-        "step",
-        "retreat",
-        "pivot",
-        "switch_step",
-        "feint",
-        "jab",
-        "cross",
-        "hook",
-        "body_hook",
-        "uppercut",
-        "haymaker",
-        "low_kick",
-        "body_kick",
-        "head_kick",
-        "teep",
-        "side_kick",
-        "switch_kick",
-        "spinning_back_kick",
-        "axe_kick",
-        "jumping_knee",
-        "double_leg",
-        "single_leg",
-        "collar_tie",
-        "body_lock"
-      ]
-    },
-    {
-      "id": "caught_single_leg",
-      "domain": "standing",
-      "range": "close",
-      "posture": "standing",
-      "dominant_side_role": "initiator",
-      "allowed_techniques": [
-        "sanda_sweep",
-        "outside_trip",
-        "cross",
-        "single_leg"
-      ]
-    },
-    {
-      "id": "standing_back_take",
-      "domain": "standing",
-      "range": "clinch",
-      "posture": "standing",
-      "dominant_side_role": "back_controller",
-      "allowed_techniques": [
-        "outside_trip",
-        "body_lock",
-        "knee_body"
-      ]
-    },
-    {
-      "id": "collar_tie",
-      "domain": "clinch",
-      "range": "clinch",
-      "posture": "standing",
-      "dominant_side_role": "initiator",
-      "allowed_techniques": [
-        "knee_body",
-        "uppercut",
-        "hook",
-        "pummel",
-        "guard_pull",
-        "outside_trip"
-      ]
-    },
-    {
-      "id": "thai_plum",
-      "domain": "clinch",
-      "range": "clinch",
-      "posture": "standing",
-      "dominant_side_role": "initiator",
-      "allowed_techniques": [
-        "knee_body",
-        "jumping_knee",
-        "outside_trip",
-        "pummel"
-      ]
-    },
-    {
-      "id": "over_under",
-      "domain": "clinch",
-      "range": "clinch",
-      "posture": "standing",
-      "dominant_side_role": "neutral",
-      "allowed_techniques": [
-        "pummel",
-        "knee_body",
-        "body_lock",
-        "outside_trip"
-      ]
-    },
-    {
-      "id": "double_underhooks",
-      "domain": "clinch",
-      "range": "clinch",
-      "posture": "standing",
-      "dominant_side_role": "initiator",
-      "allowed_techniques": [
-        "body_lock",
-        "outside_trip",
-        "double_leg",
-        "knee_body"
-      ]
-    },
-    {
-      "id": "front_body_lock",
-      "domain": "clinch",
-      "range": "clinch",
-      "posture": "standing",
-      "dominant_side_role": "initiator",
-      "allowed_techniques": [
-        "outside_trip",
-        "knee_body",
-        "double_leg"
-      ]
-    },
-    {
-      "id": "wall_pinned",
-      "domain": "clinch",
-      "range": "clinch",
-      "posture": "standing",
-      "dominant_side_role": "initiator",
-      "allowed_techniques": [
-        "cage_plum",
-        "knee_body",
-        "body_hook",
-        "double_leg",
-        "outside_trip"
-      ]
-    },
-    {
-      "id": "shot_in",
-      "domain": "transition",
-      "range": "close",
-      "posture": "transition",
-      "dominant_side_role": "initiator",
-      "allowed_techniques": [
-        "double_leg",
-        "single_leg",
-        "sprawl"
-      ]
-    },
-    {
-      "id": "caught_kick_dump",
-      "domain": "transition",
-      "range": "close",
-      "posture": "transition",
-      "dominant_side_role": "initiator",
-      "allowed_techniques": [
-        "sanda_sweep",
-        "outside_trip"
-      ]
-    },
-    {
-      "id": "closed_guard_bottom",
-      "domain": "ground",
-      "range": "ground",
-      "posture": "ground",
-      "dominant_side_role": "bottom_guard",
-      "allowed_techniques": [
-        "armbar",
-        "escape"
-      ]
-    },
-    {
-      "id": "half_guard_top",
-      "domain": "ground",
-      "range": "ground",
-      "posture": "ground",
-      "dominant_side_role": "top",
-      "allowed_techniques": [
-        "ride",
-        "escape"
-      ]
-    },
-    {
-      "id": "side_control",
-      "domain": "ground",
-      "range": "ground",
-      "posture": "ground",
-      "dominant_side_role": "top",
-      "allowed_techniques": [
-        "ride",
-        "armbar",
-        "escape"
-      ]
-    },
-    {
-      "id": "mount_or_back_ride",
-      "domain": "ground",
-      "range": "ground",
-      "posture": "ground",
-      "dominant_side_role": "top",
-      "allowed_techniques": [
-        "ride",
-        "armbar",
-        "escape"
-      ]
-    }
+ "version": "block-2",
+ "positions": [
+  {
+   "id": "standing_neutral",
+   "domain": "standing",
+   "range": "kick",
+   "posture": "standing",
+   "dominant_side_role": "neutral",
+   "allowed_techniques": [
+    "ankle_pick",
+    "armada",
+    "au",
+    "axe_kick",
+    "bencao",
+    "bob_weave",
+    "body_hook",
+    "body_jab",
+    "body_kick",
+    "body_lock",
+    "body_straight_punch",
+    "bong_sao",
+    "bounce_step",
+    "brawler_straight",
+    "bridge_smash",
+    "brush_knee_palm",
+    "cage_plum",
+    "calf_kick",
+    "cartwheel_kick",
+    "chain_punch",
+    "check",
+    "check_hook",
+    "circle_walk",
+    "clinch_break",
+    "collar_tie",
+    "cross",
+    "cut_kick",
+    "cut_off_step",
+    "deflect_parry_punch",
+    "double_leg",
+    "double_roundhouse",
+    "esquiva",
+    "evade_step_back",
+    "fa_jin_push",
+    "fast_roundhouse",
+    "feint",
+    "finger_jab",
+    "flying_knee",
+    "flying_side_kick",
+    "foot_sweep",
+    "front_kick",
+    "ginga",
+    "guard_pull",
+    "haymaker",
+    "head_kick",
+    "headbutt",
+    "hook",
+    "horizontal_elbow",
+    "instep_head_kick",
+    "iron_mountain_lean",
+    "jab",
+    "jam_step",
+    "jumping_back_kick",
+    "jumping_knee",
+    "jumping_switch_kick",
+    "kick_catch",
+    "kick_into_throw",
+    "lap_sao",
+    "lead_straight_intercept",
+    "lead_uppercut",
+    "lean_back",
+    "low_kick",
+    "lunging_headbutt",
+    "martelo",
+    "meia_lua_de_compasso",
+    "negativa",
+    "no_shadow_kick",
+    "oblique_kick",
+    "overhand",
+    "pak_sao",
+    "parry",
+    "piercing_palm",
+    "pivot",
+    "pull_counter",
+    "pummel",
+    "push_hands_redirect",
+    "queixada",
+    "question_mark_kick",
+    "quick_grip_throw",
+    "rasteira",
+    "rear_body_hook",
+    "rear_hook",
+    "retreat",
+    "shell_block",
+    "shield_counter_hook",
+    "shield_frame",
+    "short_uppercut",
+    "shoulder_roll",
+    "shove",
+    "shovel_hook",
+    "side_kick",
+    "single_leg",
+    "single_palm_change",
+    "slip",
+    "spinning_back_kick",
+    "spinning_backfist",
+    "spinning_elbow",
+    "spinning_hook_kick",
+    "sprawl",
+    "step",
+    "stomp_thrust_punch",
+    "straight_knee",
+    "superman_punch",
+    "switch_kick",
+    "switch_step",
+    "tan_sao",
+    "teep",
+    "tiger_claw",
+    "top_elbow",
+    "tornado_kick",
+    "turning_throw",
+    "underhook",
+    "uppercut",
+    "uppercut_elbow",
+    "wall_run_kick",
+    "wall_tie",
+    "whizzer",
+    "wild_hook"
+   ],
+   "roles": [
+    "neutral",
+    "neutral"
+   ],
+   "control_value_per_second": {
+    "neutral": 0.0
+   },
+   "status": "existing"
+  },
+  {
+   "id": "caught_single_leg",
+   "domain": "standing",
+   "range": "close",
+   "posture": "standing",
+   "dominant_side_role": "initiator",
+   "allowed_techniques": [
+    "caught_kick_dump",
+    "clinch_break",
+    "cross",
+    "outside_trip",
+    "sanda_sweep",
+    "single_leg"
+   ],
+   "roles": [
+    "holder",
+    "held"
+   ],
+   "control_value_per_second": {
+    "holder": 0.4,
+    "held": 0.0
+   },
+   "status": "existing"
+  },
+  {
+   "id": "standing_back_take",
+   "domain": "standing",
+   "range": "clinch",
+   "posture": "standing",
+   "dominant_side_role": "back_controller",
+   "allowed_techniques": [
+    "ankle_pick",
+    "body_lock",
+    "body_lock_takedown",
+    "cage_plum",
+    "clinch_break",
+    "clinch_headbutt",
+    "collar_tie",
+    "fa_jin_push",
+    "foot_sweep",
+    "guard_pull",
+    "headbutt",
+    "horizontal_elbow",
+    "inside_trip",
+    "iron_mountain_lean",
+    "kick_into_throw",
+    "knee_body",
+    "knee_head_clinch",
+    "outside_trip",
+    "pummel",
+    "push_hands_redirect",
+    "quick_grip_throw",
+    "retreat",
+    "shield_frame",
+    "short_uppercut",
+    "shove",
+    "shovel_hook",
+    "sprawl",
+    "step",
+    "submission_escape",
+    "suplex",
+    "take_back",
+    "top_elbow",
+    "turning_throw",
+    "underhook",
+    "uppercut_elbow",
+    "wall_tie",
+    "whizzer"
+   ],
+   "roles": [
+    "back_controller",
+    "controlled"
+   ],
+   "control_value_per_second": {
+    "back_controller": 0.6,
+    "controlled": 0.0
+   },
+   "status": "existing"
+  },
+  {
+   "id": "collar_tie",
+   "domain": "clinch",
+   "range": "clinch",
+   "posture": "standing",
+   "dominant_side_role": "initiator",
+   "allowed_techniques": [
+    "ankle_pick",
+    "body_lock",
+    "cage_plum",
+    "clinch_break",
+    "clinch_headbutt",
+    "collar_tie",
+    "double_collar_tie",
+    "fa_jin_push",
+    "foot_sweep",
+    "guard_pull",
+    "headbutt",
+    "hip_throw",
+    "hook",
+    "horizontal_elbow",
+    "inside_trip",
+    "iron_mountain_lean",
+    "kick_into_throw",
+    "knee_body",
+    "knee_head_clinch",
+    "outside_trip",
+    "pummel",
+    "push_hands_redirect",
+    "quick_grip_throw",
+    "retreat",
+    "shield_frame",
+    "short_uppercut",
+    "shove",
+    "shovel_hook",
+    "snap_down",
+    "sprawl",
+    "step",
+    "submission_escape",
+    "top_elbow",
+    "turning_throw",
+    "underhook",
+    "uppercut",
+    "uppercut_elbow",
+    "wall_tie",
+    "whizzer"
+   ],
+   "roles": [
+    "tier",
+    "tied"
+   ],
+   "control_value_per_second": {
+    "tier": 0.3,
+    "tied": 0.0
+   },
+   "status": "existing"
+  },
+  {
+   "id": "thai_plum",
+   "domain": "clinch",
+   "range": "clinch",
+   "posture": "standing",
+   "dominant_side_role": "initiator",
+   "allowed_techniques": [
+    "ankle_pick",
+    "body_lock",
+    "cage_plum",
+    "clinch_break",
+    "clinch_headbutt",
+    "collar_tie",
+    "fa_jin_push",
+    "foot_sweep",
+    "guard_pull",
+    "headbutt",
+    "horizontal_elbow",
+    "inside_trip",
+    "iron_mountain_lean",
+    "jumping_knee",
+    "kick_into_throw",
+    "knee_body",
+    "knee_head_clinch",
+    "outside_trip",
+    "pummel",
+    "push_hands_redirect",
+    "quick_grip_throw",
+    "retreat",
+    "shield_frame",
+    "short_uppercut",
+    "shove",
+    "shovel_hook",
+    "sprawl",
+    "step",
+    "submission_escape",
+    "top_elbow",
+    "turning_throw",
+    "underhook",
+    "uppercut_elbow",
+    "wall_tie",
+    "whizzer"
+   ],
+   "roles": [
+    "plum_holder",
+    "plummed"
+   ],
+   "control_value_per_second": {
+    "plum_holder": 0.5,
+    "plummed": 0.0
+   },
+   "status": "existing"
+  },
+  {
+   "id": "over_under",
+   "domain": "clinch",
+   "range": "clinch",
+   "posture": "standing",
+   "dominant_side_role": "neutral",
+   "allowed_techniques": [
+    "ankle_pick",
+    "body_lock",
+    "cage_plum",
+    "clinch_break",
+    "clinch_headbutt",
+    "collar_tie",
+    "fa_jin_push",
+    "foot_sweep",
+    "guard_pull",
+    "headbutt",
+    "hip_throw",
+    "horizontal_elbow",
+    "inside_trip",
+    "iron_mountain_lean",
+    "kick_into_throw",
+    "knee_body",
+    "knee_head_clinch",
+    "outside_trip",
+    "pummel",
+    "push_hands_redirect",
+    "quick_grip_throw",
+    "retreat",
+    "shield_frame",
+    "short_uppercut",
+    "shove",
+    "shovel_hook",
+    "sprawl",
+    "step",
+    "submission_escape",
+    "top_elbow",
+    "turning_throw",
+    "underhook",
+    "uppercut_elbow",
+    "wall_tie",
+    "whizzer"
+   ],
+   "roles": [
+    "neutral",
+    "neutral"
+   ],
+   "control_value_per_second": {
+    "neutral": 0.0
+   },
+   "status": "existing"
+  },
+  {
+   "id": "double_underhooks",
+   "domain": "clinch",
+   "range": "clinch",
+   "posture": "standing",
+   "dominant_side_role": "initiator",
+   "allowed_techniques": [
+    "ankle_pick",
+    "body_lock",
+    "cage_plum",
+    "clinch_break",
+    "clinch_headbutt",
+    "collar_tie",
+    "double_leg",
+    "fa_jin_push",
+    "foot_sweep",
+    "guard_pull",
+    "headbutt",
+    "horizontal_elbow",
+    "inside_trip",
+    "iron_mountain_lean",
+    "kick_into_throw",
+    "knee_body",
+    "knee_head_clinch",
+    "outside_trip",
+    "pummel",
+    "push_hands_redirect",
+    "quick_grip_throw",
+    "retreat",
+    "shield_frame",
+    "short_uppercut",
+    "shove",
+    "shovel_hook",
+    "sprawl",
+    "step",
+    "submission_escape",
+    "top_elbow",
+    "turning_throw",
+    "underhook",
+    "uppercut_elbow",
+    "wall_tie",
+    "whizzer"
+   ],
+   "roles": [
+    "dominant",
+    "controlled"
+   ],
+   "control_value_per_second": {
+    "dominant": 0.5,
+    "controlled": 0.0
+   },
+   "status": "existing"
+  },
+  {
+   "id": "front_body_lock",
+   "domain": "clinch",
+   "range": "clinch",
+   "posture": "standing",
+   "dominant_side_role": "initiator",
+   "allowed_techniques": [
+    "ankle_pick",
+    "body_lock",
+    "body_lock_takedown",
+    "cage_plum",
+    "clinch_break",
+    "clinch_headbutt",
+    "collar_tie",
+    "double_leg",
+    "fa_jin_push",
+    "foot_sweep",
+    "guard_pull",
+    "headbutt",
+    "hip_throw",
+    "horizontal_elbow",
+    "inside_trip",
+    "iron_mountain_lean",
+    "kick_into_throw",
+    "knee_body",
+    "knee_head_clinch",
+    "outside_trip",
+    "pummel",
+    "push_hands_redirect",
+    "quick_grip_throw",
+    "retreat",
+    "shield_frame",
+    "short_uppercut",
+    "shove",
+    "shovel_hook",
+    "sprawl",
+    "step",
+    "submission_escape",
+    "suplex",
+    "take_back",
+    "top_elbow",
+    "turning_throw",
+    "underhook",
+    "uppercut_elbow",
+    "wall_tie",
+    "whizzer"
+   ],
+   "roles": [
+    "locker",
+    "locked"
+   ],
+   "control_value_per_second": {
+    "locker": 0.5,
+    "locked": 0.0
+   },
+   "status": "existing"
+  },
+  {
+   "id": "wall_pinned",
+   "domain": "clinch",
+   "range": "clinch",
+   "posture": "standing",
+   "dominant_side_role": "initiator",
+   "allowed_techniques": [
+    "ankle_pick",
+    "body_hook",
+    "body_lock",
+    "body_lock_takedown",
+    "cage_plum",
+    "clinch_break",
+    "clinch_headbutt",
+    "collar_tie",
+    "double_leg",
+    "fa_jin_push",
+    "foot_sweep",
+    "guard_pull",
+    "headbutt",
+    "horizontal_elbow",
+    "inside_trip",
+    "iron_mountain_lean",
+    "kick_into_throw",
+    "knee_body",
+    "knee_head_clinch",
+    "outside_trip",
+    "pummel",
+    "push_hands_redirect",
+    "quick_grip_throw",
+    "retreat",
+    "shield_frame",
+    "short_uppercut",
+    "shove",
+    "shovel_hook",
+    "sprawl",
+    "step",
+    "submission_escape",
+    "top_elbow",
+    "turning_throw",
+    "underhook",
+    "uppercut_elbow",
+    "wall_punch",
+    "wall_tie",
+    "whizzer"
+   ],
+   "roles": [
+    "pinner",
+    "pinned"
+   ],
+   "control_value_per_second": {
+    "pinner": 0.5,
+    "pinned": 0.0
+   },
+   "status": "existing"
+  },
+  {
+   "id": "front_headlock",
+   "domain": "clinch",
+   "range": "clinch",
+   "posture": "standing",
+   "dominant_side_role": "initiator",
+   "allowed_techniques": [
+    "ankle_pick",
+    "body_lock",
+    "cage_plum",
+    "clinch_break",
+    "clinch_headbutt",
+    "collar_tie",
+    "fa_jin_push",
+    "foot_sweep",
+    "guard_pull",
+    "guillotine",
+    "headbutt",
+    "horizontal_elbow",
+    "inside_trip",
+    "iron_mountain_lean",
+    "kick_into_throw",
+    "knee_body",
+    "knee_head_clinch",
+    "neck_crank",
+    "outside_trip",
+    "pummel",
+    "push_hands_redirect",
+    "quick_grip_throw",
+    "retreat",
+    "shield_frame",
+    "short_uppercut",
+    "shove",
+    "shovel_hook",
+    "sprawl",
+    "step",
+    "submission_escape",
+    "take_back",
+    "top_elbow",
+    "turning_throw",
+    "underhook",
+    "uppercut_elbow",
+    "wall_tie",
+    "whizzer"
+   ],
+   "roles": [
+    "controller",
+    "controlled"
+   ],
+   "control_value_per_second": {
+    "controller": 0.6,
+    "controlled": 0.0
+   },
+   "status": "new"
+  },
+  {
+   "id": "shot_in",
+   "domain": "transition",
+   "range": "close",
+   "posture": "transition",
+   "dominant_side_role": "initiator",
+   "allowed_techniques": [
+    "double_leg",
+    "single_leg",
+    "sprawl",
+    "whizzer"
+   ],
+   "roles": [
+    "shooter",
+    "defender"
+   ],
+   "control_value_per_second": {
+    "shooter": 0.2,
+    "defender": 0.0
+   },
+   "status": "existing"
+  },
+  {
+   "id": "scramble",
+   "domain": "transition",
+   "range": "ground",
+   "posture": "transition",
+   "dominant_side_role": "neutral",
+   "allowed_techniques": [
+    "leg_entry",
+    "stand_up",
+    "take_back"
+   ],
+   "roles": [
+    "neutral",
+    "neutral"
+   ],
+   "control_value_per_second": {
+    "neutral": 0.0
+   },
+   "status": "new"
+  },
+  {
+   "id": "standing_knockdown",
+   "domain": "transition",
+   "range": "ground",
+   "posture": "transition",
+   "dominant_side_role": "initiator",
+   "allowed_techniques": [
+    "stand_up"
+   ],
+   "roles": [
+    "standing",
+    "downed"
+   ],
+   "control_value_per_second": {
+    "standing": 0.3,
+    "downed": 0.0
+   },
+   "status": "new"
+  },
+  {
+   "id": "closed_guard",
+   "domain": "ground",
+   "range": "ground",
+   "posture": "ground",
+   "dominant_side_role": "top",
+   "allowed_techniques": [
+    "armbar",
+    "escape",
+    "ground_strike",
+    "guard_sweep",
+    "guillotine",
+    "kimura",
+    "leg_entry",
+    "pass_guard",
+    "ride",
+    "stand_up",
+    "technical_standup",
+    "triangle",
+    "wall_walk"
+   ],
+   "roles": [
+    "top",
+    "bottom"
+   ],
+   "control_value_per_second": {
+    "top": 0.4,
+    "bottom": 0.3
+   },
+   "status": "new"
+  },
+  {
+   "id": "half_guard",
+   "domain": "ground",
+   "range": "ground",
+   "posture": "ground",
+   "dominant_side_role": "top",
+   "allowed_techniques": [
+    "cradle",
+    "cross_face",
+    "escape",
+    "ground_elbow",
+    "ground_strike",
+    "guard_sweep",
+    "kimura",
+    "leg_entry",
+    "pass_guard",
+    "re_guard",
+    "ride",
+    "stand_up",
+    "technical_standup",
+    "toe_hold",
+    "wall_walk"
+   ],
+   "roles": [
+    "top",
+    "bottom"
+   ],
+   "control_value_per_second": {
+    "top": 0.6,
+    "bottom": 0.1
+   },
+   "status": "new"
+  },
+  {
+   "id": "side_control",
+   "domain": "ground",
+   "range": "ground",
+   "posture": "ground",
+   "dominant_side_role": "top",
+   "allowed_techniques": [
+    "advance_to_mount",
+    "arm_triangle",
+    "armbar",
+    "cross_face",
+    "escape",
+    "ground_elbow",
+    "ground_strike",
+    "hip_escape",
+    "keylock",
+    "kimura",
+    "neck_crank",
+    "re_guard",
+    "ride",
+    "stand_up",
+    "technical_standup",
+    "wall_walk"
+   ],
+   "roles": [
+    "top",
+    "bottom"
+   ],
+   "control_value_per_second": {
+    "top": 0.9,
+    "bottom": 0.0
+   },
+   "status": "existing"
+  },
+  {
+   "id": "mount",
+   "domain": "ground",
+   "range": "ground",
+   "posture": "ground",
+   "dominant_side_role": "top",
+   "allowed_techniques": [
+    "arm_triangle",
+    "armbar",
+    "escape",
+    "ground_elbow",
+    "ground_strike",
+    "hip_escape",
+    "keylock",
+    "ride",
+    "stand_up",
+    "technical_standup",
+    "wall_walk"
+   ],
+   "roles": [
+    "top",
+    "bottom"
+   ],
+   "control_value_per_second": {
+    "top": 1.2,
+    "bottom": 0.0
+   },
+   "status": "new"
+  },
+  {
+   "id": "back_control",
+   "domain": "ground",
+   "range": "ground",
+   "posture": "ground",
+   "dominant_side_role": "top",
+   "allowed_techniques": [
+    "escape",
+    "ground_strike",
+    "hip_escape",
+    "neck_crank",
+    "rear_naked_choke",
+    "ride",
+    "stand_up",
+    "technical_standup",
+    "wall_walk"
+   ],
+   "roles": [
+    "top",
+    "bottom"
+   ],
+   "control_value_per_second": {
+    "top": 1.3,
+    "bottom": 0.0
+   },
+   "status": "new"
+  },
+  {
+   "id": "turtle",
+   "domain": "ground",
+   "range": "ground",
+   "posture": "ground",
+   "dominant_side_role": "top",
+   "allowed_techniques": [
+    "cradle",
+    "cross_face",
+    "escape",
+    "ground_strike",
+    "neck_crank",
+    "ride",
+    "stand_up",
+    "take_back",
+    "technical_standup",
+    "wall_walk"
+   ],
+   "roles": [
+    "top",
+    "bottom"
+   ],
+   "control_value_per_second": {
+    "top": 0.7,
+    "bottom": 0.0
+   },
+   "status": "new"
+  },
+  {
+   "id": "leg_entanglement",
+   "domain": "ground",
+   "range": "ground",
+   "posture": "ground",
+   "dominant_side_role": "bottom_guard",
+   "allowed_techniques": [
+    "ankle_lock",
+    "escape",
+    "heel_hook",
+    "leg_pummel_escape",
+    "pass_guard",
+    "stand_up",
+    "technical_standup",
+    "toe_hold",
+    "wall_walk"
+   ],
+   "roles": [
+    "bottom",
+    "top"
+   ],
+   "control_value_per_second": {
+    "bottom": 0.5,
+    "top": 0.0
+   },
+   "status": "new"
+  },
+  {
+   "id": "closed_guard_bottom",
+   "domain": "ground",
+   "range": "ground",
+   "posture": "ground",
+   "dominant_side_role": "bottom_guard",
+   "allowed_techniques": [
+    "armbar",
+    "escape"
+   ],
+   "status": "deprecated",
+   "alias_of": "closed_guard"
+  },
+  {
+   "id": "half_guard_top",
+   "domain": "ground",
+   "range": "ground",
+   "posture": "ground",
+   "dominant_side_role": "top",
+   "allowed_techniques": [
+    "ride",
+    "escape"
+   ],
+   "status": "deprecated",
+   "alias_of": "half_guard"
+  },
+  {
+   "id": "mount_or_back_ride",
+   "domain": "ground",
+   "range": "ground",
+   "posture": "ground",
+   "dominant_side_role": "top",
+   "allowed_techniques": [
+    "ride",
+    "armbar",
+    "escape"
+   ],
+   "status": "deprecated",
+   "alias_of": "mount"
+  },
+  {
+   "id": "caught_kick_dump",
+   "domain": "transition",
+   "range": "close",
+   "posture": "transition",
+   "dominant_side_role": "initiator",
+   "allowed_techniques": [
+    "sanda_sweep",
+    "outside_trip"
+   ],
+   "status": "deprecated",
+   "alias_of": "caught_single_leg"
+  }
+ ],
+ "transitions": [
+  {
+   "from_position": "standing_neutral",
+   "to_position": "collar_tie",
+   "via_technique": "collar_tie",
+   "required_grips": [],
+   "frame_cost": 19,
+   "counters": [
+    "clinch_break",
+    "pummel"
+   ],
+   "actor_role": "neutral",
+   "actor_role_after": "tier",
+   "contest": "clinch_control"
+  },
+  {
+   "from_position": "standing_neutral",
+   "to_position": "over_under",
+   "via_technique": "underhook",
+   "required_grips": [],
+   "frame_cost": 16,
+   "counters": [
+    "whizzer",
+    "clinch_break"
+   ],
+   "actor_role": "neutral",
+   "actor_role_after": "neutral",
+   "contest": "clinch_control"
+  },
+  {
+   "from_position": "standing_neutral",
+   "to_position": "over_under",
+   "via_technique": "pummel",
+   "required_grips": [],
+   "frame_cost": 20,
+   "counters": [
+    "clinch_break"
+   ],
+   "actor_role": "neutral",
+   "actor_role_after": "neutral",
+   "contest": "clinch_control"
+  },
+  {
+   "from_position": "standing_neutral",
+   "to_position": "front_body_lock",
+   "via_technique": "body_lock",
+   "required_grips": [],
+   "frame_cost": 22,
+   "counters": [
+    "pummel",
+    "sprawl",
+    "clinch_break"
+   ],
+   "actor_role": "neutral",
+   "actor_role_after": "locker",
+   "contest": "clinch_control"
+  },
+  {
+   "from_position": "standing_neutral",
+   "to_position": "wall_pinned",
+   "via_technique": "wall_tie",
+   "required_grips": [],
+   "frame_cost": 20,
+   "counters": [
+    "clinch_break",
+    "pummel"
+   ],
+   "actor_role": "neutral",
+   "actor_role_after": "pinner",
+   "contest": "clinch_control"
+  },
+  {
+   "from_position": "standing_neutral",
+   "to_position": "thai_plum",
+   "via_technique": "cage_plum",
+   "required_grips": [],
+   "frame_cost": 23,
+   "counters": [
+    "pummel",
+    "clinch_break"
+   ],
+   "actor_role": "neutral",
+   "actor_role_after": "plum_holder",
+   "contest": "clinch_control"
+  },
+  {
+   "from_position": "standing_neutral",
+   "to_position": "shot_in",
+   "via_technique": "double_leg",
+   "required_grips": [],
+   "frame_cost": 36,
+   "counters": [
+    "sprawl",
+    "whizzer",
+    "straight_knee"
+   ],
+   "actor_role": "neutral",
+   "actor_role_after": "shooter",
+   "contest": "takedown"
+  },
+  {
+   "from_position": "standing_neutral",
+   "to_position": "shot_in",
+   "via_technique": "single_leg",
+   "required_grips": [],
+   "frame_cost": 32,
+   "counters": [
+    "sprawl",
+    "whizzer"
+   ],
+   "actor_role": "neutral",
+   "actor_role_after": "shooter",
+   "contest": "takedown"
+  },
+  {
+   "from_position": "standing_neutral",
+   "to_position": "half_guard",
+   "via_technique": "ankle_pick",
+   "required_grips": [],
+   "frame_cost": 27,
+   "counters": [
+    "sprawl",
+    "switch_step"
+   ],
+   "actor_role": "neutral",
+   "actor_role_after": "top",
+   "contest": "takedown"
+  },
+  {
+   "from_position": "standing_neutral",
+   "to_position": "caught_single_leg",
+   "via_technique": "kick_catch",
+   "required_grips": [],
+   "frame_cost": 13,
+   "counters": [
+    "clinch_break"
+   ],
+   "actor_role": "neutral",
+   "actor_role_after": "holder",
+   "contest": "kick_catch"
+  },
+  {
+   "from_position": "standing_neutral",
+   "to_position": "standing_knockdown",
+   "via_technique": "foot_sweep",
+   "required_grips": [],
+   "frame_cost": 20,
+   "counters": [
+    "switch_step"
+   ],
+   "actor_role": "neutral",
+   "actor_role_after": "standing",
+   "contest": "sweep"
+  },
+  {
+   "from_position": "standing_neutral",
+   "to_position": "closed_guard",
+   "via_technique": "guard_pull",
+   "required_grips": [],
+   "frame_cost": 24,
+   "counters": [
+    "clinch_break"
+   ],
+   "actor_role": "neutral",
+   "actor_role_after": "bottom",
+   "contest": "guard_pull"
+  },
+  {
+   "from_position": "collar_tie",
+   "to_position": "thai_plum",
+   "via_technique": "double_collar_tie",
+   "required_grips": [],
+   "frame_cost": 19,
+   "counters": [
+    "pummel",
+    "clinch_break"
+   ],
+   "actor_role": "tier",
+   "actor_role_after": "plum_holder",
+   "contest": "clinch_control"
+  },
+  {
+   "from_position": "collar_tie",
+   "to_position": "front_headlock",
+   "via_technique": "snap_down",
+   "required_grips": [],
+   "frame_cost": 17,
+   "counters": [
+    "clinch_break"
+   ],
+   "actor_role": "tier",
+   "actor_role_after": "controller",
+   "contest": "clinch_control"
+  },
+  {
+   "from_position": "collar_tie",
+   "to_position": "closed_guard",
+   "via_technique": "guard_pull",
+   "required_grips": [],
+   "frame_cost": 24,
+   "counters": [
+    "clinch_break"
+   ],
+   "actor_role": "tier",
+   "actor_role_after": "bottom",
+   "contest": "guard_pull"
+  },
+  {
+   "from_position": "collar_tie",
+   "to_position": "over_under",
+   "via_technique": "pummel",
+   "required_grips": [],
+   "frame_cost": 20,
+   "counters": [
+    "collar_tie"
+   ],
+   "actor_role": "tied",
+   "actor_role_after": "neutral",
+   "contest": "clinch_control"
+  },
+  {
+   "from_position": "collar_tie",
+   "to_position": "standing_neutral",
+   "via_technique": "clinch_break",
+   "required_grips": [],
+   "frame_cost": 16,
+   "counters": [],
+   "actor_role": "any",
+   "actor_role_after": "neutral",
+   "contest": "clinch_escape"
+  },
+  {
+   "from_position": "thai_plum",
+   "to_position": "standing_neutral",
+   "via_technique": "clinch_break",
+   "required_grips": [],
+   "frame_cost": 16,
+   "counters": [
+    "knee_head_clinch"
+   ],
+   "actor_role": "plummed",
+   "actor_role_after": "neutral",
+   "contest": "clinch_escape"
+  },
+  {
+   "from_position": "thai_plum",
+   "to_position": "over_under",
+   "via_technique": "pummel",
+   "required_grips": [],
+   "frame_cost": 20,
+   "counters": [
+    "knee_head_clinch"
+   ],
+   "actor_role": "plummed",
+   "actor_role_after": "neutral",
+   "contest": "clinch_control"
+  },
+  {
+   "from_position": "over_under",
+   "to_position": "double_underhooks",
+   "via_technique": "pummel",
+   "required_grips": [],
+   "frame_cost": 20,
+   "counters": [
+    "whizzer"
+   ],
+   "actor_role": "neutral",
+   "actor_role_after": "dominant",
+   "contest": "clinch_control"
+  },
+  {
+   "from_position": "over_under",
+   "to_position": "front_body_lock",
+   "via_technique": "body_lock",
+   "required_grips": [],
+   "frame_cost": 22,
+   "counters": [
+    "whizzer"
+   ],
+   "actor_role": "neutral",
+   "actor_role_after": "locker",
+   "contest": "clinch_control"
+  },
+  {
+   "from_position": "over_under",
+   "to_position": "side_control",
+   "via_technique": "hip_throw",
+   "required_grips": [],
+   "frame_cost": 33,
+   "counters": [
+    "whizzer",
+    "sprawl"
+   ],
+   "actor_role": "neutral",
+   "actor_role_after": "top",
+   "contest": "takedown"
+  },
+  {
+   "from_position": "over_under",
+   "to_position": "closed_guard",
+   "via_technique": "inside_trip",
+   "required_grips": [],
+   "frame_cost": 27,
+   "counters": [
+    "whizzer"
+   ],
+   "actor_role": "neutral",
+   "actor_role_after": "top",
+   "contest": "takedown"
+  },
+  {
+   "from_position": "over_under",
+   "to_position": "standing_neutral",
+   "via_technique": "clinch_break",
+   "required_grips": [],
+   "frame_cost": 16,
+   "counters": [],
+   "actor_role": "any",
+   "actor_role_after": "neutral",
+   "contest": "clinch_escape"
+  },
+  {
+   "from_position": "double_underhooks",
+   "to_position": "front_body_lock",
+   "via_technique": "body_lock",
+   "required_grips": [],
+   "frame_cost": 22,
+   "counters": [
+    "whizzer"
+   ],
+   "actor_role": "dominant",
+   "actor_role_after": "locker",
+   "contest": "clinch_control"
+  },
+  {
+   "from_position": "double_underhooks",
+   "to_position": "over_under",
+   "via_technique": "pummel",
+   "required_grips": [],
+   "frame_cost": 20,
+   "counters": [],
+   "actor_role": "controlled",
+   "actor_role_after": "neutral",
+   "contest": "clinch_control"
+  },
+  {
+   "from_position": "front_body_lock",
+   "to_position": "side_control",
+   "via_technique": "outside_trip",
+   "required_grips": [],
+   "frame_cost": 31,
+   "counters": [
+    "whizzer",
+    "sprawl"
+   ],
+   "actor_role": "locker",
+   "actor_role_after": "top",
+   "contest": "takedown"
+  },
+  {
+   "from_position": "front_body_lock",
+   "to_position": "side_control",
+   "via_technique": "body_lock_takedown",
+   "required_grips": [],
+   "frame_cost": 31,
+   "counters": [
+    "whizzer"
+   ],
+   "actor_role": "locker",
+   "actor_role_after": "top",
+   "contest": "takedown"
+  },
+  {
+   "from_position": "front_body_lock",
+   "to_position": "closed_guard",
+   "via_technique": "inside_trip",
+   "required_grips": [],
+   "frame_cost": 27,
+   "counters": [
+    "whizzer"
+   ],
+   "actor_role": "locker",
+   "actor_role_after": "top",
+   "contest": "takedown"
+  },
+  {
+   "from_position": "front_body_lock",
+   "to_position": "standing_back_take",
+   "via_technique": "take_back",
+   "required_grips": [],
+   "frame_cost": 27,
+   "counters": [
+    "pummel"
+   ],
+   "actor_role": "locker",
+   "actor_role_after": "back_controller",
+   "contest": "clinch_control"
+  },
+  {
+   "from_position": "front_body_lock",
+   "to_position": "standing_neutral",
+   "via_technique": "clinch_break",
+   "required_grips": [],
+   "frame_cost": 16,
+   "counters": [],
+   "actor_role": "locked",
+   "actor_role_after": "neutral",
+   "contest": "clinch_escape"
+  },
+  {
+   "from_position": "standing_back_take",
+   "to_position": "back_control",
+   "via_technique": "body_lock_takedown",
+   "required_grips": [],
+   "frame_cost": 31,
+   "counters": [
+    "clinch_break"
+   ],
+   "actor_role": "back_controller",
+   "actor_role_after": "top",
+   "contest": "takedown"
+  },
+  {
+   "from_position": "standing_back_take",
+   "to_position": "side_control",
+   "via_technique": "suplex",
+   "required_grips": [],
+   "frame_cost": 36,
+   "counters": [
+    "whizzer"
+   ],
+   "actor_role": "back_controller",
+   "actor_role_after": "top",
+   "contest": "takedown"
+  },
+  {
+   "from_position": "standing_back_take",
+   "to_position": "standing_neutral",
+   "via_technique": "clinch_break",
+   "required_grips": [],
+   "frame_cost": 16,
+   "counters": [],
+   "actor_role": "controlled",
+   "actor_role_after": "neutral",
+   "contest": "clinch_escape"
+  },
+  {
+   "from_position": "wall_pinned",
+   "to_position": "half_guard",
+   "via_technique": "body_lock_takedown",
+   "required_grips": [],
+   "frame_cost": 31,
+   "counters": [
+    "whizzer"
+   ],
+   "actor_role": "pinner",
+   "actor_role_after": "top",
+   "contest": "takedown"
+  },
+  {
+   "from_position": "wall_pinned",
+   "to_position": "half_guard",
+   "via_technique": "double_leg",
+   "required_grips": [],
+   "frame_cost": 36,
+   "counters": [
+    "sprawl",
+    "whizzer"
+   ],
+   "actor_role": "pinner",
+   "actor_role_after": "top",
+   "contest": "takedown"
+  },
+  {
+   "from_position": "wall_pinned",
+   "to_position": "standing_neutral",
+   "via_technique": "clinch_break",
+   "required_grips": [],
+   "frame_cost": 16,
+   "counters": [],
+   "actor_role": "pinned",
+   "actor_role_after": "neutral",
+   "contest": "clinch_escape"
+  },
+  {
+   "from_position": "front_headlock",
+   "to_position": "back_control",
+   "via_technique": "take_back",
+   "required_grips": [],
+   "frame_cost": 27,
+   "counters": [
+    "stand_up"
+   ],
+   "actor_role": "controller",
+   "actor_role_after": "top",
+   "contest": "scramble"
+  },
+  {
+   "from_position": "front_headlock",
+   "to_position": "standing_neutral",
+   "via_technique": "clinch_break",
+   "required_grips": [],
+   "frame_cost": 16,
+   "counters": [],
+   "actor_role": "controlled",
+   "actor_role_after": "neutral",
+   "contest": "clinch_escape"
+  },
+  {
+   "from_position": "shot_in",
+   "to_position": "half_guard",
+   "via_technique": "double_leg",
+   "required_grips": [],
+   "frame_cost": 36,
+   "counters": [
+    "sprawl",
+    "whizzer"
+   ],
+   "actor_role": "shooter",
+   "actor_role_after": "top",
+   "contest": "takedown"
+  },
+  {
+   "from_position": "shot_in",
+   "to_position": "half_guard",
+   "via_technique": "single_leg",
+   "required_grips": [],
+   "frame_cost": 32,
+   "counters": [
+    "whizzer"
+   ],
+   "actor_role": "shooter",
+   "actor_role_after": "top",
+   "contest": "takedown"
+  },
+  {
+   "from_position": "shot_in",
+   "to_position": "front_headlock",
+   "via_technique": "sprawl",
+   "required_grips": [],
+   "frame_cost": 14,
+   "counters": [],
+   "actor_role": "defender",
+   "actor_role_after": "controller",
+   "contest": "takedown_defense"
+  },
+  {
+   "from_position": "shot_in",
+   "to_position": "standing_neutral",
+   "via_technique": "whizzer",
+   "required_grips": [],
+   "frame_cost": 14,
+   "counters": [],
+   "actor_role": "defender",
+   "actor_role_after": "neutral",
+   "contest": "takedown_defense"
+  },
+  {
+   "from_position": "caught_single_leg",
+   "to_position": "half_guard",
+   "via_technique": "sanda_sweep",
+   "required_grips": [],
+   "frame_cost": 28,
+   "counters": [
+    "clinch_break"
+   ],
+   "actor_role": "holder",
+   "actor_role_after": "top",
+   "contest": "sweep"
+  },
+  {
+   "from_position": "caught_single_leg",
+   "to_position": "half_guard",
+   "via_technique": "caught_kick_dump",
+   "required_grips": [],
+   "frame_cost": 25,
+   "counters": [
+    "clinch_break"
+   ],
+   "actor_role": "holder",
+   "actor_role_after": "top",
+   "contest": "sweep"
+  },
+  {
+   "from_position": "caught_single_leg",
+   "to_position": "standing_neutral",
+   "via_technique": "clinch_break",
+   "required_grips": [],
+   "frame_cost": 16,
+   "counters": [],
+   "actor_role": "held",
+   "actor_role_after": "neutral",
+   "contest": "clinch_escape"
+  },
+  {
+   "from_position": "standing_knockdown",
+   "to_position": "standing_neutral",
+   "via_technique": "stand_up",
+   "required_grips": [],
+   "frame_cost": 27,
+   "counters": [],
+   "actor_role": "downed",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "scramble",
+   "to_position": "back_control",
+   "via_technique": "take_back",
+   "required_grips": [],
+   "frame_cost": 27,
+   "counters": [],
+   "actor_role": "neutral",
+   "actor_role_after": "top",
+   "contest": "scramble"
+  },
+  {
+   "from_position": "scramble",
+   "to_position": "standing_neutral",
+   "via_technique": "stand_up",
+   "required_grips": [],
+   "frame_cost": 27,
+   "counters": [],
+   "actor_role": "neutral",
+   "actor_role_after": "neutral",
+   "contest": "scramble"
+  },
+  {
+   "from_position": "closed_guard",
+   "to_position": "half_guard",
+   "via_technique": "pass_guard",
+   "required_grips": [],
+   "frame_cost": 30,
+   "counters": [
+    "re_guard",
+    "guard_sweep"
+   ],
+   "actor_role": "top",
+   "actor_role_after": "top",
+   "contest": "pass"
+  },
+  {
+   "from_position": "half_guard",
+   "to_position": "side_control",
+   "via_technique": "pass_guard",
+   "required_grips": [],
+   "frame_cost": 30,
+   "counters": [
+    "re_guard"
+   ],
+   "actor_role": "top",
+   "actor_role_after": "top",
+   "contest": "pass"
+  },
+  {
+   "from_position": "side_control",
+   "to_position": "mount",
+   "via_technique": "advance_to_mount",
+   "required_grips": [],
+   "frame_cost": 26,
+   "counters": [
+    "hip_escape"
+   ],
+   "actor_role": "top",
+   "actor_role_after": "top",
+   "contest": "pass"
+  },
+  {
+   "from_position": "turtle",
+   "to_position": "back_control",
+   "via_technique": "take_back",
+   "required_grips": [],
+   "frame_cost": 27,
+   "counters": [
+    "stand_up"
+   ],
+   "actor_role": "top",
+   "actor_role_after": "top",
+   "contest": "pass"
+  },
+  {
+   "from_position": "closed_guard",
+   "to_position": "mount",
+   "via_technique": "guard_sweep",
+   "required_grips": [],
+   "frame_cost": 29,
+   "counters": [
+    "pass_guard"
+   ],
+   "actor_role": "bottom",
+   "actor_role_after": "top",
+   "contest": "sweep_ground"
+  },
+  {
+   "from_position": "half_guard",
+   "to_position": "half_guard",
+   "via_technique": "guard_sweep",
+   "required_grips": [],
+   "frame_cost": 29,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "top",
+   "contest": "sweep_ground"
+  },
+  {
+   "from_position": "half_guard",
+   "to_position": "closed_guard",
+   "via_technique": "re_guard",
+   "required_grips": [],
+   "frame_cost": 23,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "bottom",
+   "contest": "escape"
+  },
+  {
+   "from_position": "side_control",
+   "to_position": "half_guard",
+   "via_technique": "re_guard",
+   "required_grips": [],
+   "frame_cost": 23,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "bottom",
+   "contest": "escape"
+  },
+  {
+   "from_position": "side_control",
+   "to_position": "half_guard",
+   "via_technique": "hip_escape",
+   "required_grips": [],
+   "frame_cost": 23,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "bottom",
+   "contest": "escape"
+  },
+  {
+   "from_position": "mount",
+   "to_position": "half_guard",
+   "via_technique": "hip_escape",
+   "required_grips": [],
+   "frame_cost": 23,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "bottom",
+   "contest": "escape"
+  },
+  {
+   "from_position": "back_control",
+   "to_position": "closed_guard",
+   "via_technique": "hip_escape",
+   "required_grips": [],
+   "frame_cost": 23,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "top",
+   "contest": "escape"
+  },
+  {
+   "from_position": "closed_guard",
+   "to_position": "standing_neutral",
+   "via_technique": "technical_standup",
+   "required_grips": [],
+   "frame_cost": 24,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "half_guard",
+   "to_position": "standing_neutral",
+   "via_technique": "technical_standup",
+   "required_grips": [],
+   "frame_cost": 24,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "side_control",
+   "to_position": "standing_neutral",
+   "via_technique": "technical_standup",
+   "required_grips": [],
+   "frame_cost": 24,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "mount",
+   "to_position": "standing_neutral",
+   "via_technique": "technical_standup",
+   "required_grips": [],
+   "frame_cost": 24,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "back_control",
+   "to_position": "standing_neutral",
+   "via_technique": "technical_standup",
+   "required_grips": [],
+   "frame_cost": 24,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "turtle",
+   "to_position": "standing_neutral",
+   "via_technique": "technical_standup",
+   "required_grips": [],
+   "frame_cost": 24,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "leg_entanglement",
+   "to_position": "standing_neutral",
+   "via_technique": "technical_standup",
+   "required_grips": [],
+   "frame_cost": 24,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "closed_guard",
+   "to_position": "standing_neutral",
+   "via_technique": "wall_walk",
+   "required_grips": [],
+   "frame_cost": 25,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "half_guard",
+   "to_position": "standing_neutral",
+   "via_technique": "wall_walk",
+   "required_grips": [],
+   "frame_cost": 25,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "side_control",
+   "to_position": "standing_neutral",
+   "via_technique": "wall_walk",
+   "required_grips": [],
+   "frame_cost": 25,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "mount",
+   "to_position": "standing_neutral",
+   "via_technique": "wall_walk",
+   "required_grips": [],
+   "frame_cost": 25,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "back_control",
+   "to_position": "standing_neutral",
+   "via_technique": "wall_walk",
+   "required_grips": [],
+   "frame_cost": 25,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "turtle",
+   "to_position": "standing_neutral",
+   "via_technique": "wall_walk",
+   "required_grips": [],
+   "frame_cost": 25,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "leg_entanglement",
+   "to_position": "standing_neutral",
+   "via_technique": "wall_walk",
+   "required_grips": [],
+   "frame_cost": 25,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "closed_guard",
+   "to_position": "standing_neutral",
+   "via_technique": "stand_up",
+   "required_grips": [],
+   "frame_cost": 27,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "half_guard",
+   "to_position": "standing_neutral",
+   "via_technique": "stand_up",
+   "required_grips": [],
+   "frame_cost": 27,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "side_control",
+   "to_position": "standing_neutral",
+   "via_technique": "stand_up",
+   "required_grips": [],
+   "frame_cost": 27,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "mount",
+   "to_position": "standing_neutral",
+   "via_technique": "stand_up",
+   "required_grips": [],
+   "frame_cost": 27,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "back_control",
+   "to_position": "standing_neutral",
+   "via_technique": "stand_up",
+   "required_grips": [],
+   "frame_cost": 27,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "turtle",
+   "to_position": "standing_neutral",
+   "via_technique": "stand_up",
+   "required_grips": [],
+   "frame_cost": 27,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "leg_entanglement",
+   "to_position": "standing_neutral",
+   "via_technique": "stand_up",
+   "required_grips": [],
+   "frame_cost": 27,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "closed_guard",
+   "to_position": "standing_neutral",
+   "via_technique": "escape",
+   "required_grips": [],
+   "frame_cost": 25,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "half_guard",
+   "to_position": "standing_neutral",
+   "via_technique": "escape",
+   "required_grips": [],
+   "frame_cost": 25,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "side_control",
+   "to_position": "standing_neutral",
+   "via_technique": "escape",
+   "required_grips": [],
+   "frame_cost": 25,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "mount",
+   "to_position": "standing_neutral",
+   "via_technique": "escape",
+   "required_grips": [],
+   "frame_cost": 25,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "back_control",
+   "to_position": "standing_neutral",
+   "via_technique": "escape",
+   "required_grips": [],
+   "frame_cost": 25,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "turtle",
+   "to_position": "standing_neutral",
+   "via_technique": "escape",
+   "required_grips": [],
+   "frame_cost": 25,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "leg_entanglement",
+   "to_position": "standing_neutral",
+   "via_technique": "escape",
+   "required_grips": [],
+   "frame_cost": 25,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "closed_guard",
+   "to_position": "closed_guard",
+   "via_technique": "ride",
+   "required_grips": [],
+   "frame_cost": 31,
+   "counters": [],
+   "actor_role": "top",
+   "actor_role_after": "top",
+   "contest": "control"
+  },
+  {
+   "from_position": "half_guard",
+   "to_position": "half_guard",
+   "via_technique": "ride",
+   "required_grips": [],
+   "frame_cost": 31,
+   "counters": [],
+   "actor_role": "top",
+   "actor_role_after": "top",
+   "contest": "control"
+  },
+  {
+   "from_position": "side_control",
+   "to_position": "side_control",
+   "via_technique": "ride",
+   "required_grips": [],
+   "frame_cost": 31,
+   "counters": [],
+   "actor_role": "top",
+   "actor_role_after": "top",
+   "contest": "control"
+  },
+  {
+   "from_position": "mount",
+   "to_position": "mount",
+   "via_technique": "ride",
+   "required_grips": [],
+   "frame_cost": 31,
+   "counters": [],
+   "actor_role": "top",
+   "actor_role_after": "top",
+   "contest": "control"
+  },
+  {
+   "from_position": "back_control",
+   "to_position": "back_control",
+   "via_technique": "ride",
+   "required_grips": [],
+   "frame_cost": 31,
+   "counters": [],
+   "actor_role": "top",
+   "actor_role_after": "top",
+   "contest": "control"
+  },
+  {
+   "from_position": "closed_guard",
+   "to_position": "leg_entanglement",
+   "via_technique": "leg_entry",
+   "required_grips": [],
+   "frame_cost": 24,
+   "counters": [
+    "pass_guard"
+   ],
+   "actor_role": "bottom",
+   "actor_role_after": "bottom",
+   "contest": "sweep_ground"
+  },
+  {
+   "from_position": "half_guard",
+   "to_position": "leg_entanglement",
+   "via_technique": "leg_entry",
+   "required_grips": [],
+   "frame_cost": 24,
+   "counters": [
+    "pass_guard"
+   ],
+   "actor_role": "bottom",
+   "actor_role_after": "bottom",
+   "contest": "sweep_ground"
+  },
+  {
+   "from_position": "half_guard",
+   "to_position": "leg_entanglement",
+   "via_technique": "leg_entry",
+   "required_grips": [],
+   "frame_cost": 24,
+   "counters": [
+    "leg_pummel_escape"
+   ],
+   "actor_role": "top",
+   "actor_role_after": "bottom",
+   "contest": "control"
+  },
+  {
+   "from_position": "scramble",
+   "to_position": "leg_entanglement",
+   "via_technique": "leg_entry",
+   "required_grips": [],
+   "frame_cost": 24,
+   "counters": [],
+   "actor_role": "neutral",
+   "actor_role_after": "bottom",
+   "contest": "scramble"
+  },
+  {
+   "from_position": "leg_entanglement",
+   "to_position": "standing_neutral",
+   "via_technique": "leg_pummel_escape",
+   "required_grips": [],
+   "frame_cost": 23,
+   "counters": [
+    "heel_hook"
+   ],
+   "actor_role": "top",
+   "actor_role_after": "neutral",
+   "contest": "stand_up"
+  },
+  {
+   "from_position": "leg_entanglement",
+   "to_position": "half_guard",
+   "via_technique": "pass_guard",
+   "required_grips": [],
+   "frame_cost": 30,
+   "counters": [
+    "leg_entry"
+   ],
+   "actor_role": "top",
+   "actor_role_after": "top",
+   "contest": "pass"
+  },
+  {
+   "from_position": "shot_in",
+   "to_position": "scramble",
+   "via_technique": "double_leg",
+   "required_grips": [],
+   "frame_cost": 36,
+   "counters": [],
+   "actor_role": "shooter",
+   "actor_role_after": "neutral",
+   "contest": "scramble",
+   "via_outcome": "takedown contest decided within scramble_margin"
+  },
+  {
+   "from_position": "shot_in",
+   "to_position": "scramble",
+   "via_technique": "single_leg",
+   "required_grips": [],
+   "frame_cost": 32,
+   "counters": [],
+   "actor_role": "shooter",
+   "actor_role_after": "neutral",
+   "contest": "scramble",
+   "via_outcome": "takedown contest decided within scramble_margin"
+  },
+  {
+   "from_position": "side_control",
+   "to_position": "turtle",
+   "via_technique": "stand_up",
+   "required_grips": [],
+   "frame_cost": 27,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "bottom",
+   "contest": "stand_up",
+   "via_outcome": "stand-up failed within scramble_margin: bottom fighter ends on knees"
+  },
+  {
+   "from_position": "mount",
+   "to_position": "turtle",
+   "via_technique": "hip_escape",
+   "required_grips": [],
+   "frame_cost": 23,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "bottom",
+   "contest": "escape",
+   "via_outcome": "escape half-succeeds: bottom fighter turns to knees"
+  },
+  {
+   "from_position": "scramble",
+   "to_position": "turtle",
+   "via_technique": "stand_up",
+   "required_grips": [],
+   "frame_cost": 27,
+   "counters": [],
+   "actor_role": "neutral",
+   "actor_role_after": "bottom",
+   "contest": "scramble",
+   "via_outcome": "scramble lost: loser ends on knees, winner on top"
+  },
+  {
+   "from_position": "closed_guard",
+   "to_position": "half_guard",
+   "via_technique": "armbar",
+   "required_grips": [],
+   "frame_cost": 42,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "bottom",
+   "contest": "submission",
+   "via_outcome": "failed attempt (defender escaped): defender stacks and passes to half guard"
+  },
+  {
+   "from_position": "closed_guard",
+   "to_position": "half_guard",
+   "via_technique": "triangle",
+   "required_grips": [],
+   "frame_cost": 42,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "bottom",
+   "contest": "submission",
+   "via_outcome": "failed attempt (defender escaped): defender postures out and passes"
+  },
+  {
+   "from_position": "mount",
+   "to_position": "scramble",
+   "via_technique": "armbar",
+   "required_grips": [],
+   "frame_cost": 42,
+   "counters": [],
+   "actor_role": "top",
+   "actor_role_after": "neutral",
+   "contest": "submission",
+   "via_outcome": "failed attempt (defender escaped): defender pulls the arm free and comes up"
+  },
+  {
+   "from_position": "back_control",
+   "to_position": "closed_guard",
+   "via_technique": "rear_naked_choke",
+   "required_grips": [],
+   "frame_cost": 36,
+   "counters": [],
+   "actor_role": "top",
+   "actor_role_after": "bottom",
+   "contest": "submission",
+   "via_outcome": "failed attempt (defender escaped): defender turns in, attacker keeps guard"
+  },
+  {
+   "from_position": "front_headlock",
+   "to_position": "closed_guard",
+   "via_technique": "guillotine",
+   "required_grips": [],
+   "frame_cost": 37,
+   "counters": [],
+   "actor_role": "controller",
+   "actor_role_after": "bottom",
+   "contest": "submission",
+   "via_outcome": "failed attempt (defender escaped): attacker falls to closed guard"
+  },
+  {
+   "from_position": "side_control",
+   "to_position": "half_guard",
+   "via_technique": "arm_triangle",
+   "required_grips": [],
+   "frame_cost": 39,
+   "counters": [],
+   "actor_role": "top",
+   "actor_role_after": "top",
+   "contest": "submission",
+   "via_outcome": "failed attempt (defender escaped): bottom fighter recovers half guard"
+  },
+  {
+   "from_position": "side_control",
+   "to_position": "half_guard",
+   "via_technique": "kimura",
+   "required_grips": [],
+   "frame_cost": 39,
+   "counters": [],
+   "actor_role": "top",
+   "actor_role_after": "top",
+   "contest": "submission",
+   "via_outcome": "failed attempt (defender escaped): bottom fighter recovers half guard"
+  },
+  {
+   "from_position": "leg_entanglement",
+   "to_position": "scramble",
+   "via_technique": "heel_hook",
+   "required_grips": [],
+   "frame_cost": 34,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "neutral",
+   "contest": "submission",
+   "via_outcome": "failed attempt (defender escaped): both scramble"
+  },
+  {
+   "from_position": "leg_entanglement",
+   "to_position": "half_guard",
+   "via_technique": "toe_hold",
+   "required_grips": [],
+   "frame_cost": 35,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "bottom",
+   "contest": "submission",
+   "via_outcome": "failed attempt (defender escaped): defender settles on top in half guard"
+  },
+  {
+   "from_position": "leg_entanglement",
+   "to_position": "half_guard",
+   "via_technique": "ankle_lock",
+   "required_grips": [],
+   "frame_cost": 34,
+   "counters": [],
+   "actor_role": "bottom",
+   "actor_role_after": "bottom",
+   "contest": "submission",
+   "via_outcome": "failed attempt (defender escaped): defender settles on top in half guard"
+  }
+ ],
+ "contests": [
+  "clinch_control",
+  "clinch_escape",
+  "takedown",
+  "takedown_defense",
+  "kick_catch",
+  "sweep",
+  "guard_pull",
+  "scramble",
+  "pass",
+  "sweep_ground",
+  "escape",
+  "stand_up",
+  "control",
+  "submission"
+ ],
+ "contest_skill_map": {
+  "clinch_control": [
+   "clinch_control",
+   "clinch_control"
   ],
-  "transitions": [
-    {
-      "from_position": "standing_neutral",
-      "to_position": "caught_single_leg",
-      "via_technique": "kick_catch",
-      "required_grips": [
-        "caught_leg"
-      ],
-      "frame_cost": 7,
-      "counters": [
-        "cross",
-        "escape"
-      ]
-    },
-    {
-      "from_position": "caught_single_leg",
-      "to_position": "side_control",
-      "via_technique": "sanda_sweep",
-      "required_grips": [
-        "caught_leg"
-      ],
-      "frame_cost": 14,
-      "counters": [
-        "retreat"
-      ]
-    },
-    {
-      "from_position": "standing_neutral",
-      "to_position": "collar_tie",
-      "via_technique": "collar_tie",
-      "required_grips": [
-        "collar"
-      ],
-      "frame_cost": 11,
-      "counters": [
-        "pummel",
-        "retreat"
-      ]
-    },
-    {
-      "from_position": "standing_neutral",
-      "to_position": "thai_plum",
-      "via_technique": "collar_tie",
-      "required_grips": [
-        "collar"
-      ],
-      "frame_cost": 11,
-      "counters": [
-        "pummel",
-        "double_leg"
-      ]
-    },
-    {
-      "from_position": "collar_tie",
-      "to_position": "double_underhooks",
-      "via_technique": "pummel",
-      "required_grips": [
-        "underhooks"
-      ],
-      "frame_cost": 12,
-      "counters": [
-        "pummel",
-        "knee_body"
-      ]
-    },
-    {
-      "from_position": "standing_neutral",
-      "to_position": "front_body_lock",
-      "via_technique": "body_lock",
-      "required_grips": [
-        "body_lock"
-      ],
-      "frame_cost": 13,
-      "counters": [
-        "pummel",
-        "sprawl"
-      ]
-    },
-    {
-      "from_position": "front_body_lock",
-      "to_position": "side_control",
-      "via_technique": "outside_trip",
-      "required_grips": [
-        "body_lock"
-      ],
-      "frame_cost": 16,
-      "counters": [
-        "sprawl",
-        "pummel"
-      ]
-    },
-    {
-      "from_position": "standing_neutral",
-      "to_position": "half_guard_top",
-      "via_technique": "double_leg",
-      "required_grips": [
-        "top"
-      ],
-      "frame_cost": 18,
-      "counters": [
-        "sprawl",
-        "uppercut"
-      ]
-    },
-    {
-      "from_position": "standing_neutral",
-      "to_position": "half_guard_top",
-      "via_technique": "single_leg",
-      "required_grips": [
-        "top"
-      ],
-      "frame_cost": 16,
-      "counters": [
-        "sprawl",
-        "check"
-      ]
-    },
-    {
-      "from_position": "collar_tie",
-      "to_position": "closed_guard_bottom",
-      "via_technique": "guard_pull",
-      "required_grips": [
-        "bottom"
-      ],
-      "frame_cost": 14,
-      "counters": [
-        "ride"
-      ]
-    },
-    {
-      "from_position": "half_guard_top",
-      "to_position": "mount_or_back_ride",
-      "via_technique": "ride",
-      "required_grips": [
-        "top"
-      ],
-      "frame_cost": 18,
-      "counters": [
-        "escape"
-      ]
-    },
-    {
-      "from_position": "closed_guard_bottom",
-      "to_position": "side_control",
-      "via_technique": "armbar",
-      "required_grips": [
-        "bottom"
-      ],
-      "frame_cost": 22,
-      "counters": [
-        "ride",
-        "escape"
-      ]
-    },
-    {
-      "from_position": "half_guard_top",
-      "to_position": "standing_neutral",
-      "via_technique": "escape",
-      "required_grips": [],
-      "frame_cost": 17,
-      "counters": [
-        "ride"
-      ]
-    },
-    {
-      "from_position": "side_control",
-      "to_position": "standing_neutral",
-      "via_technique": "escape",
-      "required_grips": [],
-      "frame_cost": 18,
-      "counters": [
-        "ride"
-      ]
-    }
+  "clinch_escape": [
+   "clinch_control",
+   "clinch_control"
+  ],
+  "takedown": [
+   "takedown_offense",
+   "takedown_defense"
+  ],
+  "takedown_defense": [
+   "takedown_defense",
+   "takedown_offense"
+  ],
+  "kick_catch": [
+   "technique.catchability roll (see 7.11)",
+   "-"
+  ],
+  "sweep": [
+   "takedown_offense",
+   "scramble + sweep_resistance"
+  ],
+  "guard_pull": [
+   "bottom_game",
+   "top_control"
+  ],
+  "scramble": [
+   "scramble",
+   "scramble"
+  ],
+  "pass": [
+   "top_control",
+   "bottom_game"
+  ],
+  "sweep_ground": [
+   "bottom_game",
+   "top_control"
+  ],
+  "escape": [
+   "bottom_game",
+   "top_control"
+  ],
+  "stand_up": [
+   "stand_up",
+   "top_control"
+  ],
+  "control": [
+   "top_control",
+   "bottom_game"
+  ],
+  "submission": [
+   "submission_offense",
+   "submission_defense"
   ]
+ },
+ "legacy_position_map": {
+  "closed_guard_bottom": "closed_guard (role bottom)",
+  "half_guard_top": "half_guard (role top)",
+  "mount_or_back_ride": "mount (role top) — or back_control (role top) when entered via take_back",
+  "side_control": "side_control (role top/bottom by actor)",
+  "shot_in": "shot_in",
+  "caught_kick_dump": "caught_single_leg -> sweep transition (no standalone position)"
+ },
+ "legacy_transition_map": [
+  {
+   "existing": "standing_neutral -> caught_single_leg via kick_catch",
+   "v2_1": "kept (actor role holder)"
+  },
+  {
+   "existing": "caught_single_leg -> side_control via sanda_sweep",
+   "v2_1": "re-targeted: caught_single_leg (holder) -> half_guard (top) via sanda_sweep; rulesets without ground reset to standing and score the sweep"
+  },
+  {
+   "existing": "standing_neutral -> collar_tie via collar_tie",
+   "v2_1": "kept (actor role tier)"
+  },
+  {
+   "existing": "standing_neutral -> thai_plum via collar_tie",
+   "v2_1": "replaced: standing_neutral -> thai_plum via cage_plum, and collar_tie -> thai_plum via double_collar_tie"
+  },
+  {
+   "existing": "collar_tie -> double_underhooks via pummel",
+   "v2_1": "replaced: collar_tie (tied) -> over_under via pummel, then over_under -> double_underhooks via pummel"
+  },
+  {
+   "existing": "standing_neutral -> front_body_lock via body_lock",
+   "v2_1": "kept (actor role locker)"
+  },
+  {
+   "existing": "front_body_lock -> side_control via outside_trip",
+   "v2_1": "kept (actor role top)"
+  },
+  {
+   "existing": "standing_neutral -> half_guard_top via double_leg",
+   "v2_1": "re-routed through shot_in: standing_neutral -> shot_in -> half_guard (top) or scramble"
+  },
+  {
+   "existing": "standing_neutral -> half_guard_top via single_leg",
+   "v2_1": "re-routed through shot_in (as double_leg)"
+  },
+  {
+   "existing": "collar_tie -> closed_guard_bottom via guard_pull",
+   "v2_1": "kept as collar_tie (tier) -> closed_guard (actor role bottom)"
+  },
+  {
+   "existing": "half_guard_top -> mount_or_back_ride via ride",
+   "v2_1": "replaced: ride holds position; half_guard -> side_control via pass_guard; side_control -> mount via advance_to_mount; turtle/scramble/front_headlock -> back_control via take_back"
+  },
+  {
+   "existing": "closed_guard_bottom -> side_control via armbar",
+   "v2_1": "replaced by submission outcome rows: a FAILED armbar from closed_guard bottom -> half_guard (attacker stays bottom); success ends the fight"
+  },
+  {
+   "existing": "half_guard_top -> standing_neutral via escape",
+   "v2_1": "kept as half_guard (bottom) -> standing_neutral via escape/stand_up/technical_standup/wall_walk"
+  },
+  {
+   "existing": "side_control -> standing_neutral via escape",
+   "v2_1": "kept as side_control (bottom) -> standing_neutral via escape/stand_up/technical_standup/wall_walk"
+  }
+ ]
 }
