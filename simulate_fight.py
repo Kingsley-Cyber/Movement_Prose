@@ -27,6 +27,7 @@ from engine.simulator_v2 import (
     audit_round_robin_balance_v2,
     compile_simulated_fight_to_atomic_beats,
     list_archetypes_v2,
+    normalize_vertical_mode,
     simulate_fight_v2,
     simulate_many_v2,
 )
@@ -186,7 +187,12 @@ def main(argv=None) -> int:
     parser.add_argument("--option-audit", action="store_true", help="Swap each of the 57 options into a neutral probe card and audit viability across the roster")
     parser.add_argument("--ruleset", default="mma", choices=["mma", "boxing"], help="Combat ruleset (default: mma)")
     parser.add_argument("--arena", default="cage", choices=sorted(ARENA_PRESETS.keys()), help="2D arena preset (default: cage)")
-    parser.add_argument("--vertical-mode", default="grounded", choices=["grounded", "athletic", "wall_assisted"], help="Vertical mode (default: grounded)")
+    parser.add_argument(
+        "--vertical-mode",
+        default="grounded",
+        choices=["grounded", "athletic", "aerial", "wall_assisted"],
+        help="Vertical mode (default: grounded; wall_assisted is normalized to aerial)",
+    )
     parser.add_argument("--duration", type=float, default=60.0, help="Fight clock duration in seconds (default: 60.0)")
     parser.add_argument("--seed", type=int, default=42, help="Deterministic RNG seed for single-fight mode (default: 42)")
     parser.add_argument("--runs", type=int, default=0, help="If > 0, run N Monte Carlo simulations via simulate_many_v2 (or seeds/pair for --balance-audit)")
@@ -195,6 +201,7 @@ def main(argv=None) -> int:
     parser.add_argument("--json", action="store_true", help="Emit structured JSON output for LLM/programmatic consumption")
 
     args = parser.parse_args(argv)
+    args.vertical_mode = normalize_vertical_mode(args.vertical_mode)
     k = Knowledge()
 
     if args.list_archetypes:

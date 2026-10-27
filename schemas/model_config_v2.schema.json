@@ -1,107 +1,221 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "BLOCK Model Config v2 Schema",
-  "type": "object",
-  "required": [
-    "version",
-    "fps",
-    "lanes",
-    "readiness_weights",
-    "state_modifiers",
-    "landing_multipliers",
-    "regional_damage_limits",
-    "slot_depth_multipliers",
-    "arena_presets"
-  ],
-  "properties": {
-    "version": {"const": "block-2"},
-    "fps": {"const": 24},
-    "lanes": {
-      "type": "array",
-      "minItems": 8,
-      "maxItems": 8,
-      "items": {
-        "enum": [
-          "head_straight",
-          "head_hook",
-          "head_uppercut",
-          "body",
-          "leg",
-          "entry",
-          "clinch",
-          "single_support"
-        ]
-      }
-    },
-    "readiness_weights": {
-      "type": "object",
-      "required": ["guard_weight", "method_weight", "stance_weight", "base_readiness"],
-      "properties": {
-        "guard_weight": {"type": "number"},
-        "method_weight": {"type": "number"},
-        "stance_weight": {"type": "number"},
-        "base_readiness": {"type": "number"}
-      },
-      "additionalProperties": false
-    },
-    "state_modifiers": {
-      "type": "object",
-      "required": [
-        "recovery_window_penalty_scale",
-        "compromised_balance_penalty",
-        "off_base_balance_penalty",
-        "outside_angle_penalty",
-        "open_stance_rear_lane_penalty",
-        "wall_near_outfight_penalty",
-        "feint_attention_penalty",
-        "repeated_move_read_bonus",
-        "novel_move_surprise_penalty",
-        "fatigue_per_point_penalty",
-        "head_damage_reaction_penalty",
-        "body_damage_high_guard_drop",
-        "leg_damage_check_and_mobility_penalty"
-      ]
-    },
-    "landing_multipliers": {
-      "type": "object",
-      "required": ["miss", "evaded", "caught", "checked", "jammed", "blocked", "partial", "clean", "counter_hit", "flush"]
-    },
-    "regional_damage_limits": {
-      "type": "object",
-      "required": ["head", "body", "leg"],
-      "properties": {
-        "head": {"type": "number", "exclusiveMinimum": 0},
-        "body": {"type": "number", "exclusiveMinimum": 0},
-        "leg": {"type": "number", "exclusiveMinimum": 0}
-      },
-      "additionalProperties": false
-    },
-    "slot_depth_multipliers": {
-      "type": "object",
-      "required": ["1", "2", "3", "4"]
-    },
-    "diminishing_returns": {
-      "type": "object",
-      "required": [
-        "posture_asymptote",
-        "readiness_compression",
-        "min_readiness",
-        "max_readiness",
-        "tempo_defensive_damping"
-      ]
-    },
-    "tempo_rules": {
-      "type": "object",
-      "required": [
-        "initiative_base",
-        "initiative_per_point",
-        "entry_per_point",
-        "low_tempo_readiness_per_point",
-        "low_tempo_counter_per_point",
-        "fatigue_by_tempo"
-      ]
-    },
-    "arena_presets": {"type": "object"}
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "BLOCK Model Config v2 Schema",
+ "type": "object",
+ "required": [
+  "version",
+  "fps",
+  "lanes",
+  "readiness_weights",
+  "state_modifiers",
+  "landing_multipliers",
+  "regional_damage_limits",
+  "slot_depth_multipliers",
+  "arena_presets"
+ ],
+ "properties": {
+  "version": {
+   "const": "block-2"
   },
-  "additionalProperties": false
+  "fps": {
+   "const": 24
+  },
+  "lanes": {
+   "type": "array",
+   "minItems": 8,
+   "maxItems": 8,
+   "items": {
+    "enum": [
+     "head_straight",
+     "head_hook",
+     "head_uppercut",
+     "body",
+     "leg",
+     "entry",
+     "clinch",
+     "single_support"
+    ]
+   }
+  },
+  "readiness_weights": {
+   "type": "object",
+   "required": [
+    "guard_weight",
+    "method_weight",
+    "stance_weight",
+    "base_readiness"
+   ],
+   "properties": {
+    "guard_weight": {
+     "type": "number"
+    },
+    "method_weight": {
+     "type": "number"
+    },
+    "stance_weight": {
+     "type": "number"
+    },
+    "base_readiness": {
+     "type": "number"
+    }
+   },
+   "additionalProperties": false
+  },
+  "state_modifiers": {
+   "type": "object",
+   "required": [
+    "recovery_window_penalty_scale",
+    "compromised_balance_penalty",
+    "off_base_balance_penalty",
+    "outside_angle_penalty",
+    "open_stance_rear_lane_penalty",
+    "wall_near_outfight_penalty",
+    "feint_attention_penalty",
+    "repeated_move_read_bonus",
+    "novel_move_surprise_penalty",
+    "fatigue_per_point_penalty",
+    "head_damage_reaction_penalty",
+    "body_damage_high_guard_drop",
+    "leg_damage_check_and_mobility_penalty"
+   ]
+  },
+  "landing_multipliers": {
+   "type": "object",
+   "required": [
+    "miss",
+    "evaded",
+    "caught",
+    "checked",
+    "jammed",
+    "blocked",
+    "partial",
+    "clean",
+    "counter_hit",
+    "flush"
+   ]
+  },
+  "regional_damage_limits": {
+   "type": "object",
+   "required": [
+    "head",
+    "body",
+    "leg"
+   ],
+   "properties": {
+    "head": {
+     "type": "number",
+     "exclusiveMinimum": 0
+    },
+    "body": {
+     "type": "number",
+     "exclusiveMinimum": 0
+    },
+    "leg": {
+     "type": "number",
+     "exclusiveMinimum": 0
+    }
+   },
+   "additionalProperties": false
+  },
+  "slot_depth_multipliers": {
+   "type": "object",
+   "required": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ]
+  },
+  "diminishing_returns": {
+   "type": "object",
+   "required": [
+    "posture_asymptote",
+    "readiness_compression",
+    "min_readiness",
+    "max_readiness",
+    "tempo_defensive_damping"
+   ]
+  },
+  "tempo_rules": {
+   "type": "object",
+   "required": [
+    "initiative_base",
+    "initiative_per_point",
+    "entry_per_point",
+    "low_tempo_readiness_per_point",
+    "low_tempo_counter_per_point",
+    "fatigue_by_tempo"
+   ]
+  },
+  "arena_presets": {
+   "type": "object"
+  },
+  "posture": {
+   "type": "object"
+  },
+  "readiness": {
+   "type": "object"
+  },
+  "kick_defense": {
+   "type": "object"
+  },
+  "damage": {
+   "type": "object"
+  },
+  "simulation": {
+   "type": "object"
+  },
+  "legacy": {
+   "type": "object"
+  },
+  "laterality": {
+   "type": "object"
+  },
+  "grappling": {
+   "type": "object"
+  },
+  "vertical": {
+   "type": "object"
+  },
+  "knockdowns": {
+   "type": "object"
+  },
+  "rounds": {
+   "type": "object"
+  },
+  "energy": {
+   "type": "object"
+  },
+  "selection": {
+   "type": "object"
+  },
+  "slot_triggers": {
+   "type": "object"
+  },
+  "pace": {
+   "type": "object"
+  },
+  "fight_momentum": {
+   "type": "object"
+  },
+  "defense_contest": {
+   "type": "object"
+  },
+  "geometry": {
+   "type": "object"
+  },
+  "finishes": {
+   "type": "object"
+  },
+  "director": {
+   "type": "object"
+  },
+  "audits": {
+   "type": "object"
+  },
+  "mastery": {
+   "type": "object"
+  }
+ },
+ "additionalProperties": false
 }

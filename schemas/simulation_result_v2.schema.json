@@ -1,40 +1,114 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "BLOCK Simulation Result v2 Schema (Many-Runs & Director Summary)",
-  "type": "object",
-  "required": [
-    "version",
-    "fighter_a",
-    "fighter_b",
-    "runs",
-    "ruleset",
-    "arena",
-    "vertical_mode",
-    "win_counts",
-    "empirical_win_rate_a",
-    "empirical_win_rate_b",
-    "method_breakdown",
-    "average_duration_s",
-    "deciding_slots",
-    "deciding_weakness_lanes",
-    "representative_fight"
-  ],
-  "properties": {
-    "version": {"const": "block-2"},
-    "fighter_a": {"type": "string"},
-    "fighter_b": {"type": "string"},
-    "runs": {"type": "integer", "minimum": 1},
-    "ruleset": {"enum": ["mma", "boxing"]},
-    "arena": {"type": "string"},
-    "vertical_mode": {"enum": ["grounded", "athletic", "aerial"]},
-    "win_counts": {"type": "object"},
-    "empirical_win_rate_a": {"type": "number", "minimum": 0.0, "maximum": 1.0},
-    "empirical_win_rate_b": {"type": "number", "minimum": 0.0, "maximum": 1.0},
-    "method_breakdown": {"type": "object"},
-    "average_duration_s": {"type": "number", "minimum": 0.0},
-    "deciding_slots": {"type": "object"},
-    "deciding_weakness_lanes": {"type": "object"},
-    "directed_winner": {"type": ["string", "null"]},
-    "representative_fight": {"type": "object"}
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "BLOCK Simulation Result v2 Schema (Many-Runs & Director Summary)",
+ "type": "object",
+ "required": [
+  "version",
+  "fighter_a",
+  "fighter_b",
+  "runs",
+  "ruleset",
+  "arena",
+  "vertical_mode",
+  "win_counts",
+  "empirical_win_rate_a",
+  "empirical_win_rate_b",
+  "method_breakdown",
+  "average_duration_s",
+  "deciding_slots",
+  "deciding_weakness_lanes",
+  "representative_fight"
+ ],
+ "properties": {
+  "version": {
+   "const": "block-2"
+  },
+  "fighter_a": {
+   "type": "string"
+  },
+  "fighter_b": {
+   "type": "string"
+  },
+  "runs": {
+   "type": "integer",
+   "minimum": 1
+  },
+  "ruleset": {
+   "enum": [
+    "boxing",
+    "kickboxing",
+    "muay_thai",
+    "mma",
+    "street",
+    "lethwei"
+   ]
+  },
+  "arena": {
+   "type": "string"
+  },
+  "vertical_mode": {
+   "enum": [
+    "grounded",
+    "athletic",
+    "aerial"
+   ]
+  },
+  "win_counts": {
+   "type": "object"
+  },
+  "empirical_win_rate_a": {
+   "type": "number",
+   "minimum": 0.0,
+   "maximum": 1.0
+  },
+  "empirical_win_rate_b": {
+   "type": "number",
+   "minimum": 0.0,
+   "maximum": 1.0
+  },
+  "method_breakdown": {
+   "type": "object"
+  },
+  "average_duration_s": {
+   "type": "number",
+   "minimum": 0.0
+  },
+  "deciding_slots": {
+   "type": "object"
+  },
+  "deciding_weakness_lanes": {
+   "type": "object"
+  },
+  "directed_winner": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "representative_fight": {
+   "type": "object"
+  },
+  "method_split": {
+   "type": "object"
+  },
+  "finish_time_distribution": {
+   "type": "object"
+  },
+  "slot_path_frequencies": {
+   "type": "object"
+  },
+  "deciding_causes": {
+   "type": "array"
+  },
+  "director": {
+   "type": [
+    "object",
+    "null"
+   ]
+  },
+  "parallel_workers": {
+   "type": "integer",
+   "minimum": 1
   }
+ }
 }
