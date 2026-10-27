@@ -1,0 +1,83 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "BLOCK Fight Settings v2 Schema",
+ "type": "object",
+ "required": [
+  "duration_s",
+  "arena",
+  "vertical_mode",
+  "ruleset",
+  "seed"
+ ],
+ "properties": {
+  "duration_s": {
+   "type": "number",
+   "exclusiveMinimum": 0,
+   "maximum": 900
+  },
+  "arena": {
+   "enum": [
+    "ring",
+    "cage",
+    "open_floor",
+    "narrow_alley",
+    "rooftop_edge",
+    "dojo"
+   ]
+  },
+  "vertical_mode": {
+   "enum": [
+    "grounded",
+    "athletic",
+    "aerial"
+   ]
+  },
+  "ruleset": {
+   "enum": [
+    "boxing",
+    "kickboxing",
+    "muay_thai",
+    "mma",
+    "street",
+    "lethwei"
+   ]
+  },
+  "seed": {
+   "type": "integer"
+  },
+  "director_winner": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "initiative_override": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "rounds": {
+   "type": "integer",
+   "minimum": 1,
+   "maximum": 12
+  },
+  "round_length_s": {
+   "type": "number",
+   "exclusiveMinimum": 0,
+   "maximum": 600
+  },
+  "rest_s": {
+   "type": "number",
+   "minimum": 0
+  },
+  "fps": {
+   "const": 24
+  },
+  "runs": {
+   "type": "integer",
+   "minimum": 1
+  }
+ },
+ "additionalProperties": false
+}

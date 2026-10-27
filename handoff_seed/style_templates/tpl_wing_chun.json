@@ -1,0 +1,138 @@
+{
+ "version": "block-2",
+ "revision": 1,
+ "fighter_id": "tpl_wing_chun",
+ "name": "Wing Chun template",
+ "combat_identity": "Wing Chun starter build (rename and customize)",
+ "dimensions": {
+  "hands": "hands.long_guard",
+  "defense": "defense.parry_catch",
+  "stance": "stance.upright",
+  "tie": null,
+  "target": "target.head_hunter",
+  "kicking": "kicking.none",
+  "mentality": "mentality.pressure"
+ },
+ "adaptation": "mma",
+ "orientation": "orthodox",
+ "slot_count": 2,
+ "slot_label": "Two-piece",
+ "synchronized_capabilities": [
+  {
+   "id": "tpl_wing_chun.slot.1",
+   "capabilities": [
+    "wing_chun"
+   ],
+   "description": "Trap the lead arm, chain-punch the centerline, stop kicks to the knee.",
+   "trigger": "fight_start",
+   "sequence": [
+    "pak_sao",
+    "chain_punch",
+    "lap_sao",
+    "oblique_kick",
+    "horizontal_elbow"
+   ],
+   "home_range": "close",
+   "goal": "head_damage",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "sequence_denied_or_countered"
+   },
+   "links": [
+    "tpl_wing_chun.slot.2"
+   ]
+  },
+  {
+   "id": "tpl_wing_chun.slot.2",
+   "capabilities": [
+    "anti_grappling"
+   ],
+   "description": "Breaks grips, sprawls or whizzers, and gets back to range.",
+   "trigger": "opponent_clinches_or_shoots",
+   "sequence": [
+    "clinch_break",
+    "pivot",
+    "retreat"
+   ],
+   "home_range": "close",
+   "goal": "reset_to_home_range",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "clinch_denied_or_escaped"
+   },
+   "links": [
+    "tpl_wing_chun.slot.1"
+   ]
+  }
+ ],
+ "baseline_capabilities": [
+  "basic_movement",
+  "untrained_striking"
+ ],
+ "tempo": 4,
+ "preferred_ranges": [
+  "close",
+  "punch"
+ ],
+ "debt_sentence": "Wing Chun template: every option's weakness is listed in exploitable_seams.",
+ "exploitable_seams": [
+  "debt.defense.parry_catch.body",
+  "debt.defense.parry_catch.head_hook",
+  "debt.hands.long_guard.body",
+  "debt.hands.long_guard.clinch",
+  "debt.kicking.none.body",
+  "debt.kicking.none.leg",
+  "debt.mentality.pressure.angle",
+  "debt.mentality.pressure.body",
+  "debt.stance.upright.body",
+  "debt.stance.upright.entry",
+  "debt.target.head_hunter.body",
+  "debt.target.head_hunter.entry"
+ ],
+ "active_techniques": [
+  "step",
+  "retreat",
+  "pivot",
+  "feint",
+  "pak_sao",
+  "chain_punch",
+  "lap_sao",
+  "oblique_kick",
+  "horizontal_elbow",
+  "clinch_break",
+  "tan_sao",
+  "bong_sao",
+  "parry",
+  "finger_jab"
+ ],
+ "signature_moves": [
+  "chain_punch",
+  "pak_sao",
+  "lap_sao"
+ ],
+ "airborne_training": {
+  "allowed_vertical_modes": [
+   "grounded"
+  ],
+  "techniques": []
+ },
+ "conditional_abilities": [],
+ "combat_limitations": [
+  "Template card for Wing Chun: replace with the character's own limitations."
+ ],
+ "fighting_description": {
+  "does": "Trap the lead arm, chain-punch the centerline, stop kicks to the knee.",
+  "wins": "By the style's signature tools (see signature_moves).",
+  "avoids": "Fighting outside its home range.",
+  "beaten_by": "Opponents who exploit its listed seams."
+ },
+ "appearance": {
+  "clothing": "TBD",
+  "identity_anchor": "TBD",
+  "props": []
+ },
+ "provenance": {
+  "classification": "CANON",
+  "note": "style template from the v2.1 handoff; rename and customize before use"
+ }
+}

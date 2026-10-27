@@ -39,7 +39,7 @@ Takes either a **simulated BLOCK fight** or your **custom fight concept** and co
 - **Instant Video Glitch Repair:** If a rendered video has a flaw (e.g., *"his arm vanished at 3 seconds"* or *"they stood too far apart"*), just tell your agent. The agent automatically repairs only that specific beat and saves the lesson into Agent Memory.
 
 ### 💬 What You Can Ask Your Agent Right Now (Zero Terminal Required)
-- *"Simulate a fight between Mio Takahashi (`sanda_judo`) and Niran Sol (`thai`) in the cage and emit the 1-contact-per-beat video prompt."*
+- *"Simulate a fight between Mio Tsukihara (`sanda_judo`) and Niran Sol (`thai`) in the cage and emit the 1-contact-per-beat video prompt."*
 - *"Run a 200-seed series between Rook Mercer (`street`) and Niran Sol (`thai`) and break down why each wins."*
 - *"Run the 200-seed Round-Robin balance audit and the 57-option viability audit."*
 - *"Give me the BLUF on this repo, explain both the Original and Extreme prompt schemas, and show me the fighters available."*

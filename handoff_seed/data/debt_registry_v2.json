@@ -1,0 +1,3061 @@
+{
+ "version": "block-2",
+ "base_registry": "data/debt_registry.json",
+ "merge_rule": "v2 engine only: effective technique_ids(debt) = base technique_ids + add_technique_ids, filtered by ruleset legality and slot availability at run time. data/debt_registry.json is NOT edited (engine/audit.py requires v1 technique ids there).",
+ "opening_to_techniques": {
+  "angle": [
+   "armada",
+   "au",
+   "bounce_step",
+   "check_hook",
+   "circle_walk",
+   "cut_off_step",
+   "ginga",
+   "hook",
+   "pivot",
+   "shield_counter_hook",
+   "shield_frame",
+   "single_palm_change",
+   "spinning_backfist",
+   "spinning_elbow",
+   "switch_step",
+   "turning_throw"
+  ],
+  "body": [
+   "bencao",
+   "body_hook",
+   "body_jab",
+   "body_kick",
+   "body_straight_punch",
+   "double_roundhouse",
+   "fast_roundhouse",
+   "flying_side_kick",
+   "front_kick",
+   "jumping_back_kick",
+   "knee_body",
+   "no_shadow_kick",
+   "rear_body_hook",
+   "shovel_hook",
+   "side_kick",
+   "spinning_back_kick",
+   "stomp_thrust_punch",
+   "straight_knee",
+   "switch_kick",
+   "teep",
+   "top_elbow",
+   "wall_punch"
+  ],
+  "clinch": [
+   "body_lock",
+   "body_lock_takedown",
+   "bridge_smash",
+   "cage_plum",
+   "clinch_headbutt",
+   "collar_tie",
+   "double_collar_tie",
+   "guard_pull",
+   "headbutt",
+   "hip_throw",
+   "horizontal_elbow",
+   "inside_trip",
+   "iron_mountain_lean",
+   "kick_into_throw",
+   "knee_body",
+   "knee_head_clinch",
+   "outside_trip",
+   "pummel",
+   "quick_grip_throw",
+   "short_uppercut",
+   "shovel_hook",
+   "snap_down",
+   "suplex",
+   "top_elbow",
+   "turning_throw",
+   "underhook",
+   "uppercut_elbow",
+   "wall_tie"
+  ],
+  "entry": [
+   "ankle_pick",
+   "bencao",
+   "cut_kick",
+   "double_leg",
+   "fa_jin_push",
+   "finger_jab",
+   "flying_knee",
+   "flying_side_kick",
+   "front_kick",
+   "guillotine",
+   "iron_mountain_lean",
+   "jam_step",
+   "jumping_back_kick",
+   "jumping_knee",
+   "lead_straight_intercept",
+   "lunging_headbutt",
+   "oblique_kick",
+   "side_kick",
+   "single_leg",
+   "snap_down",
+   "spinning_back_kick",
+   "stomp_thrust_punch",
+   "straight_knee",
+   "teep",
+   "top_elbow"
+  ],
+  "ground": [
+   "advance_to_mount",
+   "ankle_lock",
+   "arm_triangle",
+   "armbar",
+   "cradle",
+   "cross_face",
+   "ground_elbow",
+   "ground_strike",
+   "guard_sweep",
+   "guillotine",
+   "heel_hook",
+   "keylock",
+   "kimura",
+   "leg_entry",
+   "neck_crank",
+   "pass_guard",
+   "rear_naked_choke",
+   "ride",
+   "take_back",
+   "toe_hold",
+   "triangle"
+  ],
+  "head_hook": [
+   "armada",
+   "bridge_smash",
+   "cartwheel_kick",
+   "check_hook",
+   "haymaker",
+   "head_kick",
+   "hook",
+   "horizontal_elbow",
+   "instep_head_kick",
+   "jumping_switch_kick",
+   "martelo",
+   "meia_lua_de_compasso",
+   "overhand",
+   "queixada",
+   "question_mark_kick",
+   "rear_hook",
+   "single_palm_change",
+   "spinning_backfist",
+   "spinning_elbow",
+   "spinning_hook_kick",
+   "tornado_kick",
+   "wall_run_kick",
+   "wild_hook"
+  ],
+  "head_straight": [
+   "axe_kick",
+   "brawler_straight",
+   "brush_knee_palm",
+   "chain_punch",
+   "clinch_headbutt",
+   "cross",
+   "deflect_parry_punch",
+   "headbutt",
+   "jab",
+   "lap_sao",
+   "lead_straight_intercept",
+   "lunging_headbutt",
+   "pak_sao",
+   "piercing_palm",
+   "pull_counter",
+   "superman_punch",
+   "tiger_claw"
+  ],
+  "head_uppercut": [
+   "double_collar_tie",
+   "flying_knee",
+   "jumping_knee",
+   "knee_head_clinch",
+   "lead_uppercut",
+   "short_uppercut",
+   "uppercut",
+   "uppercut_elbow"
+  ],
+  "leg": [
+   "calf_kick",
+   "low_kick",
+   "oblique_kick"
+  ],
+  "recovery": [
+   "brush_knee_palm",
+   "check_hook",
+   "cross",
+   "deflect_parry_punch",
+   "pull_counter",
+   "shield_counter_hook"
+  ],
+  "single_support": [
+   "ankle_pick",
+   "caught_kick_dump",
+   "foot_sweep",
+   "inside_trip",
+   "kick_catch",
+   "kick_into_throw",
+   "lap_sao",
+   "leg_entry",
+   "outside_trip",
+   "quick_grip_throw",
+   "rasteira",
+   "sanda_sweep",
+   "single_leg"
+  ],
+  "tempo": [
+   "body_jab",
+   "body_straight_punch",
+   "bounce_step",
+   "chain_punch",
+   "cut_kick",
+   "cut_off_step",
+   "double_roundhouse",
+   "fa_jin_push",
+   "fast_roundhouse",
+   "feint",
+   "foot_sweep",
+   "ginga",
+   "jab",
+   "lead_straight_intercept",
+   "pak_sao",
+   "piercing_palm",
+   "rasteira",
+   "shove",
+   "step"
+  ],
+  "vision": [
+   "axe_kick",
+   "body_jab",
+   "cartwheel_kick",
+   "circle_walk",
+   "feint",
+   "finger_jab",
+   "ginga",
+   "instep_head_kick",
+   "meia_lua_de_compasso",
+   "no_shadow_kick",
+   "overhand",
+   "piercing_palm",
+   "queixada",
+   "question_mark_kick",
+   "superman_punch",
+   "tiger_claw",
+   "tornado_kick"
+  ],
+  "wall": [
+   "body_lock_takedown",
+   "cage_plum",
+   "cut_off_step",
+   "fa_jin_push",
+   "shove",
+   "wall_punch",
+   "wall_run_kick",
+   "wall_tie"
+  ]
+ },
+ "debts": [
+  {
+   "debt_id": "debt.hands.high_guard.body",
+   "opening": "body",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "body_hook"
+   ],
+   "add_technique_ids": [
+    "body_kick",
+    "teep",
+    "side_kick",
+    "switch_kick",
+    "spinning_back_kick",
+    "body_jab",
+    "rear_body_hook",
+    "shovel_hook",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "fast_roundhouse",
+    "jumping_back_kick",
+    "double_roundhouse",
+    "body_straight_punch",
+    "bencao",
+    "no_shadow_kick",
+    "stomp_thrust_punch",
+    "top_elbow"
+   ]
+  },
+  {
+   "debt_id": "debt.hands.high_guard.vision",
+   "opening": "vision",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "jab"
+   ],
+   "add_technique_ids": [
+    "feint",
+    "axe_kick",
+    "overhand",
+    "body_jab",
+    "superman_punch",
+    "question_mark_kick",
+    "cartwheel_kick",
+    "instep_head_kick",
+    "tornado_kick",
+    "ginga",
+    "meia_lua_de_compasso",
+    "queixada",
+    "no_shadow_kick",
+    "circle_walk"
+   ]
+  },
+  {
+   "debt_id": "debt.hands.philly_shell.head_hook",
+   "opening": "head_hook",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "hook"
+   ],
+   "add_technique_ids": [
+    "haymaker",
+    "head_kick",
+    "rear_hook",
+    "overhand",
+    "check_hook",
+    "spinning_backfist",
+    "wild_hook",
+    "horizontal_elbow",
+    "spinning_elbow",
+    "spinning_hook_kick",
+    "question_mark_kick",
+    "jumping_switch_kick",
+    "cartwheel_kick",
+    "wall_run_kick",
+    "instep_head_kick",
+    "tornado_kick",
+    "meia_lua_de_compasso",
+    "armada",
+    "queixada",
+    "martelo",
+    "bridge_smash",
+    "single_palm_change"
+   ]
+  },
+  {
+   "debt_id": "debt.hands.philly_shell.entry",
+   "opening": "entry",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "double_leg"
+   ],
+   "add_technique_ids": [
+    "teep",
+    "side_kick",
+    "single_leg",
+    "spinning_back_kick",
+    "jumping_knee",
+    "oblique_kick",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "flying_knee",
+    "ankle_pick",
+    "cut_kick",
+    "jumping_back_kick",
+    "bencao",
+    "stomp_thrust_punch",
+    "top_elbow",
+    "iron_mountain_lean",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.hands.peekaboo.leg",
+   "opening": "leg",
+   "required_range": "kick",
+   "current_technique_ids": [
+    "low_kick"
+   ],
+   "add_technique_ids": [
+    "calf_kick",
+    "oblique_kick"
+   ]
+  },
+  {
+   "debt_id": "debt.hands.peekaboo.vision",
+   "opening": "vision",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "jab"
+   ],
+   "add_technique_ids": [
+    "feint",
+    "axe_kick",
+    "overhand",
+    "body_jab",
+    "superman_punch",
+    "question_mark_kick",
+    "cartwheel_kick",
+    "instep_head_kick",
+    "tornado_kick",
+    "ginga",
+    "meia_lua_de_compasso",
+    "queixada",
+    "no_shadow_kick",
+    "circle_walk"
+   ]
+  },
+  {
+   "debt_id": "debt.hands.cross_arm.head_uppercut",
+   "opening": "head_uppercut",
+   "required_range": "close",
+   "current_technique_ids": [
+    "uppercut"
+   ],
+   "add_technique_ids": [
+    "jumping_knee",
+    "lead_uppercut",
+    "short_uppercut",
+    "uppercut_elbow",
+    "knee_head_clinch",
+    "flying_knee",
+    "double_collar_tie"
+   ]
+  },
+  {
+   "debt_id": "debt.hands.cross_arm.recovery",
+   "opening": "recovery",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "cross"
+   ],
+   "add_technique_ids": [
+    "check_hook",
+    "pull_counter",
+    "shield_counter_hook",
+    "brush_knee_palm",
+    "deflect_parry_punch"
+   ]
+  },
+  {
+   "debt_id": "debt.hands.long_guard.clinch",
+   "opening": "clinch",
+   "required_range": "clinch",
+   "current_technique_ids": [
+    "collar_tie"
+   ],
+   "add_technique_ids": [
+    "pummel",
+    "cage_plum",
+    "knee_body",
+    "body_lock",
+    "outside_trip",
+    "guard_pull",
+    "wall_tie",
+    "shovel_hook",
+    "short_uppercut",
+    "horizontal_elbow",
+    "uppercut_elbow",
+    "knee_head_clinch",
+    "underhook",
+    "double_collar_tie",
+    "snap_down",
+    "inside_trip",
+    "hip_throw",
+    "body_lock_takedown",
+    "suplex",
+    "bridge_smash",
+    "top_elbow",
+    "iron_mountain_lean",
+    "turning_throw",
+    "quick_grip_throw",
+    "kick_into_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.hands.long_guard.body",
+   "opening": "body",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "body_hook"
+   ],
+   "add_technique_ids": [
+    "body_kick",
+    "teep",
+    "side_kick",
+    "switch_kick",
+    "spinning_back_kick",
+    "body_jab",
+    "rear_body_hook",
+    "shovel_hook",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "fast_roundhouse",
+    "jumping_back_kick",
+    "double_roundhouse",
+    "body_straight_punch",
+    "bencao",
+    "no_shadow_kick",
+    "stomp_thrust_punch",
+    "top_elbow"
+   ]
+  },
+  {
+   "debt_id": "debt.hands.helmet.body",
+   "opening": "body",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "body_hook"
+   ],
+   "add_technique_ids": [
+    "body_kick",
+    "teep",
+    "side_kick",
+    "switch_kick",
+    "spinning_back_kick",
+    "body_jab",
+    "rear_body_hook",
+    "shovel_hook",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "fast_roundhouse",
+    "jumping_back_kick",
+    "double_roundhouse",
+    "body_straight_punch",
+    "bencao",
+    "no_shadow_kick",
+    "stomp_thrust_punch",
+    "top_elbow"
+   ]
+  },
+  {
+   "debt_id": "debt.hands.helmet.vision",
+   "opening": "vision",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "jab"
+   ],
+   "add_technique_ids": [
+    "feint",
+    "axe_kick",
+    "overhand",
+    "body_jab",
+    "superman_punch",
+    "question_mark_kick",
+    "cartwheel_kick",
+    "instep_head_kick",
+    "tornado_kick",
+    "ginga",
+    "meia_lua_de_compasso",
+    "queixada",
+    "no_shadow_kick",
+    "circle_walk"
+   ]
+  },
+  {
+   "debt_id": "debt.hands.shield52.body",
+   "opening": "body",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "body_hook"
+   ],
+   "add_technique_ids": [
+    "body_kick",
+    "teep",
+    "side_kick",
+    "switch_kick",
+    "spinning_back_kick",
+    "body_jab",
+    "rear_body_hook",
+    "shovel_hook",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "fast_roundhouse",
+    "jumping_back_kick",
+    "double_roundhouse",
+    "body_straight_punch",
+    "bencao",
+    "no_shadow_kick",
+    "stomp_thrust_punch",
+    "top_elbow"
+   ]
+  },
+  {
+   "debt_id": "debt.hands.shield52.clinch",
+   "opening": "clinch",
+   "required_range": "clinch",
+   "current_technique_ids": [
+    "collar_tie"
+   ],
+   "add_technique_ids": [
+    "pummel",
+    "cage_plum",
+    "knee_body",
+    "body_lock",
+    "outside_trip",
+    "guard_pull",
+    "wall_tie",
+    "shovel_hook",
+    "short_uppercut",
+    "horizontal_elbow",
+    "uppercut_elbow",
+    "knee_head_clinch",
+    "underhook",
+    "double_collar_tie",
+    "snap_down",
+    "inside_trip",
+    "hip_throw",
+    "body_lock_takedown",
+    "suplex",
+    "bridge_smash",
+    "top_elbow",
+    "iron_mountain_lean",
+    "turning_throw",
+    "quick_grip_throw",
+    "kick_into_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.hands.hands_down.head_straight",
+   "opening": "head_straight",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "jab"
+   ],
+   "add_technique_ids": [
+    "cross",
+    "axe_kick",
+    "pull_counter",
+    "superman_punch",
+    "brawler_straight",
+    "chain_punch",
+    "pak_sao",
+    "lap_sao",
+    "brush_knee_palm",
+    "deflect_parry_punch",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.hands.hands_down.head_hook",
+   "opening": "head_hook",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "hook"
+   ],
+   "add_technique_ids": [
+    "haymaker",
+    "head_kick",
+    "rear_hook",
+    "overhand",
+    "check_hook",
+    "spinning_backfist",
+    "wild_hook",
+    "horizontal_elbow",
+    "spinning_elbow",
+    "spinning_hook_kick",
+    "question_mark_kick",
+    "jumping_switch_kick",
+    "cartwheel_kick",
+    "wall_run_kick",
+    "instep_head_kick",
+    "tornado_kick",
+    "meia_lua_de_compasso",
+    "armada",
+    "queixada",
+    "martelo",
+    "bridge_smash",
+    "single_palm_change"
+   ]
+  },
+  {
+   "debt_id": "debt.hands.kronk.head_hook",
+   "opening": "head_hook",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "hook"
+   ],
+   "add_technique_ids": [
+    "haymaker",
+    "head_kick",
+    "rear_hook",
+    "overhand",
+    "check_hook",
+    "spinning_backfist",
+    "wild_hook",
+    "horizontal_elbow",
+    "spinning_elbow",
+    "spinning_hook_kick",
+    "question_mark_kick",
+    "jumping_switch_kick",
+    "cartwheel_kick",
+    "wall_run_kick",
+    "instep_head_kick",
+    "tornado_kick",
+    "meia_lua_de_compasso",
+    "armada",
+    "queixada",
+    "martelo",
+    "bridge_smash",
+    "single_palm_change"
+   ]
+  },
+  {
+   "debt_id": "debt.hands.kronk.entry",
+   "opening": "entry",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "double_leg"
+   ],
+   "add_technique_ids": [
+    "teep",
+    "side_kick",
+    "single_leg",
+    "spinning_back_kick",
+    "jumping_knee",
+    "oblique_kick",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "flying_knee",
+    "ankle_pick",
+    "cut_kick",
+    "jumping_back_kick",
+    "bencao",
+    "stomp_thrust_punch",
+    "top_elbow",
+    "iron_mountain_lean",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.hands.dutch_guard.entry",
+   "opening": "entry",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "double_leg"
+   ],
+   "add_technique_ids": [
+    "teep",
+    "side_kick",
+    "single_leg",
+    "spinning_back_kick",
+    "jumping_knee",
+    "oblique_kick",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "flying_knee",
+    "ankle_pick",
+    "cut_kick",
+    "jumping_back_kick",
+    "bencao",
+    "stomp_thrust_punch",
+    "top_elbow",
+    "iron_mountain_lean",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.hands.dutch_guard.body",
+   "opening": "body",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "body_hook"
+   ],
+   "add_technique_ids": [
+    "body_kick",
+    "teep",
+    "side_kick",
+    "switch_kick",
+    "spinning_back_kick",
+    "body_jab",
+    "rear_body_hook",
+    "shovel_hook",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "fast_roundhouse",
+    "jumping_back_kick",
+    "double_roundhouse",
+    "body_straight_punch",
+    "bencao",
+    "no_shadow_kick",
+    "stomp_thrust_punch",
+    "top_elbow"
+   ]
+  },
+  {
+   "debt_id": "debt.defense.slip_roll.head_uppercut",
+   "opening": "head_uppercut",
+   "required_range": "close",
+   "current_technique_ids": [
+    "uppercut"
+   ],
+   "add_technique_ids": [
+    "jumping_knee",
+    "lead_uppercut",
+    "short_uppercut",
+    "uppercut_elbow",
+    "knee_head_clinch",
+    "flying_knee",
+    "double_collar_tie"
+   ]
+  },
+  {
+   "debt_id": "debt.defense.slip_roll.clinch",
+   "opening": "clinch",
+   "required_range": "clinch",
+   "current_technique_ids": [
+    "collar_tie"
+   ],
+   "add_technique_ids": [
+    "pummel",
+    "cage_plum",
+    "knee_body",
+    "body_lock",
+    "outside_trip",
+    "guard_pull",
+    "wall_tie",
+    "shovel_hook",
+    "short_uppercut",
+    "horizontal_elbow",
+    "uppercut_elbow",
+    "knee_head_clinch",
+    "underhook",
+    "double_collar_tie",
+    "snap_down",
+    "inside_trip",
+    "hip_throw",
+    "body_lock_takedown",
+    "suplex",
+    "bridge_smash",
+    "top_elbow",
+    "iron_mountain_lean",
+    "turning_throw",
+    "quick_grip_throw",
+    "kick_into_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.defense.slip_roll.leg",
+   "opening": "leg",
+   "required_range": "kick",
+   "current_technique_ids": [
+    "low_kick"
+   ],
+   "add_technique_ids": [
+    "calf_kick",
+    "oblique_kick"
+   ]
+  },
+  {
+   "debt_id": "debt.defense.parry_catch.head_hook",
+   "opening": "head_hook",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "hook"
+   ],
+   "add_technique_ids": [
+    "haymaker",
+    "head_kick",
+    "rear_hook",
+    "overhand",
+    "check_hook",
+    "spinning_backfist",
+    "wild_hook",
+    "horizontal_elbow",
+    "spinning_elbow",
+    "spinning_hook_kick",
+    "question_mark_kick",
+    "jumping_switch_kick",
+    "cartwheel_kick",
+    "wall_run_kick",
+    "instep_head_kick",
+    "tornado_kick",
+    "meia_lua_de_compasso",
+    "armada",
+    "queixada",
+    "martelo",
+    "bridge_smash",
+    "single_palm_change"
+   ]
+  },
+  {
+   "debt_id": "debt.defense.parry_catch.body",
+   "opening": "body",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "body_hook"
+   ],
+   "add_technique_ids": [
+    "body_kick",
+    "teep",
+    "side_kick",
+    "switch_kick",
+    "spinning_back_kick",
+    "body_jab",
+    "rear_body_hook",
+    "shovel_hook",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "fast_roundhouse",
+    "jumping_back_kick",
+    "double_roundhouse",
+    "body_straight_punch",
+    "bencao",
+    "no_shadow_kick",
+    "stomp_thrust_punch",
+    "top_elbow"
+   ]
+  },
+  {
+   "debt_id": "debt.defense.block_absorb.body",
+   "opening": "body",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "body_hook"
+   ],
+   "add_technique_ids": [
+    "body_kick",
+    "teep",
+    "side_kick",
+    "switch_kick",
+    "spinning_back_kick",
+    "body_jab",
+    "rear_body_hook",
+    "shovel_hook",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "fast_roundhouse",
+    "jumping_back_kick",
+    "double_roundhouse",
+    "body_straight_punch",
+    "bencao",
+    "no_shadow_kick",
+    "stomp_thrust_punch",
+    "top_elbow"
+   ]
+  },
+  {
+   "debt_id": "debt.defense.block_absorb.vision",
+   "opening": "vision",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "jab"
+   ],
+   "add_technique_ids": [
+    "feint",
+    "axe_kick",
+    "overhand",
+    "body_jab",
+    "superman_punch",
+    "question_mark_kick",
+    "cartwheel_kick",
+    "instep_head_kick",
+    "tornado_kick",
+    "ginga",
+    "meia_lua_de_compasso",
+    "queixada",
+    "no_shadow_kick",
+    "circle_walk"
+   ]
+  },
+  {
+   "debt_id": "debt.defense.outfight.wall",
+   "opening": "wall",
+   "required_range": "clinch",
+   "current_technique_ids": [
+    "body_lock"
+   ],
+   "add_technique_ids": [
+    "cage_plum",
+    "wall_tie",
+    "wall_punch",
+    "shove",
+    "body_lock_takedown",
+    "fa_jin_push"
+   ]
+  },
+  {
+   "debt_id": "debt.defense.outfight.tempo",
+   "opening": "tempo",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "feint"
+   ],
+   "add_technique_ids": [
+    "step",
+    "jab",
+    "body_jab",
+    "shove",
+    "foot_sweep",
+    "cut_off_step",
+    "fast_roundhouse",
+    "cut_kick",
+    "double_roundhouse",
+    "bounce_step",
+    "body_straight_punch",
+    "ginga",
+    "rasteira",
+    "chain_punch",
+    "pak_sao",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.defense.shoulder_roll.leg",
+   "opening": "leg",
+   "required_range": "kick",
+   "current_technique_ids": [
+    "low_kick"
+   ],
+   "add_technique_ids": [
+    "calf_kick",
+    "oblique_kick"
+   ]
+  },
+  {
+   "debt_id": "debt.defense.shoulder_roll.head_hook",
+   "opening": "head_hook",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "hook"
+   ],
+   "add_technique_ids": [
+    "haymaker",
+    "head_kick",
+    "rear_hook",
+    "overhand",
+    "check_hook",
+    "spinning_backfist",
+    "wild_hook",
+    "horizontal_elbow",
+    "spinning_elbow",
+    "spinning_hook_kick",
+    "question_mark_kick",
+    "jumping_switch_kick",
+    "cartwheel_kick",
+    "wall_run_kick",
+    "instep_head_kick",
+    "tornado_kick",
+    "meia_lua_de_compasso",
+    "armada",
+    "queixada",
+    "martelo",
+    "bridge_smash",
+    "single_palm_change"
+   ]
+  },
+  {
+   "debt_id": "debt.defense.smother.clinch",
+   "opening": "clinch",
+   "required_range": "clinch",
+   "current_technique_ids": [
+    "collar_tie"
+   ],
+   "add_technique_ids": [
+    "pummel",
+    "cage_plum",
+    "knee_body",
+    "body_lock",
+    "outside_trip",
+    "guard_pull",
+    "wall_tie",
+    "shovel_hook",
+    "short_uppercut",
+    "horizontal_elbow",
+    "uppercut_elbow",
+    "knee_head_clinch",
+    "underhook",
+    "double_collar_tie",
+    "snap_down",
+    "inside_trip",
+    "hip_throw",
+    "body_lock_takedown",
+    "suplex",
+    "bridge_smash",
+    "top_elbow",
+    "iron_mountain_lean",
+    "turning_throw",
+    "quick_grip_throw",
+    "kick_into_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.defense.smother.entry",
+   "opening": "entry",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "double_leg"
+   ],
+   "add_technique_ids": [
+    "teep",
+    "side_kick",
+    "single_leg",
+    "spinning_back_kick",
+    "jumping_knee",
+    "oblique_kick",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "flying_knee",
+    "ankle_pick",
+    "cut_kick",
+    "jumping_back_kick",
+    "bencao",
+    "stomp_thrust_punch",
+    "top_elbow",
+    "iron_mountain_lean",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.defense.check_frame.single_support",
+   "opening": "single_support",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "single_leg"
+   ],
+   "add_technique_ids": [
+    "sanda_sweep",
+    "ankle_pick",
+    "foot_sweep",
+    "caught_kick_dump",
+    "rasteira",
+    "lap_sao",
+    "quick_grip_throw",
+    "kick_into_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.defense.check_frame.body",
+   "opening": "body",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "body_hook"
+   ],
+   "add_technique_ids": [
+    "body_kick",
+    "teep",
+    "side_kick",
+    "switch_kick",
+    "spinning_back_kick",
+    "body_jab",
+    "rear_body_hook",
+    "shovel_hook",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "fast_roundhouse",
+    "jumping_back_kick",
+    "double_roundhouse",
+    "body_straight_punch",
+    "bencao",
+    "no_shadow_kick",
+    "stomp_thrust_punch",
+    "top_elbow"
+   ]
+  },
+  {
+   "debt_id": "debt.defense.sprawl_pummel.head_straight",
+   "opening": "head_straight",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "jab"
+   ],
+   "add_technique_ids": [
+    "cross",
+    "axe_kick",
+    "pull_counter",
+    "superman_punch",
+    "brawler_straight",
+    "chain_punch",
+    "pak_sao",
+    "lap_sao",
+    "brush_knee_palm",
+    "deflect_parry_punch",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.defense.sprawl_pummel.tempo",
+   "opening": "tempo",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "feint"
+   ],
+   "add_technique_ids": [
+    "step",
+    "jab",
+    "body_jab",
+    "shove",
+    "foot_sweep",
+    "cut_off_step",
+    "fast_roundhouse",
+    "cut_kick",
+    "double_roundhouse",
+    "bounce_step",
+    "body_straight_punch",
+    "ginga",
+    "rasteira",
+    "chain_punch",
+    "pak_sao",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.stance.upright.entry",
+   "opening": "entry",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "double_leg"
+   ],
+   "add_technique_ids": [
+    "teep",
+    "side_kick",
+    "single_leg",
+    "spinning_back_kick",
+    "jumping_knee",
+    "oblique_kick",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "flying_knee",
+    "ankle_pick",
+    "cut_kick",
+    "jumping_back_kick",
+    "bencao",
+    "stomp_thrust_punch",
+    "top_elbow",
+    "iron_mountain_lean",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.stance.upright.body",
+   "opening": "body",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "body_hook"
+   ],
+   "add_technique_ids": [
+    "body_kick",
+    "teep",
+    "side_kick",
+    "switch_kick",
+    "spinning_back_kick",
+    "body_jab",
+    "rear_body_hook",
+    "shovel_hook",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "fast_roundhouse",
+    "jumping_back_kick",
+    "double_roundhouse",
+    "body_straight_punch",
+    "bencao",
+    "no_shadow_kick",
+    "stomp_thrust_punch",
+    "top_elbow"
+   ]
+  },
+  {
+   "debt_id": "debt.stance.bladed.leg",
+   "opening": "leg",
+   "required_range": "kick",
+   "current_technique_ids": [
+    "low_kick"
+   ],
+   "add_technique_ids": [
+    "calf_kick",
+    "oblique_kick"
+   ]
+  },
+  {
+   "debt_id": "debt.stance.bladed.entry",
+   "opening": "entry",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "double_leg"
+   ],
+   "add_technique_ids": [
+    "teep",
+    "side_kick",
+    "single_leg",
+    "spinning_back_kick",
+    "jumping_knee",
+    "oblique_kick",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "flying_knee",
+    "ankle_pick",
+    "cut_kick",
+    "jumping_back_kick",
+    "bencao",
+    "stomp_thrust_punch",
+    "top_elbow",
+    "iron_mountain_lean",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.stance.crouch.leg",
+   "opening": "leg",
+   "required_range": "kick",
+   "current_technique_ids": [
+    "low_kick"
+   ],
+   "add_technique_ids": [
+    "calf_kick",
+    "oblique_kick"
+   ]
+  },
+  {
+   "debt_id": "debt.stance.crouch.head_uppercut",
+   "opening": "head_uppercut",
+   "required_range": "close",
+   "current_technique_ids": [
+    "uppercut"
+   ],
+   "add_technique_ids": [
+    "jumping_knee",
+    "lead_uppercut",
+    "short_uppercut",
+    "uppercut_elbow",
+    "knee_head_clinch",
+    "flying_knee",
+    "double_collar_tie"
+   ]
+  },
+  {
+   "debt_id": "debt.stance.balanced.tempo",
+   "opening": "tempo",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "feint"
+   ],
+   "add_technique_ids": [
+    "step",
+    "jab",
+    "body_jab",
+    "shove",
+    "foot_sweep",
+    "cut_off_step",
+    "fast_roundhouse",
+    "cut_kick",
+    "double_roundhouse",
+    "bounce_step",
+    "body_straight_punch",
+    "ginga",
+    "rasteira",
+    "chain_punch",
+    "pak_sao",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.stance.balanced.head_straight",
+   "opening": "head_straight",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "jab"
+   ],
+   "add_technique_ids": [
+    "cross",
+    "axe_kick",
+    "pull_counter",
+    "superman_punch",
+    "brawler_straight",
+    "chain_punch",
+    "pak_sao",
+    "lap_sao",
+    "brush_knee_palm",
+    "deflect_parry_punch",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.stance.planted.angle",
+   "opening": "angle",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "pivot"
+   ],
+   "add_technique_ids": [
+    "switch_step",
+    "hook",
+    "check_hook",
+    "shield_counter_hook",
+    "spinning_backfist",
+    "spinning_elbow",
+    "cut_off_step",
+    "bounce_step",
+    "ginga",
+    "armada",
+    "au",
+    "circle_walk",
+    "single_palm_change",
+    "turning_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.stance.planted.leg",
+   "opening": "leg",
+   "required_range": "kick",
+   "current_technique_ids": [
+    "low_kick"
+   ],
+   "add_technique_ids": [
+    "calf_kick",
+    "oblique_kick"
+   ]
+  },
+  {
+   "debt_id": "debt.stance.switch.entry",
+   "opening": "entry",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "double_leg"
+   ],
+   "add_technique_ids": [
+    "teep",
+    "side_kick",
+    "single_leg",
+    "spinning_back_kick",
+    "jumping_knee",
+    "oblique_kick",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "flying_knee",
+    "ankle_pick",
+    "cut_kick",
+    "jumping_back_kick",
+    "bencao",
+    "stomp_thrust_punch",
+    "top_elbow",
+    "iron_mountain_lean",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.stance.switch.single_support",
+   "opening": "single_support",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "single_leg"
+   ],
+   "add_technique_ids": [
+    "sanda_sweep",
+    "ankle_pick",
+    "foot_sweep",
+    "caught_kick_dump",
+    "rasteira",
+    "lap_sao",
+    "quick_grip_throw",
+    "kick_into_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.stance.shuffle.single_support",
+   "opening": "single_support",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "single_leg"
+   ],
+   "add_technique_ids": [
+    "sanda_sweep",
+    "ankle_pick",
+    "foot_sweep",
+    "caught_kick_dump",
+    "rasteira",
+    "lap_sao",
+    "quick_grip_throw",
+    "kick_into_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.stance.shuffle.tempo",
+   "opening": "tempo",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "feint"
+   ],
+   "add_technique_ids": [
+    "step",
+    "jab",
+    "body_jab",
+    "shove",
+    "foot_sweep",
+    "cut_off_step",
+    "fast_roundhouse",
+    "cut_kick",
+    "double_roundhouse",
+    "bounce_step",
+    "body_straight_punch",
+    "ginga",
+    "rasteira",
+    "chain_punch",
+    "pak_sao",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.tie.thai_plum.entry",
+   "opening": "entry",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "double_leg"
+   ],
+   "add_technique_ids": [
+    "teep",
+    "side_kick",
+    "single_leg",
+    "spinning_back_kick",
+    "jumping_knee",
+    "oblique_kick",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "flying_knee",
+    "ankle_pick",
+    "cut_kick",
+    "jumping_back_kick",
+    "bencao",
+    "stomp_thrust_punch",
+    "top_elbow",
+    "iron_mountain_lean",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.tie.thai_plum.body",
+   "opening": "body",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "body_hook"
+   ],
+   "add_technique_ids": [
+    "body_kick",
+    "teep",
+    "side_kick",
+    "switch_kick",
+    "spinning_back_kick",
+    "body_jab",
+    "rear_body_hook",
+    "shovel_hook",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "fast_roundhouse",
+    "jumping_back_kick",
+    "double_roundhouse",
+    "body_straight_punch",
+    "bencao",
+    "no_shadow_kick",
+    "stomp_thrust_punch",
+    "top_elbow"
+   ]
+  },
+  {
+   "debt_id": "debt.tie.greco.head_hook",
+   "opening": "head_hook",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "hook"
+   ],
+   "add_technique_ids": [
+    "haymaker",
+    "head_kick",
+    "rear_hook",
+    "overhand",
+    "check_hook",
+    "spinning_backfist",
+    "wild_hook",
+    "horizontal_elbow",
+    "spinning_elbow",
+    "spinning_hook_kick",
+    "question_mark_kick",
+    "jumping_switch_kick",
+    "cartwheel_kick",
+    "wall_run_kick",
+    "instep_head_kick",
+    "tornado_kick",
+    "meia_lua_de_compasso",
+    "armada",
+    "queixada",
+    "martelo",
+    "bridge_smash",
+    "single_palm_change"
+   ]
+  },
+  {
+   "debt_id": "debt.tie.greco.ground",
+   "opening": "ground",
+   "required_range": "ground",
+   "current_technique_ids": [
+    "ride"
+   ],
+   "add_technique_ids": [
+    "armbar",
+    "pass_guard",
+    "advance_to_mount",
+    "take_back",
+    "guard_sweep",
+    "ground_strike",
+    "ground_elbow",
+    "triangle",
+    "rear_naked_choke",
+    "guillotine",
+    "kimura",
+    "arm_triangle",
+    "cross_face",
+    "cradle",
+    "neck_crank",
+    "keylock",
+    "leg_entry",
+    "toe_hold",
+    "heel_hook",
+    "ankle_lock"
+   ]
+  },
+  {
+   "debt_id": "debt.tie.folk_ride.clinch",
+   "opening": "clinch",
+   "required_range": "clinch",
+   "current_technique_ids": [
+    "collar_tie"
+   ],
+   "add_technique_ids": [
+    "pummel",
+    "cage_plum",
+    "knee_body",
+    "body_lock",
+    "outside_trip",
+    "guard_pull",
+    "wall_tie",
+    "shovel_hook",
+    "short_uppercut",
+    "horizontal_elbow",
+    "uppercut_elbow",
+    "knee_head_clinch",
+    "underhook",
+    "double_collar_tie",
+    "snap_down",
+    "inside_trip",
+    "hip_throw",
+    "body_lock_takedown",
+    "suplex",
+    "bridge_smash",
+    "top_elbow",
+    "iron_mountain_lean",
+    "turning_throw",
+    "quick_grip_throw",
+    "kick_into_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.tie.folk_ride.head_straight",
+   "opening": "head_straight",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "jab"
+   ],
+   "add_technique_ids": [
+    "cross",
+    "axe_kick",
+    "pull_counter",
+    "superman_punch",
+    "brawler_straight",
+    "chain_punch",
+    "pak_sao",
+    "lap_sao",
+    "brush_knee_palm",
+    "deflect_parry_punch",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.tie.freestyle.head_uppercut",
+   "opening": "head_uppercut",
+   "required_range": "close",
+   "current_technique_ids": [
+    "uppercut"
+   ],
+   "add_technique_ids": [
+    "jumping_knee",
+    "lead_uppercut",
+    "short_uppercut",
+    "uppercut_elbow",
+    "knee_head_clinch",
+    "flying_knee",
+    "double_collar_tie"
+   ]
+  },
+  {
+   "debt_id": "debt.tie.freestyle.clinch",
+   "opening": "clinch",
+   "required_range": "clinch",
+   "current_technique_ids": [
+    "collar_tie"
+   ],
+   "add_technique_ids": [
+    "pummel",
+    "cage_plum",
+    "knee_body",
+    "body_lock",
+    "outside_trip",
+    "guard_pull",
+    "wall_tie",
+    "shovel_hook",
+    "short_uppercut",
+    "horizontal_elbow",
+    "uppercut_elbow",
+    "knee_head_clinch",
+    "underhook",
+    "double_collar_tie",
+    "snap_down",
+    "inside_trip",
+    "hip_throw",
+    "body_lock_takedown",
+    "suplex",
+    "bridge_smash",
+    "top_elbow",
+    "iron_mountain_lean",
+    "turning_throw",
+    "quick_grip_throw",
+    "kick_into_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.tie.judo_sambo.tempo",
+   "opening": "tempo",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "feint"
+   ],
+   "add_technique_ids": [
+    "step",
+    "jab",
+    "body_jab",
+    "shove",
+    "foot_sweep",
+    "cut_off_step",
+    "fast_roundhouse",
+    "cut_kick",
+    "double_roundhouse",
+    "bounce_step",
+    "body_straight_punch",
+    "ginga",
+    "rasteira",
+    "chain_punch",
+    "pak_sao",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.tie.judo_sambo.ground",
+   "opening": "ground",
+   "required_range": "ground",
+   "current_technique_ids": [
+    "ride"
+   ],
+   "add_technique_ids": [
+    "armbar",
+    "pass_guard",
+    "advance_to_mount",
+    "take_back",
+    "guard_sweep",
+    "ground_strike",
+    "ground_elbow",
+    "triangle",
+    "rear_naked_choke",
+    "guillotine",
+    "kimura",
+    "arm_triangle",
+    "cross_face",
+    "cradle",
+    "neck_crank",
+    "keylock",
+    "leg_entry",
+    "toe_hold",
+    "heel_hook",
+    "ankle_lock"
+   ]
+  },
+  {
+   "debt_id": "debt.tie.bjj.head_straight",
+   "opening": "head_straight",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "jab"
+   ],
+   "add_technique_ids": [
+    "cross",
+    "axe_kick",
+    "pull_counter",
+    "superman_punch",
+    "brawler_straight",
+    "chain_punch",
+    "pak_sao",
+    "lap_sao",
+    "brush_knee_palm",
+    "deflect_parry_punch",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.tie.bjj.wall",
+   "opening": "wall",
+   "required_range": "clinch",
+   "current_technique_ids": [
+    "body_lock"
+   ],
+   "add_technique_ids": [
+    "cage_plum",
+    "wall_tie",
+    "wall_punch",
+    "shove",
+    "body_lock_takedown",
+    "fa_jin_push"
+   ]
+  },
+  {
+   "debt_id": "debt.tie.wall_boxing.entry",
+   "opening": "entry",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "double_leg"
+   ],
+   "add_technique_ids": [
+    "teep",
+    "side_kick",
+    "single_leg",
+    "spinning_back_kick",
+    "jumping_knee",
+    "oblique_kick",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "flying_knee",
+    "ankle_pick",
+    "cut_kick",
+    "jumping_back_kick",
+    "bencao",
+    "stomp_thrust_punch",
+    "top_elbow",
+    "iron_mountain_lean",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.tie.wall_boxing.body",
+   "opening": "body",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "body_hook"
+   ],
+   "add_technique_ids": [
+    "body_kick",
+    "teep",
+    "side_kick",
+    "switch_kick",
+    "spinning_back_kick",
+    "body_jab",
+    "rear_body_hook",
+    "shovel_hook",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "fast_roundhouse",
+    "jumping_back_kick",
+    "double_roundhouse",
+    "body_straight_punch",
+    "bencao",
+    "no_shadow_kick",
+    "stomp_thrust_punch",
+    "top_elbow"
+   ]
+  },
+  {
+   "debt_id": "debt.tie.anti_grappling.tempo",
+   "opening": "tempo",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "feint"
+   ],
+   "add_technique_ids": [
+    "step",
+    "jab",
+    "body_jab",
+    "shove",
+    "foot_sweep",
+    "cut_off_step",
+    "fast_roundhouse",
+    "cut_kick",
+    "double_roundhouse",
+    "bounce_step",
+    "body_straight_punch",
+    "ginga",
+    "rasteira",
+    "chain_punch",
+    "pak_sao",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.tie.anti_grappling.head_straight",
+   "opening": "head_straight",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "jab"
+   ],
+   "add_technique_ids": [
+    "cross",
+    "axe_kick",
+    "pull_counter",
+    "superman_punch",
+    "brawler_straight",
+    "chain_punch",
+    "pak_sao",
+    "lap_sao",
+    "brush_knee_palm",
+    "deflect_parry_punch",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.target.head_hunter.body",
+   "opening": "body",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "body_hook"
+   ],
+   "add_technique_ids": [
+    "body_kick",
+    "teep",
+    "side_kick",
+    "switch_kick",
+    "spinning_back_kick",
+    "body_jab",
+    "rear_body_hook",
+    "shovel_hook",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "fast_roundhouse",
+    "jumping_back_kick",
+    "double_roundhouse",
+    "body_straight_punch",
+    "bencao",
+    "no_shadow_kick",
+    "stomp_thrust_punch",
+    "top_elbow"
+   ]
+  },
+  {
+   "debt_id": "debt.target.head_hunter.entry",
+   "opening": "entry",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "double_leg"
+   ],
+   "add_technique_ids": [
+    "teep",
+    "side_kick",
+    "single_leg",
+    "spinning_back_kick",
+    "jumping_knee",
+    "oblique_kick",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "flying_knee",
+    "ankle_pick",
+    "cut_kick",
+    "jumping_back_kick",
+    "bencao",
+    "stomp_thrust_punch",
+    "top_elbow",
+    "iron_mountain_lean",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.target.body_puncher.head_uppercut",
+   "opening": "head_uppercut",
+   "required_range": "close",
+   "current_technique_ids": [
+    "uppercut"
+   ],
+   "add_technique_ids": [
+    "jumping_knee",
+    "lead_uppercut",
+    "short_uppercut",
+    "uppercut_elbow",
+    "knee_head_clinch",
+    "flying_knee",
+    "double_collar_tie"
+   ]
+  },
+  {
+   "debt_id": "debt.target.body_puncher.head_straight",
+   "opening": "head_straight",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "jab"
+   ],
+   "add_technique_ids": [
+    "cross",
+    "axe_kick",
+    "pull_counter",
+    "superman_punch",
+    "brawler_straight",
+    "chain_punch",
+    "pak_sao",
+    "lap_sao",
+    "brush_knee_palm",
+    "deflect_parry_punch",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.target.leg_chopper.single_support",
+   "opening": "single_support",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "single_leg"
+   ],
+   "add_technique_ids": [
+    "sanda_sweep",
+    "ankle_pick",
+    "foot_sweep",
+    "caught_kick_dump",
+    "rasteira",
+    "lap_sao",
+    "quick_grip_throw",
+    "kick_into_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.target.leg_chopper.head_straight",
+   "opening": "head_straight",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "jab"
+   ],
+   "add_technique_ids": [
+    "cross",
+    "axe_kick",
+    "pull_counter",
+    "superman_punch",
+    "brawler_straight",
+    "chain_punch",
+    "pak_sao",
+    "lap_sao",
+    "brush_knee_palm",
+    "deflect_parry_punch",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.target.liver_ribs.tempo",
+   "opening": "tempo",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "feint"
+   ],
+   "add_technique_ids": [
+    "step",
+    "jab",
+    "body_jab",
+    "shove",
+    "foot_sweep",
+    "cut_off_step",
+    "fast_roundhouse",
+    "cut_kick",
+    "double_roundhouse",
+    "bounce_step",
+    "body_straight_punch",
+    "ginga",
+    "rasteira",
+    "chain_punch",
+    "pak_sao",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.target.liver_ribs.head_hook",
+   "opening": "head_hook",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "hook"
+   ],
+   "add_technique_ids": [
+    "haymaker",
+    "head_kick",
+    "rear_hook",
+    "overhand",
+    "check_hook",
+    "spinning_backfist",
+    "wild_hook",
+    "horizontal_elbow",
+    "spinning_elbow",
+    "spinning_hook_kick",
+    "question_mark_kick",
+    "jumping_switch_kick",
+    "cartwheel_kick",
+    "wall_run_kick",
+    "instep_head_kick",
+    "tornado_kick",
+    "meia_lua_de_compasso",
+    "armada",
+    "queixada",
+    "martelo",
+    "bridge_smash",
+    "single_palm_change"
+   ]
+  },
+  {
+   "debt_id": "debt.target.knee_clincher.entry",
+   "opening": "entry",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "double_leg"
+   ],
+   "add_technique_ids": [
+    "teep",
+    "side_kick",
+    "single_leg",
+    "spinning_back_kick",
+    "jumping_knee",
+    "oblique_kick",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "flying_knee",
+    "ankle_pick",
+    "cut_kick",
+    "jumping_back_kick",
+    "bencao",
+    "stomp_thrust_punch",
+    "top_elbow",
+    "iron_mountain_lean",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.target.knee_clincher.head_straight",
+   "opening": "head_straight",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "jab"
+   ],
+   "add_technique_ids": [
+    "cross",
+    "axe_kick",
+    "pull_counter",
+    "superman_punch",
+    "brawler_straight",
+    "chain_punch",
+    "pak_sao",
+    "lap_sao",
+    "brush_knee_palm",
+    "deflect_parry_punch",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.target.mixer.recovery",
+   "opening": "recovery",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "cross"
+   ],
+   "add_technique_ids": [
+    "check_hook",
+    "pull_counter",
+    "shield_counter_hook",
+    "brush_knee_palm",
+    "deflect_parry_punch"
+   ]
+  },
+  {
+   "debt_id": "debt.target.mixer.tempo",
+   "opening": "tempo",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "feint"
+   ],
+   "add_technique_ids": [
+    "step",
+    "jab",
+    "body_jab",
+    "shove",
+    "foot_sweep",
+    "cut_off_step",
+    "fast_roundhouse",
+    "cut_kick",
+    "double_roundhouse",
+    "bounce_step",
+    "body_straight_punch",
+    "ginga",
+    "rasteira",
+    "chain_punch",
+    "pak_sao",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.kicking.none.leg",
+   "opening": "leg",
+   "required_range": "kick",
+   "current_technique_ids": [
+    "low_kick"
+   ],
+   "add_technique_ids": [
+    "calf_kick",
+    "oblique_kick"
+   ]
+  },
+  {
+   "debt_id": "debt.kicking.none.body",
+   "opening": "body",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "body_hook"
+   ],
+   "add_technique_ids": [
+    "body_kick",
+    "teep",
+    "side_kick",
+    "switch_kick",
+    "spinning_back_kick",
+    "body_jab",
+    "rear_body_hook",
+    "shovel_hook",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "fast_roundhouse",
+    "jumping_back_kick",
+    "double_roundhouse",
+    "body_straight_punch",
+    "bencao",
+    "no_shadow_kick",
+    "stomp_thrust_punch",
+    "top_elbow"
+   ]
+  },
+  {
+   "debt_id": "debt.kicking.muay_thai.entry",
+   "opening": "entry",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "double_leg"
+   ],
+   "add_technique_ids": [
+    "teep",
+    "side_kick",
+    "single_leg",
+    "spinning_back_kick",
+    "jumping_knee",
+    "oblique_kick",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "flying_knee",
+    "ankle_pick",
+    "cut_kick",
+    "jumping_back_kick",
+    "bencao",
+    "stomp_thrust_punch",
+    "top_elbow",
+    "iron_mountain_lean",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.kicking.muay_thai.single_support",
+   "opening": "single_support",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "single_leg"
+   ],
+   "add_technique_ids": [
+    "sanda_sweep",
+    "ankle_pick",
+    "foot_sweep",
+    "caught_kick_dump",
+    "rasteira",
+    "lap_sao",
+    "quick_grip_throw",
+    "kick_into_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.kicking.dutch.entry",
+   "opening": "entry",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "double_leg"
+   ],
+   "add_technique_ids": [
+    "teep",
+    "side_kick",
+    "single_leg",
+    "spinning_back_kick",
+    "jumping_knee",
+    "oblique_kick",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "flying_knee",
+    "ankle_pick",
+    "cut_kick",
+    "jumping_back_kick",
+    "bencao",
+    "stomp_thrust_punch",
+    "top_elbow",
+    "iron_mountain_lean",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.kicking.dutch.recovery",
+   "opening": "recovery",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "cross"
+   ],
+   "add_technique_ids": [
+    "check_hook",
+    "pull_counter",
+    "shield_counter_hook",
+    "brush_knee_palm",
+    "deflect_parry_punch"
+   ]
+  },
+  {
+   "debt_id": "debt.kicking.karate.single_support",
+   "opening": "single_support",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "single_leg"
+   ],
+   "add_technique_ids": [
+    "sanda_sweep",
+    "ankle_pick",
+    "foot_sweep",
+    "caught_kick_dump",
+    "rasteira",
+    "lap_sao",
+    "quick_grip_throw",
+    "kick_into_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.kicking.karate.leg",
+   "opening": "leg",
+   "required_range": "kick",
+   "current_technique_ids": [
+    "low_kick"
+   ],
+   "add_technique_ids": [
+    "calf_kick",
+    "oblique_kick"
+   ]
+  },
+  {
+   "debt_id": "debt.kicking.sanda.head_straight",
+   "opening": "head_straight",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "jab"
+   ],
+   "add_technique_ids": [
+    "cross",
+    "axe_kick",
+    "pull_counter",
+    "superman_punch",
+    "brawler_straight",
+    "chain_punch",
+    "pak_sao",
+    "lap_sao",
+    "brush_knee_palm",
+    "deflect_parry_punch",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.kicking.sanda.recovery",
+   "opening": "recovery",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "cross"
+   ],
+   "add_technique_ids": [
+    "check_hook",
+    "pull_counter",
+    "shield_counter_hook",
+    "brush_knee_palm",
+    "deflect_parry_punch"
+   ]
+  },
+  {
+   "debt_id": "debt.kicking.wrestler_teep.angle",
+   "opening": "angle",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "pivot"
+   ],
+   "add_technique_ids": [
+    "switch_step",
+    "hook",
+    "check_hook",
+    "shield_counter_hook",
+    "spinning_backfist",
+    "spinning_elbow",
+    "cut_off_step",
+    "bounce_step",
+    "ginga",
+    "armada",
+    "au",
+    "circle_walk",
+    "single_palm_change",
+    "turning_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.kicking.wrestler_teep.leg",
+   "opening": "leg",
+   "required_range": "kick",
+   "current_technique_ids": [
+    "low_kick"
+   ],
+   "add_technique_ids": [
+    "calf_kick",
+    "oblique_kick"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.outboxer.wall",
+   "opening": "wall",
+   "required_range": "clinch",
+   "current_technique_ids": [
+    "body_lock"
+   ],
+   "add_technique_ids": [
+    "cage_plum",
+    "wall_tie",
+    "wall_punch",
+    "shove",
+    "body_lock_takedown",
+    "fa_jin_push"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.outboxer.tempo",
+   "opening": "tempo",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "feint"
+   ],
+   "add_technique_ids": [
+    "step",
+    "jab",
+    "body_jab",
+    "shove",
+    "foot_sweep",
+    "cut_off_step",
+    "fast_roundhouse",
+    "cut_kick",
+    "double_roundhouse",
+    "bounce_step",
+    "body_straight_punch",
+    "ginga",
+    "rasteira",
+    "chain_punch",
+    "pak_sao",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.swarmer.body",
+   "opening": "body",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "body_hook"
+   ],
+   "add_technique_ids": [
+    "body_kick",
+    "teep",
+    "side_kick",
+    "switch_kick",
+    "spinning_back_kick",
+    "body_jab",
+    "rear_body_hook",
+    "shovel_hook",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "fast_roundhouse",
+    "jumping_back_kick",
+    "double_roundhouse",
+    "body_straight_punch",
+    "bencao",
+    "no_shadow_kick",
+    "stomp_thrust_punch",
+    "top_elbow"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.swarmer.angle",
+   "opening": "angle",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "pivot"
+   ],
+   "add_technique_ids": [
+    "switch_step",
+    "hook",
+    "check_hook",
+    "shield_counter_hook",
+    "spinning_backfist",
+    "spinning_elbow",
+    "cut_off_step",
+    "bounce_step",
+    "ginga",
+    "armada",
+    "au",
+    "circle_walk",
+    "single_palm_change",
+    "turning_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.counter.tempo",
+   "opening": "tempo",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "feint"
+   ],
+   "add_technique_ids": [
+    "step",
+    "jab",
+    "body_jab",
+    "shove",
+    "foot_sweep",
+    "cut_off_step",
+    "fast_roundhouse",
+    "cut_kick",
+    "double_roundhouse",
+    "bounce_step",
+    "body_straight_punch",
+    "ginga",
+    "rasteira",
+    "chain_punch",
+    "pak_sao",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.counter.wall",
+   "opening": "wall",
+   "required_range": "clinch",
+   "current_technique_ids": [
+    "body_lock"
+   ],
+   "add_technique_ids": [
+    "cage_plum",
+    "wall_tie",
+    "wall_punch",
+    "shove",
+    "body_lock_takedown",
+    "fa_jin_push"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.slugger.angle",
+   "opening": "angle",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "pivot"
+   ],
+   "add_technique_ids": [
+    "switch_step",
+    "hook",
+    "check_hook",
+    "shield_counter_hook",
+    "spinning_backfist",
+    "spinning_elbow",
+    "cut_off_step",
+    "bounce_step",
+    "ginga",
+    "armada",
+    "au",
+    "circle_walk",
+    "single_palm_change",
+    "turning_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.slugger.recovery",
+   "opening": "recovery",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "cross"
+   ],
+   "add_technique_ids": [
+    "check_hook",
+    "pull_counter",
+    "shield_counter_hook",
+    "brush_knee_palm",
+    "deflect_parry_punch"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.boxer_puncher.tempo",
+   "opening": "tempo",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "feint"
+   ],
+   "add_technique_ids": [
+    "step",
+    "jab",
+    "body_jab",
+    "shove",
+    "foot_sweep",
+    "cut_off_step",
+    "fast_roundhouse",
+    "cut_kick",
+    "double_roundhouse",
+    "bounce_step",
+    "body_straight_punch",
+    "ginga",
+    "rasteira",
+    "chain_punch",
+    "pak_sao",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.boxer_puncher.entry",
+   "opening": "entry",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "double_leg"
+   ],
+   "add_technique_ids": [
+    "teep",
+    "side_kick",
+    "single_leg",
+    "spinning_back_kick",
+    "jumping_knee",
+    "oblique_kick",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "flying_knee",
+    "ankle_pick",
+    "cut_kick",
+    "jumping_back_kick",
+    "bencao",
+    "stomp_thrust_punch",
+    "top_elbow",
+    "iron_mountain_lean",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.switch_hitter.entry",
+   "opening": "entry",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "double_leg"
+   ],
+   "add_technique_ids": [
+    "teep",
+    "side_kick",
+    "single_leg",
+    "spinning_back_kick",
+    "jumping_knee",
+    "oblique_kick",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "flying_knee",
+    "ankle_pick",
+    "cut_kick",
+    "jumping_back_kick",
+    "bencao",
+    "stomp_thrust_punch",
+    "top_elbow",
+    "iron_mountain_lean",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.switch_hitter.single_support",
+   "opening": "single_support",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "single_leg"
+   ],
+   "add_technique_ids": [
+    "sanda_sweep",
+    "ankle_pick",
+    "foot_sweep",
+    "caught_kick_dump",
+    "rasteira",
+    "lap_sao",
+    "quick_grip_throw",
+    "kick_into_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.defensive.tempo",
+   "opening": "tempo",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "feint"
+   ],
+   "add_technique_ids": [
+    "step",
+    "jab",
+    "body_jab",
+    "shove",
+    "foot_sweep",
+    "cut_off_step",
+    "fast_roundhouse",
+    "cut_kick",
+    "double_roundhouse",
+    "bounce_step",
+    "body_straight_punch",
+    "ginga",
+    "rasteira",
+    "chain_punch",
+    "pak_sao",
+    "fa_jin_push",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.defensive.body",
+   "opening": "body",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "body_hook"
+   ],
+   "add_technique_ids": [
+    "body_kick",
+    "teep",
+    "side_kick",
+    "switch_kick",
+    "spinning_back_kick",
+    "body_jab",
+    "rear_body_hook",
+    "shovel_hook",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "fast_roundhouse",
+    "jumping_back_kick",
+    "double_roundhouse",
+    "body_straight_punch",
+    "bencao",
+    "no_shadow_kick",
+    "stomp_thrust_punch",
+    "top_elbow"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.pressure.angle",
+   "opening": "angle",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "pivot"
+   ],
+   "add_technique_ids": [
+    "switch_step",
+    "hook",
+    "check_hook",
+    "shield_counter_hook",
+    "spinning_backfist",
+    "spinning_elbow",
+    "cut_off_step",
+    "bounce_step",
+    "ginga",
+    "armada",
+    "au",
+    "circle_walk",
+    "single_palm_change",
+    "turning_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.pressure.body",
+   "opening": "body",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "body_hook"
+   ],
+   "add_technique_ids": [
+    "body_kick",
+    "teep",
+    "side_kick",
+    "switch_kick",
+    "spinning_back_kick",
+    "body_jab",
+    "rear_body_hook",
+    "shovel_hook",
+    "front_kick",
+    "flying_side_kick",
+    "straight_knee",
+    "fast_roundhouse",
+    "jumping_back_kick",
+    "double_roundhouse",
+    "body_straight_punch",
+    "bencao",
+    "no_shadow_kick",
+    "stomp_thrust_punch",
+    "top_elbow"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.spoiler.head_straight",
+   "opening": "head_straight",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "jab"
+   ],
+   "add_technique_ids": [
+    "cross",
+    "axe_kick",
+    "pull_counter",
+    "superman_punch",
+    "brawler_straight",
+    "chain_punch",
+    "pak_sao",
+    "lap_sao",
+    "brush_knee_palm",
+    "deflect_parry_punch",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.spoiler.clinch",
+   "opening": "clinch",
+   "required_range": "clinch",
+   "current_technique_ids": [
+    "collar_tie"
+   ],
+   "add_technique_ids": [
+    "pummel",
+    "cage_plum",
+    "knee_body",
+    "body_lock",
+    "outside_trip",
+    "guard_pull",
+    "wall_tie",
+    "shovel_hook",
+    "short_uppercut",
+    "horizontal_elbow",
+    "uppercut_elbow",
+    "knee_head_clinch",
+    "underhook",
+    "double_collar_tie",
+    "snap_down",
+    "inside_trip",
+    "hip_throw",
+    "body_lock_takedown",
+    "suplex",
+    "bridge_smash",
+    "top_elbow",
+    "iron_mountain_lean",
+    "turning_throw",
+    "quick_grip_throw",
+    "kick_into_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.slickster.wall",
+   "opening": "wall",
+   "required_range": "clinch",
+   "current_technique_ids": [
+    "body_lock"
+   ],
+   "add_technique_ids": [
+    "cage_plum",
+    "wall_tie",
+    "wall_punch",
+    "shove",
+    "body_lock_takedown",
+    "fa_jin_push"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.slickster.head_straight",
+   "opening": "head_straight",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "jab"
+   ],
+   "add_technique_ids": [
+    "cross",
+    "axe_kick",
+    "pull_counter",
+    "superman_punch",
+    "brawler_straight",
+    "chain_punch",
+    "pak_sao",
+    "lap_sao",
+    "brush_knee_palm",
+    "deflect_parry_punch",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.showman.head_straight",
+   "opening": "head_straight",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "jab"
+   ],
+   "add_technique_ids": [
+    "cross",
+    "axe_kick",
+    "pull_counter",
+    "superman_punch",
+    "brawler_straight",
+    "chain_punch",
+    "pak_sao",
+    "lap_sao",
+    "brush_knee_palm",
+    "deflect_parry_punch",
+    "lead_straight_intercept"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.showman.head_hook",
+   "opening": "head_hook",
+   "required_range": "punch",
+   "current_technique_ids": [
+    "hook"
+   ],
+   "add_technique_ids": [
+    "haymaker",
+    "head_kick",
+    "rear_hook",
+    "overhand",
+    "check_hook",
+    "spinning_backfist",
+    "wild_hook",
+    "horizontal_elbow",
+    "spinning_elbow",
+    "spinning_hook_kick",
+    "question_mark_kick",
+    "jumping_switch_kick",
+    "cartwheel_kick",
+    "wall_run_kick",
+    "instep_head_kick",
+    "tornado_kick",
+    "meia_lua_de_compasso",
+    "armada",
+    "queixada",
+    "martelo",
+    "bridge_smash",
+    "single_palm_change"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.technician.clinch",
+   "opening": "clinch",
+   "required_range": "clinch",
+   "current_technique_ids": [
+    "collar_tie"
+   ],
+   "add_technique_ids": [
+    "pummel",
+    "cage_plum",
+    "knee_body",
+    "body_lock",
+    "outside_trip",
+    "guard_pull",
+    "wall_tie",
+    "shovel_hook",
+    "short_uppercut",
+    "horizontal_elbow",
+    "uppercut_elbow",
+    "knee_head_clinch",
+    "underhook",
+    "double_collar_tie",
+    "snap_down",
+    "inside_trip",
+    "hip_throw",
+    "body_lock_takedown",
+    "suplex",
+    "bridge_smash",
+    "top_elbow",
+    "iron_mountain_lean",
+    "turning_throw",
+    "quick_grip_throw",
+    "kick_into_throw"
+   ]
+  },
+  {
+   "debt_id": "debt.mentality.technician.wall",
+   "opening": "wall",
+   "required_range": "clinch",
+   "current_technique_ids": [
+    "body_lock"
+   ],
+   "add_technique_ids": [
+    "cage_plum",
+    "wall_tie",
+    "wall_punch",
+    "shove",
+    "body_lock_takedown",
+    "fa_jin_push"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,183 @@
+{
+ "rows": [
+  {
+   "card": "detroit",
+   "p_orig": 0.39090909090909093,
+   "p_spec_at0": 0.42272727272727273,
+   "slope": 0.7347005715504537,
+   "d_star": -0.29056177625883645,
+   "extrapolated": false,
+   "picks_lost": 0,
+   "schools": [
+    "boxing"
+   ],
+   "slots_orig": 2
+  },
+  {
+   "card": "donnell",
+   "p_orig": 0.5477272727272727,
+   "p_spec_at0": 0.6272727272727273,
+   "slope": 0.7169655944250007,
+   "d_star": -0.4684814756192157,
+   "extrapolated": false,
+   "picks_lost": 0,
+   "schools": [
+    "boxing"
+   ],
+   "slots_orig": 3
+  },
+  {
+   "card": "greco",
+   "p_orig": 0.5840909090909091,
+   "p_spec_at0": 0.4431818181818182,
+   "slope": 0.6965999327911407,
+   "d_star": 0.8581641052472968,
+   "extrapolated": false,
+   "picks_lost": 0,
+   "schools": [
+    "clinch",
+    "boxing"
+   ],
+   "slots_orig": 2
+  },
+  {
+   "card": "jiujitsu",
+   "p_orig": 0.47045454545454546,
+   "p_spec_at0": 0.4727272727272727,
+   "slope": 0.5667016888975502,
+   "d_star": -0.05784685036013594,
+   "extrapolated": false,
+   "picks_lost": 0,
+   "schools": [
+    "bjj",
+    "boxing"
+   ],
+   "slots_orig": 2
+  },
+  {
+   "card": "karate",
+   "p_orig": 0.5363636363636364,
+   "p_spec_at0": 0.7,
+   "slope": 0.7288577235339901,
+   "d_star": -1.1209633179991594,
+   "extrapolated": false,
+   "picks_lost": 1,
+   "schools": [
+    "karate",
+    "boxing"
+   ],
+   "slots_orig": 3
+  },
+  {
+   "card": "macklin",
+   "p_orig": 0.46136363636363636,
+   "p_spec_at0": 0.43863636363636366,
+   "slope": 0.7870537652869284,
+   "d_star": 0.1349023938900414,
+   "extrapolated": false,
+   "picks_lost": 1,
+   "schools": [
+    "boxing",
+    "clinch"
+   ],
+   "slots_orig": 2
+  },
+  {
+   "card": "maleek",
+   "p_orig": 0.37272727272727274,
+   "p_spec_at0": 0.41363636363636364,
+   "slope": 0.6984471060323694,
+   "d_star": -0.29724402163828834,
+   "extrapolated": false,
+   "picks_lost": 2,
+   "schools": [
+    "boxing",
+    "shield"
+   ],
+   "slots_orig": 3
+  },
+  {
+   "card": "philly",
+   "p_orig": 0.5454545454545454,
+   "p_spec_at0": 0.6295454545454545,
+   "slope": 0.7674314581190215,
+   "d_star": -0.48065193122163524,
+   "extrapolated": false,
+   "picks_lost": 1,
+   "schools": [
+    "boxing",
+    "anti_grappling"
+   ],
+   "slots_orig": 3
+  },
+  {
+   "card": "sanda_judo",
+   "p_orig": 0.5863636363636363,
+   "p_spec_at0": 0.6931818181818182,
+   "slope": 0.706027280383902,
+   "d_star": -0.7011316595553216,
+   "extrapolated": false,
+   "picks_lost": 2,
+   "schools": [
+    "sanda",
+    "boxing"
+   ],
+   "slots_orig": 3
+  },
+  {
+   "card": "thai",
+   "p_orig": 0.4022727272727273,
+   "p_spec_at0": 0.2840909090909091,
+   "slope": 0.6573630423124578,
+   "d_star": 0.7794495733917901,
+   "extrapolated": false,
+   "picks_lost": 2,
+   "schools": [
+    "boxing",
+    "kickboxing"
+   ],
+   "slots_orig": 3
+  },
+  {
+   "card": "wrestler",
+   "p_orig": 0.5863636363636363,
+   "p_spec_at0": 0.35909090909090907,
+   "slope": 0.8344488765864051,
+   "d_star": 1.150679343086891,
+   "extrapolated": false,
+   "picks_lost": 1,
+   "schools": [
+    "wrestling",
+    "boxing"
+   ],
+   "slots_orig": 2
+  }
+ ],
+ "mean_d_star": -0.04488051063968848,
+ "sd_d_star": 0.7098495588169734,
+ "median_d_star": -0.29056177625883645,
+ "min_d_star": -1.1209633179991594,
+ "max_d_star": 1.150679343086891,
+ "any_extrapolated": false,
+ "picks_lost_slope": -0.04415640573627355,
+ "picks_lost_slope_se": 0.2842845736663291,
+ "picks_lost_R2": 0.00267347239494968,
+ "field_expert_orig": 0.49855371900826445,
+ "field_expert_spec": 0.49855371900826445,
+ "field_trained": {
+  "orig": 0.4954545454545455,
+  "spec": 0.49132231404958676,
+  "spec2": 0.4971074380165289
+ },
+ "field_trained_n": {
+  "orig": 4840,
+  "spec": 4840,
+  "spec2": 4840
+ },
+ "h2h_spec2": [
+  0.56,
+  0.5391705441085922,
+  0.5806202793335281
+ ],
+ "h2h_spec2_n": 2200
+}

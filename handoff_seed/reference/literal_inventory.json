@@ -1,0 +1,2586 @@
+{
+ "source": "engine/simulator_v2.py @ 0d0734d",
+ "note": "every non-comment line holding an option-id or technique-id string literal; P1a moves each into data (model.legacy or option fields) and the P11 scan keeps the count at zero outside data loaders",
+ "totals": {
+  "option_literals": 93,
+  "option_lines": 76,
+  "technique_literals": 364,
+  "technique_lines": 186
+ },
+ "by_function": {
+  "<module>": {
+   "first_line": 39,
+   "last_line": 98,
+   "lines": [
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98
+   ],
+   "option_literals": 0,
+   "technique_literals": 47
+  },
+  "available_v2": {
+   "first_line": 140,
+   "last_line": 141,
+   "lines": [
+    140,
+    141
+   ],
+   "option_literals": 1,
+   "technique_literals": 4
+  },
+  "compute_posture_state": {
+   "first_line": 219,
+   "last_line": 219,
+   "lines": [
+    219
+   ],
+   "option_literals": 0,
+   "technique_literals": 1
+  },
+  "compute_readiness_profile": {
+   "first_line": 349,
+   "last_line": 443,
+   "lines": [
+    349,
+    351,
+    362,
+    365,
+    368,
+    371,
+    376,
+    379,
+    380,
+    383,
+    387,
+    389,
+    437,
+    443
+   ],
+   "option_literals": 16,
+   "technique_literals": 1
+  },
+  "unroll_kick_anatomy": {
+   "first_line": 462,
+   "last_line": 561,
+   "lines": [
+    462,
+    466,
+    478,
+    490,
+    503,
+    504,
+    508,
+    513,
+    516,
+    528,
+    540,
+    555,
+    556,
+    557,
+    558,
+    560,
+    561
+   ],
+   "option_literals": 1,
+   "technique_literals": 17
+  },
+  "select_kick_defense": {
+   "first_line": 582,
+   "last_line": 614,
+   "lines": [
+    582,
+    583,
+    587,
+    588,
+    591,
+    600,
+    602,
+    603,
+    604,
+    606,
+    607,
+    608,
+    609,
+    610,
+    611,
+    612,
+    613,
+    614
+   ],
+   "option_literals": 9,
+   "technique_literals": 35
+  },
+  "select_native_defense": {
+   "first_line": 625,
+   "last_line": 686,
+   "lines": [
+    625,
+    626,
+    629,
+    630,
+    631,
+    632,
+    633,
+    634,
+    635,
+    636,
+    637,
+    638,
+    639,
+    640,
+    642,
+    643,
+    644,
+    645,
+    646,
+    647,
+    648,
+    649,
+    650,
+    651,
+    654,
+    655,
+    656,
+    657,
+    658,
+    659,
+    660,
+    661,
+    662,
+    664,
+    665,
+    666,
+    667,
+    668,
+    669,
+    670,
+    671,
+    672,
+    673,
+    674,
+    675,
+    676,
+    677,
+    678,
+    679,
+    680,
+    681,
+    684,
+    685,
+    686
+   ],
+   "option_literals": 15,
+   "technique_literals": 74
+  },
+  "compute_card_derived_damage": {
+   "first_line": 761,
+   "last_line": 875,
+   "lines": [
+    761,
+    762,
+    763,
+    764,
+    771,
+    773,
+    777,
+    799,
+    801,
+    807,
+    814,
+    815,
+    816,
+    817,
+    861,
+    875
+   ],
+   "option_literals": 13,
+   "technique_literals": 24
+  },
+  "build_slot_plans": {
+   "first_line": 902,
+   "last_line": 982,
+   "lines": [
+    902,
+    903,
+    908,
+    915,
+    919,
+    920,
+    931,
+    932,
+    934,
+    936,
+    938,
+    940,
+    941,
+    942,
+    943,
+    945,
+    947,
+    949,
+    950,
+    951,
+    952,
+    954,
+    982
+   ],
+   "option_literals": 8,
+   "technique_literals": 57
+  },
+  "update_grappling_position": {
+   "first_line": 1015,
+   "last_line": 1066,
+   "lines": [
+    1015,
+    1024,
+    1025,
+    1027,
+    1030,
+    1034,
+    1035,
+    1040,
+    1044,
+    1046,
+    1050,
+    1056,
+    1060,
+    1066
+   ],
+   "option_literals": 1,
+   "technique_literals": 19
+  },
+  "simulate_fight_v2": {
+   "first_line": 1197,
+   "last_line": 1597,
+   "lines": [
+    1197,
+    1198,
+    1229,
+    1262,
+    1280,
+    1288,
+    1296,
+    1301,
+    1302,
+    1314,
+    1315,
+    1316,
+    1317,
+    1318,
+    1319,
+    1321,
+    1322,
+    1324,
+    1327,
+    1383,
+    1388,
+    1404,
+    1406,
+    1411,
+    1444,
+    1470,
+    1482,
+    1533,
+    1538,
+    1563,
+    1564,
+    1593,
+    1595,
+    1597
+   ],
+   "option_literals": 19,
+   "technique_literals": 68
+  },
+  "audit_option_coverage_v2": {
+   "first_line": 2150,
+   "last_line": 2182,
+   "lines": [
+    2150,
+    2151,
+    2152,
+    2153,
+    2154,
+    2155,
+    2156,
+    2169,
+    2170,
+    2171,
+    2173,
+    2182
+   ],
+   "option_literals": 10,
+   "technique_literals": 17
+  }
+ },
+ "entries": [
+  {
+   "line": 39,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "step"
+   ]
+  },
+  {
+   "line": 40,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "retreat"
+   ]
+  },
+  {
+   "line": 41,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "pivot"
+   ]
+  },
+  {
+   "line": 42,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "switch_step"
+   ]
+  },
+  {
+   "line": 43,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "feint",
+    "feint"
+   ]
+  },
+  {
+   "line": 44,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "jab"
+   ]
+  },
+  {
+   "line": 45,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "cross"
+   ]
+  },
+  {
+   "line": 46,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "hook"
+   ]
+  },
+  {
+   "line": 47,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "body_hook"
+   ]
+  },
+  {
+   "line": 48,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "uppercut"
+   ]
+  },
+  {
+   "line": 49,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "haymaker"
+   ]
+  },
+  {
+   "line": 50,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "teep"
+   ]
+  },
+  {
+   "line": 51,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "low_kick"
+   ]
+  },
+  {
+   "line": 52,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "body_kick"
+   ]
+  },
+  {
+   "line": 53,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "side_kick"
+   ]
+  },
+  {
+   "line": 54,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "head_kick"
+   ]
+  },
+  {
+   "line": 55,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "switch_kick"
+   ]
+  },
+  {
+   "line": 56,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "spinning_back_kick"
+   ]
+  },
+  {
+   "line": 57,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "axe_kick"
+   ]
+  },
+  {
+   "line": 58,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "knee_body"
+   ]
+  },
+  {
+   "line": 59,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "jumping_knee"
+   ]
+  },
+  {
+   "line": 60,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "pummel"
+   ]
+  },
+  {
+   "line": 61,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "collar_tie"
+   ]
+  },
+  {
+   "line": 62,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "body_lock"
+   ]
+  },
+  {
+   "line": 63,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "cage_plum"
+   ]
+  },
+  {
+   "line": 64,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "shield_frame"
+   ]
+  },
+  {
+   "line": 65,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "double_leg"
+   ]
+  },
+  {
+   "line": 66,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "single_leg"
+   ]
+  },
+  {
+   "line": 67,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "outside_trip"
+   ]
+  },
+  {
+   "line": 68,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "sanda_sweep"
+   ]
+  },
+  {
+   "line": 69,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "guard_pull"
+   ]
+  },
+  {
+   "line": 70,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "ride"
+   ]
+  },
+  {
+   "line": 71,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "armbar"
+   ]
+  },
+  {
+   "line": 72,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "escape"
+   ]
+  },
+  {
+   "line": 73,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "wall_tie"
+   ]
+  },
+  {
+   "line": 74,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "wall_punch"
+   ]
+  },
+  {
+   "line": 89,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "low_kick"
+   ]
+  },
+  {
+   "line": 90,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "body_kick"
+   ]
+  },
+  {
+   "line": 91,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "head_kick"
+   ]
+  },
+  {
+   "line": 92,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "teep"
+   ]
+  },
+  {
+   "line": 93,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "side_kick"
+   ]
+  },
+  {
+   "line": 94,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "switch_kick"
+   ]
+  },
+  {
+   "line": 95,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "spinning_back_kick"
+   ]
+  },
+  {
+   "line": 96,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "axe_kick"
+   ]
+  },
+  {
+   "line": 97,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "jumping_knee"
+   ]
+  },
+  {
+   "line": 98,
+   "function": "<module>",
+   "option_ids": [],
+   "technique_ids": [
+    "knee_body"
+   ]
+  },
+  {
+   "line": 140,
+   "function": "available_v2",
+   "option_ids": [
+    "kicking.karate"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 141,
+   "function": "available_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "side_kick",
+    "teep",
+    "body_kick",
+    "spinning_back_kick"
+   ]
+  },
+  {
+   "line": 219,
+   "function": "compute_posture_state",
+   "option_ids": [],
+   "technique_ids": [
+    "single_leg"
+   ]
+  },
+  {
+   "line": 349,
+   "function": "compute_readiness_profile",
+   "option_ids": [
+    "defense.outfight"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 351,
+   "function": "compute_readiness_profile",
+   "option_ids": [
+    "stance.bladed"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 362,
+   "function": "compute_readiness_profile",
+   "option_ids": [
+    "defense.slip_roll"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 365,
+   "function": "compute_readiness_profile",
+   "option_ids": [
+    "defense.parry_catch"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 368,
+   "function": "compute_readiness_profile",
+   "option_ids": [
+    "defense.block_absorb"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 371,
+   "function": "compute_readiness_profile",
+   "option_ids": [
+    "defense.outfight"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 376,
+   "function": "compute_readiness_profile",
+   "option_ids": [
+    "defense.shoulder_roll"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 379,
+   "function": "compute_readiness_profile",
+   "option_ids": [
+    "defense.check_frame"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 380,
+   "function": "compute_readiness_profile",
+   "option_ids": [],
+   "technique_ids": [
+    "single_leg"
+   ]
+  },
+  {
+   "line": 383,
+   "function": "compute_readiness_profile",
+   "option_ids": [
+    "defense.sprawl_pummel"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 387,
+   "function": "compute_readiness_profile",
+   "option_ids": [
+    "defense.smother"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 389,
+   "function": "compute_readiness_profile",
+   "option_ids": [
+    "tie.thai_plum",
+    "tie.greco",
+    "tie.judo_sambo",
+    "tie.freestyle"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 437,
+   "function": "compute_readiness_profile",
+   "option_ids": [
+    "hands.shield52"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 443,
+   "function": "compute_readiness_profile",
+   "option_ids": [
+    "mentality.defensive"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 462,
+   "function": "unroll_kick_anatomy",
+   "option_ids": [
+    "kicking.none"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 466,
+   "function": "unroll_kick_anatomy",
+   "option_ids": [],
+   "technique_ids": [
+    "teep"
+   ]
+  },
+  {
+   "line": 478,
+   "function": "unroll_kick_anatomy",
+   "option_ids": [],
+   "technique_ids": [
+    "side_kick"
+   ]
+  },
+  {
+   "line": 490,
+   "function": "unroll_kick_anatomy",
+   "option_ids": [],
+   "technique_ids": [
+    "low_kick"
+   ]
+  },
+  {
+   "line": 503,
+   "function": "unroll_kick_anatomy",
+   "option_ids": [],
+   "technique_ids": [
+    "body_kick",
+    "switch_kick"
+   ]
+  },
+  {
+   "line": 504,
+   "function": "unroll_kick_anatomy",
+   "option_ids": [],
+   "technique_ids": [
+    "switch_kick"
+   ]
+  },
+  {
+   "line": 508,
+   "function": "unroll_kick_anatomy",
+   "option_ids": [],
+   "technique_ids": [
+    "switch_kick"
+   ]
+  },
+  {
+   "line": 513,
+   "function": "unroll_kick_anatomy",
+   "option_ids": [],
+   "technique_ids": [
+    "switch_kick"
+   ]
+  },
+  {
+   "line": 516,
+   "function": "unroll_kick_anatomy",
+   "option_ids": [],
+   "technique_ids": [
+    "head_kick"
+   ]
+  },
+  {
+   "line": 528,
+   "function": "unroll_kick_anatomy",
+   "option_ids": [],
+   "technique_ids": [
+    "spinning_back_kick"
+   ]
+  },
+  {
+   "line": 540,
+   "function": "unroll_kick_anatomy",
+   "option_ids": [],
+   "technique_ids": [
+    "axe_kick"
+   ]
+  },
+  {
+   "line": 555,
+   "function": "unroll_kick_anatomy",
+   "option_ids": [],
+   "technique_ids": [
+    "jumping_knee"
+   ]
+  },
+  {
+   "line": 556,
+   "function": "unroll_kick_anatomy",
+   "option_ids": [],
+   "technique_ids": [
+    "jumping_knee"
+   ]
+  },
+  {
+   "line": 557,
+   "function": "unroll_kick_anatomy",
+   "option_ids": [],
+   "technique_ids": [
+    "jumping_knee"
+   ]
+  },
+  {
+   "line": 558,
+   "function": "unroll_kick_anatomy",
+   "option_ids": [],
+   "technique_ids": [
+    "jumping_knee"
+   ]
+  },
+  {
+   "line": 560,
+   "function": "unroll_kick_anatomy",
+   "option_ids": [],
+   "technique_ids": [
+    "jumping_knee"
+   ]
+  },
+  {
+   "line": 561,
+   "function": "unroll_kick_anatomy",
+   "option_ids": [],
+   "technique_ids": [
+    "jumping_knee"
+   ]
+  },
+  {
+   "line": 582,
+   "function": "select_kick_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "body_kick",
+    "low_kick",
+    "switch_kick",
+    "teep",
+    "side_kick"
+   ]
+  },
+  {
+   "line": 583,
+   "function": "select_kick_defense",
+   "option_ids": [
+    "kicking.sanda",
+    "defense.parry_catch"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 587,
+   "function": "select_kick_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "body_kick",
+    "low_kick",
+    "switch_kick"
+   ]
+  },
+  {
+   "line": 588,
+   "function": "select_kick_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "kick_catch"
+   ]
+  },
+  {
+   "line": 591,
+   "function": "select_kick_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "body_kick",
+    "switch_kick",
+    "teep",
+    "side_kick"
+   ]
+  },
+  {
+   "line": 600,
+   "function": "select_kick_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "kick_catch"
+   ]
+  },
+  {
+   "line": 602,
+   "function": "select_kick_defense",
+   "option_ids": [
+    "defense.check_frame"
+   ],
+   "technique_ids": [
+    "low_kick",
+    "body_kick",
+    "switch_kick"
+   ]
+  },
+  {
+   "line": 603,
+   "function": "select_kick_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "check"
+   ]
+  },
+  {
+   "line": 604,
+   "function": "select_kick_defense",
+   "option_ids": [
+    "defense.outfight"
+   ],
+   "technique_ids": [
+    "low_kick",
+    "body_kick",
+    "head_kick",
+    "spinning_back_kick",
+    "teep",
+    "side_kick"
+   ]
+  },
+  {
+   "line": 606,
+   "function": "select_kick_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "shell_block"
+   ]
+  },
+  {
+   "line": 607,
+   "function": "select_kick_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "evade_step_back"
+   ]
+  },
+  {
+   "line": 608,
+   "function": "select_kick_defense",
+   "option_ids": [
+    "defense.slip_roll",
+    "defense.shoulder_roll"
+   ],
+   "technique_ids": [
+    "head_kick",
+    "axe_kick"
+   ]
+  },
+  {
+   "line": 609,
+   "function": "select_kick_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "lean_back"
+   ]
+  },
+  {
+   "line": 610,
+   "function": "select_kick_defense",
+   "option_ids": [
+    "defense.smother",
+    "defense.sprawl_pummel"
+   ],
+   "technique_ids": [
+    "teep",
+    "body_kick",
+    "spinning_back_kick"
+   ]
+  },
+  {
+   "line": 611,
+   "function": "select_kick_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "jam_step"
+   ]
+  },
+  {
+   "line": 612,
+   "function": "select_kick_defense",
+   "option_ids": [
+    "defense.block_absorb"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 613,
+   "function": "select_kick_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "retreat"
+   ]
+  },
+  {
+   "line": 614,
+   "function": "select_kick_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "shell_block"
+   ]
+  },
+  {
+   "line": 625,
+   "function": "select_native_defense",
+   "option_ids": [
+    "defense.block_absorb"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 626,
+   "function": "select_native_defense",
+   "option_ids": [
+    "hands.high_guard"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 629,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "double_leg",
+    "single_leg",
+    "outside_trip",
+    "sanda_sweep",
+    "body_lock",
+    "collar_tie",
+    "wall_tie",
+    "guard_pull"
+   ]
+  },
+  {
+   "line": 630,
+   "function": "select_native_defense",
+   "option_ids": [
+    "defense.sprawl_pummel"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 631,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "sprawl",
+    "double_leg",
+    "single_leg"
+   ]
+  },
+  {
+   "line": 632,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "sprawl"
+   ]
+  },
+  {
+   "line": 633,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "pummel"
+   ]
+  },
+  {
+   "line": 634,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "pummel"
+   ]
+  },
+  {
+   "line": 635,
+   "function": "select_native_defense",
+   "option_ids": [
+    "defense.smother"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 636,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "pummel"
+   ]
+  },
+  {
+   "line": 637,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "pummel"
+   ]
+  },
+  {
+   "line": 638,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "wall_tie"
+   ]
+  },
+  {
+   "line": 639,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "wall_tie"
+   ]
+  },
+  {
+   "line": 640,
+   "function": "select_native_defense",
+   "option_ids": [
+    "defense.outfight"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 642,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "shell_block",
+    "shell_block",
+    "retreat"
+   ]
+  },
+  {
+   "line": 643,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "pivot",
+    "pivot",
+    "retreat"
+   ]
+  },
+  {
+   "line": 644,
+   "function": "select_native_defense",
+   "option_ids": [
+    "defense.check_frame"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 645,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "shield_frame"
+   ]
+  },
+  {
+   "line": 646,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "shield_frame"
+   ]
+  },
+  {
+   "line": 647,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "sprawl",
+    "double_leg",
+    "single_leg"
+   ]
+  },
+  {
+   "line": 648,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "sprawl"
+   ]
+  },
+  {
+   "line": 649,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "pummel"
+   ]
+  },
+  {
+   "line": 650,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "pummel"
+   ]
+  },
+  {
+   "line": 651,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "retreat"
+   ]
+  },
+  {
+   "line": 654,
+   "function": "select_native_defense",
+   "option_ids": [
+    "defense.parry_catch"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 655,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "jab",
+    "cross",
+    "teep",
+    "haymaker",
+    "parry"
+   ]
+  },
+  {
+   "line": 656,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "parry"
+   ]
+  },
+  {
+   "line": 657,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "shell_block",
+    "shell_block",
+    "retreat"
+   ]
+  },
+  {
+   "line": 658,
+   "function": "select_native_defense",
+   "option_ids": [
+    "defense.slip_roll",
+    "defense.shoulder_roll"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 659,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "slip"
+   ]
+  },
+  {
+   "line": 660,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "slip"
+   ]
+  },
+  {
+   "line": 661,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "pivot",
+    "pivot",
+    "retreat"
+   ]
+  },
+  {
+   "line": 662,
+   "function": "select_native_defense",
+   "option_ids": [
+    "defense.outfight"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 664,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "shell_block",
+    "shell_block",
+    "retreat"
+   ]
+  },
+  {
+   "line": 665,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "pivot",
+    "pivot",
+    "jab",
+    "cross",
+    "retreat"
+   ]
+  },
+  {
+   "line": 666,
+   "function": "select_native_defense",
+   "option_ids": [
+    "defense.check_frame"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 667,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "shield_frame"
+   ]
+  },
+  {
+   "line": 668,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "shield_frame"
+   ]
+  },
+  {
+   "line": 669,
+   "function": "select_native_defense",
+   "option_ids": [
+    "hands.long_guard"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 670,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "retreat"
+   ]
+  },
+  {
+   "line": 671,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "shell_block",
+    "shell_block",
+    "retreat"
+   ]
+  },
+  {
+   "line": 672,
+   "function": "select_native_defense",
+   "option_ids": [
+    "defense.smother"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 673,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "pummel"
+   ]
+  },
+  {
+   "line": 674,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "pummel"
+   ]
+  },
+  {
+   "line": 675,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "shield_frame"
+   ]
+  },
+  {
+   "line": 676,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "shield_frame"
+   ]
+  },
+  {
+   "line": 677,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "step"
+   ]
+  },
+  {
+   "line": 678,
+   "function": "select_native_defense",
+   "option_ids": [
+    "defense.sprawl_pummel"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 679,
+   "function": "select_native_defense",
+   "option_ids": [
+    "hands.philly_shell"
+   ],
+   "technique_ids": [
+    "slip"
+   ]
+  },
+  {
+   "line": 680,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "slip"
+   ]
+  },
+  {
+   "line": 681,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "shell_block",
+    "shell_block",
+    "retreat"
+   ]
+  },
+  {
+   "line": 684,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "shell_block"
+   ]
+  },
+  {
+   "line": 685,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "shell_block"
+   ]
+  },
+  {
+   "line": 686,
+   "function": "select_native_defense",
+   "option_ids": [],
+   "technique_ids": [
+    "retreat"
+   ]
+  },
+  {
+   "line": 761,
+   "function": "compute_card_derived_damage",
+   "option_ids": [
+    "mentality.boxer_puncher"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 762,
+   "function": "compute_card_derived_damage",
+   "option_ids": [
+    "stance.balanced"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 763,
+   "function": "compute_card_derived_damage",
+   "option_ids": [
+    "target.mixer"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 764,
+   "function": "compute_card_derived_damage",
+   "option_ids": [
+    "kicking.none"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 771,
+   "function": "compute_card_derived_damage",
+   "option_ids": [],
+   "technique_ids": [
+    "single_leg"
+   ]
+  },
+  {
+   "line": 773,
+   "function": "compute_card_derived_damage",
+   "option_ids": [
+    "kicking.karate"
+   ],
+   "technique_ids": [
+    "body_kick"
+   ]
+  },
+  {
+   "line": 777,
+   "function": "compute_card_derived_damage",
+   "option_ids": [],
+   "technique_ids": [
+    "head_kick",
+    "axe_kick",
+    "jumping_knee"
+   ]
+  },
+  {
+   "line": 799,
+   "function": "compute_card_derived_damage",
+   "option_ids": [
+    "stance.crouch"
+   ],
+   "technique_ids": [
+    "hook",
+    "body_hook",
+    "uppercut"
+   ]
+  },
+  {
+   "line": 801,
+   "function": "compute_card_derived_damage",
+   "option_ids": [
+    "stance.switch"
+   ],
+   "technique_ids": [
+    "switch_step"
+   ]
+  },
+  {
+   "line": 807,
+   "function": "compute_card_derived_damage",
+   "option_ids": [],
+   "technique_ids": [
+    "side_kick",
+    "spinning_back_kick",
+    "axe_kick",
+    "teep",
+    "low_kick",
+    "body_kick",
+    "head_kick",
+    "knee_body",
+    "jumping_knee"
+   ]
+  },
+  {
+   "line": 814,
+   "function": "compute_card_derived_damage",
+   "option_ids": [
+    "target.head_hunter"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 815,
+   "function": "compute_card_derived_damage",
+   "option_ids": [
+    "target.body_puncher",
+    "target.liver_ribs"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 816,
+   "function": "compute_card_derived_damage",
+   "option_ids": [
+    "target.leg_chopper"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 817,
+   "function": "compute_card_derived_damage",
+   "option_ids": [
+    "target.knee_clincher"
+   ],
+   "technique_ids": [
+    "knee_body",
+    "jumping_knee",
+    "collar_tie"
+   ]
+  },
+  {
+   "line": 861,
+   "function": "compute_card_derived_damage",
+   "option_ids": [
+    "defense.block_absorb"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 875,
+   "function": "compute_card_derived_damage",
+   "option_ids": [],
+   "technique_ids": [
+    "low_kick",
+    "body_kick",
+    "switch_kick"
+   ]
+  },
+  {
+   "line": 902,
+   "function": "build_slot_plans",
+   "option_ids": [
+    "kicking.none"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 903,
+   "function": "build_slot_plans",
+   "option_ids": [
+    "target.mixer"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 908,
+   "function": "build_slot_plans",
+   "option_ids": [
+    "kicking.karate"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 915,
+   "function": "build_slot_plans",
+   "option_ids": [],
+   "technique_ids": [
+    "escape"
+   ]
+  },
+  {
+   "line": 919,
+   "function": "build_slot_plans",
+   "option_ids": [
+    "kicking.karate"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 920,
+   "function": "build_slot_plans",
+   "option_ids": [],
+   "technique_ids": [
+    "side_kick",
+    "teep",
+    "body_kick",
+    "spinning_back_kick"
+   ]
+  },
+  {
+   "line": 931,
+   "function": "build_slot_plans",
+   "option_ids": [],
+   "technique_ids": [
+    "sanda_sweep"
+   ]
+  },
+  {
+   "line": 932,
+   "function": "build_slot_plans",
+   "option_ids": [],
+   "technique_ids": [
+    "low_kick",
+    "body_kick",
+    "teep",
+    "sanda_sweep",
+    "side_kick"
+   ]
+  },
+  {
+   "line": 934,
+   "function": "build_slot_plans",
+   "option_ids": [],
+   "technique_ids": [
+    "body_lock",
+    "outside_trip",
+    "double_leg",
+    "single_leg",
+    "ride"
+   ]
+  },
+  {
+   "line": 936,
+   "function": "build_slot_plans",
+   "option_ids": [],
+   "technique_ids": [
+    "collar_tie",
+    "guard_pull",
+    "armbar"
+   ]
+  },
+  {
+   "line": 938,
+   "function": "build_slot_plans",
+   "option_ids": [],
+   "technique_ids": [
+    "collar_tie",
+    "knee_body",
+    "body_lock",
+    "pummel"
+   ]
+  },
+  {
+   "line": 940,
+   "function": "build_slot_plans",
+   "option_ids": [
+    "kicking.dutch"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 941,
+   "function": "build_slot_plans",
+   "option_ids": [],
+   "technique_ids": [
+    "jab",
+    "cross",
+    "body_hook",
+    "low_kick",
+    "body_kick"
+   ]
+  },
+  {
+   "line": 942,
+   "function": "build_slot_plans",
+   "option_ids": [
+    "kicking.muay_thai"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 943,
+   "function": "build_slot_plans",
+   "option_ids": [],
+   "technique_ids": [
+    "teep",
+    "body_kick",
+    "low_kick",
+    "knee_body"
+   ]
+  },
+  {
+   "line": 945,
+   "function": "build_slot_plans",
+   "option_ids": [],
+   "technique_ids": [
+    "teep",
+    "low_kick",
+    "body_kick"
+   ]
+  },
+  {
+   "line": 947,
+   "function": "build_slot_plans",
+   "option_ids": [],
+   "technique_ids": [
+    "side_kick",
+    "teep",
+    "body_kick",
+    "spinning_back_kick",
+    "jab",
+    "cross"
+   ]
+  },
+  {
+   "line": 949,
+   "function": "build_slot_plans",
+   "option_ids": [
+    "target.body_puncher"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 950,
+   "function": "build_slot_plans",
+   "option_ids": [],
+   "technique_ids": [
+    "jab",
+    "body_hook",
+    "cross",
+    "uppercut",
+    "hook"
+   ]
+  },
+  {
+   "line": 951,
+   "function": "build_slot_plans",
+   "option_ids": [
+    "mentality.counter"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 952,
+   "function": "build_slot_plans",
+   "option_ids": [],
+   "technique_ids": [
+    "jab",
+    "cross",
+    "uppercut",
+    "hook",
+    "body_hook"
+   ]
+  },
+  {
+   "line": 954,
+   "function": "build_slot_plans",
+   "option_ids": [],
+   "technique_ids": [
+    "jab",
+    "cross",
+    "hook",
+    "body_hook",
+    "uppercut"
+   ]
+  },
+  {
+   "line": 982,
+   "function": "build_slot_plans",
+   "option_ids": [],
+   "technique_ids": [
+    "jab"
+   ]
+  },
+  {
+   "line": 1015,
+   "function": "update_grappling_position",
+   "option_ids": [],
+   "technique_ids": [
+    "ride"
+   ]
+  },
+  {
+   "line": 1024,
+   "function": "update_grappling_position",
+   "option_ids": [],
+   "technique_ids": [
+    "collar_tie"
+   ]
+  },
+  {
+   "line": 1025,
+   "function": "update_grappling_position",
+   "option_ids": [
+    "tie.thai_plum"
+   ],
+   "technique_ids": [
+    "collar_tie"
+   ]
+  },
+  {
+   "line": 1027,
+   "function": "update_grappling_position",
+   "option_ids": [],
+   "technique_ids": [
+    "collar_tie"
+   ]
+  },
+  {
+   "line": 1030,
+   "function": "update_grappling_position",
+   "option_ids": [],
+   "technique_ids": [
+    "body_lock"
+   ]
+  },
+  {
+   "line": 1034,
+   "function": "update_grappling_position",
+   "option_ids": [],
+   "technique_ids": [
+    "body_lock"
+   ]
+  },
+  {
+   "line": 1035,
+   "function": "update_grappling_position",
+   "option_ids": [],
+   "technique_ids": [
+    "wall_tie"
+   ]
+  },
+  {
+   "line": 1040,
+   "function": "update_grappling_position",
+   "option_ids": [],
+   "technique_ids": [
+    "pummel"
+   ]
+  },
+  {
+   "line": 1044,
+   "function": "update_grappling_position",
+   "option_ids": [],
+   "technique_ids": [
+    "double_leg",
+    "single_leg",
+    "outside_trip",
+    "sanda_sweep"
+   ]
+  },
+  {
+   "line": 1046,
+   "function": "update_grappling_position",
+   "option_ids": [],
+   "technique_ids": [
+    "outside_trip",
+    "sanda_sweep"
+   ]
+  },
+  {
+   "line": 1050,
+   "function": "update_grappling_position",
+   "option_ids": [],
+   "technique_ids": [
+    "guard_pull"
+   ]
+  },
+  {
+   "line": 1056,
+   "function": "update_grappling_position",
+   "option_ids": [],
+   "technique_ids": [
+    "ride"
+   ]
+  },
+  {
+   "line": 1060,
+   "function": "update_grappling_position",
+   "option_ids": [],
+   "technique_ids": [
+    "armbar"
+   ]
+  },
+  {
+   "line": 1066,
+   "function": "update_grappling_position",
+   "option_ids": [],
+   "technique_ids": [
+    "escape",
+    "retreat"
+   ]
+  },
+  {
+   "line": 1197,
+   "function": "simulate_fight_v2",
+   "option_ids": [
+    "mentality.counter"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 1198,
+   "function": "simulate_fight_v2",
+   "option_ids": [
+    "mentality.swarmer",
+    "mentality.pressure"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 1229,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "body_lock"
+   ]
+  },
+  {
+   "line": 1262,
+   "function": "simulate_fight_v2",
+   "option_ids": [
+    "defense.outfight"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 1280,
+   "function": "simulate_fight_v2",
+   "option_ids": [
+    "mentality.outboxer",
+    "defense.outfight"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 1288,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "escape",
+    "low_kick",
+    "body_kick"
+   ]
+  },
+  {
+   "line": 1296,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "double_leg",
+    "single_leg"
+   ]
+  },
+  {
+   "line": 1301,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "low_kick",
+    "body_kick",
+    "teep",
+    "switch_kick"
+   ]
+  },
+  {
+   "line": 1302,
+   "function": "simulate_fight_v2",
+   "option_ids": [
+    "tie.greco",
+    "tie.judo_sambo"
+   ],
+   "technique_ids": [
+    "body_lock",
+    "outside_trip",
+    "collar_tie"
+   ]
+  },
+  {
+   "line": 1314,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "ride"
+   ]
+  },
+  {
+   "line": 1315,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "ride"
+   ]
+  },
+  {
+   "line": 1316,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "armbar"
+   ]
+  },
+  {
+   "line": 1317,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "armbar"
+   ]
+  },
+  {
+   "line": 1318,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "escape"
+   ]
+  },
+  {
+   "line": 1319,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "escape"
+   ]
+  },
+  {
+   "line": 1321,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "cross",
+    "hook",
+    "body_hook",
+    "jab",
+    "haymaker"
+   ]
+  },
+  {
+   "line": 1322,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "retreat"
+   ]
+  },
+  {
+   "line": 1324,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "retreat",
+    "retreat",
+    "pummel",
+    "pummel",
+    "jab"
+   ]
+  },
+  {
+   "line": 1327,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "side_kick",
+    "teep",
+    "low_kick",
+    "body_kick",
+    "jab"
+   ]
+  },
+  {
+   "line": 1383,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "haymaker"
+   ]
+  },
+  {
+   "line": 1388,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "double_leg",
+    "single_leg"
+   ]
+  },
+  {
+   "line": 1404,
+   "function": "simulate_fight_v2",
+   "option_ids": [
+    "kicking.sanda",
+    "defense.parry_catch"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 1406,
+   "function": "simulate_fight_v2",
+   "option_ids": [
+    "kicking.sanda",
+    "defense.check_frame",
+    "defense.outfight"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 1411,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "knee_body"
+   ]
+  },
+  {
+   "line": 1444,
+   "function": "simulate_fight_v2",
+   "option_ids": [
+    "defense.outfight"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 1470,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "collar_tie",
+    "cage_plum",
+    "body_lock",
+    "wall_tie",
+    "pummel",
+    "guard_pull",
+    "ride"
+   ]
+  },
+  {
+   "line": 1482,
+   "function": "simulate_fight_v2",
+   "option_ids": [
+    "target.liver_ribs"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 1533,
+   "function": "simulate_fight_v2",
+   "option_ids": [
+    "mentality.swarmer",
+    "mentality.pressure"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 1538,
+   "function": "simulate_fight_v2",
+   "option_ids": [
+    "mentality.outboxer",
+    "defense.outfight"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 1563,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "sanda_sweep",
+    "sanda_sweep"
+   ]
+  },
+  {
+   "line": 1564,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "outside_trip",
+    "outside_trip",
+    "cross"
+   ]
+  },
+  {
+   "line": 1593,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "side_kick",
+    "teep",
+    "low_kick",
+    "body_kick",
+    "cross",
+    "jab"
+   ]
+  },
+  {
+   "line": 1595,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "knee_body",
+    "uppercut",
+    "body_hook",
+    "outside_trip",
+    "hook"
+   ]
+  },
+  {
+   "line": 1597,
+   "function": "simulate_fight_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "cross",
+    "uppercut",
+    "hook",
+    "body_hook",
+    "jab",
+    "haymaker"
+   ]
+  },
+  {
+   "line": 2150,
+   "function": "audit_option_coverage_v2",
+   "option_ids": [
+    "hands.cross_arm"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 2151,
+   "function": "audit_option_coverage_v2",
+   "option_ids": [
+    "defense.parry_catch"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 2152,
+   "function": "audit_option_coverage_v2",
+   "option_ids": [
+    "stance.crouch"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 2153,
+   "function": "audit_option_coverage_v2",
+   "option_ids": [
+    "tie.bjj"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 2154,
+   "function": "audit_option_coverage_v2",
+   "option_ids": [
+    "target.body_puncher"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 2155,
+   "function": "audit_option_coverage_v2",
+   "option_ids": [
+    "kicking.sanda"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 2156,
+   "function": "audit_option_coverage_v2",
+   "option_ids": [
+    "mentality.pressure"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 2169,
+   "function": "audit_option_coverage_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "jab",
+    "cross",
+    "hook",
+    "body_hook",
+    "cross",
+    "body_hook"
+   ]
+  },
+  {
+   "line": 2170,
+   "function": "audit_option_coverage_v2",
+   "option_ids": [
+    "kicking.none"
+   ],
+   "technique_ids": []
+  },
+  {
+   "line": 2171,
+   "function": "audit_option_coverage_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "jab",
+    "cross",
+    "hook",
+    "body_hook",
+    "low_kick",
+    "body_kick"
+   ]
+  },
+  {
+   "line": 2173,
+   "function": "audit_option_coverage_v2",
+   "option_ids": [],
+   "technique_ids": [
+    "collar_tie",
+    "body_lock",
+    "single_leg",
+    "pummel",
+    "knee_body"
+   ]
+  },
+  {
+   "line": 2182,
+   "function": "audit_option_coverage_v2",
+   "option_ids": [
+    "stance.switch",
+    "mentality.switch_hitter"
+   ],
+   "technique_ids": []
+  }
+ ]
+}

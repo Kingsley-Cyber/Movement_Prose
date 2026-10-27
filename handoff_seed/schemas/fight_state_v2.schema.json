@@ -1,0 +1,537 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "BLOCK Fight State v2 Schema (with Dynamic Defensive Posture & Readiness)",
+ "type": "object",
+ "required": [
+  "version",
+  "clock_frames",
+  "time_s",
+  "arena",
+  "vertical_mode",
+  "range",
+  "lead_foot_matchup",
+  "actors"
+ ],
+ "properties": {
+  "version": {
+   "const": "block-2"
+  },
+  "clock_frames": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "time_s": {
+   "type": "number",
+   "minimum": 0
+  },
+  "arena": {
+   "type": "string"
+  },
+  "vertical_mode": {
+   "enum": [
+    "grounded",
+    "athletic",
+    "aerial"
+   ]
+  },
+  "range": {
+   "enum": [
+    "outside",
+    "kick",
+    "punch",
+    "close",
+    "clinch",
+    "ground"
+   ]
+  },
+  "lead_foot_matchup": {
+   "enum": [
+    "closed_stance",
+    "open_stance"
+   ]
+  },
+  "actors": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "object",
+    "required": [
+     "fighter_id",
+     "name",
+     "position",
+     "facing",
+     "orientation",
+     "posture",
+     "recovery_window",
+     "attention",
+     "read_memory",
+     "readiness_profile",
+     "damage",
+     "fatigue",
+     "momentum",
+     "grip",
+     "sub_grips",
+     "grappling_position",
+     "active_slot_id"
+    ],
+    "properties": {
+     "fighter_id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string"
+     },
+     "position": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+       "type": "number"
+      }
+     },
+     "facing": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+       "type": "number"
+      }
+     },
+     "orientation": {
+      "enum": [
+       "orthodox",
+       "southpaw"
+      ]
+     },
+     "posture": {
+      "type": "object",
+      "required": [
+       "guard_id",
+       "stance_id",
+       "defense_method_id",
+       "weight_split",
+       "height",
+       "hip_angle",
+       "base_width",
+       "balance",
+       "head_position",
+       "vision_effective",
+       "guard_integrity"
+      ],
+      "properties": {
+       "guard_id": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "stance_id": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "defense_method_id": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "weight_split": {
+        "enum": [
+         "front_heavy",
+         "balanced",
+         "rear_heavy",
+         "neutral"
+        ]
+       },
+       "height": {
+        "enum": [
+         "low_crouch",
+         "medium",
+         "upright_tall",
+         "grounded"
+        ]
+       },
+       "hip_angle": {
+        "enum": [
+         "squared",
+         "semi_bladed",
+         "bladed",
+         "switching"
+        ]
+       },
+       "base_width": {
+        "enum": [
+         "narrow_mobile",
+         "balanced",
+         "wide_rooted",
+         "single_leg",
+         "mat"
+        ]
+       },
+       "balance": {
+        "enum": [
+         "stable",
+         "compromised",
+         "off_base"
+        ]
+       },
+       "head_position": {
+        "enum": [
+         "centerline_tucked",
+         "off_center",
+         "centerline_high",
+         "pulled_down"
+        ]
+       },
+       "vision_effective": {
+        "type": "number",
+        "minimum": 0.0,
+        "maximum": 5.0
+       },
+       "guard_integrity": {
+        "type": "number",
+        "minimum": 0.1,
+        "maximum": 1.0
+       }
+      },
+      "additionalProperties": false
+     },
+     "recovery_window": {
+      "type": "object",
+      "required": [
+       "window_type",
+       "last_technique_id",
+       "exposed_lanes",
+       "readiness_penalty"
+      ],
+      "properties": {
+       "window_type": {
+        "type": "string"
+       },
+       "last_technique_id": {
+        "type": [
+         "string",
+         "null"
+        ]
+       },
+       "exposed_lanes": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       },
+       "readiness_penalty": {
+        "type": "number"
+       }
+      },
+      "additionalProperties": false
+     },
+     "attention": {
+      "type": "object",
+      "required": [
+       "focus_line",
+       "feinted",
+       "outside_angle_conceded"
+      ],
+      "properties": {
+       "focus_line": {
+        "enum": [
+         "neutral",
+         "high_drawn",
+         "low_drawn",
+         "blinded"
+        ]
+       },
+       "feinted": {
+        "type": "boolean"
+       },
+       "outside_angle_conceded": {
+        "type": "boolean"
+       }
+      },
+      "additionalProperties": false
+     },
+     "read_memory": {
+      "type": "object",
+      "required": [
+       "seen_counts",
+       "consecutive_same_move_by_opponent"
+      ],
+      "properties": {
+       "seen_counts": {
+        "type": "object"
+       },
+       "consecutive_same_move_by_opponent": {
+        "type": "integer",
+        "minimum": 0
+       }
+      },
+      "additionalProperties": false
+     },
+     "readiness_profile": {
+      "type": "object",
+      "required": [
+       "head_straight",
+       "head_hook",
+       "head_uppercut",
+       "body",
+       "leg",
+       "entry",
+       "clinch",
+       "single_support"
+      ],
+      "properties": {
+       "head_straight": {
+        "type": "number"
+       },
+       "head_hook": {
+        "type": "number"
+       },
+       "head_uppercut": {
+        "type": "number"
+       },
+       "body": {
+        "type": "number"
+       },
+       "leg": {
+        "type": "number"
+       },
+       "entry": {
+        "type": "number"
+       },
+       "clinch": {
+        "type": "number"
+       },
+       "single_support": {
+        "type": "number"
+       }
+      },
+      "additionalProperties": false
+     },
+     "damage": {
+      "type": "object",
+      "required": [
+       "head",
+       "body",
+       "leg"
+      ],
+      "properties": {
+       "head": {
+        "type": "number",
+        "minimum": 0
+       },
+       "body": {
+        "type": "number",
+        "minimum": 0
+       },
+       "leg": {
+        "type": "number",
+        "minimum": 0
+       }
+      },
+      "additionalProperties": false
+     },
+     "fatigue": {
+      "type": "number",
+      "minimum": 0
+     },
+     "momentum": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+       "type": "number"
+      }
+     },
+     "grip": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "sub_grips": {
+      "type": "object"
+     },
+     "grappling_position": {
+      "type": "string"
+     },
+     "active_slot_id": {
+      "type": "string"
+     },
+     "damage_by_side": {
+      "type": "object",
+      "required": [
+       "head_left",
+       "head_right",
+       "body_left",
+       "body_right",
+       "leg_left",
+       "leg_right",
+       "arm_left",
+       "arm_right"
+      ],
+      "properties": {
+       "head_left": {
+        "type": "number",
+        "minimum": 0
+       },
+       "head_right": {
+        "type": "number",
+        "minimum": 0
+       },
+       "body_left": {
+        "type": "number",
+        "minimum": 0
+       },
+       "body_right": {
+        "type": "number",
+        "minimum": 0
+       },
+       "leg_left": {
+        "type": "number",
+        "minimum": 0
+       },
+       "leg_right": {
+        "type": "number",
+        "minimum": 0
+       },
+       "arm_left": {
+        "type": "number",
+        "minimum": 0
+       },
+       "arm_right": {
+        "type": "number",
+        "minimum": 0
+       }
+      },
+      "additionalProperties": false
+     },
+     "cuts": {
+      "type": "object",
+      "properties": {
+       "left": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 3
+       },
+       "right": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 3
+       }
+      },
+      "additionalProperties": false
+     },
+     "laterality": {
+      "type": "object",
+      "properties": {
+       "dominant_hand": {
+        "type": "string",
+        "minLength": 1
+       },
+       "dominant_leg": {
+        "type": "string",
+        "minLength": 1
+       },
+       "opposite_stance_experience": {
+        "type": "string",
+        "minLength": 1
+       },
+       "natural": {
+        "type": "boolean"
+       }
+      }
+     },
+     "fight_momentum": {
+      "type": "number",
+      "minimum": -1,
+      "maximum": 1
+     },
+     "knockdowns": {
+      "type": "integer",
+      "minimum": 0
+     },
+     "stun_exchanges": {
+      "type": "integer",
+      "minimum": 0
+     },
+     "slot_stalls": {
+      "type": "integer",
+      "minimum": 0
+     },
+     "combo_state": {
+      "type": [
+       "object",
+       "null"
+      ]
+     },
+     "airborne_phase": {
+      "enum": [
+       "none",
+       "takeoff",
+       "apex",
+       "landing"
+      ]
+     },
+     "grips": {
+      "type": "object"
+     },
+     "control_time_s": {
+      "type": "number",
+      "minimum": 0
+     },
+     "role": {
+      "type": [
+       "string",
+       "null"
+      ]
+     }
+    }
+   }
+  },
+  "round": {
+   "type": "integer",
+   "minimum": 1
+  },
+  "ruleset": {
+   "enum": [
+    "boxing",
+    "kickboxing",
+    "muay_thai",
+    "mma",
+    "street",
+    "lethwei"
+   ]
+  },
+  "pair_position": {
+   "type": "object",
+   "required": [
+    "position_id",
+    "roles"
+   ],
+   "properties": {
+    "position_id": {
+     "type": "string",
+     "minLength": 1
+    },
+    "roles": {
+     "type": "object",
+     "additionalProperties": {
+      "type": "string",
+      "minLength": 1
+     }
+    }
+   }
+  },
+  "submission": {
+   "type": [
+    "object",
+    "null"
+   ]
+  },
+  "decision_scores": {
+   "type": "object"
+  }
+ }
+}

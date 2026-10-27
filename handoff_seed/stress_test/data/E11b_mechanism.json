@@ -1,0 +1,74 @@
+{
+ "0": {
+  "wins": 0.38333333333333336,
+  "ci": [
+   0.33011889302772734,
+   0.43949790730507765
+  ],
+  "takedowns_per_fight": 1.3966666666666667,
+  "takedown_success": 0.5739726027397261,
+  "guard_pulls_per_fight": 0.9566666666666667,
+  "ground_share": 0.36081605125611194,
+  "armbar_tries_per_fight": 3.7266666666666666,
+  "armbar_landed_share": 0.7799642218246869,
+  "armbars_landed_per_fight": 2.9066666666666667,
+  "stage_resets_per_fight": 1.8833333333333333,
+  "rides_per_fight": 3.87,
+  "ride_failure_share": 0.48664944013781225,
+  "submission_losses": 0.3
+ },
+ "1": {
+  "wins": 0.4866666666666667,
+  "ci": [
+   0.43063348243848176,
+   0.5430370090281246
+  ],
+  "takedowns_per_fight": 1.55,
+  "takedown_success": 0.625,
+  "guard_pulls_per_fight": 0.7133333333333334,
+  "ground_share": 0.399137187230371,
+  "armbar_tries_per_fight": 4.013333333333334,
+  "armbar_landed_share": 0.7400332225913622,
+  "armbars_landed_per_fight": 2.97,
+  "stage_resets_per_fight": 1.7466666666666666,
+  "rides_per_fight": 4.05,
+  "ride_failure_share": 0.4312757201646091,
+  "submission_losses": 0.32666666666666666
+ },
+ "2": {
+  "wins": 0.5166666666666667,
+  "ci": [
+   0.46026528666991656,
+   0.5726465989968257
+  ],
+  "takedowns_per_fight": 1.5866666666666667,
+  "takedown_success": 0.6458616010854816,
+  "guard_pulls_per_fight": 0.54,
+  "ground_share": 0.44556779202022023,
+  "armbar_tries_per_fight": 4.236666666666666,
+  "armbar_landed_share": 0.6907946498819827,
+  "armbars_landed_per_fight": 2.9266666666666667,
+  "stage_resets_per_fight": 1.55,
+  "rides_per_fight": 4.21,
+  "ride_failure_share": 0.3681710213776722,
+  "submission_losses": 0.4166666666666667
+ },
+ "3": {
+  "wins": 0.51,
+  "ci": [
+   0.45366316504261445,
+   0.5660839663574307
+  ],
+  "takedowns_per_fight": 1.7333333333333334,
+  "takedown_success": 0.6860158311345647,
+  "guard_pulls_per_fight": 0.39,
+  "ground_share": 0.5041044776119403,
+  "armbar_tries_per_fight": 4.69,
+  "armbar_landed_share": 0.6282871357498223,
+  "armbars_landed_per_fight": 2.9466666666666668,
+  "stage_resets_per_fight": 1.47,
+  "rides_per_fight": 4.536666666666667,
+  "ride_failure_share": 0.32402645113886847,
+  "submission_losses": 0.47
+ }
+}

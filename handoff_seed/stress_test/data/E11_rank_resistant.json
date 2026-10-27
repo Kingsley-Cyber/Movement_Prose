@@ -1,0 +1,297 @@
+{
+ "jiujitsu>maleek@0": {
+  "p": 0.2966666666666667,
+  "lo": 0.2478105484553788,
+  "hi": 0.35066444641036704,
+  "dog_wins_by": {
+   "KO/TKO": 88,
+   "TKO": 1
+  },
+  "fav_wins_by": {
+   "Submission": 200,
+   "KO/TKO": 11
+  },
+  "exchanges": 12.96
+ },
+ "jiujitsu>maleek@1": {
+  "p": 0.43666666666666665,
+  "lo": 0.38169301003457207,
+  "hi": 0.4932418244318077,
+  "dog_wins_by": {
+   "KO/TKO": 128,
+   "TKO": 3
+  },
+  "fav_wins_by": {
+   "Submission": 164,
+   "KO/TKO": 4,
+   "TKO": 1
+  },
+  "exchanges": 12.833333333333334
+ },
+ "jiujitsu>maleek@2": {
+  "p": 0.5766666666666667,
+  "lo": 0.5201322236304367,
+  "hi": 0.6312624504365771,
+  "dog_wins_by": {
+   "KO/TKO": 171,
+   "TKO": 2
+  },
+  "fav_wins_by": {
+   "Submission": 126,
+   "KO/TKO": 1
+  },
+  "exchanges": 12.43
+ },
+ "jiujitsu>maleek@3": {
+  "p": 0.68,
+  "lo": 0.6252228520235207,
+  "hi": 0.7302255131772947,
+  "dog_wins_by": {
+   "KO/TKO": 203,
+   "TKO": 1
+  },
+  "fav_wins_by": {
+   "Submission": 95,
+   "KO/TKO": 1
+  },
+  "exchanges": 12.176666666666666
+ },
+ "jiujitsu>wrestler@0": {
+  "p": 0.38333333333333336,
+  "lo": 0.33011889302772734,
+  "hi": 0.43949790730507765,
+  "dog_wins_by": {
+   "Decision": 12,
+   "TKO": 100,
+   "KO/TKO": 3
+  },
+  "fav_wins_by": {
+   "TKO": 65,
+   "Submission": 90,
+   "KO/TKO": 11,
+   "Decision": 19
+  },
+  "exchanges": 19.77
+ },
+ "jiujitsu>wrestler@1": {
+  "p": 0.4866666666666667,
+  "lo": 0.43063348243848176,
+  "hi": 0.5430370090281246,
+  "dog_wins_by": {
+   "Decision": 20,
+   "TKO": 124,
+   "KO/TKO": 2
+  },
+  "fav_wins_by": {
+   "Submission": 98,
+   "TKO": 44,
+   "KO/TKO": 6,
+   "Decision": 6
+  },
+  "exchanges": 19.316666666666666
+ },
+ "jiujitsu>wrestler@2": {
+  "p": 0.5166666666666667,
+  "lo": 0.46026528666991656,
+  "hi": 0.5726465989968257,
+  "dog_wins_by": {
+   "Decision": 19,
+   "TKO": 135,
+   "KO/TKO": 1
+  },
+  "fav_wins_by": {
+   "Submission": 125,
+   "TKO": 17,
+   "KO/TKO": 1,
+   "Decision": 2
+  },
+  "exchanges": 18.463333333333335
+ },
+ "jiujitsu>wrestler@3": {
+  "p": 0.51,
+  "lo": 0.45366316504261445,
+  "hi": 0.5660839663574307,
+  "dog_wins_by": {
+   "TKO": 138,
+   "Decision": 14,
+   "KO/TKO": 1
+  },
+  "fav_wins_by": {
+   "Submission": 141,
+   "TKO": 6
+  },
+  "exchanges": 17.866666666666667
+ },
+ "karate>thai@0": {
+  "p": 0.17333333333333334,
+  "lo": 0.13469996727082598,
+  "hi": 0.22022707366102798,
+  "dog_wins_by": {
+   "TKO": 46,
+   "KO/TKO": 6
+  },
+  "fav_wins_by": {
+   "TKO": 229,
+   "KO/TKO": 19
+  },
+  "exchanges": 11.516666666666667
+ },
+ "karate>thai@1": {
+  "p": 0.29,
+  "lo": 0.2415637129951771,
+  "hi": 0.3437465276038718,
+  "dog_wins_by": {
+   "TKO": 68,
+   "KO/TKO": 19
+  },
+  "fav_wins_by": {
+   "KO/TKO": 22,
+   "TKO": 191
+  },
+  "exchanges": 12.85
+ },
+ "karate>thai@2": {
+  "p": 0.49,
+  "lo": 0.43391603364256914,
+  "hi": 0.5463368349573855,
+  "dog_wins_by": {
+   "TKO": 107,
+   "KO/TKO": 39,
+   "Decision": 1
+  },
+  "fav_wins_by": {
+   "TKO": 134,
+   "KO/TKO": 18,
+   "Decision": 1
+  },
+  "exchanges": 13.683333333333334
+ },
+ "karate>thai@3": {
+  "p": 0.7266666666666667,
+  "lo": 0.6736064082504327,
+  "hi": 0.7739952368172605,
+  "dog_wins_by": {
+   "KO/TKO": 67,
+   "TKO": 150,
+   "Decision": 1
+  },
+  "fav_wins_by": {
+   "TKO": 73,
+   "KO/TKO": 9
+  },
+  "exchanges": 14.07
+ },
+ "wrestler>maleek@0": {
+  "p": 0.15333333333333332,
+  "lo": 0.11696581414513026,
+  "hi": 0.1984669639866331,
+  "dog_wins_by": {
+   "KO/TKO": 42,
+   "TKO": 4
+  },
+  "fav_wins_by": {
+   "TKO": 252,
+   "KO/TKO": 1,
+   "Decision": 1
+  },
+  "exchanges": 17.933333333333334
+ },
+ "wrestler>maleek@1": {
+  "p": 0.3,
+  "lo": 0.2509388173002686,
+  "hi": 0.35411855469882564,
+  "dog_wins_by": {
+   "KO/TKO": 85,
+   "TKO": 4,
+   "Decision": 1
+  },
+  "fav_wins_by": {
+   "TKO": 209,
+   "KO/TKO": 1
+  },
+  "exchanges": 18.043333333333333
+ },
+ "wrestler>maleek@2": {
+  "p": 0.53,
+  "lo": 0.47349920136870094,
+  "hi": 0.585742192831435,
+  "dog_wins_by": {
+   "KO/TKO": 156,
+   "TKO": 3
+  },
+  "fav_wins_by": {
+   "TKO": 141
+  },
+  "exchanges": 17.643333333333334
+ },
+ "wrestler>maleek@3": {
+  "p": 0.66,
+  "lo": 0.6046734114246599,
+  "hi": 0.7112806909760647,
+  "dog_wins_by": {
+   "KO/TKO": 191,
+   "TKO": 7
+  },
+  "fav_wins_by": {
+   "TKO": 102
+  },
+  "exchanges": 16.64666666666667
+ },
+ "wrestler>thai@0": {
+  "p": 0.21333333333333335,
+  "lo": 0.1707518836854917,
+  "hi": 0.26316368284654346,
+  "dog_wins_by": {
+   "TKO": 56,
+   "KO/TKO": 7,
+   "Decision": 1
+  },
+  "fav_wins_by": {
+   "TKO": 232,
+   "Decision": 4
+  },
+  "exchanges": 18.403333333333332
+ },
+ "wrestler>thai@1": {
+  "p": 0.39,
+  "lo": 0.3365290761052125,
+  "hi": 0.44625247849428934,
+  "dog_wins_by": {
+   "TKO": 104,
+   "KO/TKO": 13
+  },
+  "fav_wins_by": {
+   "TKO": 180,
+   "Decision": 3
+  },
+  "exchanges": 17.88
+ },
+ "wrestler>thai@2": {
+  "p": 0.6,
+  "lo": 0.5436355502609683,
+  "hi": 0.6538357637394846,
+  "dog_wins_by": {
+   "TKO": 156,
+   "KO/TKO": 24
+  },
+  "fav_wins_by": {
+   "TKO": 118,
+   "Decision": 2
+  },
+  "exchanges": 17.253333333333334
+ },
+ "wrestler>thai@3": {
+  "p": 0.8,
+  "lo": 0.7510701139033206,
+  "hi": 0.8413438280980382,
+  "dog_wins_by": {
+   "TKO": 212,
+   "KO/TKO": 28
+  },
+  "fav_wins_by": {
+   "TKO": 59,
+   "Decision": 1
+  },
+  "exchanges": 16.026666666666667
+ }
+}

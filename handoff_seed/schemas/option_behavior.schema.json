@@ -1,0 +1,727 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "BLOCK Option Behavior Schema (all 57 style options) (v2.1 additive extension)",
+ "type": "object",
+ "required": [
+  "version",
+  "options"
+ ],
+ "properties": {
+  "version": {
+   "const": "block-2"
+  },
+  "options": {
+   "type": "array",
+   "minItems": 57,
+   "maxItems": 57,
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "dimension",
+     "lane_readiness_bonus",
+     "attack_profile",
+     "damage_dealt_multiplier",
+     "damage_taken_multiplier",
+     "posture_profile",
+     "dependencies",
+     "breakdowns"
+    ],
+    "properties": {
+     "id": {
+      "type": "string",
+      "minLength": 1
+     },
+     "dimension": {
+      "enum": [
+       "hands",
+       "defense",
+       "stance",
+       "tie",
+       "target",
+       "kicking",
+       "mentality"
+      ]
+     },
+     "lane_readiness_bonus": {
+      "type": "object",
+      "required": [
+       "head_straight",
+       "head_hook",
+       "head_uppercut",
+       "body",
+       "leg",
+       "entry",
+       "clinch",
+       "single_support"
+      ],
+      "properties": {
+       "head_straight": {
+        "type": "number"
+       },
+       "head_hook": {
+        "type": "number"
+       },
+       "head_uppercut": {
+        "type": "number"
+       },
+       "body": {
+        "type": "number"
+       },
+       "leg": {
+        "type": "number"
+       },
+       "entry": {
+        "type": "number"
+       },
+       "clinch": {
+        "type": "number"
+       },
+       "single_support": {
+        "type": "number"
+       }
+      },
+      "additionalProperties": false
+     },
+     "attack_profile": {
+      "type": "object",
+      "required": [
+       "power_delta",
+       "accuracy_delta",
+       "entry_delta",
+       "distance_control_delta",
+       "counter_tendency",
+       "counter_power_delta",
+       "sweep_resistance",
+       "kick_retraction_delta",
+       "kick_catch_bonus",
+       "read_decay_factor",
+       "read_gain_multiplier",
+       "feint_setup_rate",
+       "leg_compromise_threshold_delta",
+       "favored_lanes"
+      ],
+      "properties": {
+       "power_delta": {
+        "type": "number"
+       },
+       "accuracy_delta": {
+        "type": "number"
+       },
+       "entry_delta": {
+        "type": "number"
+       },
+       "distance_control_delta": {
+        "type": "number"
+       },
+       "counter_tendency": {
+        "type": "number"
+       },
+       "counter_power_delta": {
+        "type": "number"
+       },
+       "sweep_resistance": {
+        "type": "number"
+       },
+       "kick_retraction_delta": {
+        "type": "number"
+       },
+       "kick_catch_bonus": {
+        "type": "number"
+       },
+       "read_decay_factor": {
+        "type": "number"
+       },
+       "read_gain_multiplier": {
+        "type": "number"
+       },
+       "feint_setup_rate": {
+        "type": "number"
+       },
+       "leg_compromise_threshold_delta": {
+        "type": "number"
+       },
+       "favored_lanes": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       }
+      },
+      "additionalProperties": true
+     },
+     "damage_dealt_multiplier": {
+      "type": "number",
+      "minimum": 0.5,
+      "maximum": 2.0
+     },
+     "damage_taken_multiplier": {
+      "type": "number",
+      "minimum": 0.5,
+      "maximum": 2.0
+     },
+     "posture_profile": {
+      "type": "object",
+      "properties": {
+       "weight_split": {
+        "enum": [
+         "front_heavy",
+         "balanced",
+         "rear_heavy",
+         "neutral"
+        ]
+       },
+       "height": {
+        "enum": [
+         "low_crouch",
+         "medium",
+         "upright_tall"
+        ]
+       },
+       "hip_angle": {
+        "enum": [
+         "squared",
+         "semi_bladed",
+         "bladed",
+         "switching"
+        ]
+       },
+       "base_width": {
+        "enum": [
+         "narrow_mobile",
+         "balanced",
+         "wide_rooted"
+        ]
+       },
+       "head_position": {
+        "enum": [
+         "centerline_tucked",
+         "off_center",
+         "centerline_high"
+        ]
+       },
+       "vision": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5
+       },
+       "guard_decay_rate": {
+        "type": "number",
+        "minimum": 0.0,
+        "maximum": 0.5
+       },
+       "risk_appetite": {
+        "type": "number",
+        "minimum": 0.5,
+        "maximum": 1.5
+       }
+      },
+      "additionalProperties": true
+     },
+     "dependencies": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+       "type": "string",
+       "minLength": 1
+      }
+     },
+     "breakdowns": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+       "type": "string",
+       "minLength": 1
+      }
+     },
+     "grappling_profile": {
+      "type": "object",
+      "required": [
+       "takedown_offense",
+       "takedown_defense",
+       "clinch_control",
+       "top_control",
+       "bottom_game",
+       "submission_offense",
+       "submission_defense",
+       "scramble",
+       "stand_up"
+      ],
+      "properties": {
+       "takedown_offense": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5
+       },
+       "takedown_defense": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5
+       },
+       "clinch_control": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5
+       },
+       "top_control": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5
+       },
+       "bottom_game": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5
+       },
+       "submission_offense": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5
+       },
+       "submission_defense": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5
+       },
+       "scramble": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5
+       },
+       "stand_up": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 5
+       }
+      },
+      "additionalProperties": false
+     },
+     "grappling_modifiers": {
+      "type": "object",
+      "propertyNames": {
+       "enum": [
+        "takedown_offense",
+        "takedown_defense",
+        "clinch_control",
+        "top_control",
+        "bottom_game",
+        "submission_offense",
+        "submission_defense",
+        "scramble",
+        "stand_up"
+       ]
+      },
+      "additionalProperties": {
+       "type": "number"
+      }
+     },
+     "grappling_modifiers_condition": {
+      "type": "object",
+      "properties": {
+       "unless": {
+        "enum": [
+         "wall_near"
+        ]
+       }
+      },
+      "additionalProperties": false
+     },
+     "lead_foot_outside_delta": {
+      "type": "number"
+     },
+     "selection_profile": {
+      "type": "object",
+      "required": [
+       "initiative_delta",
+       "switch_after_stalls",
+       "patience",
+       "risk",
+       "combo_length"
+      ],
+      "properties": {
+       "initiative_delta": {
+        "type": "number"
+       },
+       "initiative_delta_when_waiting": {
+        "type": "number"
+       },
+       "switch_after_stalls": {
+        "type": "integer",
+        "minimum": 1
+       },
+       "patience": {
+        "type": "number",
+        "exclusiveMinimum": 0
+       },
+       "risk": {
+        "type": "number",
+        "exclusiveMinimum": 0
+       },
+       "combo_length": {
+        "type": "number",
+        "exclusiveMinimum": 0
+       },
+       "pull_out_probability": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1
+       }
+      },
+      "additionalProperties": false
+     },
+     "native_defense": {
+      "type": "object",
+      "required": [
+       "by_class"
+      ],
+      "properties": {
+       "by_class": {
+        "type": "object",
+        "propertyNames": {
+         "enum": [
+          "straight",
+          "hook",
+          "uppercut",
+          "body_punch",
+          "elbow",
+          "knee",
+          "kick_low",
+          "kick_body",
+          "kick_linear",
+          "kick_high",
+          "takedown",
+          "clinch_entry"
+         ]
+        },
+        "additionalProperties": {
+         "type": "array",
+         "minItems": 1,
+         "items": {
+          "oneOf": [
+           {
+            "type": "string",
+            "minLength": 1
+           },
+           {
+            "type": "object",
+            "required": [
+             "technique",
+             "result"
+            ],
+            "properties": {
+             "technique": {
+              "type": "string",
+              "minLength": 1
+             },
+             "result": {
+              "enum": [
+               "evaded",
+               "blocked",
+               "checked",
+               "caught",
+               "jammed"
+              ]
+             }
+            },
+            "additionalProperties": false
+           }
+          ]
+         }
+        }
+       },
+       "at_wall": {
+        "type": "object",
+        "propertyNames": {
+         "enum": [
+          "straight",
+          "hook",
+          "uppercut",
+          "body_punch",
+          "elbow",
+          "knee",
+          "kick_low",
+          "kick_body",
+          "kick_linear",
+          "kick_high",
+          "takedown",
+          "clinch_entry"
+         ]
+        },
+        "additionalProperties": {
+         "type": "array",
+         "minItems": 1,
+         "items": {
+          "oneOf": [
+           {
+            "type": "string",
+            "minLength": 1
+           },
+           {
+            "type": "object",
+            "required": [
+             "technique",
+             "result"
+            ],
+            "properties": {
+             "technique": {
+              "type": "string",
+              "minLength": 1
+             },
+             "result": {
+              "enum": [
+               "evaded",
+               "blocked",
+               "checked",
+               "caught",
+               "jammed"
+              ]
+             }
+            },
+            "additionalProperties": false
+           }
+          ]
+         }
+        }
+       }
+      },
+      "additionalProperties": false
+     },
+     "defense_prepend": {
+      "type": "object",
+      "propertyNames": {
+       "enum": [
+        "straight",
+        "hook",
+        "uppercut",
+        "body_punch",
+        "elbow",
+        "knee",
+        "kick_low",
+        "kick_body",
+        "kick_linear",
+        "kick_high",
+        "takedown",
+        "clinch_entry"
+       ]
+      },
+      "additionalProperties": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "minLength": 1
+       }
+      }
+     },
+     "kick_defense_prepend": {
+      "type": "object",
+      "propertyNames": {
+       "enum": [
+        "straight",
+        "hook",
+        "uppercut",
+        "body_punch",
+        "elbow",
+        "knee",
+        "kick_low",
+        "kick_body",
+        "kick_linear",
+        "kick_high",
+        "takedown",
+        "clinch_entry"
+       ]
+      },
+      "additionalProperties": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "minLength": 1
+       }
+      }
+     },
+     "kick_defense_window_delta": {
+      "oneOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "object",
+        "required": [
+         "value"
+        ],
+        "properties": {
+         "value": {
+          "type": "number"
+         },
+         "unless": {
+          "enum": [
+           "wall_near"
+          ]
+         }
+        },
+        "additionalProperties": false
+       }
+      ]
+     },
+     "breakdown_rules": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "required": [
+        "when_any",
+        "lanes"
+       ],
+       "properties": {
+        "when_any": {
+         "type": "object"
+        },
+        "lanes": {
+         "oneOf": [
+          {
+           "const": "all"
+          },
+          {
+           "type": "array",
+           "items": {
+            "enum": [
+             "head_straight",
+             "head_hook",
+             "head_uppercut",
+             "body",
+             "leg",
+             "entry",
+             "clinch",
+             "single_support"
+            ]
+           }
+          }
+         ]
+        },
+        "delta": {
+         "type": "number"
+        },
+        "delta_from_model": {
+         "type": "string",
+         "minLength": 1
+        },
+        "delta_default": {
+         "type": "number"
+        }
+       },
+       "additionalProperties": false
+      }
+     },
+     "range_lane_bonus": {
+      "type": "object",
+      "required": [
+       "ranges",
+       "lanes",
+       "delta"
+      ],
+      "properties": {
+       "ranges": {
+        "type": "array",
+        "items": {
+         "enum": [
+          "outside",
+          "kick",
+          "punch",
+          "close",
+          "clinch",
+          "ground"
+         ]
+        }
+       },
+       "lanes": {
+        "oneOf": [
+         {
+          "const": "all"
+         },
+         {
+          "type": "array",
+          "items": {
+           "enum": [
+            "head_straight",
+            "head_hook",
+            "head_uppercut",
+            "body",
+            "leg",
+            "entry",
+            "clinch",
+            "single_support"
+           ]
+          }
+         }
+        ]
+       },
+       "delta": {
+        "type": "number"
+       },
+       "unless": {
+        "enum": [
+         "wall_near"
+        ]
+       }
+      },
+      "additionalProperties": false
+     },
+     "counter_tendency_condition": {
+      "type": "object",
+      "properties": {
+       "ranges": {
+        "type": "array",
+        "items": {
+         "enum": [
+          "outside",
+          "kick",
+          "punch",
+          "close",
+          "clinch",
+          "ground"
+         ]
+        }
+       },
+       "unless": {
+        "enum": [
+         "wall_near"
+        ]
+       }
+      },
+      "additionalProperties": false
+     },
+     "on_body_damage_extra_fatigue_fraction": {
+      "type": "number",
+      "minimum": 0
+     },
+     "distance_control_condition": {
+      "type": "object",
+      "properties": {
+       "unless": {
+        "enum": [
+         "wall_near"
+        ]
+       }
+      },
+      "additionalProperties": false
+     },
+     "pull_out_probability": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+     },
+     "supported_by_v2": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "minLength": 1
+      }
+     },
+     "damage_rules": {
+      "type": "object"
+     }
+    },
+    "additionalProperties": false
+   }
+  }
+ },
+ "additionalProperties": false
+}

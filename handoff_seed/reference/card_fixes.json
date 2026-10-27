@@ -1,0 +1,494 @@
+{
+ "detroit": {
+  "name": "Darius Reed",
+  "orientation": "southpaw",
+  "laterality_proposal": {
+   "dominant_hand": "left",
+   "dominant_leg": "left",
+   "opposite_stance_experience": "normal",
+   "effect": "natural stance: zero dominance deltas (identical to having no block)"
+  },
+  "slot_changes": [
+   {
+    "slot": "detroit.slot.2",
+    "problem": "basic_movement grants no strikes; the sequence uses boxing moves the slot does not grant",
+    "proposal": {
+     "capabilities": [
+      "boxing",
+      "counter_boxing"
+     ],
+     "sequence": [
+      "feint",
+      "jab",
+      "pull_counter",
+      "check_hook",
+      "cross"
+     ],
+     "trigger": "opponent_commits",
+     "home_range": "punch",
+     "goal": "counter_trap",
+     "abandon_rule": {
+      "max_consecutive_stalls": 2,
+      "condition": "sequence_denied_or_countered"
+     },
+     "links": [
+      "detroit.slot.1"
+     ],
+     "note": "differs from slot.1 by the counter-only tools and the trap; pull_counter/check_hook are usable only as counters, the slot's attacks are feint/jab/cross"
+    }
+   }
+  ],
+  "active_techniques_add": [
+   "pull_counter",
+   "check_hook"
+  ],
+  "owner_decisions": [
+   "D7: approve new capability counter_boxing (pull_counter, check_hook) or relabel Darius Reed a 1-slot Brawler"
+  ],
+  "all_cards": [
+   "keep version 'block-2' (tests and the block-2 slot-budget check depend on it); add optional 'revision': 1",
+   "laterality block optional: natural stance = no effect; a cross-dominant block changes damage/accuracy and must be re-checked against the line-188 damage test for detroit and street",
+   "every sequence item must be granted by the slot's own capabilities (or basic_movement core) and be in active_techniques (or a capability core)",
+   "triggers, links and abandon_rule are honoured by the engine from P2 (not overwritten)",
+   "signature_moves stay strings (technique ids); optional signature_chains lists combination ids from data/combinations_v2.json"
+  ]
+ },
+ "donnell": {
+  "name": "Donnell",
+  "orientation": "orthodox",
+  "laterality_proposal": {
+   "dominant_hand": "right",
+   "dominant_leg": "right",
+   "opposite_stance_experience": "normal",
+   "effect": "natural stance: zero dominance deltas (identical to having no block)"
+  },
+  "slot_changes": [
+   {
+    "slot": "donnell.slot.2",
+    "problem": "pressure_footwork grants no strikes; the sequence is all boxing",
+    "proposal": {
+     "capabilities": [
+      "boxing",
+      "pressure_footwork"
+     ],
+     "sequence": [
+      "cut_off_step",
+      "body_jab",
+      "hook",
+      "rear_hook",
+      "body_hook"
+     ],
+     "trigger": "opponent_circles_out",
+     "home_range": "punch",
+     "goal": "wall_pressure",
+     "abandon_rule": {
+      "max_consecutive_stalls": 2,
+      "condition": "sequence_denied_or_countered"
+     },
+     "links": [
+      "donnell.slot.3",
+      "donnell.slot.1"
+     ]
+    }
+   },
+   {
+    "slot": "donnell.slot.3",
+    "problem": "inside_combinations grants nothing today; the sequence is all boxing",
+    "proposal": {
+     "capabilities": [
+      "inside_combinations"
+     ],
+     "sequence": [
+      "shovel_hook",
+      "short_uppercut"
+     ],
+     "trigger": "close_range_reached",
+     "home_range": "close",
+     "goal": "head_damage",
+     "abandon_rule": {
+      "max_consecutive_stalls": 2,
+      "condition": "pocket_stalled"
+     },
+     "links": [
+      "donnell.slot.1"
+     ]
+    }
+   }
+  ],
+  "active_techniques_add": [
+   "cut_off_step",
+   "body_jab",
+   "rear_hook",
+   "shovel_hook",
+   "short_uppercut"
+  ],
+  "owner_decisions": [],
+  "all_cards": [
+   "keep version 'block-2' (tests and the block-2 slot-budget check depend on it); add optional 'revision': 1",
+   "laterality block optional: natural stance = no effect; a cross-dominant block changes damage/accuracy and must be re-checked against the line-188 damage test for detroit and street",
+   "every sequence item must be granted by the slot's own capabilities (or basic_movement core) and be in active_techniques (or a capability core)",
+   "triggers, links and abandon_rule are honoured by the engine from P2 (not overwritten)",
+   "signature_moves stay strings (technique ids); optional signature_chains lists combination ids from data/combinations_v2.json"
+  ]
+ },
+ "greco": {
+  "name": "Oren Pike",
+  "orientation": "orthodox",
+  "laterality_proposal": {
+   "dominant_hand": "right",
+   "dominant_leg": "right",
+   "opposite_stance_experience": "normal",
+   "effect": "natural stance: zero dominance deltas (identical to having no block)"
+  },
+  "slot_changes": [],
+  "active_techniques_add": [],
+  "owner_decisions": [],
+  "all_cards": [
+   "keep version 'block-2' (tests and the block-2 slot-budget check depend on it); add optional 'revision': 1",
+   "laterality block optional: natural stance = no effect; a cross-dominant block changes damage/accuracy and must be re-checked against the line-188 damage test for detroit and street",
+   "every sequence item must be granted by the slot's own capabilities (or basic_movement core) and be in active_techniques (or a capability core)",
+   "triggers, links and abandon_rule are honoured by the engine from P2 (not overwritten)",
+   "signature_moves stay strings (technique ids); optional signature_chains lists combination ids from data/combinations_v2.json"
+  ]
+ },
+ "jiujitsu": {
+  "name": "Jo Costa",
+  "orientation": "southpaw",
+  "laterality_proposal": {
+   "dominant_hand": "left",
+   "dominant_leg": "left",
+   "opposite_stance_experience": "normal",
+   "effect": "natural stance: zero dominance deltas (identical to having no block)"
+  },
+  "slot_changes": [],
+  "active_techniques_add": [],
+  "owner_decisions": [],
+  "all_cards": [
+   "keep version 'block-2' (tests and the block-2 slot-budget check depend on it); add optional 'revision': 1",
+   "laterality block optional: natural stance = no effect; a cross-dominant block changes damage/accuracy and must be re-checked against the line-188 damage test for detroit and street",
+   "every sequence item must be granted by the slot's own capabilities (or basic_movement core) and be in active_techniques (or a capability core)",
+   "triggers, links and abandon_rule are honoured by the engine from P2 (not overwritten)",
+   "signature_moves stay strings (technique ids); optional signature_chains lists combination ids from data/combinations_v2.json"
+  ]
+ },
+ "karate": {
+  "name": "Aya Quinn",
+  "orientation": "switching",
+  "laterality_proposal": {
+   "dominant_hand": "right",
+   "dominant_leg": "right",
+   "opposite_stance_experience": "normal",
+   "effect": "natural stance: zero dominance deltas (identical to having no block)"
+  },
+  "slot_changes": [
+   {
+    "slot": "karate.slot.1",
+    "problem": "teep/body_kick/spinning_back_kick are reachable only through the hidden grant in available_v2()",
+    "proposal": {
+     "sequence": [
+      "side_kick",
+      "teep",
+      "body_kick",
+      "oblique_kick",
+      "head_kick",
+      "spinning_back_kick"
+     ],
+     "note": "the karate core repertoire (side_kick, teep, body_kick, spinning_back_kick) replaces the hidden grant in data; oblique_kick and head_kick must be added to active_techniques"
+    }
+   },
+   {
+    "slot": "karate.slot.3",
+    "problem": "anti_grappling grants only defensive tools; the sequence lists boxing strikes and a kick",
+    "proposal": {
+     "capabilities": [
+      "anti_grappling"
+     ],
+     "sequence": [
+      "clinch_break",
+      "technical_standup",
+      "pivot",
+      "retreat"
+     ],
+     "trigger": "opponent_clinches_or_shoots",
+     "home_range": "kick",
+     "goal": "reset_to_home_range",
+     "abandon_rule": {
+      "max_consecutive_stalls": 2,
+      "condition": "clinch_denied_or_escaped"
+     },
+     "links": [
+      "karate.slot.1"
+     ],
+     "note": "reset slot: while active, its defenses (sprawl, whizzer, jam_step) move to the front of the defense lists"
+    }
+   }
+  ],
+  "active_techniques_add": [
+   "oblique_kick",
+   "head_kick",
+   "technical_standup",
+   "clinch_break"
+  ],
+  "owner_decisions": [],
+  "all_cards": [
+   "keep version 'block-2' (tests and the block-2 slot-budget check depend on it); add optional 'revision': 1",
+   "laterality block optional: natural stance = no effect; a cross-dominant block changes damage/accuracy and must be re-checked against the line-188 damage test for detroit and street",
+   "every sequence item must be granted by the slot's own capabilities (or basic_movement core) and be in active_techniques (or a capability core)",
+   "triggers, links and abandon_rule are honoured by the engine from P2 (not overwritten)",
+   "signature_moves stay strings (technique ids); optional signature_chains lists combination ids from data/combinations_v2.json"
+  ]
+ },
+ "macklin": {
+  "name": "Macklin",
+  "orientation": "orthodox",
+  "laterality_proposal": {
+   "dominant_hand": "right",
+   "dominant_leg": "right",
+   "opposite_stance_experience": "normal",
+   "effect": "natural stance: zero dominance deltas (identical to having no block)"
+  },
+  "slot_changes": [],
+  "active_techniques_add": [],
+  "owner_decisions": [],
+  "all_cards": [
+   "keep version 'block-2' (tests and the block-2 slot-budget check depend on it); add optional 'revision': 1",
+   "laterality block optional: natural stance = no effect; a cross-dominant block changes damage/accuracy and must be re-checked against the line-188 damage test for detroit and street",
+   "every sequence item must be granted by the slot's own capabilities (or basic_movement core) and be in active_techniques (or a capability core)",
+   "triggers, links and abandon_rule are honoured by the engine from P2 (not overwritten)",
+   "signature_moves stay strings (technique ids); optional signature_chains lists combination ids from data/combinations_v2.json"
+  ]
+ },
+ "maleek": {
+  "name": "Maleek",
+  "orientation": "switching",
+  "laterality_proposal": {
+   "dominant_hand": "right",
+   "dominant_leg": "right",
+   "opposite_stance_experience": "normal",
+   "effect": "natural stance: zero dominance deltas (identical to having no block)"
+  },
+  "slot_changes": [
+   {
+    "slot": "maleek.slot.2",
+    "problem": "jab/cross/body_hook were not granted by kickboxing+switch_step",
+    "proposal": {
+     "sequence": [
+      "switch_step",
+      "jab",
+      "cross",
+      "body_hook",
+      "low_kick",
+      "calf_kick",
+      "body_kick"
+     ],
+     "note": "fixed by D11 (kickboxing grants basic punches)"
+    }
+   },
+   {
+    "slot": "maleek.slot.3",
+    "problem": "the anti_grappling slot throws the whole striking game",
+    "proposal": {
+     "capabilities": [
+      "anti_grappling"
+     ],
+     "sequence": [
+      "clinch_break",
+      "pivot",
+      "retreat"
+     ],
+     "trigger": "opponent_clinches_or_shoots",
+     "home_range": "punch",
+     "goal": "reset_to_home_range",
+     "abandon_rule": {
+      "max_consecutive_stalls": 2,
+      "condition": "clinch_denied_or_escaped"
+     },
+     "links": [
+      "maleek.slot.1"
+     ]
+    }
+   }
+  ],
+  "active_techniques_add": [
+   "calf_kick",
+   "clinch_break"
+  ],
+  "owner_decisions": [
+   "Wire the maleek.cage_plum conditional ability (wall + clinch + shield_frame setup); today it never unlocks"
+  ],
+  "all_cards": [
+   "keep version 'block-2' (tests and the block-2 slot-budget check depend on it); add optional 'revision': 1",
+   "laterality block optional: natural stance = no effect; a cross-dominant block changes damage/accuracy and must be re-checked against the line-188 damage test for detroit and street",
+   "every sequence item must be granted by the slot's own capabilities (or basic_movement core) and be in active_techniques (or a capability core)",
+   "triggers, links and abandon_rule are honoured by the engine from P2 (not overwritten)",
+   "signature_moves stay strings (technique ids); optional signature_chains lists combination ids from data/combinations_v2.json"
+  ]
+ },
+ "philly": {
+  "name": "Silas Bell",
+  "orientation": "orthodox",
+  "laterality_proposal": {
+   "dominant_hand": "right",
+   "dominant_leg": "right",
+   "opposite_stance_experience": "normal",
+   "effect": "natural stance: zero dominance deltas (identical to having no block)"
+  },
+  "slot_changes": [],
+  "active_techniques_add": [],
+  "owner_decisions": [],
+  "all_cards": [
+   "keep version 'block-2' (tests and the block-2 slot-budget check depend on it); add optional 'revision': 1",
+   "laterality block optional: natural stance = no effect; a cross-dominant block changes damage/accuracy and must be re-checked against the line-188 damage test for detroit and street",
+   "every sequence item must be granted by the slot's own capabilities (or basic_movement core) and be in active_techniques (or a capability core)",
+   "triggers, links and abandon_rule are honoured by the engine from P2 (not overwritten)",
+   "signature_moves stay strings (technique ids); optional signature_chains lists combination ids from data/combinations_v2.json"
+  ]
+ },
+ "sanda_judo": {
+  "name": "Mio Tsukihara",
+  "orientation": "orthodox",
+  "laterality_proposal": {
+   "dominant_hand": "right",
+   "dominant_leg": "right",
+   "opposite_stance_experience": "normal",
+   "effect": "natural stance: zero dominance deltas (identical to having no block)"
+  },
+  "slot_changes": [
+   {
+    "slot": "sanda_judo.slot.1",
+    "problem": "body_kick/low_kick are not granted by boxing+sanda in v1 data",
+    "proposal": {
+     "note": "fixed by data: sanda grants side/body/low kicks, teep, kick_catch, sanda_sweep, foot_sweep"
+    }
+   },
+   {
+    "slot": "sanda_judo.slot.3",
+    "problem": "double_leg/single_leg are in the sequence but not in active_techniques, so the built plan collapses to [outside_trip, ride]",
+    "proposal": {
+     "sequence": [
+      "outside_trip",
+      "inside_trip",
+      "single_leg",
+      "ride"
+     ],
+     "note": "add inside_trip and single_leg to active_techniques (D1)"
+    }
+   }
+  ],
+  "active_techniques_add": [
+   "inside_trip",
+   "single_leg"
+  ],
+  "owner_decisions": [
+   "D1: canonical Mio - current v2 (orthodox, tempo 3, parry_catch) vs original (southpaw, tempo 2, check_frame); name 'Mio Takahashi' in docs vs 'Mio Tsukihara' on the card"
+  ],
+  "all_cards": [
+   "keep version 'block-2' (tests and the block-2 slot-budget check depend on it); add optional 'revision': 1",
+   "laterality block optional: natural stance = no effect; a cross-dominant block changes damage/accuracy and must be re-checked against the line-188 damage test for detroit and street",
+   "every sequence item must be granted by the slot's own capabilities (or basic_movement core) and be in active_techniques (or a capability core)",
+   "triggers, links and abandon_rule are honoured by the engine from P2 (not overwritten)",
+   "signature_moves stay strings (technique ids); optional signature_chains lists combination ids from data/combinations_v2.json"
+  ]
+ },
+ "street": {
+  "name": "Rook Mercer",
+  "orientation": "orthodox",
+  "laterality_proposal": {
+   "dominant_hand": "right",
+   "dominant_leg": "right",
+   "opposite_stance_experience": "normal",
+   "effect": "natural stance: zero dominance deltas (identical to having no block)"
+  },
+  "slot_changes": [
+   {
+    "slot": "street.slot.1",
+    "problem": "one move only (haymaker): 4 distinct 5-move openings in 60 fights",
+    "proposal": {
+     "sequence": [
+      "brawler_straight",
+      "wild_hook",
+      "haymaker",
+      "shove"
+     ],
+     "note": "new untrained_striking techniques (D12); still one plan, abandon threshold stays 99; defense stays retreat"
+    }
+   }
+  ],
+  "active_techniques_add": [
+   "brawler_straight",
+   "wild_hook",
+   "shove"
+  ],
+  "owner_decisions": [],
+  "all_cards": [
+   "keep version 'block-2' (tests and the block-2 slot-budget check depend on it); add optional 'revision': 1",
+   "laterality block optional: natural stance = no effect; a cross-dominant block changes damage/accuracy and must be re-checked against the line-188 damage test for detroit and street",
+   "every sequence item must be granted by the slot's own capabilities (or basic_movement core) and be in active_techniques (or a capability core)",
+   "triggers, links and abandon_rule are honoured by the engine from P2 (not overwritten)",
+   "signature_moves stay strings (technique ids); optional signature_chains lists combination ids from data/combinations_v2.json"
+  ]
+ },
+ "thai": {
+  "name": "Niran Sol",
+  "orientation": "orthodox",
+  "laterality_proposal": {
+   "dominant_hand": "right",
+   "dominant_leg": "right",
+   "opposite_stance_experience": "normal",
+   "effect": "natural stance: zero dominance deltas (identical to having no block)"
+  },
+  "slot_changes": [
+   {
+    "slot": "thai.slot.2",
+    "problem": "knee_body requires clinch, not kickboxing",
+    "proposal": {
+     "capabilities": [
+      "muay_thai"
+     ],
+     "sequence": [
+      "teep",
+      "body_kick",
+      "low_kick",
+      "straight_knee",
+      "switch_kick"
+     ],
+     "note": "or keep kickboxing and replace knee_body with straight_knee"
+    }
+   }
+  ],
+  "active_techniques_add": [
+   "straight_knee",
+   "switch_kick"
+  ],
+  "owner_decisions": [
+   "D8: move Niran Sol to the new muay_thai capability (elbows, plum knees) - recommended for a Muay Thai identity"
+  ],
+  "all_cards": [
+   "keep version 'block-2' (tests and the block-2 slot-budget check depend on it); add optional 'revision': 1",
+   "laterality block optional: natural stance = no effect; a cross-dominant block changes damage/accuracy and must be re-checked against the line-188 damage test for detroit and street",
+   "every sequence item must be granted by the slot's own capabilities (or basic_movement core) and be in active_techniques (or a capability core)",
+   "triggers, links and abandon_rule are honoured by the engine from P2 (not overwritten)",
+   "signature_moves stay strings (technique ids); optional signature_chains lists combination ids from data/combinations_v2.json"
+  ]
+ },
+ "wrestler": {
+  "name": "Imani Vale",
+  "orientation": "orthodox",
+  "laterality_proposal": {
+   "dominant_hand": "right",
+   "dominant_leg": "right",
+   "opposite_stance_experience": "normal",
+   "effect": "natural stance: zero dominance deltas (identical to having no block)"
+  },
+  "slot_changes": [],
+  "active_techniques_add": [],
+  "owner_decisions": [],
+  "all_cards": [
+   "keep version 'block-2' (tests and the block-2 slot-budget check depend on it); add optional 'revision': 1",
+   "laterality block optional: natural stance = no effect; a cross-dominant block changes damage/accuracy and must be re-checked against the line-188 damage test for detroit and street",
+   "every sequence item must be granted by the slot's own capabilities (or basic_movement core) and be in active_techniques (or a capability core)",
+   "triggers, links and abandon_rule are honoured by the engine from P2 (not overwritten)",
+   "signature_moves stay strings (technique ids); optional signature_chains lists combination ids from data/combinations_v2.json"
+  ]
+ }
+}

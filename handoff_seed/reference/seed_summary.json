@@ -1,0 +1,37 @@
+{
+ "techniques_total": 160,
+ "techniques_existing": 45,
+ "techniques_new": 113,
+ "techniques_proposal": 2,
+ "positions": 24,
+ "transitions": 114,
+ "rulesets": 6,
+ "combinations": 61,
+ "debts": 115,
+ "debt_technique_additions": 1648,
+ "capabilities_total": 31,
+ "capabilities_new": [
+  "muay_thai",
+  "acrobatics",
+  "counter_boxing",
+  "taekwondo",
+  "capoeira",
+  "catch_wrestling",
+  "lethwei",
+  "wing_chun",
+  "hung_gar",
+  "bajiquan",
+  "baguazhang",
+  "tai_chi",
+  "shuai_jiao",
+  "jeet_kune_do"
+ ],
+ "data_corrections": {
+  "wall_tie": {
+   "attack_lane": "clinch"
+  },
+  "escape": {
+   "attack_lane": "space"
+  }
+ }
+}

@@ -1,0 +1,144 @@
+{
+ "version": "block-2",
+ "revision": 1,
+ "fighter_id": "tpl_catch_wrestling",
+ "name": "Catch wrestling template",
+ "combat_identity": "Catch wrestling starter build (rename and customize)",
+ "dimensions": {
+  "hands": null,
+  "defense": "defense.sprawl_pummel",
+  "stance": "stance.balanced",
+  "tie": "tie.folk_ride",
+  "target": null,
+  "kicking": "kicking.none",
+  "mentality": "mentality.pressure"
+ },
+ "adaptation": "mma",
+ "orientation": "orthodox",
+ "slot_count": 2,
+ "slot_label": "Two-piece",
+ "synchronized_capabilities": [
+  {
+   "id": "tpl_catch_wrestling.slot.1",
+   "capabilities": [
+    "wrestling"
+   ],
+   "description": "Shots and snap-downs to get on top.",
+   "trigger": "fight_start",
+   "sequence": [
+    "single_leg",
+    "double_leg",
+    "ankle_pick",
+    "snap_down"
+   ],
+   "home_range": "punch",
+   "goal": "takedown_top_control",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "clinch_denied_or_escaped"
+   },
+   "links": [
+    "tpl_catch_wrestling.slot.2"
+   ]
+  },
+  {
+   "id": "tpl_catch_wrestling.slot.2",
+   "capabilities": [
+    "catch_wrestling"
+   ],
+   "description": "Rides with pain: cross-face, cradle, cranks and leg locks.",
+   "trigger": "ground_entered",
+   "sequence": [
+    "cross_face",
+    "cradle",
+    "neck_crank",
+    "leg_entry",
+    "heel_hook",
+    "toe_hold",
+    "keylock"
+   ],
+   "home_range": "ground",
+   "goal": "submission_finish",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "sequence_denied_or_countered"
+   },
+   "links": [
+    "tpl_catch_wrestling.slot.1"
+   ]
+  }
+ ],
+ "baseline_capabilities": [
+  "basic_movement",
+  "untrained_striking"
+ ],
+ "tempo": 4,
+ "preferred_ranges": [
+  "clinch",
+  "ground"
+ ],
+ "debt_sentence": "Catch wrestling template: every option's weakness is listed in exploitable_seams.",
+ "exploitable_seams": [
+  "debt.defense.sprawl_pummel.head_straight",
+  "debt.defense.sprawl_pummel.tempo",
+  "debt.kicking.none.body",
+  "debt.kicking.none.leg",
+  "debt.mentality.pressure.angle",
+  "debt.mentality.pressure.body",
+  "debt.stance.balanced.head_straight",
+  "debt.stance.balanced.tempo",
+  "debt.tie.folk_ride.clinch",
+  "debt.tie.folk_ride.head_straight"
+ ],
+ "active_techniques": [
+  "step",
+  "retreat",
+  "pivot",
+  "feint",
+  "single_leg",
+  "double_leg",
+  "ankle_pick",
+  "snap_down",
+  "cross_face",
+  "cradle",
+  "neck_crank",
+  "leg_entry",
+  "heel_hook",
+  "toe_hold",
+  "keylock",
+  "collar_tie",
+  "ride",
+  "sprawl",
+  "whizzer"
+ ],
+ "signature_moves": [
+  "neck_crank",
+  "heel_hook",
+  "cross_face"
+ ],
+ "airborne_training": {
+  "allowed_vertical_modes": [
+   "grounded"
+  ],
+  "techniques": []
+ },
+ "conditional_abilities": [],
+ "combat_limitations": [
+  "Template card for Catch wrestling: replace with the character's own limitations."
+ ],
+ "fighting_description": {
+  "does": "Shots and snap-downs to get on top.",
+  "wins": "By the style's signature tools (see signature_moves).",
+  "avoids": "Fighting outside its home range.",
+  "beaten_by": "Opponents who exploit its listed seams."
+ },
+ "appearance": {
+  "clothing": "TBD",
+  "identity_anchor": "TBD",
+  "props": []
+ },
+ "provenance": {
+  "classification": "CANON",
+  "note": "style template from the v2.1 handoff; rename and customize before use"
+ }
+}

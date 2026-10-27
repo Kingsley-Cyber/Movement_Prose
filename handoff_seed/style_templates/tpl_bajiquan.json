@@ -1,0 +1,135 @@
+{
+ "version": "block-2",
+ "revision": 1,
+ "fighter_id": "tpl_bajiquan",
+ "name": "Bajiquan template",
+ "combat_identity": "Bajiquan starter build (rename and customize)",
+ "dimensions": {
+  "hands": "hands.high_guard",
+  "defense": "defense.smother",
+  "stance": "stance.planted",
+  "tie": null,
+  "target": "target.body_puncher",
+  "kicking": "kicking.none",
+  "mentality": "mentality.swarmer"
+ },
+ "adaptation": "mma",
+ "orientation": "orthodox",
+ "slot_count": 2,
+ "slot_label": "Two-piece",
+ "synchronized_capabilities": [
+  {
+   "id": "tpl_bajiquan.slot.1",
+   "capabilities": [
+    "bajiquan"
+   ],
+   "description": "Explodes into close range: stomp punch, top elbow, shoulder lean.",
+   "trigger": "fight_start",
+   "sequence": [
+    "stomp_thrust_punch",
+    "top_elbow",
+    "iron_mountain_lean",
+    "cross",
+    "uppercut_elbow"
+   ],
+   "home_range": "close",
+   "goal": "body_attrition",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "sequence_denied_or_countered"
+   },
+   "links": [
+    "tpl_bajiquan.slot.2"
+   ]
+  },
+  {
+   "id": "tpl_bajiquan.slot.2",
+   "capabilities": [
+    "anti_grappling"
+   ],
+   "description": "Breaks grips, sprawls or whizzers, and gets back to range.",
+   "trigger": "opponent_clinches_or_shoots",
+   "sequence": [
+    "clinch_break",
+    "pivot",
+    "retreat"
+   ],
+   "home_range": "close",
+   "goal": "reset_to_home_range",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "clinch_denied_or_escaped"
+   },
+   "links": [
+    "tpl_bajiquan.slot.1"
+   ]
+  }
+ ],
+ "baseline_capabilities": [
+  "basic_movement",
+  "untrained_striking"
+ ],
+ "tempo": 4,
+ "preferred_ranges": [
+  "close"
+ ],
+ "debt_sentence": "Bajiquan template: every option's weakness is listed in exploitable_seams.",
+ "exploitable_seams": [
+  "debt.defense.smother.clinch",
+  "debt.defense.smother.entry",
+  "debt.hands.high_guard.body",
+  "debt.hands.high_guard.vision",
+  "debt.kicking.none.body",
+  "debt.kicking.none.leg",
+  "debt.mentality.swarmer.angle",
+  "debt.mentality.swarmer.body",
+  "debt.stance.planted.angle",
+  "debt.stance.planted.leg",
+  "debt.target.body_puncher.head_straight",
+  "debt.target.body_puncher.head_uppercut"
+ ],
+ "active_techniques": [
+  "step",
+  "retreat",
+  "pivot",
+  "feint",
+  "stomp_thrust_punch",
+  "top_elbow",
+  "iron_mountain_lean",
+  "cross",
+  "uppercut_elbow",
+  "clinch_break",
+  "pummel",
+  "shell_block"
+ ],
+ "signature_moves": [
+  "iron_mountain_lean",
+  "top_elbow",
+  "stomp_thrust_punch"
+ ],
+ "airborne_training": {
+  "allowed_vertical_modes": [
+   "grounded"
+  ],
+  "techniques": []
+ },
+ "conditional_abilities": [],
+ "combat_limitations": [
+  "Template card for Bajiquan: replace with the character's own limitations."
+ ],
+ "fighting_description": {
+  "does": "Explodes into close range: stomp punch, top elbow, shoulder lean.",
+  "wins": "By the style's signature tools (see signature_moves).",
+  "avoids": "Fighting outside its home range.",
+  "beaten_by": "Opponents who exploit its listed seams."
+ },
+ "appearance": {
+  "clothing": "TBD",
+  "identity_anchor": "TBD",
+  "props": []
+ },
+ "provenance": {
+  "classification": "CANON",
+  "note": "style template from the v2.1 handoff; rename and customize before use"
+ }
+}

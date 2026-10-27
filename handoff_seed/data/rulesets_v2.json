@@ -1,0 +1,379 @@
+{
+ "version": "block-2",
+ "rulesets": {
+  "boxing": {
+   "legal_kinds": [
+    "movement",
+    "feint",
+    "punch",
+    "defense"
+   ],
+   "allowed_techniques": [
+    "clinch_break"
+   ],
+   "banned_techniques": [
+    "headbutt",
+    "shove",
+    "spinning_backfist",
+    "superman_punch",
+    "kick_catch",
+    "check",
+    "sprawl",
+    "whizzer",
+    "jam_step",
+    "pummel",
+    "submission_escape",
+    "wall_punch",
+    "clinch_headbutt",
+    "lunging_headbutt",
+    "iron_mountain_lean",
+    "fa_jin_push",
+    "tiger_claw",
+    "piercing_palm",
+    "finger_jab",
+    "single_palm_change",
+    "brush_knee_palm"
+   ],
+   "clinch": {
+    "allowed": false,
+    "referee_break_after_exchanges": 0,
+    "allowed_grips": [],
+    "note": "Any tie is separated immediately (holding)."
+   },
+   "ground": {
+    "allowed": false,
+    "on_knockdown": "standing_count"
+   },
+   "environment": "ring",
+   "default_rounds": 3,
+   "default_round_s": 180,
+   "decision_weights": {
+    "clean_strikes": 0.5,
+    "damage": 0.35,
+    "control": 0.0,
+    "aggression": 0.15
+   },
+   "equipment": {
+    "gloves": true,
+    "punch_damage_multiplier": 1.0,
+    "cut_chance_bonus": 0.0
+   },
+   "knockdown_rules": {
+    "per_round_limit": 3,
+    "per_fight_limit": null
+   },
+   "default_rest_s": 60
+  },
+  "kickboxing": {
+   "legal_kinds": [
+    "movement",
+    "feint",
+    "punch",
+    "kick",
+    "knee",
+    "defense",
+    "grip"
+   ],
+   "allowed_techniques": [
+    "clinch_break"
+   ],
+   "banned_techniques": [
+    "headbutt",
+    "knee_head_clinch",
+    "cage_plum",
+    "body_lock",
+    "wall_tie",
+    "underhook",
+    "double_collar_tie",
+    "snap_down",
+    "sprawl",
+    "whizzer",
+    "submission_escape",
+    "clinch_headbutt",
+    "lunging_headbutt",
+    "iron_mountain_lean",
+    "pak_sao",
+    "lap_sao",
+    "tiger_claw",
+    "piercing_palm",
+    "finger_jab",
+    "single_palm_change",
+    "brush_knee_palm"
+   ],
+   "clinch": {
+    "allowed": true,
+    "referee_break_after_exchanges": 1,
+    "allowed_grips": [
+     "collar_tie"
+    ],
+    "note": "One knee from the collar tie, then the referee separates."
+   },
+   "ground": {
+    "allowed": false,
+    "on_knockdown": "standing_count"
+   },
+   "environment": "ring",
+   "default_rounds": 3,
+   "default_round_s": 180,
+   "decision_weights": {
+    "clean_strikes": 0.45,
+    "damage": 0.4,
+    "control": 0.0,
+    "aggression": 0.15
+   },
+   "equipment": {
+    "gloves": true,
+    "punch_damage_multiplier": 1.0,
+    "cut_chance_bonus": 0.0
+   },
+   "knockdown_rules": {
+    "per_round_limit": 3,
+    "per_fight_limit": null
+   },
+   "default_rest_s": 60
+  },
+  "muay_thai": {
+   "legal_kinds": [
+    "movement",
+    "feint",
+    "punch",
+    "elbow",
+    "kick",
+    "knee",
+    "defense",
+    "grip",
+    "sweep"
+   ],
+   "allowed_techniques": [
+    "clinch_break",
+    "outside_trip",
+    "inside_trip",
+    "sanda_sweep",
+    "kick_into_throw"
+   ],
+   "banned_techniques": [
+    "headbutt",
+    "snap_down",
+    "sprawl",
+    "submission_escape",
+    "clinch_headbutt",
+    "lunging_headbutt",
+    "iron_mountain_lean",
+    "tiger_claw",
+    "piercing_palm",
+    "finger_jab",
+    "single_palm_change",
+    "brush_knee_palm"
+   ],
+   "clinch": {
+    "allowed": true,
+    "referee_break_after_exchanges": null,
+    "allowed_grips": [
+     "collar_tie",
+     "double_collar_tie",
+     "underhook",
+     "pummel",
+     "body_lock",
+     "cage_plum",
+     "wall_tie"
+    ],
+    "note": "Full clinch fighting; separated only when it stalls."
+   },
+   "ground": {
+    "allowed": false,
+    "on_knockdown": "standing_count",
+    "on_sweep": "reset_standing_with_score"
+   },
+   "environment": "ring",
+   "default_rounds": 5,
+   "default_round_s": 180,
+   "decision_weights": {
+    "clean_strikes": 0.35,
+    "damage": 0.4,
+    "control": 0.15,
+    "aggression": 0.1
+   },
+   "equipment": {
+    "gloves": true,
+    "punch_damage_multiplier": 1.0,
+    "cut_chance_bonus": 0.0
+   },
+   "knockdown_rules": {
+    "per_round_limit": 3,
+    "per_fight_limit": null
+   },
+   "default_rest_s": 120
+  },
+  "mma": {
+   "legal_kinds": [
+    "movement",
+    "feint",
+    "punch",
+    "elbow",
+    "kick",
+    "knee",
+    "defense",
+    "grip",
+    "takedown",
+    "sweep",
+    "control",
+    "ground_strike",
+    "submission",
+    "escape"
+   ],
+   "allowed_techniques": [],
+   "banned_techniques": [
+    "headbutt",
+    "clinch_headbutt",
+    "lunging_headbutt",
+    "tiger_claw",
+    "piercing_palm",
+    "finger_jab"
+   ],
+   "clinch": {
+    "allowed": true,
+    "referee_break_after_exchanges": null,
+    "allowed_grips": "all",
+    "note": "Stalled clinches may be separated (optional)."
+   },
+   "ground": {
+    "allowed": true,
+    "on_knockdown": "fight_continues"
+   },
+   "environment": "cage",
+   "default_rounds": 3,
+   "default_round_s": 300,
+   "decision_weights": {
+    "clean_strikes": 0.4,
+    "damage": 0.3,
+    "control": 0.2,
+    "aggression": 0.1
+   },
+   "notes": "Exact unified-rules details (e.g. elbow and grounded-opponent knee restrictions) are configurable; check current rules before encoding specifics.",
+   "equipment": {
+    "gloves": true,
+    "punch_damage_multiplier": 1.0,
+    "cut_chance_bonus": 0.02
+   },
+   "knockdown_rules": {
+    "per_round_limit": null,
+    "per_fight_limit": null
+   },
+   "default_rest_s": 60
+  },
+  "street": {
+   "legal_kinds": [
+    "movement",
+    "feint",
+    "punch",
+    "elbow",
+    "kick",
+    "knee",
+    "defense",
+    "grip",
+    "takedown",
+    "sweep",
+    "control",
+    "ground_strike",
+    "submission",
+    "escape"
+   ],
+   "allowed_techniques": [],
+   "banned_techniques": [],
+   "clinch": {
+    "allowed": true,
+    "referee_break_after_exchanges": null,
+    "allowed_grips": "all",
+    "note": "No referee."
+   },
+   "ground": {
+    "allowed": true,
+    "on_knockdown": "fight_continues"
+   },
+   "environment": "any",
+   "default_rounds": 1,
+   "default_round_s": 120,
+   "decision_weights": {
+    "clean_strikes": 0.35,
+    "damage": 0.45,
+    "control": 0.15,
+    "aggression": 0.05
+   },
+   "notes": "Anime street fights: headbutts and shoves allowed, no standing counts, no rounds by default.",
+   "equipment": {
+    "gloves": false,
+    "punch_damage_multiplier": 1.1,
+    "cut_chance_bonus": 0.08
+   },
+   "knockdown_rules": {
+    "per_round_limit": null,
+    "per_fight_limit": null
+   },
+   "default_rest_s": 0
+  },
+  "lethwei": {
+   "legal_kinds": [
+    "movement",
+    "feint",
+    "punch",
+    "elbow",
+    "kick",
+    "knee",
+    "defense",
+    "grip",
+    "sweep"
+   ],
+   "allowed_techniques": [
+    "clinch_break",
+    "outside_trip",
+    "inside_trip",
+    "hip_throw",
+    "body_lock_takedown",
+    "sanda_sweep",
+    "quick_grip_throw",
+    "turning_throw"
+   ],
+   "banned_techniques": [
+    "snap_down",
+    "sprawl",
+    "submission_escape",
+    "pak_sao",
+    "lap_sao",
+    "tiger_claw",
+    "piercing_palm",
+    "finger_jab"
+   ],
+   "clinch": {
+    "allowed": true,
+    "referee_break_after_exchanges": null,
+    "allowed_grips": "all",
+    "note": "Clinch fighting with headbutts, knees and throws; separated when it stalls."
+   },
+   "ground": {
+    "allowed": false,
+    "on_knockdown": "standing_count",
+    "on_sweep": "reset_standing_with_score"
+   },
+   "environment": "ring",
+   "default_rounds": 5,
+   "default_round_s": 180,
+   "decision_weights": {
+    "clean_strikes": 0.2,
+    "damage": 0.45,
+    "control": 0.05,
+    "aggression": 0.3
+   },
+   "notes": "Modern (World Lethwei Championship) rules: bare knuckle with wraps, headbutts legal, judged if no finish (aggression, damage, strikes, blood drawn), 3 knockdowns in a round or 4 in the fight end it. Traditional rules (owner option D21): knockout-only with a draw at the final bell, and a 2-minute knockout time-out once per fighter except in the last round.",
+   "equipment": {
+    "gloves": false,
+    "punch_damage_multiplier": 1.1,
+    "cut_chance_bonus": 0.08
+   },
+   "knockdown_rules": {
+    "per_round_limit": 3,
+    "per_fight_limit": 4
+   },
+   "default_rest_s": 120
+  }
+ }
+}

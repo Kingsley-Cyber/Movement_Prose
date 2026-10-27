@@ -1,0 +1,1479 @@
+{
+  "base_commit": "0d0734d",
+  "total_fights": 210,
+  "mma_fights": 198,
+  "boxing_fights": 12,
+  "overall_sha256": "2104150f7417a6c1ec221efe6ce212a92bd6aa19eec580b6f1fa60946c84b9b2",
+  "fights": [
+    {
+      "key": "mma_cage_60s_detroit_vs_donnell_seed1",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 11,
+      "sha256": "4f74032dd6089e2f48a360e7a21b138dfb4ab95d69cf0c615bd3077eeabdff65"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_donnell_seed2",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 11,
+      "sha256": "e7b4f45f1f16eed427b0eb5b9f85eda44f130e6835ec6539204ce0531271e8b1"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_donnell_seed3",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 13,
+      "sha256": "a3484e4fccf92faca5cce5b013d16ce67a71b479e53f254ab41fedbb054c7acb"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_greco_seed1",
+      "winner_id": "greco",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 18,
+      "sha256": "23d56f9dc26f69a78f57eabfb35cb2a2bcb150eff1b4733d898ad8612aa79d16"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_greco_seed2",
+      "winner_id": "detroit",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 18,
+      "sha256": "fa103d17c07947d88b43834f7d9b75b6dbfbe75756322cf9fb4eafd60ea80690"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_greco_seed3",
+      "winner_id": "detroit",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 26,
+      "sha256": "98f021abf6790f0d4603b1d0f4c48fbd740951d4f05bcc3d707a177fe2bf52bd"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_jiujitsu_seed1",
+      "winner_id": "jiujitsu",
+      "finish_reason": "Submission (stage 3 lock completion)",
+      "exchange_count": 17,
+      "sha256": "63f48aa54bd586a6ed858cb391a9e3036946f3d78f255e53e4124f7197337e43"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_jiujitsu_seed2",
+      "winner_id": "jiujitsu",
+      "finish_reason": "Submission (stage 3 lock completion)",
+      "exchange_count": 11,
+      "sha256": "067cc6657b4b7bf28bf82359a79e72f1b8b80806e0fbf165a295db241a9a6a2e"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_jiujitsu_seed3",
+      "winner_id": "jiujitsu",
+      "finish_reason": "Submission (stage 3 lock completion)",
+      "exchange_count": 11,
+      "sha256": "3f263fb468139940693ed324ecc26cdca2ba9d020f5e6fd21b47e0f550846878"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_karate_seed1",
+      "winner_id": "karate",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 9,
+      "sha256": "43dcb66307761e6eab4375379953062ff2d54d6203fc98172b1c5a7ff720f089"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_karate_seed2",
+      "winner_id": "karate",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 9,
+      "sha256": "0bcf043f81e22d0a08c1044494cf45c84c776363c918d0b868a0342983faa0bb"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_karate_seed3",
+      "winner_id": "karate",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 19,
+      "sha256": "4a4fd99be4d67854d49b150c19e2bfa0b5379cb20e9fdad12ba359da112a7cd0"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_macklin_seed1",
+      "winner_id": "macklin",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 7,
+      "sha256": "1fa30152e95bffde6a2fcad787eb18c604d831d43a5f492f83709b9ccd0ebfcc"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_macklin_seed2",
+      "winner_id": "macklin",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 15,
+      "sha256": "08c3b8bb285d34a01b6a74d10dee42517e322b7d039994306c62c9cb7f76c7ed"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_macklin_seed3",
+      "winner_id": "detroit",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 22,
+      "sha256": "51e5c99350825123f4f443c2b9368991dc358ee7ff03a8112d7762e7d41609c6"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_maleek_seed1",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 13,
+      "sha256": "d3272270b082ccb72aaa2d9d42383d940c69b9a27a4dde23a9d7582fc374b07d"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_maleek_seed2",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 15,
+      "sha256": "f8269a1fb625a48fff35a660f06a571bd05d051226f4235b94938a619c3ce7be"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_maleek_seed3",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 13,
+      "sha256": "63525aaf90ee8caf267d1b43d2ce1de840359517a1a609e4ef12fb5fdf7aaf5c"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_philly_seed1",
+      "winner_id": "philly",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 9,
+      "sha256": "1ffd5cf3512d733444007bd2c3d3f00bc1ba7e944942f7f9f6e71c1e0b067477"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_philly_seed2",
+      "winner_id": "philly",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 15,
+      "sha256": "3ee96b0d6dacd9f1294e430dd089caea1fac5c33b886340c7130c84c691c8a71"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_philly_seed3",
+      "winner_id": "philly",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 25,
+      "sha256": "039610c418ff71b961d3267817cf4c8ca4beda0d42bfac142599a06464ace2b1"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_sanda_judo_seed1",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 9,
+      "sha256": "be5942345f1a86090bb189ec4fd2a39912659f99cf8e03c91a08473e6ef990c7"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_sanda_judo_seed2",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 7,
+      "sha256": "0715902b557ed068a65e47802e4eb4c3472ed6cd217aeec6ad01cef2729cd9d5"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_sanda_judo_seed3",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 13,
+      "sha256": "b28d8b3b6912dd37aa14e5ba22482fa6800d0664bec71c8b0d021f17d2465bdd"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_street_seed1",
+      "winner_id": "detroit",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 6,
+      "sha256": "0110570d05f0efa7430e5fba581cb49dc37f589aed77e927935b9663affc15af"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_street_seed2",
+      "winner_id": "street",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 5,
+      "sha256": "a387ba8e0325d5cc9b0b0009d78b14cffe5b12fca85718da4b3de50050831620"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_street_seed3",
+      "winner_id": "street",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 5,
+      "sha256": "ebe4c91f5e67a3e5c4b80c030793dac022afbb1ee3c8b4349f2791b66f52b0b2"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_thai_seed1",
+      "winner_id": "detroit",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 8,
+      "sha256": "358c3c5bf368527d86446704fec8c340809fd76dda38888454fefe7bdd5fb0ba"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_thai_seed2",
+      "winner_id": "detroit",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 11,
+      "sha256": "b33114c8ad8759ed8805d1281a41ca4b2b92e178e19838824e91b7f6fbbc3253"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_thai_seed3",
+      "winner_id": "thai",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 15,
+      "sha256": "78b254df8035e009eddbe18e26fb209824acd53223e8d84473822e72d182cbb7"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_wrestler_seed1",
+      "winner_id": "wrestler",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 17,
+      "sha256": "44d31fc22a121e9bb7a1bc49f91f4a7715b8c25c58ca9f383ffb985d1552aa61"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_wrestler_seed2",
+      "winner_id": "wrestler",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 20,
+      "sha256": "02896cb76101344b72b4d4515905149a4d0ed411cd73ab2557a3bedd000e1796"
+    },
+    {
+      "key": "mma_cage_60s_detroit_vs_wrestler_seed3",
+      "winner_id": "wrestler",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 22,
+      "sha256": "19d13c3ceaac3faea7b6f5821718fba86ed6579e3604311bfacd3f061efabae4"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_greco_seed1",
+      "winner_id": "greco",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 15,
+      "sha256": "6cea6ea608af9c912a01203f12a6dbeb0a1133e7fa0d979780ed33a5acf195a6"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_greco_seed2",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 18,
+      "sha256": "3714bc5f7e75d61ba6c83fe06d9ce2412a85b6ffff67b95b67ed618c93415bec"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_greco_seed3",
+      "winner_id": "greco",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 13,
+      "sha256": "310e2e76cec3f8a8a782adba8993b4fc9cb20be0a48a5b5b3f342a3ff97a8f62"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_jiujitsu_seed1",
+      "winner_id": "jiujitsu",
+      "finish_reason": "Submission (stage 3 lock completion)",
+      "exchange_count": 11,
+      "sha256": "87b9f42f75a40d1b291b6de5404cd3d9cb89d2ed6575bf9b74950938d983e562"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_jiujitsu_seed2",
+      "winner_id": "jiujitsu",
+      "finish_reason": "Submission (stage 3 lock completion)",
+      "exchange_count": 10,
+      "sha256": "d610ca4d33a2211cc0e746a2dfdb6b3e72ba02e12250f46333cab28f22d28962"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_jiujitsu_seed3",
+      "winner_id": "jiujitsu",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 22,
+      "sha256": "9f925d8852c5e1c68a5697118df37c5c6ddeb9653148a7587eb4d0a477f44be4"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_karate_seed1",
+      "winner_id": "karate",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 11,
+      "sha256": "48184b22a03bef92c3a94ca0d7f6a2a1e3f32922064bf45369d46b0e4c2f387a"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_karate_seed2",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 5,
+      "sha256": "9a54ca01833aecb965bcf04b5b8eca0aa3c609583483654f24073aec4b78a1d8"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_karate_seed3",
+      "winner_id": "karate",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 18,
+      "sha256": "ca53b6689a4a8350d3ea59d3649cca7379f691de6f36595453e96cb4cecd3dc3"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_macklin_seed1",
+      "winner_id": "macklin",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 21,
+      "sha256": "be33a57c8c38ffbab21132d277ce6c9c3f68152cf83f255cae55e50cd632f0b5"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_macklin_seed2",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 11,
+      "sha256": "c444a1c0e22df17adec2ed191722a4a4a6e3423f6a41f33e5453767ac8b8eec8"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_macklin_seed3",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 22,
+      "sha256": "7e08e3cbca4021f54ac43c2ef963b6b5cf7f3658a7c79b9c85471a0bb716cb82"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_maleek_seed1",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 16,
+      "sha256": "63c5fc563fb35381d977c0b51f2dde2fc52e710d4d8c6f5bad47a6f81d884e68"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_maleek_seed2",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 11,
+      "sha256": "d5bb8377912c7f7bffae5db529b26c8ff66abcfa05f6071c55dcdd01a27e54f8"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_maleek_seed3",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 15,
+      "sha256": "ebab642b5c1d75f6047b3712a38418a02155810b8ccef705780c4873564f8eed"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_philly_seed1",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 18,
+      "sha256": "6cadaa3c9a9ce0e8ff7726ed7d11e4937f31304780944c3d81e107824a1ef603"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_philly_seed2",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 11,
+      "sha256": "0db372a20c0fe2ea67537c245bfdcfaefafe6b3902df01dda211c7c5cc44c4d8"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_philly_seed3",
+      "winner_id": "philly",
+      "finish_reason": "Decision (clock expired; card-derived damage + control)",
+      "exchange_count": 35,
+      "sha256": "3372d73863491a1b3d537db074fba616e7b86bd8c15698239cb4e64c9ac5b6f8"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_sanda_judo_seed1",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 22,
+      "sha256": "10835dfa1e6012b14c5db8be41e70dd86b49acf804da97f9cc3509fd78f03185"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_sanda_judo_seed2",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 11,
+      "sha256": "dfdc177641b3bd58f908dd437ee5f61a136d65db445a0fef68ce425deb0fe270"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_sanda_judo_seed3",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 26,
+      "sha256": "3935d2b6434592288d448c1015c0b62e3dba8e40bfff8e0fdf17e3d8983f054d"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_street_seed1",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 6,
+      "sha256": "5daacd2d91a12afb90fe3e7fcd01b2a81e7e65703345c13a84195b34b49aff4d"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_street_seed2",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 13,
+      "sha256": "feeef158d1f3c67c1319fbf3499759975283297f8f0ab40f9eeb8bdf6e62e61b"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_street_seed3",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 9,
+      "sha256": "a89ca30aae4cc95b4641e5607d05b1f86140c01265034edeb8e769486b7be077"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_thai_seed1",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 18,
+      "sha256": "489a1397da6787260cc3a2603eba7d3ef3cd4f8a49bca390bf49cf315fca4edb"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_thai_seed2",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 13,
+      "sha256": "a41de3fb2a09d2e35ab16da799f1297a4415602b01d88c6d74ddf849c132fd35"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_thai_seed3",
+      "winner_id": "thai",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 24,
+      "sha256": "a115a8cb7b0d1242f5ef2245486f939cc69164c353c1e34566335665d042cb76"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_wrestler_seed1",
+      "winner_id": "wrestler",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 25,
+      "sha256": "e2bc2b468fca9cfbbe13b6cc0fbed97b03dff50dbb1243e88c75f4320c2626f9"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_wrestler_seed2",
+      "winner_id": "wrestler",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 26,
+      "sha256": "5a7d6effeb3406e9a82240776b31a6876f4226e847908be90a3df72ef9d0f7ab"
+    },
+    {
+      "key": "mma_cage_60s_donnell_vs_wrestler_seed3",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 22,
+      "sha256": "f6649cbaa59706dadb995b8100ffe457805ec4189ac62aa306f82eec8ea1f5cd"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_jiujitsu_seed1",
+      "winner_id": "jiujitsu",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 23,
+      "sha256": "ade227ef8af19ea7c4250815004a65740159169974cbbf89620e33c5bdb35138"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_jiujitsu_seed2",
+      "winner_id": "greco",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 26,
+      "sha256": "e7a15f7ed39e970f5be25590c3acfc386e6e1f7c4294a36ef53e91b7c3d45902"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_jiujitsu_seed3",
+      "winner_id": "greco",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 19,
+      "sha256": "7a3706b2186d5fb3a10827735fc2d469ee669ec67f64e9d83a518efabb388122"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_karate_seed1",
+      "winner_id": "greco",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 15,
+      "sha256": "08349ef6e9ffb3a58553083e53fd5c73a357485f330da9298d7997e25b28f3c9"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_karate_seed2",
+      "winner_id": "greco",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 22,
+      "sha256": "6cace9359e8c53aeb4df573b595ced708312dd544254cd31c55c389f5a68cbb1"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_karate_seed3",
+      "winner_id": "greco",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 18,
+      "sha256": "acbb51ecc3af23eeff34e2d2c080a05354ee48ee7756d9cb1f525b530ad7a963"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_macklin_seed1",
+      "winner_id": "greco",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 20,
+      "sha256": "c97e3c16d7adcc428d72e31b801f01f8251d9e72fdb9425898d8709f15307460"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_macklin_seed2",
+      "winner_id": "macklin",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 19,
+      "sha256": "ef7f4bdf22f1de61c08bbeeb93ac333ba52fe0dbfd4e480a80c9dc9c2adc4eee"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_macklin_seed3",
+      "winner_id": "greco",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 18,
+      "sha256": "74381e0d0cceaf10a85f405d452494d39483c480181a426c5e440d08d2856e32"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_maleek_seed1",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 13,
+      "sha256": "1ca5dfbc5ee3b96ca2b5047f9fb05d8841209518f0a56cf599dfd2ee56cf2ba5"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_maleek_seed2",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 22,
+      "sha256": "c5f91fd992b1bdb691999c4abe86085d5977306d505d1154f898baa314985f9a"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_maleek_seed3",
+      "winner_id": "greco",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 19,
+      "sha256": "4cc92d3c741523d1a2bbc3aff23b31d80d1d6264817e6dc12389703ca1be0f17"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_philly_seed1",
+      "winner_id": "greco",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 13,
+      "sha256": "839e09288e05f305d5fbfda131a84a11896bd94dc4ed99e7ca8dd4f4832530da"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_philly_seed2",
+      "winner_id": "greco",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 16,
+      "sha256": "52fc6d7073982402ae22523c58829f72ea43740c2efa9667979463f855f0dddf"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_philly_seed3",
+      "winner_id": "greco",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 21,
+      "sha256": "890fec75afb39e47566199046a047954e9c16a0e48f29d61c86c499b0221a4b4"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_sanda_judo_seed1",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 9,
+      "sha256": "8771c166b5ce96b0b4a40e0d8f8240b11e8eb2842b1f70ccc4057bc73f2ec8d1"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_sanda_judo_seed2",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 22,
+      "sha256": "6ebdf45eb207df121779d75e3a5daae56cf625b53c7a6ed7513170b148cbbdb9"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_sanda_judo_seed3",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 12,
+      "sha256": "d0c2b7e231038d4cc64ceab1f74aa8b41978f3c765940c27356fcae1a774fd26"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_street_seed1",
+      "winner_id": "greco",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 10,
+      "sha256": "44053a6745d1fc01ef01f6547f9f061a66b5513b00ddef39dbd317c64a1caa41"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_street_seed2",
+      "winner_id": "street",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 16,
+      "sha256": "65b2fd5ea6924576f1f80d7e2794c0adffa6d340d0ed84ab689aacd91c379f8f"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_street_seed3",
+      "winner_id": "greco",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 11,
+      "sha256": "08bdd7f93e40ccf88ccf4a109839a518a15e9bd91a1d738498f885f0cbd9894c"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_thai_seed1",
+      "winner_id": "thai",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 13,
+      "sha256": "e75ef8d7e63528df1f3945dcf22d5e9318e2d83edd2b9b08c42c3c17ca892c02"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_thai_seed2",
+      "winner_id": "thai",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 16,
+      "sha256": "b7c3b8ba64fa19189ff89b1e7cb5864c7b4d8d8df39dfcff96de3b9239e06cf8"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_thai_seed3",
+      "winner_id": "greco",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 23,
+      "sha256": "2c8029f5d26855569a4972894a59c270cf2147b24a373fc1dc81de8c1239df8e"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_wrestler_seed1",
+      "winner_id": "greco",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 24,
+      "sha256": "e05f1f198481b09be08b391dd6db02c890d23731c560406e7e7031f2c1d71fc1"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_wrestler_seed2",
+      "winner_id": "wrestler",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 20,
+      "sha256": "87e9162b46069e001417a207638d9f4d2130925bbf1330c44b831ae6778170c0"
+    },
+    {
+      "key": "mma_cage_60s_greco_vs_wrestler_seed3",
+      "winner_id": "greco",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 22,
+      "sha256": "507f9b129e0a03e7da4c761acdeb786872ad2fdd8a197c2444579a90cb482496"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_karate_seed1",
+      "winner_id": "karate",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 13,
+      "sha256": "0b8064d681852abea3f43a83a5fe245dcde93de2a087f2a1b9225d91d260849b"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_karate_seed2",
+      "winner_id": "jiujitsu",
+      "finish_reason": "Submission (stage 3 lock completion)",
+      "exchange_count": 15,
+      "sha256": "8f9b2403fbb7f5c8c5c6854c776603cacd3b5b30d3c633def6272275edd22d2e"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_karate_seed3",
+      "winner_id": "karate",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 11,
+      "sha256": "811d828012a9775efccb7180d370b1255b4ed69a4b91b1c6d41995416cc537f9"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_macklin_seed1",
+      "winner_id": "macklin",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 9,
+      "sha256": "2dc17d6726c46a598d2db017c393e01aaa5f0097b31b5cea35537acf4dea0127"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_macklin_seed2",
+      "winner_id": "macklin",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 16,
+      "sha256": "7763436c04d3025bbd43847e135ae1fad82c42de9022f8f8b2bab2554fe986e7"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_macklin_seed3",
+      "winner_id": "macklin",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 17,
+      "sha256": "87905232904962f3b2884300779a2e0a7a1d6ce34576ade7880b461bdab48739"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_maleek_seed1",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 15,
+      "sha256": "95d27913a27ada0e6536101408e444ed7a2cd9b13a115c1cad6277ef06f2f498"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_maleek_seed2",
+      "winner_id": "jiujitsu",
+      "finish_reason": "Submission (stage 3 lock completion)",
+      "exchange_count": 10,
+      "sha256": "3d73db0a316dc3c08c5a419a78cb72b09f70a0f5632b7ea4e0de84797421e828"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_maleek_seed3",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 25,
+      "sha256": "79e96a2d21d05609750d461033251024188a4b55a8788fa9471815ca0285592b"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_philly_seed1",
+      "winner_id": "philly",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 9,
+      "sha256": "34fd2703434b173c7015d67404b026e0a41381807377c16a4e7f206010e47c89"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_philly_seed2",
+      "winner_id": "philly",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 21,
+      "sha256": "7aca6f8f2cd3fa01809ac5285063948f5464537a72a8177f58be6a4e29f9b351"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_philly_seed3",
+      "winner_id": "philly",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 15,
+      "sha256": "090b143498abe2893cf5e2f6cfd9c259b9e4b603170e651fd38475bf6290e772"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_sanda_judo_seed1",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 9,
+      "sha256": "142992c55075735fd6abcc169f3f018ea1ead38b373dce5af1620ea009ada379"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_sanda_judo_seed2",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 7,
+      "sha256": "7fe3b2ab6f7f648dbabb7c44c779fd8ae04e4ba15acd54270549acc5c1de70fd"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_sanda_judo_seed3",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 15,
+      "sha256": "142bb118a5feb506f4936c58e9d7f38f6e613abedfaac210058de6bb751b8e17"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_street_seed1",
+      "winner_id": "jiujitsu",
+      "finish_reason": "Submission (stage 3 lock completion)",
+      "exchange_count": 12,
+      "sha256": "d17a30fd13431b9292a087011a1650247919015cd6307c7bf75f5eef3224a6eb"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_street_seed2",
+      "winner_id": "jiujitsu",
+      "finish_reason": "Submission (stage 3 lock completion)",
+      "exchange_count": 14,
+      "sha256": "0f85ec513208ca065def0e3d81baa6a40910b7b294c7f4796bd2bd07ff853e33"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_street_seed3",
+      "winner_id": "jiujitsu",
+      "finish_reason": "Submission (stage 3 lock completion)",
+      "exchange_count": 12,
+      "sha256": "47be50375dab1913597a1a4a52a896609d5e8a5697d253c43a265f727f1bc627"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_thai_seed1",
+      "winner_id": "jiujitsu",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 22,
+      "sha256": "478659b0f3ecc0056337b5905e8b53ca62554cb2d421f8ec0cf3a33afe00c07c"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_thai_seed2",
+      "winner_id": "jiujitsu",
+      "finish_reason": "Submission (stage 3 lock completion)",
+      "exchange_count": 18,
+      "sha256": "3a3fd4812b233db13e52e58a8b569ddbb3c6527e9adb80b86d1851e23e6780ba"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_thai_seed3",
+      "winner_id": "jiujitsu",
+      "finish_reason": "Submission (stage 3 lock completion)",
+      "exchange_count": 16,
+      "sha256": "2ac753e2a70c61f3cdd9ef11bdf70c5ef5807f4339902d322fc36ec06c4c4c2b"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_wrestler_seed1",
+      "winner_id": "wrestler",
+      "finish_reason": "Decision (clock expired; card-derived damage + control)",
+      "exchange_count": 29,
+      "sha256": "3235f333f8f20b9a2010f9eb99fe6b20a78fda4928dd455f121c12ce1ceb6595"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_wrestler_seed2",
+      "winner_id": "jiujitsu",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 28,
+      "sha256": "a93d85f5a7bfb2189a325e91db0d6ad459091183c43f98270923e547e025dabd"
+    },
+    {
+      "key": "mma_cage_60s_jiujitsu_vs_wrestler_seed3",
+      "winner_id": "jiujitsu",
+      "finish_reason": "Submission (stage 3 lock completion)",
+      "exchange_count": 12,
+      "sha256": "e474b222d55489d4a9763e1fe7ada13eb93c58035eb2ebd50d7144045cba9978"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_macklin_seed1",
+      "winner_id": "macklin",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 9,
+      "sha256": "35e697f1e30755aac090b22ff3367392a5ad14abc3edee7455cbfad6b7c4d0da"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_macklin_seed2",
+      "winner_id": "karate",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 9,
+      "sha256": "0589fe2297c8bd0627a74a5f2042fac7366ab507b8780700531924c9361733a2"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_macklin_seed3",
+      "winner_id": "karate",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 19,
+      "sha256": "fb91a742ae14f77f9b8508e98f0047a54eaf2ed5845cff3a162f51360754940d"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_maleek_seed1",
+      "winner_id": "karate",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 20,
+      "sha256": "24bcd1c3288177c9fe788b3a1b2be104d37334b62576d337f3b5e773777d9ace"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_maleek_seed2",
+      "winner_id": "karate",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 12,
+      "sha256": "4cc6e8d64ec80eb3bcc7679d58f4807a1b609ae6bdc0db0e0ce6fc422b5a61a6"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_maleek_seed3",
+      "winner_id": "karate",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 14,
+      "sha256": "e6a5fa7d3a3715717ca8fe5bb19ab1ee973d9bceb9d8cdd6898a2e5402f1406b"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_philly_seed1",
+      "winner_id": "karate",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 24,
+      "sha256": "42d113cb3d9c6847bf4e935db79e2bded9cc3ef01908431e94dfe47a87c9b992"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_philly_seed2",
+      "winner_id": "karate",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 11,
+      "sha256": "d1b610f9c9783f098df71c1857305e28ba3225a9105ef9918b3cbd5b7c9f2731"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_philly_seed3",
+      "winner_id": "karate",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 25,
+      "sha256": "ada86013888342fecd5075444ef096a906c715092bcc9c281a09e0ea3a0baae6"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_sanda_judo_seed1",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 4,
+      "sha256": "36af0b30ce0badaf62d4ef10440f4e8a4e2a826ea26645beaed4d91f9629b5ce"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_sanda_judo_seed2",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 7,
+      "sha256": "76e2c5db866345a3d49f4af7764b85212211ae298cb17f4e9558d13b6db22297"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_sanda_judo_seed3",
+      "winner_id": "karate",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 22,
+      "sha256": "3a88fbd9e509af1b881d472ea0f4f05a07ea43bfd45a3dee0ecd73326667bd52"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_street_seed1",
+      "winner_id": "karate",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 13,
+      "sha256": "884b9c86e88c9d731d15ebad939ffa521b92db3d1c506a7854c471dd4d86e8e4"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_street_seed2",
+      "winner_id": "karate",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 10,
+      "sha256": "d75484a4e85ad492e6f3ddfcc51a4c4e358f08af2ece3e969463d60630dc758b"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_street_seed3",
+      "winner_id": "karate",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 8,
+      "sha256": "ccf4df69eaa9648c3b7202dd196f358602e305581c4e93a06d9d41eaa76764c8"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_thai_seed1",
+      "winner_id": "karate",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 8,
+      "sha256": "1ee655dd2f3ddff208f22bec889690599e8226cc195d14f0c919f05fcca946d4"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_thai_seed2",
+      "winner_id": "karate",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 15,
+      "sha256": "22ca2fb07a1aeecab5b31dc122522ede9d3f739d58633bf3ccbae469b5f585f8"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_thai_seed3",
+      "winner_id": "thai",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 17,
+      "sha256": "20c9420c2c87fd41f0a135803698fa6e5d2841197a463cc6d266cb52cd79ce3f"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_wrestler_seed1",
+      "winner_id": "wrestler",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 9,
+      "sha256": "3c6992dd47ec9a20da3d87d0c1a7e059bb29656529486e6e7dddc55af2eb4f0d"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_wrestler_seed2",
+      "winner_id": "wrestler",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 13,
+      "sha256": "8595a13cfb563ba46d9635704110f1d2881a417ea4933c39672b8cfef5abffe1"
+    },
+    {
+      "key": "mma_cage_60s_karate_vs_wrestler_seed3",
+      "winner_id": "karate",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 22,
+      "sha256": "7599ebba5a58ee22280d3e8ec8c4a211c06863a878198e15b18420003822e65c"
+    },
+    {
+      "key": "mma_cage_60s_macklin_vs_maleek_seed1",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 17,
+      "sha256": "f5431defaa887eb7e5df4b13c3a68187a3424fc110be5340284897382793837f"
+    },
+    {
+      "key": "mma_cage_60s_macklin_vs_maleek_seed2",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 15,
+      "sha256": "ab69ef9ccae23a9c9a70cc24a0939cd117722d1cf74997b27ba3f0f12d83a533"
+    },
+    {
+      "key": "mma_cage_60s_macklin_vs_maleek_seed3",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 13,
+      "sha256": "347e1fdf3bfc1b0e9ce96901964e2c40c61fc2396286c2c005c52a24a1b7dfb8"
+    },
+    {
+      "key": "mma_cage_60s_macklin_vs_philly_seed1",
+      "winner_id": "philly",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 11,
+      "sha256": "123e5a67cb6baa0a055403c5a1f62dba08951d1da49fb0eaf825acfc03fffa9d"
+    },
+    {
+      "key": "mma_cage_60s_macklin_vs_philly_seed2",
+      "winner_id": "macklin",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 11,
+      "sha256": "22764589ff731faed25e458eb5c0d2baf2febb29c0f43d7bb5a5d607ae6ab345"
+    },
+    {
+      "key": "mma_cage_60s_macklin_vs_philly_seed3",
+      "winner_id": "philly",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 18,
+      "sha256": "02edccba6e4c058d1931f8673d0ce209c37f5d77b8b787eaeacce816230864a3"
+    },
+    {
+      "key": "mma_cage_60s_macklin_vs_sanda_judo_seed1",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 17,
+      "sha256": "9e711f2b18c7184aa574bcbf041a292f5d4f4c579de6b995fde8b2287b42ec5e"
+    },
+    {
+      "key": "mma_cage_60s_macklin_vs_sanda_judo_seed2",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 9,
+      "sha256": "4c49a3548aa142992a41d2a85015a6cc3d04c15ad5ba747e1f72210fd6024e90"
+    },
+    {
+      "key": "mma_cage_60s_macklin_vs_sanda_judo_seed3",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 15,
+      "sha256": "6ffb5a4d4ce78450d93bddc24aaa08f65dcf7a6ae54461920d81300ba9666638"
+    },
+    {
+      "key": "mma_cage_60s_macklin_vs_street_seed1",
+      "winner_id": "street",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 5,
+      "sha256": "ec937c616c16bb3c643b0fa11978c5ef4fd71ec628ef08080be97991c403d74f"
+    },
+    {
+      "key": "mma_cage_60s_macklin_vs_street_seed2",
+      "winner_id": "street",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 7,
+      "sha256": "e823ea4d6b447e34d369165fb2d42e4745e6c29938f4d3252beb7f616c442fe7"
+    },
+    {
+      "key": "mma_cage_60s_macklin_vs_street_seed3",
+      "winner_id": "street",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 15,
+      "sha256": "4d31150e5b833b4eb065a2ee54158d71f89b2eecec65872af823f77220f288a8"
+    },
+    {
+      "key": "mma_cage_60s_macklin_vs_thai_seed1",
+      "winner_id": "thai",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 17,
+      "sha256": "8337da40c177a34582a411454881c4ae0d034893601e0937cecba9e02b62d981"
+    },
+    {
+      "key": "mma_cage_60s_macklin_vs_thai_seed2",
+      "winner_id": "thai",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 27,
+      "sha256": "a950e8e0d2a8250c14e24e4558079a653d660f554ca14336939acb0a6c0cc219"
+    },
+    {
+      "key": "mma_cage_60s_macklin_vs_thai_seed3",
+      "winner_id": "macklin",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 18,
+      "sha256": "3864c4f997a549388eda7bd38b072e8ab0d9a6f9752588063ec6312947baf8eb"
+    },
+    {
+      "key": "mma_cage_60s_macklin_vs_wrestler_seed1",
+      "winner_id": "wrestler",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 29,
+      "sha256": "e980e009fcef23219bdf7fa82568b88b36e111045a144d740127c1d747295fdd"
+    },
+    {
+      "key": "mma_cage_60s_macklin_vs_wrestler_seed2",
+      "winner_id": "wrestler",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 21,
+      "sha256": "396b97b984b3ea728b94929826bfc6a6951ed376b631772ea74757924361d736"
+    },
+    {
+      "key": "mma_cage_60s_macklin_vs_wrestler_seed3",
+      "winner_id": "wrestler",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 23,
+      "sha256": "ca4618d848d6e784b5e9c45f11871987c8aa683e74bfde2e3098b198dea5385e"
+    },
+    {
+      "key": "mma_cage_60s_maleek_vs_philly_seed1",
+      "winner_id": "philly",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 19,
+      "sha256": "9e1e458131ef36241ed48e8f0f284eb86927b113a642a8237e7b1f03b235fd75"
+    },
+    {
+      "key": "mma_cage_60s_maleek_vs_philly_seed2",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 11,
+      "sha256": "d3bd9037b4a820bd7316afbf91a790c2463fc4bba89b3d63364beda4d69f3a60"
+    },
+    {
+      "key": "mma_cage_60s_maleek_vs_philly_seed3",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 13,
+      "sha256": "8e73738e66d62179229746715b03a76386ffc83c08a9a820932b8f6073b386fc"
+    },
+    {
+      "key": "mma_cage_60s_maleek_vs_sanda_judo_seed1",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 9,
+      "sha256": "697f4ce1a34567e4124c42719e6edd0056697c3e992e48918b5d48744d18f400"
+    },
+    {
+      "key": "mma_cage_60s_maleek_vs_sanda_judo_seed2",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 24,
+      "sha256": "8cbf220aee5a0cbd9026617e4df911c241f4e90be53507e09749ad659ecf7418"
+    },
+    {
+      "key": "mma_cage_60s_maleek_vs_sanda_judo_seed3",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 15,
+      "sha256": "cf1e6a0dd53e33d18c60a60dbd9b68775b702047004517d0af404bc0cfd84cf9"
+    },
+    {
+      "key": "mma_cage_60s_maleek_vs_street_seed1",
+      "winner_id": "street",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 5,
+      "sha256": "d025f4ccf13462a3171ba15df2370336fe8f6f03e17e2fc25e7e234b996c5201"
+    },
+    {
+      "key": "mma_cage_60s_maleek_vs_street_seed2",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 6,
+      "sha256": "00513099217a6e2719b96743ed2cb6b0ccee3db6e6128b18ad3013ce6b52aa5e"
+    },
+    {
+      "key": "mma_cage_60s_maleek_vs_street_seed3",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 10,
+      "sha256": "3a135e32971f040ee572f8e957859c3fd326fce789116071d9309123315fd4bd"
+    },
+    {
+      "key": "mma_cage_60s_maleek_vs_thai_seed1",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 16,
+      "sha256": "7346121dacf1d103f35f347dc45c34c8e8c55ca2b25854f153d33c50cdfcb41e"
+    },
+    {
+      "key": "mma_cage_60s_maleek_vs_thai_seed2",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 27,
+      "sha256": "9f250f8d175a524454b00a16b674e45f3d4f1d53366d8b233af97a8231443d0d"
+    },
+    {
+      "key": "mma_cage_60s_maleek_vs_thai_seed3",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 26,
+      "sha256": "dec6c570fc87c5c53f8d5fd9e56b6ab1f2f0e901c90818db9e0f426516c1455b"
+    },
+    {
+      "key": "mma_cage_60s_maleek_vs_wrestler_seed1",
+      "winner_id": "wrestler",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 11,
+      "sha256": "471431b7c19aae9c26a4b7db22de31024436355c6a28653d670a8d49259d2783"
+    },
+    {
+      "key": "mma_cage_60s_maleek_vs_wrestler_seed2",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 22,
+      "sha256": "66e3bf501be16c5fd03026ba261013045f3d6ebaa78aea1cb6dc48d689f8e62e"
+    },
+    {
+      "key": "mma_cage_60s_maleek_vs_wrestler_seed3",
+      "winner_id": "wrestler",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 20,
+      "sha256": "7ffb5ac7d1d9531c16141fc017a071ba0350ad97412c31b22e015d893a53f60e"
+    },
+    {
+      "key": "mma_cage_60s_philly_vs_sanda_judo_seed1",
+      "winner_id": "philly",
+      "finish_reason": "Decision (clock expired; card-derived damage + control)",
+      "exchange_count": 28,
+      "sha256": "3319a98926bce4176c034b041891d35bac60036ba2dc683f4dc34adc8e839e5e"
+    },
+    {
+      "key": "mma_cage_60s_philly_vs_sanda_judo_seed2",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 7,
+      "sha256": "4dc84c3d266eb51ebff401a5ec330751274629040117d119ad692429a1351500"
+    },
+    {
+      "key": "mma_cage_60s_philly_vs_sanda_judo_seed3",
+      "winner_id": "philly",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 24,
+      "sha256": "53b2cc33853fe7998a95420e7b056b26af9c1fe4dc56ceee0bd50088651b679d"
+    },
+    {
+      "key": "mma_cage_60s_philly_vs_street_seed1",
+      "winner_id": "street",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 5,
+      "sha256": "8b5cb231c13939eb5f0e5845918153f568c6499623ecdd886b8417e663545ba2"
+    },
+    {
+      "key": "mma_cage_60s_philly_vs_street_seed2",
+      "winner_id": "street",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 7,
+      "sha256": "1a835276598b14d881686400693378772e27ebeb8eb4d1f530f288c84f3748ad"
+    },
+    {
+      "key": "mma_cage_60s_philly_vs_street_seed3",
+      "winner_id": "philly",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 25,
+      "sha256": "ba27e9a6f4cba7e05977e6c29feb4e3ae9664efb32f0427d13c8f738a817db2c"
+    },
+    {
+      "key": "mma_cage_60s_philly_vs_thai_seed1",
+      "winner_id": "philly",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 10,
+      "sha256": "e0410bca4d8fc0ac5658555c1b0cc88417687f930985bbc40586ffec19379aaf"
+    },
+    {
+      "key": "mma_cage_60s_philly_vs_thai_seed2",
+      "winner_id": "philly",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 18,
+      "sha256": "961fa74383767bfb2d5fbeea90bbc5fcf5d3b68c5cc906c0a6edf52a91a79d6a"
+    },
+    {
+      "key": "mma_cage_60s_philly_vs_thai_seed3",
+      "winner_id": "philly",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 22,
+      "sha256": "c18cf2b3fe3c3a31b3ba29ee21b09d1845a98b0daa0c2e2fc39a303938a61daf"
+    },
+    {
+      "key": "mma_cage_60s_philly_vs_wrestler_seed1",
+      "winner_id": "wrestler",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 25,
+      "sha256": "1279812ea3d33facfc1e5ebf5e06e554d9dde348b620f8a9aabde52fc6ab2187"
+    },
+    {
+      "key": "mma_cage_60s_philly_vs_wrestler_seed2",
+      "winner_id": "wrestler",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 17,
+      "sha256": "1ffc901ee49010637c57222717848ca6cc55769f6ca22645453c0fd4b6f11eb4"
+    },
+    {
+      "key": "mma_cage_60s_philly_vs_wrestler_seed3",
+      "winner_id": "philly",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 24,
+      "sha256": "09fd2743c3a938cff817dc9ca92e7a76ae6d779dd721dc42556b872c576440ed"
+    },
+    {
+      "key": "mma_cage_60s_sanda_judo_vs_street_seed1",
+      "winner_id": "street",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 5,
+      "sha256": "d1520286634e6b44e874dc2a151a79a720ec137d8236b787d7287bbf8da925f0"
+    },
+    {
+      "key": "mma_cage_60s_sanda_judo_vs_street_seed2",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 13,
+      "sha256": "32da5a029162b11c8fdb0ff877cd54ed98b9709283e1174c79d0b75c459f7e7a"
+    },
+    {
+      "key": "mma_cage_60s_sanda_judo_vs_street_seed3",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 12,
+      "sha256": "ab89c6c13785db23adcb5a055776201ec65bd3b388cbcb9972ca60218bbde7fe"
+    },
+    {
+      "key": "mma_cage_60s_sanda_judo_vs_thai_seed1",
+      "winner_id": "sanda_judo",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 20,
+      "sha256": "5388182059f7d70c0293b7b0494a0ce77ff48896c1bfba5a1c08863f16426645"
+    },
+    {
+      "key": "mma_cage_60s_sanda_judo_vs_thai_seed2",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 13,
+      "sha256": "9ac06059da9e96ae545460585d94e1f907c36c8deb8462fce111e5c25742762e"
+    },
+    {
+      "key": "mma_cage_60s_sanda_judo_vs_thai_seed3",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 10,
+      "sha256": "7e1eb31e6d7dc2366dd12633f0069b43a5c5194d1ee3a46f9a45ff17fae28931"
+    },
+    {
+      "key": "mma_cage_60s_sanda_judo_vs_wrestler_seed1",
+      "winner_id": "wrestler",
+      "finish_reason": "Decision (clock expired; card-derived damage + control)",
+      "exchange_count": 30,
+      "sha256": "bae5a4743399cd42b35e50e0d1953f09f1384df8ac9a7c62843c3d0b542c9639"
+    },
+    {
+      "key": "mma_cage_60s_sanda_judo_vs_wrestler_seed2",
+      "winner_id": "wrestler",
+      "finish_reason": "TKO (leg kicks / compromised support)",
+      "exchange_count": 19,
+      "sha256": "a76132d3c4e6a8957e003e860b53bf650233317bc3ed6c4ce5d11756470fa35c"
+    },
+    {
+      "key": "mma_cage_60s_sanda_judo_vs_wrestler_seed3",
+      "winner_id": "sanda_judo",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 18,
+      "sha256": "6388c99fd53552f9e7c356a4c3013580215ed5d335359d23d4ec15905bb89ed5"
+    },
+    {
+      "key": "mma_cage_60s_street_vs_thai_seed1",
+      "winner_id": "street",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 6,
+      "sha256": "18e058b2b904ba627cd30786b389bf378c250e836f747021f97edfe349611d14"
+    },
+    {
+      "key": "mma_cage_60s_street_vs_thai_seed2",
+      "winner_id": "thai",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 14,
+      "sha256": "d9d40d9fccc62770b4cd37efffafa3d8d30809acdcca21e67de22e0215ed54fc"
+    },
+    {
+      "key": "mma_cage_60s_street_vs_thai_seed3",
+      "winner_id": "thai",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 9,
+      "sha256": "ce1122b13fb2ca57ec32a91545dfdf0dffdafa0f0d8bfb81639919d35f7af5ae"
+    },
+    {
+      "key": "mma_cage_60s_street_vs_wrestler_seed1",
+      "winner_id": "street",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 26,
+      "sha256": "83e9f71d50a0f69189947e5a7ff97054751aafaae66ab53c1d671b3ad9e998a6"
+    },
+    {
+      "key": "mma_cage_60s_street_vs_wrestler_seed2",
+      "winner_id": "street",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 21,
+      "sha256": "697227d1a737a1109f630cee733d1fb009b2458a60ee66062298720d7c17395b"
+    },
+    {
+      "key": "mma_cage_60s_street_vs_wrestler_seed3",
+      "winner_id": "wrestler",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 17,
+      "sha256": "e04a14d86246cb2c030d27a98c77818a8d66ac98afdec9b98c7bf674450c5561"
+    },
+    {
+      "key": "mma_cage_60s_thai_vs_wrestler_seed1",
+      "winner_id": "wrestler",
+      "finish_reason": "TKO (leg kicks / compromised support)",
+      "exchange_count": 15,
+      "sha256": "e111dd65d971412396a8e905d2ebdc1ea2ddd7bdcbfbb0d875c32f548a05e257"
+    },
+    {
+      "key": "mma_cage_60s_thai_vs_wrestler_seed2",
+      "winner_id": "wrestler",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 13,
+      "sha256": "266c633484fa07c00070022751fdc0f88de08ae0864d273222792e8e432c69ed"
+    },
+    {
+      "key": "mma_cage_60s_thai_vs_wrestler_seed3",
+      "winner_id": "thai",
+      "finish_reason": "TKO (body/liver attrition)",
+      "exchange_count": 28,
+      "sha256": "c319e3c1992ee6c734dc8b55574b1cfa78f9f719ef3118da06cac9ff0fc447d9"
+    },
+    {
+      "key": "boxing_ring_60s_detroit_vs_donnell_seed1",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 8,
+      "sha256": "4eae29fe95d1f4cc5d27f3a6a7895e894c1a748591fb3765b6482b543e6419cf"
+    },
+    {
+      "key": "boxing_ring_60s_donnell_vs_greco_seed2",
+      "winner_id": "donnell",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 12,
+      "sha256": "2a3faa0b7353d3da08cad831b44635717723cef856778f332d741484387c8fa4"
+    },
+    {
+      "key": "boxing_ring_60s_greco_vs_jiujitsu_seed3",
+      "winner_id": "greco",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 19,
+      "sha256": "7a8d9e5adbde15eabca9656c01c7eb218296a4e42f273045b43c15a4f7792cc1"
+    },
+    {
+      "key": "boxing_ring_60s_jiujitsu_vs_karate_seed4",
+      "winner_id": "karate",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 12,
+      "sha256": "a780e57e779871e2aa828dfc4d144cde6ec42f69562969ae457d7016b774e0f9"
+    },
+    {
+      "key": "boxing_ring_60s_karate_vs_macklin_seed5",
+      "winner_id": "karate",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 12,
+      "sha256": "b2e27ee62e98dfe023ee9c5c95748c19c2441f0508d0f3d2e1b67b7f2f18babd"
+    },
+    {
+      "key": "boxing_ring_60s_macklin_vs_maleek_seed6",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 19,
+      "sha256": "e5b63246dc8ee8b2ac5a23741a0887f4595c74b4c79c7e431c262318c6c05915"
+    },
+    {
+      "key": "boxing_ring_60s_maleek_vs_philly_seed7",
+      "winner_id": "maleek",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 13,
+      "sha256": "304dd1bf9aa31885a85cbaacb77f7634565f48dcb03c80f9e4c3322cdb070db5"
+    },
+    {
+      "key": "boxing_ring_60s_philly_vs_sanda_judo_seed8",
+      "winner_id": "sanda_judo",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 13,
+      "sha256": "4ebce0c7751473d96ddf55acf9000b3155571a3699191dfaa1c25c221b7f41eb"
+    },
+    {
+      "key": "boxing_ring_60s_sanda_judo_vs_street_seed9",
+      "winner_id": "street",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 4,
+      "sha256": "b176a212c592881781c5572306951ea70f26a7f57ab7fc25f94b8855f1417568"
+    },
+    {
+      "key": "boxing_ring_60s_street_vs_thai_seed10",
+      "winner_id": "street",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 5,
+      "sha256": "51d0bb8086a2080cc424890e536377e3fe0b7c257cbdfab7b5bd80016417d44a"
+    },
+    {
+      "key": "boxing_ring_60s_thai_vs_wrestler_seed11",
+      "winner_id": "wrestler",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 15,
+      "sha256": "4bebb6a64afc2858d95add11145876cdf9824a277920cfa5a088cc24db0f1a45"
+    },
+    {
+      "key": "boxing_ring_60s_wrestler_vs_detroit_seed12",
+      "winner_id": "detroit",
+      "finish_reason": "KO/TKO (head damage accumulation)",
+      "exchange_count": 8,
+      "sha256": "bd74b61c260e0b348cf595fadda51015f7eef90ad6ae8de917b9b963d4d2edcb"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "elapsed_s": 50.17,
+  "total_balance_fights": 13200,
+  "method_counts": {
+    "KO/TKO": 12223,
+    "Decision": 179,
+    "Submission": 798
+  },
+  "method_pct": {
+    "KO/TKO": 92.6,
+    "Decision": 1.36,
+    "Submission": 6.05
+  },
+  "unreachable_techniques_at_baseline": [
+    "axe_kick",
+    "cage_plum",
+    "evade_step_back",
+    "head_kick",
+    "jam_step",
+    "jumping_knee",
+    "kick_catch",
+    "lean_back",
+    "switch_kick"
+  ],
+  "distinct_5_move_openings_of_60": {
+    "detroit": 22,
+    "donnell": 25,
+    "greco": 43,
+    "jiujitsu": 28,
+    "karate": 15,
+    "macklin": 24,
+    "maleek": 34,
+    "philly": 30,
+    "sanda_judo": 21,
+    "street": 4,
+    "thai": 39,
+    "wrestler": 44
+  },
+  "counter_technique_counts": {
+    "cross": 243,
+    "teep": 149,
+    "side_kick": 57,
+    "sanda_sweep": 38,
+    "knee_body": 12,
+    "uppercut": 6,
+    "haymaker": 1
+  },
+  "vertical_mode_grounded_vs_athletic_identical": true,
+  "donnell_vs_karate_win_pct_by_arena_60_seeds": {
+    "open_floor": 51.7,
+    "cage": 61.7,
+    "ring": 66.7,
+    "narrow_alley": 80.0
+  }
+}

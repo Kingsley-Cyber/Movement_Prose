@@ -1,0 +1,122 @@
+{
+ "detroit": {
+  "n_ex": 9.96,
+  "hit_at_cap": 0.18072289156626506,
+  "hit_at_floor": 0.0,
+  "ready_at_floor": 0.04718875502008032,
+  "ready_at_ceiling": 0.0,
+  "mult_at_cap": 0.0,
+  "mean_landed_dmg": 2.867363515312916,
+  "hits_to_finish": 4.185029186538435
+ },
+ "donnell": {
+  "n_ex": 12.9,
+  "hit_at_cap": 0.11472868217054263,
+  "hit_at_floor": 0.0,
+  "ready_at_floor": 0.04961240310077519,
+  "ready_at_ceiling": 0.0,
+  "mult_at_cap": 0.0,
+  "mean_landed_dmg": 2.669594070695553,
+  "hits_to_finish": 4.495065422764235
+ },
+ "greco": {
+  "n_ex": 16.82,
+  "hit_at_cap": 0.07847800237812129,
+  "hit_at_floor": 0.0,
+  "ready_at_floor": 0.03626634958382877,
+  "ready_at_ceiling": 0.0,
+  "mult_at_cap": 0.0,
+  "mean_landed_dmg": 2.601565789473684,
+  "hits_to_finish": 4.61260678032966
+ },
+ "jiujitsu": {
+  "n_ex": 26.33,
+  "hit_at_cap": 0.08621344473984048,
+  "hit_at_floor": 0.0,
+  "ready_at_floor": 0.0284846183061147,
+  "ready_at_ceiling": 0.0,
+  "mult_at_cap": 0.0,
+  "mean_landed_dmg": 1.802330859616574,
+  "hits_to_finish": 6.658045017635035
+ },
+ "karate": {
+  "n_ex": 11.53,
+  "hit_at_cap": 0.09453599306157849,
+  "hit_at_floor": 0.0,
+  "ready_at_floor": 0.01647875108412836,
+  "ready_at_ceiling": 0.0,
+  "mult_at_cap": 0.0,
+  "mean_landed_dmg": 3.0720116959064327,
+  "hits_to_finish": 3.9062351279425256
+ },
+ "macklin": {
+  "n_ex": 14.61,
+  "hit_at_cap": 0.05886379192334018,
+  "hit_at_floor": 0.0,
+  "ready_at_floor": 0.01163586584531143,
+  "ready_at_ceiling": 0.0,
+  "mult_at_cap": 0.0,
+  "mean_landed_dmg": 2.512158259149357,
+  "hits_to_finish": 4.776769121250874
+ },
+ "maleek": {
+  "n_ex": 14.48,
+  "hit_at_cap": 0.14157458563535913,
+  "hit_at_floor": 0.0,
+  "ready_at_floor": 0.015193370165745856,
+  "ready_at_ceiling": 0.0,
+  "mult_at_cap": 0.0,
+  "mean_landed_dmg": 2.384974241030359,
+  "hits_to_finish": 5.031500883135639
+ },
+ "philly": {
+  "n_ex": 15.29,
+  "hit_at_cap": 0.04512753433616743,
+  "hit_at_floor": 0.0,
+  "ready_at_floor": 0.007194244604316547,
+  "ready_at_ceiling": 0.0,
+  "mult_at_cap": 0.0,
+  "mean_landed_dmg": 2.4159310954063606,
+  "hits_to_finish": 4.9670290774504045
+ },
+ "sanda_judo": {
+  "n_ex": 16.1,
+  "hit_at_cap": 0.5670807453416149,
+  "hit_at_floor": 0.0,
+  "ready_at_floor": 0.3596273291925466,
+  "ready_at_ceiling": 0.0,
+  "mult_at_cap": 0.0,
+  "mean_landed_dmg": 2.5754055755395684,
+  "hits_to_finish": 4.659460286167122
+ },
+ "street": {
+  "n_ex": 4,
+  "hit_at_cap": 0.0,
+  "hit_at_floor": 0.0,
+  "ready_at_floor": 0.0025,
+  "ready_at_ceiling": 0.0,
+  "mult_at_cap": 1.0,
+  "mean_landed_dmg": 6.12782392026578,
+  "hits_to_finish": 1.9582808116130608
+ },
+ "thai": {
+  "n_ex": 12.51,
+  "hit_at_cap": 0.4172661870503597,
+  "hit_at_floor": 0.0,
+  "ready_at_floor": 0.2917665867306155,
+  "ready_at_ceiling": 0.0,
+  "mult_at_cap": 0.0,
+  "mean_landed_dmg": 3.002487556561086,
+  "hits_to_finish": 3.9966860058345284
+ },
+ "wrestler": {
+  "n_ex": 21.9,
+  "hit_at_cap": 0.11232876712328767,
+  "hit_at_floor": 0.0,
+  "ready_at_floor": 0.047031963470319633,
+  "ready_at_ceiling": 0.0,
+  "mult_at_cap": 0.0,
+  "mean_landed_dmg": 2.4273959390862943,
+  "hits_to_finish": 4.9435692821159485
+ }
+}

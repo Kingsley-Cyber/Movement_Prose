@@ -1,0 +1,76 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "BLOCK Combination chains v2.1",
+ "type": "object",
+ "required": [
+  "version",
+  "combinations"
+ ],
+ "additionalProperties": false,
+ "properties": {
+  "version": {
+   "const": "block-2"
+  },
+  "combinations": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "id",
+     "chain",
+     "school",
+     "follow_up_accuracy_bonus",
+     "setup_frames_saved",
+     "trigger_on",
+     "requires_previous_outcome",
+     "same_slot_required"
+    ],
+    "properties": {
+     "id": {
+      "type": "string",
+      "minLength": 1
+     },
+     "chain": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+       "type": "string",
+       "minLength": 1
+      }
+     },
+     "school": {
+      "type": "string",
+      "minLength": 1
+     },
+     "follow_up_accuracy_bonus": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 0.2
+     },
+     "setup_frames_saved": {
+      "type": "integer",
+      "minimum": 0
+     },
+     "trigger_on": {
+      "enum": [
+       "landed",
+       "defended",
+       "executed"
+      ]
+     },
+     "requires_previous_outcome": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "minLength": 1
+      }
+     },
+     "same_slot_required": {
+      "type": "boolean"
+     }
+    }
+   }
+  }
+ }
+}

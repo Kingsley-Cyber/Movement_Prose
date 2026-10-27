@@ -1,0 +1,205 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "BLOCK Rulesets v2.1",
+ "type": "object",
+ "required": [
+  "version",
+  "rulesets"
+ ],
+ "additionalProperties": false,
+ "properties": {
+  "version": {
+   "const": "block-2"
+  },
+  "rulesets": {
+   "type": "object",
+   "propertyNames": {
+    "enum": [
+     "boxing",
+     "kickboxing",
+     "muay_thai",
+     "mma",
+     "street",
+     "lethwei"
+    ]
+   },
+   "additionalProperties": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "legal_kinds",
+     "allowed_techniques",
+     "banned_techniques",
+     "clinch",
+     "ground",
+     "environment",
+     "default_rounds",
+     "default_round_s",
+     "decision_weights"
+    ],
+    "properties": {
+     "legal_kinds": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "minLength": 1
+      }
+     },
+     "allowed_techniques": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "minLength": 1
+      }
+     },
+     "banned_techniques": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "minLength": 1
+      }
+     },
+     "clinch": {
+      "type": "object",
+      "required": [
+       "allowed",
+       "referee_break_after_exchanges",
+       "allowed_grips"
+      ],
+      "properties": {
+       "allowed": {
+        "type": "boolean"
+       },
+       "referee_break_after_exchanges": {
+        "type": [
+         "integer",
+         "null"
+        ],
+        "minimum": 0
+       },
+       "allowed_grips": {
+        "oneOf": [
+         {
+          "const": "all"
+         },
+         {
+          "type": "array",
+          "items": {
+           "type": "string",
+           "minLength": 1
+          }
+         }
+        ]
+       },
+       "note": {
+        "type": "string"
+       }
+      },
+      "additionalProperties": false
+     },
+     "ground": {
+      "type": "object",
+      "required": [
+       "allowed",
+       "on_knockdown"
+      ],
+      "properties": {
+       "allowed": {
+        "type": "boolean"
+       },
+       "on_knockdown": {
+        "enum": [
+         "standing_count",
+         "fight_continues"
+        ]
+       },
+       "on_sweep": {
+        "enum": [
+         "reset_standing_with_score",
+         "continue"
+        ]
+       }
+      },
+      "additionalProperties": false
+     },
+     "environment": {
+      "type": "string",
+      "minLength": 1
+     },
+     "default_rounds": {
+      "type": "integer",
+      "minimum": 1
+     },
+     "default_round_s": {
+      "type": "number",
+      "exclusiveMinimum": 0
+     },
+     "decision_weights": {
+      "type": "object",
+      "required": [
+       "clean_strikes",
+       "damage",
+       "control",
+       "aggression"
+      ],
+      "additionalProperties": {
+       "type": "number",
+       "minimum": 0
+      }
+     },
+     "equipment": {
+      "type": "object",
+      "required": [
+       "gloves",
+       "punch_damage_multiplier",
+       "cut_chance_bonus"
+      ],
+      "properties": {
+       "gloves": {
+        "type": "boolean"
+       },
+       "punch_damage_multiplier": {
+        "type": "number",
+        "minimum": 0.5,
+        "maximum": 2.0
+       },
+       "cut_chance_bonus": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 0.5
+       }
+      },
+      "additionalProperties": false
+     },
+     "knockdown_rules": {
+      "type": "object",
+      "properties": {
+       "per_round_limit": {
+        "type": [
+         "integer",
+         "null"
+        ],
+        "minimum": 1
+       },
+       "per_fight_limit": {
+        "type": [
+         "integer",
+         "null"
+        ],
+        "minimum": 1
+       }
+      },
+      "additionalProperties": false
+     },
+     "default_rest_s": {
+      "type": "number",
+      "minimum": 0
+     },
+     "notes": {
+      "type": "string"
+     }
+    }
+   }
+  }
+ }
+}

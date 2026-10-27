@@ -1,0 +1,449 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "BLOCK Fighter Card v2 Schema (backward-compatible with block-1) (v2.1 additive extension)",
+ "type": "object",
+ "required": [
+  "version",
+  "fighter_id",
+  "name",
+  "combat_identity",
+  "dimensions",
+  "adaptation",
+  "orientation",
+  "slot_count",
+  "slot_label",
+  "synchronized_capabilities",
+  "baseline_capabilities",
+  "tempo",
+  "preferred_ranges",
+  "debt_sentence",
+  "exploitable_seams",
+  "active_techniques",
+  "conditional_abilities",
+  "combat_limitations",
+  "fighting_description",
+  "appearance",
+  "provenance"
+ ],
+ "properties": {
+  "version": {
+   "enum": [
+    "block-1",
+    "block-2"
+   ]
+  },
+  "fighter_id": {
+   "type": "string",
+   "minLength": 1
+  },
+  "name": {
+   "type": "string",
+   "minLength": 1
+  },
+  "combat_identity": {
+   "type": "string",
+   "minLength": 1
+  },
+  "dimensions": {
+   "type": "object",
+   "required": [
+    "hands",
+    "defense",
+    "stance",
+    "tie",
+    "target",
+    "kicking",
+    "mentality"
+   ],
+   "properties": {
+    "hands": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "minLength": 1
+    },
+    "defense": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "minLength": 1
+    },
+    "stance": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "minLength": 1
+    },
+    "tie": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "minLength": 1
+    },
+    "target": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "minLength": 1
+    },
+    "kicking": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "minLength": 1
+    },
+    "mentality": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "minLength": 1
+    }
+   },
+   "additionalProperties": false
+  },
+  "adaptation": {
+   "enum": [
+    "boxing",
+    "mma"
+   ]
+  },
+  "orientation": {
+   "enum": [
+    "orthodox",
+    "southpaw",
+    "switching"
+   ]
+  },
+  "slot_count": {
+   "type": "integer",
+   "minimum": 1,
+   "maximum": 4
+  },
+  "slot_label": {
+   "enum": [
+    "Brawler",
+    "Two-piece",
+    "Triad",
+    "Anomaly"
+   ]
+  },
+  "synchronized_capabilities": {
+   "type": "array",
+   "minItems": 1,
+   "maxItems": 4,
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "capabilities",
+     "description"
+    ],
+    "properties": {
+     "id": {
+      "type": "string",
+      "minLength": 1
+     },
+     "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+       "type": "string",
+       "minLength": 1
+      }
+     },
+     "description": {
+      "type": "string",
+      "minLength": 1
+     },
+     "trigger": {
+      "type": "string",
+      "minLength": 1
+     },
+     "sequence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+       "type": "string",
+       "minLength": 1
+      }
+     },
+     "home_range": {
+      "enum": [
+       "outside",
+       "kick",
+       "punch",
+       "close",
+       "clinch",
+       "ground"
+      ]
+     },
+     "goal": {
+      "enum": [
+       "head_damage",
+       "body_attrition",
+       "leg_attrition",
+       "clinch_control",
+       "takedown_top_control",
+       "counter_trap",
+       "submission_finish",
+       "wall_pressure",
+       "reset_to_home_range",
+       "position"
+      ]
+     },
+     "abandon_rule": {
+      "type": "object",
+      "required": [
+       "max_consecutive_stalls"
+      ],
+      "properties": {
+       "max_consecutive_stalls": {
+        "type": "integer",
+        "minimum": 1
+       },
+       "condition": {
+        "type": "string"
+       }
+      },
+      "additionalProperties": false
+     },
+     "links": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "minLength": 1
+      }
+     }
+    },
+    "additionalProperties": false
+   }
+  },
+  "baseline_capabilities": {
+   "type": "array",
+   "items": {
+    "type": "string",
+    "minLength": 1
+   }
+  },
+  "tempo": {
+   "type": "integer",
+   "minimum": 1,
+   "maximum": 5
+  },
+  "preferred_ranges": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "enum": [
+     "outside",
+     "kick",
+     "punch",
+     "close",
+     "clinch",
+     "ground"
+    ]
+   }
+  },
+  "debt_sentence": {
+   "type": "string",
+   "minLength": 1
+  },
+  "exploitable_seams": {
+   "type": "array",
+   "items": {
+    "type": "string",
+    "minLength": 1
+   }
+  },
+  "active_techniques": {
+   "type": "array",
+   "minItems": 1,
+   "uniqueItems": true,
+   "items": {
+    "type": "string",
+    "minLength": 1
+   }
+  },
+  "signature_moves": {
+   "type": "array",
+   "items": {
+    "type": "string",
+    "minLength": 1
+   }
+  },
+  "airborne_training": {
+   "type": "object",
+   "required": [
+    "allowed_vertical_modes",
+    "techniques"
+   ],
+   "properties": {
+    "allowed_vertical_modes": {
+     "type": "array",
+     "items": {
+      "enum": [
+       "grounded",
+       "athletic",
+       "aerial"
+      ]
+     }
+    },
+    "techniques": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     }
+    }
+   },
+   "additionalProperties": false
+  },
+  "conditional_abilities": {
+   "type": "array"
+  },
+  "combat_limitations": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "type": "string",
+    "minLength": 1
+   }
+  },
+  "fighting_description": {
+   "type": "object",
+   "required": [
+    "does",
+    "wins",
+    "avoids",
+    "beaten_by"
+   ],
+   "properties": {
+    "does": {
+     "type": "string",
+     "minLength": 1
+    },
+    "wins": {
+     "type": "string",
+     "minLength": 1
+    },
+    "avoids": {
+     "type": "string",
+     "minLength": 1
+    },
+    "beaten_by": {
+     "type": "string",
+     "minLength": 1
+    }
+   },
+   "additionalProperties": false
+  },
+  "appearance": {
+   "type": "object",
+   "required": [
+    "clothing",
+    "identity_anchor",
+    "props"
+   ],
+   "properties": {
+    "clothing": {
+     "type": "string",
+     "minLength": 1
+    },
+    "identity_anchor": {
+     "type": "string",
+     "minLength": 1
+    },
+    "props": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    }
+   },
+   "additionalProperties": false
+  },
+  "provenance": {
+   "type": "object"
+  },
+  "composites": {
+   "type": "array"
+  },
+  "revision": {
+   "type": "integer",
+   "minimum": 1
+  },
+  "laterality": {
+   "type": "object",
+   "required": [
+    "dominant_hand",
+    "dominant_leg"
+   ],
+   "properties": {
+    "dominant_hand": {
+     "enum": [
+      "right",
+      "left",
+      "ambidextrous"
+     ]
+    },
+    "dominant_leg": {
+     "enum": [
+      "right",
+      "left",
+      "both"
+     ]
+    },
+    "opposite_stance_experience": {
+     "enum": [
+      "low",
+      "normal",
+      "high"
+     ]
+    }
+   },
+   "additionalProperties": false
+  },
+  "signature_chains": {
+   "type": "array",
+   "items": {
+    "type": "string",
+    "minLength": 1
+   }
+  },
+  "rank": {
+   "enum": [
+    "novice",
+    "trained",
+    "expert",
+    "master",
+    "grandmaster"
+   ],
+   "description": "D23 / handoff 7.18: story rank; missing = trained (no effect)"
+  },
+  "school_mastery": {
+   "type": "object",
+   "propertyNames": {
+    "pattern": "^[a-z_]+$"
+   },
+   "additionalProperties": {
+    "enum": [
+     "novice",
+     "trained",
+     "expert",
+     "master",
+     "grandmaster"
+    ]
+   },
+   "description": "per-school rank; schools not listed sit at the card's rank; no value may exceed rank (validator)"
+  }
+ },
+ "additionalProperties": false
+}

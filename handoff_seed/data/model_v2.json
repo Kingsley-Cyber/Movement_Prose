@@ -1,0 +1,2153 @@
+{
+ "version": "block-2",
+ "fps": 24,
+ "lanes": [
+  "head_straight",
+  "head_hook",
+  "head_uppercut",
+  "body",
+  "leg",
+  "entry",
+  "clinch",
+  "single_support"
+ ],
+ "readiness_weights": {
+  "base_readiness": 3.0,
+  "guard_weight": 1.0,
+  "method_weight": 1.0,
+  "stance_weight": 0.85
+ },
+ "state_modifiers": {
+  "recovery_window_penalty_scale": 1.0,
+  "compromised_balance_penalty": -0.95,
+  "off_base_balance_penalty": -1.65,
+  "outside_angle_penalty": -1.1,
+  "open_stance_rear_lane_penalty": -0.35,
+  "wall_near_outfight_penalty": -1.25,
+  "feint_attention_penalty": -1.1,
+  "repeated_move_read_bonus": 0.85,
+  "novel_move_surprise_penalty": -0.2,
+  "fatigue_per_point_penalty": -0.1,
+  "head_damage_reaction_penalty": -0.1,
+  "body_damage_high_guard_drop": -0.14,
+  "leg_damage_check_and_mobility_penalty": -0.2
+ },
+ "landing_multipliers": {
+  "evaded": 0.0,
+  "miss": 0.0,
+  "caught": 0.08,
+  "checked": 0.1,
+  "jammed": 0.18,
+  "blocked": 0.18,
+  "partial": 0.5,
+  "clean": 1.0,
+  "counter_hit": 1.42,
+  "flush": 1.55
+ },
+ "regional_damage_limits": {
+  "head": 11.5,
+  "body": 12.0,
+  "leg": 12.5
+ },
+ "slot_depth_multipliers": {
+  "1": 1.15,
+  "2": 1.05,
+  "3": 1.0,
+  "4": 0.95
+ },
+ "diminishing_returns": {
+  "posture_asymptote": 2.4,
+  "readiness_compression": 0.62,
+  "min_readiness": 1.45,
+  "max_readiness": 4.85,
+  "tempo_defensive_damping": 0.65
+ },
+ "tempo_rules": {
+  "initiative_base": 3.0,
+  "initiative_per_point": 0.3,
+  "entry_per_point": 0.08,
+  "low_tempo_readiness_per_point": 0.22,
+  "low_tempo_counter_per_point": 0.05,
+  "fatigue_by_tempo": {
+   "1": 0.22,
+   "2": 0.28,
+   "3": 0.34,
+   "4": 0.39,
+   "5": 0.44
+  }
+ },
+ "arena_presets": {
+  "ring": {
+   "id": "ring",
+   "half_width_m": 3.0,
+   "wall_near_m": 0.6,
+   "has_walls": true,
+   "has_corners": true,
+   "corner_trap_bonus": 1.15,
+   "lateral_freedom": 1.0
+  },
+  "cage": {
+   "id": "cage",
+   "half_width_m": 3.5,
+   "wall_near_m": 0.65,
+   "has_walls": true,
+   "has_corners": false,
+   "wall_pin_bonus": 1.2,
+   "lateral_freedom": 1.1
+  },
+  "open_floor": {
+   "id": "open_floor",
+   "half_width_m": 50.0,
+   "wall_near_m": 0.0,
+   "has_walls": false,
+   "has_corners": false,
+   "lateral_freedom": 1.35
+  },
+  "narrow_alley": {
+   "id": "narrow_alley",
+   "half_width_m": 1.6,
+   "wall_near_m": 0.5,
+   "has_walls": true,
+   "has_corners": true,
+   "restricts_wide_kicks": true,
+   "lateral_freedom": 0.55
+  },
+  "rooftop_edge": {
+   "id": "rooftop_edge",
+   "half_width_m": 2.8,
+   "wall_near_m": 0.6,
+   "has_walls": false,
+   "has_drop_hazard": true,
+   "lateral_freedom": 0.85
+  },
+  "dojo": {
+   "id": "dojo",
+   "half_width_m": 4.0,
+   "wall_near_m": 0.6,
+   "has_walls": true,
+   "hard_floor_throw_bonus": 1.2,
+   "lateral_freedom": 1.15
+  }
+ },
+ "posture": {
+  "guard_decay_rate_default": 0.06,
+  "rear_heavy_to_front_heavy_leg_damage": 4.0,
+  "head_position_high_fatigue": 5.0,
+  "head_position_high_head_damage": 4.5,
+  "guard_integrity_min": 0.25,
+  "guard_decay_body_weight": 0.6,
+  "guard_decay_fatigue_weight": 0.35,
+  "vision_feint_penalty": 0.8,
+  "vision_per_head_damage": 0.12
+ },
+ "readiness": {
+  "clinch_guard_weight": 0.35,
+  "clinch_tie_weight": 1.15,
+  "null_tie_lane_default": -0.6,
+  "underhook_bonus_per_hook": 0.35,
+  "kick_range_head_seam_scale": 0.15,
+  "offensive_seam_scale": 0.5,
+  "mentality_positive_scale": 1.0,
+  "mentality_negative_scale": 0.5,
+  "recovery_non_exposed_fraction": 0.35,
+  "feint_penalty": -0.55,
+  "read_per_seen": 0.16,
+  "read_per_consecutive": 0.24,
+  "nonlane_readiness_default": 3.0,
+  "nonlane_lane_map": {
+   "ground": "clinch",
+   "space": null,
+   "note": "None = use nonlane_readiness_default (3.0). Reproduces legacy lanes for ride/armbar once technique data is read (P1b)."
+  }
+ },
+ "kick_defense": {
+  "catch_clamp": [
+   0.1,
+   0.65
+  ],
+  "catch_readiness_factor": 0.05,
+  "kick_path_min_roll": 0.1,
+  "kick_path_excluded": [
+   "knee_body"
+  ]
+ },
+ "damage": {
+  "crouch_hook_bonus": 0.06,
+  "switch_after_step_bonus": 0.08,
+  "off_slot_penalty": -0.15,
+  "fatigue_wear_per_point": -0.012,
+  "leg_wear_kick_per_point": -0.03,
+  "leg_wear_other_per_point": -0.015,
+  "attacker_multiplier_clamp": [
+   0.75,
+   1.75
+  ],
+  "wall_landing_multiplier": 1.12,
+  "guard_mitigation_intercept": 1.14,
+  "guard_mitigation_per_coverage_point": 0.06,
+  "block_absorb_blocked_landing": 0.24,
+  "block_absorb_head_guard_factor": 0.9,
+  "compounding_per_damage_point": 0.045,
+  "defender_multiplier_min": 0.6,
+  "check_recoil_fraction": 0.65,
+  "tie_damage_fraction": 0.25,
+  "tie_fatigue_fraction": 0.65,
+  "submission_damage_fraction": 0.3,
+  "submission_fatigue_fraction": 0.55,
+  "stamina_drain_fatigue_fraction": 0.55
+ },
+ "simulation": {
+  "start_x_positions": [
+   -0.8,
+   0.8
+  ],
+  "initiative_fatigue_drag": -0.08,
+  "initiative_leg_drag": -0.1,
+  "initiative_noise": 0.85,
+  "clinch_exit_probability": 0.42,
+  "entry_wall_distance_penalty": -0.65,
+  "entry_leg_distance_penalty": -0.12,
+  "entry_logistic_offset": 0.35,
+  "entry_probability_clamp": [
+   0.18,
+   0.82
+  ],
+  "failed_entry_wall_drift_m": 0.28,
+  "pull_out_probability_outfighter": 0.72,
+  "pull_out_probability_default": 0.58,
+  "pull_out_wall_penalty": -0.2,
+  "feint_probability_cap": 0.55,
+  "base_attack_skill": 3.3,
+  "kick_range_punch_penalty": -0.55,
+  "kick_range_shot_penalty": -0.75,
+  "hit_probability_clamp": [
+   0.1,
+   0.85
+  ],
+  "flush_band_fraction": 0.28,
+  "clean_band_fraction": 0.76,
+  "counter_min_recovery_frames": 6,
+  "counter_read_bonus_per_repeat": 0.07,
+  "counter_read_repeats_cap": 3,
+  "counter_recovery_bonus_per_frame_over_7": 0.03,
+  "counter_guard_resist_per_point": 0.05,
+  "counter_fatigue_penalty_per_point": 0.03,
+  "counter_probability_clamp": [
+   0.1,
+   0.55
+  ],
+  "counter_hit_share": 0.62,
+  "recovery_penalty_default": 0.4,
+  "recovery_penalty_failed_multiplier": 1.25,
+  "recovery_penalty_landed_multiplier": 0.6,
+  "leg_compromise_threshold": 4.5,
+  "pressure_wall_drift_m": 0.42,
+  "outfighter_reset_factor": 0.55,
+  "tempo_gap_frames": {
+   "base": 36,
+   "per_tempo_point": 4,
+   "min": 6,
+   "uses": "max(tempo_A, tempo_B)"
+  },
+  "recovery_drag": {
+   "base": 1.45,
+   "per_recovery_frame": 0.08,
+   "failed_attack_extra": 0.65,
+   "failed_outcomes": [
+    "evaded",
+    "blocked",
+    "checked",
+    "caught"
+   ]
+  },
+  "caught_kick_sweep": {
+   "base": 0.62,
+   "clamp": [
+    0.18,
+    0.68
+   ],
+   "fatigue_per_point": 0.04,
+   "scramble_if_resistance_gte": 0.12
+  },
+  "finish_thresholds": {
+   "submission_stage": 3,
+   "regional_limits_key": "regional_damage_limits"
+  },
+  "decision_weights": {
+   "head": 1.15,
+   "body": 1.05,
+   "leg": 1.0,
+   "control_mark": 1.5
+  }
+ },
+ "legacy": {
+  "move_stats": {
+   "source": "engine/simulator_v2.py:38-75 (MOVE_BASE_STATS)",
+   "table": {
+    "step": {
+     "base": 0.0,
+     "type": "movement",
+     "setup_f": 3,
+     "exec_f": 6,
+     "hold_f": 0,
+     "rec_f": 4,
+     "lane": "space"
+    },
+    "retreat": {
+     "base": 0.0,
+     "type": "movement",
+     "setup_f": 2,
+     "exec_f": 6,
+     "hold_f": 0,
+     "rec_f": 4,
+     "lane": "space"
+    },
+    "pivot": {
+     "base": 0.0,
+     "type": "movement",
+     "setup_f": 3,
+     "exec_f": 7,
+     "hold_f": 0,
+     "rec_f": 4,
+     "lane": "space"
+    },
+    "switch_step": {
+     "base": 0.0,
+     "type": "movement",
+     "setup_f": 3,
+     "exec_f": 8,
+     "hold_f": 0,
+     "rec_f": 5,
+     "lane": "space"
+    },
+    "feint": {
+     "base": 0.0,
+     "type": "feint",
+     "setup_f": 2,
+     "exec_f": 5,
+     "hold_f": 0,
+     "rec_f": 3,
+     "lane": "space"
+    },
+    "jab": {
+     "base": 1.0,
+     "type": "buildup",
+     "setup_f": 3,
+     "exec_f": 5,
+     "hold_f": 2,
+     "rec_f": 5,
+     "lane": "head_straight"
+    },
+    "cross": {
+     "base": 2.0,
+     "type": "impact",
+     "setup_f": 5,
+     "exec_f": 7,
+     "hold_f": 3,
+     "rec_f": 8,
+     "lane": "head_straight"
+    },
+    "hook": {
+     "base": 2.5,
+     "type": "impact",
+     "setup_f": 5,
+     "exec_f": 8,
+     "hold_f": 3,
+     "rec_f": 9,
+     "lane": "head_hook"
+    },
+    "body_hook": {
+     "base": 2.3,
+     "type": "stamina_drain",
+     "setup_f": 5,
+     "exec_f": 8,
+     "hold_f": 3,
+     "rec_f": 8,
+     "lane": "body"
+    },
+    "uppercut": {
+     "base": 2.7,
+     "type": "impact",
+     "setup_f": 6,
+     "exec_f": 8,
+     "hold_f": 3,
+     "rec_f": 10,
+     "lane": "head_uppercut"
+    },
+    "haymaker": {
+     "base": 3.2,
+     "type": "impact",
+     "setup_f": 9,
+     "exec_f": 11,
+     "hold_f": 4,
+     "rec_f": 16,
+     "lane": "head_hook"
+    },
+    "teep": {
+     "base": 1.4,
+     "type": "stamina_drain",
+     "setup_f": 4,
+     "exec_f": 7,
+     "hold_f": 2,
+     "rec_f": 7,
+     "lane": "body"
+    },
+    "low_kick": {
+     "base": 2.2,
+     "type": "buildup",
+     "setup_f": 5,
+     "exec_f": 8,
+     "hold_f": 3,
+     "rec_f": 10,
+     "lane": "leg"
+    },
+    "body_kick": {
+     "base": 2.6,
+     "type": "stamina_drain",
+     "setup_f": 6,
+     "exec_f": 9,
+     "hold_f": 3,
+     "rec_f": 12,
+     "lane": "body"
+    },
+    "side_kick": {
+     "base": 2.3,
+     "type": "impact",
+     "setup_f": 5,
+     "exec_f": 8,
+     "hold_f": 3,
+     "rec_f": 10,
+     "lane": "body"
+    },
+    "head_kick": {
+     "base": 3.5,
+     "type": "impact",
+     "setup_f": 7,
+     "exec_f": 10,
+     "hold_f": 4,
+     "rec_f": 15,
+     "lane": "head_hook"
+    },
+    "switch_kick": {
+     "base": 2.8,
+     "type": "stamina_drain",
+     "setup_f": 6,
+     "exec_f": 9,
+     "hold_f": 3,
+     "rec_f": 11,
+     "lane": "body"
+    },
+    "spinning_back_kick": {
+     "base": 3.3,
+     "type": "impact",
+     "setup_f": 8,
+     "exec_f": 10,
+     "hold_f": 4,
+     "rec_f": 16,
+     "lane": "body",
+     "vertical": "athletic"
+    },
+    "axe_kick": {
+     "base": 3.1,
+     "type": "impact",
+     "setup_f": 8,
+     "exec_f": 11,
+     "hold_f": 3,
+     "rec_f": 14,
+     "lane": "head_straight",
+     "vertical": "athletic"
+    },
+    "knee_body": {
+     "base": 2.8,
+     "type": "stamina_drain",
+     "setup_f": 4,
+     "exec_f": 7,
+     "hold_f": 3,
+     "rec_f": 8,
+     "lane": "body"
+    },
+    "jumping_knee": {
+     "base": 3.6,
+     "type": "impact",
+     "setup_f": 7,
+     "exec_f": 10,
+     "hold_f": 4,
+     "rec_f": 16,
+     "lane": "head_uppercut",
+     "vertical": "athletic"
+    },
+    "pummel": {
+     "base": 0.4,
+     "type": "stamina_drain",
+     "setup_f": 4,
+     "exec_f": 8,
+     "hold_f": 2,
+     "rec_f": 6,
+     "lane": "clinch"
+    },
+    "collar_tie": {
+     "base": 0.5,
+     "type": "stamina_drain",
+     "setup_f": 4,
+     "exec_f": 7,
+     "hold_f": 2,
+     "rec_f": 6,
+     "lane": "clinch"
+    },
+    "body_lock": {
+     "base": 0.6,
+     "type": "stamina_drain",
+     "setup_f": 5,
+     "exec_f": 8,
+     "hold_f": 2,
+     "rec_f": 7,
+     "lane": "clinch"
+    },
+    "cage_plum": {
+     "base": 0.8,
+     "type": "stamina_drain",
+     "setup_f": 5,
+     "exec_f": 8,
+     "hold_f": 3,
+     "rec_f": 7,
+     "lane": "clinch"
+    },
+    "shield_frame": {
+     "base": 0.5,
+     "type": "buildup",
+     "setup_f": 3,
+     "exec_f": 6,
+     "hold_f": 2,
+     "rec_f": 5,
+     "lane": "head_straight"
+    },
+    "double_leg": {
+     "base": 2.4,
+     "type": "impact",
+     "setup_f": 6,
+     "exec_f": 12,
+     "hold_f": 4,
+     "rec_f": 14,
+     "lane": "entry"
+    },
+    "single_leg": {
+     "base": 2.1,
+     "type": "buildup",
+     "setup_f": 5,
+     "exec_f": 11,
+     "hold_f": 4,
+     "rec_f": 12,
+     "lane": "entry"
+    },
+    "outside_trip": {
+     "base": 2.5,
+     "type": "impact",
+     "setup_f": 5,
+     "exec_f": 10,
+     "hold_f": 4,
+     "rec_f": 12,
+     "lane": "clinch"
+    },
+    "sanda_sweep": {
+     "base": 2.6,
+     "type": "impact",
+     "setup_f": 4,
+     "exec_f": 9,
+     "hold_f": 4,
+     "rec_f": 11,
+     "lane": "single_support"
+    },
+    "guard_pull": {
+     "base": 0.8,
+     "type": "stamina_drain",
+     "setup_f": 4,
+     "exec_f": 10,
+     "hold_f": 2,
+     "rec_f": 8,
+     "lane": "clinch"
+    },
+    "ride": {
+     "base": 1.1,
+     "type": "stamina_drain",
+     "setup_f": 4,
+     "exec_f": 14,
+     "hold_f": 4,
+     "rec_f": 9,
+     "lane": "clinch"
+    },
+    "armbar": {
+     "base": 3.8,
+     "type": "submission",
+     "setup_f": 8,
+     "exec_f": 16,
+     "hold_f": 6,
+     "rec_f": 12,
+     "lane": "clinch"
+    },
+    "escape": {
+     "base": 0.0,
+     "type": "movement",
+     "setup_f": 5,
+     "exec_f": 12,
+     "hold_f": 0,
+     "rec_f": 8,
+     "lane": "space"
+    },
+    "wall_tie": {
+     "base": 0.7,
+     "type": "stamina_drain",
+     "setup_f": 4,
+     "exec_f": 8,
+     "hold_f": 2,
+     "rec_f": 6,
+     "lane": "clinch"
+    },
+    "wall_punch": {
+     "base": 2.4,
+     "type": "stamina_drain",
+     "setup_f": 4,
+     "exec_f": 8,
+     "hold_f": 3,
+     "rec_f": 7,
+     "lane": "body"
+    }
+   },
+   "fallback": {
+    "base": 1.0,
+    "type": "impact",
+    "setup_f": 4,
+    "exec_f": 8,
+    "hold_f": 2,
+    "rec_f": 8,
+    "lane": "head_straight"
+   },
+   "note": "P1a reads this table verbatim (the field 'vertical' is never read). P1b switches to data/techniques_v2.json; expected diffs are listed in retire_in_p1b."
+  },
+  "retire_in_p1b": {
+   "technique_data_differences": [
+    {
+     "technique": "step/retreat/pivot/switch_step/escape",
+     "field": "damage_type label",
+     "legacy": "movement",
+     "data": "none",
+     "effect": "label only (base damage 0)"
+    },
+    {
+     "technique": "feint",
+     "field": "damage_type label",
+     "legacy": "feint",
+     "data": "none",
+     "effect": "label only (base damage 0)"
+    },
+    {
+     "technique": "ride, armbar",
+     "field": "attack_lane",
+     "legacy": "clinch",
+     "data": "ground",
+     "effect": "readiness lane; reproduce with readiness.nonlane_lane_map ground->clinch"
+    },
+    {
+     "technique": "escape",
+     "field": "attack_lane",
+     "legacy": "space",
+     "data": "ground",
+     "effect": "seed corrects data to space"
+    },
+    {
+     "technique": "wall_tie",
+     "field": "attack_lane",
+     "legacy": "clinch",
+     "data": "body",
+     "effect": "seed corrects data to clinch (it is a grip)"
+    },
+    {
+     "technique": "spinning_back_kick",
+     "field": "vertical",
+     "legacy": "athletic",
+     "data": "grounded",
+     "effect": "none today (never read); seed keeps grounded"
+    }
+   ]
+  },
+  "kick_ids": {
+   "value": [
+    "axe_kick",
+    "body_kick",
+    "head_kick",
+    "jumping_knee",
+    "knee_body",
+    "low_kick",
+    "side_kick",
+    "spinning_back_kick",
+    "switch_kick",
+    "teep"
+   ],
+   "source": "engine/simulator_v2.py:88-99",
+   "export_rule": "Keep the exported name KICK_IDS. P1a: exactly this set. From P5: every technique with kind kick or knee in data/techniques_v2.json (a superset; the CLI test only gets stricter)."
+  },
+  "kick_defense_rules": {
+   "source": "engine/simulator_v2.py:565-614 (select_kick_defense)",
+   "semantics": "Evaluate rules in order; the first rule whose 'when' holds returns (action, outcome). A rule with 'roll' runs that roll only when rng is given; if the roll fails, continue with the next rule. When rng is None the 'no_rng' branch is used. No rule checks training (that is defect B5).",
+   "rules": [
+    {
+     "id": "catch",
+     "when": {
+      "kick_in": [
+       "body_kick",
+       "low_kick",
+       "switch_kick",
+       "teep",
+       "side_kick"
+      ],
+      "any_of": [
+       {
+        "kicking": "kicking.sanda"
+       },
+       {
+        "defense": "defense.parry_catch"
+       }
+      ]
+     },
+     "roll": {
+      "p": "clamp(base_catch[kick] + kick_catch_bonus(kicking) + kick_catch_bonus(defense) + kick_retraction_delta(attacker kicking) + 0.05*(lane_readiness-3.0), 0.10, 0.65)",
+      "base_catch": {
+       "body_kick": 0.44,
+       "switch_kick": 0.44,
+       "teep": 0.32,
+       "side_kick": 0.32,
+       "low_kick": 0.18
+      }
+     },
+     "no_rng": {
+      "kick_in": [
+       "body_kick",
+       "low_kick",
+       "switch_kick"
+      ],
+      "action": "kick_catch",
+      "outcome": "caught",
+      "else": "continue"
+     },
+     "action": "kick_catch",
+     "outcome": "caught"
+    },
+    {
+     "id": "check",
+     "when": {
+      "kick_in": [
+       "low_kick",
+       "body_kick",
+       "switch_kick"
+      ],
+      "defense": "defense.check_frame"
+     },
+     "action": "check",
+     "outcome": "checked"
+    },
+    {
+     "id": "outfight_wall",
+     "when": {
+      "defense": "defense.outfight",
+      "kick_in": [
+       "low_kick",
+       "body_kick",
+       "head_kick",
+       "spinning_back_kick",
+       "teep",
+       "side_kick"
+      ],
+      "wall_near": true
+     },
+     "action": "shell_block",
+     "outcome": "blocked"
+    },
+    {
+     "id": "outfight",
+     "when": {
+      "defense": "defense.outfight",
+      "kick_in": [
+       "low_kick",
+       "body_kick",
+       "head_kick",
+       "spinning_back_kick",
+       "teep",
+       "side_kick"
+      ]
+     },
+     "action": "evade_step_back",
+     "outcome": "evaded"
+    },
+    {
+     "id": "lean_back",
+     "when": {
+      "defense_in": [
+       "defense.slip_roll",
+       "defense.shoulder_roll"
+      ],
+      "kick_in": [
+       "head_kick",
+       "axe_kick"
+      ]
+     },
+     "action": "lean_back",
+     "outcome": "evaded"
+    },
+    {
+     "id": "jam",
+     "when": {
+      "defense_in": [
+       "defense.smother",
+       "defense.sprawl_pummel"
+      ],
+      "kick_in": [
+       "teep",
+       "body_kick",
+       "spinning_back_kick"
+      ]
+     },
+     "action": "jam_step",
+     "outcome": "jammed"
+    },
+    {
+     "id": "absorb",
+     "when": {
+      "defense": "defense.block_absorb"
+     },
+     "action": "retreat",
+     "outcome": "blocked"
+    },
+    {
+     "id": "default",
+     "when": {},
+     "action": "shell_block",
+     "outcome": "blocked"
+    }
+   ]
+  },
+  "kick_defense_bonus_tiers": {
+   "source": "engine/simulator_v2.py:1404-1409",
+   "tiers": [
+    {
+     "when_all": [
+      {
+       "kicking": "kicking.sanda"
+      },
+      {
+       "defense": "defense.parry_catch"
+      }
+     ],
+     "bonus": 0.24
+    },
+    {
+     "when_any": [
+      {
+       "kicking": "kicking.sanda"
+      },
+      {
+       "defense": "defense.check_frame"
+      },
+      {
+       "defense": "defense.outfight",
+       "wall_near": false
+      }
+     ],
+     "bonus": 0.16
+    },
+    {
+     "default": true,
+     "bonus": 0.08
+    }
+   ]
+  },
+  "native_defense_rules": {
+   "source": "engine/simulator_v2.py:617-686 (select_native_defense)",
+   "semantics": "Defaults: missing defense option = defense.block_absorb, missing hands = hands.high_guard. Class 'grapple_entry' = incoming technique in grapple_entry_ids; everything else is 'strike'. For the defender's option take its step list for the class and return the first step whose 'when' holds and (if needs_trained) whose action is in avail_def. If no step returns and fallthrough is true, run the generic list. 'wall_near' means wall_proximity == 'near'.",
+   "grapple_entry_ids": [
+    "double_leg",
+    "single_leg",
+    "outside_trip",
+    "sanda_sweep",
+    "body_lock",
+    "collar_tie",
+    "wall_tie",
+    "guard_pull"
+   ],
+   "grapple_entry": {
+    "defense.sprawl_pummel": {
+     "steps": [
+      {
+       "action": "sprawl",
+       "outcome": "evaded",
+       "needs_trained": true,
+       "when": {
+        "incoming_in": [
+         "double_leg",
+         "single_leg"
+        ]
+       }
+      },
+      {
+       "action": "pummel",
+       "outcome": "blocked",
+       "needs_trained": true
+      }
+     ],
+     "fallthrough": true
+    },
+    "defense.smother": {
+     "steps": [
+      {
+       "action": "pummel",
+       "outcome": "jammed",
+       "needs_trained": true
+      },
+      {
+       "action": "wall_tie",
+       "outcome": "jammed",
+       "needs_trained": true
+      }
+     ],
+     "fallthrough": true
+    },
+    "defense.outfight": {
+     "steps": [
+      {
+       "action": "shell_block",
+       "outcome": "blocked",
+       "needs_trained": true,
+       "when": {
+        "wall_near": true
+       }
+      },
+      {
+       "action": "retreat",
+       "outcome": "blocked",
+       "needs_trained": false,
+       "when": {
+        "wall_near": true
+       }
+      },
+      {
+       "action": "pivot",
+       "outcome": "evaded",
+       "needs_trained": true
+      },
+      {
+       "action": "retreat",
+       "outcome": "evaded",
+       "needs_trained": false
+      }
+     ],
+     "fallthrough": false
+    },
+    "defense.check_frame": {
+     "steps": [
+      {
+       "action": "shield_frame",
+       "outcome": "blocked",
+       "needs_trained": true
+      }
+     ],
+     "fallthrough": true
+    },
+    "generic": {
+     "steps": [
+      {
+       "action": "sprawl",
+       "outcome": "evaded",
+       "needs_trained": true,
+       "when": {
+        "incoming_in": [
+         "double_leg",
+         "single_leg"
+        ]
+       }
+      },
+      {
+       "action": "pummel",
+       "outcome": "blocked",
+       "needs_trained": true
+      },
+      {
+       "action": "retreat",
+       "outcome": "evaded",
+       "needs_trained": false
+      }
+     ]
+    }
+   },
+   "strike": {
+    "defense.parry_catch": [
+     {
+      "action": "parry",
+      "outcome": "evaded",
+      "needs_trained": true,
+      "when": {
+       "incoming_in": [
+        "jab",
+        "cross",
+        "teep",
+        "haymaker"
+       ]
+      }
+     },
+     {
+      "action": "shell_block",
+      "outcome": "blocked",
+      "needs_trained": true
+     },
+     {
+      "action": "retreat",
+      "outcome": "blocked",
+      "needs_trained": false
+     }
+    ],
+    "defense.slip_roll": [
+     {
+      "action": "slip",
+      "outcome": "evaded",
+      "needs_trained": true
+     },
+     {
+      "action": "pivot",
+      "outcome": "evaded",
+      "needs_trained": true
+     },
+     {
+      "action": "retreat",
+      "outcome": "evaded",
+      "needs_trained": false
+     }
+    ],
+    "defense.shoulder_roll": [
+     {
+      "action": "slip",
+      "outcome": "evaded",
+      "needs_trained": true
+     },
+     {
+      "action": "pivot",
+      "outcome": "evaded",
+      "needs_trained": true
+     },
+     {
+      "action": "retreat",
+      "outcome": "evaded",
+      "needs_trained": false
+     }
+    ],
+    "defense.outfight": [
+     {
+      "action": "shell_block",
+      "outcome": "blocked",
+      "needs_trained": true,
+      "when": {
+       "wall_near": true
+      }
+     },
+     {
+      "action": "retreat",
+      "outcome": "blocked",
+      "needs_trained": false,
+      "when": {
+       "wall_near": true
+      }
+     },
+     {
+      "action": "pivot",
+      "outcome": "evaded",
+      "needs_trained": true,
+      "when": {
+       "incoming_in": [
+        "jab",
+        "cross"
+       ]
+      }
+     },
+     {
+      "action": "retreat",
+      "outcome": "evaded",
+      "needs_trained": false
+     }
+    ],
+    "defense.check_frame": [
+     {
+      "action": "shield_frame",
+      "outcome": "blocked",
+      "needs_trained": true
+     },
+     {
+      "action": "retreat",
+      "outcome": "evaded",
+      "needs_trained": false,
+      "when": {
+       "hands": "hands.long_guard"
+      }
+     },
+     {
+      "action": "shell_block",
+      "outcome": "blocked",
+      "needs_trained": true
+     },
+     {
+      "action": "retreat",
+      "outcome": "blocked",
+      "needs_trained": false
+     }
+    ],
+    "defense.smother": [
+     {
+      "action": "pummel",
+      "outcome": "jammed",
+      "needs_trained": true
+     },
+     {
+      "action": "shield_frame",
+      "outcome": "blocked",
+      "needs_trained": true
+     },
+     {
+      "action": "step",
+      "outcome": "jammed",
+      "needs_trained": false
+     }
+    ],
+    "defense.sprawl_pummel": [
+     {
+      "action": "slip",
+      "outcome": "evaded",
+      "needs_trained": true,
+      "when": {
+       "hands": "hands.philly_shell"
+      }
+     },
+     {
+      "action": "shell_block",
+      "outcome": "blocked",
+      "needs_trained": true
+     },
+     {
+      "action": "retreat",
+      "outcome": "blocked",
+      "needs_trained": false
+     }
+    ],
+    "defense.block_absorb": [
+     {
+      "action": "shell_block",
+      "outcome": "blocked",
+      "needs_trained": true
+     },
+     {
+      "action": "retreat",
+      "outcome": "blocked",
+      "needs_trained": false
+     }
+    ]
+   }
+  },
+  "breakdown_rules": {
+   "source": "engine/simulator_v2.py:362-390",
+   "semantics": "Per defense option, rules are checked in order and only the FIRST matching rule applies (only defense.outfight has two rules). A rule matches when any condition in when_any holds AND the lane is in 'lanes' ('all' = every lane).",
+   "rules": {
+    "defense.slip_roll": [
+     {
+      "when_any": {
+       "fatigue_gte": 4.0,
+       "head_damage_gte": 3.5,
+       "vision_lt": 1.8
+      },
+      "lanes": "all",
+      "delta": -0.55
+     }
+    ],
+    "defense.parry_catch": [
+     {
+      "when_any": {
+       "feinted": true
+      },
+      "lanes": "all",
+      "delta": -0.65
+     }
+    ],
+    "defense.block_absorb": [
+     {
+      "when_any": {
+       "body_damage_gte": 3.5
+      },
+      "lanes": "all",
+      "delta": -0.55
+     }
+    ],
+    "defense.outfight": [
+     {
+      "when_any": {
+       "wall_near": true
+      },
+      "lanes": "all",
+      "delta_from_model": "state_modifiers.wall_near_outfight_penalty",
+      "delta_default": -1.25
+     },
+     {
+      "when_any": {
+       "leg_damage_gte": 3.5
+      },
+      "lanes": "all",
+      "delta": -0.95
+     }
+    ],
+    "defense.shoulder_roll": [
+     {
+      "when_any": {
+       "stance_relation": "open_stance"
+      },
+      "lanes": [
+       "head_hook"
+      ],
+      "delta": -0.45
+     }
+    ],
+    "defense.check_frame": [
+     {
+      "when_any": {
+       "weight_split": "front_heavy",
+       "base_width": "single_leg",
+       "leg_damage_gte": 4.0
+      },
+      "lanes": [
+       "leg",
+       "single_support"
+      ],
+      "delta": -0.85
+     }
+    ],
+    "defense.sprawl_pummel": [
+     {
+      "when_any": {
+       "feinted": true,
+       "fatigue_gte": 4.5
+      },
+      "lanes": [
+       "entry"
+      ],
+      "delta": -0.65
+     }
+    ],
+    "defense.smother": [
+     {
+      "when_any": {
+       "opponent_tie_in": [
+        "tie.thai_plum",
+        "tie.greco",
+        "tie.judo_sambo",
+        "tie.freestyle"
+       ]
+      },
+      "lanes": [
+       "clinch"
+      ],
+      "delta": -0.45
+     }
+    ]
+   }
+  },
+  "range_lane_bonuses": {
+   "source": "engine/simulator_v2.py:350-352, 438",
+   "rules": {
+    "hands.shield52": {
+     "ranges": [
+      "punch",
+      "close",
+      "clinch"
+     ],
+     "lanes": "all",
+     "delta": 0.45
+    },
+    "defense.outfight": {
+     "ranges": [
+      "kick",
+      "outside"
+     ],
+     "lanes": "all",
+     "delta": 0.25,
+     "unless": "wall_near"
+    },
+    "stance.bladed": {
+     "ranges": [
+      "kick",
+      "outside"
+     ],
+     "lanes": "all",
+     "delta": 0.15
+    }
+   }
+  },
+  "initiative": {
+   "source": "engine/simulator_v2.py:1188-1205",
+   "formula": "initiative_base + initiative_per_point*(tempo-3) + mentality_term + (-last_recovery_drag if this fighter attacked last) + fatigue_drag*fatigue + leg_drag*leg_damage + U(-noise, +noise)",
+   "mentality_term": {
+    "mentality.counter": {
+     "delta": -0.35,
+     "only_when": "no exchange yet OR this fighter initiated the previous exchange"
+    },
+    "mentality.swarmer": {
+     "delta": 0.35
+    },
+    "mentality.pressure": {
+     "delta": 0.35
+    },
+    "all_other_mentalities": {
+     "delta": 0.0
+    }
+   },
+   "tie_break": "max by (score, fighter_id): fighter-ID tie-break (continuous noise makes exact ties practically impossible); P9 replaces with a seeded coin"
+  },
+  "counter_tendency_rule": {
+   "source": "engine/simulator_v2.py:1443-1445",
+   "rule": "counter base = sum of attack_profile.counter_tendency over mentality, defense, hands, stance; defense.outfight's term counts only at kick range and not at the wall"
+  },
+  "damage_routing": {
+   "source": "engine/simulator_v2.py:1470-1486",
+   "control_ids": [
+    "collar_tie",
+    "cage_plum",
+    "body_lock",
+    "wall_tie",
+    "pummel",
+    "guard_pull",
+    "ride"
+   ],
+   "rule": "control ids: damage x0.25 and fatigue +0.65 x damage; submissions: damage x0.30, fatigue +0.55 x damage; others: full damage, stamina_drain adds 0.55 x damage fatigue; target.liver_ribs adds 0.22 x damage fatigue on body damage",
+   "data_form": "technique.damage_routing (control | submission | strike) + target option on_body_damage_extra_fatigue_fraction"
+  },
+  "slot_plans": {
+   "source": "engine/simulator_v2.py:895-997 (build_slot_plans)",
+   "explicit_sequence_rule": "explicit = [m for m in slot.sequence if m in card_available]; use it unless empty or (karate in slot caps and kicking.karate and len(explicit) <= 3)",
+   "slot_moves": "active_techniques that are available, != 'escape', kind in (punch, kick, knee, takedown, grip, control, submission) and share a capability with the slot; karate+kicking.karate+mma appends side_kick, teep, body_kick, spinning_back_kick; if empty: available active techniques of kind punch/kick/takedown/grip",
+   "fallback_orders": [
+    {
+     "when": {
+      "caps_has": "sanda",
+      "slot_moves_has": "sanda_sweep"
+     },
+     "order": [
+      "low_kick",
+      "body_kick",
+      "teep",
+      "sanda_sweep",
+      "side_kick"
+     ],
+     "pool": "slot_moves"
+    },
+    {
+     "when": {
+      "caps_has_any": [
+       "judo",
+       "wrestling"
+      ]
+     },
+     "order": [
+      "body_lock",
+      "outside_trip",
+      "double_leg",
+      "single_leg",
+      "ride"
+     ],
+     "pool": "slot_moves"
+    },
+    {
+     "when": {
+      "caps_has": "bjj"
+     },
+     "order": [
+      "collar_tie",
+      "guard_pull",
+      "armbar"
+     ],
+     "pool": "slot_moves"
+    },
+    {
+     "when": {
+      "caps_has": "clinch"
+     },
+     "order": [
+      "collar_tie",
+      "knee_body",
+      "body_lock",
+      "pummel"
+     ],
+     "pool": "slot_moves"
+    },
+    {
+     "when": {
+      "caps_has": "kickboxing",
+      "kicking": "kicking.dutch"
+     },
+     "order": [
+      "jab",
+      "cross",
+      "body_hook",
+      "low_kick",
+      "body_kick"
+     ],
+     "pool": "slot_moves_or_available"
+    },
+    {
+     "when": {
+      "caps_has": "kickboxing",
+      "kicking": "kicking.muay_thai"
+     },
+     "order": [
+      "teep",
+      "body_kick",
+      "low_kick",
+      "knee_body"
+     ],
+     "pool": "slot_moves_or_available"
+    },
+    {
+     "when": {
+      "caps_has": "kickboxing"
+     },
+     "order": [
+      "teep",
+      "low_kick",
+      "body_kick"
+     ],
+     "pool": "slot_moves"
+    },
+    {
+     "when": {
+      "caps_has": "karate"
+     },
+     "order": [
+      "side_kick",
+      "teep",
+      "body_kick",
+      "spinning_back_kick",
+      "jab",
+      "cross"
+     ],
+     "pool": "slot_moves_or_available"
+    },
+    {
+     "when": {
+      "caps_has": "boxing",
+      "target": "target.body_puncher"
+     },
+     "order": [
+      "jab",
+      "body_hook",
+      "cross",
+      "uppercut",
+      "hook"
+     ],
+     "pool": "slot_moves"
+    },
+    {
+     "when": {
+      "caps_has": "boxing",
+      "mentality": "mentality.counter"
+     },
+     "order": [
+      "jab",
+      "cross",
+      "uppercut",
+      "hook",
+      "body_hook"
+     ],
+     "pool": "slot_moves"
+    },
+    {
+     "when": {
+      "caps_has": "boxing"
+     },
+     "order": [
+      "jab",
+      "cross",
+      "hook",
+      "body_hook",
+      "uppercut"
+     ],
+     "pool": "slot_moves"
+    },
+    {
+     "when": {},
+     "order": "slot_moves",
+     "pool": "slot_moves"
+    }
+   ],
+   "after_order": "sequence = dedupe(order + slot_moves) filtered to card_available; empty -> ['jab']",
+   "home_range_default": {
+    "clinch": [
+     "bjj",
+     "wrestling",
+     "judo",
+     "clinch"
+    ],
+    "kick": [
+     "kickboxing",
+     "karate",
+     "sanda"
+    ],
+    "else": "punch"
+   },
+   "abandon_default": "max_consecutive_stalls = 999 if the card has one admitted slot else 2",
+   "reorder": "plans sorted by (home_range != preferred_ranges[0], slot_index); then trigger := fight_start for the first, slot_stalled_or_countered for the rest; next_slot_id := next plan cyclically (card links are overwritten: defect B2)"
+  },
+  "range_ladder": {
+   "source": "engine/simulator_v2.py:1226-1284",
+   "rules": [
+    "standing ladder = [kick, punch, clinch]; ground posture forces range ground; boxing forces punch",
+    "attacker holding collar/body_lock/single_tie with slot home range kick or punch: defender tie null -> leave to punch automatically; else leave with clinch_exit_probability 0.42; otherwise stay clinch",
+    "stepping in one band: entry = sum(entry_delta over mentality, stance, defense, hands, tie, kicking, target) + entry_per_point*(tempo-3); distance = sum(distance_control_delta over the defender's same 7 dims, excluding defense.outfight at the wall) - 0.65 at the wall - 0.12*leg damage; p = clamp(sigmoid(entry - distance + 0.35), 0.18, 0.82); failure drifts the defender 0.28 m toward the wall in walled arenas",
+    "stepping out one band: p = 0.72 if mentality.outboxer or defense.outfight else 0.58, -0.20 when the attacker is at the wall"
+   ]
+  },
+  "selection_rules": {
+   "source": "engine/simulator_v2.py:1286-1347",
+   "rules": [
+    "filtered = sequence without 'escape' and, once kick_checks_suffered >= 2, without low_kick and body_kick (falls back to the full sequence if empty)",
+    "range match: technique reaches if the range is in its required_range (but never double_leg/single_leg at kick range), or at punch range if 'close' is in its required_range, or it is one of low_kick/body_kick/teep/switch_kick, or the attacker's tie is tie.greco/tie.judo_sambo and it is body_lock/outside_trip/collar_tie",
+    "pick = range-matched list (else filtered) at slot_Cursor modulo length; the cursor advances every exchange",
+    "ground: top with ride available -> ride; bottom with armbar -> armbar; else escape if available; else top strikes [cross, hook, body_hook, jab, haymaker] at the cursor; else retreat, then pummel, then jab",
+    "kick range and the pick is not in KICK_IDS: pick from [side_kick, teep, low_kick, body_kick, jab] that are available, at the cursor",
+    "recent moves window = 6; consecutive repeats feed read memory",
+    "feint chance = min(0.55, sum of feint_setup_rate over mentality, stance, hands, target)"
+   ]
+  },
+  "damage_rules": {
+   "source": "engine/simulator_v2.py:743-875 (compute_card_derived_damage)",
+   "rules": [
+    "base <= 0 -> zero-damage record",
+    "region overrides: single_leg -> leg; body_kick with kicking.karate on an odd slot cursor -> head; regions other than head/body/leg -> head for head_kick/axe_kick/jumping_knee, else body",
+    "stance.crouch +0.06 power on hook/body_hook/uppercut; stance.switch +0.08 when 'switch_step' is in setups (never true today)",
+    "kicking power_delta applies to KICK_IDS when the lane is a kicking favored lane or the id is in [side_kick, spinning_back_kick, axe_kick, teep, low_kick, body_kick, head_kick, knee_body, jumping_knee]",
+    "target power_delta applies when the lane is a target favored lane, or head_hunter+head, body_puncher/liver_ribs+body, leg_chopper+leg, knee_clincher+[knee_body, jumping_knee, collar_tie]",
+    "hands power_delta always; tie power_delta when the lane is clinch/entry/single_support; counter_hit adds counter_power_delta of mentality, hands and defense",
+    "slot delta = depth multiplier - 1 in the active slot, else -0.15; wear = -0.012*fatigue - (0.03 if kick else 0.015)*leg damage; attacker clamp [0.75, 1.75]",
+    "landing x1.12 at the wall; guard = 1.14 - 0.06*coverage (defender hands mma_adaptation ratings: head_coverage/body_coverage/takedown_readiness); block_absorb: blocked landing 0.24, head guard x0.90; defender = max(0.60, guard*(1 + 0.045*region damage))",
+    "checked low_kick/body_kick/switch_kick recoil = base*0.65*attacker multiplier onto the kicker's leg"
+   ],
+   "data_forms": "stance.crouch power_bonus_for {techniques, delta}; stance.switch power_bonus_after_setup; target options target_power_match {regions, techniques}; technique field check_recoil; model.damage.tie_power_lanes"
+  },
+  "caught_kick": {
+   "source": "engine/simulator_v2.py:1553-1585",
+   "rule": "on 'caught': kicker kick_checks_suffered += 1; sweep p = clamp(0.62 - (tie + stance sweep_resistance) - 0.04*holder fatigue, 0.18, 0.68); dump technique = sanda_sweep if available else outside_trip else cross (clean); resistance >= 0.12 -> over_under clinch, else ground with holder half_guard_top / kicker closed_guard_bottom"
+  },
+  "counter_candidates": {
+   "source": "engine/simulator_v2.py:1590-1600",
+   "rule": "first available of: kick range [side_kick, teep, low_kick, body_kick, cross, jab]; clinch [knee_body, uppercut, body_hook, outside_trip, hook]; otherwise [cross, uppercut, hook, body_hook, jab, haymaker]; quality counter_hit with p 0.62 else partial"
+  },
+  "posture_rules": {
+   "source": "engine/simulator_v2.py:215-222",
+   "rule": "ground -> height grounded, base mat; recovery window single_leg_recovery -> base single_leg; leg damage >= 4.0 with rear_heavy -> front_heavy"
+  },
+  "inventory": "reference/literal_inventory.json lists every remaining option-id and technique-id literal by line and function (93 option literals on 76 lines; 364 technique literals on 186 lines incl. the MOVE_BASE_STATS/KICK_IDS tables)",
+  "decision": {
+   "source": "engine/simulator_v2.py:1683-1690",
+   "score": "1.15*opp_head + 1.05*opp_body + 1.0*opp_leg + 1.5*control_marks",
+   "tie_break": "max by (score, fighter_id): fighter-ID tie-break (defect D7)"
+  }
+ },
+ "laterality": {
+  "reference": "natural_stance",
+  "natural_definition": "A fighter is NATURAL when the dominant hand and dominant leg are on the REAR side of their current stance (orthodox: right; southpaw: left). Natural fighters get ZERO dominance deltas, so every card without a laterality block (and every D3 default) behaves exactly as today.",
+  "missing_block": {
+   "dominant_hand": "rear side of the card orientation (switching -> orthodox, i.e. right)",
+   "dominant_leg": "same as hand",
+   "opposite_stance_experience": "normal"
+  },
+  "hand_deltas": {
+   "cross_dominant": {
+    "lead_power": 0.08,
+    "lead_accuracy": 0.04,
+    "rear_power": -0.06,
+    "rear_accuracy": -0.02
+   },
+   "ambidextrous": {
+    "lead_power": 0.04,
+    "lead_accuracy": 0.02,
+    "rear_power": -0.02,
+    "rear_accuracy": 0.0
+   }
+  },
+  "leg_deltas": {
+   "cross_dominant": {
+    "lead_power": 0.08,
+    "lead_accuracy": 0.03,
+    "rear_power": -0.06,
+    "rear_accuracy": -0.02
+   },
+   "both": {
+    "lead_power": 0.04,
+    "lead_accuracy": 0.02,
+    "rear_power": -0.02,
+    "rear_accuracy": 0.0
+   }
+  },
+  "switch_trained_rear_penalty_scale": 0.5,
+  "switching_rule": "When a fighter changes stance mid-fight (switch_step, stance.switch, forced switch from leg damage) the rear side changes, so a natural fighter becomes cross-dominant until they switch back.",
+  "power_applies_to": "attacker additive sum (damage) for punches/elbows by hand side and kicks/knees by leg side; techniques with side 'both' or 'none' get 0",
+  "line_accuracy_modifiers": {
+   "closed_stance": {
+    "lead_straight": 0.08,
+    "lead_round": 0.05,
+    "rear_straight": -0.04,
+    "rear_round_kick": -0.02,
+    "lead_linear_kick": 0.03
+   },
+   "open_stance": {
+    "rear_straight": 0.08,
+    "lead_straight": -0.05,
+    "rear_round_kick": 0.06,
+    "lead_round": 0.03,
+    "rear_round": 0.02
+   }
+  },
+  "lead_foot_outside": {
+   "applies_in": "open_stance",
+   "ranges": [
+    "kick",
+    "punch"
+   ],
+   "contest_slope": 1.0,
+   "winner_rear_power_line_accuracy_bonus": 0.06,
+   "loser_sets_outside_angle_conceded": true,
+   "loser_penalty_from": "engine_constants.readiness.outside_angle_conceded (-1.10)",
+   "rear_power_lines": [
+    "rear_straight",
+    "rear_round",
+    "rear_round_kick",
+    "overhand"
+   ]
+  },
+  "familiarity": {
+   "exposure_default": {
+    "orthodox_facing_southpaw": 0.25,
+    "southpaw_facing_orthodox": 0.85,
+    "same_stance": 1.0
+   },
+   "card_override": {
+    "low": 0.15,
+    "normal": null,
+    "high": 0.9
+   },
+   "read_gain_at_zero_exposure": 0.8,
+   "novelty_penalty_multiplier_at_zero_exposure": 1.5,
+   "formula": "read_gain *= lerp(read_gain_at_zero_exposure, 1.0, exposure); novelty_penalty *= lerp(novelty_penalty_multiplier_at_zero_exposure, 1.0, exposure)"
+  },
+  "body_sides": {
+   "liver_side": "right",
+   "liver_stamina_multiplier": 1.25,
+   "spleen_stamina_multiplier": 1.05
+  },
+  "limb_effects": {
+   "leg_compromise_per_leg": 4.5,
+   "arm_damage_power_penalty_per_point": 0.03,
+   "arm_damage_power_penalty_cap": 0.15,
+   "lead_leg_damage_kick_power_penalty_per_point": 0.03
+  },
+  "cuts": {
+   "vision_penalty_per_cut_level_same_side": 0.4,
+   "max_cut_level": 3,
+   "doctor_stoppage_enabled": false,
+   "doctor_check_cut_level": 3,
+   "doctor_stoppage_probability": 0.25
+  },
+  "state_fields": "Store side damage in a NEW actor field damage_by_side {head_left, head_right, body_left, body_right, leg_left, leg_right, arm_left, arm_right}; keep actor.damage {head, body, leg} as the totals (fight_state_v2 closes that object).",
+  "grappling_side_preference": {
+   "enabled": false,
+   "note": "Research links grappling side preference to footedness; leave off until P6 is stable."
+  }
+ },
+ "grappling": {
+  "contest_slope": 0.9,
+  "probability_clamp": [
+   0.08,
+   0.8
+  ],
+  "profile_scale_note": "grappling_profile values are 0-5 like engine_index ratings; contest uses (actor_skill - opponent_skill + modifiers)",
+  "null_tie_profile": {
+   "takedown_offense": 0.0,
+   "takedown_defense": 1.5,
+   "clinch_control": 1.0,
+   "top_control": 1.0,
+   "bottom_game": 0.5,
+   "submission_offense": 0.0,
+   "submission_defense": 1.0,
+   "scramble": 1.5,
+   "stand_up": 1.5
+  },
+  "null_tie_note": "Used when a card's tie dimension is null. tie.null is NOT an option (option_behaviors.json must keep exactly 57 options).",
+  "fatigue_penalty_per_point": 0.08,
+  "position_advantage_bonus": {
+   "top": 0.3,
+   "dominant_clinch": 0.25,
+   "back_controller": 0.4
+  },
+  "grip_bonus": {
+   "underhook": 0.25,
+   "double_underhooks": 0.45,
+   "wrist_control": 0.3,
+   "head_inside": 0.3,
+   "caught_leg": 0.6
+  },
+  "wall_bonus": {
+   "pinner_takedown": 0.4,
+   "pinned_wall_walk": 0.3
+  },
+  "setup_bonus": {
+   "feint": 0.25,
+   "strike_landed_previous_exchange": 0.2,
+   "level_change": 0.15
+  },
+  "scramble_margin": 0.15,
+  "scramble_rule": "If |roll - p| < scramble_margin on a takedown or stand-up contest, the pair goes to the transition's via_outcome target (scramble or turtle) instead of success/failure.",
+  "submission": {
+   "stages": 3,
+   "escape_base_per_stage": [
+    0.55,
+    0.4,
+    0.25
+   ],
+   "fatigue_escape_penalty_per_point": 0.04,
+   "damage_per_stage_fraction": 0.3,
+   "reset_on_escape": true,
+   "on_escape": "apply the transition row with contest 'submission' from the current position (failed attempt), else stay"
+  },
+  "control_value_source": "positions.control_value_per_second",
+  "ground_strike_accuracy_base": 3.1,
+  "untrained_stand_up_base": 0.2
+ },
+ "vertical": {
+  "modes": {
+   "grounded": [
+    "grounded"
+   ],
+   "athletic": [
+    "grounded",
+    "athletic"
+   ],
+   "aerial": [
+    "grounded",
+    "athletic",
+    "aerial"
+   ]
+  },
+  "aliases": {
+   "wall_assisted": "aerial"
+  },
+  "gating": "a technique with vertical_min V is usable only if V is in modes[fight vertical_mode] AND V is in card.airborne_training.allowed_vertical_modes AND (technique.requires_airborne_training is false OR the id is in card.airborne_training.techniques)",
+  "landing_counter_bonus": 0.1,
+  "airborne_miss_exposure_multiplier": 1.2
+ },
+ "knockdowns": {
+  "flash_knockdown": {
+   "requires_damage_type": [
+    "impact"
+   ],
+   "requires_region": [
+    "head"
+   ],
+   "results": [
+    "clean",
+    "flush",
+    "counter_hit"
+   ],
+   "chance": {
+    "threshold_head_damage": 4.0,
+    "per_point_over": 0.04,
+    "flush_bonus": 0.08,
+    "counter_hit_bonus": 0.06,
+    "cap": 0.45
+   }
+  },
+  "stun": {
+   "exchanges": 2,
+   "readiness_penalty": -0.8
+  },
+  "standing_count": {
+   "rulesets": [
+    "boxing",
+    "kickboxing",
+    "muay_thai"
+   ],
+   "recover_base": 0.8,
+   "recover_per_head_damage": -0.05,
+   "three_knockdown_rule": true
+  },
+  "mma_follow_up": {
+   "ground_strike_bonus_after_knockdown": 0.15
+  },
+  "event_fields": "Record knockdowns in new exchange fields (knockdown, standing_count); the outcome enum of exchange_event_v2 is closed."
+ },
+ "rounds": {
+  "rest_fatigue_recovery_fraction": 0.35,
+  "rest_damage_recovery_fraction": 0.0,
+  "clear_stun_and_feint": true,
+  "reset_range_to": "kick",
+  "reset_position_to": "standing_neutral",
+  "reset_slot_to_start": false
+ },
+ "energy": {
+  "use_technique_energy_mult": true,
+  "attacker_cost": "fatigue_by_tempo[tempo] * technique.energy_mult",
+  "defender_cost_fraction": 0.35,
+  "accuracy_per_fatigue_point": 0.0,
+  "note": "Average energy_mult over a typical exchange mix is ~1.0 so tempo calibration roughly holds. accuracy_per_fatigue_point stays 0.0 (fatigue already lowers readiness and damage) until an audit asks for it."
+ },
+ "selection": {
+  "temperature": 0.6,
+  "weights": {
+   "seq_next": 1.0,
+   "seq_other": 0.35,
+   "target_pref": 0.6,
+   "range_fit": 0.8,
+   "open_seam": 0.9,
+   "debt_exploit": 0.5,
+   "repeats": -0.6,
+   "combo_follow_up": 0.7,
+   "signature": 0.3,
+   "momentum": 0.2,
+   "goal_alignment": 0.5
+  },
+  "features": {
+   "seq_next": "1 if the technique is the slot sequence item at the slot pointer, else 0. The pointer starts at 0 on every slot entry and advances by one each time the slot throws its pointed item (any result); it wraps.",
+   "seq_other": "1 if the technique is elsewhere in the active slot's sequence, else 0",
+   "target_pref": "1 if technique.attack_lane is in the favored_lanes of the card's target option (or of its kicking option, for kicks and knees), else 0",
+   "range_fit": "1.0 if the current range equals technique.required_range[0]; 0.6 if it is another listed range",
+   "open_seam": "1 if the defender's readiness on technique.attack_lane (this exchange's profile) is below open_seam_readiness_below, else 0",
+   "debt_exploit": "1 if the technique is in the effective technique_ids (base + v2 overlay) of a debt of the opponent (opponent options' exploitable_debt_ids + card exploitable_seams) whose ruleset includes this ruleset and whose required_range is within one band of the current range",
+   "repeats": "how many of this fighter's last 3 attacks used this technique (0-3)",
+   "combo_follow_up": "1 if (previous own technique, this technique) are consecutive in a combination chain whose school is one of the active slot's capabilities and whose trigger_on matches the previous exchange's result",
+   "signature": "1 if the technique is in card.signature_moves",
+   "momentum": "fight_momentum * commit(t), where commit(t) = min(1, recovery_exposure.readiness_penalty / 0.8)",
+   "goal_alignment": "1 if the technique satisfies goal_predicates[slot.goal], else 0"
+  },
+  "goal_predicates": {
+   "head_damage": "region_family == head",
+   "body_attrition": "region_family == body",
+   "leg_attrition": "region_family == leg",
+   "counter_trap": "usage in (counter, both) OR kind == feint OR 'recovery' in exploits_openings",
+   "clinch_control": "kind in (grip, knee, elbow) and 'clinch' in required_range",
+   "takedown_top_control": "kind in (takedown, sweep, control, ground_strike)",
+   "submission_finish": "kind == submission OR id == guard_pull OR result_position in (closed_guard, back_control, mount)",
+   "wall_pressure": "'wall' in exploits_openings OR id == cut_off_step",
+   "reset_to_home_range": "kind in (movement, escape)",
+   "position": "kind in (grip, control) OR result_position is not null"
+  },
+  "open_seam_readiness_below": 2.6,
+  "candidate_pool": "active slot pool (slot grants via core + active_techniques, plus basic_movement core) INTERSECT legal in ruleset INTERSECT vertical gating INTERSECT reachable now (range, position role, grips, wall), usage in (attack, both, movement); counter-only techniques excluded",
+  "empty_pool_policy": [
+   "standing and current range != slot home_range: choose step (to close) or retreat (to open) toward home range",
+   "in a clinch or ground position: choose the first trained escape for the actor's role (clinch_break, stand_up, technical_standup, hip_escape)",
+   "otherwise: step (basic_movement core, always trained)"
+  ],
+  "sampling": "p_i = softmax(score_i / temperature); one rng.random() draw per choice; candidates sorted by technique id before sampling so order never depends on dict iteration",
+  "counter_choice": "same scorer over trained techniques with usage in (counter, both, attack) that reach at the current range; counter-only techniques are eligible only here"
+ },
+ "slot_triggers": {
+  "evaluation": "At the start of each exchange, before selection. Triggers are evaluated from state and the previous exchange record.",
+  "thresholds": {
+   "commit_penalty_min": 0.45,
+   "hurt_head_damage": 6.0,
+   "late_fight_fraction": 0.7,
+   "behind_margin": 1.0,
+   "min_exchanges_before_preempt": 2
+  },
+  "predicates": {
+   "fight_start": "the slot active at exchange 1 (exactly one slot per card should carry it; if none, the first slot)",
+   "slot_stalled": "the active slot's abandon rule fired this exchange",
+   "slot_stalled_or_countered": "same as slot_stalled (being countered already counts as a stall)",
+   "slot_stalled_or_close_range": "slot_stalled OR range in (close, clinch)",
+   "opponent_kicks": "the opponent's last attack (within the last 2 exchanges) was a kick or knee",
+   "opponent_commits": "the opponent's last attack had recovery_exposure.readiness_penalty >= commit_penalty_min",
+   "opponent_enters": "the opponent closed the range by one band in the previous exchange",
+   "opponent_circles_out": "the opponent used pivot or retreat in 2 of their last 3 actions",
+   "opponent_clinches_or_shoots": "the opponent attempted a grip, takedown or sweep in the previous exchange, or the pair position is a clinch/transition position where the opponent holds the dominant role",
+   "opponent_on_wall": "opponent wall_proximity == near",
+   "self_on_wall": "own wall_proximity == near",
+   "close_range_reached": "range in (close, clinch)",
+   "self_hurt": "own head damage >= hurt_head_damage OR stunned OR knocked down this round",
+   "opponent_hurt": "opponent head damage >= hurt_head_damage OR stunned",
+   "clinch_entered": "pair position domain == clinch",
+   "ground_entered": "pair position domain == ground",
+   "late_fight": "elapsed time >= late_fight_fraction of the scheduled fight",
+   "behind_on_score": "own running decision score < opponent's by >= behind_margin"
+  },
+  "stall_conditions": {
+   "sequence_denied_or_countered": "an own attack from this slot ends miss/evaded/blocked/checked/caught/jammed, or the fighter is counter-hit; the count resets when an own attack lands partial or better",
+   "kicks_blocked_or_jammed": "an own kick or knee ends blocked/checked/caught/jammed",
+   "clinch_denied_or_escaped": "an own grip/takedown attempt fails or the opponent escapes a clinch position",
+   "pocket_stalled": "two consecutive exchanges at punch or close range without an own landed attack",
+   "default": "sequence_denied_or_countered"
+  },
+  "switching": [
+   "If the abandon rule fired: go to the first slot in links whose trigger holds; if none holds, the first slot in links; if links is empty, the next slot by index (wrapping).",
+   "Otherwise a linked slot whose trigger is reactive (any trigger except fight_start and slot_stalled*) and holds pre-empts, but only after the active slot has run min_exchanges_before_preempt exchanges.",
+   "A slot with goal reset_to_home_range: while it is active, defenses granted by its capabilities move to the front of every applicable defense list; when the pair is back at standing_neutral and at the card's preferred_ranges[0], follow its links."
+  ],
+  "record": "exchange.slot_switched_to and new field slot_switch_reason"
+ },
+ "pace": {
+  "gap_uses": "initiating fighter's tempo and mentality patience",
+  "base_gap_frames": 36,
+  "per_tempo_point": 4,
+  "min_gap_frames": 6,
+  "fatigue_gap_scale": 0.03
+ },
+ "fight_momentum": {
+  "state_field": "actor.fight_momentum (scalar). Do NOT reuse actor.momentum: fight_state_v2 defines it as a 2-number vector.",
+  "per_clean_or_flush_landed": 0.15,
+  "per_clean_or_flush_taken": -0.15,
+  "per_knockdown": 0.4,
+  "decay_per_exchange": 0.2,
+  "clamp": [
+   -0.6,
+   0.6
+  ],
+  "initiative_weight": 0.5,
+  "accuracy_weight": 0.05
+ },
+ "defense_contest": {
+  "slope": 1.0,
+  "probability_clamp": [
+   0.15,
+   0.85
+  ],
+  "formula": "after the hit roll fails: p = clamp(sigmoid(slope * (readiness[lane] - offense + defense_fit)), lo, hi); success -> the defense technique's result for this class; failure -> failure_result",
+  "defense_fit": {
+   "designed_for": 0.4,
+   "general": 0.0,
+   "poor_for": -0.4
+  },
+  "failure_result": "blocked",
+  "kick_catch": "kick_catch uses the catch roll (technique.catchability) instead of this contest; a failed catch is 'blocked'",
+  "ground_strike_defense": {
+   "technique": null,
+   "success_result": "blocked",
+   "note": "ground strikes are defended by the position (no technique pick)"
+  },
+  "selection": "Build the ordered list: kicking option kick_defense_prepend[class] + hands option defense_prepend[class] + defense option native_defense.by_class[class] (or at_wall[class] when wall_near and present). Remove duplicates, keep trained techniques, take the first; if none, retreat. With rng=None the legacy entry points return this first pick and its success result (no roll).",
+  "incoming_class_rules": [
+   "kind in (movement, feint, defense, control, escape) -> none (no defense step), unless technique.incoming_class overrides",
+   "kind == submission -> submission (staged escape rolls, no defense pick)",
+   "kind == ground_strike -> ground_strike",
+   "kind in (takedown, sweep) -> takedown",
+   "kind == grip -> clinch_entry",
+   "kind == elbow -> elbow",
+   "kind == knee -> knee",
+   "kind == kick: lane in (leg, single_support) -> kick_low; lane starts with head -> kick_high; line in (lead_linear_kick, rear_linear_kick) -> kick_linear; else kick_body",
+   "kind == punch: lane == body -> body_punch; line in (lead_uppercut, rear_uppercut) -> uppercut; line in (lead_round, rear_round, overhand, spinning) -> hook; else straight"
+  ],
+  "kick_defense_window": {
+   "base": 0.08,
+   "clamp": [
+    0.08,
+    0.24
+   ],
+   "rule": "kicks and knees except knee_body take the kick-defense path when roll > max(0.10, p_land - window); window = base + sum of option kick_defense_window_delta (additive, replaces legacy tiers in P5)"
+  }
+ },
+ "geometry": {
+  "distances_m": {
+   "clinch": 0.45,
+   "close": 0.7,
+   "punch": 1.05,
+   "kick": 1.65,
+   "outside": 2.4
+  },
+  "band_from_distance": "nearest band by distance; ground positions override to range 'ground'",
+  "moves_m": {
+   "step": 0.35,
+   "retreat": 0.4,
+   "cut_off_step": 0.25,
+   "shove": 0.6,
+   "pivot_angle_deg": 35
+  },
+  "pivot_rule": "rotate the opponent around the pivoting fighter by pivot_angle_deg * arena.lateral_freedom",
+  "wall_rule": "wall_proximity = near when distance to the closest wall < arena.wall_near_m; in_corner when two walls are within wall_near_m",
+  "arenas": {
+   "ring": {
+    "shape": "square",
+    "half_width_m": 3.0,
+    "walls": "ropes",
+    "corners": true
+   },
+   "cage": {
+    "shape": "octagon",
+    "radius_m": 3.5,
+    "walls": "fence",
+    "corners": false
+   },
+   "open_floor": {
+    "shape": "open",
+    "radius_m": 50.0,
+    "walls": null,
+    "corners": false
+   },
+   "narrow_alley": {
+    "shape": "corridor",
+    "half_width_m": 1.6,
+    "half_length_m": 15.0,
+    "walls": "both long sides",
+    "corners": false
+   },
+   "rooftop_edge": {
+    "shape": "platform",
+    "half_width_m": 2.8,
+    "walls": null,
+    "edge": "drop"
+   },
+   "dojo": {
+    "shape": "square",
+    "half_width_m": 4.0,
+    "walls": "walls",
+    "corners": true
+   }
+  },
+  "edge_fall": {
+   "arenas": [
+    "rooftop_edge"
+   ],
+   "trigger": "a fighter ends an exchange beyond the edge",
+   "probability": 0.35,
+   "off_base_multiplier": 1.5,
+   "on_fall": "fight ends, method 'Fall (ring-out)'; otherwise the fighter is pulled back to the edge with balance off_base"
+  },
+  "preset_fields": "Keep every existing arena_presets field in data/model_v2.json and keep exporting ARENA_PRESETS (the test checks its six keys). New fields are additive."
+ },
+ "finishes": {
+  "tiebreak": "No draws (the CLI test requires a winner). If decision scores are equal within 1e-9, draw one rng.random() in canonical order: < 0.5 -> first canonical fighter wins. Record result.decision_tiebreak = true.",
+  "decision": "per round with ruleset decision_weights (clean_strikes, damage, control, aggression); fight winner = more rounds won, then total score, then the tiebreak above"
+ },
+ "director": {
+  "selection": "medoid_of_winning_runs",
+  "implausible_below_win_rate": 0.05,
+  "upset_below_win_rate": 0.2,
+  "feature_vector": [
+   "method",
+   "finish_time_s",
+   "damage_head",
+   "damage_body",
+   "damage_leg",
+   "control_time_s",
+   "slot_path"
+  ],
+  "no_win": "If the requested winner wins none of the runs, return no fight and say so (never return a losing run)."
+ },
+ "audits": {
+  "seeds_per_pair": 200,
+  "overall_band": [
+   0.35,
+   0.65
+  ],
+  "pair_max": 0.85,
+  "anti_flatten_min_std": 0.04,
+  "style_sanity_min": 0.6,
+  "option_dominant_delta": 0.12,
+  "option_useless_abs_delta": 0.01,
+  "diversity_min_distinct_openings_of_60": {
+   "brawler": 12,
+   "default": 25
+  },
+  "mirror": {
+   "tolerance": 0.0,
+   "also_mirror": [
+    "laterality.body_sides.liver_side"
+   ]
+  },
+  "southpaw_only_edge_range": [
+   0.0,
+   0.05
+  ]
+ },
+ "mastery": {
+  "decision": "D23; mechanics in handoff 7.18; calibrated by RANK_MASTERY_STRESS_TEST.md (562,880 fights on 0d0734d)",
+  "levels": {
+   "novice": -1,
+   "trained": 0,
+   "expert": 1,
+   "master": 2,
+   "grandmaster": 3
+  },
+  "default_rank": "trained",
+  "contest_logit_per_level": 0.2,
+  "damage_dealt_log_per_level": 0.04,
+  "damage_taken_log_per_level": 0.04,
+  "seam_shrink_by_level": {
+   "-1": -0.25,
+   "0": 0.0,
+   "1": 0.1,
+   "2": 0.25,
+   "3": 0.4
+  },
+  "bands": {
+   "hit": [
+    0.05,
+    0.95
+   ],
+   "counter": [
+    0.05,
+    0.75
+   ],
+   "kick_catch": [
+    0.05,
+    0.85
+   ],
+   "catch_sweep": [
+    0.05,
+    0.9
+   ],
+   "feint": [
+    0.01,
+    0.8
+   ],
+   "default": [
+    0.05,
+    0.95
+   ]
+  },
+  "contests": [
+   "hit",
+   "defense_contest",
+   "counter",
+   "kick_catch",
+   "check",
+   "catch_sweep",
+   "range_step_in",
+   "range_step_out",
+   "clinch_break",
+   "feint",
+   "grappling_transition",
+   "scramble",
+   "submission_stage_escape",
+   "stand_up"
+  ],
+  "not_affected": [
+   "initiative_noise",
+   "counter_quality",
+   "effect_chance",
+   "knockdown_chance",
+   "director_selection"
+  ],
+  "effective_level": "slot level = mean level of the slot's capabilities except basic_movement (none left -> card rank); attacker: the slot it attacks from; defender: the slot it last attacked from (start: fight_start slot)",
+  "school_mastery_rule": "rank is a ceiling: no school above the card's rank; unlisted schools sit at the card's rank",
+  "calibration_targets": {
+   "plus1": [
+    0.65,
+    0.7
+   ],
+   "plus2": [
+    0.78,
+    0.87
+   ],
+   "plus3": [
+    0.87,
+    0.95
+   ]
+  },
+  "calibrated_on": "0d0734d; holdout seeds: +1 68.1% (same style) / 65.9% (different styles), +2 83.6% / 78.8%, +3 92.4% / 88.8%. Re-calibrate at P13 (handoff 10.16)."
+ }
+}

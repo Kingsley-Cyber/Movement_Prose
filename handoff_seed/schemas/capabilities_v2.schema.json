@@ -1,0 +1,81 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "BLOCK capabilities v2.1",
+ "type": "object",
+ "required": [
+  "version",
+  "capabilities"
+ ],
+ "additionalProperties": false,
+ "properties": {
+  "version": {
+   "const": "block-2"
+  },
+  "core_rule": {
+   "type": "string",
+   "minLength": 1
+  },
+  "capabilities": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "object",
+    "required": [
+     "description",
+     "core",
+     "modifier",
+     "status"
+    ],
+    "additionalProperties": false,
+    "properties": {
+     "description": {
+      "type": "string",
+      "minLength": 1
+     },
+     "core": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "minLength": 1
+      }
+     },
+     "modifier": {
+      "type": "boolean"
+     },
+     "status": {
+      "enum": [
+       "existing",
+       "new",
+       "proposal_owner_decision"
+      ]
+     },
+     "defense_prepend": {
+      "type": "object",
+      "propertyNames": {
+       "enum": [
+        "straight",
+        "hook",
+        "uppercut",
+        "body_punch",
+        "elbow",
+        "knee",
+        "kick_low",
+        "kick_body",
+        "kick_linear",
+        "kick_high",
+        "takedown",
+        "clinch_entry"
+       ]
+      },
+      "additionalProperties": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "minLength": 1
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

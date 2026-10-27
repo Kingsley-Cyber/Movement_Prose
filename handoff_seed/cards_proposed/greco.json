@@ -1,0 +1,159 @@
+{
+ "version": "block-2",
+ "fighter_id": "greco",
+ "name": "Oren Pike",
+ "combat_identity": "Greco pressure two-piece",
+ "dimensions": {
+  "hands": "hands.helmet",
+  "defense": "defense.smother",
+  "stance": "stance.planted",
+  "tie": "tie.greco",
+  "target": "target.body_puncher",
+  "kicking": "kicking.none",
+  "mentality": "mentality.swarmer"
+ },
+ "adaptation": "mma",
+ "orientation": "orthodox",
+ "slot_count": 2,
+ "slot_label": "Two-piece",
+ "synchronized_capabilities": [
+  {
+   "id": "greco.slot.1",
+   "capabilities": [
+    "clinch",
+    "wrestling"
+   ],
+   "description": "Trained synchronized bundle: clinch, wrestling",
+   "trigger": "fight_start",
+   "sequence": [
+    "body_lock",
+    "outside_trip",
+    "double_leg",
+    "single_leg",
+    "ride",
+    "collar_tie",
+    "knee_body"
+   ],
+   "home_range": "clinch",
+   "goal": "takedown_top_control",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "sequence_denied_or_countered"
+   },
+   "links": [
+    "greco.slot.2"
+   ]
+  },
+  {
+   "id": "greco.slot.2",
+   "capabilities": [
+    "boxing"
+   ],
+   "description": "Trained synchronized bundle: boxing",
+   "trigger": "slot_stalled_or_countered",
+   "sequence": [
+    "jab",
+    "body_hook",
+    "cross",
+    "uppercut",
+    "hook"
+   ],
+   "home_range": "punch",
+   "goal": "body_attrition",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "sequence_denied_or_countered"
+   },
+   "links": [
+    "greco.slot.1"
+   ]
+  }
+ ],
+ "baseline_capabilities": [
+  "basic_movement",
+  "untrained_striking"
+ ],
+ "tempo": 5,
+ "preferred_ranges": [
+  "clinch",
+  "ground"
+ ],
+ "debt_sentence": "Pummel to a body lock and turn the loaded base; a missed connection costs the outside exchange.",
+ "exploitable_seams": [
+  "debt.hands.helmet.body",
+  "debt.hands.helmet.vision",
+  "debt.defense.smother.clinch",
+  "debt.defense.smother.entry",
+  "debt.stance.planted.angle",
+  "debt.stance.planted.leg",
+  "debt.tie.greco.head_hook",
+  "debt.tie.greco.ground",
+  "debt.target.body_puncher.head_uppercut",
+  "debt.target.body_puncher.head_straight",
+  "debt.kicking.none.leg",
+  "debt.kicking.none.body",
+  "debt.mentality.swarmer.body",
+  "debt.mentality.swarmer.angle"
+ ],
+ "active_techniques": [
+  "step",
+  "retreat",
+  "pivot",
+  "feint",
+  "jab",
+  "cross",
+  "hook",
+  "body_hook",
+  "uppercut",
+  "haymaker",
+  "parry",
+  "shell_block",
+  "slip",
+  "sprawl",
+  "pummel",
+  "collar_tie",
+  "knee_body",
+  "body_lock",
+  "double_leg",
+  "single_leg",
+  "outside_trip",
+  "ride",
+  "escape"
+ ],
+ "conditional_abilities": [],
+ "combat_limitations": [
+  "Listed grappling requires the documented range and connection.",
+  "No technique is guaranteed against an active defense."
+ ],
+ "fighting_description": {
+  "does": "Pummel to a body lock and turn the loaded base.",
+  "wins": "Reach clinch, ground and use Greco pressure two-piece.",
+  "avoids": "Unrecovered support and opponent control of the next range.",
+  "beaten_by": "a missed connection costs the outside exchange."
+ },
+ "appearance": {
+  "clothing": "navy shorts",
+  "identity_anchor": "Oren Pike / Greco pressure two-piece",
+  "props": []
+ },
+ "provenance": {
+  "classification": "CANON",
+  "label": "[CANON]",
+  "source": "Supplied mandatory identity where specified; all other details authored for this release."
+ },
+ "signature_moves": [
+  "body_lock",
+  "outside_trip",
+  "collar_tie"
+ ],
+ "airborne_training": {
+  "allowed_vertical_modes": [
+   "grounded",
+   "athletic"
+  ],
+  "techniques": [
+   "knee_body"
+  ]
+ },
+ "revision": 1
+}

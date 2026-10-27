@@ -1,0 +1,4239 @@
+{
+ "version": "block-2",
+ "options": [
+  {
+   "id": "defense.block_absorb",
+   "dimension": "defense",
+   "lane_readiness_bonus": {
+    "head_straight": 1.05,
+    "head_hook": 1.15,
+    "head_uppercut": 0.55,
+    "body": -0.55,
+    "leg": -0.25,
+    "entry": -0.1,
+    "clinch": 0.3,
+    "single_support": -0.1
+   },
+   "attack_profile": {
+    "power_delta": 0.04,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_hook"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 0.85,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "solid guard integrity",
+    "rooted feet"
+   ],
+   "breakdowns": [
+    "body damage builds (body >= 4)",
+    "guard integrity wears down",
+    "blinded vision"
+   ],
+   "native_defense": {
+    "by_class": {
+     "straight": [
+      "shell_block",
+      {
+       "technique": "retreat",
+       "result": "blocked"
+      }
+     ],
+     "hook": [
+      "shell_block",
+      {
+       "technique": "retreat",
+       "result": "blocked"
+      }
+     ],
+     "uppercut": [
+      "shell_block",
+      {
+       "technique": "retreat",
+       "result": "blocked"
+      }
+     ],
+     "body_punch": [
+      "shell_block",
+      {
+       "technique": "retreat",
+       "result": "blocked"
+      }
+     ],
+     "elbow": [
+      "shell_block",
+      {
+       "technique": "retreat",
+       "result": "blocked"
+      }
+     ],
+     "knee": [
+      "shell_block",
+      {
+       "technique": "retreat",
+       "result": "blocked"
+      }
+     ],
+     "kick_low": [
+      "check",
+      {
+       "technique": "retreat",
+       "result": "blocked"
+      }
+     ],
+     "kick_body": [
+      "shell_block",
+      {
+       "technique": "retreat",
+       "result": "blocked"
+      }
+     ],
+     "kick_linear": [
+      "shell_block",
+      {
+       "technique": "retreat",
+       "result": "blocked"
+      }
+     ],
+     "kick_high": [
+      "shell_block",
+      {
+       "technique": "retreat",
+       "result": "blocked"
+      }
+     ],
+     "takedown": [
+      "sprawl",
+      "pummel",
+      "retreat"
+     ],
+     "clinch_entry": [
+      "pummel",
+      "retreat"
+     ]
+    }
+   },
+   "breakdown_rules": [
+    {
+     "when_any": {
+      "body_damage_gte": 3.5
+     },
+     "lanes": "all",
+     "delta": -0.55
+    }
+   ],
+   "damage_rules": {
+    "blocked_landing_multiplier": 0.24,
+    "head_guard_factor": 0.9,
+    "source": "engine/simulator_v2.py:864-866"
+   }
+  },
+  {
+   "id": "defense.check_frame",
+   "dimension": "defense",
+   "lane_readiness_bonus": {
+    "head_straight": 0.55,
+    "head_hook": 0.35,
+    "head_uppercut": 0.25,
+    "body": -0.45,
+    "leg": 1.65,
+    "entry": 0.25,
+    "clinch": 0.7,
+    "single_support": -0.5
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.15,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "leg",
+     "body"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 0.91,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "weight on back leg or balanced",
+    "seeing the kick",
+    "uncompromised support leg"
+   ],
+   "breakdowns": [
+    "front-loaded weight split",
+    "mid-switch transition",
+    "tired or battered legs",
+    "body punches"
+   ],
+   "native_defense": {
+    "by_class": {
+     "straight": [
+      "shield_frame",
+      "parry",
+      "shell_block",
+      "retreat"
+     ],
+     "hook": [
+      "shield_frame",
+      "shell_block",
+      "retreat"
+     ],
+     "uppercut": [
+      "shell_block",
+      "retreat"
+     ],
+     "body_punch": [
+      "shell_block",
+      "shield_frame",
+      "retreat"
+     ],
+     "elbow": [
+      "shield_frame",
+      "shell_block",
+      "retreat"
+     ],
+     "knee": [
+      "shield_frame",
+      "shell_block",
+      "retreat"
+     ],
+     "kick_low": [
+      "check",
+      "evade_step_back",
+      "retreat"
+     ],
+     "kick_body": [
+      "check",
+      "shell_block",
+      "retreat"
+     ],
+     "kick_linear": [
+      "parry",
+      "evade_step_back",
+      "retreat"
+     ],
+     "kick_high": [
+      "shell_block",
+      "lean_back",
+      "retreat"
+     ],
+     "takedown": [
+      "shield_frame",
+      "sprawl",
+      "whizzer",
+      "retreat"
+     ],
+     "clinch_entry": [
+      "shield_frame",
+      "pummel",
+      "clinch_break",
+      "retreat"
+     ]
+    }
+   },
+   "kick_defense_window_delta": 0.08,
+   "breakdown_rules": [
+    {
+     "when_any": {
+      "weight_split": "front_heavy",
+      "base_width": "single_leg",
+      "leg_damage_gte": 4.0
+     },
+     "lanes": [
+      "leg",
+      "single_support"
+     ],
+     "delta": -0.85
+    }
+   ]
+  },
+  {
+   "id": "defense.outfight",
+   "dimension": "defense",
+   "lane_readiness_bonus": {
+    "head_straight": 0.75,
+    "head_hook": 0.65,
+    "head_uppercut": 0.55,
+    "body": 0.5,
+    "leg": 0.45,
+    "entry": 0.55,
+    "clinch": -0.45,
+    "single_support": 0.2
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.55,
+    "counter_tendency": 0.08,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight",
+     "body"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 0.92,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "room behind (wall_proximity == far)",
+    "mobile feet (leg damage < 4)"
+   ],
+   "breakdowns": [
+    "backed onto the wall or in the corner",
+    "hurt legs (leg damage >= 4)",
+    "high-tempo swarmer pressure"
+   ],
+   "grappling_modifiers": {
+    "takedown_defense": 0.5
+   },
+   "grappling_modifiers_condition": {
+    "unless": "wall_near"
+   },
+   "native_defense": {
+    "by_class": {
+     "straight": [
+      "pivot",
+      "evade_step_back",
+      "retreat"
+     ],
+     "hook": [
+      "evade_step_back",
+      "pivot",
+      "retreat"
+     ],
+     "uppercut": [
+      "evade_step_back",
+      "retreat"
+     ],
+     "body_punch": [
+      "evade_step_back",
+      "retreat"
+     ],
+     "elbow": [
+      "evade_step_back",
+      "retreat"
+     ],
+     "knee": [
+      "evade_step_back",
+      "retreat"
+     ],
+     "kick_low": [
+      "evade_step_back",
+      "pivot",
+      "retreat"
+     ],
+     "kick_body": [
+      "evade_step_back",
+      "pivot",
+      "retreat"
+     ],
+     "kick_linear": [
+      "evade_step_back",
+      "pivot",
+      "retreat"
+     ],
+     "kick_high": [
+      "evade_step_back",
+      "lean_back",
+      "retreat"
+     ],
+     "takedown": [
+      "pivot",
+      "sprawl",
+      "retreat"
+     ],
+     "clinch_entry": [
+      "pivot",
+      "clinch_break",
+      "retreat"
+     ]
+    },
+    "at_wall": {
+     "straight": [
+      "shell_block",
+      "retreat"
+     ],
+     "hook": [
+      "shell_block",
+      "retreat"
+     ],
+     "uppercut": [
+      "shell_block",
+      "retreat"
+     ],
+     "body_punch": [
+      "shell_block",
+      "retreat"
+     ],
+     "elbow": [
+      "shell_block",
+      "retreat"
+     ],
+     "knee": [
+      "shell_block",
+      "retreat"
+     ],
+     "kick_low": [
+      "shell_block",
+      "retreat"
+     ],
+     "kick_body": [
+      "shell_block",
+      "retreat"
+     ],
+     "kick_linear": [
+      "shell_block",
+      "retreat"
+     ],
+     "kick_high": [
+      "shell_block",
+      "retreat"
+     ],
+     "takedown": [
+      "sprawl",
+      "whizzer",
+      "shell_block",
+      "retreat"
+     ],
+     "clinch_entry": [
+      "clinch_break",
+      "shell_block",
+      "retreat"
+     ]
+    }
+   },
+   "kick_defense_window_delta": {
+    "value": 0.08,
+    "unless": "wall_near"
+   },
+   "breakdown_rules": [
+    {
+     "when_any": {
+      "wall_near": true
+     },
+     "lanes": "all",
+     "delta_from_model": "state_modifiers.wall_near_outfight_penalty",
+     "delta_default": -1.25
+    },
+    {
+     "when_any": {
+      "leg_damage_gte": 3.5
+     },
+     "lanes": "all",
+     "delta": -0.95
+    }
+   ],
+   "range_lane_bonus": {
+    "ranges": [
+     "kick",
+     "outside"
+    ],
+    "lanes": "all",
+    "delta": 0.25,
+    "unless": "wall_near"
+   },
+   "counter_tendency_condition": {
+    "ranges": [
+     "kick"
+    ],
+    "unless": "wall_near"
+   },
+   "distance_control_condition": {
+    "unless": "wall_near"
+   },
+   "pull_out_probability": 0.72
+  },
+  {
+   "id": "defense.parry_catch",
+   "dimension": "defense",
+   "lane_readiness_bonus": {
+    "head_straight": 1.5,
+    "head_hook": -0.55,
+    "head_uppercut": 0.35,
+    "body": -0.45,
+    "leg": 0.45,
+    "entry": 0.2,
+    "clinch": 0.2,
+    "single_support": 0.95
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.1,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.12,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight",
+     "single_support"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 0.92,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "reading the rhythm",
+    "hands up and relaxed",
+    "kick_catch timing"
+   ],
+   "breakdowns": [
+    "feints",
+    "hooks around the guard (head_hook)",
+    "body level changes (body)"
+   ],
+   "native_defense": {
+    "by_class": {
+     "straight": [
+      "parry",
+      "shell_block",
+      "retreat"
+     ],
+     "hook": [
+      "shell_block",
+      "retreat"
+     ],
+     "uppercut": [
+      "parry",
+      "shell_block",
+      "retreat"
+     ],
+     "body_punch": [
+      "shell_block",
+      "retreat"
+     ],
+     "elbow": [
+      "shell_block",
+      "retreat"
+     ],
+     "knee": [
+      "shell_block",
+      "retreat"
+     ],
+     "kick_low": [
+      "kick_catch",
+      "check",
+      "evade_step_back",
+      "retreat"
+     ],
+     "kick_body": [
+      "kick_catch",
+      "shell_block",
+      "retreat"
+     ],
+     "kick_linear": [
+      "kick_catch",
+      "parry",
+      "evade_step_back",
+      "retreat"
+     ],
+     "kick_high": [
+      "shell_block",
+      "lean_back",
+      "retreat"
+     ],
+     "takedown": [
+      "sprawl",
+      "pummel",
+      "retreat"
+     ],
+     "clinch_entry": [
+      "pummel",
+      "clinch_break",
+      "retreat"
+     ]
+    }
+   },
+   "supported_by_v2": [
+    "tan_sao",
+    "bong_sao",
+    "pak_sao",
+    "lap_sao",
+    "push_hands_redirect"
+   ],
+   "kick_defense_window_delta": 0.08,
+   "breakdown_rules": [
+    {
+     "when_any": {
+      "feinted": true
+     },
+     "lanes": "all",
+     "delta": -0.65
+    }
+   ]
+  },
+  {
+   "id": "defense.shoulder_roll",
+   "dimension": "defense",
+   "lane_readiness_bonus": {
+    "head_straight": 1.55,
+    "head_hook": -0.5,
+    "head_uppercut": 0.75,
+    "body": 0.65,
+    "leg": -0.75,
+    "entry": -0.4,
+    "clinch": -0.45,
+    "single_support": -0.2
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.12,
+    "counter_power_delta": 0.12,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight",
+     "head_uppercut"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 0.89,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "off_center",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "bladed stance",
+    "timing",
+    "lead shoulder raised"
+   ],
+   "breakdowns": [
+    "hooks from the open side",
+    "low kicks to the bladed lead leg",
+    "clinch ties"
+   ],
+   "native_defense": {
+    "by_class": {
+     "straight": [
+      "shoulder_roll",
+      "slip",
+      "pivot",
+      "retreat"
+     ],
+     "hook": [
+      "shell_block",
+      "bob_weave",
+      "retreat"
+     ],
+     "uppercut": [
+      "lean_back",
+      "shell_block",
+      "retreat"
+     ],
+     "body_punch": [
+      "shell_block",
+      "retreat"
+     ],
+     "elbow": [
+      "shell_block",
+      "retreat"
+     ],
+     "knee": [
+      "shell_block",
+      "retreat"
+     ],
+     "kick_low": [
+      "check",
+      "evade_step_back",
+      "retreat"
+     ],
+     "kick_body": [
+      "shell_block",
+      "evade_step_back",
+      "retreat"
+     ],
+     "kick_linear": [
+      "evade_step_back",
+      "retreat"
+     ],
+     "kick_high": [
+      "lean_back",
+      "shell_block",
+      "retreat"
+     ],
+     "takedown": [
+      "sprawl",
+      "pummel",
+      "retreat"
+     ],
+     "clinch_entry": [
+      "pummel",
+      "clinch_break",
+      "retreat"
+     ]
+    }
+   },
+   "breakdown_rules": [
+    {
+     "when_any": {
+      "stance_relation": "open_stance"
+     },
+     "lanes": [
+      "head_hook"
+     ],
+     "delta": -0.45
+    }
+   ]
+  },
+  {
+   "id": "defense.slip_roll",
+   "dimension": "defense",
+   "lane_readiness_bonus": {
+    "head_straight": 1.45,
+    "head_hook": 1.2,
+    "head_uppercut": -0.65,
+    "body": 0.2,
+    "leg": -0.3,
+    "entry": 0.0,
+    "clinch": -0.4,
+    "single_support": 0.1
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.1,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_hook",
+     "body"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 0.9,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "off_center",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "seeing the shot (vision >= 3)",
+    "head off centerline",
+    "flexible base"
+   ],
+   "breakdowns": [
+    "tired (fatigue >= 5)",
+    "hurt head (head damage >= 4)",
+    "vision blocked",
+    "uppercuts (head_uppercut)"
+   ],
+   "native_defense": {
+    "by_class": {
+     "straight": [
+      "slip",
+      "bob_weave",
+      "pivot",
+      "retreat"
+     ],
+     "hook": [
+      "bob_weave",
+      "shell_block",
+      "pivot",
+      "retreat"
+     ],
+     "uppercut": [
+      "lean_back",
+      "shell_block",
+      "retreat"
+     ],
+     "body_punch": [
+      "shell_block",
+      "retreat"
+     ],
+     "elbow": [
+      "shell_block",
+      "retreat"
+     ],
+     "knee": [
+      "shell_block",
+      "retreat"
+     ],
+     "kick_low": [
+      "check",
+      "evade_step_back",
+      "retreat"
+     ],
+     "kick_body": [
+      "shell_block",
+      "evade_step_back",
+      "retreat"
+     ],
+     "kick_linear": [
+      "evade_step_back",
+      "retreat"
+     ],
+     "kick_high": [
+      "lean_back",
+      "shell_block",
+      "retreat"
+     ],
+     "takedown": [
+      "sprawl",
+      "pummel",
+      "retreat"
+     ],
+     "clinch_entry": [
+      "pummel",
+      "clinch_break",
+      "retreat"
+     ]
+    }
+   },
+   "supported_by_v2": [
+    "esquiva",
+    "negativa"
+   ],
+   "breakdown_rules": [
+    {
+     "when_any": {
+      "fatigue_gte": 4.0,
+      "head_damage_gte": 3.5,
+      "vision_lt": 1.8
+     },
+     "lanes": "all",
+     "delta": -0.55
+    }
+   ]
+  },
+  {
+   "id": "defense.smother",
+   "dimension": "defense",
+   "lane_readiness_bonus": {
+    "head_straight": 0.65,
+    "head_hook": 0.85,
+    "head_uppercut": -0.4,
+    "body": 0.7,
+    "leg": 0.75,
+    "entry": -0.45,
+    "clinch": -0.45,
+    "single_support": 0.2
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.22,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "clinch",
+     "body"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 0.9,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "closing distance first",
+    "inside head position"
+   ],
+   "breakdowns": [
+    "opponent has superior clinch grips or ties",
+    "intercepting knees/uppercuts on entry"
+   ],
+   "grappling_modifiers": {
+    "clinch_control": 0.5
+   },
+   "native_defense": {
+    "by_class": {
+     "straight": [
+      "jam_step",
+      "pummel",
+      "shield_frame",
+      "shell_block",
+      "retreat"
+     ],
+     "hook": [
+      "jam_step",
+      "pummel",
+      "shell_block",
+      "retreat"
+     ],
+     "uppercut": [
+      "shell_block",
+      "pummel",
+      "retreat"
+     ],
+     "body_punch": [
+      "shell_block",
+      "pummel",
+      "retreat"
+     ],
+     "elbow": [
+      "pummel",
+      "shell_block",
+      "retreat"
+     ],
+     "knee": [
+      "pummel",
+      "shell_block",
+      "retreat"
+     ],
+     "kick_low": [
+      "jam_step",
+      "check",
+      "retreat"
+     ],
+     "kick_body": [
+      "jam_step",
+      "shell_block",
+      "retreat"
+     ],
+     "kick_linear": [
+      "jam_step",
+      "shell_block",
+      "retreat"
+     ],
+     "kick_high": [
+      "jam_step",
+      "shell_block",
+      "retreat"
+     ],
+     "takedown": [
+      "pummel",
+      "whizzer",
+      "sprawl",
+      "retreat"
+     ],
+     "clinch_entry": [
+      "pummel",
+      "clinch_break",
+      "retreat"
+     ]
+    }
+   },
+   "supported_by_v2": [
+    "top_elbow",
+    "iron_mountain_lean",
+    "clinch_headbutt"
+   ],
+   "breakdown_rules": [
+    {
+     "when_any": {
+      "opponent_tie_in": [
+       "tie.thai_plum",
+       "tie.greco",
+       "tie.judo_sambo",
+       "tie.freestyle"
+      ]
+     },
+     "lanes": [
+      "clinch"
+     ],
+     "delta": -0.45
+    }
+   ]
+  },
+  {
+   "id": "defense.sprawl_pummel",
+   "dimension": "defense",
+   "lane_readiness_bonus": {
+    "head_straight": 0.25,
+    "head_hook": 0.2,
+    "head_uppercut": 0.25,
+    "body": 0.35,
+    "leg": 0.25,
+    "entry": 1.85,
+    "clinch": 1.35,
+    "single_support": 0.55
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.1,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "entry",
+     "clinch"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 0.94,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "hips high and back",
+    "reaction time",
+    "unfeinted vision"
+   ],
+   "breakdowns": [
+    "stance too low or too upright",
+    "high fatigue",
+    "a high-line feint before the shot"
+   ],
+   "grappling_modifiers": {
+    "takedown_defense": 1.0,
+    "scramble": 0.25
+   },
+   "native_defense": {
+    "by_class": {
+     "straight": [
+      "shell_block",
+      "slip",
+      "retreat"
+     ],
+     "hook": [
+      "shell_block",
+      "retreat"
+     ],
+     "uppercut": [
+      "shell_block",
+      "retreat"
+     ],
+     "body_punch": [
+      "shell_block",
+      "retreat"
+     ],
+     "elbow": [
+      "pummel",
+      "shell_block",
+      "retreat"
+     ],
+     "knee": [
+      "pummel",
+      "shell_block",
+      "retreat"
+     ],
+     "kick_low": [
+      "check",
+      "jam_step",
+      "retreat"
+     ],
+     "kick_body": [
+      "jam_step",
+      "shell_block",
+      "retreat"
+     ],
+     "kick_linear": [
+      "jam_step",
+      "retreat"
+     ],
+     "kick_high": [
+      "shell_block",
+      "retreat"
+     ],
+     "takedown": [
+      "sprawl",
+      "whizzer",
+      "pummel",
+      "retreat"
+     ],
+     "clinch_entry": [
+      "pummel",
+      "whizzer",
+      "retreat"
+     ]
+    }
+   },
+   "breakdown_rules": [
+    {
+     "when_any": {
+      "feinted": true,
+      "fatigue_gte": 4.5
+     },
+     "lanes": [
+      "entry"
+     ],
+     "delta": -0.65
+    }
+   ]
+  },
+  {
+   "id": "hands.cross_arm",
+   "dimension": "hands",
+   "lane_readiness_bonus": {
+    "head_straight": 0.65,
+    "head_hook": 1.2,
+    "head_uppercut": -0.55,
+    "body": 1.35,
+    "leg": -0.4,
+    "entry": -0.3,
+    "clinch": 0.15,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.05,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_hook",
+     "body"
+    ]
+   },
+   "damage_dealt_multiplier": 1.05,
+   "damage_taken_multiplier": 0.91,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 2,
+    "guard_decay_rate": 0.07,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Crossed forearms form a diagonal barrier over ribs and chin."
+   ],
+   "breakdowns": [
+    "Uncrossing delays the return and leaves a rising center channel.",
+    "Uncrossing delays the return and leaves a rising center channel."
+   ]
+  },
+  {
+   "id": "hands.dutch_guard",
+   "dimension": "hands",
+   "lane_readiness_bonus": {
+    "head_straight": 1.25,
+    "head_hook": 1.5,
+    "head_uppercut": 0.35,
+    "body": -0.5,
+    "leg": 0.3,
+    "entry": -0.55,
+    "clinch": 0.0,
+    "single_support": 0.15
+   },
+   "attack_profile": {
+    "power_delta": 0.04,
+    "accuracy_delta": 0.08,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_hook",
+     "leg"
+    ]
+   },
+   "damage_dealt_multiplier": 1.04,
+   "damage_taken_multiplier": 0.93,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.08,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "A compact boxing cover returns punches before a low kick."
+   ],
+   "breakdowns": [
+    "A square planted exchange makes level changes and body attacks accessible.",
+    "A square planted exchange makes level changes and body attacks accessible."
+   ]
+  },
+  {
+   "id": "hands.hands_down",
+   "dimension": "hands",
+   "lane_readiness_bonus": {
+    "head_straight": -0.65,
+    "head_hook": -0.6,
+    "head_uppercut": -0.25,
+    "body": 0.35,
+    "leg": 0.3,
+    "entry": 0.65,
+    "clinch": 0.15,
+    "single_support": 0.1
+   },
+   "attack_profile": {
+    "power_delta": 0.08,
+    "accuracy_delta": 0.14,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.08,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.16,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight",
+     "body"
+    ]
+   },
+   "damage_dealt_multiplier": 1.08,
+   "damage_taken_multiplier": 1.02,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_high",
+    "vision": 5,
+    "guard_decay_rate": 0.04,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Low hands leave the eyes clear and shorten low-to-high counters."
+   ],
+   "breakdowns": [
+    "An unprotected head depends on timely footwork rather than a sealed guard.",
+    "An unprotected head depends on timely footwork rather than a sealed guard."
+   ]
+  },
+  {
+   "id": "hands.helmet",
+   "dimension": "hands",
+   "lane_readiness_bonus": {
+    "head_straight": 0.85,
+    "head_hook": 1.55,
+    "head_uppercut": 1.25,
+    "body": -1.05,
+    "leg": -0.3,
+    "entry": 0.2,
+    "clinch": 0.25,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.15,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "clinch",
+     "body"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 0.9,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 1,
+    "guard_decay_rate": 0.09,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Forearms brace beside the skull to absorb close hooks."
+   ],
+   "breakdowns": [
+    "Sealing both sides sacrifices torso coverage and vision.",
+    "Sealing both sides sacrifices torso coverage and vision."
+   ]
+  },
+  {
+   "id": "hands.high_guard",
+   "dimension": "hands",
+   "lane_readiness_bonus": {
+    "head_straight": 1.55,
+    "head_hook": 1.45,
+    "head_uppercut": 0.45,
+    "body": -0.7,
+    "leg": 0.0,
+    "entry": -0.25,
+    "clinch": 0.0,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": []
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 0.92,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 2,
+    "guard_decay_rate": 0.09,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Both gloves shelter the temples against straight and looping punches."
+   ],
+   "breakdowns": [
+    "Raised elbows and a covered gaze concede torso access and information.",
+    "Raised elbows and a covered gaze concede torso access and information."
+   ]
+  },
+  {
+   "id": "hands.kronk",
+   "dimension": "hands",
+   "lane_readiness_bonus": {
+    "head_straight": -0.35,
+    "head_hook": -0.95,
+    "head_uppercut": -0.2,
+    "body": 0.2,
+    "leg": 0.0,
+    "entry": -0.55,
+    "clinch": 0.0,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.12,
+    "accuracy_delta": 0.12,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight"
+    ]
+   },
+   "damage_dealt_multiplier": 1.12,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "off_center",
+    "vision": 5,
+    "guard_decay_rate": 0.05,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "A relaxed lead arm disrupts rhythm with repeated probing jabs."
+   ],
+   "breakdowns": [
+    "The extended low lead exposes hooks and committed entries.",
+    "The extended low lead exposes hooks and committed entries."
+   ]
+  },
+  {
+   "id": "hands.long_guard",
+   "dimension": "hands",
+   "lane_readiness_bonus": {
+    "head_straight": 1.25,
+    "head_hook": 0.45,
+    "head_uppercut": 0.25,
+    "body": -0.75,
+    "leg": 0.2,
+    "entry": 0.75,
+    "clinch": -0.45,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.06,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.35,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight",
+     "body"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 0.95,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 5,
+    "guard_decay_rate": 0.07,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "An extended lead arm measures distance and obstructs the incoming line."
+   ],
+   "breakdowns": [
+    "The reaching arm can be redirected into a tie or a body opening.",
+    "The reaching arm can be redirected into a tie or a body opening."
+   ],
+   "supported_by_v2": [
+    "chain_punch",
+    "lead_straight_intercept",
+    "piercing_palm",
+    "finger_jab",
+    "tan_sao",
+    "bong_sao",
+    "pak_sao"
+   ]
+  },
+  {
+   "id": "hands.peekaboo",
+   "dimension": "hands",
+   "lane_readiness_bonus": {
+    "head_straight": 1.35,
+    "head_hook": 1.25,
+    "head_uppercut": 0.25,
+    "body": 0.15,
+    "leg": -0.75,
+    "entry": -0.35,
+    "clinch": 0.0,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.06,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.12,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_hook",
+     "head_uppercut"
+    ]
+   },
+   "damage_dealt_multiplier": 1.06,
+   "damage_taken_multiplier": 0.94,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "off_center",
+    "vision": 2,
+    "guard_decay_rate": 0.09,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Compact gloves and head movement support short hooks during entry."
+   ],
+   "breakdowns": [
+    "Forward loading narrows vision and leaves a low-kick target while closing.",
+    "Forward loading narrows vision and leaves a low-kick target while closing."
+   ]
+  },
+  {
+   "id": "hands.philly_shell",
+   "dimension": "hands",
+   "lane_readiness_bonus": {
+    "head_straight": 1.25,
+    "head_hook": 0.65,
+    "head_uppercut": 0.4,
+    "body": 0.7,
+    "leg": -0.25,
+    "entry": -0.45,
+    "clinch": 0.0,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.08,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.12,
+    "counter_power_delta": 0.1,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight",
+     "head_uppercut"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 0.94,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "off_center",
+    "vision": 4,
+    "guard_decay_rate": 0.05,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Lead shoulder and rear glove intercept straight shots while the rear hand stays ready."
+   ],
+   "breakdowns": [
+    "The low lead hand and bladed torso require accurate reads against hooks and level changes.",
+    "The low lead hand and bladed torso require accurate reads against hooks and level changes."
+   ],
+   "defense_prepend": {
+    "straight": [
+     "shoulder_roll"
+    ]
+   }
+  },
+  {
+   "id": "hands.shield52",
+   "dimension": "hands",
+   "lane_readiness_bonus": {
+    "head_straight": 1.2,
+    "head_hook": 0.55,
+    "head_uppercut": 0.4,
+    "body": -0.6,
+    "leg": 0.0,
+    "entry": 0.0,
+    "clinch": -0.5,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.06,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.06,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_uppercut",
+     "head_hook"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 0.93,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "off_center",
+    "vision": 3,
+    "guard_decay_rate": 0.07,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "CANON forearm wedges redirect a punch into a lateral counter line."
+   ],
+   "breakdowns": [
+    "Crossing forearms can lose the torso lane and inside grip position.",
+    "Crossing forearms can lose the torso lane and inside grip position."
+   ],
+   "range_lane_bonus": {
+    "ranges": [
+     "punch",
+     "close",
+     "clinch"
+    ],
+    "lanes": "all",
+    "delta": 0.45
+   }
+  },
+  {
+   "id": "kicking.dutch",
+   "dimension": "kicking",
+   "lane_readiness_bonus": {
+    "head_straight": 0.0,
+    "head_hook": 0.0,
+    "head_uppercut": 0.0,
+    "body": 0.0,
+    "leg": 0.0,
+    "entry": -0.55,
+    "clinch": 0.0,
+    "single_support": -0.3
+   },
+   "attack_profile": {
+    "power_delta": 0.16,
+    "accuracy_delta": 0.1,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": -0.09,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "leg",
+     "head_hook",
+     "body"
+    ]
+   },
+   "damage_dealt_multiplier": 1.16,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Punch cover draws a high guard before the low kick."
+   ],
+   "breakdowns": [
+    "The final kick and square punching reset expose the hips.",
+    "The final kick and square punching reset expose the hips."
+   ],
+   "supported_by_v2": [
+    "calf_kick",
+    "jumping_switch_kick",
+    "oblique_kick"
+   ]
+  },
+  {
+   "id": "kicking.karate",
+   "dimension": "kicking",
+   "lane_readiness_bonus": {
+    "head_straight": 0.0,
+    "head_hook": 0.0,
+    "head_uppercut": 0.0,
+    "body": 0.0,
+    "leg": -0.55,
+    "entry": 0.0,
+    "clinch": 0.0,
+    "single_support": -0.45
+   },
+   "attack_profile": {
+    "power_delta": 0.15,
+    "accuracy_delta": 0.1,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.28,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": -0.14,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "body",
+     "head_straight"
+    ]
+   },
+   "damage_dealt_multiplier": 1.15,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "A chambered linear kick reaches past a punching entry."
+   ],
+   "breakdowns": [
+    "Blading and an extended kick expose support to capture.",
+    "Blading and an extended kick expose support to capture."
+   ],
+   "supported_by_v2": [
+    "armada",
+    "bencao",
+    "cut_kick",
+    "double_roundhouse",
+    "fast_roundhouse",
+    "flying_side_kick",
+    "front_kick",
+    "instep_head_kick",
+    "jumping_back_kick",
+    "jumping_switch_kick",
+    "martelo",
+    "meia_lua_de_compasso",
+    "no_shadow_kick",
+    "oblique_kick",
+    "queixada",
+    "question_mark_kick",
+    "spinning_hook_kick",
+    "tornado_kick"
+   ]
+  },
+  {
+   "id": "kicking.muay_thai",
+   "dimension": "kicking",
+   "lane_readiness_bonus": {
+    "head_straight": 0.0,
+    "head_hook": 0.0,
+    "head_uppercut": 0.0,
+    "body": 0.0,
+    "leg": 0.0,
+    "entry": -0.5,
+    "clinch": 0.0,
+    "single_support": -0.35
+   },
+   "attack_profile": {
+    "power_delta": 0.2,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.2,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.06,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "leg",
+     "body",
+     "clinch"
+    ]
+   },
+   "damage_dealt_multiplier": 1.2,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Shin round kicks and teeps control support and torso range."
+   ],
+   "breakdowns": [
+    "Committed hip rotation and one-leg support invite entries.",
+    "Committed hip rotation and one-leg support invite entries."
+   ],
+   "supported_by_v2": [
+    "calf_kick"
+   ],
+   "kick_defense_prepend": {
+    "kick_low": [
+     "check"
+    ],
+    "kick_body": [
+     "check"
+    ]
+   },
+   "kick_defense_window_delta": 0.04
+  },
+  {
+   "id": "kicking.none",
+   "dimension": "kicking",
+   "lane_readiness_bonus": {
+    "head_straight": 0.0,
+    "head_hook": 0.0,
+    "head_uppercut": 0.0,
+    "body": -0.35,
+    "leg": -0.5,
+    "entry": 0.0,
+    "clinch": 0.0,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight",
+     "head_hook"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Keeping both feet available favors short hand counters and immediate steps."
+   ],
+   "breakdowns": [
+    "Punch-only reach concedes the lead leg and outside distance.",
+    "Punch-only reach concedes the lead leg and outside distance."
+   ]
+  },
+  {
+   "id": "kicking.sanda",
+   "dimension": "kicking",
+   "lane_readiness_bonus": {
+    "head_straight": -0.45,
+    "head_hook": 0.0,
+    "head_uppercut": 0.0,
+    "body": -0.25,
+    "leg": 0.0,
+    "entry": 0.0,
+    "clinch": 0.0,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.14,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.18,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": -0.06,
+    "kick_catch_bonus": 0.18,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "single_support",
+     "leg",
+     "body"
+    ]
+   },
+   "damage_dealt_multiplier": 1.14,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Kick catches and support sweeps punish a committed single-leg attack."
+   ],
+   "breakdowns": [
+    "Closing for a catch exposes the head and a failed sweep reset.",
+    "Closing for a catch exposes the head and a failed sweep reset."
+   ],
+   "supported_by_v2": [
+    "calf_kick"
+   ],
+   "kick_defense_prepend": {
+    "kick_body": [
+     "kick_catch"
+    ],
+    "kick_low": [
+     "kick_catch"
+    ],
+    "kick_linear": [
+     "kick_catch"
+    ]
+   },
+   "kick_defense_window_delta": 0.08
+  },
+  {
+   "id": "kicking.wrestler_teep",
+   "dimension": "kicking",
+   "lane_readiness_bonus": {
+    "head_straight": 0.0,
+    "head_hook": -0.2,
+    "head_uppercut": 0.0,
+    "body": 0.0,
+    "leg": -0.4,
+    "entry": 0.0,
+    "clinch": 0.0,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.14,
+    "accuracy_delta": 0.08,
+    "entry_delta": 0.24,
+    "distance_control_delta": 0.14,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": -0.03,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "body",
+     "entry"
+    ]
+   },
+   "damage_dealt_multiplier": 1.14,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "A short front kick interrupts pursuit while the hips remain ready for a shot."
+   ],
+   "breakdowns": [
+    "A modest kick repertoire concedes lateral and low-line variety.",
+    "A modest kick repertoire concedes lateral and low-line variety."
+   ]
+  },
+  {
+   "id": "mentality.boxer_puncher",
+   "dimension": "mentality",
+   "lane_readiness_bonus": {
+    "head_straight": 0.0,
+    "head_hook": 0.0,
+    "head_uppercut": 0.0,
+    "body": 0.0,
+    "leg": 0.0,
+    "entry": -0.35,
+    "clinch": 0.0,
+    "single_support": -0.25
+   },
+   "attack_profile": {
+    "power_delta": 0.1,
+    "accuracy_delta": 0.18,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.08,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight",
+     "head_hook",
+     "body"
+    ]
+   },
+   "damage_dealt_multiplier": 1.1,
+   "damage_taken_multiplier": 0.96,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.05
+   },
+   "dependencies": [
+    "A probe can become a combination when the opponent commits."
+   ],
+   "breakdowns": [
+    "Switching between patience and pursuit creates a readable reset.",
+    "Switching between patience and pursuit creates a readable reset."
+   ],
+   "selection_profile": {
+    "initiative_delta": 0.0,
+    "switch_after_stalls": 2,
+    "patience": 1.0,
+    "risk": 1.0,
+    "combo_length": 2.5
+   }
+  },
+  {
+   "id": "mentality.counter",
+   "dimension": "mentality",
+   "lane_readiness_bonus": {
+    "head_straight": 0.0,
+    "head_hook": 0.0,
+    "head_uppercut": 0.0,
+    "body": 0.0,
+    "leg": -0.3,
+    "entry": -0.25,
+    "clinch": 0.0,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.22,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.18,
+    "counter_power_delta": 0.42,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight",
+     "head_uppercut"
+    ]
+   },
+   "damage_dealt_multiplier": 1.12,
+   "damage_taken_multiplier": 0.9,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 0.8
+   },
+   "dependencies": [
+    "Waiting for commitment exposes the opponent recovery beat."
+   ],
+   "breakdowns": [
+    "Low initiative leaves ground for feints and repeated pressure.",
+    "Low initiative leaves ground for feints and repeated pressure."
+   ],
+   "lead_foot_outside_delta": 0.05,
+   "selection_profile": {
+    "initiative_delta": 0.0,
+    "initiative_delta_when_waiting": -0.35,
+    "switch_after_stalls": 2,
+    "patience": 1.25,
+    "risk": 0.8,
+    "combo_length": 1.5
+   },
+   "supported_by_v2": [
+    "lead_straight_intercept",
+    "push_hands_redirect",
+    "deflect_parry_punch",
+    "brush_knee_palm"
+   ]
+  },
+  {
+   "id": "mentality.defensive",
+   "dimension": "mentality",
+   "lane_readiness_bonus": {
+    "head_straight": 0.34,
+    "head_hook": 0.34,
+    "head_uppercut": 0.25,
+    "body": -0.25,
+    "leg": -0.2,
+    "entry": 0.25,
+    "clinch": 0.2,
+    "single_support": 0.15
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.14,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.16,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight",
+     "body"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 0.85,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 0.7
+   },
+   "dependencies": [
+    "Layered denial frustrates committed direct entries."
+   ],
+   "breakdowns": [
+    "A low-output shell gives the opponent time to change level and target.",
+    "A low-output shell gives the opponent time to change level and target."
+   ],
+   "grappling_modifiers": {
+    "takedown_defense": 0.25,
+    "submission_defense": 0.25
+   },
+   "selection_profile": {
+    "initiative_delta": 0.0,
+    "switch_after_stalls": 2,
+    "patience": 1.3,
+    "risk": 0.7,
+    "combo_length": 1.5
+   }
+  },
+  {
+   "id": "mentality.outboxer",
+   "dimension": "mentality",
+   "lane_readiness_bonus": {
+    "head_straight": 0.0,
+    "head_hook": 0.0,
+    "head_uppercut": 0.0,
+    "body": 0.0,
+    "leg": 0.0,
+    "entry": -0.25,
+    "clinch": -0.35,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.2,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.25,
+    "counter_tendency": 0.12,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight",
+     "body"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 0.92,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 0.78
+   },
+   "dependencies": [
+    "Long lines and angle exits keep planted power outside its range."
+   ],
+   "breakdowns": [
+    "Retreat and a deliberate reset invite pressure at the boundary.",
+    "Retreat and a deliberate reset invite pressure at the boundary."
+   ],
+   "lead_foot_outside_delta": 0.1,
+   "selection_profile": {
+    "initiative_delta": 0.0,
+    "switch_after_stalls": 2,
+    "patience": 1.15,
+    "risk": 0.85,
+    "combo_length": 2.0
+   },
+   "pull_out_probability": 0.72
+  },
+  {
+   "id": "mentality.pressure",
+   "dimension": "mentality",
+   "lane_readiness_bonus": {
+    "head_straight": -0.3,
+    "head_hook": 0.0,
+    "head_uppercut": 0.0,
+    "body": -0.35,
+    "leg": 0.0,
+    "entry": 0.0,
+    "clinch": 0.0,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.12,
+    "accuracy_delta": 0.05,
+    "entry_delta": 0.42,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_hook",
+     "body",
+     "entry"
+    ]
+   },
+   "damage_dealt_multiplier": 1.12,
+   "damage_taken_multiplier": 1.02,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.2
+   },
+   "dependencies": [
+    "Deliberate forward steps remove retreat space and enforce repeated decisions."
+   ],
+   "breakdowns": [
+    "A tracking entry can lose a new angle and expose the torso.",
+    "A tracking entry can lose a new angle and expose the torso."
+   ],
+   "grappling_modifiers": {
+    "takedown_offense": 0.25
+   },
+   "lead_foot_outside_delta": 0.05,
+   "selection_profile": {
+    "initiative_delta": 0.35,
+    "switch_after_stalls": 3,
+    "patience": 0.85,
+    "risk": 1.05,
+    "combo_length": 2.5
+   },
+   "supported_by_v2": [
+    "chain_punch",
+    "stomp_thrust_punch"
+   ]
+  },
+  {
+   "id": "mentality.showman",
+   "dimension": "mentality",
+   "lane_readiness_bonus": {
+    "head_straight": -0.45,
+    "head_hook": -0.4,
+    "head_uppercut": 0.0,
+    "body": 0.0,
+    "leg": 0.0,
+    "entry": 0.0,
+    "clinch": 0.0,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.16,
+    "accuracy_delta": 0.14,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.12,
+    "counter_power_delta": 0.22,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.4,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_hook",
+     "head_uppercut"
+    ]
+   },
+   "damage_dealt_multiplier": 1.16,
+   "damage_taken_multiplier": 1.03,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.2
+   },
+   "dependencies": [
+    "Visible feints invite emotional pursuit and predictable attacks."
+   ],
+   "breakdowns": [
+    "Performing with a low guard concedes head lines and attention.",
+    "Performing with a low guard concedes head lines and attention."
+   ],
+   "selection_profile": {
+    "initiative_delta": 0.0,
+    "switch_after_stalls": 3,
+    "patience": 0.95,
+    "risk": 1.2,
+    "combo_length": 2.0
+   },
+   "supported_by_v2": [
+    "armada",
+    "meia_lua_de_compasso",
+    "tornado_kick",
+    "au",
+    "ginga"
+   ]
+  },
+  {
+   "id": "mentality.slickster",
+   "dimension": "mentality",
+   "lane_readiness_bonus": {
+    "head_straight": 0.0,
+    "head_hook": 0.0,
+    "head_uppercut": 0.0,
+    "body": -0.4,
+    "leg": -0.35,
+    "entry": 0.0,
+    "clinch": 0.0,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.04,
+    "accuracy_delta": 0.2,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.14,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 0.65,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.35,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight",
+     "head_hook",
+     "single_support"
+    ]
+   },
+   "damage_dealt_multiplier": 1.04,
+   "damage_taken_multiplier": 0.91,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 0.85
+   },
+   "dependencies": [
+    "Unusual timing and evasive lines draw premature commitments."
+   ],
+   "breakdowns": [
+    "Extended evasion can end at the wall with the head unprotected.",
+    "Extended evasion can end at the wall with the head unprotected."
+   ],
+   "lead_foot_outside_delta": 0.1,
+   "selection_profile": {
+    "initiative_delta": 0.0,
+    "switch_after_stalls": 2,
+    "patience": 1.1,
+    "risk": 0.85,
+    "combo_length": 2.0
+   },
+   "supported_by_v2": [
+    "ginga",
+    "circle_walk"
+   ]
+  },
+  {
+   "id": "mentality.slugger",
+   "dimension": "mentality",
+   "lane_readiness_bonus": {
+    "head_straight": -0.45,
+    "head_hook": 0.0,
+    "head_uppercut": 0.0,
+    "body": 0.0,
+    "leg": -0.45,
+    "entry": 0.0,
+    "clinch": 0.0,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.26,
+    "accuracy_delta": -0.22,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.05,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_hook",
+     "head_straight"
+    ]
+   },
+   "damage_dealt_multiplier": 1.26,
+   "damage_taken_multiplier": 1.06,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.35
+   },
+   "dependencies": [
+    "Committed short power interrupts an unprotected swarm."
+   ],
+   "breakdowns": [
+    "Planting and loading power is trackable from an angle.",
+    "Planting and loading power is trackable from an angle."
+   ],
+   "selection_profile": {
+    "initiative_delta": 0.0,
+    "switch_after_stalls": 4,
+    "patience": 1.0,
+    "risk": 1.3,
+    "combo_length": 1.5
+   },
+   "supported_by_v2": [
+    "lunging_headbutt",
+    "clinch_headbutt",
+    "bridge_smash"
+   ]
+  },
+  {
+   "id": "mentality.spoiler",
+   "dimension": "mentality",
+   "lane_readiness_bonus": {
+    "head_straight": -0.2,
+    "head_hook": 0.0,
+    "head_uppercut": 0.0,
+    "body": 0.0,
+    "leg": -0.3,
+    "entry": 0.0,
+    "clinch": 0.0,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.08,
+    "entry_delta": 0.3,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.1,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "clinch",
+     "body"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 0.9,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 0.75
+   },
+   "dependencies": [
+    "Broken rhythm and close attachment interrupt clean combinations."
+   ],
+   "breakdowns": [
+    "Seeking disruption gives up outside scoring and risks inside ties.",
+    "Seeking disruption gives up outside scoring and risks inside ties."
+   ],
+   "grappling_modifiers": {
+    "clinch_control": 0.25
+   },
+   "selection_profile": {
+    "initiative_delta": 0.0,
+    "switch_after_stalls": 2,
+    "patience": 1.05,
+    "risk": 0.9,
+    "combo_length": 1.5
+   }
+  },
+  {
+   "id": "mentality.swarmer",
+   "dimension": "mentality",
+   "lane_readiness_bonus": {
+    "head_straight": 0.0,
+    "head_hook": 0.0,
+    "head_uppercut": -0.3,
+    "body": -0.4,
+    "leg": 0.0,
+    "entry": 0.0,
+    "clinch": 0.0,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": -0.03,
+    "accuracy_delta": 0.1,
+    "entry_delta": 0.45,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "body",
+     "clinch",
+     "head_hook"
+    ]
+   },
+   "damage_dealt_multiplier": 0.97,
+   "damage_taken_multiplier": 1.02,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.25
+   },
+   "dependencies": [
+    "Repeated short entries deny an out-boxer a quiet reset."
+   ],
+   "breakdowns": [
+    "Chasing forward opens body counters and lateral exits.",
+    "Chasing forward opens body counters and lateral exits."
+   ],
+   "grappling_modifiers": {
+    "clinch_control": 0.25
+   },
+   "selection_profile": {
+    "initiative_delta": 0.35,
+    "switch_after_stalls": 3,
+    "patience": 0.8,
+    "risk": 1.1,
+    "combo_length": 3.0
+   },
+   "supported_by_v2": [
+    "chain_punch",
+    "stomp_thrust_punch"
+   ]
+  },
+  {
+   "id": "mentality.switch_hitter",
+   "dimension": "mentality",
+   "lane_readiness_bonus": {
+    "head_straight": 0.0,
+    "head_hook": 0.0,
+    "head_uppercut": 0.0,
+    "body": 0.0,
+    "leg": 0.0,
+    "entry": -0.45,
+    "clinch": 0.0,
+    "single_support": -0.45
+   },
+   "attack_profile": {
+    "power_delta": 0.1,
+    "accuracy_delta": 0.22,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 0.6,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.18,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_hook",
+     "body",
+     "leg"
+    ]
+   },
+   "damage_dealt_multiplier": 1.1,
+   "damage_taken_multiplier": 0.97,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.05
+   },
+   "dependencies": [
+    "A lead change reorients the opponent preferred counter line."
+   ],
+   "breakdowns": [
+    "The stance transition briefly cedes support and entry protection.",
+    "The stance transition briefly cedes support and entry protection."
+   ],
+   "lead_foot_outside_delta": 0.1,
+   "selection_profile": {
+    "initiative_delta": 0.0,
+    "switch_after_stalls": 1,
+    "patience": 1.0,
+    "risk": 1.0,
+    "combo_length": 2.5
+   }
+  },
+  {
+   "id": "mentality.technician",
+   "dimension": "mentality",
+   "lane_readiness_bonus": {
+    "head_straight": 0.0,
+    "head_hook": 0.0,
+    "head_uppercut": 0.0,
+    "body": 0.0,
+    "leg": 0.0,
+    "entry": -0.25,
+    "clinch": -0.45,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.06,
+    "accuracy_delta": 0.28,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.12,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.35,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight",
+     "body",
+     "leg"
+    ]
+   },
+   "damage_dealt_multiplier": 1.06,
+   "damage_taken_multiplier": 0.92,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 0.88
+   },
+   "dependencies": [
+    "Small angle changes and accurate probes exploit coarse linear entries."
+   ],
+   "breakdowns": [
+    "Deliberate reads can be crowded by short repeated pressure.",
+    "Deliberate reads can be crowded by short repeated pressure."
+   ],
+   "lead_foot_outside_delta": 0.15,
+   "selection_profile": {
+    "initiative_delta": 0.0,
+    "switch_after_stalls": 1,
+    "patience": 1.1,
+    "risk": 0.85,
+    "combo_length": 2.0
+   },
+   "supported_by_v2": [
+    "lead_straight_intercept",
+    "cut_kick"
+   ]
+  },
+  {
+   "id": "stance.balanced",
+   "dimension": "stance",
+   "lane_readiness_bonus": {
+    "head_straight": -0.25,
+    "head_hook": 0.35,
+    "head_uppercut": 0.35,
+    "body": 0.35,
+    "leg": 0.45,
+    "entry": 0.8,
+    "clinch": 0.55,
+    "single_support": 0.45
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.05,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight",
+     "entry"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 0.98,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "50/50 weight split",
+    "even readiness to strike or sprawl"
+   ],
+   "breakdowns": [
+    "high-tempo specialists overloading one lane",
+    "straight center probes (head_straight)"
+   ],
+   "grappling_modifiers": {
+    "takedown_defense": 0.25,
+    "takedown_offense": 0.25
+   },
+   "lead_foot_outside_delta": 0.05
+  },
+  {
+   "id": "stance.bladed",
+   "dimension": "stance",
+   "lane_readiness_bonus": {
+    "head_straight": 0.95,
+    "head_hook": 0.25,
+    "head_uppercut": 0.45,
+    "body": 0.7,
+    "leg": -0.85,
+    "entry": -0.55,
+    "clinch": -0.3,
+    "single_support": 0.1
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.12,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.35,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight",
+     "body"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 0.94,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "bladed",
+    "base_width": "narrow_mobile",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "narrow target silhouette",
+    "in-and-out linear mobility"
+   ],
+   "breakdowns": [
+    "low kicks to the turned lead leg (leg)",
+    "direct takedown entries (entry)"
+   ],
+   "grappling_modifiers": {
+    "takedown_defense": -0.25
+   },
+   "lead_foot_outside_delta": 0.1,
+   "supported_by_v2": [
+    "cut_kick",
+    "lead_straight_intercept"
+   ],
+   "range_lane_bonus": {
+    "ranges": [
+     "kick",
+     "outside"
+    ],
+    "lanes": "all",
+    "delta": 0.15
+   }
+  },
+  {
+   "id": "stance.crouch",
+   "dimension": "stance",
+   "lane_readiness_bonus": {
+    "head_straight": 0.8,
+    "head_hook": 0.55,
+    "head_uppercut": -0.85,
+    "body": 0.45,
+    "leg": -0.75,
+    "entry": 0.75,
+    "clinch": 0.35,
+    "single_support": -0.3
+   },
+   "attack_profile": {
+    "power_delta": 0.12,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.3,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_hook",
+     "body",
+     "entry"
+    ]
+   },
+   "damage_dealt_multiplier": 1.12,
+   "damage_taken_multiplier": 0.96,
+   "posture_profile": {
+    "weight_split": "front_heavy",
+    "height": "low_crouch",
+    "hip_angle": "squared",
+    "base_width": "wide_rooted",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "low center of gravity",
+    "loaded legs for hooks and level changes"
+   ],
+   "breakdowns": [
+    "rising uppercuts and knees (head_uppercut)",
+    "low kicks to the heavy lead leg (leg)"
+   ],
+   "grappling_modifiers": {
+    "takedown_defense": 0.25
+   }
+  },
+  {
+   "id": "stance.planted",
+   "dimension": "stance",
+   "lane_readiness_bonus": {
+    "head_straight": 0.2,
+    "head_hook": 0.4,
+    "head_uppercut": 0.3,
+    "body": 0.4,
+    "leg": -0.95,
+    "entry": 0.4,
+    "clinch": 0.65,
+    "single_support": -0.5
+   },
+   "attack_profile": {
+    "power_delta": 0.2,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_hook",
+     "head_straight"
+    ]
+   },
+   "damage_dealt_multiplier": 1.2,
+   "damage_taken_multiplier": 1.04,
+   "posture_profile": {
+    "weight_split": "front_heavy",
+    "height": "medium",
+    "hip_angle": "squared",
+    "base_width": "wide_rooted",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "rooted two-foot base generating maximum punch torque and push resistance"
+   ],
+   "breakdowns": [
+    "lateral angle pivots (angle)",
+    "calf and thigh kicks to rooted lead leg (leg)"
+   ],
+   "grappling_modifiers": {
+    "takedown_defense": 0.25,
+    "scramble": -0.25
+   },
+   "lead_foot_outside_delta": -0.1,
+   "supported_by_v2": [
+    "stomp_thrust_punch",
+    "bridge_smash",
+    "tiger_claw"
+   ]
+  },
+  {
+   "id": "stance.shuffle",
+   "dimension": "stance",
+   "lane_readiness_bonus": {
+    "head_straight": 0.25,
+    "head_hook": 0.15,
+    "head_uppercut": 0.1,
+    "body": 0.15,
+    "leg": -0.7,
+    "entry": 0.65,
+    "clinch": -0.25,
+    "single_support": -0.75
+   },
+   "attack_profile": {
+    "power_delta": -0.03,
+    "accuracy_delta": 0.18,
+    "entry_delta": 0.42,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.22,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "entry",
+     "head_straight",
+     "leg"
+    ]
+   },
+   "damage_dealt_multiplier": 0.97,
+   "damage_taken_multiplier": 0.97,
+   "posture_profile": {
+    "weight_split": "neutral",
+    "height": "upright_tall",
+    "hip_angle": "bladed",
+    "base_width": "narrow_mobile",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "continuous foot bounce",
+    "open-floor space to disguise entries and create angles"
+   ],
+   "breakdowns": [
+    "low kicks timing the bounce (leg)",
+    "single-support sweeps (single_support)"
+   ],
+   "grappling_modifiers": {
+    "takedown_defense": -0.25,
+    "scramble": 0.25
+   },
+   "lead_foot_outside_delta": 0.15,
+   "supported_by_v2": [
+    "ginga",
+    "circle_walk",
+    "bounce_step"
+   ]
+  },
+  {
+   "id": "stance.switch",
+   "dimension": "stance",
+   "lane_readiness_bonus": {
+    "head_straight": 0.45,
+    "head_hook": 0.45,
+    "head_uppercut": 0.3,
+    "body": 0.3,
+    "leg": 0.25,
+    "entry": -0.55,
+    "clinch": 0.1,
+    "single_support": -0.65
+   },
+   "attack_profile": {
+    "power_delta": 0.06,
+    "accuracy_delta": 0.26,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 0.75,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight",
+     "body",
+     "leg"
+    ]
+   },
+   "damage_dealt_multiplier": 1.06,
+   "damage_taken_multiplier": 0.98,
+   "posture_profile": {
+    "weight_split": "neutral",
+    "height": "medium",
+    "hip_angle": "switching",
+    "base_width": "narrow_mobile",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "recovered Uno changeover",
+    "shifting lead-foot alignment"
+   ],
+   "breakdowns": [
+    "timed entries mid-switch (entry)",
+    "sweeps/kicks while on single support (single_support)"
+   ],
+   "grappling_modifiers": {
+    "takedown_defense": -0.25
+   },
+   "lead_foot_outside_delta": 0.2
+  },
+  {
+   "id": "stance.upright",
+   "dimension": "stance",
+   "lane_readiness_bonus": {
+    "head_straight": 0.3,
+    "head_hook": 0.2,
+    "head_uppercut": 0.4,
+    "body": -0.55,
+    "leg": 1.25,
+    "entry": -0.75,
+    "clinch": 0.85,
+    "single_support": 0.85
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.1,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "leg",
+     "clinch"
+    ]
+   },
+   "damage_dealt_multiplier": 1.02,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "rear_heavy",
+    "height": "upright_tall",
+    "hip_angle": "squared",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "rear-leg weight distribution for fast shin checks and teeps",
+    "tall posture"
+   ],
+   "breakdowns": [
+    "level-change takedown entries (entry)",
+    "body hooks under high elbows (body)"
+   ],
+   "grappling_modifiers": {
+    "takedown_defense": -0.5,
+    "clinch_control": 0.5
+   },
+   "lead_foot_outside_delta": -0.05
+  },
+  {
+   "id": "target.body_puncher",
+   "dimension": "target",
+   "lane_readiness_bonus": {
+    "head_straight": -0.5,
+    "head_hook": 0.0,
+    "head_uppercut": -0.55,
+    "body": 0.0,
+    "leg": 0.0,
+    "entry": 0.0,
+    "clinch": 0.0,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.14,
+    "accuracy_delta": 0.05,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "body"
+    ]
+   },
+   "damage_dealt_multiplier": 1.14,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Torso attacks draw elbows down and reduce comfortable movement."
+   ],
+   "breakdowns": [
+    "Lower targeting requires entering a rising counter lane.",
+    "Lower targeting requires entering a rising counter lane."
+   ],
+   "supported_by_v2": [
+    "body_jab",
+    "body_straight_punch",
+    "fa_jin_push",
+    "iron_mountain_lean",
+    "rear_body_hook",
+    "shovel_hook",
+    "stomp_thrust_punch",
+    "top_elbow"
+   ]
+  },
+  {
+   "id": "target.head_hunter",
+   "dimension": "target",
+   "lane_readiness_bonus": {
+    "head_straight": 0.0,
+    "head_hook": 0.0,
+    "head_uppercut": 0.0,
+    "body": -0.55,
+    "leg": 0.0,
+    "entry": -0.55,
+    "clinch": 0.0,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.14,
+    "accuracy_delta": 0.06,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight",
+     "head_hook",
+     "head_uppercut"
+    ]
+   },
+   "damage_dealt_multiplier": 1.14,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Repeated head threats force high reactions and narrow vision."
+   ],
+   "breakdowns": [
+    "Head fixation leaves torso and level-change defenses late.",
+    "Head fixation leaves torso and level-change defenses late."
+   ],
+   "supported_by_v2": [
+    "armada",
+    "brawler_straight",
+    "bridge_smash",
+    "brush_knee_palm",
+    "cartwheel_kick",
+    "chain_punch",
+    "check_hook",
+    "clinch_headbutt",
+    "deflect_parry_punch",
+    "flying_knee",
+    "headbutt",
+    "horizontal_elbow",
+    "instep_head_kick",
+    "jumping_switch_kick",
+    "knee_head_clinch",
+    "lead_straight_intercept",
+    "lead_uppercut",
+    "lunging_headbutt",
+    "martelo",
+    "meia_lua_de_compasso",
+    "overhand",
+    "piercing_palm",
+    "pull_counter",
+    "queixada",
+    "question_mark_kick",
+    "rear_hook",
+    "shield_counter_hook",
+    "short_uppercut",
+    "single_palm_change",
+    "spinning_backfist",
+    "spinning_elbow",
+    "spinning_hook_kick",
+    "superman_punch",
+    "tiger_claw",
+    "tornado_kick",
+    "uppercut_elbow",
+    "wall_run_kick",
+    "wild_hook"
+   ]
+  },
+  {
+   "id": "target.knee_clincher",
+   "dimension": "target",
+   "lane_readiness_bonus": {
+    "head_straight": -0.5,
+    "head_hook": 0.0,
+    "head_uppercut": 0.0,
+    "body": 0.0,
+    "leg": 0.0,
+    "entry": -0.45,
+    "clinch": 0.0,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.16,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.18,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "body",
+     "clinch",
+     "head_uppercut"
+    ]
+   },
+   "damage_dealt_multiplier": 1.16,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Posture control guides a rising knee into the torso."
+   ],
+   "breakdowns": [
+    "Tying the head leaves the hips available underneath.",
+    "Tying the head leaves the hips available underneath."
+   ],
+   "supported_by_v2": [
+    "flying_knee",
+    "knee_head_clinch",
+    "straight_knee"
+   ]
+  },
+  {
+   "id": "target.leg_chopper",
+   "dimension": "target",
+   "lane_readiness_bonus": {
+    "head_straight": -0.5,
+    "head_hook": 0.0,
+    "head_uppercut": 0.0,
+    "body": 0.0,
+    "leg": 0.0,
+    "entry": 0.0,
+    "clinch": 0.0,
+    "single_support": -0.45
+   },
+   "attack_profile": {
+    "power_delta": 0.16,
+    "accuracy_delta": 0.08,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": -1.3,
+    "favored_lanes": [
+     "leg",
+     "single_support"
+    ]
+   },
+   "damage_dealt_multiplier": 1.16,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Low attacks punish forward-loaded support and reduce pivot options."
+   ],
+   "breakdowns": [
+    "Kicking commits one support leg and delays hand recovery.",
+    "Kicking commits one support leg and delays hand recovery."
+   ],
+   "supported_by_v2": [
+    "calf_kick",
+    "oblique_kick"
+   ]
+  },
+  {
+   "id": "target.liver_ribs",
+   "dimension": "target",
+   "lane_readiness_bonus": {
+    "head_straight": -0.35,
+    "head_hook": -0.55,
+    "head_uppercut": 0.0,
+    "body": 0.0,
+    "leg": 0.0,
+    "entry": 0.0,
+    "clinch": 0.0,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.18,
+    "accuracy_delta": 0.06,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "body",
+     "head_hook"
+    ]
+   },
+   "damage_dealt_multiplier": 1.18,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "A lateral torso line bypasses a high sealed shell."
+   ],
+   "breakdowns": [
+    "Seeking a specific side makes the entry and reset readable.",
+    "Seeking a specific side makes the entry and reset readable."
+   ],
+   "supported_by_v2": [
+    "body_jab",
+    "body_straight_punch",
+    "fa_jin_push",
+    "iron_mountain_lean",
+    "rear_body_hook",
+    "shovel_hook",
+    "stomp_thrust_punch",
+    "top_elbow"
+   ],
+   "on_body_damage_extra_fatigue_fraction": 0.22
+  },
+  {
+   "id": "target.mixer",
+   "dimension": "target",
+   "lane_readiness_bonus": {
+    "head_straight": 0.0,
+    "head_hook": 0.0,
+    "head_uppercut": 0.0,
+    "body": 0.0,
+    "leg": 0.0,
+    "entry": 0.0,
+    "clinch": -0.3,
+    "single_support": -0.25
+   },
+   "attack_profile": {
+    "power_delta": 0.08,
+    "accuracy_delta": 0.1,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.0,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 0.45,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight",
+     "head_hook",
+     "body",
+     "leg"
+    ]
+   },
+   "damage_dealt_multiplier": 1.08,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Alternating head, torso and leg lines overloads one-level coverage."
+   ],
+   "breakdowns": [
+    "Changing targets demands resets that can be timed.",
+    "Changing targets demands resets that can be timed."
+   ],
+   "supported_by_v2": [
+    "armada",
+    "bencao",
+    "body_jab",
+    "body_straight_punch",
+    "brawler_straight",
+    "bridge_smash",
+    "brush_knee_palm",
+    "calf_kick",
+    "cartwheel_kick",
+    "chain_punch",
+    "check_hook",
+    "clinch_headbutt",
+    "cut_kick",
+    "deflect_parry_punch",
+    "double_roundhouse",
+    "fa_jin_push",
+    "fast_roundhouse",
+    "finger_jab",
+    "flying_knee",
+    "flying_side_kick",
+    "front_kick",
+    "headbutt",
+    "horizontal_elbow",
+    "instep_head_kick",
+    "iron_mountain_lean",
+    "jumping_back_kick",
+    "jumping_switch_kick",
+    "knee_head_clinch",
+    "lead_straight_intercept",
+    "lead_uppercut",
+    "lunging_headbutt",
+    "martelo",
+    "meia_lua_de_compasso",
+    "no_shadow_kick",
+    "oblique_kick",
+    "overhand",
+    "piercing_palm",
+    "pull_counter",
+    "queixada",
+    "question_mark_kick",
+    "rear_body_hook",
+    "rear_hook",
+    "shield_counter_hook",
+    "short_uppercut",
+    "shovel_hook",
+    "single_palm_change",
+    "spinning_backfist",
+    "spinning_elbow",
+    "spinning_hook_kick",
+    "stomp_thrust_punch",
+    "straight_knee",
+    "superman_punch",
+    "tiger_claw",
+    "top_elbow",
+    "tornado_kick",
+    "uppercut_elbow",
+    "wall_run_kick",
+    "wild_hook"
+   ]
+  },
+  {
+   "id": "tie.anti_grappling",
+   "dimension": "tie",
+   "lane_readiness_bonus": {
+    "head_straight": -0.5,
+    "head_hook": 0.0,
+    "head_uppercut": 0.25,
+    "body": 0.15,
+    "leg": 0.15,
+    "entry": 1.1,
+    "clinch": 0.8,
+    "single_support": 0.5
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.18,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.18,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_straight",
+     "head_uppercut"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Trained sprawls, underhooks and exits deny grappling engagement."
+   ],
+   "breakdowns": [
+    "A disengagement priority cedes initiative during the exit reset.",
+    "A disengagement priority cedes initiative during the exit reset."
+   ],
+   "grappling_profile": {
+    "takedown_offense": 1.0,
+    "takedown_defense": 4.5,
+    "clinch_control": 2.5,
+    "top_control": 1.5,
+    "bottom_game": 1.5,
+    "submission_offense": 0.5,
+    "submission_defense": 3.0,
+    "scramble": 3.5,
+    "stand_up": 4.5
+   }
+  },
+  {
+   "id": "tie.bjj",
+   "dimension": "tie",
+   "lane_readiness_bonus": {
+    "head_straight": -0.6,
+    "head_hook": -0.2,
+    "head_uppercut": 0.1,
+    "body": 0.2,
+    "leg": 0.0,
+    "entry": 0.35,
+    "clinch": 0.95,
+    "single_support": 0.25
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.08,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.08,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "clinch"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Ground frames and isolated limbs create submissions from inferior positions."
+   ],
+   "breakdowns": [
+    "Accepting the floor concedes standing range and top-strike initiative.",
+    "Accepting the floor concedes standing range and top-strike initiative."
+   ],
+   "grappling_profile": {
+    "takedown_offense": 1.5,
+    "takedown_defense": 2.0,
+    "clinch_control": 2.5,
+    "top_control": 3.5,
+    "bottom_game": 4.5,
+    "submission_offense": 4.5,
+    "submission_defense": 4.5,
+    "scramble": 3.0,
+    "stand_up": 2.0
+   }
+  },
+  {
+   "id": "tie.folk_ride",
+   "dimension": "tie",
+   "lane_readiness_bonus": {
+    "head_straight": -0.55,
+    "head_hook": 0.0,
+    "head_uppercut": 0.0,
+    "body": 0.25,
+    "leg": 0.15,
+    "entry": 0.7,
+    "clinch": 0.85,
+    "single_support": 0.45
+   },
+   "attack_profile": {
+    "power_delta": 0.06,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.15,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.2,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "entry",
+     "clinch"
+    ]
+   },
+   "damage_dealt_multiplier": 1.06,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Hip coverage and wrist control deny a grounded stand-up."
+   ],
+   "breakdowns": [
+    "Chasing a ride can leave the neck and standing entry unprotected.",
+    "Chasing a ride can leave the neck and standing entry unprotected."
+   ],
+   "grappling_profile": {
+    "takedown_offense": 3.5,
+    "takedown_defense": 3.0,
+    "clinch_control": 2.5,
+    "top_control": 4.5,
+    "bottom_game": 2.0,
+    "submission_offense": 1.5,
+    "submission_defense": 2.5,
+    "scramble": 3.5,
+    "stand_up": 3.5
+   },
+   "supported_by_v2": [
+    "cross_face",
+    "cradle",
+    "neck_crank"
+   ]
+  },
+  {
+   "id": "tie.freestyle",
+   "dimension": "tie",
+   "lane_readiness_bonus": {
+    "head_straight": 0.0,
+    "head_hook": 0.0,
+    "head_uppercut": -0.65,
+    "body": 0.15,
+    "leg": 0.25,
+    "entry": 1.15,
+    "clinch": -0.45,
+    "single_support": 0.85
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.28,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.24,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "entry",
+     "single_support"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "An elevation change connects the legs before an upright striker can reset."
+   ],
+   "breakdowns": [
+    "A failed shot leaves a recovering head line and inside-tie exposure.",
+    "A failed shot leaves a recovering head line and inside-tie exposure."
+   ],
+   "grappling_profile": {
+    "takedown_offense": 4.5,
+    "takedown_defense": 3.5,
+    "clinch_control": 2.5,
+    "top_control": 3.5,
+    "bottom_game": 2.0,
+    "submission_offense": 1.0,
+    "submission_defense": 2.5,
+    "scramble": 4.0,
+    "stand_up": 3.5
+   }
+  },
+  {
+   "id": "tie.greco",
+   "dimension": "tie",
+   "lane_readiness_bonus": {
+    "head_straight": 0.0,
+    "head_hook": -0.65,
+    "head_uppercut": 0.25,
+    "body": 0.45,
+    "leg": -0.4,
+    "entry": 0.35,
+    "clinch": 1.25,
+    "single_support": 0.2
+   },
+   "attack_profile": {
+    "power_delta": 0.0,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.18,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.12,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "clinch",
+     "body"
+    ]
+   },
+   "damage_dealt_multiplier": 1.0,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Chest contact and locked hands constrain the opponent hips."
+   ],
+   "breakdowns": [
+    "Closing both arms around the trunk gives up head coverage and ground submission awareness.",
+    "Closing both arms around the trunk gives up head coverage and ground submission awareness."
+   ],
+   "grappling_profile": {
+    "takedown_offense": 3.5,
+    "takedown_defense": 4.0,
+    "clinch_control": 4.5,
+    "top_control": 3.5,
+    "bottom_game": 1.5,
+    "submission_offense": 1.0,
+    "submission_defense": 2.5,
+    "scramble": 3.0,
+    "stand_up": 3.0
+   }
+  },
+  {
+   "id": "tie.judo_sambo",
+   "dimension": "tie",
+   "lane_readiness_bonus": {
+    "head_straight": -0.25,
+    "head_hook": 0.1,
+    "head_uppercut": 0.15,
+    "body": 0.2,
+    "leg": 0.35,
+    "entry": 0.4,
+    "clinch": 0.95,
+    "single_support": 1.2
+   },
+   "attack_profile": {
+    "power_delta": 0.08,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.06,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.32,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "clinch",
+     "single_support"
+    ]
+   },
+   "damage_dealt_multiplier": 1.08,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "A tie redirects loaded weight over a blocked support leg."
+   ],
+   "breakdowns": [
+    "Seeking a throwing connection concedes long-range initiative and the back if the turn fails.",
+    "Seeking a throwing connection concedes long-range initiative and the back if the turn fails."
+   ],
+   "grappling_profile": {
+    "takedown_offense": 4.0,
+    "takedown_defense": 3.5,
+    "clinch_control": 3.5,
+    "top_control": 3.0,
+    "bottom_game": 2.0,
+    "submission_offense": 2.5,
+    "submission_defense": 3.0,
+    "scramble": 3.0,
+    "stand_up": 3.0
+   },
+   "supported_by_v2": [
+    "quick_grip_throw",
+    "turning_throw",
+    "kick_into_throw"
+   ]
+  },
+  {
+   "id": "tie.thai_plum",
+   "dimension": "tie",
+   "lane_readiness_bonus": {
+    "head_straight": 0.0,
+    "head_hook": 0.15,
+    "head_uppercut": 0.9,
+    "body": -0.5,
+    "leg": 0.0,
+    "entry": -0.7,
+    "clinch": 1.15,
+    "single_support": 0.1
+   },
+   "attack_profile": {
+    "power_delta": 0.08,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.15,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "clinch",
+     "body",
+     "head_uppercut"
+    ]
+   },
+   "damage_dealt_multiplier": 1.08,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "Inside forearms and head control expose the torso to knees."
+   ],
+   "breakdowns": [
+    "Reaching high leaves hip attachment and level changes underneath.",
+    "Reaching high leaves hip attachment and level changes underneath."
+   ],
+   "grappling_profile": {
+    "takedown_offense": 1.5,
+    "takedown_defense": 2.5,
+    "clinch_control": 4.5,
+    "top_control": 1.5,
+    "bottom_game": 1.0,
+    "submission_offense": 0.5,
+    "submission_defense": 1.5,
+    "scramble": 2.5,
+    "stand_up": 2.5
+   },
+   "supported_by_v2": [
+    "clinch_headbutt"
+   ]
+  },
+  {
+   "id": "tie.wall_boxing",
+   "dimension": "tie",
+   "lane_readiness_bonus": {
+    "head_straight": 0.15,
+    "head_hook": 0.75,
+    "head_uppercut": 0.35,
+    "body": -0.55,
+    "leg": -0.25,
+    "entry": -0.55,
+    "clinch": 0.9,
+    "single_support": 0.0
+   },
+   "attack_profile": {
+    "power_delta": 0.08,
+    "accuracy_delta": 0.0,
+    "entry_delta": 0.0,
+    "distance_control_delta": 0.0,
+    "counter_tendency": 0.0,
+    "counter_power_delta": 0.0,
+    "sweep_resistance": 0.1,
+    "kick_retraction_delta": 0.0,
+    "kick_catch_bonus": 0.0,
+    "read_decay_factor": 1.0,
+    "read_gain_multiplier": 1.0,
+    "feint_setup_rate": 0.0,
+    "leg_compromise_threshold_delta": 0.0,
+    "favored_lanes": [
+     "head_hook",
+     "body",
+     "clinch"
+    ]
+   },
+   "damage_dealt_multiplier": 1.08,
+   "damage_taken_multiplier": 1.0,
+   "posture_profile": {
+    "weight_split": "balanced",
+    "height": "medium",
+    "hip_angle": "semi_bladed",
+    "base_width": "balanced",
+    "head_position": "centerline_tucked",
+    "vision": 3,
+    "guard_decay_rate": 0.06,
+    "risk_appetite": 1.0
+   },
+   "dependencies": [
+    "An inside tie pins posture while the free hand strikes."
+   ],
+   "breakdowns": [
+    "Wall commitment makes hips reachable and ties up the exit hand.",
+    "Wall commitment makes hips reachable and ties up the exit hand."
+   ],
+   "grappling_profile": {
+    "takedown_offense": 1.5,
+    "takedown_defense": 2.5,
+    "clinch_control": 3.5,
+    "top_control": 1.5,
+    "bottom_game": 1.0,
+    "submission_offense": 0.5,
+    "submission_defense": 1.5,
+    "scramble": 2.0,
+    "stand_up": 2.5
+   }
+  }
+ ]
+}

@@ -1,0 +1,197 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "BLOCK Grappling Position & Transition Map Schema",
+ "type": "object",
+ "required": [
+  "version",
+  "positions",
+  "transitions"
+ ],
+ "properties": {
+  "version": {
+   "const": "block-2"
+  },
+  "positions": {
+   "type": "array",
+   "minItems": 12,
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "domain",
+     "range",
+     "posture",
+     "dominant_side_role",
+     "allowed_techniques"
+    ],
+    "properties": {
+     "id": {
+      "type": "string",
+      "minLength": 1
+     },
+     "domain": {
+      "enum": [
+       "standing",
+       "clinch",
+       "transition",
+       "ground"
+      ]
+     },
+     "range": {
+      "enum": [
+       "outside",
+       "kick",
+       "punch",
+       "close",
+       "clinch",
+       "ground"
+      ]
+     },
+     "posture": {
+      "enum": [
+       "standing",
+       "transition",
+       "ground"
+      ]
+     },
+     "dominant_side_role": {
+      "enum": [
+       "neutral",
+       "initiator",
+       "top",
+       "bottom_guard",
+       "back_controller"
+      ]
+     },
+     "allowed_techniques": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "roles": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+       "type": "string",
+       "minLength": 1
+      }
+     },
+     "control_value_per_second": {
+      "type": "object",
+      "additionalProperties": {
+       "type": "number",
+       "minimum": 0
+      }
+     },
+     "status": {
+      "enum": [
+       "existing",
+       "new",
+       "deprecated"
+      ]
+     },
+     "alias_of": {
+      "type": "string",
+      "minLength": 1
+     }
+    },
+    "additionalProperties": false
+   }
+  },
+  "transitions": {
+   "type": "array",
+   "minItems": 10,
+   "items": {
+    "type": "object",
+    "required": [
+     "from_position",
+     "to_position",
+     "via_technique",
+     "required_grips",
+     "frame_cost",
+     "counters"
+    ],
+    "properties": {
+     "from_position": {
+      "type": "string",
+      "minLength": 1
+     },
+     "to_position": {
+      "type": "string",
+      "minLength": 1
+     },
+     "via_technique": {
+      "type": "string",
+      "minLength": 1
+     },
+     "required_grips": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "frame_cost": {
+      "type": "integer",
+      "minimum": 1
+     },
+     "counters": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "actor_role": {
+      "type": "string",
+      "minLength": 1
+     },
+     "actor_role_after": {
+      "type": "string",
+      "minLength": 1
+     },
+     "contest": {
+      "enum": [
+       "clinch_control",
+       "clinch_escape",
+       "takedown",
+       "takedown_defense",
+       "kick_catch",
+       "sweep",
+       "guard_pull",
+       "scramble",
+       "pass",
+       "sweep_ground",
+       "escape",
+       "stand_up",
+       "control",
+       "submission"
+      ]
+     },
+     "via_outcome": {
+      "type": "string",
+      "minLength": 1
+     }
+    },
+    "additionalProperties": false
+   }
+  },
+  "contests": {
+   "type": "array",
+   "items": {
+    "type": "string",
+    "minLength": 1
+   }
+  },
+  "contest_skill_map": {
+   "type": "object"
+  },
+  "legacy_position_map": {
+   "type": "object"
+  },
+  "legacy_transition_map": {
+   "type": "array"
+  }
+ },
+ "additionalProperties": false
+}

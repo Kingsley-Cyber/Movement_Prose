@@ -1,0 +1,147 @@
+{
+ "version": "block-2",
+ "revision": 1,
+ "fighter_id": "tpl_lethwei",
+ "name": "Lethwei template",
+ "combat_identity": "Lethwei starter build (rename and customize)",
+ "dimensions": {
+  "hands": "hands.long_guard",
+  "defense": "defense.block_absorb",
+  "stance": "stance.planted",
+  "tie": "tie.thai_plum",
+  "target": "target.head_hunter",
+  "kicking": "kicking.muay_thai",
+  "mentality": "mentality.slugger"
+ },
+ "adaptation": "mma",
+ "orientation": "orthodox",
+ "slot_count": 2,
+ "slot_label": "Two-piece",
+ "synchronized_capabilities": [
+  {
+   "id": "tpl_lethwei.slot.1",
+   "capabilities": [
+    "lethwei"
+   ],
+   "description": "Bare-knuckle punches and kicks, headbutt on the entry.",
+   "trigger": "fight_start",
+   "sequence": [
+    "jab",
+    "cross",
+    "lunging_headbutt",
+    "low_kick",
+    "body_kick"
+   ],
+   "home_range": "punch",
+   "goal": "head_damage",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "sequence_denied_or_countered"
+   },
+   "links": [
+    "tpl_lethwei.slot.2"
+   ]
+  },
+  {
+   "id": "tpl_lethwei.slot.2",
+   "capabilities": [
+    "lethwei",
+    "clinch"
+   ],
+   "description": "Clinch with headbutts, knees, elbows and throws.",
+   "trigger": "close_range_reached",
+   "sequence": [
+    "collar_tie",
+    "clinch_headbutt",
+    "knee_head_clinch",
+    "horizontal_elbow",
+    "outside_trip"
+   ],
+   "home_range": "clinch",
+   "goal": "clinch_control",
+   "abandon_rule": {
+    "max_consecutive_stalls": 2,
+    "condition": "sequence_denied_or_countered"
+   },
+   "links": [
+    "tpl_lethwei.slot.1"
+   ]
+  }
+ ],
+ "baseline_capabilities": [
+  "basic_movement",
+  "untrained_striking"
+ ],
+ "tempo": 4,
+ "preferred_ranges": [
+  "punch",
+  "clinch"
+ ],
+ "debt_sentence": "Lethwei template: every option's weakness is listed in exploitable_seams.",
+ "exploitable_seams": [
+  "debt.defense.block_absorb.body",
+  "debt.defense.block_absorb.vision",
+  "debt.hands.long_guard.body",
+  "debt.hands.long_guard.clinch",
+  "debt.kicking.muay_thai.entry",
+  "debt.kicking.muay_thai.single_support",
+  "debt.mentality.slugger.angle",
+  "debt.mentality.slugger.recovery",
+  "debt.stance.planted.angle",
+  "debt.stance.planted.leg",
+  "debt.target.head_hunter.body",
+  "debt.target.head_hunter.entry",
+  "debt.tie.thai_plum.body",
+  "debt.tie.thai_plum.entry"
+ ],
+ "active_techniques": [
+  "step",
+  "retreat",
+  "pivot",
+  "feint",
+  "jab",
+  "cross",
+  "lunging_headbutt",
+  "low_kick",
+  "body_kick",
+  "collar_tie",
+  "clinch_headbutt",
+  "knee_head_clinch",
+  "horizontal_elbow",
+  "outside_trip",
+  "body_lock",
+  "double_collar_tie",
+  "shell_block"
+ ],
+ "signature_moves": [
+  "lunging_headbutt",
+  "clinch_headbutt",
+  "knee_head_clinch"
+ ],
+ "airborne_training": {
+  "allowed_vertical_modes": [
+   "grounded",
+   "athletic"
+  ],
+  "techniques": []
+ },
+ "conditional_abilities": [],
+ "combat_limitations": [
+  "Template card for Lethwei: replace with the character's own limitations."
+ ],
+ "fighting_description": {
+  "does": "Bare-knuckle punches and kicks, headbutt on the entry.",
+  "wins": "By the style's signature tools (see signature_moves).",
+  "avoids": "Fighting outside its home range.",
+  "beaten_by": "Opponents who exploit its listed seams."
+ },
+ "appearance": {
+  "clothing": "TBD",
+  "identity_anchor": "TBD",
+  "props": []
+ },
+ "provenance": {
+  "classification": "CANON",
+  "note": "style template from the v2.1 handoff; rename and customize before use"
+ }
+}

@@ -1,0 +1,525 @@
+{
+ "additivity_current_data_vs_extended_schemas": [
+  {
+   "check": "current data/option_behaviors.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "current data/techniques_v2.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "current data/positions.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "current data/model_v2.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "current cards/v2/detroit.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "current cards/v2/donnell.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "current cards/v2/greco.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "current cards/v2/jiujitsu.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "current cards/v2/karate.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "current cards/v2/macklin.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "current cards/v2/maleek.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "current cards/v2/philly.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "current cards/v2/sanda_judo.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "current cards/v2/street.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "current cards/v2/thai.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "current cards/v2/wrestler.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "block-1 cards/detroit.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "block-1 cards/donnell.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "block-1 cards/greco.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "block-1 cards/jiujitsu.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "block-1 cards/karate.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "block-1 cards/macklin.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "block-1 cards/maleek.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "block-1 cards/philly.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "block-1 cards/street.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "block-1 cards/thai.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "block-1 cards/wrestler.json vs extended",
+   "ok": true
+  }
+ ],
+ "targets_vs_extended_schemas": [
+  {
+   "check": "target data/option_behaviors.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "target data/techniques_v2.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "target data/positions.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "target data/model_v2.json vs extended",
+   "ok": true
+  },
+  {
+   "check": "target data/rulesets_v2.json",
+   "ok": true
+  },
+  {
+   "check": "target data/combinations_v2.json",
+   "ok": true
+  },
+  {
+   "check": "target data/debt_registry_v2.json",
+   "ok": true
+  },
+  {
+   "check": "target data/capabilities_v2.json",
+   "ok": true
+  },
+  {
+   "check": "proposed card detroit vs extended",
+   "ok": true
+  },
+  {
+   "check": "proposed card donnell vs extended",
+   "ok": true
+  },
+  {
+   "check": "proposed card greco vs extended",
+   "ok": true
+  },
+  {
+   "check": "proposed card jiujitsu vs extended",
+   "ok": true
+  },
+  {
+   "check": "proposed card karate vs extended",
+   "ok": true
+  },
+  {
+   "check": "proposed card macklin vs extended",
+   "ok": true
+  },
+  {
+   "check": "proposed card maleek vs extended",
+   "ok": true
+  },
+  {
+   "check": "proposed card philly vs extended",
+   "ok": true
+  },
+  {
+   "check": "proposed card sanda_judo vs extended",
+   "ok": true
+  },
+  {
+   "check": "proposed card street vs extended",
+   "ok": true
+  },
+  {
+   "check": "proposed card thai vs extended",
+   "ok": true
+  },
+  {
+   "check": "proposed card wrestler vs extended",
+   "ok": true
+  }
+ ],
+ "targets_vs_current_schemas (expected to fail: replace schema and data in the same commit)": [
+  {
+   "check": "target option_behaviors.json vs CURRENT schema",
+   "ok": false,
+   "error": "Additional properties are not allowed ('grappling_profile' was unexpected)",
+   "path": "options/56"
+  },
+  {
+   "check": "target techniques_v2.json vs CURRENT schema",
+   "ok": false,
+   "error": "Additional properties are not allowed ('accuracy_base', 'accuracy_base_recommended', 'airborne', 'catchability', 'cut_chance', 'damage_routing', 'defends', 'energy_mult', 'exploits_openings', 'incoming_class', 'joint_target', 'legal_in', 'l",
+   "path": "techniques/159"
+  },
+  {
+   "check": "target positions.json vs CURRENT schema",
+   "ok": false,
+   "error": "Additional properties are not allowed ('contest_skill_map', 'contests', 'legacy_position_map', 'legacy_transition_map' were unexpected)",
+   "path": ""
+  },
+  {
+   "check": "target model_v2.json vs CURRENT schema",
+   "ok": false,
+   "error": "Additional properties are not allowed ('audits', 'damage', 'defense_contest', 'director', 'energy', 'fight_momentum', 'finishes', 'geometry', 'grappling', 'kick_defense', 'knockdowns', 'laterality', 'legacy', 'mastery', 'pace', 'posture', '",
+   "path": ""
+  }
+ ],
+ "slot_validator_current_cards": {
+  "detroit": [
+   "detroit.slot.2: slot grants fewer than 2 usable non-basic attacking techniques ([])",
+   "detroit.slot.2: sequence item 'jab' is not granted by the slot's capabilities ['basic_movement']",
+   "detroit.slot.2: sequence item 'cross' is not granted by the slot's capabilities ['basic_movement']",
+   "detroit.slot.2: sequence item 'hook' is not granted by the slot's capabilities ['basic_movement']",
+   "detroit.slot.2: sequence item 'body_hook' is not granted by the slot's capabilities ['basic_movement']",
+   "detroit.slot.2: sequence item 'uppercut' is not granted by the slot's capabilities ['basic_movement']",
+   "detroit.slot.2: sequence item 'haymaker' is not granted by the slot's capabilities ['basic_movement']"
+  ],
+  "donnell": [
+   "donnell.slot.2: slot grants fewer than 2 usable non-basic attacking techniques ([])",
+   "donnell.slot.2: modifier capability without a school",
+   "donnell.slot.2: sequence item 'jab' is not granted by the slot's capabilities ['pressure_footwork']",
+   "donnell.slot.2: sequence item 'cross' is not granted by the slot's capabilities ['pressure_footwork']",
+   "donnell.slot.2: sequence item 'hook' is not granted by the slot's capabilities ['pressure_footwork']",
+   "donnell.slot.2: sequence item 'body_hook' is not granted by the slot's capabilities ['pressure_footwork']",
+   "donnell.slot.2: sequence item 'uppercut' is not granted by the slot's capabilities ['pressure_footwork']",
+   "donnell.slot.2: sequence item 'haymaker' is not granted by the slot's capabilities ['pressure_footwork']",
+   "donnell.slot.3: slot grants fewer than 2 usable non-basic attacking techniques ([])",
+   "donnell.slot.3: sequence item 'jab' is not granted by the slot's capabilities ['inside_combinations']",
+   "donnell.slot.3: sequence item 'cross' is not granted by the slot's capabilities ['inside_combinations']",
+   "donnell.slot.3: sequence item 'hook' is not granted by the slot's capabilities ['inside_combinations']",
+   "donnell.slot.3: sequence item 'body_hook' is not granted by the slot's capabilities ['inside_combinations']",
+   "donnell.slot.3: sequence item 'uppercut' is not granted by the slot's capabilities ['inside_combinations']",
+   "donnell.slot.3: sequence item 'haymaker' is not granted by the slot's capabilities ['inside_combinations']"
+  ],
+  "greco": [],
+  "jiujitsu": [],
+  "karate": [
+   "karate.slot.3: slot grants fewer than 2 usable non-basic attacking techniques (['pummel'])",
+   "karate.slot.3: sequence item 'jab' is not granted by the slot's capabilities ['anti_grappling']",
+   "karate.slot.3: sequence item 'cross' is not granted by the slot's capabilities ['anti_grappling']",
+   "karate.slot.3: sequence item 'hook' is not granted by the slot's capabilities ['anti_grappling']",
+   "karate.slot.3: sequence item 'body_hook' is not granted by the slot's capabilities ['anti_grappling']",
+   "karate.slot.3: sequence item 'uppercut' is not granted by the slot's capabilities ['anti_grappling']",
+   "karate.slot.3: sequence item 'haymaker' is not granted by the slot's capabilities ['anti_grappling']",
+   "karate.slot.3: sequence item 'side_kick' is not granted by the slot's capabilities ['anti_grappling']"
+  ],
+  "macklin": [],
+  "maleek": [
+   "maleek.slot.3: slot grants fewer than 2 usable non-basic attacking techniques (['pummel'])",
+   "maleek.slot.3: sequence item 'jab' is not granted by the slot's capabilities ['anti_grappling']",
+   "maleek.slot.3: sequence item 'cross' is not granted by the slot's capabilities ['anti_grappling']",
+   "maleek.slot.3: sequence item 'hook' is not granted by the slot's capabilities ['anti_grappling']",
+   "maleek.slot.3: sequence item 'body_hook' is not granted by the slot's capabilities ['anti_grappling']",
+   "maleek.slot.3: sequence item 'uppercut' is not granted by the slot's capabilities ['anti_grappling']",
+   "maleek.slot.3: sequence item 'haymaker' is not granted by the slot's capabilities ['anti_grappling']",
+   "maleek.slot.3: sequence item 'low_kick' is not granted by the slot's capabilities ['anti_grappling']",
+   "maleek.slot.3: sequence item 'body_kick' is not granted by the slot's capabilities ['anti_grappling']",
+   "maleek.slot.3: sequence item 'teep' is not granted by the slot's capabilities ['anti_grappling']"
+  ],
+  "philly": [],
+  "sanda_judo": [
+   "sanda_judo.slot.3: sequence item 'double_leg' is granted but not trained (not in active_techniques or a core)",
+   "sanda_judo.slot.3: sequence item 'single_leg' is granted but not trained (not in active_techniques or a core)"
+  ],
+  "street": [
+   "street.slot.1: slot grants fewer than 2 usable non-basic attacking techniques (['haymaker'])"
+  ],
+  "thai": [
+   "thai.slot.2: sequence item 'knee_body' is not granted by the slot's capabilities ['kickboxing']"
+  ],
+  "wrestler": []
+ },
+ "slot_validator_proposed_cards": {
+  "detroit": [],
+  "donnell": [],
+  "greco": [],
+  "jiujitsu": [],
+  "karate": [],
+  "macklin": [],
+  "maleek": [],
+  "philly": [],
+  "sanda_judo": [],
+  "street": [],
+  "thai": [],
+  "wrestler": []
+ },
+ "rank_fields_check": {
+  "ranked_card_schema_ok": true,
+  "ranked_card_validator_problems": [],
+  "ceiling_breaking_card_rejected": [
+   "school_mastery: 'boxing' at grandmaster exceeds the card's rank master (rank is a ceiling)",
+   "school_mastery: 'judo' is not a capability this card trains"
+  ]
+ },
+ "test_guards_on_target_data": {
+  "rook cross -> retreat (test)": true,
+  "rook has no shell_block (test)": true,
+  "niran cross != slip (test)": true,
+  "aya cross in (pivot, retreat) (test)": true,
+  "niran low_kick -> check (test)": true,
+  "mio body_kick -> kick_catch (test)": true,
+  "aya head_kick far -> evade_step_back (test)": true,
+  "aya head_kick at wall -> shell_block (test)": true,
+  "aya karate core reproduces hidden grant (test)": true
+ },
+ "availability_parity_mma": {
+  "detroit": {
+   "attacks_only_in_legacy": [],
+   "attacks_only_in_v2_1": [
+    "clinch_break",
+    "stand_up"
+   ],
+   "defenses_added_by_pool_rule": [
+    "bob_weave",
+    "evade_step_back",
+    "kick_catch",
+    "lean_back",
+    "shoulder_roll",
+    "submission_escape"
+   ]
+  },
+  "donnell": {
+   "attacks_only_in_legacy": [],
+   "attacks_only_in_v2_1": [
+    "clinch_break",
+    "stand_up"
+   ],
+   "defenses_added_by_pool_rule": [
+    "bob_weave",
+    "evade_step_back",
+    "kick_catch",
+    "lean_back",
+    "shoulder_roll",
+    "submission_escape"
+   ]
+  },
+  "greco": {
+   "attacks_only_in_legacy": [],
+   "attacks_only_in_v2_1": [
+    "clinch_break",
+    "stand_up"
+   ],
+   "defenses_added_by_pool_rule": [
+    "bob_weave",
+    "evade_step_back",
+    "jam_step",
+    "kick_catch",
+    "lean_back",
+    "shoulder_roll",
+    "submission_escape",
+    "whizzer"
+   ]
+  },
+  "jiujitsu": {
+   "attacks_only_in_legacy": [],
+   "attacks_only_in_v2_1": [
+    "clinch_break",
+    "stand_up"
+   ],
+   "defenses_added_by_pool_rule": [
+    "bob_weave",
+    "evade_step_back",
+    "jam_step",
+    "kick_catch",
+    "lean_back",
+    "shoulder_roll",
+    "submission_escape"
+   ]
+  },
+  "karate": {
+   "attacks_only_in_legacy": [],
+   "attacks_only_in_v2_1": [
+    "clinch_break",
+    "stand_up"
+   ],
+   "defenses_added_by_pool_rule": [
+    "bob_weave",
+    "evade_step_back",
+    "jam_step",
+    "kick_catch",
+    "lean_back",
+    "shoulder_roll",
+    "submission_escape",
+    "whizzer"
+   ]
+  },
+  "macklin": {
+   "attacks_only_in_legacy": [],
+   "attacks_only_in_v2_1": [
+    "clinch_break",
+    "stand_up"
+   ],
+   "defenses_added_by_pool_rule": [
+    "bob_weave",
+    "evade_step_back",
+    "jam_step",
+    "kick_catch",
+    "lean_back",
+    "shoulder_roll",
+    "submission_escape"
+   ]
+  },
+  "maleek": {
+   "attacks_only_in_legacy": [],
+   "attacks_only_in_v2_1": [
+    "clinch_break",
+    "stand_up"
+   ],
+   "defenses_added_by_pool_rule": [
+    "bob_weave",
+    "evade_step_back",
+    "jam_step",
+    "kick_catch",
+    "lean_back",
+    "shoulder_roll",
+    "submission_escape",
+    "whizzer"
+   ]
+  },
+  "philly": {
+   "attacks_only_in_legacy": [],
+   "attacks_only_in_v2_1": [
+    "clinch_break",
+    "stand_up"
+   ],
+   "defenses_added_by_pool_rule": [
+    "bob_weave",
+    "evade_step_back",
+    "jam_step",
+    "kick_catch",
+    "lean_back",
+    "shoulder_roll",
+    "submission_escape",
+    "whizzer"
+   ]
+  },
+  "sanda_judo": {
+   "attacks_only_in_legacy": [],
+   "attacks_only_in_v2_1": [
+    "clinch_break",
+    "stand_up"
+   ],
+   "defenses_added_by_pool_rule": [
+    "bob_weave",
+    "evade_step_back",
+    "jam_step",
+    "kick_catch",
+    "lean_back",
+    "shoulder_roll",
+    "submission_escape",
+    "whizzer"
+   ]
+  },
+  "street": {
+   "attacks_only_in_legacy": [],
+   "attacks_only_in_v2_1": [
+    "clinch_break",
+    "stand_up"
+   ],
+   "defenses_added_by_pool_rule": [
+    "evade_step_back",
+    "lean_back",
+    "submission_escape"
+   ]
+  },
+  "thai": {
+   "attacks_only_in_legacy": [],
+   "attacks_only_in_v2_1": [
+    "clinch_break",
+    "stand_up"
+   ],
+   "defenses_added_by_pool_rule": [
+    "bob_weave",
+    "evade_step_back",
+    "jam_step",
+    "kick_catch",
+    "lean_back",
+    "shoulder_roll",
+    "submission_escape"
+   ]
+  },
+  "wrestler": {
+   "attacks_only_in_legacy": [],
+   "attacks_only_in_v2_1": [
+    "clinch_break",
+    "stand_up"
+   ],
+   "defenses_added_by_pool_rule": [
+    "bob_weave",
+    "evade_step_back",
+    "jam_step",
+    "kick_catch",
+    "lean_back",
+    "shoulder_roll",
+    "submission_escape",
+    "whizzer"
+   ]
+  }
+ },
+ "style_templates": {
+  "tpl_taekwondo": [],
+  "tpl_capoeira": [],
+  "tpl_catch_wrestling": [],
+  "tpl_lethwei": [],
+  "tpl_wing_chun": [],
+  "tpl_hung_gar": [],
+  "tpl_bajiquan": [],
+  "tpl_baguazhang": [],
+  "tpl_tai_chi": [],
+  "tpl_shuai_jiao": [],
+  "tpl_jeet_kune_do": []
+ }
+}
