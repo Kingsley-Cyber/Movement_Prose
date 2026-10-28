@@ -37,8 +37,14 @@ def compute_posture_state(
     decay_default = float(p_cfg.get("guard_decay_rate_default", 0.06))
     decay_rate = float(g_prof.get("guard_decay_rate", decay_default))
 
-    dmg = actor_state.get("damage", {"head": 0.0, "body": 0.0, "leg": 0.0})
-    fatigue = float(actor_state.get("fatigue", 0.0))
+    dmg_scale_inv = (
+        1.0
+        if actor_state.get("posture_mode") == "ground"
+        else 1.0 / max(1.0, float(actor_state.get("damage_limit_scale", 1.0)))
+    )
+    raw_dmg = actor_state.get("damage", {"head": 0.0, "body": 0.0, "leg": 0.0})
+    dmg = {k: float(v) * dmg_scale_inv for k, v in raw_dmg.items()}
+    fatigue = float(actor_state.get("fatigue", 0.0)) * dmg_scale_inv
     rec_win = actor_state.get("recovery_window", {}).get("window_type", "none")
 
     # Dynamic shifts during the fight:

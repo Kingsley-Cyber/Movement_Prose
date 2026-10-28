@@ -283,14 +283,20 @@ def update_slot_stalls(
         and slot_goal != "reset_to_home_range"
         and not is_closing_to_clinch
     )
+    is_leg_attrition_chip = (
+        slot_goal == "leg_attrition"
+        and tk in ("kick", "knee")
+        and outcome == "blocked"
+        and not counter_triggered
+    )
     landed = (
-        outcome in ("partial", "clean", "flush", "counter_hit")
+        (outcome in ("partial", "clean", "flush", "counter_hit") or is_leg_attrition_chip)
         and not counter_triggered
         and not is_non_reset_move
         and not is_closing_to_clinch
     )
     failed = (
-        outcome in ("miss", "evaded", "blocked", "checked", "caught", "jammed")
+        (outcome in ("miss", "evaded", "blocked", "checked", "caught", "jammed") and not is_leg_attrition_chip)
         or counter_triggered
         or is_non_reset_move
     )
@@ -355,8 +361,11 @@ def evaluate_slot_switch(
     cur_plan = plans[cur_idx]
     plan_by_id = {p["slot_id"]: (i, p) for i, p in enumerate(plans)}
 
-    # When on the ground, prefer slots that actually contain a trained ground kit
-    if range_band == "ground" or actor_st.get("posture_mode") == "ground":
+    # When on the ground, prefer slots that actually contain a trained ground kit (for top control or submission specialists)
+    cur_role = str(actor_st.get("role") or ("top" if actor_st.get("grip") == "top" else "bottom"))
+    if (range_band == "ground" or actor_st.get("posture_mode") == "ground") and (
+        cur_role == "top" or any(p.get("goal") == "submission_finish" for p in plans)
+    ):
         if not _plan_has_ground_kit(cur_plan, tech_v2_map):
             for idx, p in enumerate(plans):
                 if _plan_has_ground_kit(p, tech_v2_map):
@@ -478,6 +487,31 @@ def evaluate_slot_switch(
                 actor_st["slot_exchanges"] = 0
                 actor_st["slot_switches"] = int(actor_st.get("slot_switches", 0)) + 1
                 return str(cand_plan["slot_id"]), f"reactive:{trig}"
+
+    # Rule 2b: if in a non-start standing punch fallback slot whose home_range is outside card.preferred_ranges, cycle along links back toward preferred range after 1 exchange
+    pref_ranges = set(card.get("preferred_ranges", []))
+    if (
+        is_standing_neutral
+        and range_band in ("kick", "punch", "close")
+        and int(actor_st.get("slot_exchanges", 0)) >= 1
+        and pref_ranges
+        and str(cur_plan.get("trigger", "")) != "fight_start"
+        and str(cur_plan.get("home_range", "")) == "punch"
+        and "punch" not in pref_ranges
+    ):
+        links = cur_plan.get("links") or []
+        for l_sid in links:
+            if l_sid in plan_by_id and l_sid != cur_plan["slot_id"]:
+                cand_idx, cand_plan = plan_by_id[l_sid]
+                if cand_plan.get("goal") == "reset_to_home_range" and is_standing_neutral:
+                    continue
+                actor_st["active_slot_idx"] = cand_idx
+                actor_st["active_slot_id"] = cand_plan["slot_id"]
+                actor_st["slot_Cursor"] = 0
+                actor_st["slot_stalls"] = 0
+                actor_st["slot_exchanges"] = 0
+                actor_st["slot_switches"] = int(actor_st.get("slot_switches", 0)) + 1
+                return str(cand_plan["slot_id"]), "return_to_preferred_range"
 
     return None, None
 
@@ -767,7 +801,7 @@ def build_candidate_pool_v2(
             if "punch" in req_rng:
                 cands.append(tid)
 
-    # If at kick range in a punch/clinch slot with no kick-range attacks, allow non-shot slot attacks (they incur §7.8 kick-range penalty)
+    # If at kick range in a punch/clinch slot with no kick-range attacks, only linear straight punches (and step) can lunge from kick range
     if not cands and range_band == "kick":
         kick_blocked = set(load_model_v2().get("legacy", {}).get("simulation_config", {}).get("kick_range_blocked_shots", []))
         for tid in full_pool:
@@ -776,13 +810,17 @@ def build_candidate_pool_v2(
             t = tech_v2_map.get(tid, {})
             kind = str(t.get("kind", ""))
             usage = str(t.get("usage", ""))
-            if usage not in ("attack", "both") or kind in (KIND_DEFENSE, KIND_MOVEMENT, KIND_ESCAPE, "submission", KIND_GROUND_STRIKE, "control"):
+            if usage not in ("attack", "both") or kind != "punch":
+                continue
+            if str(t.get("attack_lane", "")) != "head_straight":
                 continue
             if tid in basic_core and tid not in seq_set:
                 continue
             req_rng = t.get("required_range", [])
-            if "punch" in req_rng or "close" in req_rng or "clinch" in req_rng:
+            if "punch" in req_rng:
                 cands.append(tid)
+        if TECH_STEP in full_pool and str(active_plan.get("home_range", "punch")) in ("punch", "close", "clinch", "ground"):
+            cands.append(TECH_STEP)
 
     if cands:
         return sorted(set(cands))
@@ -843,11 +881,15 @@ def score_and_select_technique_v2(
     cursor = int(att_state.get("slot_Cursor", 0))
     pointed_idx = cursor % len(seq) if seq else 0
     pointed_tid = seq[pointed_idx] if seq else None
-    if pointed_tid not in candidates and seq:
+    head_seam_open = (
+        float(def_readiness.get("head_straight", 3.0)) < seam_thresh
+        or float(def_readiness.get("head_hook", 3.0)) < seam_thresh
+    )
+    if (pointed_tid not in candidates or (pointed_tid == TECH_FEINT and head_seam_open and len(candidates) > 1)) and seq:
         for offset in range(1, len(seq)):
             cand_idx = (cursor + offset) % len(seq)
             alt_tid = seq[cand_idx]
-            if alt_tid in candidates:
+            if alt_tid in candidates and not (alt_tid == TECH_FEINT and head_seam_open):
                 pointed_idx = cand_idx
                 pointed_tid = alt_tid
                 break

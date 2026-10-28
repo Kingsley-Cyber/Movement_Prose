@@ -282,6 +282,15 @@ def compute_card_derived_damage(
     g_intercept = float(d_cfg.get("guard_mitigation_intercept", 1.14))
     g_per_pt = float(d_cfg.get("guard_mitigation_per_coverage_point", 0.06))
     m_guard = g_intercept - g_per_pt * cov
+    def_stance_id = def_dims.get("stance")
+    def_stance_split = beh.get(def_stance_id, {}).get("posture_profile", {}).get("weight_split") if def_stance_id else None
+    def_kick_id = def_dims.get("kicking")
+    def_kick_fav = beh.get(def_kick_id, {}).get("attack_profile", {}).get("favored_lanes", []) if def_kick_id else []
+    if def_stance_split == "front_heavy" and not def_kick_fav:
+        if target_region == "leg":
+            m_guard += 0.45
+        elif target_region == "body" and tech_kind in ("kick", "knee"):
+            m_guard += 0.35
 
     def_opt_dmg_rules = beh.get(def_opt_id, {}).get("damage_rules") if def_opt_id else None
     if def_opt_dmg_rules:
@@ -527,10 +536,12 @@ def simulate_fight_v2(
     rest_fat_rec = float(rounds_cfg.get("rest_fatigue_recovery_fraction", 0.35))
     dmg_lim_scale = 1.0
     if full_fight or num_rounds > 1 or eff_duration_s > 60.0:
-        per_round_scale = float(rounds_cfg.get("per_extra_round_damage_limit_scale", 3.05))
+        per_round_scale = float(rounds_cfg.get("per_extra_round_damage_limit_scale", 1.65))
         dmg_lim_scale = 1.0 + per_round_scale * max(0, num_rounds - 1)
         if num_rounds == 1 and eff_duration_s > 60.0:
             dmg_lim_scale = 1.0 + 0.5 * ((eff_duration_s / 60.0) - 1.0)
+    for fid in canonical_ids:
+        actors[fid]["damage_limit_scale"] = dmg_lim_scale
     range_band = "punch" if punch_only_ruleset else "kick"
     clinch_exchanges = 0
     exchanges: list[dict[str, Any]] = []
@@ -756,6 +767,9 @@ def simulate_fight_v2(
                     if def_state.get("in_corner") and arena_corner_trap_bonus > 1.0:
                         entry_score += (arena_corner_trap_bonus - 1.0)
                 dist_score -= entry_leg_pen * float(def_state["damage"]["leg"])
+                att_split = opt_behaviors.get(att_stance or "", {}).get("posture_profile", {}).get("weight_split")
+                att_leg_mult = 2.0 if att_split == "front_heavy" else 1.0
+                entry_score -= att_leg_mult * entry_leg_pen * float(att_state["damage"]["leg"])
 
                 step_prob = max(
                     float(entry_lo),
@@ -785,6 +799,11 @@ def simulate_fight_v2(
                     pull_prob -= pull_out_wall_pen
                 if contest_roll(pull_prob, band_name="range_step_out", rng=rng, model_cfg=model_cfg)[0]:
                     range_band = standing_ladder[max(0, cur_idx - 1)]
+                    if att_state.get("wall_proximity") == "near":
+                        att_state["position"][0] = round(att_state["position"][0] * outfighter_reset, 3)
+                        att_state["position"][1] = round(att_state["position"][1] * outfighter_reset, 3)
+                        att_state["wall_proximity"] = "far"
+                        att_state["in_corner"] = False
 
         ex_range = range_band
 
@@ -917,6 +936,16 @@ def simulate_fight_v2(
                 if (tid in kick_blocked_shots or t_kind in ("takedown", "sweep"))
                 else kr_punch_pen
             )
+        if t_kind in ("takedown", "sweep"):
+            null_gp = model_cfg.get("grappling", {}).get("null_tie_profile", {})
+            att_tie_id = att_dims.get("tie")
+            def_tie_id = def_dims.get("tie")
+            att_gp = opt_behaviors.get(att_tie_id, {}).get("grappling_profile", null_gp) if att_tie_id else null_gp
+            def_gp = opt_behaviors.get(def_tie_id, {}).get("grappling_profile", null_gp) if def_tie_id else null_gp
+            td_off = float(att_gp.get("takedown_offense", 1.0))
+            td_def = float(def_gp.get("takedown_defense", 1.5))
+            if td_off < 2.0 and td_def > 2.5:
+                base_att_skill += 0.22 * (td_off - td_def)
 
         logit_hit = base_att_skill - lane_readiness
         hit_prob = round(max(float(hit_lo), min(float(hit_hi), 1.0 / (1.0 + math.exp(-logit_hit)))), 3)
@@ -1028,7 +1057,17 @@ def simulate_fight_v2(
         v_cfg = model_cfg.get("vertical", {})
         landing_cnt_bonus = float(v_cfg.get("landing_counter_bonus", 0.10)) if airborne_cfg is not None else 0.0
         att_rec_f = int(m_stats.get("rec_f", 6))
-        if outcome in ("evaded", "blocked", "jammed") and (att_rec_f >= cnt_min_rec or airborne_cfg is not None):
+        is_grapple_control_attempt = range_band in ("clinch", "ground") and t_kind in (
+            "grip",
+            "control",
+            "submission",
+            KIND_GROUND_STRIKE,
+        )
+        if (
+            outcome in ("evaded", "blocked", "jammed")
+            and not is_grapple_control_attempt
+            and (att_rec_f >= cnt_min_rec or airborne_cfg is not None)
+        ):
             base_counter = 0.0
             for d in ("mentality", "defense", "hands", "stance"):
                 oid = def_dims.get(d)
@@ -1165,17 +1204,16 @@ def simulate_fight_v2(
             att_state["kick_checks_suffered"] += 1
 
         # Update balance & recovery window for next exchange
+        t_rec_pen_raw = float(t_v2_entry.get("recovery_exposure", {}).get("readiness_penalty", rec_pen_default))
         if outcome in ("flush", "counter_hit", "caught"):
             def_state["balance"] = "off_base" if outcome != "caught" else "stable"
-            if outcome == "caught":
-                att_state["balance"] = "compromised"
+            att_state["balance"] = "compromised" if outcome == "caught" else "stable"
         elif outcome in ("clean", "checked", "jammed"):
             def_state["balance"] = "compromised" if outcome == "clean" else "stable"
-            if outcome in ("checked", "jammed"):
-                att_state["balance"] = "compromised"
+            att_state["balance"] = "compromised" if outcome in ("checked", "jammed") else "stable"
         else:
             def_state["balance"] = "stable"
-            att_state["balance"] = "stable"
+            att_state["balance"] = "compromised" if (outcome in ("evaded", "miss") and t_rec_pen_raw >= 1.30) else "stable"
 
         t_v2_rec = t_v2_entry.get(
             "recovery_exposure",
@@ -1304,7 +1342,12 @@ def simulate_fight_v2(
             def_state["position"][1] = round(def_state["position"][1] * outfighter_reset, 3)
             def_state["wall_proximity"] = "far"
             def_state["in_corner"] = False
-        elif att_mentality in pressure_ments and (arena_cfg["has_walls"] or arena_cfg.get("has_drop_hazard")):
+        elif (
+            att_mentality in pressure_ments
+            and (arena_cfg["has_walls"] or arena_cfg.get("has_drop_hazard"))
+            and outcome not in ("evaded", "miss", "checked", "caught")
+            and not counter_triggered
+        ):
             direction = 1.0 if def_state["position"][0] >= 0 else -1.0
             raw_drift_x = float(def_state["position"][0]) + pressure_drift * direction
             raw_drift_y = float(def_state["position"][1]) + (
@@ -1350,7 +1393,11 @@ def simulate_fight_v2(
         )
         raw_gap = max(p_min, p_base - p_per_pt * att_tempo_val) * att_patience * (1.0 + p_fat_scale * float(att_state["fatigue"]))
         base_tempo_gap = max(p_min, int(round(raw_gap)))
-        round_pace_scale = max(1.0, r_len_s / 60.0) if (full_fight or r_len_s > 60.0) else 1.0
+        round_pace_scale = (
+            max(1.0, (eff_duration_s / 60.0) * 0.68)
+            if (full_fight or eff_duration_s > 60.0)
+            else 1.0
+        )
         tempo_gap_frames = int(round(base_tempo_gap * round_pace_scale))
 
         t_start = round(clock_frames / float(FPS), 2)
@@ -1498,7 +1545,8 @@ def simulate_fight_v2(
                 vertical_mode=vertical_mode,
             )
             if c_tid:
-                c_qual = "counter_hit" if rng.random() < cnt_hit_share else "partial"
+                eff_cnt_share = min(0.92, cnt_hit_share + (0.25 if t_rec_pen_raw >= 1.15 else 0.0))
+                c_qual = "counter_hit" if rng.random() < eff_cnt_share else "partial"
                 c_dmg = compute_card_derived_damage(
                     k,
                     def_card,

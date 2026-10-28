@@ -506,7 +506,7 @@
    "dimension": "defense",
    "lane_readiness_bonus": {
     "head_straight": 1.5,
-    "head_hook": -0.55,
+    "head_hook": -0.3,
     "head_uppercut": 0.35,
     "body": -0.45,
     "leg": 0.45,
@@ -1432,9 +1432,9 @@
    "id": "hands.kronk",
    "dimension": "hands",
    "lane_readiness_bonus": {
-    "head_straight": -0.35,
-    "head_hook": -0.95,
-    "head_uppercut": -0.2,
+    "head_straight": 0.25,
+    "head_hook": -0.2,
+    "head_uppercut": -0.05,
     "body": 0.2,
     "leg": 0.0,
     "entry": -0.55,
@@ -1442,10 +1442,10 @@
     "single_support": 0.0
    },
    "attack_profile": {
-    "power_delta": 0.12,
-    "accuracy_delta": 0.12,
+    "power_delta": 0.16,
+    "accuracy_delta": 0.2,
     "entry_delta": 0.0,
-    "distance_control_delta": 0.0,
+    "distance_control_delta": 0.16,
     "counter_tendency": 0.0,
     "counter_power_delta": 0.0,
     "sweep_resistance": 0.0,
@@ -1601,7 +1601,7 @@
     "head_uppercut": 0.4,
     "body": 0.7,
     "leg": -0.25,
-    "entry": -0.45,
+    "entry": -0.85,
     "clinch": 0.0,
     "single_support": 0.0
    },
@@ -2531,9 +2531,9 @@
    "id": "mentality.slugger",
    "dimension": "mentality",
    "lane_readiness_bonus": {
-    "head_straight": -0.45,
-    "head_hook": 0.0,
-    "head_uppercut": 0.0,
+    "head_straight": -0.55,
+    "head_hook": -0.2,
+    "head_uppercut": -0.2,
     "body": 0.0,
     "leg": -0.45,
     "entry": 0.0,
@@ -3726,8 +3726,8 @@
     "head_uppercut": 0.25,
     "body": 0.15,
     "leg": 0.15,
-    "entry": 1.1,
-    "clinch": 0.8,
+    "entry": 0.95,
+    "clinch": 0.45,
     "single_support": 0.5
    },
    "attack_profile": {
@@ -3789,8 +3789,8 @@
     "head_uppercut": 0.1,
     "body": 0.2,
     "leg": 0.0,
-    "entry": 0.35,
-    "clinch": 0.95,
+    "entry": -0.25,
+    "clinch": 0.1,
     "single_support": 0.25
    },
    "attack_profile": {
@@ -3833,10 +3833,10 @@
    "grappling_profile": {
     "takedown_offense": 1.5,
     "takedown_defense": 2.0,
-    "clinch_control": 2.5,
-    "top_control": 3.5,
-    "bottom_game": 4.5,
-    "submission_offense": 4.5,
+    "clinch_control": 2.0,
+    "top_control": 3.2,
+    "bottom_game": 4.1,
+    "submission_offense": 4.1,
     "submission_defense": 4.5,
     "scramble": 3.0,
     "stand_up": 2.0
@@ -3920,13 +3920,13 @@
     "body": 0.15,
     "leg": 0.25,
     "entry": 1.15,
-    "clinch": -0.45,
+    "clinch": 0.75,
     "single_support": 0.85
    },
    "attack_profile": {
     "power_delta": 0.0,
     "accuracy_delta": 0.0,
-    "entry_delta": 0.28,
+    "entry_delta": 0.34,
     "distance_control_delta": 0.0,
     "counter_tendency": 0.0,
     "counter_power_delta": 0.0,
@@ -3978,7 +3978,7 @@
    "dimension": "tie",
    "lane_readiness_bonus": {
     "head_straight": 0.0,
-    "head_hook": -0.65,
+    "head_hook": -0.5,
     "head_uppercut": 0.25,
     "body": 0.45,
     "leg": -0.4,

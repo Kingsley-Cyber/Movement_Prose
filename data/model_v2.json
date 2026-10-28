@@ -207,7 +207,7 @@
   "initiative_noise": 0.85,
   "clinch_exit_probability": 0.42,
   "entry_wall_distance_penalty": -0.65,
-  "entry_leg_distance_penalty": -0.12,
+  "entry_leg_distance_penalty": -0.22,
   "entry_logistic_offset": 0.35,
   "entry_probability_clamp": [
    0.18,
@@ -219,7 +219,7 @@
   "pull_out_wall_penalty": -0.2,
   "feint_probability_cap": 0.55,
   "base_attack_skill": 3.3,
-  "kick_range_punch_penalty": -0.55,
+  "kick_range_punch_penalty": -0.85,
   "kick_range_shot_penalty": -0.75,
   "hit_probability_clamp": [
    0.1,
@@ -230,12 +230,12 @@
   "counter_min_recovery_frames": 6,
   "counter_read_bonus_per_repeat": 0.07,
   "counter_read_repeats_cap": 3,
-  "counter_recovery_bonus_per_frame_over_7": 0.03,
+  "counter_recovery_bonus_per_frame_over_7": 0.06,
   "counter_guard_resist_per_point": 0.05,
   "counter_fatigue_penalty_per_point": 0.03,
   "counter_probability_clamp": [
    0.1,
-   0.55
+   0.65
   ],
   "counter_hit_share": 0.62,
   "recovery_penalty_default": 0.4,
@@ -2141,7 +2141,7 @@
   "reset_range_to": "kick",
   "reset_position_to": "standing_neutral",
   "reset_slot_to_start": false,
-  "per_extra_round_damage_limit_scale": 3.05
+  "per_extra_round_damage_limit_scale": 1.65
  },
  "energy": {
   "use_technique_energy_mult": true,

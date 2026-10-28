@@ -230,7 +230,7 @@ def compute_decision_scores(
                 ctrl_trans[att_id] += 1.0
             if ex.get("grappling_position") not in (None, "standing_neutral"):
                 dur_ex = max(0.0, float(ex.get("t_end", 0.0)) - float(ex.get("t_start", 0.0)))
-                ctrl_sec[att_id] += 0.5 * dur_ex
+                ctrl_sec[att_id] += 0.12 * dur_ex
 
         last_sc = r_exchanges[-1].get("state_changes", {})
         last_att = str(r_exchanges[-1]["attacker_id"])

@@ -116,8 +116,14 @@ def compute_readiness_profile(
     kick_seams = beh.get(kicking_id, {}).get("lane_readiness_bonus", {}) if kicking_id else {}
     men_seams = beh.get(mentality_id, {}).get("lane_readiness_bonus", {}) if mentality_id else {}
 
-    dmg = actor_state.get("damage", {"head": 0.0, "body": 0.0, "leg": 0.0})
-    fatigue = float(actor_state.get("fatigue", 0.0))
+    dmg_scale_inv = (
+        1.0
+        if range_band == "ground" or actor_state.get("posture_mode") == "ground"
+        else 1.0 / max(1.0, float(actor_state.get("damage_limit_scale", 1.0)))
+    )
+    raw_dmg = actor_state.get("damage", {"head": 0.0, "body": 0.0, "leg": 0.0})
+    dmg = {k: float(v) * dmg_scale_inv for k, v in raw_dmg.items()}
+    fatigue = float(actor_state.get("fatigue", 0.0)) * dmg_scale_inv
     rec_win = actor_state.get("recovery_window", {})
     exposed_lanes = set(rec_win.get("exposed_lanes", []))
     rec_penalty = float(rec_win.get("readiness_penalty", 0.0))
@@ -266,6 +272,11 @@ def compute_readiness_profile(
             score -= head_dmg_pen * float(dmg["head"])
         elif lane == "leg":
             score -= leg_dmg_pen * float(dmg["leg"])
+        if (
+            s_opt.get("posture_profile", {}).get("weight_split") == "front_heavy"
+            and lane in ("head_straight", "head_hook", "head_uppercut", "entry")
+        ):
+            score -= 0.45 * leg_dmg_pen * float(dmg["leg"])
 
         if lane == "head_hook":
             cuts = actor_state.get("cuts", {})
@@ -289,7 +300,7 @@ def compute_readiness_profile(
         score += _apply_range_lane_bonus(g_opt, range_band, lane, wall_near)
 
         tempo_val = int(card.get("tempo", 3))
-        if tempo_val < 3:
+        if tempo_val < 3 and range_band not in ("clinch", "ground") and lane not in ("clinch", "entry"):
             low_tempo_per_pt = float(tempo_cfg.get("low_tempo_readiness_per_point", 0.22))
             damp = tempo_damping if mentality_id == damped_mentality else 1.0
             score += damp * low_tempo_per_pt * (3 - tempo_val)
